@@ -1166,7 +1166,7 @@
 
     function redirectToLogin() {
         const returnUrl = encodeURIComponent(window.location.href);
-        window.location.href = `myaccount.html?return=${returnUrl}`;
+        window.location.href = `../Account/myaccount.html?return=${returnUrl}`;
     }
 
     // =====================================================
@@ -1466,7 +1466,7 @@
 
     function setupEventListeners() {
         const logoBtn = document.getElementById('logoHomeBtn');
-        if (logoBtn) logoBtn.onclick = () => { window.location.href = 'index.html'; };
+        if (logoBtn) logoBtn.onclick = () => { window.location.href = '../index.html'; };
         
         const menuToggle = document.getElementById('menuToggleBtn');
         if (menuToggle) menuToggle.onclick = openSidebar;
