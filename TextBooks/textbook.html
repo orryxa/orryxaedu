@@ -1249,10 +1249,10 @@ function setupEventListeners() {
     if (desktopLogout) desktopLogout.onclick = () => logout();
     
     const sidebarLoginBtn = document.getElementById('sidebarLoginBtn');
-    if (sidebarLoginBtn) sidebarLoginBtn.onclick = () => { closeSidebar(); window.location.href = 'myaccount.html'; };
+    if (sidebarLoginBtn) sidebarLoginBtn.onclick = () => { closeSidebar(); window.location.href = '../Account/myaccount.html'; };
     
     const sidebarSignupBtn = document.getElementById('sidebarSignupBtn');
-    if (sidebarSignupBtn) sidebarSignupBtn.onclick = () => { closeSidebar(); window.location.href = 'myaccount.html'; };
+    if (sidebarSignupBtn) sidebarSignupBtn.onclick = () => { closeSidebar(); window.location.href = '../Account/myaccount.html'; };
     
     const sidebarMyAccount = document.getElementById('sidebarMyAccount');
     if (sidebarMyAccount) {
@@ -1268,10 +1268,10 @@ function setupEventListeners() {
     if (sidebarLogout) sidebarLogout.onclick = () => { logout(); closeSidebar(); };
     
     const openLoginBtn = document.getElementById('openLoginBtn');
-    if (openLoginBtn) openLoginBtn.onclick = () => { window.location.href = 'myaccount.html'; };
+    if (openLoginBtn) openLoginBtn.onclick = () => { window.location.href = '../Account/myaccount.html'; };
     
     const openSignupBtn = document.getElementById('openSignupBtn');
-    if (openSignupBtn) openSignupBtn.onclick = () => { window.location.href = 'myaccount.html'; };
+    if (openSignupBtn) openSignupBtn.onclick = () => { window.location.href = '../Account/myaccount.html'; };
     
     document.querySelectorAll('.menu-item, .sidebar-menu-item').forEach(el => {
         el.addEventListener('click', (e) => {
