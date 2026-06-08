@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Chapter 3 | Admission of Partner - 12th Commerce</title>
+  <!-- Google Fonts + Font Awesome 6 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: linear-gradient(135deg, #eef2f9 0%, #e0e8f2 100%);
+      font-family: 'Inter', sans-serif;
+      padding: 32px 24px;
+      color: #0a2b3e;
+      line-height: 1.5;
+    }
+    .container { max-width: 1300px; margin: 0 auto; }
+    .hero { text-align: center; margin-bottom: 48px; }
+    .hero h1 {
+      font-size: 2.4rem; font-weight: 800;
+      background: linear-gradient(135deg, #0b4b6b, #1f6e93, #2c7da0);
+      background-clip: text; -webkit-background-clip: text; color: transparent;
+      display: inline-block; padding-bottom: 10px;
+      border-bottom: 4px solid #ffb347; margin-bottom: 16px;
+    }
+    .chapter-badge {
+      background: #0f4c5f20; backdrop-filter: blur(6px);
+      display: inline-block; padding: 6px 24px; border-radius: 40px;
+      font-size: 0.85rem; font-weight: 600; color: #1b6b8f;
+    }
+    .card {
+      background: rgba(255,255,255,0.97); border-radius: 2rem;
+      margin-bottom: 32px; padding: 28px 32px;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid rgba(255,255,255,0.6);
+    }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 25px 40px -14px rgba(0,0,0,0.15); }
+    .card h2 {
+      font-size: 1.7rem; font-weight: 700; color: #135b78;
+      margin-bottom: 28px; padding-bottom: 10px;
+      border-bottom: 3px solid #ffb74d; display: inline-block;
+    }
+    .card h2 i { margin-right: 12px; color: #ff8c42; }
+    .qa-item { margin-bottom: 22px; border-left: 3px solid #cbdde9; padding-left: 20px; }
+    .question {
+      font-weight: 700; font-size: 1rem; color: #1f4a5e;
+      margin-bottom: 8px; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+    }
+    .question i { color: #ff8c42; width: 26px; }
+    .answer {
+      background: #f8fafd; padding: 10px 18px; border-radius: 24px;
+      font-weight: 500; color: #216477; font-size: 0.94rem;
+      display: inline-block; max-width: 100%;
+      box-shadow: inset 0 1px 0 #fff, 0 1px 2px rgba(0,0,0,0.02);
+    }
+    .true-badge {
+      background: #e0f2e9; color: #1e6f3f; padding: 3px 14px;
+      border-radius: 40px; font-weight: 700; font-size: 0.75rem;
+      display: inline-block; margin-right: 12px;
+    }
+    .false-badge {
+      background: #ffe8e6; color: #bc4742; padding: 3px 14px;
+      border-radius: 40px; font-weight: 700; font-size: 0.75rem;
+      display: inline-block; margin-right: 12px;
+    }
+    .resp-table { width: 100%; overflow-x: auto; margin: 16px 0; border-radius: 20px; background: #f4f9fe; padding: 4px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.85rem; background: white; border-radius: 16px; overflow: hidden; }
+    th, td { border: 1px solid #cde1ef; padding: 10px 12px; text-align: left; vertical-align: top; }
+    th { background: #e0eaf5; font-weight: 700; color: #135b78; }
+    .highlight { background: #eef3fc; border-radius: 16px; padding: 12px 18px; margin: 12px 0; }
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px,1fr)); gap: 12px; margin-top: 12px; }
+    @media (max-width: 768px) {
+      body { padding: 20px 16px; }
+      .card { padding: 20px 18px; }
+      .card h2 { font-size: 1.4rem; }
+      .hero h1 { font-size: 1.8rem; }
+      .qa-item { padding-left: 12px; }
+      th, td { padding: 6px 8px; font-size: 0.75rem; }
+    }
+    .footer-note { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #bdd4e4; font-size: 0.8rem; color: #2c6f8c; }
+    .formula { font-family: monospace; background: #eef3fc; padding: 4px 8px; border-radius: 8px; display: inline-block; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+    <h1><i class="fas fa-user-plus"></i> Chapter 3 · Admission of Partner</h1>
+    <div class="chapter-badge"><i class="fas fa-handshake"></i> Reconstitution | Goodwill | Revaluation | Capital Adjustment | New Ratio</div>
+  </div>
+
+  <!-- ================= Section A: Multiple Choice ================= -->
+  <div class="card">
+    <h2><i class="fas fa-check-square"></i> A. Select the most appropriate alternative</h2>
+    <div class="qa-item"><div class="question">1) Anuj and Eeshan share 3:2, admit Aaroh for 1/5th share. New ratio will be _______.</div><div class="answer">a) 12:8:5 (3/5×4/5=12/25, 2/5×4/5=8/25, 1/5=5/25)</div></div>
+    <div class="qa-item"><div class="question">2) Excess of proportionate capital over actual capital represents _______.</div><div class="answer">b) Surplus Capital</div></div>
+    <div class="qa-item"><div class="question">3) _______ is credited when unrecorded asset is brought into business.</div><div class="answer">a) Revaluation Account</div></div>
+    <div class="qa-item"><div class="question">4) When goodwill is withdrawn by partner, _______ account is credited.</div><div class="answer">b) Cash / Bank</div></div>
+    <div class="qa-item"><div class="question">5) If asset is taken over by partner, _______ account is debited.</div><div class="answer">b) Capital</div></div>
+  </div>
+
+  <!-- ================= Section B: One word/term/phrase ================= -->
+  <div class="card">
+    <h2><i class="fas fa-tag"></i> B. Write the word/term/phrase</h2>
+    <div class="qa-item"><div class="question">1) Method where goodwill is calculated on extra profit above normal profit.</div><div class="answer">Super Profit Method</div></div>
+    <div class="qa-item"><div class="question">2) Account opened to adjust value of assets and liabilities at admission.</div><div class="answer">Revaluation Account / Profit & Loss Adjustment Account</div></div>
+    <div class="qa-item"><div class="question">3) Reputation of business measured in terms of money.</div><div class="answer">Goodwill</div></div>
+    <div class="qa-item"><div class="question">4) Ratio in which general reserve is distributed to old partners.</div><div class="answer">Old Profit Sharing Ratio</div></div>
+    <div class="qa-item"><div class="question">5) Method where new partner brings his share of goodwill in cash.</div><div class="answer">Premium Method</div></div>
+    <div class="qa-item"><div class="question">6) Proportion in which old partners sacrifice their share.</div><div class="answer">Sacrifice Ratio</div></div>
+    <div class="qa-item"><div class="question">7) Capital employed × NRR/100 = _______.</div><div class="answer">Normal Profit</div></div>
+    <div class="qa-item"><div class="question">8) Account debited when partner takes over an asset.</div><div class="answer">Partner's Capital Account</div></div>
+    <div class="qa-item"><div class="question">9) Profit & Loss account balance appearing on liability side.</div><div class="answer">Accumulated Profit / Credit balance of P&L A/c</div></div>
+    <div class="qa-item"><div class="question">10) Old ratio - New ratio = _______.</div><div class="answer">Sacrifice Ratio</div></div>
+  </div>
+
+  <!-- ================= Section C: True or False with Reasons ================= -->
+  <div class="card">
+    <h2><i class="fas fa-gavel"></i> C. State True or False with reasons</h2>
+    <div class="qa-item"><div class="question">1) New Partner can bring capital in cash or kind.</div><div class="answer"><span class="true-badge">True</span> Capital can be brought in cash or as assets (kind).</div></div>
+    <div class="qa-item"><div class="question">2) When goodwill is paid privately, it is not recorded in books.</div><div class="answer"><span class="true-badge">True</span> Private arrangement does not affect firm's books.</div></div>
+    <div class="qa-item"><div class="question">3) Gain ratio is calculated at the time of admission.</div><div class="answer"><span class="false-badge">False</span> Sacrifice ratio is calculated at admission; gain ratio at retirement.</div></div>
+    <div class="qa-item"><div class="question">4) Revaluation profit is distributed among all partners including new partner.</div><div class="answer"><span class="false-badge">False</span> Revaluation profit/loss belongs to old partners only (old ratio).</div></div>
+    <div class="qa-item"><div class="question">5) Change in relationship between partners is Reconstitution.</div><div class="answer"><span class="true-badge">True</span> Any change in partnership agreement leads to reconstitution.</div></div>
+    <div class="qa-item"><div class="question">6) New partner always brings his share of goodwill in cash.</div><div class="answer"><span class="false-badge">False</span> Goodwill can be brought in cash or adjusted through capital.</div></div>
+    <div class="qa-item"><div class="question">7) When goodwill is written off, goodwill account is debited.</div><div class="answer"><span class="false-badge">False</span> When goodwill is written off, partners' capital is debited and goodwill credited.</div></div>
+    <div class="qa-item"><div class="question">8) New ratio minus old ratio equals sacrifice ratio.</div><div class="answer"><span class="false-badge">False</span> Old ratio minus new ratio = sacrifice ratio.</div></div>
+    <div class="qa-item"><div class="question">9) Usually at admission, capital of firm increases.</div><div class="answer"><span class="true-badge">True</span> New partner brings additional capital.</div></div>
+    <div class="qa-item"><div class="question">10) Cash/Bank account is credited when goodwill is withdrawn by old partners.</div><div class="answer"><span class="true-badge">True</span> When goodwill amount is withdrawn, Cash/Bank is credited.</div></div>
+  </div>
+
+  <!-- ================= Section D: Find the odd one ================= -->
+  <div class="card">
+    <h2><i class="fas fa-search"></i> D. Find the odd one</h2>
+    <div class="qa-item"><div class="question">1) General reserve, Creditors, Machinery, Capital</div><div class="answer">Machinery (Asset; others are liabilities/capital)</div></div>
+    <div class="qa-item"><div class="question">2) Decrease in Furniture, Patents written off, Increase in Bills Payable, RDD written off</div><div class="answer">Increase in Bills Payable (Liability increase; others are losses)</div></div>
+    <div class="qa-item"><div class="question">3) Super profit method, Valuation method, Average profit method, Fluctuating capital method</div><div class="answer">Fluctuating capital method (Capital method; others are goodwill valuation methods)</div></div>
+  </div>
+
+  <!-- ================= Section E: Calculate the following ================= -->
+  <div class="card">
+    <h2><i class="fas fa-calculator"></i> E. Calculate the following</h2>
+    <div class="qa-item"><div class="question">1) A and B share 1:1. C admitted. A surrenders 1/4th of his share, B surrenders 1/5th of his share. Find new ratio.</div><div class="answer">A's old = 1/2, surrender = 1/2×1/4=1/8, new = 1/2-1/8=3/8. B's old=1/2, surrender=1/2×1/5=1/10, new=1/2-1/10=2/5=4/10=8/20. C's share=1/8+1/10=9/40. New ratio A:B:C = 15:16:9</div></div>
+    <div class="qa-item"><div class="question">2) Anika:Radhika=5:1, admit Sanika for 1/5th share. Find sacrifice ratio.</div><div class="answer">Sacrifice ratio = Old ratio = 5:1 (since no specific surrender mentioned)</div></div>
+    <div class="qa-item"><div class="question">3) Pramod:Vinod=3:2, new ratio after Ramesh=4:3:2. Find sacrifice ratio.</div><div class="answer">Pramod sacrifice = 3/5 - 4/9 = (27-20)/45=7/45. Vinod sacrifice = 2/5 - 3/9 = (18-15)/45=3/45. Sacrifice ratio = 7:3</div></div>
+  </div>
+
+  <!-- ================= Section F: Answer in short ================= -->
+  <div class="card">
+    <h2><i class="fas fa-question-circle"></i> F. Answer the following</h2>
+    <div class="qa-item"><div class="question">1) What is Revaluation Account?</div><div class="answer">It is a nominal account opened to record changes in value of assets and liabilities at admission/retirement, and profit/loss is transferred to old partners in old ratio.</div></div>
+    <div class="qa-item"><div class="question">2) What is Reconstitution of partnership?</div><div class="answer">Change in relationship/agreement among partners due to admission, retirement, death, or change in profit sharing ratio.</div></div>
+    <div class="qa-item"><div class="question">3) Why is new partner admitted?</div><div class="answer">To increase capital, bring skills, expand business, or improve management.</div></div>
+    <div class="qa-item"><div class="question">4) What is sacrifice ratio?</div><div class="answer">Ratio in which old partners sacrifice their share of profit in favour of new partner = Old Ratio - New Ratio.</div></div>
+    <div class="qa-item"><div class="question">5) What is raising goodwill at admission?</div><div class="answer">Valuation Method where goodwill is raised in books and then written off among all partners in new ratio.</div></div>
+  </div>
+
+  <!-- ================= Section G: Complete the table ================= -->
+  <div class="card">
+    <h2><i class="fas fa-table"></i> G. Complete the table</h2>
+    <div class="resp-table">
+      <table>
+        <thead><tr><th>Item in Balance Sheet</th><th>Adjustment</th><th>Revised Value</th></tr></thead>
+        <tbody>
+          <tr><td>Stock</td><td>Undervalued by 20%</td><td>If book value = 100, cost = 125</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ================= Formulas Summary ================= -->
+  <div class="card">
+    <h2><i class="fas fa-square-root-alt"></i> Important Formulas</h2>
+    <div class="grid-2">
+      <div class="highlight"><strong>Average Profit Method</strong><br>Goodwill = Average Profit × Number of years purchase</div>
+      <div class="highlight"><strong>Super Profit Method</strong><br>Super Profit = Average Profit - Normal Profit<br>Normal Profit = Capital Employed × NRR/100<br>Goodwill = Super Profit × Years Purchase</div>
+      <div class="highlight"><strong>New Ratio Calculation</strong><br>If new partner's share = 1/m, Remaining = (m-1)/m<br>New ratio = Old Ratio × Remaining share</div>
+      <div class="highlight"><strong>Sacrifice Ratio</strong><br>Sacrifice Ratio = Old Ratio - New Ratio</div>
+      <div class="highlight"><strong>Capital Adjustment</strong><br>Total Capital = New Partner's Capital × Reciprocal of his share</div>
+    </div>
+  </div>
+
+  <!-- ================= Journal Entries for Admission ================= -->
+  <div class="card">
+    <h2><i class="fas fa-book"></i> Journal Entries for Admission (Premium Method)</h2>
+    <div class="resp-table">
+      <table>
+        <thead><tr><th>Transaction</th><th>Journal Entry</th></tr></thead>
+        <tbody>
+          <tr><td>New partner brings capital</td><td>Cash/Bank A/c Dr. → To New Partner's Capital A/c</td></tr>
+          <tr><td>New partner brings goodwill (retained)</td><td>Cash/Bank A/c Dr. → To Goodwill A/c<br>Goodwill A/c Dr. → To Old Partners' Capital A/c (Sacrifice Ratio)</td></tr>
+          <tr><td>Goodwill withdrawn by old partners</td><td>Old Partners' Capital A/c Dr. → To Cash/Bank A/c</td></tr>
+          <tr><td>Increase in asset value</td><td>Asset A/c Dr. → To Revaluation A/c</td></tr>
+          <tr><td>Decrease in asset value</td><td>Revaluation A/c Dr. → To Asset A/c</td></tr>
+          <tr><td>Revaluation profit transferred</td><td>Revaluation A/c Dr. → To Old Partners' Capital A/c (Old Ratio)</td></tr>
+          <tr><td>Accumulated profit/reserve transferred</td><td>Reserve/General Reserve A/c Dr. → To Old Partners' Capital A/c (Old Ratio)</td></tr>
+          <tr><td>Goodwill raised (Valuation Method)</td><td>Goodwill A/c Dr. → To Old Partners' Capital A/c (Old Ratio)</td></tr>
+          <tr><td>Goodwill written off</td><td>All Partners' Capital A/c Dr. (New Ratio) → To Goodwill A/c</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ================= Specimen: Revaluation Account ================= -->
+  <div class="card">
+    <h2><i class="fas fa-chart-line"></i> Specimen: Revaluation Account (Dr. & Cr.)</h2>
+    <div class="resp-table">
+      <table>
+        <thead><tr><th>Dr. Revaluation Account Cr.</th><th>₹</th><th></th><th>₹</th></tr></thead>
+        <tbody>
+          <tr><td>To Asset A/c (Decrease)</td><td>xxx</td><td>By Asset A/c (Increase)</td><td>xxx</td></tr>
+          <tr><td>To Liability A/c (Increase)</td><td>xxx</td><td>By Liability A/c (Decrease)</td><td>xxx</td></tr>
+          <tr><td>To Old Partners' Capital A/c (Profit transferred)</td><td>xxx</td><td>By Old Partners' Capital A/c (Loss transferred)</td><td>xxx</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ================= Capital Adjustment Illustration ================= -->
+  <div class="card">
+    <h2><i class="fas fa-coins"></i> Capital Adjustment Illustration</h2>
+    <div class="highlight">
+      <strong>Example:</strong> New partner Z admitted for 1/5th share, brings ₹50,000 capital.<br>
+      Total Capital = 50,000 × 5/1 = ₹2,50,000<br>
+      If old partners' combined old capital = ₹1,50,000 (for 4/5 share),<br>
+      They need to bring in additional capital or withdraw surplus.
+    </div>
+  </div>
+
+  <div class="footer-note">
+    <i class="fas fa-user-plus"></i> Admission of Partner: New Profit Sharing Ratio | Sacrifice Ratio | Goodwill | Revaluation | Capital Adjustment
+  </div>
+</div>
+</body>
+</html>

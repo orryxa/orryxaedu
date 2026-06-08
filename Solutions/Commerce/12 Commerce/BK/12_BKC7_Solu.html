@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Chapter 7 | Bills of Exchange - 12th Commerce</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #eef2f9 0%, #e0e8f2 100%);
+            font-family: 'Inter', sans-serif;
+            padding: 32px 24px;
+            color: #0a2b3e;
+            line-height: 1.5;
+            overflow-y: scroll;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        body::-webkit-scrollbar { display: none; }
+        .container { max-width: 1300px; margin: 0 auto; }
+        .hero { text-align: center; margin-bottom: 40px; }
+        .hero h1 {
+            font-size: 2.4rem; font-weight: 800;
+            background: linear-gradient(135deg, #0b4b6b, #1f6e93, #2c7da0);
+            background-clip: text; -webkit-background-clip: text; color: transparent;
+            padding-bottom: 10px;
+            border-bottom: 4px solid #ffb347;
+            display: inline-block;
+        }
+        .card {
+            background: rgba(255,255,255,0.97); border-radius: 1.8rem;
+            margin-bottom: 32px; padding: 28px 32px;
+            box-shadow: 0 15px 30px -10px rgba(0,0,0,0.08);
+            transition: 0.2s;
+            border: 1px solid rgba(255,255,255,0.6);
+        }
+        .card h2 {
+            font-size: 1.6rem; font-weight: 700; color: #135b78;
+            margin-bottom: 24px; padding-bottom: 8px;
+            border-bottom: 3px solid #ffb74d;
+            display: inline-block;
+        }
+        .card h2 i { margin-right: 12px; color: #ff8c42; }
+        .qa-item { margin-bottom: 22px; border-left: 3px solid #cbdde9; padding-left: 20px; }
+        .question { font-weight: 700; color: #1f4a5e; margin-bottom: 8px; display: flex; gap: 12px; flex-wrap: wrap; }
+        .answer {
+            background: #f8fafd; padding: 10px 18px; border-radius: 24px;
+            font-weight: 500; color: #216477; display: inline-block; width: auto;
+            font-size: 0.92rem;
+        }
+        .true-badge { background: #e0f2e9; color: #1e6f3f; padding: 3px 14px; border-radius: 40px; font-weight: 700; font-size: 0.75rem; display: inline-block; margin-right: 12px; }
+        .false-badge { background: #ffe8e6; color: #bc4742; padding: 3px 14px; border-radius: 40px; font-weight: 700; font-size: 0.75rem; display: inline-block; margin-right: 12px; }
+        .resp-table { width: 100%; overflow-x: auto; margin: 16px 0; background: #f4f9fe; padding: 4px; border-radius: 20px; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; background: white; border-radius: 16px; overflow: hidden; }
+        th, td { border: 1px solid #cde1ef; padding: 10px 12px; text-align: left; vertical-align: top; }
+        th { background: #e0eaf5; font-weight: 700; color: #135b78; }
+        .highlight { background: #eef3fc; border-radius: 16px; padding: 12px 18px; margin: 12px 0; }
+        @media (max-width: 768px) {
+            body { padding: 20px 16px; }
+            .card { padding: 20px 18px; }
+            .hero h1 { font-size: 1.8rem; }
+            th, td { padding: 6px 8px; font-size: 0.75rem; }
+        }
+        .footer-note { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #bdd4e4; font-size: 0.8rem; color: #2c6f8c; }
+        .specimen-box {
+            background: #fdfaf0;
+            border: 1px dashed #ffb74d;
+            border-radius: 20px;
+            padding: 16px;
+            font-family: monospace;
+            margin: 12px 0;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="hero">
+        <h1><i class="fas fa-file-invoice-dollar"></i> Chapter 7 · Bills of Exchange</h1>
+    </div>
+
+    <!-- ================= Section A: Objective Questions ================= -->
+    <div class="card"><h2><i class="fas fa-check-square"></i> A. Select the most appropriate alternative</h2>
+        <div class="qa-item"><div class="question">1) The person on whom a bill is drawn is called _______.</div><div class="answer">a) Drawee</div></div>
+        <div class="qa-item"><div class="question">2) Before acceptance the bill is called a _______.</div><div class="answer">c) Draft</div></div>
+        <div class="qa-item"><div class="question">3) When due date falls on a public holiday, payment must be made on the _______ day.</div><div class="answer">b) preceding</div></div>
+        <div class="qa-item"><div class="question">4) Due date of bill drawn for 2 months on 23rd Nov 2019 is _______.</div><div class="answer">d) 25th Jan 2020</div></div>
+        <div class="qa-item"><div class="question">5) Noting charges are borne by _______.</div><div class="answer">b) Drawee</div></div>
+        <div class="qa-item"><div class="question">6) There are _______ parties to a bill of exchange.</div><div class="answer">c) three</div></div>
+        <div class="qa-item"><div class="question">7) Bill drawn for 2 months after date on 3rd Jan 2020, due date is _______.</div><div class="answer">d) 6th Mar 2020</div></div>
+        <div class="qa-item"><div class="question">8) Notary Public is a _______.</div><div class="answer">a) Govt. Officer</div></div>
+        <div class="qa-item"><div class="question">9) When acceptor does not pay on due date, it is called _______ of bill.</div><div class="answer">d) dishonouring</div></div>
+        <div class="qa-item"><div class="question">10) The person who accepts the bill treats it as _______.</div><div class="answer">a) Bills Payable</div></div>
+    </div>
+
+    <!-- ================= Section B: One word / term ================= -->
+    <div class="card"><h2><i class="fas fa-tag"></i> B. Give one word/term/phrase</h2>
+        <div class="qa-item"><div class="question">1) Three extra days allowed over and above the term of bill.</div><div class="answer">Days of Grace</div></div>
+        <div class="qa-item"><div class="question">2) Fees charged by Notary Public for noting dishonour.</div><div class="answer">Noting Charges</div></div>
+        <div class="qa-item"><div class="question">3) Person entitled to receive amount of bill.</div><div class="answer">Payee</div></div>
+        <div class="qa-item"><div class="question">4) Person in whose favour a bill is endorsed.</div><div class="answer">Endorsee</div></div>
+        <div class="qa-item"><div class="question">5) Officer appointed for noting of dishonour.</div><div class="answer">Notary Public</div></div>
+        <div class="qa-item"><div class="question">6) Cancellation of bill in return for new bill for extended period.</div><div class="answer">Renewal of Bill</div></div>
+        <div class="qa-item"><div class="question">7) Bill drawn and accepted without valuable consideration.</div><div class="answer">Accommodation Bill</div></div>
+        <div class="qa-item"><div class="question">8) Person in possession of Bill of Exchange.</div><div class="answer">Holder</div></div>
+        <div class="qa-item"><div class="question">9) Conversion of bill into its present value.</div><div class="answer">Discounting</div></div>
+        <div class="qa-item"><div class="question">10) Amount not recoverable from drawee on insolvency.</div><div class="answer">Bad Debts</div></div>
+    </div>
+
+    <!-- ================= Section C: True/False ================= -->
+    <div class="card"><h2><i class="fas fa-gavel"></i> C. State True or False with reasons</h2>
+        <div class="qa-item"><div class="question">1) Inland bill is drawn in one country and payable in another.</div><div class="answer"><span class="false-badge">False</span> Inland bill is drawn and payable in the same country.</div></div>
+        <div class="qa-item"><div class="question">2) Retirement of bill means payment before due date.</div><div class="answer"><span class="true-badge">True</span> Retiring a bill means paying it before maturity.</div></div>
+        <div class="qa-item"><div class="question">3) Drawee can transfer ownership of bill.</div><div class="answer"><span class="false-badge">False</span> Only holder (drawer/endorsee) can transfer bill.</div></div>
+        <div class="qa-item"><div class="question">4) Acceptance without changes is called qualified acceptance.</div><div class="answer"><span class="false-badge">False</span> It is called general acceptance.</div></div>
+        <div class="qa-item"><div class="question">5) Discounting converts bill into present value.</div><div class="answer"><span class="true-badge">True</span> Discounting gives immediate cash less discount.</div></div>
+        <div class="qa-item"><div class="question">6) Bill must be presented to acceptor on due date.</div><div class="answer"><span class="true-badge">True</span> Presentment for payment is necessary.</div></div>
+        <div class="qa-item"><div class="question">7) If bill discounted, no entry when honoured.</div><div class="answer"><span class="true-badge">True</span> Drawer already received cash; no further entry.</div></div>
+        <div class="qa-item"><div class="question">8) Noting charges are borne by drawer.</div><div class="answer"><span class="false-badge">False</span> Borne by drawee (acceptor).</div></div>
+        <div class="qa-item"><div class="question">9) No grace days for "on demand" bill.</div><div class="answer"><span class="true-badge">True</span> Demand bills are payable immediately.</div></div>
+        <div class="qa-item"><div class="question">10) There are three parties to a Promissory Note.</div><div class="answer"><span class="true-badge">True</span> Maker (promisor), Payee, and endorser.</div></div>
+    </div>
+
+    <!-- ================= Section D: Odd one ================= -->
+    <div class="card"><h2><i class="fas fa-search"></i> D. Find the odd one</h2>
+        <div class="qa-item"><div class="question">1) Retaining, Noting, Discounting, Endorsing</div><div class="answer">Noting (related to dishonour; others are methods of using bill)</div></div>
+        <div class="qa-item"><div class="question">2) Trade bill, Accommodation bill, After date bill, Demand bill</div><div class="answer">Accommodation bill (no consideration; others based on time/consideration)</div></div>
+        <div class="qa-item"><div class="question">3) Notary Public, Drawer, Drawee, Payee</div><div class="answer">Notary Public (not a party to bill; others are parties)</div></div>
+        <div class="qa-item"><div class="question">4) Discounting charges, Rebate, Bank charges, Noting charges</div><div class="answer">Rebate (given to drawer; others are expenses)</div></div>
+        <div class="qa-item"><div class="question">5) Stamp, Acceptance, Draft, Amount</div><div class="answer">Draft (bill before acceptance; others are contents of bill)</div></div>
+    </div>
+
+    <!-- ================= Section E: Complete sentences ================= -->
+    <div class="card"><h2><i class="fas fa-edit"></i> E. Complete the sentence</h2>
+        <div class="qa-item"><div class="question">1) Making payment of bill before due date is called _______.</div><div class="answer">Retirement of Bill</div></div>
+        <div class="qa-item"><div class="question">2) Person whose liabilities > assets, unable to pay is _______.</div><div class="answer">Insolvent Person</div></div>
+        <div class="qa-item"><div class="question">3) Amount that cannot be paid by acceptor due to insolvency is _______.</div><div class="answer">Bad Debts</div></div>
+        <div class="qa-item"><div class="question">4) Bill payable after certain period is known as _______.</div><div class="answer">Time Bill / Usance Bill</div></div>
+        <div class="qa-item"><div class="question">5) Bill drawn and accepted with valuable consideration is _______.</div><div class="answer">Trade Bill</div></div>
+    </div>
+
+    <!-- ================= Key Terms Table ================= -->
+    <div class="card"><h2><i class="fas fa-graduation-cap"></i> Key Terms & Parties to Bill of Exchange</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Term</th><th>Meaning / Role</th></tr></thead>
+                <tbody>
+                    <tr><td>Drawer</td><td>Creditor who draws the bill (maker)</td></tr>
+                    <tr><td>Drawee / Acceptor</td><td>Debtor on whom bill is drawn; accepts the bill</td></tr>
+                    <tr><td>Payee</td><td>Person to whom payment is to be made</td></tr>
+                    <tr><td>Acceptance</td><td>Drawee signs bill indicating promise to pay</td></tr>
+                    <tr><td>Days of Grace</td><td>3 extra days allowed for payment over and above term</td></tr>
+                    <tr><td>Legal Due Date</td><td>Nominal due date + 3 days of grace</td></tr>
+                    <tr><td>Noting Charges</td><td>Fee paid to Notary Public for recording dishonour</td></tr>
+                    <tr><td>Retirement of Bill</td><td>Payment before due date (rebate allowed)</td></tr>
+                    <tr><td>Renewal of Bill</td><td>Old bill cancelled, new bill drawn with extended period</td></tr>
+                    <tr><td>Endorsement</td><td>Transfer of bill by signing on its back</td></tr>
+                    <tr><td>Discounting</td><td>Getting bill encashed from bank before due date</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================= Specimen Format Table ================= -->
+    <div class="card"><h2><i class="fas fa-file-alt"></i> Specimen: Bill of Exchange (Format)</h2>
+        <div class="specimen-box">
+            <strong>STAMP</strong><br>
+            ₹ _______<br>
+            _________, Date: _________<br>
+            ___________ months/days after date/sight pay to ________ or order the sum of Rupees _________________________ only, for value received.<br>
+            <strong>Sd/- (Drawer)</strong><br>
+            To,<br>
+            _________________ (Drawee)<br>
+            "Accepted" Sd/- (Drawee) Date: _________
+        </div>
+        <div class="highlight"><i class="fas fa-info-circle"></i> Essential elements: Date, Amount (in words & figures), Stamp, Parties, Unconditional order, Signature of Drawer, Acceptance by Drawee.</div>
+    </div>
+
+    <!-- ======== Journal Entries Summary Table ======== -->
+    <div class="card"><h2><i class="fas fa-book"></i> Journal Entries Summary (Drawer & Drawee)</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Transaction</th><th>Books of Drawer (Creditor)</th><th>Books of Drawee (Debtor)</th></tr></thead>
+                <tbody>
+                    <tr><td>Sale on credit</td><td>Drawee's A/c Dr. → To Sales A/c</td><td>Purchases A/c Dr. → To Drawer's A/c</td></tr>
+                    <tr><td>Acceptance received/given</td><td>Bills Receivable A/c Dr. → To Drawee's A/c</td><td>Drawer's A/c Dr. → To Bills Payable A/c</td></tr>
+                    <tr><td>Bill honoured on due date</td><td>Cash/Bank A/c Dr. → To Bills Receivable A/c</td><td>Bills Payable A/c Dr. → To Cash/Bank A/c</td></tr>
+                    <tr><td>Bill dishonoured</td><td>Drawee's A/c Dr. → To Bills Receivable A/c</td><td>Bills Payable A/c Dr. → To Drawer's A/c</td></tr>
+                    <tr><td>Dishonour + Noting Charges paid by holder</td><td>Drawee's A/c Dr. → To Bills Receivable A/c & To Cash A/c</td><td>Bills Payable A/c Dr. & Noting Charges A/c Dr. → To Drawer's A/c</td></tr>
+                    <tr><td>Discounting bill with bank</td><td>Bank A/c Dr., Discount A/c Dr. → To Bills Receivable A/c</td><td>No entry</td></tr>
+                    <tr><td>Discounted bill dishonoured</td><td>Drawee's A/c Dr. → To Bank A/c</td><td>Bills Payable A/c Dr. → To Drawer's A/c</td></tr>
+                    <tr><td>Endorsement of bill</td><td>Endorsee's A/c Dr. → To Bills Receivable A/c</td><td>No entry</td></tr>
+                    <tr><td>Endorsed bill dishonoured</td><td>Drawee's A/c Dr. → To Endorsee's A/c</td><td>Bills Payable A/c Dr. → To Drawer's A/c</td></tr>
+                    <tr><td>Bill sent to bank for collection</td><td>Bill sent for collection A/c Dr. → To Bills Receivable A/c</td><td>No entry</td></tr>
+                    <tr><td>Bill collected honoured + bank charges</td><td>Bank A/c Dr., Bank Charges A/c Dr. → To Bill sent for collection A/c</td><td>Bills Payable A/c Dr. → To Cash/Bank A/c</td></tr>
+                    <tr><td>Renewal of bill (old cancelled)</td><td>Drawee's A/c Dr. → To Bills Receivable A/c</td><td>Bills Payable A/c Dr. → To Drawer's A/c</td></tr>
+                    <tr><td>Interest due on renewal</td><td>Drawee's A/c Dr. → To Interest A/c</td><td>Interest A/c Dr. → To Drawer's A/c</td></tr>
+                    <tr><td>Retirement of bill (rebate)</td><td>Cash A/c Dr., Rebate A/c Dr. → To Bills Receivable A/c</td><td>Bills Payable A/c Dr. → To Cash A/c & To Rebate A/c</td></tr>
+                    <tr><td>Insolvency of drawee (final dividend received)</td><td>Cash A/c Dr., Bad Debts A/c Dr. → To Drawee's A/c</td><td>Drawer's A/c Dr. → To Cash A/c & To Deficiency A/c</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ======== Due Date Calculation Table ======== -->
+    <div class="card"><h2><i class="fas fa-calendar-alt"></i> Due Date Calculation (Illustrations)</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Date of Drawing</th><th>Tenure</th><th>Type</th><th>Nominal Due Date</th><th>+3 Grace Days</th><th>Legal Due Date</th></tr></thead>
+                <tbody>
+                    <tr><td>12th June 2019</td><td>2 months</td><td>After date</td><td>12th Aug 2019</td><td>+3</td><td>15th Aug 2019 (Holiday → 14th Aug)</td></tr>
+                    <tr><td>23rd Nov 2019</td><td>2 months</td><td>After date</td><td>23rd Jan 2020</td><td>+3</td><td>26th Jan 2020 (Holiday → 25th Jan)</td></tr>
+                    <tr><td>27th Dec 2019 (accepted 31st Dec)</td><td>2 months</td><td>After sight</td><td>28th Feb 2020</td><td>+3</td><td>2nd Mar 2020</td></tr>
+                    <tr><td>14th Dec 2019</td><td>90 days</td><td>After date</td><td>13th Mar 2020</td><td>+3</td><td>16th Mar 2020</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="highlight"><i class="fas fa-clock"></i> Note: If due date falls on a public holiday, payment is made on the preceding working day. For emergency holiday, next working day.</div>
+    </div>
+
+    <!-- ======== Discount Calculation Table ======== -->
+    <div class="card"><h2><i class="fas fa-percent"></i> Discount Calculation (Examples)</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Situation</th><th>Calculation</th><th>Discount Amount</th></tr></thead>
+                <tbody>
+                    <tr><td>₹40,260 bill, 50 days, discounted @15% p.a.</td><td>40,260 × 15/100 × 50/365</td><td>₹827 (approx)</td></tr>
+                    <tr><td>₹30,000 bill, 3 months, discounted @12% p.a. on same day</td><td>30,000 × 12/100 × 3/12</td><td>₹900</td></tr>
+                    <tr><td>₹30,000 bill, 3 months, discounted @12% p.a. after 2 months</td><td>30,000 × 12/100 × 1/12</td><td>₹300</td></tr>
+                    <tr><td>₹21,900 bill, 60 days, discounted @8% p.a.</td><td>21,900 × 8/100 × 60/365</td><td>₹288</td></tr>
+                    <tr><td>₹25,620 bill, 90 days, discounted @10% p.a. (leap year)</td><td>25,620 × 10/100 × 90/366</td><td>₹630</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="highlight"><strong>Formula:</strong> Discount = Amount of Bill × Rate/100 × (Unexpired months/12) OR (Unexpired days/365 or 366)</div>
+    </div>
+
+    <!-- ======== Renewal of Bill (with Interest) Table ======== -->
+    <div class="card"><h2><i class="fas fa-sync-alt"></i> Renewal of Bill (Illustration)</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Particulars</th><th>Amount (₹)</th></tr></thead>
+                <tbody>
+                    <tr><td>Old Bill Amount</td><td>24,000</td></tr>
+                    <tr><td>Part Payment received in cash</td><td>(10,000)</td></tr>
+                    <tr><td>Balance</td><td>14,000</td></tr>
+                    <tr><td>Add: Interest on balance @8% p.a. for 3 months (14,000 × 8/100 × 3/12)</td><td>280</td></tr>
+                    <tr><td><strong>New Bill Amount</strong></td><td><strong>14,280</strong></td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="highlight">Entry in Drawer's books: (1) Cancel old bill: Drawee's A/c Dr. 24,000 → To Bills Receivable A/c 24,000. (2) Interest due: Drawee's A/c Dr. 280 → To Interest A/c 280. (3) Part payment: Cash A/c Dr. 10,000 → To Drawee's A/c 10,000. (4) New bill accepted: Bills Receivable A/c Dr. 14,280 → To Drawee's A/c 14,280.</div>
+    </div>
+
+    <!-- ======== Retirement / Rebate Illustration ======== -->
+    <div class="card"><h2><i class="fas fa-hand-holding-usd"></i> Retirement of Bill (Rebate)</h2>
+        <div class="specimen-box">
+            <strong>Example:</strong> Nandita retired her acceptance of ₹13,550 by paying ₹13,000 cash one month before due date.<br>
+            <strong>Entry in books of Drawer:</strong> Cash A/c Dr. 13,000, Rebate A/c Dr. 550 → To Bills Receivable A/c 13,550.<br>
+            <strong>Entry in books of Drawee:</strong> Bills Payable A/c Dr. 13,550 → To Cash A/c 13,000, To Rebate A/c 550.<br>
+            <i class="fas fa-info-circle"></i> Rebate = discount given for early payment (expense for drawer, income for drawee).
+        </div>
+    </div>
+
+    <!-- ======== Insolvency of Drawee ======== -->
+    <div class="card"><h2><i class="fas fa-bankrupt"></i> Insolvency of Drawee (Acceptor)</h2>
+        <div class="qa-item"><div class="question">Example: Acceptor declared insolvent, only 40% recovered from estate. Bill amount ₹20,000.</div><div class="answer">Recovery = 20,000 × 40% = ₹8,000; Bad Debts = 20,000 - 8,000 = ₹12,000.<br>Entry in Drawer's books: Cash A/c Dr. 8,000, Bad Debts A/c Dr. 12,000 → To Drawee's A/c 20,000.</div></div>
+    </div>
+
+    <!-- ======== Endorsement Illustration ======== -->
+    <div class="card"><h2><i class="fas fa-exchange-alt"></i> Endorsement of Bill (Illustration)</h2>
+        <div class="highlight"><strong>Pallavi endorsed Vandana's acceptance of ₹22,500 to Purva. Bill dishonoured, noting charges ₹175 paid by Purva.</strong><br>
+        In Pallavi's books: Vandana's A/c Dr. 22,675 → To Purva's A/c 22,675.<br>
+        In Purva's books: Pallavi's A/c Dr. 22,675 → To Bills Receivable A/c 22,500, To Cash A/c 175.<br>
+        In Vandana's books: Bills Payable A/c Dr. 22,500, Noting Charges A/c Dr. 175 → To Pallavi's A/c 22,675.</div>
+    </div>
+
+    <div class="footer-note">
+        <i class="fas fa-file-invoice-dollar"></i> Bill of Exchange: Unconditional order in writing | Three parties: Drawer, Drawee, Payee | 3 days of grace | Negotiable Instrument
+    </div>
+</div>
+</body>
+</html>

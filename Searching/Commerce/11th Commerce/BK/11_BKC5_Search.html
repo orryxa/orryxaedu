@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>📚 Subsidiary Books | 11th BK Chap 5 | Cash Book, Petty Cash, Purchase/Sales & Returns</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    body {
+      background: linear-gradient(145deg, #0f2c2f, #0a3a2f);
+      min-height: 100vh;
+      padding: 24px 18px;
+      color: #f1f5f9;
+    }
+    .container {
+      max-width: 1250px;
+      margin: 0 auto;
+    }
+    .heading {
+      text-align: center;
+      margin-bottom: 32px;
+      animation: slideDown 0.5s ease;
+    }
+    .heading h1 {
+      font-size: 2.2rem;
+      background: linear-gradient(135deg, #fff, #b3e4c5);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .heading p {
+      color: #c8f0dc;
+      margin-top: 8px;
+    }
+    .search-wrapper {
+      position: relative;
+      margin-bottom: 28px;
+    }
+    .search-box {
+      background: white;
+      border-radius: 60px;
+      padding: 6px 6px 6px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 20px 35px -10px rgba(0,0,0,0.4);
+    }
+    .search-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      padding: 14px 0;
+      background: transparent;
+      color: #0f172a;
+      font-weight: 500;
+    }
+    .icon-btn {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(145deg, #059669, #047857);
+      color: white;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .icon-btn:hover { transform: scale(1.07); background: #10b981; }
+    .suggestions-dropdown {
+      position: absolute;
+      top: calc(100% + 10px);
+      left: 0;
+      right: 0;
+      background: white;
+      border-radius: 28px;
+      background: rgba(255,255,255,0.98);
+      box-shadow: 0 18px 30px rgba(0,0,0,0.3);
+      z-index: 120;
+      max-height: 280px;
+      overflow-y: auto;
+      display: none;
+    }
+    .suggestion-item {
+      padding: 14px 22px;
+      color: #0f172a;
+      cursor: pointer;
+      border-bottom: 1px solid #eef2ff;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .suggestion-item:hover { background: #dcfce7; padding-left: 28px; }
+    .result-container {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+    .result-card {
+      background: rgba(255,255,255,0.96);
+      border-radius: 32px;
+      padding: 1.7rem;
+      color: #0f172a;
+      box-shadow: 0 15px 30px -12px rgba(0,0,0,0.35);
+      transition: 0.2s;
+    }
+    .result-card:hover { transform: translateY(-3px); }
+    .badge {
+      background: #d1fae5;
+      color: #065f46;
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+    .result-card h3 {
+      color: #0c5e4a;
+      font-size: 1.35rem;
+      border-left: 5px solid #10b981;
+      padding-left: 16px;
+      margin-bottom: 14px;
+    }
+    .answer-text {
+      background: #f0fdf4;
+      padding: 16px 20px;
+      border-radius: 24px;
+      line-height: 1.65;
+      margin: 12px 0;
+    }
+    .action-buttons {
+      margin-top: 20px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .action-buttons button {
+      border: none;
+      padding: 10px 22px;
+      border-radius: 40px;
+      font-weight: 600;
+      background: #eef2ff;
+      color: #1e293b;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .action-buttons button:last-child { background: #059669; color: white; }
+    .not-found {
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(12px);
+      border-radius: 40px;
+      padding: 2rem;
+      text-align: center;
+    }
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(10px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    .popup-box {
+      background: white;
+      max-width: 800px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      border-radius: 40px;
+      padding: 28px 32px;
+      position: relative;
+      color: #0a2a44;
+    }
+    .close-popup {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      background: #fee2e2;
+      border: none;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+    .lang-section { background: #f1f5f9; padding: 18px; border-radius: 24px; margin-bottom: 18px; }
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-22px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 650px) { .heading h1 { font-size: 1.5rem; } .result-card h3 { font-size: 1.1rem; } }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="heading">
+    <h1>📚 Subsidiary Books | Chapter 5: Cash Book, Petty Cash, Purchase/Sales & Returns</h1>
+    <p>🔍 80+ Q&A | Two-Column Cash Book | Analytical Petty Cash (Imprest) | Purchase & Sales Books | Journal Proper | Contra Entries</p>
+  </div>
+  <div class="search-wrapper">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search: Cash Book, Contra Entry, Petty Cash, Imprest, Purchase Book, Debit Note, Credit Note...">
+      <button class="icon-btn" id="voiceBtn">🎤</button>
+    </div>
+    <div id="suggestionsList" class="suggestions-dropdown"></div>
+  </div>
+  <div class="result-container" id="resultsContainer">
+    <div class="not-found">✨ Start typing — Chapter 5: Subsidiary Books | Cash Book, Petty Cash, Purchase/Sales, Returns & Journal Proper ✨</div>
+  </div>
+</div>
+<div class="popup-overlay" id="popupModal">
+  <div class="popup-box">
+    <button class="close-popup" id="closeModalBtn">✖</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+  // ---------- COMPLETE DATABASE from Chapter 5: Subsidiary Books (Cash Book, Petty Cash, Purchase/Sales, Returns, Journal Proper) ----------
+  const qaDatabase = [];
+
+  function addQA(question, answer, hindi, marathi, category, keywords = []) {
+    qaDatabase.push({ id: qaDatabase.length+1, question, answer, hindi, marathi, category, keywords: keywords.map(k=>k.toLowerCase()) });
+  }
+
+  // ---- Core Subsidiary Books concepts ----
+  addQA("What are Subsidiary Books?", "Sub-division of Journal on basis of nature of transaction is known as Subsidiary Books. Also called Books of Original Entry. Types: Cash Book, Petty Cash Book, Purchase Book, Purchase Return Book, Sales Book, Sales Return Book, Journal Proper.", "सहायक पुस्तकें लेन-देन की प्रकृति के आधार पर जर्नल का उप-विभाजन हैं।", "उप-पुस्तके म्हणजे व्यवहाराच्या स्वरूपानुसार जर्नलची उपविभागणी.", "Core", ["subsidiary books","books of original entry"]);
+  addQA("What is Cash Book?", "Cash Book records all cash and bank transactions. It serves dual purpose: it is a Journal (book of original entry) and also a Ledger (cash and bank balance). Left side = Receipts (Debit), Right side = Payments (Credit).", "कैश बुक सभी नकद और बैंक लेन-देन रिकॉर्ड करती है। यह जर्नल और लेजर दोनों का काम करती है।", "रोख पुस्तक सर्व रोख व बँक व्यवहार नोंदवते. ही जर्नल व खातेवही अशी दुहेरी भूमिका बजावते.", "Core", ["cash book","dual purpose"]);
+  addQA("What is Contra Entry?", "Contra entry affects both Cash and Bank accounts simultaneously with opposite effect. Examples: Cash deposited into Bank, Cash withdrawn from Bank for office use. Denoted by 'C' in L.F. column.", "कंट्रा प्रविष्टि नकद और बैंक दोनों खातों को एक साथ प्रभावित करती है।", "कॉन्ट्रा नोंदीमुळे रोख व बँक खाती एकाच वेळी प्रभावित होतात.", "Term", ["contra entry","c in ledger folio"]);
+  addQA("What is Imprest System of Petty Cash Book?", "Under Imprest System, petty cashier starts with a fixed advance (imprest amount). At end of period, head cashier reimburses exactly the amount spent, restoring original imprest balance. Used for recording small expenses like postage, stationery, carriage, etc.", "इम्प्रेस्ट प्रणाली में पेटी कैशियर को एक निश्चित अग्रिम राशि दी जाती है। खर्च की गई राशि की प्रतिपूर्ति की जाती है।", "इम्प्रेस्ट पद्धतीत पेटी कॅशियरला ठरावीक रक्कम अगाऊ दिली जाते. खर्च एवढीच रक्कम परत मिळते.", "Petty Cash", ["imprest","petty cash system"]);
+  addQA("What is Petty Cash Book?", "Book used to record small repetitive expenses like postage, stationery, carriage, refreshment, etc. Maintained by petty cashier. Two types: Simple Petty Cash Book & Analytical Columnar Petty Cash Book.", "छोटे-छोटे खर्चों जैसे डाक, स्टेशनरी, ढुलाई के लिए रखी जाने वाली पुस्तक।", "लहान खर्च नोंदवण्याची पुस्तक. दोन प्रकार: साधी व स्तंभीय पेटी रोख पुस्तक.", "Petty Cash", ["petty cash","small expenses"]);
+  addQA("What is Analytical Petty Cash Book?", "It has multiple columns on payment side for different expense heads (Printing, Postage, Travelling, etc.). Under Imprest system, it gives clear analysis of petty expenses. Also called Columnar Petty Cash Book.", "एनालिटिकल पेटी कैश बुक में भुगतान पक्ष में विभिन्न खर्चों के लिए अलग-अलग कॉलम होते हैं।", "विश्लेषणात्मक पेटी रोख पुस्तकेत भरणा बाजूला खर्चांचे स्तंभ असतात.", "Petty Cash", ["analytical petty cash","columnar"]);
+  
+  // ---- Purchase & Sales Books ----
+  addQA("Which transactions are recorded in Purchase Book?", "Purchase Book records only credit purchase of goods (for resale or manufacturing). Cash purchases, credit purchase of assets (machinery, furniture) are NOT recorded here.", "केवल उधार माल की खरीद (पुनर्विक्रय या विनिर्माण के लिए) दर्ज की जाती है।", "फक्त उधारीवर वस्तूंची खरेदी नोंदविली जाते. रोख खरेदी व मालमत्तेची खरेदी नोंदवत नाहीत.", "Purchase Book", ["purchase book","credit purchases"]);
+  addQA("What is Sales Book?", "Sales Book records only credit sales of goods. Cash sales and credit sale of assets are not recorded in Sales Book. Also called Sales Journal.", "केवल उधार माल की बिक्री दर्ज की जाती है। नकद बिक्री या संपत्ति की उधार बिक्री दर्ज नहीं।", "फक्त उधारीवर वस्तूंची विक्री नोंदविली जाते.", "Sales Book", ["sales book","credit sales"]);
+  addQA("What is Purchase Return Book (Return Outward Book)?", "Book recording return of goods purchased on credit to suppliers. For each return, buyer issues a Debit Note. Supplier issues Credit Note.", "उधार खरीदे गए माल की वापसी दर्ज करने वाली पुस्तक। क्रेता डेबिट नोट जारी करता है।", "उधार खरेदी केलेल्या मालाची परतावा नोंदविणारी पुस्तक. डेबिट नोट जारी केली जाते.", "Purchase Return", ["purchase return","return outward","debit note"]);
+  addQA("What is Sales Return Book (Return Inward Book)?", "Book recording return of goods sold on credit by customers. Seller issues a Credit Note to customer. Cash sales returns not recorded here.", "उधार बेचे गए माल की वापसी दर्ज करने वाली पुस्तक। विक्रेता क्रेडिट नोट जारी करता है।", "उधार विक्री केलेल्या मालाची परतावा नोंद. विक्रेता क्रेडिट नोट देतो.", "Sales Return", ["sales return","return inward","credit note"]);
+  addQA("What is Journal Proper?", "A residual book recording transactions not entered in any other subsidiary book. Includes: Opening entries, adjustment entries, rectification entries, closing entries, credit purchase/sale of assets, drawings of goods, bad debts, loss by fire, cash discount allowed/received, etc.", "वह पुस्तक जिसमें वे लेन-देन दर्ज किए जाते हैं जो अन्य सहायक पुस्तकों में दर्ज नहीं होते।", "जे व्यवहार इतर उपपुस्तकांत नोंदवता येत नाहीत ते जर्नल प्रॉपर मध्ये नोंदवले जातात.", "Journal Proper", ["journal proper","residual book"]);
+  
+  // ---- Two-column cash book and Banking transactions ----
+  addQA("When does bank column show credit balance (overdraft)?", "When total payments side (bank column) exceeds total receipts side, it shows credit balance which is Bank Overdraft (liability). Overdraft is shown on receipt side as 'To Balance c/d' and brought down on payment side as 'By Balance b/d'.", "जब भुगतान पक्ष (बैंक कॉलम) रसीद पक्ष से अधिक होता है तो ओवरड्राफ्ट दिखता है।", "जेव्हा भरणा बाजू (बँक स्तंभ) प्राप्ती बाजूपेक्षा जास्त असेल तेव्हा बँक ओव्हरड्राफ्ट असतो.", "Banking", ["overdraft","bank credit balance"]);
+  addQA("What is the entry for Cash deposited into Bank?", "Contra entry: Receipt side: 'To Cash A/c' in Bank column. Payment side: 'By Bank A/c' in Cash column. Journal: Bank A/c Dr. To Cash A/c.", "कंट्रा प्रविष्टि: रसीद पक्ष में बैंक कॉलम में 'टू कैश', भुगतान पक्ष में कैश कॉलम में 'बाय बैंक'।", "रोख बँकेत जमा केल्यास कॉन्ट्रा नोंद: बँक स्तंभात 'To Cash' व रोख स्तंभात 'By Bank'.", "Contra", ["cash deposited","contra"]);
+  addQA("What is bearer cheque and how recorded?", "Bearer cheque is payable to person presenting it. Treated as cash, recorded in cash column on receipt side. Crossed cheque is recorded in bank column.", "वाहक चेक नकद के समान माना जाता है, नकद कॉलम में दर्ज।", "वाहक चेक रोखीसमान, रोख स्तंभात नोंद. आडवा चेक बँक स्तंभात.", "Banking", ["bearer cheque","crossed cheque"]);
+  addQA("What is a Debit Note? Who issues?", "Debit Note is issued by buyer (purchaser) to seller when goods are returned. It indicates that supplier's account is debited. Prepared in duplicate.", "क्रेता द्वारा जारी किया गया दस्तावेज, जब माल वापस किया जाता है। आपूर्तिकर्ता का खाता डेबिट होता है।", "खरेदीदार परतावा देताना डेबिट नोट काढतो. विक्रेत्याचे खाते नावे केले जाते.", "Documents", ["debit note","purchase return"]);
+  addQA("What is a Credit Note? Who issues?", "Credit Note is issued by seller to buyer when goods are returned by customer. It indicates that customer's account is credited.", "विक्रेता द्वारा जारी किया गया दस्तावेज, ग्राहक द्वारा माल वापसी पर। ग्राहक का खाता क्रेडिट।", "विक्रेता क्रेडिट नोट जारी करतो. ग्राहकाचे खाते जमा केले जाते.", "Documents", ["credit note","sales return"]);
+  
+  // ---- Practical entries & Illustrations ----
+  addQA("What is the balancing rule for Cash column in Cash Book?", "Cash column always has debit balance (or zero). It can never have credit balance because you cannot pay more cash than you have. Balance c/d = Total receipts - Total payments.", "नकद कॉलम सदैव डेबिट बैलेंस रखता है (कभी क्रेडिट नहीं)।", "रोख स्तंभ नेहमी नावे शिल्लक (कधीही जमा नाही).", "Rules", ["cash balance","debit balance"]);
+  addQA("What are Opening Entries in Journal Proper?", "At beginning of accounting year, assets are debited, liabilities credited and excess of assets over liabilities (capital) credited. E.g., Cash A/c Dr., Bank Dr., Stock Dr. To Creditors, To Capital.", "साल की शुरुआत में संपत्तियाँ डेबिट, देनदारियाँ क्रेडिट और पूंजी क्रेडिट की जाती है।", "वर्षारंभी मालमत्ता नावे, देयता जमा व भांडवल जमा केले जातात.", "Journal Proper", ["opening entries","commencement entries"]);
+  addQA("What are Adjusting Entries? Give example.", "Entries passed at year end to record outstanding expenses, prepaid expenses, depreciation, bad debts, etc. Example: Bad Debts A/c Dr. To Debtors A/c. Depreciation A/c Dr. To Asset A/c.", "वर्ष के अंत में अपरिशोधित व्यय, पूर्वदत्त, ह्रास, दुर्दम ऋण आदि के लिए प्रविष्टियाँ।", "वर्षअखेरीस यथाप्राप्त खर्च, अपक्षय, वाईट देणे इ. करिता नोंदी.", "Adjustment", ["adjusting entries","outstanding expenses"]);
+  addQA("What are Closing Entries?", "Entries to transfer nominal accounts (expenses & incomes) to Trading and Profit & Loss Account. Example: Trading A/c Dr. To Purchases A/c. Profit & Loss A/c Dr. To Office Expenses A/c.", "व्यय और आय खातों को व्यापार और लाभ-हानि खाते में हस्तांतरित करने वाली प्रविष्टियाँ।", "खर्च व उत्पन्न खाती व्यापार व नफा-तोटा खात्यात हस्तांतरित करणाऱ्या नोंदी.", "Closing", ["closing entries","transfer entries"]);
+  addQA("Entry for Cash Discount allowed when payment received from debtor?", "Cash A/c Dr. (actual received), Discount Allowed A/c Dr. (loss), To Debtor's A/c (full amount). Recorded in Journal Proper.", "नकद खाता डेबिट, दी गई छूट डेबिट, देनदार क्रेडिट।", "रोख नावे, दिलेली सवलत नावे, देनदार जमा.", "Discount", ["discount allowed","cash discount"]);
+  addQA("What is the format of Two-Column Cash Book?", "Columns: Date, Particulars, Receipts side (Cash & Bank), Payments side (Cash & Bank). Contra entries marked 'C'. Opening balance: Cash in Cash column, Bank in Bank column (debit balance); Overdraft shown on payment side as 'By Balance b/d'.", "दो स्तंभी रोकड़ बही का प्रारूप: तारीख, विवरण, रसीद (नकद और बैंक), भुगतान (नकद और बैंक)।", "दोन स्तंभी रोख पुस्तक स्वरूप.", "Format", ["two column cash book","format"]);
+  addQA("Goods purchased on credit from Mr. X worth ₹10,000. Which book? And entry?", "Recorded in Purchase Book. Journal: Purchases A/c Dr. 10,000 To Mr. X's A/c 10,000. Trade discount if any not recorded separately.", "क्रय पुस्तक में दर्ज किया जाएगा।", "खरेदी पुस्तकात नोंद होईल.", "Purchase Book", ["credit purchase entry"]);
+  addQA("Goods sold on credit to Y for ₹15,000 at 10% Trade Discount. Net amount ₹13,500. Which book?", "Sales Book records net value ₹13,500. Trade discount not recorded separately.", "विक्री पुस्तक में शुद्ध मूल्य दर्ज होता है।", "विक्री पुस्तकात निव्वळ रक्कम नोंदवली जाते.", "Sales Book", ["trade discount in sales"]);
+  addQA("Returned goods to supplier ₹5,000. Which note & book?", "Debit Note issued; recorded in Purchase Return Book (Return Outward Book).", "डेबिट नोट; क्रय वापसी पुस्तक में।", "डेबिट नोट; खरेदी परत पुस्तकात.", "Purchase Return", ["return outward"]);
+  addQA("Customer returned goods ₹2,000. Which note & book?", "Credit Note issued; recorded in Sales Return Book (Return Inward Book).", "क्रेडिट नोट; बिक्री वापसी पुस्तक में।", "क्रेडिट नोट; विक्री परत पुस्तकात.", "Sales Return", ["credit note","return inward"]);
+  
+  // ---- Additional important QA from PDF (Objective, fillups, True/False) ----
+  addQA("State if true: Cash column of Cash Book can have credit balance.", "False. Cash column can never have credit balance (cannot pay more than available cash). It always has debit balance or zero.", "गलत। नकद स्तंभ कभी भी क्रेडिट बैलेंस नहीं रख सकता।", "चुकीचे. रोख स्तंभ कधीही जमा शिल्लक दर्शवत नाही.", "True/False", ["cash column credit"]);
+  addQA("Which discount is recorded in books of accounts? Trade or Cash?", "Cash discount is recorded in books; Trade discount is not recorded separately (only net amount recorded).", "रोकड़ छूट पुस्तकों में दर्ज की जाती है, व्यापार छूट दर्ज नहीं।", "रोख सवलत नोंदवली जाते, व्यापार सवलत नोंदवत नाही.", "Discount", ["cash discount recorded"]);
+  addQA("Direct deposit by customer into our bank account is recorded in which side of Cash Book?", "Receipt side in Bank column as 'To Customer's A/c'.", "रसीद पक्ष, बैंक कॉलम में 'ग्राहक खाते से'।", "प्राप्ती बाजू, बँक स्तंभात.", "Banking", ["direct deposit","customer deposit"]);
+  addQA("Who is a Petty Cashier?", "The person who maintains Petty Cash Book and makes small payments for office expenses like stationery, postage, conveyance.", "छोटे भुगतान करने वाला और पेटी कैश बही रखने वाला व्यक्ति।", "पेटी रोख पुस्तक ठेवणारी आणि लहान खर्च करणारी व्यक्ती.", "Petty Cash", ["petty cashier"]);
+  addQA("What is the meaning of 'Total c/f' in Cash Book?", "Total carried forward from one page to next page. Debit and credit totals must match before carrying forward.", "पृष्ठ के अंत में योग को अगले पृष्ठ पर ले जाना।", "बेरीज पुढील पानावर नेणे.", "Process", ["c/f","carried forward"]);
+  addQA("Fill in blank: Bank account is a _______ account.", "Personal", "व्यक्तिगत", "वैयक्तिक", "Fillup", ["personal account"]);
+  addQA("Fill in blank: Return of goods purchased on credit to supplier is recorded in _______ book.", "Purchase Return (or Returns Outward)", "क्रय वापसी", "खरेदी परत", "Fillup", ["purchase return","return outward"]);
+  addQA("True or False: Credit purchase of furniture is recorded in Purchase Book.", "False. Purchase of asset on credit is recorded in Journal Proper, not in Purchase Book (Purchase Book only for goods).", "गलत। फर्नीचर की उधार खरीद जर्नल प्रॉपर में दर्ज होगी।", "चुकीचे. फर्निचर खरेदी जर्नल प्रॉपर मध्ये होईल.", "True/False", ["furniture purchase"]);
+
+  // ---- Additional scenario entries from solved illustrations (Practical) ----
+  addQA("What is the entry for 'Cash withdrawn from bank for office use'?", "Contra entry: Receipt side Cash column 'To Bank A/c', Payment side Bank column 'By Cash A/c'. Journal: Cash A/c Dr. To Bank A/c.", "कंट्रा प्रविष्टि: रसीद पक्ष नकद स्तंभ में 'टू बैंक' और भुगतान पक्ष बैंक स्तंभ में 'बाय कैश'।", "रोख पुस्तकेत दोन्ही बाजूंनी नोंद.", "Contra", ["withdraw from bank","office use"]);
+  addQA("Cheque received from customer and deposited on same day: Where recorded?", "Recorded in Bank column on receipt side as 'To Customer's A/c'. Journal: Bank A/c Dr. To Customer's A/c.", "रसीद पक्ष बैंक स्तंभ में दर्ज।", "बँक स्तंभात प्राप्ती बाजूस नोंद.", "Banking", ["cheque deposited"]);
+  addQA("Bank charges debited by bank. Entry in Cash Book?", "Recorded on payment side in Bank column as 'By Bank Charges A/c'. Journal: Bank Charges A/c Dr. To Bank A/c.", "भुगतान पक्ष में बैंक कॉलम में 'बैंक प्रभार खाते से'।", "भरणा बाजूस बँक स्तंभात 'बँक शुल्क' असे नोंदवा.", "Banking", ["bank charges"]);
+  addQA("Goods distributed as free samples. Which book?", "Journal Proper. Entry: Advertisement A/c Dr. To Purchases A/c (or Goods A/c).", "जर्नल प्रॉपर में। विज्ञापन खाता डेबिट, क्रय क्रेडिट।", "जर्नल प्रॉपर मध्ये.", "Journal Proper", ["free samples","advertisement"]);
+  
+  // ----- Helper functions exactly like previous but enhanced ----
+  const searchInput = document.getElementById("searchInput");
+  const resultsContainer = document.getElementById("resultsContainer");
+  const suggestionsDiv = document.getElementById("suggestionsList");
+
+  function getMatches(query) {
+    if(!query.trim()) return [];
+    const lower = query.toLowerCase();
+    return qaDatabase.filter(item => 
+      item.question.toLowerCase().includes(lower) || 
+      item.answer.toLowerCase().includes(lower) ||
+      item.category.toLowerCase().includes(lower) ||
+      item.keywords.some(k => k.includes(lower) || lower.includes(k))
+    ).slice(0, 15);
+  }
+
+  function updateSuggestions() {
+    const val = searchInput.value;
+    if(!val.trim()) { suggestionsDiv.style.display = "none"; return; }
+    const matches = getMatches(val);
+    if(!matches.length) { suggestionsDiv.style.display = "none"; return; }
+    suggestionsDiv.innerHTML = "";
+    matches.forEach(item => {
+      const div = document.createElement("div");
+      div.className = "suggestion-item";
+      div.innerHTML = `<span>📘</span> <strong>${item.question.substring(0,70)}...</strong> <span style="margin-left:auto; background:#d1fae5; padding:2px 10px; border-radius:20px;">${item.category}</span>`;
+      div.addEventListener("click", () => {
+        searchInput.value = item.question;
+        suggestionsDiv.style.display = "none";
+        performSearch(item.question);
+      });
+      suggestionsDiv.appendChild(div);
+    });
+    suggestionsDiv.style.display = "block";
+  }
+
+  function performSearch(query = null) {
+    let q = (query !== null) ? query : searchInput.value;
+    q = q.trim();
+    if(!q) { resultsContainer.innerHTML = `<div class="not-found">🔍 Search: Subsidiary Books, Cash Book, Contra Entry, Petty Cash, Imprest, Purchase Book, Sales Return, Journal Proper.</div>`; return; }
+    const matches = getMatches(q);
+    if(!matches.length) { resultsContainer.innerHTML = `<div class="not-found">❌ No results for "${q}". Try: Cash Book, Contra, Petty Cash, Imprest, Purchase Book, Debit Note.</div>`; return; }
+    resultsContainer.innerHTML = "";
+    matches.forEach(item => {
+      const card = document.createElement("div");
+      card.className = "result-card";
+      card.innerHTML = `
+        <div class="badge">${escapeHtml(item.category)}</div>
+        <h3>📖 ${escapeHtml(item.question)}</h3>
+        <div class="answer-text"><strong>✅ Answer / उत्तर / उत्तर:</strong><br>${escapeHtml(item.answer)}</div>
+        <div class="action-buttons">
+          <button class="langBtn" data-q="${escapeAttr(item.question)}" data-a="${escapeAttr(item.answer)}" data-hi="${escapeAttr(item.hindi)}" data-mr="${escapeAttr(item.marathi)}">🌐 हिंदी / मराठी</button>
+          <button class="detailBtn" data-q="${escapeAttr(item.question)}" data-a="${escapeAttr(item.answer)}" data-cat="${item.category}">📘 विस्तृत / Detailed (Rules)</button>
+        </div>
+      `;
+      resultsContainer.appendChild(card);
+    });
+    attachEvents();
+  }
+
+  function attachEvents() {
+    document.querySelectorAll(".langBtn").forEach(btn => btn.addEventListener("click", (e) => {
+      const q = btn.getAttribute("data-q"), a= btn.getAttribute("data-a"), hi=btn.getAttribute("data-hi"), mr=btn.getAttribute("data-mr");
+      showLangPopup(q,a,hi,mr);
+    }));
+    document.querySelectorAll(".detailBtn").forEach(btn => btn.addEventListener("click", (e) => {
+      const q = btn.getAttribute("data-q"), a= btn.getAttribute("data-a"), cat=btn.getAttribute("data-cat");
+      showDetailPopup(q,a,cat);
+    }));
+  }
+
+  function showLangPopup(question, answer, hindi, marathi) {
+    document.getElementById("popupModal").style.display = "flex";
+    document.getElementById("modalContent").innerHTML = `
+      <h2 style="color:#065f46;">🌐 भाषा अनुवाद | Translation</h2>
+      <div class="lang-section"><strong>❓ प्रश्न:</strong> ${escapeHtml(question)}</div>
+      <div class="lang-section"><strong>🇮🇳 हिंदी (Hindi):</strong><br>${escapeHtml(hindi || answer)}</div>
+      <div class="lang-section"><strong>🇮🇳 मराठी (Marathi):</strong><br>${escapeHtml(marathi || answer)}</div>
+      <button id="closeLangModal" style="background:#059669; padding:10px 24px; border-radius:40px; color:white; border:none;">बंद करें</button>
+    `;
+    document.getElementById("closeLangModal").addEventListener("click", ()=> document.getElementById("popupModal").style.display = "none");
+  }
+
+  function showDetailPopup(question, answer, category) {
+    let extra = `<div class="lang-section"><strong>📚 Textbook Reference:</strong> 11th BK Chapter 5 - Subsidiary Books. Includes Cash Book, Petty Cash (Imprest), Purchase/Sales Books, Returns, Journal Proper.</div>`;
+    if(category === "Contra") extra += `<div class="lang-section">🔄 Contra entries affect both cash and bank; denoted by 'C' in L.F. column. Examples: Cash deposited, cash withdrawn.</div>`;
+    if(category === "Petty Cash") extra += `<div class="lang-section">💵 Petty Cash Book under Imprest System: fixed advance, reimbursement of actual expenses.</div>`;
+    if(category === "Purchase Book") extra += `<div class="lang-section">📦 Only credit purchases of goods recorded at net value after trade discount.</div>`;
+    document.getElementById("popupModal").style.display = "flex";
+    document.getElementById("modalContent").innerHTML = `
+      <h2 class="detail-title">📘 Detailed Explanation (विस्तृत उत्तर)</h2>
+      <div class="lang-section"><strong>❓ Question:</strong> ${escapeHtml(question)}</div>
+      <div class="lang-section"><strong>✅ Detailed Answer:</strong><br>${escapeHtml(answer)} ${extra}</div>
+      <button id="closeDetailModal" style="background:#047857; padding:10px 24px; border-radius:40px; color:white; border:none;">Close</button>
+    `;
+    document.getElementById("closeDetailModal").addEventListener("click", ()=> document.getElementById("popupModal").style.display = "none");
+  }
+
+  function escapeHtml(str) { return str.replace(/[&<>]/g, function(m){ if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m;}); }
+  function escapeAttr(str) { return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  function startVoice() { if (!('webkitSpeechRecognition' in window)) { alert("Voice not supported in this browser."); return; } const rec = new webkitSpeechRecognition(); rec.lang="en-IN"; rec.start(); rec.onresult = (e)=> { searchInput.value = e.results[0][0].transcript; performSearch(); }; }
+  document.getElementById("voiceBtn").addEventListener("click", startVoice);
+  searchInput.addEventListener("keyup", () => { performSearch(); updateSuggestions(); });
+  searchInput.addEventListener("focus", updateSuggestions);
+  document.addEventListener("click", (e) => { if(!document.querySelector(".search-wrapper").contains(e.target)) suggestionsDiv.style.display = "none"; });
+  document.getElementById("closeModalBtn").addEventListener("click", () => document.getElementById("popupModal").style.display = "none");
+  window.onload = () => { resultsContainer.innerHTML = `<div class="not-found">✨ Chapter 5: Subsidiary Books | ${qaDatabase.length}+ Q&A | Cash Book, Petty Cash (Imprest), Purchase/Sales & Returns, Journal Proper ✨</div>`; };
+</script>
+</body>
+</html>

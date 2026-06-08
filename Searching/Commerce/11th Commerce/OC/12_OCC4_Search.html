@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>🏢 Forms of Business Organisation | 11th OC Chapter 4 | Sole Trading to Joint Stock</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    body {
+      background: linear-gradient(145deg, #f3e8ff, #e9d5ff);
+      min-height: 100vh;
+      padding: 24px 18px;
+      color: #1e293b;
+      overflow-y: scroll;
+      scrollbar-width: thin;
+    }
+    .container { max-width: 1300px; margin: 0 auto; }
+    .heading { text-align: center; margin-bottom: 35px; animation: slideDown 0.5s ease; }
+    .heading h1 {
+      font-size: 2rem;
+      background: linear-gradient(135deg, #6b21a5, #9333ea, #c084fc);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+    }
+    .heading p { color: #6b21a5; margin-top: 10px; font-weight: 600; background: #ffffffcc; display: inline-block; padding: 5px 18px; border-radius: 40px; backdrop-filter: blur(4px);}
+    .search-wrapper { position: relative; margin-bottom: 32px; }
+    .search-box {
+      background: white;
+      border-radius: 60px;
+      padding: 6px 6px 6px 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.12);
+      border: 1px solid #d8b4fe;
+    }
+    .search-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      padding: 15px 0;
+      background: transparent;
+      color: #0f172a;
+      font-weight: 500;
+    }
+    .icon-btn {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(145deg, #9333ea, #7e22ce);
+      color: white;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: 0.25s;
+      box-shadow: 0 4px 12px rgba(147,51,234,0.4);
+    }
+    .icon-btn:hover { transform: scale(1.05); background: #9333ea; }
+    .suggestions-dropdown {
+      position: absolute;
+      top: calc(100% + 12px);
+      left: 0;
+      right: 0;
+      background: white;
+      border-radius: 32px;
+      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.2);
+      z-index: 120;
+      max-height: 280px;
+      overflow-y: auto;
+      display: none;
+      border: 1px solid #d8b4fe;
+    }
+    .suggestion-item {
+      padding: 14px 24px;
+      color: #0f172a;
+      cursor: pointer;
+      border-bottom: 1px solid #f3e8ff;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      transition: 0.2s;
+    }
+    .suggestion-item:hover { background: #f3e8ff; padding-left: 32px; }
+    .result-container { display: flex; flex-direction: column; gap: 24px; margin-top: 20px; }
+    .result-card {
+      background: white;
+      border-radius: 32px;
+      padding: 1.8rem;
+      color: #0f172a;
+      box-shadow: 0 12px 30px -10px rgba(0,0,0,0.08);
+      transition: 0.25s ease;
+      border: 1px solid #e9d5ff;
+    }
+    .result-card:hover { transform: translateY(-4px); box-shadow: 0 20px 30px -12px rgba(0,0,0,0.12); }
+    .badge {
+      background: #f3e8ff;
+      color: #6b21a5;
+      display: inline-block;
+      padding: 5px 16px;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+    .result-card h3 {
+      color: #6b21a5;
+      font-size: 1.35rem;
+      border-left: 6px solid #c084fc;
+      padding-left: 18px;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+    .answer-text {
+      background: #faf5ff;
+      padding: 18px 24px;
+      border-radius: 28px;
+      line-height: 1.7;
+      margin: 12px 0;
+      border: 1px solid #e9d5ff;
+    }
+    .formula-box {
+      background: #ede9fe;
+      padding: 12px 18px;
+      border-radius: 28px;
+      font-family: monospace;
+      font-size: 0.95rem;
+      margin: 14px 0;
+      text-align: center;
+      border-left: 6px solid #9333ea;
+      font-weight: 600;
+    }
+    .responsive-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 0.85rem;
+      overflow-x: auto;
+      display: block;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .responsive-table th, .responsive-table td {
+      border: 1px solid #e2e8f0;
+      padding: 12px 10px;
+      text-align: left;
+      background: white;
+    }
+    .responsive-table th { background: #9333ea; color: white; font-weight: 700; }
+    .action-buttons { margin-top: 22px; display: flex; gap: 15px; flex-wrap: wrap; }
+    .action-buttons button {
+      border: none;
+      padding: 10px 26px;
+      border-radius: 50px;
+      font-weight: 700;
+      background: #f1f5f9;
+      color: #1e293b;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .action-buttons button:last-child { background: #c084fc; color: #3b0764; box-shadow: 0 2px 8px rgba(192,132,252,0.3);}
+    .action-buttons button:hover { transform: scale(0.97); opacity: 0.9; }
+    .not-found {
+      background: #faf5ff;
+      border-radius: 48px;
+      padding: 2.5rem;
+      text-align: center;
+      font-size: 1.1rem;
+      color: #7e22ce;
+      border: 1px solid #e9d5ff;
+    }
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(10px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    .popup-box {
+      background: white;
+      max-width: 900px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      border-radius: 48px;
+      padding: 30px 34px;
+      position: relative;
+      color: #1e293b;
+    }
+    .close-popup {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      background: #fee2e2;
+      border: none;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+    .lang-section { background: #f8fafc; padding: 18px; border-radius: 28px; margin-bottom: 20px; border-left: 5px solid #c084fc; }
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 650px) {
+      body { padding: 16px 12px; }
+      .heading h1 { font-size: 1.4rem; }
+      .result-card h3 { font-size: 1.1rem; }
+      .result-card { padding: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="heading">
+    <h1>🏢 Forms of Business Organisation | OC Chapter 4</h1>
+    <p>📌 Sole Trading · Partnership · Joint Hindu Family · Co-operative Society · Joint Stock Company</p>
+  </div>
+  <div class="search-wrapper">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="🔎 Search: Sole Trading, Partnership features, Karta, Co-operative Society, Joint Stock Company, Active Partner, Common Seal...">
+      <button class="icon-btn" id="voiceBtn">🎤</button>
+    </div>
+    <div id="suggestionsList" class="suggestions-dropdown"></div>
+  </div>
+  <div class="result-container" id="resultsContainer">
+    <div class="not-found">🏢 Type above — Explore Sole Trading, Partnership, Joint Hindu Family, Co-operative Society, Joint Stock Company ✨</div>
+  </div>
+</div>
+<div class="popup-overlay" id="popupModal">
+  <div class="popup-box">
+    <button class="close-popup" id="closeModalBtn">✖</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+  const qaDatabase = [];
+
+  function addQA(question, answer, category, keywords = []) {
+    qaDatabase.push({ id: qaDatabase.length+1, question, answer, category, keywords: keywords.map(k=>k.toLowerCase()) });
+  }
+
+  // ============ SOLE TRADING CONCERN ============
+  addQA("What is Sole Trading Concern? Define Sole Proprietorship.", "Sole Trading Concern is a form of business owned and managed by one person. According to Prof. J. Hansen: 'Sometimes known as one man business, it is a type of business unit where one person is solely responsible for providing the capital, for bearing the risk of the enterprise and for the risk of ownership.'", "Sole Trading", ["sole trading meaning", "sole proprietorship definition"]);
+  addQA("What are the features of Sole Trading Concern?", "1) Individual Ownership 2) No Sharing of Profit and Risk 3) Self-employment 4) Local Market Operations 5) No separate Legal Status 6) Minimum Government Regulations 7) Unlimited Liability.", "Sole Trading", ["features of sole trading", "sole proprietorship features"]);
+  addQA("What are the merits of Sole Trading Concern?", "1) Easy Formation 2) Quick Decisions 3) Maximum Secrecy 4) Direct Motivation 5) Flexibility 6) Lower Cost 7) Efficiency.", "Sole Trading", ["merits of sole trading"]);
+  addQA("What are the demerits of Sole Trading Concern?", "1) Limited Capital 2) Limited Managerial Skill 3) Unlimited Liability 4) Lack of Stability 5) Lack of Specialization 6) Not suitable for large scale operation.", "Sole Trading", ["demerits of sole trading"]);
+  addQA("What is Unlimited Liability in Sole Trading?", "Unlimited liability means there is no distinction between personal property and business property. If business assets are not sufficient to pay liabilities, personal properties of sole trader may be attached.", "Sole Trading", ["unlimited liability"]);
+
+  // ============ PARTNERSHIP FIRM ============
+  addQA("Define Partnership as per Indian Partnership Act 1932.", "Section 4 of Indian Partnership Act, 1932 defines partnership as: 'Partnership is the relation between persons who have agreed to share the profits of a business carried on by all or any of them acting for all.'", "Partnership", ["partnership definition"]);
+  addQA("What are the features of Partnership Firm?", "1) Agreement (oral or written) 2) Joint Ownership 3) Joint Management 4) Lawful Business 5) Liability (unlimited, joint and several) 6) Minimum 2, Maximum 50 partners 7) Principal-Agent Relationship 8) Restriction on Transfer of Interest 9) Registration not compulsory (but in Maharashtra compulsory) 10) Sharing of profits and losses.", "Partnership", ["features of partnership"]);
+  addQA("What are the types of Partners?", "1) Active Partner (takes active part) 2) Dormant/Sleeping Partner (only capital) 3) Nominal Partner (only lends name) 4) Secret Partner (membership kept secret) 5) Minor as Partner (admitted for benefits) 6) Partner in profits only 7) Sub-Partner 8) Partner with Limited Liability 9) Quasi Partner (retired but capital left).", "Partnership", ["types of partners"]);
+  addQA("What are the types of Partnership Firms?", "A) General Partnership: 1) Partnership at will (no time period) 2) Partnership for particular period 3) Partnership for particular venture. B) Limited Liability Partnership (LLP Act 2008).", "Partnership", ["types of partnership firms"]);
+  addQA("What are merits of Partnership Firm?", "1) Easy Formation 2) More Capital than sole trading 3) Business Secrecy 4) Continued Existence (if provided) 5) Flexibility 6) Better Decision Making 7) Effort-Reward Relationship 8) Goodwill 9) Specialization.", "Partnership", ["partnership merits"]);
+  addQA("What are demerits of Partnership Firm?", "1) Problem of Continuity 2) Absence of Legal Status 3) Disputes 4) Non-Transferability of Interest 5) Limitation on number (max 50) 6) Difficulty in Admission 7) Unlimited Liability 8) Risk of Implied Authority 9) Limited Capital vs company 10) Problem of Secrecy.", "Partnership", ["partnership demerits"]);
+
+  // ============ JOINT HINDU FAMILY BUSINESS ============
+  addQA("What is Joint Hindu Family Business?", "When a Joint Hindu Family (JHF) conducts business inherited by it as per Hindu Law, it is called Joint Hindu Family Firm. It exists only in India, governed by Hindu Succession Act 1956.", "JHF", ["jhf meaning", "huf business"]);
+  addQA("Who is Karta in Joint Hindu Family Business?", "Karta is the senior most member of the family who manages the Joint Hindu Family Business. He has unlimited liability and takes all business decisions. Co-parceners are other family members.", "JHF", ["karta"]);
+  addQA("What are the features of Joint Hindu Family Business?", "1) Exists only in India 2) Formation by Hindu law (not agreement) 3) Unlimited membership 4) Joint Ownership 5) Good Credit Standing 6) Management by Karta 7) Profit sharing changes with births/deaths.", "JHF", ["jhf features"]);
+  addQA("What are merits of Joint Hindu Family Business?", "1) Easy Formation 2) Protection of Co-parceners Interest 3) Quick and Prompt Decisions 4) On The Job Training 5) Co-parcener's Liability is limited.", "JHF", ["jhf merits"]);
+  addQA("What are demerits of Joint Hindu Family Business?", "1) Unlimited Liability of Karta 2) Limited Financial Resources 3) No Separate Legal Status 4) Partition of Business possible 5) No direct relation between effort and rewards.", "JHF", ["jhf demerits"]);
+
+  // ============ CO-OPERATIVE SOCIETY ============
+  addQA("What is Co-operative Society? Define.", "A Co-operative organisation is a voluntary association of individuals formed to achieve certain economic objectives. According to ILO: 'A cooperative organisation is an association of persons who have voluntarily joined together to achieve a common economic end through democratically controlled organisation.'", "Cooperative", ["cooperative definition", "co operative meaning"]);
+  addQA("What are the features of Co-operative Society?", "1) Voluntary Association & Open Membership 2) Democratic Principle 3) Management by Managing Committee 4) Registration compulsory (min 10 members) 5) Separate Legal Status 6) Limited Liability 7) Equal Voting Rights (One Member One Vote) 8) Service Motive.", "Cooperative", ["cooperative features"]);
+  addQA("What are the merits of Co-operative Society?", "1) Democratic Management 2) Open Membership 3) Less Operating Expenses 4) Limited Liability 5) Tax Concessions 6) Self-Financing and Charity.", "Cooperative", ["cooperative merits"]);
+  addQA("What are the demerits of Co-operative Society?", "1) Limited Capital 2) Inefficient Management 3) Lack of Public Confidence 4) Limited Scope for Expansion 5) Lack of Motivation (honorary work).", "Cooperative", ["cooperative demerits"]);
+  addQA("What are the types of Co-operative Societies?", "1) Consumers Co-operative (e.g., Super Bazaar) 2) Producers Co-operative (Industrial Service & Manufacturing) 3) Marketing Co-operatives 4) Co-operative Farming Societies 5) Housing Co-operatives 6) Credit Co-operatives.", "Cooperative", ["types of cooperative"]);
+
+  // ============ JOINT STOCK COMPANY ============
+  addQA("What is Joint Stock Company? Define.", "A Joint Stock Company is a voluntary association of persons for profit having capital divided into transferable shares. According to Companies Act 2013, Section 2(20): 'Company means a Company incorporated under the Companies Act 2013 or any previous Company law.'", "Joint Stock", ["joint stock company definition"]);
+  addQA("What are the features of Joint Stock Company?", "1) Voluntary Association 2) Registration compulsory 3) Registered Office 4) Artificial Legal Person 5) Separate Legal Status 6) Common Seal (signature of company) 7) Limited Liability 8) Transferability of Shares 9) Separation of Ownership and Management 10) Perpetual Succession 11) Minimum 7 members for public, 2 for private.", "Joint Stock", ["features of joint stock"]);
+  addQA("What are the merits of Joint Stock Company?", "1) Large amount of Capital 2) Professional Management 3) More Scope for Expansion 4) Public Confidence 5) Relief in Taxation 6) Expert Services 7) Perpetual Succession 8) Limited Liability.", "Joint Stock", ["joint stock merits"]);
+  addQA("What are the demerits of Joint Stock Company?", "1) Rigid Formation (expensive, time consuming) 2) Lack of Secrecy 3) Delay in Decision Making 4) No Personal Contact 5) High Cost of Management 6) Reckless Speculation.", "Joint Stock", ["joint stock demerits"]);
+  addQA("What is the difference between Private and Public Company?", "Private Company: Min 2, Max 200 members, shares not freely transferable, minimum paid up capital ₹1 lakh, adds 'Private Limited'. Public Company: Min 7, Max unlimited, shares freely transferable, min paid up capital ₹5 lakhs, adds 'Limited'.", "Joint Stock", ["private vs public company"]);
+  addQA("What is Common Seal of a Company?", "Common seal is the official signature of the company. It has company name engraved. It is affixed on all important documents, signed by Company Secretary and minimum two directors.", "Joint Stock", ["common seal"]);
+  addQA("What is Perpetual Succession?", "Perpetual succession means the company has continuous existence. Death, retirement, insolvency of any member does not affect the company's existence. 'Members may come and go, but company continues forever.'", "Joint Stock", ["perpetual succession"]);
+
+  // ============ COMPARISON TABLES ============
+  function getComparisonTable() {
+    return `<table class="responsive-table"><thead><tr><th>Basis</th><th>Sole Trading</th><th>Partnership</th><th>JHF Business</th><th>Co-operative</th><th>Joint Stock</th></tr></thead><tbody>
+      <tr><td>Membership</td><td>1 owner</td><td>2 to 50</td><td>Unlimited</td><td>Min 10</td><td>Public: Min7, Pvt:2-200</td></tr>
+      <tr><td>Liability</td><td>Unlimited</td><td>Unlimited, Joint & Several</td><td>Karta: Unlimited, Co-parceners: Limited</td><td>Limited</td><td>Limited</td></tr>
+      <tr><td>Registration</td><td>Not required</td><td>Not compulsory (except Maharashtra)</td><td>Not required</td><td>Compulsory</td><td>Compulsory</td></tr>
+      <tr><td>Legal Status</td><td>No separate status</td><td>No separate status</td><td>No separate status</td><td>Separate legal entity</td><td>Separate legal entity</td></tr>
+      <tr><td>Voting Right</td><td>Alone decides</td><td>Mutual agreement</td><td>Karta decides</td><td>One Member One Vote</td><td>One Share One Vote</td></tr>
+      <tr><td>Secrecy</td><td>Maximum</td><td>Good</td><td>Good</td><td>Less</td><td>Less</td></tr>
+    </tbody></table>`;
+  }
+
+  function getPartnerTypesTable() {
+    return `<table class="responsive-table"><thead><tr><th>Type of Partner</th><th>Description</th></tr></thead><tbody>
+      <tr><td>Active Partner</td><td>Takes active part in day-to-day management, unlimited liability</td></tr>
+      <tr><td>Dormant/Sleeping Partner</td><td>Only contributes capital, no participation in management</td></tr>
+      <tr><td>Nominal Partner</td><td>Only lends name to firm, does not contribute capital</td></tr>
+      <tr><td>Secret Partner</td><td>Membership kept secret from outsiders, but takes part in management</td></tr>
+      <tr><td>Minor as Partner</td><td>Below 18 years, admitted for benefits, not personally liable</td></tr>
+      <tr><td>Partner in Profits only</td><td>Shares only profits, not losses</td></tr>
+      <tr><td>Quasi Partner</td><td>Retired partner but left capital in firm, shares profits</td></tr>
+    </tbody></table>`;
+  }
+
+  function getCooperativeTypesTable() {
+    return `<table class="responsive-table"><thead><tr><th>Type</th><th>Purpose</th><th>Example</th></tr></thead><tbody>
+      <tr><td>Consumers Co-operative</td><td>Provide daily needs at reasonable prices</td><td>Super Bazaar, Apana Bazaar</td></tr>
+      <tr><td>Producers Co-operative</td><td>Help small producers with raw materials & marketing</td><td>Industrial Service Co-ops</td></tr>
+      <tr><td>Marketing Co-operative</td><td>Pool output and sell centrally to eliminate middlemen</td><td>AMUL</td></tr>
+      <tr><td>Farming Co-operative</td><td>Pool small land holdings for large scale farming</td><td>Co-operative Farming Societies</td></tr>
+      <tr><td>Housing Co-operative</td><td>Provide housing to members</td><td>Housing Societies</td></tr>
+      <tr><td>Credit Co-operative</td><td>Provide financial help and savings habit</td><td>Co-operative Banks</td></tr>
+    </tbody></table>`;
+  }
+
+  // Search and display
+  const searchInput = document.getElementById("searchInput");
+  const resultsContainer = document.getElementById("resultsContainer");
+  const suggestionsDiv = document.getElementById("suggestionsList");
+
+  function getMatches(q) {
+    const lower = q.toLowerCase();
+    return qaDatabase.filter(item => 
+      item.question.toLowerCase().includes(lower) || 
+      item.answer.toLowerCase().includes(lower) ||
+      item.category.toLowerCase().includes(lower) ||
+      item.keywords.some(k => k.includes(lower))
+    ).slice(0, 16);
+  }
+
+  function updateSuggestions() {
+    const val = searchInput.value.trim();
+    if(!val) { suggestionsDiv.style.display = "none"; return; }
+    const matches = getMatches(val);
+    if(!matches.length) { suggestionsDiv.style.display = "none"; return; }
+    suggestionsDiv.innerHTML = "";
+    matches.forEach(item => {
+      const div = document.createElement("div");
+      div.className = "suggestion-item";
+      div.innerHTML = `<span>🏢</span> <strong>${item.question.substring(0,70)}</strong> <span style="margin-left:auto; background:#f3e8ff; padding:2px 12px; border-radius:30px;">${item.category}</span>`;
+      div.addEventListener("click", () => {
+        searchInput.value = item.question;
+        suggestionsDiv.style.display = "none";
+        performSearch(item.question);
+      });
+      suggestionsDiv.appendChild(div);
+    });
+    suggestionsDiv.style.display = "block";
+  }
+
+  function performSearch(q = null) {
+    let query = (q !== null) ? q : searchInput.value.trim();
+    if(!query) { resultsContainer.innerHTML = `<div class="not-found">✨ Type keywords: Sole Trading, Partnership, Karta, Cooperative Society, Joint Stock, Private vs Public, Common Seal ✨</div>`; return; }
+    const matches = getMatches(query);
+    if(!matches.length) { resultsContainer.innerHTML = `<div class="not-found">❌ No results. Try: Sole Trading features, Types of Partners, Co-operative Society merits, Joint Stock features.</div>`; return; }
+    resultsContainer.innerHTML = "";
+    matches.forEach(item => {
+      let extra = "";
+      const qtext = item.question.toLowerCase();
+      if (qtext.includes("difference between") || (qtext.includes("comparison") && item.category === "Joint Stock")) extra = getComparisonTable();
+      if (qtext.includes("types of partners") && item.category === "Partnership") extra = getPartnerTypesTable();
+      if (qtext.includes("types of co-operative") || (qtext.includes("types of cooperative"))) extra = getCooperativeTypesTable();
+      if (qtext.includes("features of joint stock") && item.category === "Joint Stock") extra = `<div class="formula-box">🏛️ Key: Artificial person, Common seal, Perpetual succession, Limited liability, Transferable shares, Separation of ownership & management.</div>`;
+      
+      const card = document.createElement("div");
+      card.className = "result-card";
+      card.innerHTML = `
+        <div class="badge">📌 ${escapeHtml(item.category)}</div>
+        <h3>📘 ${escapeHtml(item.question)}</h3>
+        <div class="answer-text"><strong>✅ Answer / Explanation:</strong><br>${escapeHtml(item.answer)}${extra}</div>
+        <div class="action-buttons">
+          <button class="detailBtn" data-q="${escapeAttr(item.question)}" data-a="${escapeAttr(item.answer)}" data-cat="${item.category}">📖 Detailed Explanation</button>
+          <button class="extraTableBtn" data-type="${item.category}">📋 Reference Tables</button>
+        </div>
+      `;
+      resultsContainer.appendChild(card);
+    });
+    attachEvents();
+  }
+
+  function attachEvents() {
+    document.querySelectorAll(".detailBtn").forEach(btn => btn.addEventListener("click", (e) => {
+      const q = btn.getAttribute("data-q"), a = btn.getAttribute("data-a"), cat = btn.getAttribute("data-cat");
+      showDetailPopup(q, a, cat);
+    }));
+    document.querySelectorAll(".extraTableBtn").forEach(btn => btn.addEventListener("click", () => {
+      let content = `<div class="lang-section"><strong>📚 Forms of Business - Quick Reference</strong><br>`;
+      content += `<h4>🏢 Comparison of all 5 Forms</h4>${getComparisonTable()}`;
+      content += `<hr><h4>👥 Types of Partners</h4>${getPartnerTypesTable()}`;
+      content += `<hr><h4>🤝 Types of Co-operative Societies</h4>${getCooperativeTypesTable()}`;
+      content += `</div>`;
+      document.getElementById("popupModal").style.display = "flex";
+      document.getElementById("modalContent").innerHTML = `<h2 style="color:#6b21a5;">📊 Complete Reference</h2>${content}<button id="closeModalInside" style="background:#9333ea; margin-top:20px; padding:10px 26px; border-radius:40px; color:white;">Close</button>`;
+      document.getElementById("closeModalInside").addEventListener("click", ()=> document.getElementById("popupModal").style.display = "none");
+    }));
+  }
+
+  function showDetailPopup(question, answer, category) {
+    let extraInfo = `<div class="lang-section"><strong>📖 11th OC Chapter 4 - Forms of Business Organisation</strong><br>✔ 5 Main Forms: Sole Trading, Partnership, Joint Hindu Family, Co-operative Society, Joint Stock Company<br>✔ Sole Trading: One owner, unlimited liability, easy formation<br>✔ Partnership: 2-50 members, agreement based, unlimited joint liability<br>✔ JHF: Karta manages, exists only in India<br>✔ Co-operative: Service motive, one member one vote<br>✔ Joint Stock: Separate legal entity, perpetual succession, common seal</div>`;
+    if(category === "Partnership") extraInfo += `<div class="lang-section"><h4>Types of Partners</h4>${getPartnerTypesTable()}</div>`;
+    if(category === "Cooperative") extraInfo += `<div class="lang-section"><h4>Types of Co-operative Societies</h4>${getCooperativeTypesTable()}</div>`;
+    if(category === "Joint Stock") extraInfo += `<div class="lang-section"><h4>Comparison: Private vs Public Company</h4>${getComparisonTable()}</div>`;
+    document.getElementById("popupModal").style.display = "flex";
+    document.getElementById("modalContent").innerHTML = `
+      <h2 style="color:#6b21a5;">📘 Detailed Explanation</h2>
+      <div class="lang-section"><strong>❓ Question:</strong> ${escapeHtml(question)}</div>
+      <div class="lang-section"><strong>✅ Answer:</strong><br>${escapeHtml(answer)}</div>
+      ${extraInfo}
+      <button id="closeDetailModal" style="background:#c084fc; padding:10px 26px; border-radius:40px; margin-top:12px;">Close</button>
+    `;
+    document.getElementById("closeDetailModal").addEventListener("click", ()=> document.getElementById("popupModal").style.display = "none");
+  }
+
+  function escapeHtml(str) { return str.replace(/[&<>]/g, m => m==='&'?'&amp;': m==='<'?'&lt;':'&gt;'); }
+  function escapeAttr(str) { return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function startVoice() { if (!('webkitSpeechRecognition' in window)) { alert("Voice search supported in Chrome/Edge."); return; } const rec = new webkitSpeechRecognition(); rec.lang="en-IN"; rec.start(); rec.onresult = (e)=> { searchInput.value = e.results[0][0].transcript; performSearch(); }; }
+  document.getElementById("voiceBtn").addEventListener("click", startVoice);
+  searchInput.addEventListener("keyup", () => { performSearch(); updateSuggestions(); });
+  searchInput.addEventListener("focus", updateSuggestions);
+  document.addEventListener("click", (e) => { if(!document.querySelector(".search-wrapper").contains(e.target)) suggestionsDiv.style.display = "none"; });
+  document.getElementById("closeModalBtn").addEventListener("click", () => document.getElementById("popupModal").style.display = "none");
+  window.onload = () => { resultsContainer.innerHTML = `<div class="not-found">🏢 11th OC | Forms of Business Organisation | Search Sole Trading, Partnership, JHF, Co-operative, Joint Stock ✨</div>`; };
+</script>
+</body>
+</html>

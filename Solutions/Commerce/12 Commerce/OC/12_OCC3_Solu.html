@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Chapter 3 | Entrepreneur & Entrepreneurship - 12th Commerce OCM</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #f0f7f0 0%, #e2eae2 100%);
+            font-family: 'Inter', sans-serif;
+            padding: 32px 24px;
+            color: #1a3e2c;
+            line-height: 1.5;
+            overflow-y: scroll;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        body::-webkit-scrollbar { display: none; }
+        .container { max-width: 1400px; margin: 0 auto; }
+        .hero {
+            text-align: center;
+            margin-bottom: 40px;
+            background: rgba(255,248,225,0.4);
+            padding: 20px;
+            border-radius: 3rem;
+        }
+        .hero h1 {
+            font-size: 2.4rem; font-weight: 800;
+            background: linear-gradient(135deg, #1e6b3e, #2c9b5e, #3cb371);
+            background-clip: text; -webkit-background-clip: text; color: transparent;
+            border-bottom: 4px solid #ffaa33;
+            display: inline-block;
+            padding-bottom: 8px;
+        }
+        .summary-card {
+            background: linear-gradient(145deg, #ffffff, #f8fff8);
+            border-radius: 2rem;
+            margin-bottom: 36px;
+            box-shadow: 0 25px 40px -16px rgba(0,0,0,0.12);
+            overflow: hidden;
+            border: 1px solid rgba(60,179,113,0.2);
+        }
+        .summary-header {
+            background: linear-gradient(105deg, #1e6b3e 0%, #2c9b5e 100%);
+            padding: 20px 28px;
+            border-bottom: 4px solid #ffaa33;
+        }
+        .summary-header h2 {
+            color: white;
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .summary-header h2 i { font-size: 1.8rem; color: #ffdd88; }
+        .summary-body {
+            padding: 28px 32px;
+            max-height: 600px;
+            overflow-y: auto;
+            scrollbar-width: none;
+        }
+        .summary-body::-webkit-scrollbar { display: none; }
+        .lang-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 24px;
+            padding-top: 16px;
+            border-top: 2px dashed #bdd4c0;
+        }
+        .lang-btn {
+            background: #1e6b3e; color: white; border: none;
+            padding: 10px 28px; border-radius: 50px; font-weight: 600;
+            cursor: pointer; transition: all 0.25s ease;
+            display: inline-flex; align-items: center; gap: 8px;
+        }
+        .lang-btn:hover { background: #ff8c42; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        .card {
+            background: rgba(255,255,255,0.96); border-radius: 1.8rem;
+            margin-bottom: 32px; padding: 28px 32px;
+            box-shadow: 0 12px 28px -8px rgba(0,0,0,0.08);
+            transition: all 0.2s;
+        }
+        .card h2 {
+            font-size: 1.6rem; font-weight: 700; color: #1e6b3e;
+            margin-bottom: 20px; padding-bottom: 8px;
+            border-bottom: 3px solid #ffaa33;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .qa-item { margin-bottom: 20px; border-left: 3px solid #bdd4c0; padding-left: 20px; }
+        .question { font-weight: 700; color: #1e4a3a; margin-bottom: 8px; }
+        .answer { background: #eef7e8; padding: 6px 16px; border-radius: 28px; display: inline-block; font-weight: 500; color: #1e6b3e; }
+        .true-badge { background: #e0f2e9; color: #1e6f3f; padding: 4px 16px; border-radius: 40px; font-weight: 700; margin-right: 12px; }
+        .false-badge { background: #ffe8e6; color: #bc4742; padding: 4px 16px; border-radius: 40px; font-weight: 700; margin-right: 12px; }
+        .resp-table { width: 100%; overflow-x: auto; margin: 20px 0; border-radius: 1.2rem; background: #f9fff9; padding: 4px; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+        th, td { border: 1px solid #cde1cf; padding: 10px 12px; text-align: left; vertical-align: top; }
+        th { background: #e0f0e5; font-weight: 700; color: #1e6b3e; }
+        .popup-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+            justify-content: center; align-items: center; z-index: 1000;
+        }
+        .popup-content {
+            background: white; width: 90%; max-width: 1100px; border-radius: 2rem;
+            max-height: 85vh; display: flex; flex-direction: column;
+        }
+        .popup-header {
+            background: linear-gradient(105deg, #1e6b3e, #2c9b5e);
+            padding: 18px 24px; color: white; display: flex; justify-content: space-between; align-items: center;
+            border-radius: 2rem 2rem 0 0;
+        }
+        .close-popup { font-size: 32px; cursor: pointer; color: #ffdd88; transition: 0.2s; }
+        .close-popup:hover { transform: rotate(90deg); color: white; }
+        .popup-body { padding: 24px; overflow-y: auto; scrollbar-width: none; }
+        .popup-body::-webkit-scrollbar { display: none; }
+        .insight-grid { display: flex; flex-wrap: wrap; gap: 18px; margin: 20px 0; }
+        .insight-card { background: linear-gradient(145deg, #1e6b3e, #2c9b5e); border-radius: 1.2rem; padding: 18px; flex: 1; min-width: 200px; color: white; text-align: center; box-shadow: 0 8px 12px rgba(0,0,0,0.1); }
+        .insight-card i { font-size: 2rem; margin-bottom: 8px; }
+        @media (max-width: 768px) {
+            body { padding: 20px 16px; }
+            .card, .summary-body { padding: 20px 18px; }
+            .hero h1 { font-size: 1.8rem; }
+        }
+        .footer-note { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #bdd4c0; font-size: 0.8rem; color: #2c6f4c; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="hero">
+        <h1><i class="fas fa-rocket"></i> Chapter 3 · Entrepreneur & Entrepreneurship</h1>
+        <p style="margin-top: 12px;">Entrepreneur: Concept, Qualities, Functions | StartUp India | StandUp India | Agro Tourism | Intrapreneur</p>
+    </div>
+
+    <!-- ATTRACTIVE SUMMARY CARD -->
+    <div class="summary-card">
+        <div class="summary-header">
+            <h2><i class="fas fa-lightbulb"></i> 📖 Chapter Pulse: The Entrepreneurial Mindset</h2>
+        </div>
+        <div class="summary-body">
+            <div id="summaryEngContent">
+                <div class="insight-grid">
+                    <div class="insight-card"><i class="fas fa-brain"></i><h3>Innovator</h3><small>4th factor of production</small></div>
+                    <div class="insight-card"><i class="fas fa-chart-line"></i><h3>Risk Taker</h3><small>Calculated risks, uncertainty</small></div>
+                    <div class="insight-card"><i class="fas fa-globe"></i><h3>StartUp India</h3><small>2016, ecosystem for jobs</small></div>
+                </div>
+                <div style="background:#eef7ea; border-radius: 1.2rem; padding: 16px; margin: 16px 0;">
+                    <strong>📌 Characteristics:</strong> Intellectual capabilities, Future vision, Hard work, Technical knowledge, Communication, Optimistic, Risk bearing, Self-confidence.<br>
+                    <strong>📌 Qualities:</strong> Disciplined, Confident, Open-minded, Self-starter, Competitive, Creative, Determined, Strong work ethic, Passionate.<br>
+                    <strong>📌 Functions:</strong> Innovation, Determination of objectives, Market development, New technology, Good relations, Organizing funds, Taking decisions.<br>
+                    <strong>📌 Recent initiatives:</strong> StartUp India (funding, tax exemptions), StandUp India (SC/ST & women entrepreneurs, ₹10L-1Cr loan), Agro Tourism (rural tourism), Intrapreneur (employee-driven innovation).<br>
+                    <strong>📌 EDP:</strong> Training + Entrepreneurship Development Programme (first in Gujarat 1970).
+                </div>
+                <div class="resp-table">
+                    <table>
+                        <thead><tr><th>Entrepreneur vs Intrapreneur</th><th>Entrepreneur</th><th>Intrapreneur</th></tr></thead>
+                        <tbody>
+                            <tr><td>Ownership</td><td>Owns business</td><td>Employee in organization</td></tr>
+                            <tr><td>Risk</td><td>Personal risk, unlimited liability</td><td>Limited risk, salary guaranteed</td></tr>
+                            <tr><td>Innovation</td><td>Creates own venture</td><td>Innovates within existing company</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="highlight-badge" style="background:#fff3e0; border-left:5px solid #ffaa33; padding: 10px 14px;"><strong>⭐ Government Schemes:</strong> MUDRA, I-MADE, StandUp India (51% stake for SC/ST/women), CGFSIL, Tax holiday for 3 years.</div>
+            </div>
+            <div class="lang-buttons">
+                <button class="lang-btn" onclick="showTranslation('hindi')"><i class="fas fa-language"></i> हिंदी सारांश</button>
+                <button class="lang-btn" onclick="showTranslation('marathi')"><i class="fas fa-language"></i> मराठी सारांश</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= EXERCISE SECTIONS (from PDF) ================= -->
+    <div class="card"><h2><i class="fas fa-check-circle"></i> A. Select the correct option</h2>
+        <div class="qa-item"><div class="question">1) The word 'entrepreneur' is derived from the ________ word 'entrepreneur'.</div><div class="answer">c) French</div></div>
+        <div class="qa-item"><div class="question">2) 'Entrepreneur' means to ________.</div><div class="answer">a) Undertake</div></div>
+        <div class="qa-item"><div class="question">3) Start Up India is an initiative of the ________.</div><div class="answer">b) Government of India</div></div>
+        <div class="qa-item"><div class="question">4) ________ is the idea of bringing urban residents to rural areas, empowering local communities.</div><div class="answer">a) Agro tourism</div></div>
+    </div>
+
+    <div class="card"><h2><i class="fas fa-link"></i> B. Match the pairs</h2>
+        <div class="resp-table">
+            <table><thead><tr><th>Group A</th><th>Answer</th><th>Group B</th></tr></thead>
+            <tbody>
+                <tr><td>Start up India</td><td>→</td><td>7) Launched in 2016</td></tr>
+                <tr><td>Stand up India</td><td>→</td><td>5) For SC/ST & Women</td></tr>
+                <tr><td>Agro Tourism</td><td>→</td><td>6) Rural tourism</td></tr>
+                <tr><td>Intrapreneur</td><td>→</td><td>8) Employee innovation</td></tr>
+                <tr><td>Entrepreneur</td><td>→</td><td>1) Risk taker & innovator</td></tr>
+            </tbody></table>
+        </div>
+    </div>
+
+    <div class="card"><h2><i class="fas fa-tag"></i> C. One word / phrase</h2>
+        <div class="qa-item"><div class="question">1) An undertaking or adventure involving uncertainty and risk and requiring innovation.</div><div class="answer">Entrepreneurship</div></div>
+        <div class="qa-item"><div class="question">2) A function of creating something new for an economic activity.</div><div class="answer">Innovation</div></div>
+        <div class="qa-item"><div class="question">3) A person who is an innovator who introduces new combinations of means of production.</div><div class="answer">Entrepreneur</div></div>
+        <div class="qa-item"><div class="question">4) The process of enhancing entrepreneurial skills through structured training.</div><div class="answer">Entrepreneurship Development Programme (EDP)</div></div>
+        <div class="qa-item"><div class="question">5) An employee who has authority and support to implement creative ideas.</div><div class="answer">Intrapreneur</div></div>
+    </div>
+
+    <div class="card"><h2><i class="fas fa-gavel"></i> D. True or False</h2>
+        <div class="qa-item"><div class="question">1) An entrepreneur should not be ready to work hard.</div><div class="answer"><span class="false-badge">False</span> Must work hard</div></div>
+        <div class="qa-item"><div class="question">2) Agritourism can support agricultural economy.</div><div class="answer"><span class="true-badge">True</span></div></div>
+        <div class="qa-item"><div class="question">3) Successful businessman takes calculated risk.</div><div class="answer"><span class="true-badge">True</span></div></div>
+        <div class="qa-item"><div class="question">4) Entrepreneurship is a full time job requiring dedication.</div><div class="answer"><span class="true-badge">True</span></div></div>
+        <div class="qa-item"><div class="question">5) Startup India is an initiative of Government of France.</div><div class="answer"><span class="false-badge">False</span> Government of India</div></div>
+    </div>
+
+    <div class="card"><h2><i class="fas fa-chart-line"></i> Comparison: Entrepreneur vs Intrapreneur</h2>
+        <div class="resp-table">
+            <table><thead><tr><th>Basis</th><th>Entrepreneur</th><th>Intrapreneur</th></tr></thead>
+            <tbody>
+                <tr><td>Motivation</td><td>Profit & independence</td><td>Salary & recognition</td></tr>
+                <tr><td>Risk</td><td>Personal financial risk</td><td>No personal risk</td></tr>
+                <tr><td>Resources</td><td>Own resources/loans</td><td>Company resources</td></tr>
+                <tr><td>Example</td><td>Founder of Reliance</td><td>Facebook 'Like' button creator</td></tr>
+            </tbody></table>
+        </div>
+    </div>
+
+    <div class="card"><h2><i class="fas fa-seedling"></i> Qualities of Successful Entrepreneur (Top 10)</h2>
+        <div class="insight-grid" style="gap:12px">
+            <div class="insight-card" style="background:#2c9b5e;">Disciplined</div>
+            <div class="insight-card" style="background:#3cb371;">Confidence</div>
+            <div class="insight-card" style="background:#2c9b5e;">Open Minded</div>
+            <div class="insight-card" style="background:#3cb371;">Self Starter</div>
+            <div class="insight-card" style="background:#2c9b5e;">Competitive</div>
+            <div class="insight-card" style="background:#3cb371;">Creativity</div>
+            <div class="insight-card" style="background:#2c9b5e;">Determination</div>
+            <div class="insight-card" style="background:#3cb371;">Strong Communication</div>
+            <div class="insight-card" style="background:#2c9b5e;">Strong Work Ethic</div>
+            <div class="insight-card" style="background:#ffaa33; color:#1e6b3e;">Passion</div>
+        </div>
+    </div>
+
+    <div class="card"><h2><i class="fas fa-hand-holding-usd"></i> StandUp India Scheme (At a glance)</h2>
+        <div class="resp-table">
+            <table><thead><tr><th>Parameter</th><th>Details</th></tr></thead>
+            <tbody>
+                <tr><td>Eligibility</td><td>SC/ST and/or Women entrepreneur (18+), greenfield project</td></tr>
+                <tr><td>Loan Amount</td><td>₹10 lakh to ₹1 Crore</td></tr>
+                <tr><td>Security</td><td>Collateral / Credit Guarantee (CGFSIL)</td></tr>
+                <tr><td>Repayment</td><td>7 years with max 18 months moratorium</td></tr>
+                <tr><td>Interest Rate</td><td>MCLR + 3% + tenor premium</td></tr>
+                <tr><td>Shareholding (non-individual)</td><td>At least 51% by SC/ST/Women</td></tr>
+            </tbody></table>
+        </div>
+    </div>
+
+    <div class="card"><h2><i class="fas fa-tree"></i> Agro Tourism Activities</h2>
+        <div class="qa-item"><div class="question">Outdoor recreation</div><div class="answer">Trekking, fishing, wildlife study, horseback riding</div></div>
+        <div class="qa-item"><div class="question">Educational experiences</div><div class="answer">Farming experiences, rice plantation, chulha cooking</div></div>
+        <div class="qa-item"><div class="question">Entertainment</div><div class="answer">Harvest festivals, Hurda Party (Maharashtra)</div></div>
+        <div class="qa-item"><div class="question">Hospitality & Sales</div><div class="answer">Farm stays, guided tours, u-pick operations, roadside stands</div></div>
+    </div>
+
+    <div class="card"><h2><i class="fas fa-school"></i> Entrepreneurship Development Programme (EDP)</h2>
+        <div class="qa-item"><div class="question">First introduced in</div><div class="answer">Gujarat (1970) by Gujarat Industrial Investment Corporation</div></div>
+        <div class="qa-item"><div class="question">Based on experiments at</div><div class="answer">Kakinanda, Andhra Pradesh (McClelland)</div></div>
+        <div class="qa-item"><div class="question">EDP Steps</div><div class="answer">Infrastructure → Selection → Enterprise identification → Training personnel → Method → Actual training → Monitoring & follow-up</div></div>
+    </div>
+
+    <div class="card"><h2><i class="fas fa-microphone-alt"></i> One Sentence Answers</h2>
+        <div class="qa-item"><div class="question">What is Agro tourism?</div><div class="answer">Bringing urban residents to rural farms for leisure and hands-on farming experience.</div></div>
+        <div class="qa-item"><div class="question">Who is 'Entrepreneur'?</div><div class="answer">A person who starts a business and is willing to risk loss to make money.</div></div>
+        <div class="qa-item"><div class="question">Who described Entrepreneurship as founding of private enterprise?</div><div class="answer">John Stuart Mill (1848).</div></div>
+    </div>
+
+    <div class="card"><h2><i class="fas fa-edit"></i> Correct the underlined word</h2>
+        <div class="qa-item"><div class="question">Entrepreneur comes from German verb entreprendre.</div><div class="answer">French</div></div>
+        <div class="qa-item"><div class="question">Entrepreneurs try to make home a better place for consumers.</div><div class="answer">Market</div></div>
+        <div class="qa-item"><div class="question">StandUp India loan repayable in ten years.</div><div class="answer">Seven</div></div>
+    </div>
+
+    <div class="card"><h2><i class="fas fa-briefcase"></i> Case Study: Soham & Navin</h2>
+        <div class="qa-item"><div class="question">Mr. Soham (MBA) wants dairy farm, Mr. Navin (B.Com) wants cashier job.</div><div class="answer">i) Soham's dream: Entrepreneurship; Navin's dream: Employment. ii) Feature of Entrepreneur: Risk bearing / Innovation. iii) Qualities Soham should have: Self-confidence, determination, passion, communication, discipline.</div></div>
+    </div>
+
+    <div class="card"><h2><i class="fas fa-chalkboard"></i> Justify the statements</h2>
+        <div class="qa-item"><div class="question">Entrepreneurship is best source for self-employment.</div><div class="answer">True — generates own income, creates jobs for others, promotes independence.</div></div>
+        <div class="qa-item"><div class="question">Successful businessman takes calculated risk.</div><div class="answer">True — assesses probability, plans mitigation, doesn't gamble.</div></div>
+        <div class="qa-item"><div class="question">Entrepreneur must be a good communicator.</div><div class="answer">True — essential for dealing with customers, employees, investors.</div></div>
+    </div>
+
+    <div class="footer-note"><i class="fas fa-rocket"></i> Chapter 3: Entrepreneur & Entrepreneurship | 4th Factor of Production | StartUp India (2016) | StandUp India | Agro Tourism | Intrapreneur | 12th Commerce OCM</div>
+</div>
+
+<!-- Translation Popup -->
+<div id="translationPopup" class="popup-overlay">
+    <div class="popup-content">
+        <div class="popup-header"><h3><i class="fas fa-language"></i> अनुवाद / Translation</h3><span class="close-popup" onclick="closePopup()">×</span></div>
+        <div class="popup-body" id="popupBody"></div>
+    </div>
+</div>
+
+<script>
+    // Rich Hindi summary
+    const hindiSummary = `
+        <div style="font-family:Inter">
+            <h3 style="color:#1e6b3e;">📘 उद्यमिता का सारांश (हिंदी)</h3>
+            <p><strong>उद्यमी (Entrepreneur):</strong> वह व्यक्ति जो व्यवसाय शुरू करता है, जोखिम उठाता है और नवाचार करता है। उत्पादन के चौथे कारक के रूप में जाना जाता है।</p>
+            <div class="resp-table"><table style="width:100%"><tr><th>विशेषताएँ</th><th>गुण</th></tr><tr><td>बौद्धिक क्षमता, दूरदर्शिता, कड़ी मेहनत, तकनीकी ज्ञान, संचार कौशल, आशावादी, जोखिम वहन, आत्मविश्वास</td><td>अनुशासित, आत्मविश्वासी, खुला विचार, स्व-प्रेरित, प्रतिस्पर्धी, रचनात्मक, दृढ़ निश्चयी, उत्कट जुनून</td></tr></table></div>
+            <p><strong>📌 प्रमुख पहलें:</strong><br>
+            • <strong>स्टार्टअप इंडिया (2016):</strong> कर छूट, 10,000 करोड़ फंड, पेटेंट शुल्क में कमी, 90 दिनों में बाहर निकलने की सुविधा।<br>
+            • <strong>स्टैंडअप इंडिया:</strong> एससी/एसटी और महिला उद्यमियों को ₹10 लाख से ₹1 करोड़ तक ऋण, 7 साल की अवधि।<br>
+            • <strong>एग्रो टूरिज्म (कृषि पर्यटन):</strong> शहरी लोगों को ग्रामीण क्षेत्रों में लाना, खेतों पर हाथों-हाथ अनुभव।<br>
+            • <strong>इंट्राप्रेन्योर:</strong> कंपनी के भीतर नवाचार करने वाला कर्मचारी (जैसे फेसबुक का Like बटन)।</p>
+            <p><strong>⭐ उद्यमिता विकास कार्यक्रम (EDP)</strong> - पहली बार गुजरात 1970 में। प्रशिक्षण के माध्यम से उद्यमी बनाया जा सकता है।</p>
+        </div>`;
+
+    const marathiSummary = `
+        <div style="font-family:Inter">
+            <h3 style="color:#1e6b3e;">📘 उद्योजकता सारांश (मराठी)</h3>
+            <p><strong>उद्योजक (Entrepreneur):</strong> जो व्यवसाय सुरू करतो, जोखीम पत्करतो, नवकल्पना आणतो. उत्पादनाचा चौथा घटक.</p>
+            <div class="resp-table"><table style="width:100%"><tr><th>वैशिष्ट्ये</th><th>गुणवत्ता</th></tr><tr><td>बौद्धिक क्षमता, दूरदृष्टी, कठोर परिश्रम, तांत्रिक ज्ञान, संपर्क कौशल्य, आशावादी, जोखीम सहनशीलता, आत्मविश्वास</td><td>शिस्तबद्ध, आत्मविश्वासी, मोकळी मनोवृत्ती, स्व-प्रेरित, स्पर्धात्मक, सर्जनशील, दृढनिश्चयी, प्रचंड उत्कटता</td></tr></table></div>
+            <p><strong>📌 अलीकडील उपक्रम:</strong><br>
+            • <strong>स्टार्टअप इंडिया (2016):</strong> कर सवलत, 10,000 कोटी निधी, 90 दिवसांत बाहेर पडण्याची सुविधा.<br>
+            • <strong>स्टँडअप इंडिया:</strong> अनुसूचित जाती/जमाती व महिला उद्योजकांसाठी ₹10 लाख ते ₹1 कोटी कर्ज, 7 वर्षे परतफेड.<br>
+            • <strong>एग्रो टुरिझम:</strong> शहरी लोकांना शेतातील अनुभव, हुरडा पार्टी, शेती पर्यटन.<br>
+            • <strong>इंट्राप्रेन्योर:</strong> कंपनीत राहून नवनिर्मिती करणारा कर्मचारी.</p>
+            <p><strong>⭐ उद्योजकता विकास कार्यक्रम (EDP)</strong> - सर्वप्रथम गुजरात 1970 मध्ये. प्रशिक्षणाद्वारे उद्योजक बनवता येतो.</p>
+        </div>`;
+
+    function showTranslation(lang) {
+        const popup = document.getElementById('translationPopup');
+        const popupBody = document.getElementById('popupBody');
+        if (lang === 'hindi') popupBody.innerHTML = hindiSummary;
+        else popupBody.innerHTML = marathiSummary;
+        popup.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+    function closePopup() {
+        document.getElementById('translationPopup').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+    window.onclick = function(event) {
+        const popup = document.getElementById('translationPopup');
+        if (event.target === popup) closePopup();
+    }
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePopup(); });
+</script>
+</body>
+</html>

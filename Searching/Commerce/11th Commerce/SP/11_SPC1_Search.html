@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>📋 Secretary | 11th SP Chapter 1 | Origin · Features · Importance · Types · Functions · Qualities</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    body {
+      background: linear-gradient(145deg, #f5f0ff, #ede9fe);
+      min-height: 100vh;
+      padding: 24px 18px;
+      color: #4c1d95;
+      overflow-y: scroll;
+      scrollbar-width: thin;
+    }
+    .container { max-width: 1350px; margin: 0 auto; }
+    .heading { text-align: center; margin-bottom: 35px; animation: slideDown 0.5s ease; }
+    .heading h1 {
+      font-size: 2rem;
+      background: linear-gradient(135deg, #5b21b6, #7c3aed, #8b5cf6);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+    }
+    .heading p { color: #5b21b6; margin-top: 10px; font-weight: 700; background: #ffffffcc; display: inline-block; padding: 5px 20px; border-radius: 40px; backdrop-filter: blur(4px);}
+    .rating-star { background: #ddd6fe; border-radius: 60px; padding: 4px 16px; display: inline-block; font-weight: bold; margin-top: 8px; color: #4c1d95; }
+    .search-wrapper { position: relative; margin-bottom: 32px; }
+    .search-box {
+      background: white;
+      border-radius: 60px;
+      padding: 6px 6px 6px 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.12);
+      border: 1px solid #c4b5fd;
+    }
+    .search-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      padding: 15px 0;
+      background: transparent;
+      color: #1f2937;
+      font-weight: 500;
+    }
+    .icon-btn {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(145deg, #7c3aed, #5b21b6);
+      color: white;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: 0.25s;
+      box-shadow: 0 4px 12px rgba(124,58,237,0.4);
+    }
+    .icon-btn:hover { transform: scale(1.05); background: #8b5cf6; }
+    .suggestions-dropdown {
+      position: absolute;
+      top: calc(100% + 12px);
+      left: 0;
+      right: 0;
+      background: white;
+      border-radius: 32px;
+      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.2);
+      z-index: 120;
+      max-height: 280px;
+      overflow-y: auto;
+      display: none;
+      border: 1px solid #c4b5fd;
+    }
+    .suggestion-item {
+      padding: 14px 24px;
+      color: #1f2937;
+      cursor: pointer;
+      border-bottom: 1px solid #ede9fe;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      transition: 0.2s;
+    }
+    .suggestion-item:hover { background: #ede9fe; padding-left: 32px; }
+    .result-container { display: flex; flex-direction: column; gap: 24px; margin-top: 20px; }
+    .result-card {
+      background: white;
+      border-radius: 32px;
+      padding: 1.8rem;
+      color: #1f2937;
+      box-shadow: 0 12px 30px -10px rgba(0,0,0,0.08);
+      transition: 0.25s ease;
+      border: 1px solid #c4b5fd;
+    }
+    .result-card:hover { transform: translateY(-4px); box-shadow: 0 20px 30px -12px rgba(0,0,0,0.12); }
+    .badge {
+      background: #ede9fe;
+      color: #5b21b6;
+      display: inline-block;
+      padding: 5px 16px;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+    .result-card h3 {
+      color: #4c1d95;
+      font-size: 1.35rem;
+      border-left: 6px solid #8b5cf6;
+      padding-left: 18px;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+    .answer-text {
+      background: #f5f0ff;
+      padding: 18px 24px;
+      border-radius: 28px;
+      line-height: 1.7;
+      margin: 12px 0;
+      border: 1px solid #c4b5fd;
+    }
+    .answer-text table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 0.9rem;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .answer-text th, .answer-text td {
+      border: 1px solid #ddd6fe;
+      padding: 10px 12px;
+      text-align: left;
+      background: white;
+    }
+    .answer-text th { background: #7c3aed; color: white; font-weight: 700; }
+    .formula-box {
+      background: #ede9fe;
+      padding: 12px 18px;
+      border-radius: 28px;
+      font-size: 0.95rem;
+      margin: 14px 0;
+      text-align: center;
+      border-left: 6px solid #8b5cf6;
+      font-weight: 600;
+    }
+    .action-buttons { margin-top: 22px; display: flex; gap: 15px; flex-wrap: wrap; }
+    .action-buttons button {
+      border: none;
+      padding: 10px 26px;
+      border-radius: 50px;
+      font-weight: 700;
+      background: #f5f0ff;
+      color: #4c1d95;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .action-buttons button:last-child { background: #8b5cf6; color: white; box-shadow: 0 2px 8px rgba(139,92,246,0.3);}
+    .action-buttons button:hover { transform: scale(0.97); opacity: 0.9; }
+    .not-found {
+      background: #f5f0ff;
+      border-radius: 48px;
+      padding: 2.5rem;
+      text-align: center;
+      font-size: 1.1rem;
+      color: #5b21b6;
+      border: 1px solid #c4b5fd;
+    }
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(10px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    .popup-box {
+      background: white;
+      max-width: 1100px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      border-radius: 48px;
+      padding: 30px 34px;
+      position: relative;
+      color: #1e293b;
+    }
+    .close-popup {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      background: #fee2e2;
+      border: none;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+    .lang-section { background: #f5f0ff; padding: 20px; border-radius: 28px; margin-bottom: 20px; border-left: 5px solid #8b5cf6; }
+    .lang-section h4 { color: #4c1d95; margin-bottom: 12px; font-size: 1.2rem; }
+    .detail-table { width: 100%; border-collapse: collapse; margin: 16px 0; background: white; border-radius: 20px; overflow: hidden; }
+    .detail-table th { background: #7c3aed; color: white; padding: 12px; text-align: left; }
+    .detail-table td { border: 1px solid #ddd6fe; padding: 10px 12px; vertical-align: top; }
+    .ascii-art {
+      background: #0f172a;
+      color: #a78bfa;
+      font-family: monospace;
+      font-size: 12px;
+      padding: 16px;
+      border-radius: 20px;
+      overflow-x: auto;
+      white-space: pre;
+      margin: 16px 0;
+      text-align: center;
+    }
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 650px) {
+      body { padding: 16px 12px; }
+      .heading h1 { font-size: 1.4rem; }
+      .result-card h3 { font-size: 1.1rem; }
+      .result-card { padding: 1.3rem; }
+      .ascii-art { font-size: 9px; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="heading">
+    <h1>📋 Secretary | 11th SP Chapter 1</h1>
+    <p>📌 Origin · Meaning · Features · Importance · Types (Personal & Institutional) · Functions · Qualities · Distinctions</p>
+    <div class="rating-star">⭐ Rating: 10/10 — Complete Secretarial Practice Mastery</div>
+  </div>
+  <div class="search-wrapper">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="🔎 Search: Secretary origin, Features of secretary, Importance of secretary, Personal secretary, Company secretary, Qualities of secretary, Functions of secretary...">
+      <button class="icon-btn" id="voiceBtn">🎤</button>
+    </div>
+    <div id="suggestionsList" class="suggestions-dropdown"></div>
+  </div>
+  <div class="result-container" id="resultsContainer">
+    <div class="not-found">📋 Secretary Explorer — Search: Origin, Meaning, Features, Importance, Types (Personal/Institutional), Functions, Qualities ✨</div>
+  </div>
+</div>
+<div class="popup-overlay" id="popupModal">
+  <div class="popup-box">
+    <button class="close-popup" id="closeModalBtn">✖</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+  const qaDatabase = [];
+  function addQA(question, answer, category, keywords = [], detailedHTML = null) {
+    qaDatabase.push({ id: qaDatabase.length+1, question, answer, category, keywords: keywords.map(k=>k.toLowerCase()), detailedHTML });
+  }
+
+  // ========== CHAPTER 1: SECRETARY (SP) ==========
+  
+  addQA("What is the origin of the word Secretary?",
+    `<strong>Origin of Secretary</strong><br><br>
+     <table class="detail-table">
+        <tr><th>Origin/Source</th><th>Term Used</th><th>Meaning</th></tr>
+        <tr><td>Latin</th><td>Secretarius</th><td>A confidential writer or officer with whom secrets are entrusted by employer</th></tr>
+        <tr><td colspan="2">The word Secretary is derived from Latin word 'Secretarius' (from 'secretum' meaning secrets)</th></tr>
+        <tr><td rowspan="2">Roman Empire</th><td>Scribae</th><td>Professional letter writer or one who maintains confidential records</th></tr>
+        <tr><td colspan="2">Roman times - 'Scribae' was a professional letter writer</th></tr>
+        <tr><td rowspan="3">Ancient Indian History</th><td>Amatya / Sachiva / Chitnis</th><td>A person who does secretarial work</th></tr>
+        <tr><td colspan="2">In Indian history, Secretary was referred to as Amatya, Sachiva or Chitnis</th></tr>
+      </table>
+     <div class="ascii-art">
+   ╔═══════════════════════════════════════════════════════════════╗
+   ║                    ORIGIN OF SECRETARY                        ║
+   ╠═══════════════════════════════════════════════════════════════╣
+   ║   LATIN: Secretarius (confidential writer)                   ║
+   ║         ↓                                                    ║
+   ║   ROMAN: Scribae (professional letter writer)                ║
+   ║         ↓                                                    ║
+   ║   INDIA: Amatya / Sachiva / Chitnis (secretarial work)       ║
+   ║                                                              ║
+   ║   1870: Sir Isaac Pitman founded school for writers         ║
+   ║   1888: Typewriter invented → role of secretary increased    ║
+   ║   1942: National Secretaries Association (USA) created       ║
+   ╚═══════════════════════════════════════════════════════════════╝
+     </div>`,
+    "Origin", ["origin of secretary", "secretarius", "scribae", "amatya"]);
+
+  addQA("What are the features/characteristics of a Secretary?",
+    `<table class="detail-table">
+        <tr><th>#</th><th>Feature</th><th>Description</th></tr>
+        <tr><td colspan="2">1. Individual</th><td>Only an individual can be appointed; firm/institution cannot be secretary</th></tr>
+        <tr><td colspan="2">2. Duties</th><td>Routine & administrative duties: correspondence, meetings, records, legal compliances</th></tr>
+        <tr><td colspan="2">3. Qualification</th><td>As per organization; Company Secretary must be ICSI member</th></tr>
+        <tr><td colspan="2">4. Appointment</th><td>By individuals, professionals, society, corporation, government, joint stock companies</th></tr>
+        <tr><td colspan="2">5. Paid Employee</th><td>Receives salary or honorarium; holds important position</th></tr>
+        <tr><td colspan="2">6. Confidential Officer</th><td>Custodian of secret and confidential information</th></tr>
+        </tr>
+      </table>
+     <div class="formula-box">💡 Key Point: Secretary is a paid employee, confidential officer, and only an individual can be appointed.</div>`,
+    "Features", ["features of secretary", "characteristics of secretary"]);
+
+  addQA("What is the importance of a Secretary? (8 points)",
+    `<table class="detail-table">
+        <tr><th>#</th><th>Importance</th><th>Description</th></tr>
+        <tr><td colspan="2">1. Expert advice and guidance</th><td>Advises superiors, assists in policy decisions, provides able guidance</th></tr>
+        <tr><td colspan="2">2. Administrator</th><td>Looks after routine office administration, handles executive duties</th></tr>
+        <tr><td colspan="2">3. Custodian of secret information</th><td>Has access to confidential information, guards secrets - "confidential officer"</th></tr>
+        <tr><td colspan="2">4. Correspondent</th><td>Responsible for inward/outward correspondence with stakeholders</th></tr>
+        <tr><td colspan="2">5. Legal compliance officer</th><td>Ensures proper legal compliances, maintains statutory books, files returns</th></tr>
+        <tr><td colspan="2">6. Conducting Meetings</th><td>Handles before/during/after meeting formalities (agenda, notices, minutes)</th></tr>
+        <tr><td colspan="2">7. Link between management and staff</th><td>Acts as bridge for effective communication</th></tr>
+        <tr><td colspan="2">8. Secretarial Standards & Audit</th><td>Ensures adherence to legal and procedural requirements</th></tr>
+      </table>`,
+    "Importance", ["importance of secretary", "need of secretary"]);
+
+  addQA("What are the types of Secretary? (5 types)",
+    `<strong>Two Main Categories: Personal Secretary & Institutional Secretary</strong><br><br>
+     <table class="detail-table" border="1" style="border-collapse: collapse; width: 100%;">
+         <thead>
+             <tr style="background-color: #f0f0f0;">
+                 <th style="padding: 10px; text-align: left;">Type</th>
+                 <th style="padding: 10px; text-align: left;">Appointment</th>
+                 <th style="padding: 10px; text-align: left;">Qualification</th>
+                 <th style="padding: 10px; text-align: left;">Legal Status</th>
+             </tr>
+         </thead>
+         <tbody>
+             <tr style="background-color: #e6f3ff;">
+                 <td colspan="4"><strong>1. Personal Secretary</strong> (oldest type)</td>
+             </tr>
+             <tr><td style="padding: 8px;">&nbsp;</td><td colspan="3">Appointed by busy individuals: doctors, lawyers, CA, actors, politicians, ministers</td></tr>
+             <tr><td style="padding: 8px;">&nbsp;</td><td colspan="3">No specific qualification; graduation, language skills, computer knowledge</td></tr>
+             <tr><td style="padding: 8px;">&nbsp;</td><td colspan="3">No legal status</td></tr>
+             
+             <tr style="background-color: #e6f3ff;">
+                 <td colspan="4"><strong>2. Secretary of Non-profit Association</strong></td>
+             </tr>
+             <tr><td style="padding: 8px;">&nbsp;</td><td colspan="3">E.g. Rotary Club, Lions Club, Sports clubs - appointed by managing committee</td></tr>
+             <tr><td style="padding: 8px;">&nbsp;</td><td colspan="3">No prescribed qualification; knowledge of organization's objectives</td></tr>
+             <tr><td style="padding: 8px;">&nbsp;</td><td colspan="3">No legal status</td></tr>
+             
+             <tr style="background-color: #e6f3ff;">
+                 <td colspan="4"><strong>3. Secretary of Co-operative Society</strong></td>
+             </tr>
+             <tr><td style="padding: 8px;">&nbsp;</td><td colspan="3">Elected from managing committee; large scale - full time employee</td></tr>
+             <tr><td style="padding: 8px;">&nbsp;</td><td colspan="3">Graduate; knowledge of Co-operative Societies Act</td></tr>
+             <tr><td style="padding: 8px;">&nbsp;</td><td colspan="3">Has legal status as per Co-operative Societies Act</td></tr>
+             
+             <tr style="background-color: #e6f3ff;">
+                 <td colspan="4"><strong>4. Secretary of Joint Stock Company (Company Secretary)</strong></td>
+             </tr>
+             <tr><td style="padding: 8px;">&nbsp;</td><td colspan="3">Appointed by Board of Directors; KMP as per Companies Act 2013</td></tr>
+             <tr><td style="padding: 8px;">&nbsp;</td><td colspan="3">Must be member of ICSI (Institute of Company Secretaries of India)</td></tr>
+             <tr><td style="padding: 8px;">&nbsp;</td><td colspan="3">Has legal status as per Companies Act 2013</td></tr>
+             
+             <tr style="background-color: #e6f3ff;">
+                 <td colspan="4"><strong>5. Secretary of Government Department</strong></td>
+             </tr>
+             <tr><td style="padding: 8px;">&nbsp;</td><td colspan="3">Appointed by State/Central Government; administrative head of ministry</td></tr>
+             <tr><td style="padding: 8px;">&nbsp;</td><td colspan="3">Graduate; must clear Civil Services Exam (IAS/IFS)</td></tr>
+             <tr><td style="padding: 8px;">&nbsp;</td><td colspan="3">Has legal status</td></tr>
+         </tbody>
+     </table>`,
+    "Types", ["types of secretary", "personal secretary", "company secretary", "institutional secretary"]);
+
+  addQA("What are the functions of a Secretary? (8 functions)",
+    `<table class="detail-table">
+        <tr><th>#</th><th>Function</th><th>Description</th></tr>
+        <tr><td colspan="2">1. Correspondence</th><td>Inward/outward mail, replying to inquiries, maintaining records</th></tr>
+        <tr><td colspan="2">2. Office Management</th><td>Supervises staff, training, promotion, transfer, smooth office routine</th></tr>
+        <tr><td colspan="2">3. Reception Function</th><td>Attends telephone calls, visitors, inquiries, fixes appointments</th></tr>
+        <tr><td colspan="2">4. Financial Functions</th><td>Handles banking transactions, maintains books of accounts, watches receipts/payments</th></tr>
+        <tr><td colspan="2">5. Arranging Meetings</th><td>Drafts notices, agenda, minutes; arranges general/board/committee meetings</th></tr>
+        <tr><td colspan="2">6. Statutory Functions</th><td>Complies with Companies Act, Income Tax Act, GST, Stamp Act, Shop Act</th></tr>
+        <tr><td colspan="2">7. Assistance in Policy Formulation</th><td>Collects statistical data and information for management decisions</th></tr>
+        <tr><td colspan="2">8. Providing Information</th><td>Provides accurate information to management, banks, govt, shareholders, employees</th></tr>
+      </tr>
+     <div class="ascii-art">
+   ┌─────────────────────────────────────────────────────────────┐
+   │              FUNCTIONS OF A SECRETARY (8)                   │
+   ├─────────────────────────────────────────────────────────────┤
+   │  Correspondence → Office Mgt → Reception → Financial        │
+   │  Meetings → Statutory → Policy Help → Information           │
+   └─────────────────────────────────────────────────────────────┘
+     </div>`,
+    "Functions", ["functions of secretary", "duties of secretary"]);
+
+  addQA("What are the qualities of a Secretary? (13 qualities)",
+    `<table class="detail-table">
+        <tr><th>#</th><th>Quality</th><th>Meaning</th></tr>
+        <tr><td colspan="2">1. Accuracy</th><td>Correctness in work (drafting, recording minutes, maintaining records)</th></tr>
+        <tr><td colspan="2">2. Adaptability</th><td>Ability to adjust to changing situations (govt/management policies)</th></tr>
+        <tr><td colspan="2">3. Co-operativeness</th><td>Willingness to assist others; develops team spirit</th></tr>
+        <tr><td colspan="2">4. Courtesy</th><td>Politeness and kindness; creates positive impression</th><tr>
+        <tr><td colspan="2">5. Initiative</th><td>Tendency to take voluntary efforts; decide on behalf of employer</th></tr>
+        <tr><td colspan="2">6. Leadership</th><td>Ability to guide, advise, inspire, motivate subordinates</th></tr>
+        <tr><td colspan="2">7. Loyalty</th><td>Faithfulness; confidential officer should not disclose secrets</th></tr>
+        <tr><td colspan="2">8. Orderliness</th><td>Systematic manner of working; completes work in proper order</th></tr>
+        <tr><td colspan="2">9. Pleasing Personality</th><td>Way of talking, mannerism, good temper, calm approach</th></tr>
+        <tr><td colspan="2">10. Knowledge Seeker</th><td>Updates knowledge as required for statutory functions</th></tr>
+        <tr><td colspan="2">11. Punctuality</th><td>Good time management; doing things at appropriate time</th></tr>
+        <tr><td colspan="2">12. Sound Judgment</th><td>Ability to judge situations and take correct decisions</th></tr>
+        <tr><td colspan="2">13. Tactfulness</th><td>Ability to handle situations in right manner; wise and sensible</th></tr>
+      </table>
+     <div class="ascii-art">
+   ╔═══════════════════════════════════════════════════════════════╗
+   ║              13 QUALITIES OF AN IDEAL SECRETARY               ║
+   ╠═══════════════════════════════════════════════════════════════╣
+   ║  Accuracy │ Adaptability │ Co-operation │ Courtesy │ Initiative║
+   ║  Leadership │ Loyalty │ Orderliness │ Pleasing Personality    ║
+   ║  Knowledge Seeker │ Punctuality │ Sound Judgment │ Tactfulness║
+   ╚═══════════════════════════════════════════════════════════════╝
+     </div>`,
+    "Qualities", ["qualities of secretary", "characteristics of good secretary"]);
+
+  addQA("What is the distinction between Personal Secretary and Company Secretary?",
+    `<table class="detail-table">
+        <tr><th>Basis</th><th>Personal Secretary</th><th>Company Secretary</th></tr>
+        <tr><td>Meaning</th><td>Appointed by busy individuals (doctors, lawyers, politicians)</th><td>Appointed by Joint Stock Company</th></tr>
+        <tr><td>Purpose</th><td>Assist in day-to-day work of employer</th><td>Assist Board of Directors, ensure legal compliance</th></tr>
+        <tr><td>Appointment</th><td>By busy professionals/individuals</th><td>By Board of Directors</th></tr>
+        <tr><td>Legal Status</th><td>No legal status</th><td>Has legal status under Companies Act 2013 (KMP)</th></tr>
+        <tr><td>Qualification</th><td>No specific qualification (graduation, language skills)</th><td>Must be member of ICSI</th></tr>
+        <tr><td>Compulsion</th><td>No compulsion; depends on need</th><td>Compulsory for listed companies & companies with paid-up capital ≥ ₹5 crore</th></tr>
+      </tr>`,
+    "Distinction", ["personal secretary vs company secretary", "difference between secretaries"]);
+
+  addQA("What is the legal status of a Company Secretary as per Companies Act 2013?",
+    `<strong>Company Secretary - Legal Provisions</strong><br><br>
+     <table class="detail-table">
+        <tr><th>Provision</th><th>Details</th></tr>
+        <tr><td colspan="2">Section 2(24) of Companies Act 2013</th></tr>
+        <tr><td colspan="2">"Company Secretary means a Company Secretary as defined in Company Secretaries Act 1980 who is appointed by a company to perform the functions of a Company Secretary under this Act"</th></tr>
+        <tr><td colspan="2">Company Secretaries Act 1980 defines: "a person who is a member of Institute of Company Secretaries of India (ICSI)"</th></tr>
+        <tr><td colspan="2">Section 203: Company Secretary is included in Key Managerial Personnel (KMP)</th></tr>
+        <tr><td colspan="2">Every listed company and all other companies with paid-up capital of ₹5 crore or more must have a full-time Company Secretary</th></tr>
+      </table>
+     <div class="formula-box">💡 ICSI: Institute of Company Secretaries of India - Statutory body under Company Secretaries Act 1980</div>`,
+    "Legal Status", ["company secretary legal status", "icsi", "companies act 2013"]);
+
+  // Search Logic
+  const searchInput = document.getElementById("searchInput");
+  const resultsContainer = document.getElementById("resultsContainer");
+  const suggestionsDiv = document.getElementById("suggestionsList");
+
+  function getMatches(q) {
+    const lower = q.toLowerCase();
+    return qaDatabase.filter(item => 
+      item.question.toLowerCase().includes(lower) || 
+      item.answer.toLowerCase().includes(lower) ||
+      item.category.toLowerCase().includes(lower) ||
+      item.keywords.some(k => k.includes(lower))
+    ).slice(0, 18);
+  }
+
+  function updateSuggestions() {
+    const val = searchInput.value.trim();
+    if(!val) { suggestionsDiv.style.display = "none"; return; }
+    const matches = getMatches(val);
+    if(!matches.length) { suggestionsDiv.style.display = "none"; return; }
+    suggestionsDiv.innerHTML = "";
+    matches.forEach(item => {
+      const div = document.createElement("div");
+      div.className = "suggestion-item";
+      div.innerHTML = `<span>📋</span> <strong>${item.question.substring(0,70)}</strong> <span style="margin-left:auto; background:#ede9fe; padding:2px 12px; border-radius:30px;">${item.category}</span>`;
+      div.addEventListener("click", () => {
+        searchInput.value = item.question;
+        suggestionsDiv.style.display = "none";
+        performSearch(item.question);
+      });
+      suggestionsDiv.appendChild(div);
+    });
+    suggestionsDiv.style.display = "block";
+  }
+
+  function performSearch(q = null) {
+    let query = (q !== null) ? q : searchInput.value.trim();
+    if(!query) { resultsContainer.innerHTML = `<div class="not-found">📋 Search: Origin of secretary, Features, Importance, Types (Personal/Company/Co-op/Govt), Functions, Qualities...</div>`; return; }
+    const matches = getMatches(query);
+    if(!matches.length) { resultsContainer.innerHTML = `<div class="not-found">❌ No results. Try: Secretary origin, Features of secretary, Importance, Personal secretary, Company secretary, Qualities, Functions.</div>`; return; }
+    resultsContainer.innerHTML = "";
+    matches.forEach(item => {
+      const card = document.createElement("div");
+      card.className = "result-card";
+      card.innerHTML = `
+        <div class="badge">📌 ${escapeHtml(item.category)}</div>
+        <h3>📘 ${escapeHtml(item.question)}</h3>
+        <div class="answer-text"><strong>✅ Detailed Answer:</strong><br>${item.answer}</div>
+        <div class="action-buttons">
+          <button class="detailBtn" data-id="${item.id}">🔍 In-Depth Explanation + Visuals</button>
+          <button class="extraTableBtn" data-cat="${item.category}">📊 Quick Reference Tables</button>
+        </div>
+      `;
+      resultsContainer.appendChild(card);
+    });
+    attachEvents(matches);
+  }
+
+  function attachEvents(matchesArray) {
+    document.querySelectorAll(".detailBtn").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const id = parseInt(btn.getAttribute("data-id"));
+        const item = qaDatabase.find(i => i.id === id);
+        if(item) showDetailedModal(item);
+      });
+    });
+    document.querySelectorAll(".extraTableBtn").forEach(btn => {
+      btn.addEventListener("click", () => showQuickTables());
+    });
+  }
+
+  function showDetailedModal(item) {
+    let detailedContent = `
+      <div class="lang-section">
+        <h4>❓ Question</h4>
+        <p style="font-size:1.1rem; font-weight:500;">${escapeHtml(item.question)}</p>
+      </div>
+      <div class="lang-section">
+        <h4>✅ Comprehensive Answer</h4>
+        <div>${item.answer}</div>
+      </div>
+    `;
+    
+    if(item.category === "Origin") {
+      detailedContent += `<div class="lang-section"><h4>📜 Historical Timeline</h4><div class="ascii-art">
+   Roman Era (Scribae) → Medieval → 1870 (Pitman School) → 1888 (Typewriter) → 1942 (NSA) → Today
+   "Administrative Professional's Week" - last week of April
+      </div></div>`;
+    }
+    if(item.category === "Types") {
+      detailedContent += `<div class="lang-section"><h4>🏛️ Hierarchy of Secretaries</h4><div class="ascii-art">
+   ┌─────────────────────────────────────────────────────────┐
+   │                   SECRETARY TYPES                       │
+   ├─────────────────────────────────────────────────────────┤
+   │  PERSONAL          → Individual's assistant            │
+   │  NON-PROFIT        → Rotary, Lions, Clubs              │
+   │  CO-OPERATIVE      → Housing society, Co-op bank       │
+   │  JOINT STOCK       → Company Secretary (ICSI member)    │
+   │  GOVERNMENT        → IAS/IFS, administrative head      │
+   └─────────────────────────────────────────────────────────┘
+      </div></div>`;
+    }
+    if(item.category === "Qualities") {
+      detailedContent += `<div class="lang-section"><h4>🌟 Most Important Qualities</h4><div class="ascii-art">
+   According to experts: Loyalty (faithfulness), Accuracy (correctness), 
+   Punctuality (time sense), and Tactfulness (handling situations) 
+   are considered the most critical qualities of a secretary.
+      </div></div>`;
+    }
+    
+    document.getElementById("popupModal").style.display = "flex";
+    document.getElementById("modalContent").innerHTML = `
+      <h2 style="color:#4c1d95; margin-bottom:20px;">📖 In-Depth Explanation + Visuals</h2>
+      ${detailedContent}
+      <button id="closeDetailModal" style="background:#8b5cf6; padding:10px 26px; border-radius:40px; margin-top:12px; border:none; color:white; cursor:pointer;">Close</button>
+    `;
+    document.getElementById("closeDetailModal").addEventListener("click", () => document.getElementById("popupModal").style.display = "none");
+  }
+
+  function showQuickTables() {
+    let content = `<div class="lang-section"><strong>📚 Chapter 1: Secretary - Quick Reference</strong><br>`;
+    content += `<h4>📋 Types of Secretary at a Glance</h4>
+      <table class="detail-table">
+        <tr><th>Type</th><th>Appointed By</th><th>Qualification</th></tr>
+        <tr><td>Personal Secretary</td><td>Busy individuals (doctors, lawyers, politicians)</td><td>Graduation, language skills</td></tr>
+        <tr><td>Non-profit Association</td><td>Managing committee</td><td>Knowledge of objectives</td></tr>
+        <tr><td>Co-operative Society</td><td>Managing committee</td><td>Graduate + Co-op Act knowledge</td></tr>
+        <tr><td>Joint Stock Company</td><td>Board of Directors</td><td>ICSI Member (CS)</td></tr>
+        <tr><td>Government Department</td><td>State/Central Government</td><td>IAS/IFS (Civil Services)</td></tr>
+      </table>`;
+    content += `<h4>⭐ 13 Qualities of Secretary</h4>
+      <div class="formula-box">Accuracy | Adaptability | Co-operativeness | Courtesy | Initiative | Leadership | Loyalty | Orderliness | Pleasing Personality | Knowledge Seeker | Punctuality | Sound Judgment | Tactfulness</div>`;
+    content += `<div class="formula-box">💡 Key Facts: Secretary derived from Latin 'Secretarius'; ICSI established under Company Secretaries Act 1980; Company Secretary is KMP under Companies Act 2013; Administrative Professional's Week - last week of April.</div>`;
+    document.getElementById("popupModal").style.display = "flex";
+    document.getElementById("modalContent").innerHTML = `<h2 style="color:#4c1d95;">📊 Secretary - Reference Tables</h2>${content}<button id="closeModalInside" style="background:#8b5cf6; margin-top:20px; padding:10px 26px; border-radius:40px; color:white; border:none;">Close</button>`;
+    document.getElementById("closeModalInside").addEventListener("click", () => document.getElementById("popupModal").style.display = "none");
+  }
+
+  function escapeHtml(str) { return str.replace(/[&<>]/g, m => m==='&'?'&amp;': m==='<'?'&lt;':'&gt;'); }
+  function startVoice() { if (!('webkitSpeechRecognition' in window)) { alert("Voice search supported in Chrome/Edge."); return; } const rec = new webkitSpeechRecognition(); rec.lang="en-IN"; rec.start(); rec.onresult = (e)=> { searchInput.value = e.results[0][0].transcript; performSearch(); }; }
+  document.getElementById("voiceBtn").addEventListener("click", startVoice);
+  searchInput.addEventListener("keyup", () => { performSearch(); updateSuggestions(); });
+  searchInput.addEventListener("focus", updateSuggestions);
+  document.addEventListener("click", (e) => { if(!document.querySelector(".search-wrapper").contains(e.target)) suggestionsDiv.style.display = "none"; });
+  document.getElementById("closeModalBtn").addEventListener("click", () => document.getElementById("popupModal").style.display = "none");
+  window.onload = () => { resultsContainer.innerHTML = `<div class="not-found">📋 11th SP Chapter 1: Secretary | Search: Origin of Secretary, Features, Importance, Types (Personal/Company/Co-op/Govt), Functions, Qualities ✨</div>`; };
+</script>
+</body>
+</html>

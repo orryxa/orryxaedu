@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Chapter 4 | Ledger & Trial Balance - Exercise Answers</title>
+  <!-- Google Fonts + Font Awesome 6 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: linear-gradient(135deg, #eef2f9 0%, #e0e8f2 100%);
+      font-family: 'Inter', sans-serif;
+      padding: 32px 24px;
+      color: #0a2b3e;
+      line-height: 1.5;
+    }
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    /* header */
+    .hero {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #0b4b6b, #1f6e93, #2c7da0);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      display: inline-block;
+      padding-bottom: 10px;
+      border-bottom: 4px solid #ffb347;
+      margin-bottom: 16px;
+    }
+    .chapter-badge {
+      background: #0f4c5f20;
+      backdrop-filter: blur(6px);
+      display: inline-block;
+      padding: 6px 24px;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #1b6b8f;
+    }
+    /* card style */
+    .card {
+      background: rgba(255,255,255,0.97);
+      border-radius: 2rem;
+      margin-bottom: 32px;
+      padding: 28px 32px;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid rgba(255,255,255,0.6);
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 25px 40px -14px rgba(0,0,0,0.15);
+    }
+    .card h2 {
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: #135b78;
+      margin-bottom: 28px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid #ffb74d;
+      display: inline-block;
+    }
+    .card h2 i {
+      margin-right: 12px;
+      color: #ff8c42;
+    }
+    /* Q&A blocks */
+    .qa-item {
+      margin-bottom: 22px;
+      border-left: 3px solid #cbdde9;
+      padding-left: 20px;
+    }
+    .question {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #1f4a5e;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .question i {
+      color: #ff8c42;
+      width: 26px;
+    }
+    .answer {
+      background: #f8fafd;
+      padding: 10px 18px;
+      border-radius: 24px;
+      font-weight: 500;
+      color: #216477;
+      font-size: 0.94rem;
+      display: inline-block;
+      max-width: 100%;
+      box-shadow: inset 0 1px 0 #fff, 0 1px 2px rgba(0,0,0,0.02);
+    }
+    .true-badge {
+      background: #e0f2e9;
+      color: #1e6f3f;
+      padding: 3px 14px;
+      border-radius: 40px;
+      font-weight: 700;
+      font-size: 0.75rem;
+      display: inline-block;
+      margin-right: 12px;
+    }
+    .false-badge {
+      background: #ffe8e6;
+      color: #bc4742;
+      padding: 3px 14px;
+      border-radius: 40px;
+      font-weight: 700;
+      font-size: 0.75rem;
+      display: inline-block;
+      margin-right: 12px;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .table-mini {
+      background: #f4f9fe;
+      border-radius: 20px;
+      padding: 14px;
+      font-size: 0.85rem;
+      font-family: monospace;
+      border: 1px solid #cde1ef;
+      overflow-x: auto;
+    }
+    @media (max-width: 768px) {
+      body { padding: 20px 16px; }
+      .card { padding: 20px 18px; }
+      .card h2 { font-size: 1.4rem; }
+      .hero h1 { font-size: 1.8rem; }
+      .qa-item { padding-left: 12px; }
+    }
+    .footer-note {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #bdd4e4;
+      font-size: 0.8rem;
+      color: #2c6f8c;
+    }
+    .highlight {
+      background: #eef3fc;
+      border-radius: 16px;
+      padding: 10px 16px;
+      margin: 12px 0;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+    <h1><i class="fas fa-book-open"></i> Chapter 4 · Ledger & Trial Balance</h1>
+    <div class="chapter-badge"><i class="fas fa-balance-scale"></i> Principal Book of Accounts | Posting | Balancing | Trial Balance</div>
+  </div>
+
+  <!-- ================= Q.1 Answer in one sentence ================= -->
+  <div class="card">
+    <h2><i class="fas fa-question-circle"></i> Q.1 Answer in One Sentence</h2>
+    <div class="qa-item"><div class="question"><i class="fas fa-book"></i> 1) What is Ledger?</div><div class="answer">Ledger is the principal book of accounts that contains all accounts (Assets, Liabilities, Capital, Expenses, Incomes) in a summarized form.</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-exchange-alt"></i> 2) What is ledger posting?</div><div class="answer">Ledger posting is the process of transferring entries from Journal or Subsidiary Books to the respective ledger accounts.</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-chart-line"></i> 3) When does an account show a nil balance?</div><div class="answer">When total of debit side equals total of credit side, the account shows nil balance.</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-hashtag"></i> 4) What is Folio?</div><div class="answer">Folio means page number; Ledger Folio (L.F.) refers to page number of ledger, Journal Folio (J.F.) refers to page number of journal.</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-table"></i> 5) Where is the statement form of ledger A/c used in actual practice?</div><div class="answer">It is used in Bank Passbooks, computerised accounting software, and modern accounting systems.</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-hand-holding-usd"></i> 6) Why Proprietor's Capital account is a liability for the business?</div><div class="answer">Because business is a separate entity and amount invested by proprietor is considered as liability towards the owner.</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-coins"></i> 7) Why does cash account never show a credit balance?</div><div class="answer">Cash balance can never be negative; business cannot pay more cash than it possesses, hence always debit balance.</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-clipboard-list"></i> 8) What is 'Trial Balance'?</div><div class="answer">Trial Balance is a statement of all ledger account balances (debit and credit) prepared to check arithmetical accuracy of books.</div></div>
+  </div>
+
+  <!-- ================= Q.2 One word / term ================= -->
+  <div class="card">
+    <h2><i class="fas fa-tag"></i> Q.2 Write the word/term/phrase</h2>
+    <div class="qa-item"><div class="question">1) Principal Book of accounts.</div><div class="answer">Ledger</div></div>
+    <div class="qa-item"><div class="question">2) Transferring a journal entry to the appropriate accounts in the Ledger.</div><div class="answer">Posting</div></div>
+    <div class="qa-item"><div class="question">3) Page number of Ledger to which an entry is posted.</div><div class="answer">Ledger Folio (L.F.)</div></div>
+    <div class="qa-item"><div class="question">4) The process of extracting the balance and inserting it on lesser side of an account.</div><div class="answer">Balancing</div></div>
+    <div class="qa-item"><div class="question">5) A debit balance to Personal Accounts.</div><div class="answer">Debtor</div></div>
+    <div class="qa-item"><div class="question">6) A credit balance to Bank Account.</div><div class="answer">Overdraft (or credit balance as per bank statement)</div></div>
+    <div class="qa-item"><div class="question">7) An account to be debited for goods damaged by fire.</div><div class="answer">Loss by Fire A/c</div></div>
+    <div class="qa-item"><div class="question">8) A Trial Balance in which only net balances of all ledger accounts are transferred.</div><div class="answer">Net Trial Balance</div></div>
+  </div>
+
+  <!-- ================= Q.3 MCQs ================= -->
+  <div class="card">
+    <h2><i class="fas fa-check-square"></i> Q.3 Select the most appropriate alternative</h2>
+    <div class="qa-item"><div class="question">1) In case of a credit transaction one of the account must be a _______ account.</div><div class="answer">c) Personal</div></div>
+    <div class="qa-item"><div class="question">2) c/d indicates _______ balance.</div><div class="answer">b) Closing</div></div>
+    <div class="qa-item"><div class="question">3) _______ column of ledger is used for writing page number of Journal.</div><div class="answer">a) J.F.</div></div>
+    <div class="qa-item"><div class="question">4) Debtors Account shows _______ balance.</div><div class="answer">d) Debit</div></div>
+    <div class="qa-item"><div class="question">5) _______ is the process of deriving the difference between totals of debit and credit side of each ledger a/c.</div><div class="answer">c) Balancing</div></div>
+    <div class="qa-item"><div class="question">6) Total of Purchase book is _______ to Purchase Account.</div><div class="answer">a) posted</div></div>
+    <div class="qa-item"><div class="question">7) Real account always shows _______ balance.</div><div class="answer">c) debit</div></div>
+    <div class="qa-item"><div class="question">8) _______ is prepared to test arithmetical accuracy of Books of Accounts.</div><div class="answer">a) Trial Balance</div></div>
+  </div>
+
+  <!-- ================= Q.4 True False with reasons ================= -->
+  <div class="card">
+    <h2><i class="fas fa-gavel"></i> Q.4 State True or False with reasons</h2>
+    <div class="qa-item"><div class="question">1) Ledger is a book of Original Entry.</div><div class="answer"><span class="false-badge">False</span> Ledger is the book of final entry; Journal is the book of original entry.</div></div>
+    <div class="qa-item"><div class="question">2) The process of recording a transaction in the Journal is called Posting.</div><div class="answer"><span class="false-badge">False</span> Recording in Journal is called Journalising; transferring to Ledger is Posting.</div></div>
+    <div class="qa-item"><div class="question">3) A cash withdrawal from business by the trader should be credited to Drawings A/c.</div><div class="answer"><span class="false-badge">False</span> Drawings A/c is debited; Cash/Bank A/c is credited.</div></div>
+    <div class="qa-item"><div class="question">4) Balances of Nominal Accounts are carried forward to the next year.</div><div class="answer"><span class="false-badge">False</span> Nominal accounts are closed by transferring to Trading/P&L A/c at year end.</div></div>
+    <div class="qa-item"><div class="question">5) When debit side of an account is greater than the credit side, the account shows a debit balance.</div><div class="answer"><span class="true-badge">True</span> Debit balance = total debits exceed total credits.</div></div>
+    <div class="qa-item"><div class="question">6) The name of an account written on top of each account is called 'Head of Account'.</div><div class="answer"><span class="true-badge">True</span> Example: Cash A/c, Capital A/c are heads.</div></div>
+    <div class="qa-item"><div class="question">7) Agreement of Trial Balance always proves accounting accuracy.</div><div class="answer"><span class="false-badge">False</span> It proves arithmetical accuracy but not all errors (e.g., compensating errors).</div></div>
+    <div class="qa-item"><div class="question">8) Trial balance is based on the double entry principle that for every debit there is equal amount of corresponding credit.</div><div class="answer"><span class="true-badge">True</span> Trial balance verifies this equality.</div></div>
+  </div>
+
+  <!-- ================= Q.5 Fill in the blanks ================= -->
+  <div class="card">
+    <h2><i class="fas fa-edit"></i> Q.5 Fill in the blanks</h2>
+    <div class="qa-item"><div class="question">1) _______ balance on Nominal Account shows expenses or loss.</div><div class="answer">Debit</div></div>
+    <div class="qa-item"><div class="question">2) Cash account always shows _______ balance.</div><div class="answer">debit</div></div>
+    <div class="qa-item"><div class="question">3) The right hand side of an account is called _______ side.</div><div class="answer">Credit</div></div>
+    <div class="qa-item"><div class="question">4) Creditors shows _______ balance.</div><div class="answer">credit</div></div>
+    <div class="qa-item"><div class="question">5) _______ accounts are closed by transferring its balances to Profit and Loss Account.</div><div class="answer">Nominal</div></div>
+    <div class="qa-item"><div class="question">6) 'b/d' means _______.</div><div class="answer">brought down (or brought forward)</div></div>
+    <div class="qa-item"><div class="question">7) Rent paid for the residential quarter will be debited to _______ account.</div><div class="answer">Drawings</div></div>
+    <div class="qa-item"><div class="question">8) Sold goods of ₹ 24,000 at 20% Profit on cost, the purchase price of the goods is _______.</div><div class="answer">₹20,000 (Cost = 24,000 × 100/120)</div></div>
+  </div>
+
+  <!-- ================= Q.6 Complete the table ================= -->
+  <div class="card">
+    <h2><i class="fas fa-table"></i> Q.6 Complete the following table</h2>
+    <div class="grid-2">
+      <div class="table-mini"><strong>Journal → Journalising → ?</strong><br>Answer: Posting (to Ledger)</div>
+      <div class="table-mini"><strong>Sales Return → Return Inward → Purchase Return → ?</strong><br>Answer: Return Outward</div>
+      <div class="table-mini"><strong>L.F. → Journal → ? → Ledger</strong><br>Answer: Folio reference (J.F. in Ledger)</div>
+      <div class="table-mini"><strong>Assets → Debit Balance → Liabilities → ?</strong><br>Answer: Credit Balance</div>
+      <div class="table-mini"><strong>Land & Building → Real Account → Commission Received → ?</strong><br>Answer: Nominal Account</div>
+    </div>
+  </div>
+
+  <!-- ================= Q.7 Nature of balance (mark) - represented as list ================= -->
+  <div class="card">
+    <h2><i class="fas fa-chart-simple"></i> Q.7 Nature of balance (Debit/Credit)</h2>
+    <div class="grid-2">
+      <div class="table-mini">Cash A/c → <strong>Debit</strong></div>
+      <div class="table-mini">Bank A/c (favourable) → <strong>Debit</strong></div>
+      <div class="table-mini">Capital A/c → <strong>Credit</strong></div>
+      <div class="table-mini">Sales A/c → <strong>Credit</strong></div>
+      <div class="table-mini">Purchases A/c → <strong>Debit</strong></div>
+      <div class="table-mini">Rent A/c → <strong>Debit</strong></div>
+      <div class="table-mini">Commission Received A/c → <strong>Credit</strong></div>
+      <div class="table-mini">Sundry Creditors → <strong>Credit</strong></div>
+      <div class="table-mini">Sundry Debtors → <strong>Debit</strong></div>
+      <div class="table-mini">Furniture A/c → <strong>Debit</strong></div>
+      <div class="table-mini">Bank Loan A/c → <strong>Credit</strong></div>
+      <div class="table-mini">Discount Allowed → <strong>Debit</strong></div>
+    </div>
+  </div>
+
+  <!-- ================= Practical Illustration: Trial Balance Example ================= -->
+  <div class="card">
+    <h2><i class="fas fa-calculator"></i> Illustration: Trial Balance as on 31st March 2019 (Based on Q.13 style)</h2>
+    <div class="table-mini" style="overflow-x:auto;">
+      <table style="width:100%; border-collapse:collapse; font-size:0.85rem;">
+        <thead><tr style="background:#e0eaf5;"><th>Debit Balances</th><th>₹</th><th>Credit Balances</th><th>₹</th></tr></thead>
+        <tbody>
+          <tr><td>Cash A/c</td><td>34,000</td><td>Virat's Capital A/c</td><td>67,000</td></tr>
+          <tr><td>Bank of India A/c</td><td>3,000</td><td>Rohit A/c</td><td>9,000</td></tr>
+          <tr><td>Furniture A/c</td><td>30,000</td><td>Sales A/c</td><td>4,750</td></tr>
+          <tr><td>Purchases A/c</td><td>9,000</td><td>Commission A/c</td><td>200</td></tr>
+          <tr><td>Sunil A/c</td><td>4,750</td><td>Discount Received A/c</td><td>500</td></tr>
+          <tr><td>Printing Expenses A/c</td><td>200</td><td></td><td></td></tr>
+          <tr><td>Advertisement A/c</td><td>500</td><td></td><td></td></tr>
+          <tr><td><strong>Total</strong></td><td><strong>81,450</strong></td><td><strong>Total</strong></td><td><strong>81,450</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="highlight"><i class="fas fa-lightbulb"></i> Trial balance confirms arithmetical accuracy: total debits = total credits.</div>
+  </div>
+
+  <!-- ================= Activity: Cash Account only (from Q.4 style) ================= -->
+  <div class="card">
+    <h2><i class="fas fa-coins"></i> Practical: Prepare Cash A/c (July 2019 transactions)</h2>
+    <div class="table-mini">
+      <strong>Cash Account (Dr.)</strong><br>
+      To Balance b/d 15,000 | To Sales A/c 3,000 (Amar) | To Bad Debts Recovered 950 | To Cash (ATM office) 5,000 <br>
+      <strong>Credit side:</strong> By Purchases (after 10% disc) 8,100 | By Stationery 550 | By Abhiram settlement 2,850 | By Drawings (personal) 3,000 | By Balance c/d ... <br>
+      <em>Note: Full working in ledger format.</em>
+    </div>
+  </div>
+
+  <!-- ================= Q.8 Journal entries from posting (reverse engineering) ================= -->
+  <div class="card">
+    <h2><i class="fas fa-code-branch"></i> Q.8 Give Journal entries from posting (Sopan's ledger)</h2>
+    <div class="qa-item"><div class="question">From Cash A/c (Feb 3: To Sales A/c 700)</div><div class="answer">Journal: Cash A/c Dr. 700 → To Sales A/c 700</div></div>
+    <div class="qa-item"><div class="question">From Cash A/c (Feb 6: To Interest A/c 600)</div><div class="answer">Cash A/c Dr. 600 → To Interest A/c 600</div></div>
+    <div class="qa-item"><div class="question">From Cash A/c (Feb 8: To Jayashree's A/c 1,500)</div><div class="answer">Cash A/c Dr. 1,500 → To Jayashree A/c 1,500</div></div>
+    <div class="qa-item"><div class="question">From Purchases A/c (Feb 9: To Cash A/c 800)</div><div class="answer">Purchases A/c Dr. 800 → To Cash A/c 800</div></div>
+    <div class="qa-item"><div class="question">From Jayashree's A/c (Feb 15: To Sales A/c 5,000)</div><div class="answer">Jayashree's A/c Dr. 5,000 → To Sales A/c 5,000</div></div>
+  </div>
+
+  <!-- ================= Q.9 Ledger posting from Subsidiary Books ================= -->
+  <div class="card">
+    <h2><i class="fas fa-book"></i> Ledger posting from Purchase Book (Oct 2019)</h2>
+    <div class="table-mini">
+      <strong>Purchases A/c (Dr.)</strong><br>To Sundries as per Purchase Book ₹21,300<br><br>
+      <strong>Amol A/c (Cr.)</strong><br>By Purchases A/c ₹7,500<br>
+      <strong>Aishwarya A/c (Cr.)</strong><br>By Purchases A/c ₹2,400<br>
+      <strong>Vivek A/c (Cr.)</strong><br>By Purchases A/c ₹3,900<br>
+      <strong>Sheth A/c (Cr.)</strong><br>By Purchases A/c ₹6,500<br>
+      <strong>Shabari A/c (Cr.)</strong><br>By Purchases A/c ₹1,000
+    </div>
+  </div>
+
+  <!-- ================= Q.10 Compute missing amounts (Activity 3 style) ================= -->
+  <div class="card">
+    <h2><i class="fas fa-puzzle-piece"></i> Activity: Find missing amounts (Ledger balancing)</h2>
+    <div class="qa-item"><div class="question">Given totals Dr. side 1,62,000; Cr. side 1,62,000. Missing: Return Inward on Mar 6, Return Outward on Mar 25.</div><div class="answer">Return Inward = 2,000 ; Return Outward = 3,000 (balancing figures). Mahesh is Debtor on 31st March (Debit balance).</div></div>
+  </div>
+
+  <!-- ================= Additional Points: Balancing rules summary ================= -->
+  <div class="card">
+    <h2><i class="fas fa-balance-scale"></i> Important: Balancing of Ledger Accounts</h2>
+    <div class="qa-item"><div class="question">Personal Account balance</div><div class="answer">Debit balance = Debtor; Credit balance = Creditor</div></div>
+    <div class="qa-item"><div class="question">Real Account balance</div><div class="answer">Always Debit balance (assets)</div></div>
+    <div class="qa-item"><div class="question">Nominal Account balance</div><div class="answer">Debit balance = Expenses/Losses; Credit balance = Incomes/Gains (transferred to P&L)</div></div>
+    <div class="qa-item"><div class="question">c/d vs b/d</div><div class="answer">c/d = carried down (closing); b/d = brought down (opening balance next period)</div></div>
+  </div>
+
+  <div class="footer-note">
+    <i class="fas fa-balance-scale"></i> Ledger: The heart of Double Entry | Trial Balance: Proof of arithmetical accuracy
+  </div>
+</div>
+</body>
+</html>

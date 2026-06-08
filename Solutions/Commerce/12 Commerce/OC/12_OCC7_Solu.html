@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Chapter 7 | Consumer Protection - Complete Q.1 to Q.8 | 12th Commerce OCM</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #fef9f0 0%, #fdf3e0 100%);
+            font-family: 'Inter', sans-serif;
+            padding: 32px 24px;
+            color: #3d2b1a;
+            line-height: 1.5;
+        }
+        .container { max-width: 1400px; margin: 0 auto; }
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 40px;
+            background: linear-gradient(145deg, #ffffff, #fffaf0);
+            padding: 35px 20px;
+            border-radius: 2rem;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+            border-left: 8px solid #ff8c42;
+            border-right: 8px solid #ff8c42;
+        }
+        .hero h1 {
+            font-size: 2.5rem; font-weight: 800;
+            background: linear-gradient(135deg, #c45c1a, #e87c2a, #ff9b4a);
+            background-clip: text; -webkit-background-clip: text; color: transparent;
+        }
+        .hero p { color: #c45c1a; font-weight: 500; margin-top: 12px; }
+        
+        .section-card {
+            background: white;
+            border-radius: 1.8rem;
+            margin-bottom: 32px;
+            padding: 28px 32px;
+            box-shadow: 0 15px 30px -12px rgba(0,0,0,0.08);
+            border: 1px solid rgba(232,124,42,0.2);
+            transition: transform 0.2s;
+        }
+        .section-card:hover { transform: translateY(-2px); }
+        
+        .section-title {
+            font-size: 1.7rem; font-weight: 800; color: #c45c1a;
+            border-left: 6px solid #ffaa33;
+            padding-left: 20px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .section-title i { color: #ff8c42; font-size: 1.7rem; }
+        
+        .sub-title {
+            font-size: 1.3rem; font-weight: 700; color: #e87c2a;
+            margin: 25px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #ffaa33;
+            display: inline-block;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .data-table th {
+            background: linear-gradient(105deg, #c45c1a, #e87c2a);
+            color: white;
+            padding: 14px 12px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        .data-table td {
+            border: 1px solid #f0e0cc;
+            padding: 12px;
+            vertical-align: top;
+            background-color: #fff;
+        }
+        .data-table tr:hover td { background-color: #fffaf5; }
+        
+        .answer-box {
+            background: #fff7ec;
+            padding: 16px 20px;
+            border-radius: 1rem;
+            margin: 15px 0;
+            border-left: 4px solid #ff8c42;
+        }
+        .answer-box p { margin-bottom: 8px; }
+        .answer-box strong { color: #c45c1a; }
+        
+        .qa-item {
+            margin-bottom: 24px;
+            border-left: 3px solid #f0dcc0;
+            padding-left: 20px;
+        }
+        .question {
+            font-weight: 700;
+            color: #c45c1a;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+        .answer-inline {
+            background: #fff7ec;
+            padding: 8px 16px;
+            border-radius: 28px;
+            display: inline-block;
+            font-weight: 500;
+            color: #c45c1a;
+        }
+        .true-badge {
+            background: #e0f2e9;
+            color: #1e6f3f;
+            padding: 4px 16px;
+            border-radius: 40px;
+            font-weight: 700;
+            display: inline-block;
+        }
+        .false-badge {
+            background: #ffe8e6;
+            color: #bc4742;
+            padding: 4px 16px;
+            border-radius: 40px;
+            font-weight: 700;
+            display: inline-block;
+        }
+        .rights-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .right-card {
+            background: linear-gradient(145deg, #fff7ec, #ffefdc);
+            border-radius: 1rem;
+            padding: 15px;
+            flex: 1;
+            min-width: 180px;
+            text-align: center;
+            border: 1px solid #ffd6a5;
+        }
+        .right-card i { font-size: 2rem; color: #e87c2a; margin-bottom: 10px; display: block; }
+        .footer-note {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #f0dcc0;
+            color: #c45c1a;
+            font-size: 0.85rem;
+        }
+        @media (max-width: 768px) {
+            body { padding: 20px 16px; }
+            .section-card { padding: 20px 18px; }
+            .section-title { font-size: 1.3rem; }
+            .data-table th, .data-table td { font-size: 0.75rem; padding: 8px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="hero">
+        <h1><i class="fas fa-user-shield"></i> Chapter 7 · Consumer Protection</h1>
+        <p>Consumer Rights & Responsibilities | Consumer Protection Act 2019 | District/State/National Commission | 3-Tier Quasi-Judicial Machinery</p>
+    </div>
+
+    <!-- Gandhi Quote Banner -->
+    <div class="section-card" style="background: linear-gradient(145deg, #fff0e0, #ffe8d4); text-align: center;">
+        <i class="fas fa-quote-left" style="font-size: 2rem; color: #c45c1a; opacity: 0.5;"></i>
+        <p style="font-size: 1rem; font-style: italic; color: #5a3a1a;">"A consumer is the most important visitor in our premises. He is not dependent on us. We are dependent on him. He is not an interruption in our work; he is the purpose of it."</p>
+        <p style="font-weight: bold; color: #c45c1a;">- Mahatma Gandhi</p>
+    </div>
+
+    <!-- ================= Q.1 (A) ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-check-circle"></i> Q.1 (A) Select the correct option and rewrite the sentence</div>
+        <div class="qa-item"><div class="question">1) In India, the Consumer Protection Act was initiated in the year ______.</div><div class="answer-inline">c) 1986</div></div>
+        <div class="qa-item"><div class="question">2) The President of District Commission is a ______.</div><div class="answer-inline">a) District Judge</div></div>
+        <div class="qa-item"><div class="question">3) The main objective of the consumer organization is to protect the interest of the ______.</div><div class="answer-inline">a) Consumer</div></div>
+        <div class="qa-item"><div class="question">4) ______ is the highest authority to settle the consumer dispute under Act.</div><div class="answer-inline">b) National Commission</div></div>
+        <div class="qa-item"><div class="question">5) The Government has established ______ to settle consumer disputes by compromise.</div><div class="answer-inline">Lok Adalat</div></div>
+        <div class="qa-item"><div class="question">6) National Commission has ______ members.</div><div class="answer-inline">c) 4</div></div>
+        <div class="qa-item"><div class="question">7) District Commission entertains complaints of consumer for compensation which is less than ______.</div><div class="answer-inline">a) one crore</div></div>
+        <div class="qa-item"><div class="question">8) ______ is celebrated as World Consumer Day.</div><div class="answer-inline">c) 15th March</div></div>
+        <div class="qa-item"><div class="question">9) In modern competitive market, consumer is regarded as the ______.</div><div class="answer-inline">a) king</div></div>
+    </div>
+
+    <!-- ================= Q.1 (B) Match Pairs ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-link"></i> Q.1 (B) Match the pairs</div>
+        <table class="data-table">
+            <thead><tr><th>Group A</th><th>Answer</th><th>Group B</th></tr></thead>
+            <tbody>
+                <tr><td>A) King of the market</div></div></td><td>→</div></div><td>5) Consumer</div></div></tr>
+                <tr><td>B) National Commission</div></div></td><td>→</div></div><td>3) Exceeds Rs. ten crore</div></div></tr>
+                <tr><td>C) Mumbai Grahak Panchayat</div></div></td><td>→</div></div><td>4) Non Government Organisation</div></div></tr>
+                <tr><td>D) Sale of Goods Act</div></div></td><td>→</div></div><td>1) 1930</div></div></tr>
+                <tr><td>E) Consumer Right</div></div></td><td>→</div></div><td>10) Right to information</div></div></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ================= Q.1 (C) One Word ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-tag"></i> Q.1 (C) Give one word/phrase/term</div>
+        <div class="qa-item"><div class="question">1) Commission which entertains case where value of goods/services does not exceed Rs. one crore.</div><div class="answer-inline">District Commission</div></div>
+        <div class="qa-item"><div class="question">2) Legal action initiated in a court regarding matter of general public interest.</div><div class="answer-inline">Public Interest Litigation (Janhit Yachika)</div></div>
+        <div class="qa-item"><div class="question">3) Organizations which aim at promoting welfare of people.</div><div class="answer-inline">Non-Government Organizations (NGOs)</div></div>
+        <div class="qa-item"><div class="question">4) Right of consumer about safety and protection to his life and health.</div><div class="answer-inline">Right to Safety</div></div>
+        <div class="qa-item"><div class="question">5) One who consumes or uses any commodity or service.</div><div class="answer-inline">Consumer</div></div>
+    </div>
+
+    <!-- ================= Q.1 (D) True/False ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-gavel"></i> Q.1 (D) State True or False</div>
+        <div class="qa-item"><div class="question">1) The seller has to recognize the rights of Consumer.</div><div class="answer-inline"><span class="true-badge">True</span></div></div>
+        <div class="qa-item"><div class="question">2) Consumer Protection Act provides protection to the producer.</div><div class="answer-inline"><span class="false-badge">False</span> (Provides protection to consumer)</div></div>
+        <div class="qa-item"><div class="question">3) Consumer Protection Act is not required in India.</div><div class="answer-inline"><span class="false-badge">False</span> (It is very much required)</div></div>
+        <div class="qa-item"><div class="question">4) Lok Adalat can rightly be described as "People's Court".</div><div class="answer-inline"><span class="true-badge">True</span></div></div>
+        <div class="qa-item"><div class="question">5) Consumer, being the king of market, does not have any responsibility.</div><div class="answer-inline"><span class="false-badge">False</span> (Consumers have many responsibilities)</div></div>
+    </div>
+
+    <!-- ================= Q.1 (E) Odd One ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-puzzle-piece"></i> Q.1 (E) Find the odd one</div>
+        <div class="qa-item"><div class="question">1) District Commission, State Commission, NGO, National Commission</div><div class="answer-inline">NGO (Others are redressal forums)</div></div>
+        <div class="qa-item"><div class="question">2) District Judge, High Court Judge, Commissioner, Supreme Court Judge</div><div class="answer-inline">Commissioner (Others are judicial positions)</div></div>
+    </div>
+
+    <!-- ================= Q.1 (F) Complete Sentences ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-language"></i> Q.1 (F) Complete the sentences</div>
+        <div class="qa-item"><div class="question">1) National Commission is to be established by ______ Government.</div><div class="answer-inline">Central</div></div>
+        <div class="qa-item"><div class="question">2) Any person who does not agree with the decision of District Commission can appeal to the ______.</div><div class="answer-inline">State Commission</div></div>
+        <div class="qa-item"><div class="question">3) State commission has ______ members.</div><div class="answer-inline">four</div></div>
+        <div class="qa-item"><div class="question">4) The President of National Commission is ______ judge.</div><div class="answer-inline">Supreme Court</div></div>
+        <div class="qa-item"><div class="question">5) National Commission entertains complaints of consumer for compensation that exceeds Rs. ______.</div><div class="answer-inline">ten crore</div></div>
+        <div class="qa-item"><div class="question">6) The Consumer Protection Act established ______ tier quasi judicial system for consumer protection.</div><div class="answer-inline">three</div></div>
+    </div>
+
+    <!-- ================= Q.1 (G) Table Completion ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-table"></i> Q.1 (G) Select correct option and complete the table</div>
+        <table class="data-table">
+            <thead><tr><th>Group A</th><th>Answer</th><th>Group B</th></tr></thead>
+            <tbody>
+                <tr><td>1) Amount of compensation in District Commission</div></div></td><td>→</div></div><td>does not exceeds Rs. one crore</div></div></tr>
+                <tr><td>2) President of State Commission</div></div></td><td>→</div></div><td>High Court Judge</div></div></tr>
+                <tr><td>3) Consumer Protection Act</div></div></td><td>→</div></div><td>2019</div></div></tr>
+                <tr><td>4) Non-profit and non political organisation</div></div></td><td>→</div></div><td>Consumer Organisations</div></div></tr>
+                <tr><td>5) Members of National Commission</div></div></td><td>→</div></div><td>Four</div></div></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ================= Q.1 (H) One Sentence ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-question-circle"></i> Q.1 (H) Answer in one sentence</div>
+        <div class="qa-item"><div class="question">1) When do we observe National Consumer's Day?</div><div class="answer-box">National Consumer's Day is observed on <strong>24th December</strong> every year in India.</div></div>
+        <div class="qa-item"><div class="question">2) Who is consumer?</div><div class="answer-box">A consumer is any person who buys any goods or hires any service for a consideration which has been paid or promised.</div></div>
+        <div class="qa-item"><div class="question">3) What information one should check before buying a product?</div><div class="answer-box">One should check price, name of manufacturer, date of manufacture, expiry date, batch number, user manual, safety instructions, and quality marks like ISI, AGMARK, Hallmark.</div></div>
+        <div class="qa-item"><div class="question">4) Which forum is set up at national level for redressal of consumer complaints?</div><div class="answer-box">The <strong>National Commission (National Consumer Disputes Redressal Commission)</strong> is set up at national level.</div></div>
+        <div class="qa-item"><div class="question">5) Who shall be appointed as president of National Commission?</div><div class="answer-box">A person who is or has been a Judge of the <strong>Supreme Court</strong> shall be appointed as President of National Commission.</div></div>
+        <div class="qa-item"><div class="question">6) When do we observe World Consumer's Rights Day?</div><div class="answer-box">World Consumer Rights Day is observed on <strong>15th March</strong> every year.</div></div>
+    </div>
+
+    <!-- ================= Q.1 (I) Arrange Order ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-sort-amount-down"></i> Q.1 (I) Arrange in proper order</div>
+        <div class="qa-item"><div class="question">1) National Commission, District Commission, State Commission</div><div class="answer-inline">District Commission → State Commission → National Commission</div></div>
+        <div class="qa-item"><div class="question">2) District Judge, Supreme Court Judge, High Court Judge</div><div class="answer-inline">District Judge → High Court Judge → Supreme Court Judge</div></div>
+    </div>
+
+    <!-- ================= Q.1 (J) Correct Underlined ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-edit"></i> Q.1 (J) Correct the underlined word and rewrite</div>
+        <div class="qa-item"><div class="question">1) An appeal can be filed against the order of the National Commission to the <u>State</u> forum.</div><div class="answer-inline">Supreme Court</div></div>
+        <div class="qa-item"><div class="question">2) National Commission is established by the <u>State</u> Government.</div><div class="answer-inline">Central</div></div>
+        <div class="qa-item"><div class="question">3) <u>District Commission</u> is also referred as People's Court.</div><div class="answer-inline">Lok Adalat</div></div>
+        <div class="qa-item"><div class="question">4) In India, <u>sellers</u> are widely dispersed and are not united.</div><div class="answer-inline">Consumers</div></div>
+        <div class="qa-item"><div class="question">5) <u>National Commission</u> entertains complaints where value does not exceed Rs. one crore.</div><div class="answer-inline">District Commission</div></div>
+    </div>
+
+    <!-- ================= Q.2 Explain Terms ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-chalkboard-teacher"></i> Q.2 Explain the following terms/concepts</div>
+        <div class="qa-item"><div class="question">1) District Commission</div><div class="answer-box"><strong>District Commission:</strong> Consumer dispute redressal forum at district level established by State Government. <strong>Composition:</strong> President (District Judge) + 2+ members. <strong>Monetary Jurisdiction:</strong> Value ≤ ₹1 crore. <strong>Appeal:</strong> To State Commission within 45 days.</div></div>
+        <div class="qa-item"><div class="question">2) National Commission</div><div class="answer-box"><strong>National Commission:</strong> Apex consumer dispute redressal forum at national level established by Central Government. <strong>Composition:</strong> President (Supreme Court Judge) + 4+ members. <strong>Monetary Jurisdiction:</strong> Value > ₹10 crore. <strong>Appeal:</strong> To Supreme Court within 30 days.</div></div>
+        <div class="qa-item"><div class="question">3) State Commission</div><div class="answer-box"><strong>State Commission:</strong> Consumer dispute redressal forum at state level established by State Government. <strong>Composition:</strong> President (High Court Judge) + 4+ members. <strong>Monetary Jurisdiction:</strong> ₹1 crore < value ≤ ₹10 crore. <strong>Appeal:</strong> To National Commission within 30 days.</div></div>
+        <div class="qa-item"><div class="question">4) Lok Adalat</div><div class="answer-box"><strong>Lok Adalat (People's Court):</strong> Effective and economical system for quick redressal of public grievances. Disputes settled by compromise. Decisions get statutory recognition. Example: MSEDCL, MSRTC, Banks organize regular Lok Adalats.</div></div>
+        <div class="qa-item"><div class="question">5) Janhit Yachika (Public Interest Litigation)</div><div class="answer-box"><strong>PIL:</strong> Legal action initiated in court regarding matter of general public interest. Any person can approach court in interest of society. Provides legal remedy to unrepresented groups. Filed in High Court or Supreme Court.</div></div>
+    </div>
+
+    <!-- ================= Q.3 Case Study ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-briefcase"></i> Q.3 Study the case/situation and express your opinion</div>
+        
+        <div class="qa-item"><div class="question">1) Mr. Ashok forced to buy bigger size shoes; shopkeeper refused to replace despite stock.</div>
+        <div class="answer-box">i) Right violated: <strong>Right to Choose</strong><br>ii) Comment: Right to Choose gives consumer freedom to select article as per requirement, liking, purchasing capacity. Seller cannot compel consumer to buy particular product. Here salesman forced bigger size shoes, violating this right.<br>iii) Complaint filing: Mr. Ashok can file complaint in <strong>District Commission</strong> (value ₹700 &lt; ₹1 crore).</div></div>
+        
+        <div class="qa-item"><div class="question">2) Mrs. Meera bought washing machine worth ₹50,000 without cash memo; defect after 1.5 years; company refused repair.</div>
+        <div class="answer-box">i) Redressal machinery: <strong>District Commission</strong> (value ₹50,000 &lt; ₹1 crore)<br>ii) Appeal if unsatisfied: <strong>State Commission</strong><br>iii) Negligence: Mrs. Meera did not take <strong>cash memo/invoice</strong> and did not check <strong>guarantee/warrantee card</strong> properly. Cash memo is essential evidence for consumer complaint.</div></div>
+    </div>
+
+    <!-- ================= Q.4 DISTINGUISH BETWEEN (3 Tables) ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-balance-scale"></i> Q.4 Distinguish Between (Detailed Tabular Analysis)</div>
+        
+        <div class="sub-title">1) District Commission vs State Commission</div>
+        <table class="data-table">
+            <thead><tr><th>Basis</th><th>District Commission</th><th>State Commission</th></tr></thead>
+            <tbody>
+                <tr><td>Meaning</div></div><td>Forum at district level</div></div><td>Forum at state level</div></div></tr>
+                <tr><td>President</div></div><td>District Judge (sitting/retired/qualified)</div></div><td>High Court Judge (sitting/retired)</div></div></tr>
+                <tr><td>Number of Members</div></div><td>Not less than 2</div></div><td>Not less than 4</div></div></tr>
+                <tr><td>Member Tenure</div></div><td>5 years or up to 65 years</div></div><td>5 years or up to 67 years</div></div></tr>
+                <tr><td>Monetary Jurisdiction</div></div><td>Upto ₹1 crore</div></div><td>₹1 crore to ₹10 crore</div></div></tr>
+                <tr><td>Appeal against order</div></div><td>To State Commission (45 days)</div></div><td>To National Commission (30 days)</div></div></tr>
+            </tbody>
+        </table>
+
+        <div class="sub-title">2) State Commission vs National Commission</div>
+        <table class="data-table">
+            <thead><tr><th>Basis</th><th>State Commission</th><th>National Commission</th></tr></thead>
+            <tbody>
+                <tr><td>Meaning</div></div><td>Forum at state level</div></div><td>Apex forum at national level</div></div><tr>
+                <tr><td>President</div></div><td>High Court Judge</div></div><td>Supreme Court Judge</div></div></tr>
+                <tr><td>Member Tenure</div></div><td>5 years or up to 67 years</div></div><td>5 years (President up to 70 years)</div></div></tr>
+                <tr><td>Monetary Jurisdiction</div></div><td>₹1 crore to ₹10 crore</div></div><td>Exceeds ₹10 crore</div></div></tr>
+                <tr><td>Appeal against order</div></div><td>To National Commission (30 days)</div></div><td>To Supreme Court (30 days)</div></div></tr>
+                <tr><td>Establishment</div></div><td>By State Government</div></div><td>By Central Government</div></div></tr>
+            </tbody>
+        </table>
+
+        <div class="sub-title">3) District Commission vs National Commission</div>
+        <table class="data-table">
+            <thead><tr><th>Basis</th><th>District Commission</th><th>National Commission</th></tr></thead>
+            <tbody>
+                <tr><td>Level</div></div><td>District level</div></div><td>National level (Apex)</div></div></tr>
+                <tr><td>President</div></div><td>District Judge</div></div><td>Supreme Court Judge</div></div></tr>
+                <tr><td>Members</div></div><td>Minimum 2 members</div></div><td>Minimum 4 members</div></div><tr>
+                <tr><td>Monetary Jurisdiction</div></div><td>Upto ₹1 crore</div></div><td>Exceeds ₹10 crore</div></div></tr>
+                <tr><td>Appeal</div></div><td>To State Commission</div></div><td>To Supreme Court</div></div></tr>
+                <tr><td>Establishment</div></div><td>By State Government</div></div><td>By Central Government</div></div></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ================= Q.5 Answer in Brief ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-pen-alt"></i> Q.5 Answer in brief</div>
+        
+        <div class="qa-item"><div class="question">1) Explain any four needs of consumer protection.</div>
+        <div class="answer-box"><strong>Four needs of consumer protection:</strong><br>
+        1. <strong>Ignorance of consumers:</strong> Most consumers are ignorant about their rights, market conditions, product details.<br>
+        2. <strong>Unorganized consumers:</strong> Consumers are widely scattered and not organized, while sellers are powerful.<br>
+        3. <strong>Spurious goods:</strong> Increasing supply of duplicate products; ordinary consumer cannot distinguish genuine from imitation.<br>
+        4. <strong>Misleading advertising:</strong> Businessmen give misleading information about quality, safety, utility; consumers are misled.</div></div>
+        
+        <div class="qa-item"><div class="question">2) State any four rights of the consumer.</div>
+        <div class="answer-box"><strong>Four consumer rights:</strong><br>
+        1. <strong>Right to Safety:</strong> Protection against hazardous products (ISI, AGMARK, Hallmark).<br>
+        2. <strong>Right to Information:</strong> Adequate information about price, manufacturer, expiry date.<br>
+        3. <strong>Right to Choose:</strong> Freedom to select product as per requirement and capacity.<br>
+        4. <strong>Right to be Heard:</strong> Opportunity to voice complaints and suggestions.</div></div>
+        
+        <div class="qa-item"><div class="question">3) Explain any four responsibilities of the consumer.</div>
+        <div class="answer-box"><strong>Four consumer responsibilities:</strong><br>
+        1. <strong>Cautious consumer:</strong> Enquire about quality, quantity, price, utility before buying.<br>
+        2. <strong>Quality conscious:</strong> Look for ISI, AGMARK, Hallmark, FPO, FSSAI marks.<br>
+        3. <strong>Filing complaint:</strong> Approach concerned officer if goods defective; don't delay.<br>
+        4. <strong>Demand invoice:</strong> Always ask for cash memo and guarantee/warrantee card.</div></div>
+        
+        <div class="qa-item"><div class="question">4) State the role of NGO in consumer protection.</div>
+        <div class="answer-box"><strong>Role of NGOs in consumer protection:</strong><br>
+        1. Organize campaigns and programmes on consumer issues to create awareness.<br>
+        2. Organize training programmes for consumers about rights and redressal modes.<br>
+        3. Publish periodicals to enlighten consumers about developments.<br>
+        4. Provide free legal advice to members and help take up grievances.<br>
+        5. File Public Interest Litigation on important consumer issues.<br>
+        <strong>Examples:</strong> CGSI, VOICE, CERC, Mumbai Grahak Panchayat, Grahak Shakti.</div></div>
+    </div>
+
+    <!-- 10 Rights Visual Grid -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-shield-heart"></i> Visual: 10 Rights of Consumers</div>
+        <div class="rights-grid">
+            <div class="right-card"><i class="fas fa-shield-alt"></i><strong>Right to Safety</strong></div>
+            <div class="right-card"><i class="fas fa-info-circle"></i><strong>Right to Information</strong></div>
+            <div class="right-card"><i class="fas fa-hand-peace"></i><strong>Right to Choose</strong></div>
+            <div class="right-card"><i class="fas fa-ear-listen"></i><strong>Right to be Heard</strong></div>
+            <div class="right-card"><i class="fas fa-graduation-cap"></i><strong>Right to Education</strong></div>
+            <div class="right-card"><i class="fas fa-gavel"></i><strong>Right to Redress</strong></div>
+            <div class="right-card"><i class="fas fa-users"></i><strong>Right to Represent</strong></div>
+            <div class="right-card"><i class="fas fa-leaf"></i><strong>Right to Healthy Environment</strong></div>
+            <div class="right-card"><i class="fas fa-ban"></i><strong>Right against Unfair Practices</strong></div>
+            <div class="right-card"><i class="fas fa-skull-crossbones"></i><strong>Right against Spurious Goods</strong></div>
+        </div>
+    </div>
+
+    <!-- ================= Q.6 Justify ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-check-double"></i> Q.6 Justify the following statements</div>
+        
+        <div class="qa-item"><div class="question">1) The Consumer Protection Act was passed in the interest of consumers.</div><div class="answer-box"><strong>Justification:</strong> The Act provides three-tier quasi-judicial machinery (District, State, National Commissions) for speedy, simple, inexpensive redressal. It gives consumers rights like safety, information, choice, redressal. It covers unfair trade practices, defective goods, deficient services. Hence, Act is definitely in interest of consumers.</div></div>
+        
+        <div class="qa-item"><div class="question">2) Consumers have many responsibilities.</div><div class="answer-box"><strong>Justification:</strong> Along with rights, consumers must be cautious, check quality marks (ISI/AGMARK), demand invoice, file complaints for defective products, avoid exaggerating advertisements, and support consumer organizations. Without responsibilities, rights cannot be effectively exercised.</div></div>
+        
+        <div class="qa-item"><div class="question">3) Aim of consumer organization is to protect the rights of the consumer.</div><div class="answer-box"><strong>Justification:</strong> Consumer organizations (NGOs) organize awareness campaigns, provide legal advice, file PILs, publish periodicals, and help consumers file complaints. They educate consumers about their rights and redressal mechanisms. Their sole aim is consumer welfare and protection.</div></div>
+    </div>
+
+    <!-- ================= Q.7 & Q.8 Detailed ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-file-alt"></i> Q.7 & Q.8 Detailed Answers</div>
+        
+        <div class="qa-item"><div class="question">Q.7 (1) State rights of the consumer.</div>
+        <div class="answer-box"><strong>10 Rights of Consumers:</strong><br>
+        1. Right to Safety, 2. Right to Information, 3. Right to Choose, 4. Right to be Heard, 5. Right to Consumer Education, 6. Right to Redress, 7. Right to Represent, 8. Right to Healthy Environment, 9. Right to protect from unfair business practices, 10. Right against spurious goods.</div></div>
+        
+        <div class="qa-item"><div class="question">Q.7 (2) State responsibilities of the consumer.</div>
+        <div class="answer-box"><strong>8 Responsibilities:</strong> Use rights, be cautious, file complaints, quality conscious, beware of exaggerate ads, demand invoice & guarantee card, pre-planned buying, organized efforts.</div></div>
+        
+        <div class="qa-item"><div class="question">Q.7 (3) State the need of consumer protection.</div>
+        <div class="answer-box"><strong>8 Needs:</strong> Participation of consumers, lack of information, ignorance, unorganized consumers, spurious goods, misleading advertising, malpractices of businessmen, trusteeship.</div></div>
+        
+        <div class="qa-item"><div class="question">Q.7 (4) State the role of NGOs and consumer protection.</div>
+        <div class="answer-box"><strong>Role:</strong> Campaigns, training programmes, periodicals, free legal advice, PIL filing. <strong>Examples:</strong> CGSI, VOICE, CERC, Mumbai Grahak Panchayat.</div></div>
+        
+        <div class="qa-item"><div class="question">Q.7 (5) State composition and monetary jurisdiction of District Commission.</div>
+        <div class="answer-box"><strong>Composition:</strong> President (District Judge) + 2+ members. <strong>Monetary Jurisdiction:</strong> Value ≤ ₹1 crore. <strong>Appeal:</strong> To State Commission (45 days).</div></div>
+        
+        <div class="qa-item"><div class="question">Q.7 (6) State composition and monetary jurisdiction of State Commission.</div>
+        <div class="answer-box"><strong>Composition:</strong> President (High Court Judge) + 4+ members. <strong>Monetary Jurisdiction:</strong> ₹1 crore &lt; value ≤ ₹10 crore. <strong>Appeal:</strong> To National Commission (30 days).</div></div>
+        
+        <div class="qa-item"><div class="question">Q.7 (7) State composition and monetary jurisdiction of National Commission.</div>
+        <div class="answer-box"><strong>Composition:</strong> President (Supreme Court Judge) + 4+ members. <strong>Monetary Jurisdiction:</strong> Value > ₹10 crore. <strong>Appeal:</strong> To Supreme Court (30 days).</div></div>
+        
+        <div class="qa-item"><div class="question">Q.8 (1) Who is consumer? Explain the rights of the consumers.</div>
+        <div class="answer-box"><strong>Consumer:</strong> Any person who buys goods/hires service for consideration (paid/promised/partly paid). Includes user with approval.<br>
+        <strong>10 Rights explained:</strong> Safety, Information, Choice, Heard, Education, Redress, Represent, Healthy Environment, against unfair practices, against spurious goods.</div></div>
+        
+        <div class="qa-item"><div class="question">Q.8 (2) Explain the ways and means of Consumer Protection.</div>
+        <div class="answer-box"><strong>7 Ways & Means:</strong><br>
+        1. <strong>Lok Adalat:</strong> People's Court — quick compromise redressal.<br>
+        2. <strong>Public Interest Litigation:</strong> Legal action for public interest.<br>
+        3. <strong>Redressal Forums:</strong> District/State/National Commissions.<br>
+        4. <strong>Awareness Programme:</strong> Govt journals, brochures, 15th March (World), 24th Dec (National).<br>
+        5. <strong>Consumer Organizations:</strong> NGOs like CGSI, VOICE.<br>
+        6. <strong>Consumer Welfare Fund:</strong> Financial assistance for consumer movement.<br>
+        7. <strong>Legislative Measures:</strong> Sale of Goods Act 1930, BIS Act 1969, Food Safety Act 2006, CPA 2019.</div></div>
+        
+        <div class="qa-item"><div class="question">Q.8 (3) Explain the three tier quasi judicial machinery under the Act.</div>
+        <div class="answer-box"><strong>Three-Tier Quasi-Judicial Machinery:</strong><br>
+        <strong>1. District Commission:</strong> At district level. President: District Judge. Monetary jurisdiction: upto ₹1 crore. Appeal to State Commission.<br>
+        <strong>2. State Commission:</strong> At state level. President: High Court Judge. Monetary jurisdiction: ₹1 crore to ₹10 crore. Appeal to National Commission.<br>
+        <strong>3. National Commission:</strong> At national level (apex). President: Supreme Court Judge. Monetary jurisdiction: exceeds ₹10 crore. Appeal to Supreme Court.<br>
+        <strong>Penalty for non-compliance:</strong> Imprisonment 1 month to 3 years OR fine ₹25,000 to ₹1 lakh OR both.</div></div>
+    </div>
+
+    <!-- 3-Tier Court Visual -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-building"></i> Visual: 3-Tier Quasi-Judicial Machinery</div>
+        <div class="rights-grid">
+            <div class="right-card" style="background: linear-gradient(145deg, #fff0e0, #ffe0c0);"><i class="fas fa-gavel"></i><br><strong>District Commission</strong><br>District Judge<br>≤ ₹1 crore</div>
+            <div class="right-card" style="background: linear-gradient(145deg, #ffe0c0, #ffd0a0);"><i class="fas fa-gavel"></i><br><strong>State Commission</strong><br>High Court Judge<br>₹1 Cr - ₹10 Cr</div>
+            <div class="right-card" style="background: linear-gradient(145deg, #ffd0a0, #ffc080);"><i class="fas fa-gavel"></i><br><strong>National Commission</strong><br>Supreme Court Judge<br>> ₹10 Cr</div>
+        </div>
+        <p style="text-align: center; margin-top: 15px;"><strong>Appeal Flow:</strong> District Commission → State Commission → National Commission → Supreme Court</p>
+    </div>
+
+    <!-- Answer Key -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-key"></i> Answer Key (Quick Reference)</div>
+        <table class="data-table">
+            <tr><th>Q.1(A)</th><td colspan="3">1) 1986 2) District Judge 3) Consumer 4) National Commission 5) Lok Adalat 6) 4 7) one crore 8) 15th March 9) king</td></tr>
+            <tr><th>Q.1(D)</th><td colspan="3">True: 1,4 &nbsp; False: 2,3,5</td></tr>
+            <tr><th>Q.1(E)</th><td colspan="3">1) NGO 2) Commissioner</td></tr>
+            <tr><th>Q.1(F)</th><td colspan="3">1) Central 2) State Commission 3) four 4) Supreme Court 5) ten crore 6) three</td></tr>
+            <tr><th>Q.1(J)</th><td colspan="3">1) Supreme Court 2) Central 3) Lok Adalat 4) Consumers 5) District Commission</td></tr>
+        </table>
+    </div>
+
+    <div class="footer-note">
+        <i class="fas fa-graduation-cap"></i> Chapter 7: Consumer Protection — Complete Q.1 to Q.8 with Detailed Answers | Consumer Rights (10), Responsibilities (8) | Consumer Protection Act 2019 | 3-Tier Machinery (District, State, National Commissions) | Lok Adalat | PIL | NGOs | 12th Commerce OCM
+    </div>
+</div>
+</body>
+</html>

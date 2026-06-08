@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>🏛️ Public Sector Enterprises | 11th OC Chapter 5 | Dept. Org., Statutory Corp., Govt. Co., MNC</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    body {
+      background: linear-gradient(145deg, #fefce8, #fef3c7);
+      min-height: 100vh;
+      padding: 24px 18px;
+      color: #1e293b;
+      overflow-y: scroll;
+      scrollbar-width: thin;
+    }
+    .container { max-width: 1300px; margin: 0 auto; }
+    .heading { text-align: center; margin-bottom: 35px; animation: slideDown 0.5s ease; }
+    .heading h1 {
+      font-size: 2rem;
+      background: linear-gradient(135deg, #854d0e, #a16207, #eab308);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+    }
+    .heading p { color: #854d0e; margin-top: 10px; font-weight: 600; background: #ffffffcc; display: inline-block; padding: 5px 18px; border-radius: 40px; backdrop-filter: blur(4px);}
+    .search-wrapper { position: relative; margin-bottom: 32px; }
+    .search-box {
+      background: white;
+      border-radius: 60px;
+      padding: 6px 6px 6px 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.12);
+      border: 1px solid #fde047;
+    }
+    .search-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      padding: 15px 0;
+      background: transparent;
+      color: #0f172a;
+      font-weight: 500;
+    }
+    .icon-btn {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(145deg, #a16207, #854d0e);
+      color: white;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: 0.25s;
+      box-shadow: 0 4px 12px rgba(161,98,7,0.4);
+    }
+    .icon-btn:hover { transform: scale(1.05); background: #a16207; }
+    .suggestions-dropdown {
+      position: absolute;
+      top: calc(100% + 12px);
+      left: 0;
+      right: 0;
+      background: white;
+      border-radius: 32px;
+      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.2);
+      z-index: 120;
+      max-height: 280px;
+      overflow-y: auto;
+      display: none;
+      border: 1px solid #fde047;
+    }
+    .suggestion-item {
+      padding: 14px 24px;
+      color: #0f172a;
+      cursor: pointer;
+      border-bottom: 1px solid #fefce8;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      transition: 0.2s;
+    }
+    .suggestion-item:hover { background: #fef3c7; padding-left: 32px; }
+    .result-container { display: flex; flex-direction: column; gap: 24px; margin-top: 20px; }
+    .result-card {
+      background: white;
+      border-radius: 32px;
+      padding: 1.8rem;
+      color: #0f172a;
+      box-shadow: 0 12px 30px -10px rgba(0,0,0,0.08);
+      transition: 0.25s ease;
+      border: 1px solid #fef08a;
+    }
+    .result-card:hover { transform: translateY(-4px); box-shadow: 0 20px 30px -12px rgba(0,0,0,0.12); }
+    .badge {
+      background: #fef3c7;
+      color: #854d0e;
+      display: inline-block;
+      padding: 5px 16px;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+    .result-card h3 {
+      color: #854d0e;
+      font-size: 1.35rem;
+      border-left: 6px solid #eab308;
+      padding-left: 18px;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+    .answer-text {
+      background: #fefce8;
+      padding: 18px 24px;
+      border-radius: 28px;
+      line-height: 1.7;
+      margin: 12px 0;
+      border: 1px solid #fef08a;
+    }
+    .formula-box {
+      background: #fef9c3;
+      padding: 12px 18px;
+      border-radius: 28px;
+      font-family: monospace;
+      font-size: 0.95rem;
+      margin: 14px 0;
+      text-align: center;
+      border-left: 6px solid #a16207;
+      font-weight: 600;
+    }
+    .responsive-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 0.85rem;
+      overflow-x: auto;
+      display: block;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .responsive-table th, .responsive-table td {
+      border: 1px solid #e2e8f0;
+      padding: 12px 10px;
+      text-align: left;
+      background: white;
+    }
+    .responsive-table th { background: #a16207; color: white; font-weight: 700; }
+    .action-buttons { margin-top: 22px; display: flex; gap: 15px; flex-wrap: wrap; }
+    .action-buttons button {
+      border: none;
+      padding: 10px 26px;
+      border-radius: 50px;
+      font-weight: 700;
+      background: #f1f5f9;
+      color: #1e293b;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .action-buttons button:last-child { background: #eab308; color: #3b2e00; box-shadow: 0 2px 8px rgba(234,179,8,0.3);}
+    .action-buttons button:hover { transform: scale(0.97); opacity: 0.9; }
+    .not-found {
+      background: #fefce8;
+      border-radius: 48px;
+      padding: 2.5rem;
+      text-align: center;
+      font-size: 1.1rem;
+      color: #854d0e;
+      border: 1px solid #fef08a;
+    }
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(10px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    .popup-box {
+      background: white;
+      max-width: 950px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      border-radius: 48px;
+      padding: 30px 34px;
+      position: relative;
+      color: #1e293b;
+    }
+    .close-popup {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      background: #fee2e2;
+      border: none;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+    .lang-section { background: #f8fafc; padding: 18px; border-radius: 28px; margin-bottom: 20px; border-left: 5px solid #eab308; }
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 650px) {
+      body { padding: 16px 12px; }
+      .heading h1 { font-size: 1.4rem; }
+      .result-card h3 { font-size: 1.1rem; }
+      .result-card { padding: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="heading">
+    <h1>🏛️ Public Sector Enterprises | OC Chapter 5</h1>
+    <p>📌 Departmental Organisation · Statutory Corporation · Government Company · Multinational Corporation (MNC)</p>
+  </div>
+  <div class="search-wrapper">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="🔎 Search: Departmental Organisation, Statutory Corporation, Government Company, MNC, Features, Merits, Demerits, Public Sector, Private Sector...">
+      <button class="icon-btn" id="voiceBtn">🎤</button>
+    </div>
+    <div id="suggestionsList" class="suggestions-dropdown"></div>
+  </div>
+  <div class="result-container" id="resultsContainer">
+    <div class="not-found">🏛️ Type above — Explore Public Sector Enterprises: Departmental Organisation, Statutory Corporation, Government Company, MNC ✨</div>
+  </div>
+</div>
+<div class="popup-overlay" id="popupModal">
+  <div class="popup-box">
+    <button class="close-popup" id="closeModalBtn">✖</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+  const qaDatabase = [];
+
+  function addQA(question, answer, category, keywords = []) {
+    qaDatabase.push({ id: qaDatabase.length+1, question, answer, category, keywords: keywords.map(k=>k.toLowerCase()) });
+  }
+
+  // ============ PUBLIC SECTOR - INTRODUCTION ============
+  addQA("What is Public Sector Organisation? Define.", "Public Sector Organisations are those organisations which are owned, financed, managed and controlled by government or combination of governments. Examples: HPCL, BPCL, Indian Railways, Post Office.", "Introduction", ["public sector meaning", "public sector definition"]);
+  addQA("What is the difference between Private Sector and Public Sector?", "Private Sector: owned by individuals/groups, profit motive, quick decisions. Public Sector: owned by government, service motive, bureaucratic delays. Private sector aims at profit maximization; public sector aims at providing reliable services to customers.", "Comparison", ["private vs public sector"]);
+
+  // ============ DEPARTMENTAL ORGANISATION ============
+  addQA("What is Departmental Organisation? Give examples.", "Departmental Organisation is owned, managed, controlled and financed by government. It is the oldest form of public sector organisation. It performs all activities as an integral part of government. Examples: Indian Railways, Post Office, Defence Industries, All India Radio.", "Departmental", ["departmental organisation meaning"]);
+  addQA("What are the features of Departmental Organisation?", "1) Managed by Government (Minister-in-charge) 2) Delegation of Authority from top to bottom 3) Financed through annual budget appropriations 4) Run by Government procedures 5) No Separate Legal Entity 6) Employees are Government servants.", "Departmental", ["departmental features"]);
+  addQA("What are the merits of Departmental Organisation?", "1) Direct Control by government 2) Direct Revenue to Government Treasury 3) Less Overheads 4) Proper use of funds (no misuse) 5) Qualified Staff 6) Maintains Secrecy on policy matters.", "Departmental", ["departmental merits"]);
+  addQA("What are the demerits of Departmental Organisation?", "1) Delay in Action due to centralization 2) Red Tapism and Bureaucracy 3) Less Scope for Initiative 4) Lack of Flexibility 5) Delayed Decisions (sanction needed from Minister) 6) Absence of Professionalism, fear of public criticism, frequent transfers.", "Departmental", ["departmental demerits"]);
+
+  // ============ STATUTORY CORPORATION ============
+  addQA("What is Statutory Corporation? Give examples.", "A Statutory Corporation is an autonomous corporate body created by a Special Act of the Parliament or State Legislature with defined powers, functions and duties. Examples: Reserve Bank of India (RBI), Life Insurance Corporation (LIC), ONGC.", "Statutory", ["statutory corporation meaning"]);
+  addQA("What are the features of Statutory Corporation?", "1) Corporate Body (artificial person created by law) 2) Answerable to Parliament/State Legislature 3) Own Staffing System (employees not govt servants) 4) Financial Autonomy (not subject to budget/audit controls) 5) No Political Interference.", "Statutory", ["statutory features"]);
+  addQA("What are the merits of Statutory Corporation?", "1) Initiative and Flexibility 2) Administrative Autonomy 3) Quick Decisions (free from red tapism) 4) Efficient Staff (better remuneration) 5) Professional Management (business experts on board) 6) Easy to raise capital (bonds at low interest).", "Statutory", ["statutory merits"]);
+  addQA("What are the demerits of Statutory Corporation?", "1) Autonomy on paper only (practical interference) 2) Lack of initiative (no competition, no profit motive) 3) Rigid structure (amending Act is time-consuming) 4) Clashes amongst interests (multiple members on board) 5) Unfair practices (may charge high prices to cover inefficiency).", "Statutory", ["statutory demerits"]);
+
+  // ============ GOVERNMENT COMPANY ============
+  addQA("What is a Government Company? Give examples.", "A Government Company is registered under Companies Act, 2013 where minimum 51% of paid-up share capital is held by Central Government or State Government(s). Examples: BHEL (Bharat Heavy Electricals Ltd), NTPC, HMT, SAIL.", "GovtCompany", ["government company meaning"]);
+  addQA("What are the features of Government Company?", "1) Registered under Companies Act, 2013 2) Separate Legal Entity distinct from government 3) Majority of Government Directors 4) Own Staff (not govt servants) 5) Free from Procedural Controls (budget/audit).", "GovtCompany", ["government company features"]);
+  addQA("What are the merits of Government Company?", "1) Easy Formation (executive decision) 2) Internal Autonomy 3) Easy to Alter (change Memorandum of Association) 4) Discipline (subject to Companies Act) 5) Professional Management 6) Public Accountability (Annual Report to Parliament).", "GovtCompany", ["government company merits"]);
+  addQA("What are the demerits of Government Company?", "1) Autonomy only in Name (political interference) 2) Fear of Exposure (press and public criticism) 3) Lack of Expertise (deputed govt officials lack commitment) 4) Lack of Professional View (more focused on social objectives).", "GovtCompany", ["government company demerits"]);
+  addQA("Who appoints the auditor of a Government Company?", "The Government on the advice of the Comptroller and Auditor General of India (CAG) appoints the auditor of a Government Company.", "GovtCompany", ["auditor government company"]);
+
+  // ============ MULTINATIONAL CORPORATION (MNC) ============
+  addQA("What is a Multinational Corporation (MNC)? Give examples.", "A Multinational Corporation is a business organisation that operates in many different countries. It has facilities and assets in at least one country other than its home country, with a centralized head office. Examples: Tata Motors, Infosys (Indian MNCs); Coca-Cola, Pepsi (foreign MNCs).", "MNC", ["mnc meaning", "multinational corporation"]);
+  addQA("What are the features of Multinational Corporations?", "1) Huge Assets and Turnover 2) International Operations (branches in host countries) 3) Centralised Control (head office in home country) 4) Mighty Economic Power 5) Advanced and Sophisticated Technology 6) Professional Management.", "MNC", ["mnc features"]);
+  addQA("What are the merits of Multinational Corporations?", "1) Employment Generation 2) Inflow of Foreign Capital 3) Proper Use of Idle Resources 4) Technical Development (technology transfer) 5) Managerial Development 6) End of Local Monopolies 7) Improvement in Standard of Living 8) Promotion of International Brotherhood and Culture.", "MNC", ["mnc merits"]);
+  addQA("What are the demerits of Multinational Corporations?", "1) Danger for Domestic Industries 2) Repatriation of Profits (affects forex reserves) 3) Interference in political affairs 4) Disregard of National Interests 5) Misuse of Mighty Status (create monopoly) 6) Exploitation of Natural Resources 7) Selfish Promotion of Alien Culture 8) Exploitation of People.", "MNC", ["mnc demerits"]);
+  addQA("What is Repatriation of Profits in MNC context?", "Repatriation of profits means sending profits earned in host country back to the home country. This adversely affects the foreign exchange reserves of the host country as a large amount of foreign exchange goes out.", "MNC", ["repatriation"]);
+
+  // ============ COMPARISON TABLES ============
+  function getPubPrivateTable() {
+    return `<table class="responsive-table"><thead><tr><th>Basis</th><th>Private Sector</th><th>Public Sector</th></tr></thead><tbody>
+      <tr><td>Main Motive</td><td>Profit maximization</td><td>Service to society</td></tr>
+      <tr><td>Ownership</td><td>Individuals/Groups</td><td>Government</td></tr>
+      <tr><td>Decision Making</td><td>Quick</td><td>Delayed due to bureaucracy</td></tr>
+      <tr><td>Management</td><td>Owners/Representatives</td><td>Govt officials/BOD</td></tr>
+      <tr><td>Examples</td><td>Sole Trading, Partnership, Pvt Ltd</td><td>Railways, Post Office, LIC, BHEL</td></tr>
+    </tbody></table>`;
+  }
+
+  function getDeptStatutoryTable() {
+    return `<table class="responsive-table"><thead><tr><th>Basis</th><th>Departmental Organisation</th><th>Statutory Corporation</th></tr></thead><tbody>
+      <tr><td>Autonomy</td><td>No autonomy</td><td>Enjoys autonomy</td></tr>
+      <tr><td>Legal Status</td><td>No separate status</td><td>Separate legal entity</td></tr>
+      <tr><td>Staff</td><td>Government servants</td><td>Own staff, not govt servants</td></tr>
+      <tr><td>Borrowing</td><td>Cannot borrow from public</td><td>Can borrow via bonds</td></tr>
+      <tr><td>Example</td><td>Indian Railways, Post Office</td><td>RBI, LIC, ONGC</td></tr>
+    </tbody></table>`;
+  }
+
+  function getGovtMNCCompareTable() {
+    return `<table class="responsive-table"><thead><tr><th>Basis</th><th>Government Company</th><th>Multinational Corporation</th></tr></thead><tbody>
+      <tr><td>Ownership</td><td>Min 51% by Govt</td><td>Private shareholders globally</td></tr>
+      <tr><td>Operations</td><td>Mostly within India</td><td>Multiple countries</td></tr>
+      <tr><td>Registration</td><td>Companies Act, 2013</td><td>Home country law + host country</td></tr>
+      <tr><td>Example</td><td>BHEL, NTPC, SAIL</td><td>Tata Motors, Coca-Cola</td></tr>
+    </tbody></table>`;
+  }
+
+  // Search and display
+  const searchInput = document.getElementById("searchInput");
+  const resultsContainer = document.getElementById("resultsContainer");
+  const suggestionsDiv = document.getElementById("suggestionsList");
+
+  function getMatches(q) {
+    const lower = q.toLowerCase();
+    return qaDatabase.filter(item => 
+      item.question.toLowerCase().includes(lower) || 
+      item.answer.toLowerCase().includes(lower) ||
+      item.category.toLowerCase().includes(lower) ||
+      item.keywords.some(k => k.includes(lower))
+    ).slice(0, 16);
+  }
+
+  function updateSuggestions() {
+    const val = searchInput.value.trim();
+    if(!val) { suggestionsDiv.style.display = "none"; return; }
+    const matches = getMatches(val);
+    if(!matches.length) { suggestionsDiv.style.display = "none"; return; }
+    suggestionsDiv.innerHTML = "";
+    matches.forEach(item => {
+      const div = document.createElement("div");
+      div.className = "suggestion-item";
+      div.innerHTML = `<span>🏛️</span> <strong>${item.question.substring(0,70)}</strong> <span style="margin-left:auto; background:#fef3c7; padding:2px 12px; border-radius:30px;">${item.category}</span>`;
+      div.addEventListener("click", () => {
+        searchInput.value = item.question;
+        suggestionsDiv.style.display = "none";
+        performSearch(item.question);
+      });
+      suggestionsDiv.appendChild(div);
+    });
+    suggestionsDiv.style.display = "block";
+  }
+
+  function performSearch(q = null) {
+    let query = (q !== null) ? q : searchInput.value.trim();
+    if(!query) { resultsContainer.innerHTML = `<div class="not-found">🏛️ Type keywords: Departmental Organisation, Statutory Corporation, Government Company, MNC, Features, Merits, Demerits, Private vs Public ✨</div>`; return; }
+    const matches = getMatches(query);
+    if(!matches.length) { resultsContainer.innerHTML = `<div class="not-found">❌ No results. Try: Departmental Organisation features, Statutory Corporation merits, Government Company examples, MNC demerits.</div>`; return; }
+    resultsContainer.innerHTML = "";
+    matches.forEach(item => {
+      let extra = "";
+      const qtext = item.question.toLowerCase();
+      if (qtext.includes("difference between private sector") || (qtext.includes("private vs public"))) extra = getPubPrivateTable();
+      if (qtext.includes("departmental organisation and statutory") || (qtext.includes("dept vs statutory"))) extra = getDeptStatutoryTable();
+      if (qtext.includes("government company and multinational") || (qtext.includes("govt vs mnc"))) extra = getGovtMNCCompareTable();
+      if (item.category === "MNC" && qtext.includes("features")) extra = `<div class="formula-box">🌍 MNC Key Features: Huge assets, International ops, Centralised control, Mighty economic power, Advanced technology, Professional management.</div>`;
+      
+      const card = document.createElement("div");
+      card.className = "result-card";
+      card.innerHTML = `
+        <div class="badge">📌 ${escapeHtml(item.category)}</div>
+        <h3>📘 ${escapeHtml(item.question)}</h3>
+        <div class="answer-text"><strong>✅ Answer / Explanation:</strong><br>${escapeHtml(item.answer)}${extra}</div>
+        <div class="action-buttons">
+          <button class="detailBtn" data-q="${escapeAttr(item.question)}" data-a="${escapeAttr(item.answer)}" data-cat="${item.category}">📖 Detailed Explanation</button>
+          <button class="extraTableBtn" data-type="${item.category}">📋 Reference Tables</button>
+        </div>
+      `;
+      resultsContainer.appendChild(card);
+    });
+    attachEvents();
+  }
+
+  function attachEvents() {
+    document.querySelectorAll(".detailBtn").forEach(btn => btn.addEventListener("click", (e) => {
+      const q = btn.getAttribute("data-q"), a = btn.getAttribute("data-a"), cat = btn.getAttribute("data-cat");
+      showDetailPopup(q, a, cat);
+    }));
+    document.querySelectorAll(".extraTableBtn").forEach(btn => btn.addEventListener("click", () => {
+      let content = `<div class="lang-section"><strong>📚 Public Sector Enterprises - Quick Reference</strong><br>`;
+      content += `<h4>🏛️ Private vs Public Sector</h4>${getPubPrivateTable()}`;
+      content += `<hr><h4>📂 Departmental vs Statutory Corporation</h4>${getDeptStatutoryTable()}`;
+      content += `<hr><h4>🏢 Government Company vs MNC</h4>${getGovtMNCCompareTable()}`;
+      content += `<hr><div class="formula-box">💡 Key Facts: Departmental Org (Railways, Post) | Statutory Corp (RBI, LIC) - autonomous | Govt Company (BHEL, NTPC) - 51% govt share | MNC (Tata Motors, Infosys) - global operations</div>`;
+      content += `</div>`;
+      document.getElementById("popupModal").style.display = "flex";
+      document.getElementById("modalContent").innerHTML = `<h2 style="color:#854d0e;">📊 Public Sector Enterprises - Complete Reference</h2>${content}<button id="closeModalInside" style="background:#a16207; margin-top:20px; padding:10px 26px; border-radius:40px; color:white;">Close</button>`;
+      document.getElementById("closeModalInside").addEventListener("click", ()=> document.getElementById("popupModal").style.display = "none");
+    }));
+  }
+
+  function showDetailPopup(question, answer, category) {
+    let extraInfo = `<div class="lang-section"><strong>📖 11th OC Chapter 5 - Public Sector Enterprises</strong><br>✔ Public Sector: Owned/managed by Government. 3 types: Dept. Org, Statutory Corp, Govt Co.<br>✔ Departmental Organisation: Integral part of govt (Railways, Post). No separate status. Red tapism.<br>✔ Statutory Corporation: Created by Special Act (RBI, LIC). Autonomous, financial independence.<br>✔ Government Company: 51% govt shareholding, registered under Companies Act (BHEL, NTPC).<br>✔ MNC: Operates in multiple countries, huge assets, technology transfer, repatriation of profits.</div>`;
+    if(category === "Departmental") extraInfo += `<div class="lang-section">📮 <strong>Departmental Org Examples:</strong> Indian Railways, Post Office, Defence Industries, All India Radio, Public Utility Services.</div>`;
+    if(category === "Statutory") extraInfo += `<div class="lang-section">🏦 <strong>Statutory Corp Examples:</strong> RBI, LIC, ONGC, Air India (formerly), Food Corporation of India.</div>`;
+    if(category === "GovtCompany") extraInfo += `<div class="lang-section">⚡ <strong>Government Company Examples:</strong> BHEL, NTPC, SAIL, HMT, Coal India Ltd, GAIL.</div>`;
+    if(category === "MNC") extraInfo += `<div class="lang-section">🌐 <strong>MNC Examples (Indian):</strong> Tata Motors, Infosys, Wipro, Asian Paints, Mahindra & Mahindra. <strong>Foreign MNCs:</strong> Coca-Cola, Pepsi, McDonald's, Google.</div>`;
+    document.getElementById("popupModal").style.display = "flex";
+    document.getElementById("modalContent").innerHTML = `
+      <h2 style="color:#854d0e;">📘 Detailed Explanation</h2>
+      <div class="lang-section"><strong>❓ Question:</strong> ${escapeHtml(question)}</div>
+      <div class="lang-section"><strong>✅ Answer:</strong><br>${escapeHtml(answer)}</div>
+      ${extraInfo}
+      <button id="closeDetailModal" style="background:#eab308; padding:10px 26px; border-radius:40px; margin-top:12px;">Close</button>
+    `;
+    document.getElementById("closeDetailModal").addEventListener("click", ()=> document.getElementById("popupModal").style.display = "none");
+  }
+
+  function escapeHtml(str) { return str.replace(/[&<>]/g, m => m==='&'?'&amp;': m==='<'?'&lt;':'&gt;'); }
+  function escapeAttr(str) { return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function startVoice() { if (!('webkitSpeechRecognition' in window)) { alert("Voice search supported in Chrome/Edge."); return; } const rec = new webkitSpeechRecognition(); rec.lang="en-IN"; rec.start(); rec.onresult = (e)=> { searchInput.value = e.results[0][0].transcript; performSearch(); }; }
+  document.getElementById("voiceBtn").addEventListener("click", startVoice);
+  searchInput.addEventListener("keyup", () => { performSearch(); updateSuggestions(); });
+  searchInput.addEventListener("focus", updateSuggestions);
+  document.addEventListener("click", (e) => { if(!document.querySelector(".search-wrapper").contains(e.target)) suggestionsDiv.style.display = "none"; });
+  document.getElementById("closeModalBtn").addEventListener("click", () => document.getElementById("popupModal").style.display = "none");
+  window.onload = () => { resultsContainer.innerHTML = `<div class="not-found">🏛️ 11th OC | Public Sector Enterprises | Search Departmental Organisation, Statutory Corporation, Government Company, MNC ✨</div>`; };
+</script>
+</body>
+</html>

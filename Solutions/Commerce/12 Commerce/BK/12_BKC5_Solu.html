@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Chapter 5 | Death of Partner - 12th Commerce</title>
+  <!-- Google Fonts + Font Awesome 6 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: linear-gradient(135deg, #eef2f9 0%, #e0e8f2 100%);
+      font-family: 'Inter', sans-serif;
+      padding: 32px 24px;
+      color: #0a2b3e;
+      line-height: 1.5;
+    }
+    .container { max-width: 1300px; margin: 0 auto; }
+    .hero { text-align: center; margin-bottom: 48px; }
+    .hero h1 {
+      font-size: 2.4rem; font-weight: 800;
+      background: linear-gradient(135deg, #0b4b6b, #1f6e93, #2c7da0);
+      background-clip: text; -webkit-background-clip: text; color: transparent;
+      display: inline-block; padding-bottom: 10px;
+      border-bottom: 4px solid #ffb347; margin-bottom: 16px;
+    }
+    .chapter-badge {
+      background: #0f4c5f20; backdrop-filter: blur(6px);
+      display: inline-block; padding: 6px 24px; border-radius: 40px;
+      font-size: 0.85rem; font-weight: 600; color: #1b6b8f;
+    }
+    .card {
+      background: rgba(255,255,255,0.97); border-radius: 2rem;
+      margin-bottom: 32px; padding: 28px 32px;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid rgba(255,255,255,0.6);
+    }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 25px 40px -14px rgba(0,0,0,0.15); }
+    .card h2 {
+      font-size: 1.7rem; font-weight: 700; color: #135b78;
+      margin-bottom: 28px; padding-bottom: 10px;
+      border-bottom: 3px solid #ffb74d; display: inline-block;
+    }
+    .card h2 i { margin-right: 12px; color: #ff8c42; }
+    .qa-item { margin-bottom: 22px; border-left: 3px solid #cbdde9; padding-left: 20px; }
+    .question {
+      font-weight: 700; font-size: 1rem; color: #1f4a5e;
+      margin-bottom: 8px; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+    }
+    .question i { color: #ff8c42; width: 26px; }
+    .answer {
+      background: #f8fafd; padding: 10px 18px; border-radius: 24px;
+      font-weight: 500; color: #216477; font-size: 0.94rem;
+      display: inline-block; max-width: 100%;
+      box-shadow: inset 0 1px 0 #fff, 0 1px 2px rgba(0,0,0,0.02);
+    }
+    .true-badge {
+      background: #e0f2e9; color: #1e6f3f; padding: 3px 14px;
+      border-radius: 40px; font-weight: 700; font-size: 0.75rem;
+      display: inline-block; margin-right: 12px;
+    }
+    .false-badge {
+      background: #ffe8e6; color: #bc4742; padding: 3px 14px;
+      border-radius: 40px; font-weight: 700; font-size: 0.75rem;
+      display: inline-block; margin-right: 12px;
+    }
+    /* Improved Table Styles for Proper Debit/Credit Side-by-Side */
+    .resp-table { 
+      width: 100%; 
+      overflow-x: auto; 
+      margin: 16px 0; 
+      border-radius: 20px; 
+      background: #f4f9fe; 
+      padding: 4px; 
+    }
+    table { 
+      width: 100%; 
+      border-collapse: collapse; 
+      font-size: 0.85rem; 
+      background: white; 
+      border-radius: 16px; 
+      overflow: hidden;
+      min-width: 600px; /* Ensures side-by-side layout on desktop */
+    }
+    th, td { 
+      border: 1px solid #cde1ef; 
+      padding: 12px 8px; 
+      text-align: left; 
+      vertical-align: top; 
+    }
+    th { 
+      background: #e0eaf5; 
+      font-weight: 700; 
+      color: #135b78;
+      text-align: center;
+    }
+    .account-table td:first-child, .account-table th:first-child {
+      width: 50%;
+    }
+    .highlight { background: #eef3fc; border-radius: 16px; padding: 12px 18px; margin: 12px 0; }
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px,1fr)); gap: 12px; margin-top: 12px; }
+    @media (max-width: 768px) {
+      body { padding: 20px 16px; }
+      .card { padding: 20px 18px; }
+      .card h2 { font-size: 1.4rem; }
+      .hero h1 { font-size: 1.8rem; }
+      .qa-item { padding-left: 12px; }
+      th, td { padding: 8px 6px; font-size: 0.75rem; }
+      table { min-width: 480px; }
+    }
+    .footer-note { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #bdd4e4; font-size: 0.8rem; color: #2c6f8c; }
+    .formula { font-family: monospace; background: #eef3fc; padding: 4px 8px; border-radius: 8px; display: inline-block; }
+    .sub-head { font-weight: 600; margin-top: 15px; margin-bottom: 5px; color: #135b78; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+    <h1><i class="fas fa-dove"></i> Chapter 5 · Death of Partner</h1>
+    <div class="chapter-badge"><i class="fas fa-handshake"></i> New Ratio | Gain Ratio | Goodwill | Profit up to Death | Executor's Account</div>
+  </div>
+
+  <!-- ================= Section A: Multiple Choice ================= -->
+  <div class="card">
+    <h2><i class="fas fa-check-square"></i> A. Select the most appropriate alternative</h2>
+    <div class="qa-item"><div class="question">1) Benefit Ratio is the ratio in which _______.</div><div class="answer">c) The continuing partners benefit on retirement or death of a partner</div></div>
+    <div class="qa-item"><div class="question">2) The ratio by which existing partners are benefited is _______.</div><div class="answer">a) Gain Ratio</div></div>
+    <div class="qa-item"><div class="question">3) Profit and Loss Suspense Account is shown on _______ side of Balance Sheet.</div><div class="answer">c) Asset</div></div>
+    <div class="qa-item"><div class="question">4) Death is a compulsory _______.</div><div class="answer">c) Retirement</div></div>
+    <div class="qa-item"><div class="question">5) Deceased partner's capital balance is transferred to _______ account.</div><div class="answer">b) Legal Heir's loan / Executors loan</div></div>
+  </div>
+
+  <!-- ================= Section B: One word/term/phrase ================= -->
+  <div class="card">
+    <h2><i class="fas fa-tag"></i> B. Write the word/term/phrase</h2>
+    <div class="qa-item"><div class="question">1) Excess of credit side over debit side of Profit & Loss Adjustment Account.</div><div class="answer">Profit on Revaluation</div></div>
+    <div class="qa-item"><div class="question">2) Person who represents deceased partner on death.</div><div class="answer">Executor / Legal Heir</div></div>
+    <div class="qa-item"><div class="question">3) Accumulated past profit kept in form of reserve.</div><div class="answer">General Reserve</div></div>
+    <div class="qa-item"><div class="question">4) The partner who died.</div><div class="answer">Deceased Partner</div></div>
+    <div class="qa-item"><div class="question">5) Proportion in which continuing partners benefit due to death of partner.</div><div class="answer">Gain Ratio</div></div>
+  </div>
+
+  <!-- ================= Section C: True or False with Reasons ================= -->
+  <div class="card">
+    <h2><i class="fas fa-gavel"></i> C. State True or False with reasons</h2>
+    <div class="qa-item"><div class="question">1) Deceased partner is not entitled to Goodwill of the firm.</div><div class="answer"><span class="false-badge">False</span> Deceased partner is entitled to his share of goodwill as per partnership deed.</div></div>
+    <div class="qa-item"><div class="question">2) Deceased partner is entitled to his share of General Reserve.</div><div class="answer"><span class="true-badge">True</span> General Reserve is distributed to all partners including deceased in old ratio.</div></div>
+    <div class="qa-item"><div class="question">3) If Goodwill is written off, deceased partner's capital account is debited.</div><div class="answer"><span class="true-badge">True</span> When goodwill is written off, all partners' capital accounts are debited in new ratio.</div></div>
+    <div class="qa-item"><div class="question">4) Entire amount due to deceased partner is paid to legal representative immediately.</div><div class="answer"><span class="false-badge">False</span> Amount is transferred to Executor's Loan Account and paid after formalities.</div></div>
+    <div class="qa-item"><div class="question">5) Profit/Loss up to death is recorded in Profit & Loss Appropriation Account.</div><div class="answer"><span class="false-badge">False</span> It is recorded in Profit & Loss Suspense Account.</div></div>
+  </div>
+
+  <!-- ================= Section D: Fill in the blanks ================= -->
+  <div class="card">
+    <h2><i class="fas fa-edit"></i> D. Fill in the blanks</h2>
+    <div class="qa-item"><div class="question">1) Deceased partner's executors account is shown on _______ side of Balance Sheet.</div><div class="answer">Liabilities</div></div>
+    <div class="qa-item"><div class="question">2) Ratio in which continuing partners get more share of profit is called _______ ratio.</div><div class="answer">Gain</div></div>
+    <div class="qa-item"><div class="question">3) Deceased partner's share of profit up to death is shown on _______ side of Balance Sheet.</div><div class="answer">Asset</div></div>
+    <div class="qa-item"><div class="question">4) Benefit ratio = New Ratio - _______.</div><div class="answer">Old Ratio</div></div>
+    <div class="qa-item"><div class="question">5) When Goodwill is raised and written off, _______ account is credited.</div><div class="answer">Goodwill</div></div>
+  </div>
+
+  <!-- ================= Section E: Answer in one sentence ================= -->
+  <div class="card">
+    <h2><i class="fas fa-question-circle"></i> E. Answer in one sentence only</h2>
+    <div class="qa-item"><div class="question">1) What is gain ratio?</div><div class="answer">The ratio in which continuing partners acquire the deceased partner's share = New Ratio - Old Ratio.</div></div>
+    <div class="qa-item"><div class="question">2) In which ratio is General Reserve distributed on death of a partner?</div><div class="answer">In the old profit sharing ratio (including deceased partner).</div></div>
+    <div class="qa-item"><div class="question">3) To whom is General Reserve distributed on death of a partner?</div><div class="answer">To all partners including deceased partner in their old profit sharing ratio.</div></div>
+    <div class="qa-item"><div class="question">4) How is death of a partner a compulsory retirement?</div><div class="answer">Death automatically terminates the partnership relation of that partner.</div></div>
+    <div class="qa-item"><div class="question">5) To which account is profit up to death transferred?</div><div class="answer">Profit & Loss Suspense Account.</div></div>
+  </div>
+
+  <!-- ================= Formulas Summary ================= -->
+  <div class="card">
+    <h2><i class="fas fa-square-root-alt"></i> Important Formulas</h2>
+    <div class="grid-2">
+      <div class="highlight"><strong>Gain Ratio (Death)</strong><br>Gain = New Ratio - Old Ratio</div>
+      <div class="highlight"><strong>Goodwill Valuation</strong><br>Average Profit = Total Profit / No. of years<br>Goodwill = Average Profit × Years Purchase<br>Deceased Partner's Share = Goodwill × Old Ratio</div>
+      <div class="highlight"><strong>Profit up to Death</strong><br>Average Profit of last 2/3 years × Period (months/12) × Deceased Partner's Share</div>
+      <div class="highlight"><strong>Interest on Capital (up to death)</strong><br>Capital × Rate × Period/12</div>
+      <div class="highlight"><strong>Salary up to Death</strong><br>Monthly Salary × Number of months</div>
+    </div>
+  </div>
+
+  <!-- ================= Journal Entries for Death (Proper Table) ================= -->
+  <div class="card">
+    <h2><i class="fas fa-book"></i> Journal Entries for Death of Partner</h2>
+    <div class="resp-table">
+      <table class="account-table">
+        <thead>
+          <tr>
+            <th>Transaction</th>
+            <th>Journal Entry</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Revaluation Profit (Increase in asset / Decrease in liability)</td><td>Asset/Liability A/c Dr. → To Revaluation A/c<br>Revaluation A/c Dr. → To All Partners' Capital A/c (Old ratio)</td></tr>
+          <tr><td>Revaluation Loss (Decrease in asset / Increase in liability)</td><td>Revaluation A/c Dr. → To Asset/Liability A/c<br>All Partners' Capital A/c Dr. (Old ratio) → To Revaluation A/c</td></tr>
+          <tr><td>Reserve/Accumulated Profit transferred</td><td>Reserve/General Reserve A/c Dr. → To All Partners' Capital A/c (Old ratio)</td></tr>
+          <tr><td>Goodwill raised for deceased partner's share (retained)</td><td>Goodwill A/c Dr. → To Deceased Partner's Capital A/c</td></tr>
+          <tr><td>Goodwill raised and written off</td><td>Goodwill A/c Dr. → To Deceased Partner's Capital A/c<br>Continuing Partners' Capital A/c Dr. (Gain ratio) → To Goodwill A/c</td></tr>
+          <tr><td>Profit up to death (Proportionate)</td><td>P&L Suspense A/c Dr. → To Deceased Partner's Capital A/c</td></tr>
+          <tr><td>Salary/Interest on Capital to Deceased Partner</td><td>Salary/Interest on Capital A/c Dr. → To Deceased Partner's Capital A/c</td></tr>
+          <tr><td>Amount due transferred to Executor's Loan A/c</td><td>Deceased Partner's Capital A/c Dr. → To Executor's Loan A/c</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ================= Specimen: Revaluation Account (Proper Dr./Cr. Table) ================= -->
+  <div class="card">
+    <h2><i class="fas fa-chart-line"></i> Specimen: Revaluation Account (Death)</h2>
+    <div class="resp-table">
+      <table class="account-table">
+        <thead>
+          <tr>
+            <th colspan="2">Dr. Revaluation Account Cr.</th>
+          </tr>
+          <tr>
+            <th>Particulars</th>
+            <th>Amount (₹)</th>
+            <th>Particulars</th>
+            <th>Amount (₹)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>To Asset A/c (Decrease)</td><td>xxx</td><td>By Asset A/c (Increase)</td><td>xxx</td></tr>
+          <tr><td>To Liability A/c (Increase)</td><td>xxx</td><td>By Liability A/c (Decrease)</td><td>xxx</td></tr>
+          <tr><td>To Partners' Capital A/c (Profit transferred)</td><td>xxx</td><td>By Partners' Capital A/c (Loss transferred)</td><td>xxx</td></tr>
+          <tr><td><strong>Total</strong></td><td><strong>xxxx</strong></td><td><strong>Total</strong></td><td><strong>xxxx</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="highlight">Note: Revaluation profit/loss is distributed to ALL partners (including deceased) in OLD profit sharing ratio.</div>
+  </div>
+
+  <!-- ======== Illustration 1: Revaluation Account (Problem 1) ======== -->
+  <div class="card">
+    <h2><i class="fas fa-calculator"></i> Illustration: Revaluation A/c (Rekha, Menaka, Mukta)</h2>
+    <div class="resp-table">
+      <table class="account-table">
+        <thead><tr><th colspan="2">Dr. Revaluation Account Cr.</th><th></th><th></th></tr>
+        <tr><th>Particulars</th><th>₹</th><th>Particulars</th><th>₹</th></tr></thead>
+        <tbody>
+          <tr><td>To R.D.D. A/c</td><td>2,000</td><td>By Plant & Machinery A/c</td><td>10,000</td></tr>
+          <tr><td>To Partners' Capital (Profit):<br>Rekha 4,000, Menaka 2,000, Mukta 2,000</td><td>8,000</td><td></td><td></td></tr>
+          <tr><td><strong>Total</strong></td><td><strong>10,000</strong></td><td><strong>Total</strong></td><td><strong>10,000</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="highlight"><strong>Old Ratio: 2:1:1 | Revaluation Profit: ₹8,000</strong></div>
+  </div>
+
+  <!-- ======== Illustration 1: Mukta's Capital Account (Proper Format) ======== -->
+  <div class="card">
+    <h2><i class="fas fa-user-clock"></i> Illustration: Mukta's Capital Account (Problem 1)</h2>
+    <div class="resp-table">
+      <table class="account-table">
+        <thead>
+          <tr><th colspan="2">Dr. Mukta's Capital Account Cr.</th><th></th><th></th></tr>
+          <tr><th>Particulars</th><th>₹</th><th>Particulars</th><th>₹</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>To Drawings A/c</td><td>10,000</td><td>By Balance b/d</td><td>34,000</td></tr>
+          <tr><td>To Interest on Drawings A/c</td><td>1,000</td><td>By General Reserve A/c</td><td>4,000</td></tr>
+          <tr><td>To Executor's Loan A/c (Balancing Figure)</td><td>1,07,750</td><td>By P&L Adjustment A/c (Profit)</td><td>2,000</td></tr>
+          <tr><td></td><td></td><td>By Goodwill A/c</td><td>75,000</td></tr>
+          <tr><td></td><td></td><td>By P&L Suspense A/c</td><td>3,750</td></tr>
+          <tr><td><strong>Total</strong></td><td><strong>1,18,750</strong></td><td><strong>Total</strong></td><td><strong>1,18,750</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="highlight">Goodwill: ₹75,000 | Profit up to death: ₹3,750 | Amount due: ₹1,07,750</div>
+  </div>
+
+  <!-- ======== Illustration 4: Virat's Capital Account (Proper Format) ======== -->
+  <div class="card">
+    <h2><i class="fas fa-user-graduate"></i> Illustration: Virat's Capital Account (Problem 4)</h2>
+    <div class="resp-table">
+      <table class="account-table">
+        <thead>
+          <tr><th colspan="2">Dr. Virat's Capital Account Cr.</th><th></th><th></th></tr>
+          <tr><th>Particulars</th><th>₹</th><th>Particulars</th><th>₹</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>To Drawings A/c</td><td>2,700</td><td>By Balance b/d</td><td>12,000</td></tr>
+          <tr><td>To Executor's Loan A/c</td><td>45,200</td><td>By General Reserve A/c</td><td>4,000</td></tr>
+          <tr><td></td><td></td><td>By P&L Adjustment A/c (Profit)</td><td>3,000</td></tr>
+          <tr><td></td><td></td><td>By Goodwill A/c</td><td>22,500</td></tr>
+          <tr><td></td><td></td><td>By P&L Suspense A/c</td><td>2,500</td></tr>
+          <tr><td></td><td></td><td>By Salary A/c</td><td>3,600</td></tr>
+          <tr><td></td><td></td><td>By Interest on Capital A/c</td><td>300</td></tr>
+          <tr><td><strong>Total</strong></td><td><strong>47,900</strong></td><td><strong>Total</strong></td><td><strong>47,900</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ======== Working Note for Goodwill and Profit ======== -->
+  <div class="card">
+    <h2><i class="fas fa-chart-line"></i> Working Note: Goodwill & Profit Calculation (Problem 4)</h2>
+    <div class="resp-table">
+      <table>
+        <thead><tr><th colspan="2">1. Goodwill Calculation</th></tr></thead>
+        <tbody>
+          <tr><td>Total Profit of 4 years (30k + 25k + 25k + 40k)</td><td>₹1,20,000</td></tr>
+          <tr><td>Average Profit = 1,20,000 / 4</td><td>₹30,000</td></tr>
+          <tr><td>Goodwill of Firm = 30,000 × 3 years purchase</td><td>₹90,000</td></tr>
+          <tr><td>Virat's Share (Old ratio = 7:5:4, Virat = 4/16)</td><td>₹90,000 × 4/16 = ₹22,500</td></tr>
+        </tbody>
+        <thead><tr><th colspan="2">2. Profit up to Death (3 months)</th></tr></thead>
+        <tbody>
+          <tr><td>Last year profit (2016-17)</td><td>₹40,000</td></tr>
+          <tr><td>Proportionate profit = 40,000 × 3/12</td><td>₹10,000</td></tr>
+          <tr><td>Virat's share = 10,000 × 4/16</td><td>₹2,500</td></tr>
+        </tbody>
+        <thead><tr><th colspan="2">3. Interest on Capital (3 months) & Salary</th></tr></thead>
+        <tbody>
+          <tr><td>Interest: 12,000 × 10% × 3/12</td><td>₹300</td></tr>
+          <tr><td>Salary: ₹1,200 × 3 months</td><td>₹3,600</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ======== Illustration 7: Prem's Capital Account (Proper Format) ======== -->
+  <div class="card">
+    <h2><i class="fas fa-user-tie"></i> Illustration: Prem's Capital Account (Problem 7)</h2>
+    <div class="resp-table">
+      <table class="account-table">
+        <thead>
+          <tr><th colspan="2">Dr. Prem's Capital Account Cr.</th><th></th><th></th></tr>
+          <tr><th>Particulars</th><th>₹</th><th>Particulars</th><th>₹</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>To Drawings A/c</td><td>45,000</td><td>By Balance b/d</td><td>2,40,000</td></tr>
+          <tr><td>To Interest on Drawings A/c</td><td>4,000</td><td>By General Reserve A/c</td><td>32,000</td></tr>
+          <tr><td>To Executor's Loan A/c</td><td>4,02,500</td><td>By P&L Adjustment A/c (Profit)</td><td>16,000</td></tr>
+          <tr><td></td><td></td><td>By Interest on Capital A/c</td><td>6,000</td></tr>
+          <tr><td></td><td></td><td>By Goodwill A/c</td><td>1,50,000</td></tr>
+          <tr><td></td><td></td><td>By P&L Suspense A/c</td><td>7,500</td></tr>
+          <tr><td><strong>Total</strong></td><td><strong>4,51,500</strong></td><td><strong>Total</strong></td><td><strong>4,51,500</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="highlight">Goodwill: ₹1,50,000 | Profit up to death: ₹7,500 | Interest on Capital: ₹6,000 | Amount due: ₹4,02,500</div>
+  </div>
+
+  <!-- ======== Summary Table for Easy Reference ======== -->
+  <div class="card">
+    <h2><i class="fas fa-list-ul"></i> Summary: Amount Due to Deceased Partner</h2>
+    <div class="resp-table">
+      <table>
+        <thead><tr><th>Particulars</th><th>Treatment</th></tr></thead>
+        <tbody>
+          <tr><td>Capital Balance (Last Balance Sheet)</td><td>Add to Executor's Account</td></tr>
+          <tr><td>Share in General Reserve / Accumulated Profit</td><td>Add in Old Ratio</td></tr>
+          <tr><td>Share in Revaluation Profit</td><td>Add in Old Ratio</td></tr>
+          <tr><td>Share in Revaluation Loss</td><td>Deduct in Old Ratio</td></tr>
+          <tr><td>Share in Goodwill</td><td>Add (based on Goodwill valuation)</td></tr>
+          <tr><td>Share in Profit up to Death</td><td>Add (via P&L Suspense A/c)</td></tr>
+          <tr><td>Salary / Commission / Interest on Capital up to Death</td><td>Add</td></tr>
+          <tr><td>Drawings / Interest on Drawings</td><td>Deduct</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="footer-note">
+    <i class="fas fa-dove"></i> Death of Partner: Compulsory retirement | Gain Ratio = New - Old | Revaluation shared by all | P&L Suspense A/c for profit up to death
+  </div>
+</div>
+</body>
+</html>

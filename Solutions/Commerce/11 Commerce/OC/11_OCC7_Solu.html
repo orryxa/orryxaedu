@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Chapter 7 | Business Environment - 11th Commerce</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #eef2f9 0%, #e0e8f2 100%);
+            font-family: 'Inter', sans-serif;
+            padding: 32px 24px;
+            color: #0a2b3e;
+            line-height: 1.5;
+            overflow-y: scroll;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        body::-webkit-scrollbar { display: none; }
+        .container { max-width: 1400px; margin: 0 auto; }
+        .hero { text-align: center; margin-bottom: 40px; }
+        .hero h1 {
+            font-size: 2.4rem; font-weight: 800;
+            background: linear-gradient(135deg, #0b4b6b, #1f6e93, #2c7da0);
+            background-clip: text; -webkit-background-clip: text; color: transparent;
+            padding-bottom: 10px;
+            border-bottom: 4px solid #ffb347;
+            display: inline-block;
+        }
+        .summary-card {
+            background: linear-gradient(145deg, #ffffff, #f8fbfe);
+            border-radius: 2rem;
+            margin-bottom: 32px;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.12);
+            overflow: hidden;
+            border: 1px solid rgba(44,125,160,0.15);
+        }
+        .summary-header {
+            background: linear-gradient(105deg, #135b78 0%, #1f7a9e 100%);
+            padding: 20px 28px;
+            border-bottom: 4px solid #ffb74d;
+        }
+        .summary-header h2 {
+            color: white;
+            font-size: 1.6rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .summary-header h2 i { font-size: 1.8rem; color: #ffd966; }
+        .summary-body {
+            padding: 28px 32px;
+            max-height: 550px;
+            overflow-y: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .summary-body::-webkit-scrollbar { display: none; }
+        .summary-text { font-size: 1rem; line-height: 1.65; color: #1f3b4c; }
+        .summary-text p { margin-bottom: 14px; }
+        .summary-text strong { color: #135b78; }
+        .highlight-badge {
+            background: #eef3fc;
+            border-left: 4px solid #ffb74d;
+            padding: 10px 16px;
+            margin: 16px 0;
+            border-radius: 12px;
+        }
+        .lang-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px dashed #cbdde9;
+        }
+        .lang-btn {
+            background: #135b78; color: white; border: none;
+            padding: 10px 28px; border-radius: 50px; font-weight: 600;
+            cursor: pointer; transition: all 0.25s ease;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .lang-btn:hover { background: #ff8c42; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        .card {
+            background: rgba(255,255,255,0.97); border-radius: 1.8rem;
+            margin-bottom: 32px; padding: 28px 32px;
+            box-shadow: 0 15px 30px -10px rgba(0,0,0,0.08);
+            border: 1px solid rgba(255,255,255,0.6);
+        }
+        .card h2 {
+            font-size: 1.6rem; font-weight: 700; color: #135b78;
+            margin-bottom: 24px; padding-bottom: 8px;
+            border-bottom: 3px solid #ffb74d;
+            display: inline-block;
+        }
+        .card h2 i { margin-right: 12px; color: #ff8c42; }
+        .qa-item { margin-bottom: 22px; border-left: 3px solid #cbdde9; padding-left: 20px; }
+        .question { font-weight: 700; color: #1f4a5e; margin-bottom: 8px; display: flex; gap: 12px; flex-wrap: wrap; }
+        .answer {
+            background: #f8fafd; padding: 10px 18px; border-radius: 24px;
+            font-weight: 500; color: #216477; display: inline-block;
+            font-size: 0.92rem;
+        }
+        .true-badge { background: #e0f2e9; color: #1e6f3f; padding: 3px 14px; border-radius: 40px; font-weight: 700; font-size: 0.75rem; display: inline-block; margin-right: 12px; }
+        .false-badge { background: #ffe8e6; color: #bc4742; padding: 3px 14px; border-radius: 40px; font-weight: 700; font-size: 0.75rem; display: inline-block; margin-right: 12px; }
+        .resp-table { width: 100%; overflow-x: auto; margin: 16px 0; background: #f4f9fe; padding: 4px; border-radius: 20px; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; background: white; border-radius: 16px; overflow: hidden; }
+        th, td { border: 1px solid #cde1ef; padding: 10px 12px; text-align: left; vertical-align: top; }
+        th { background: #e0eaf5; font-weight: 700; color: #135b78; }
+        .popup-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+            justify-content: center; align-items: center; z-index: 1000;
+        }
+        .popup-content {
+            background: white; width: 90%; max-width: 1000px; border-radius: 2rem;
+            position: relative; max-height: 85vh; overflow: hidden;
+            display: flex; flex-direction: column;
+        }
+        .popup-header {
+            background: linear-gradient(105deg, #135b78, #1f7a9e);
+            padding: 18px 24px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .close-popup {
+            font-size: 32px; cursor: pointer; color: #ffd966;
+            transition: 0.2s; line-height: 1;
+        }
+        .close-popup:hover { color: #fff; transform: rotate(90deg); }
+        .popup-body { padding: 24px; overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none; }
+        .popup-body::-webkit-scrollbar { display: none; }
+        @media (max-width: 768px) {
+            body { padding: 20px 16px; }
+            .card, .summary-body { padding: 20px 18px; }
+            .hero h1 { font-size: 1.8rem; }
+            th, td { padding: 6px 8px; font-size: 0.7rem; }
+        }
+        .footer-note { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #bdd4e4; font-size: 0.8rem; color: #2c6f8c; }
+        .dim-grid { display: flex; flex-wrap: wrap; gap: 12px; margin: 20px 0; }
+        .dim-card { flex: 1; min-width: 160px; background: linear-gradient(145deg, #135b78, #1f7a9e); border-radius: 1rem; padding: 14px; text-align: center; color: white; }
+        .dim-card i { font-size: 1.8rem; margin-bottom: 6px; }
+        .dim-card h3 { font-size: 1rem; margin-bottom: 4px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="hero">
+        <h1><i class="fas fa-globe"></i> Chapter 7 · Business Environment</h1>
+        <p style="margin-top: 12px;">Internal & External Environment · Dimensions · LPG Policy (Liberalization, Privatization, Globalization)</p>
+    </div>
+
+    <!-- ================= ATTRACTIVE SUMMARY CARD ================= -->
+    <div class="summary-card">
+        <div class="summary-header">
+            <h2><i class="fas fa-file-alt"></i> 📘 Chapter Summary: Business Environment</h2>
+        </div>
+        <div class="summary-body">
+            <div class="summary-text" id="summaryText">
+                <p><strong>🔹 Introduction:</strong> Business does not function in isolation. It interacts with its environment continuously. Successful business identifies, appraises and responds to opportunities and threats. (Bayard O. Wheeler: "Total of all things external to firm affecting organization & operations")</p>
+                
+                <div class="dim-grid">
+                    <div class="dim-card"><i class="fas fa-mountain"></i><h3>Natural</h3><small>Climate, Resources</small></div>
+                    <div class="dim-card"><i class="fas fa-users"></i><h3>Social</h3><small>Customs, Values</small></div>
+                    <div class="dim-card"><i class="fas fa-landmark"></i><h3>Political</h3><small>Stability, Ideology</small></div>
+                    <div class="dim-card"><i class="fas fa-chart-line"></i><h3>Economic</h3><small>GDP, Policies</small></div>
+                    <div class="dim-card"><i class="fas fa-microchip"></i><h3>Technological</h3><small>Innovation</small></div>
+                    <div class="dim-card"><i class="fas fa-gavel"></i><h3>Legal</h3><small>Laws, Acts</small></div>
+                </div>
+
+                <div class="highlight-badge"><strong>📌 Internal Environment (Controllable Factors):</strong> Value System, Vision-Mission, Management Structure, Internal Power Relations, Human Resources, Physical Assets, Marketing Resources, Financial Factors.</div>
+                <div class="highlight-badge"><strong>📌 External Environment (Uncontrollable Factors):</strong> Natural, Social, Political, Economic, Technological, Legal (also Global Environment).</div>
+                
+                <div class="highlight-badge"><strong>📌 New Economic Policy (LPG) - 24th July 1991:</strong><br>
+                • <strong>Liberalization:</strong> Eliminating unnecessary controls - abolished industrial licensing, reduced import duties, financial reforms.<br>
+                • <strong>Privatization:</strong> Reducing government involvement - disinvestment, MOU system, less political interference.<br>
+                • <strong>Globalization:</strong> Integration of national economy with world economy - boundaryless world, free flow of goods, services, capital, technology.</div>
+                
+                <p><strong>🔹 Importance of Business Environment:</strong> Determining opportunities & threats, identifying strengths & weaknesses, continuous learning, image building, meeting competition, giving direction for growth.</p>
+                <p><strong>🔹 Impact of LPG on Business:</strong> Increased competition, more demanding customers, rapid technological change, need for human resource development, customer-oriented market, discontinuation of budget support.</p>
+            </div>
+            <div class="lang-buttons">
+                <button class="lang-btn" onclick="showTranslation('hindi')"><i class="fas fa-language"></i> हिंदी अनुवाद</button>
+                <button class="lang-btn" onclick="showTranslation('marathi')"><i class="fas fa-language"></i> मराठी अनुवाद</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= Section A: Multiple Choice ================= -->
+    <div class="card"><h2><i class="fas fa-check-square"></i> A. Select the correct option</h2>
+        <div class="qa-item"><div class="question">1) Business environment has tremendous impact on ________.</div><div class="answer">a) business</div></div>
+        <div class="qa-item"><div class="question">2) The new Industrial policy was formulated in ________.</div><div class="answer">c) 1991</div></div>
+        <div class="qa-item"><div class="question">3) Changes in ruling government is an aspect of ________ environment.</div><div class="answer">a) political</div></div>
+        <div class="qa-item"><div class="question">4) Literacy level is an aspect of ________ environment.</div><div class="answer">a) social</div></div>
+        <div class="qa-item"><div class="question">5) Privatization implies reduction in the role of ________ sector.</div><div class="answer">a) public</div></div>
+        <div class="qa-item"><div class="question">6) Globalization is concerned with ________ market.</div><div class="answer">a) global</div></div>
+        <div class="qa-item"><div class="question">7) ________ means linking national economy to the world economy.</div><div class="answer">a) Globalization</div></div>
+    </div>
+
+    <!-- ================= Section B: Match Pairs ================= -->
+    <div class="card"><h2><i class="fas fa-link"></i> B. Match the pairs</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Group A</th><th>Answer</th><th>Group B</th></tr></thead>
+                <tbody>
+                    <tr><td>Globalization</div></div></td><td>→</div></div><td>3) Borderless economy</div></div></tr>
+                    <tr><td>Privatization</div></div></td><td>→</div></div><td>6) Disinvestment</div></div></tr>
+                    <tr><td>Liberalization</div></div></td><td>→</div></div><td>9) Abolishing license policy</div></div></tr>
+                    <tr><td>New Economic Policy</div></div></td><td>→</div></div><td>8) 1991</div></div></tr>
+                    <tr><td>Social Environment</div></div></td><td>→</div></div><td>7) Social Values</div></div></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="resp-table" style="margin-top: 15px;">
+            <table>
+                <thead><tr><th>Group A</th><th>Answer</th><th>Group B</th></tr></thead>
+                <tbody>
+                    <tr><td>Internal Environment</div></div></td><td>→</div></div><td>6) Controlled by business</div></div></tr>
+                    <tr><td>Political Environment</div></div></td><td>→</div></div><td>8) Ideology of political party</div></div></tr>
+                    <tr><td>Legal Environment</div></div></td><td>→</div></div><td>1) Knowledge of law</div></div></tr>
+                    <tr><td>Economic Environment</div></div></td><td>→</div></div><td>2) Taxation policy</div></div></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================= Section C: One word ================= -->
+    <div class="card"><h2><i class="fas fa-tag"></i> C. Give one word/phrase/term</h2>
+        <div class="qa-item"><div class="question">1) Uncontrollable factors of the business environment.</div><div class="answer">External Environment</div></div>
+        <div class="qa-item"><div class="question">2) The environment that includes customs, traditions, values, social trends.</div><div class="answer">Social Environment</div></div>
+        <div class="qa-item"><div class="question">3) Process of transferring ownership from public service to private sector.</div><div class="answer">Privatization</div></div>
+        <div class="qa-item"><div class="question">4) A boundaryless world with free flow of goods, services, capital and people.</div><div class="answer">Globalization</div></div>
+    </div>
+
+    <!-- ================= Section D: True/False ================= -->
+    <div class="card"><h2><i class="fas fa-gavel"></i> D. State True or False</h2>
+        <div class="qa-item"><div class="question">1) External factors of business environment are controllable factors.</div><div class="answer"><span class="false-badge">False</span> External factors are uncontrollable.</div></div>
+        <div class="qa-item"><div class="question">2) Business is the product of different environmental factors.</div><div class="answer"><span class="true-badge">True</span></div></div>
+        <div class="qa-item"><div class="question">3) Business and environment are inseparable parts.</div><div class="answer"><span class="true-badge">True</span></div></div>
+        <div class="qa-item"><div class="question">4) New economic policy promoted the liberal economic policy.</div><div class="answer"><span class="true-badge">True</span></div></div>
+        <div class="qa-item"><div class="question">5) There is no benefit of globalization on Indian economy.</div><div class="answer"><span class="false-badge">False</span> Globalization brought many benefits.</div></div>
+    </div>
+
+    <!-- ================= Dimensions of Business Environment Table ================= -->
+    <div class="card"><h2><i class="fas fa-chart-pie"></i> Dimensions of Business Environment (7 Key Dimensions)</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Dimension</th><th>Key Elements</th><th>Impact on Business</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Natural Environment</strong></td><td>Climate, minerals, soil, rivers, natural resources, ecological balance</td><td>Raw material availability, production suitability, pollution regulations</td></tr>
+                    <tr><td><strong>Social Environment</strong></td><td>Customs, traditions, values, ethics, beliefs, literacy, life expectancy, social trends</td><td>Consumer behavior, product demand, social responsibility</td></tr>
+                    <tr><td><strong>Political Environment</strong></td><td>Political stability, ideology of parties, attitudes of govt officials, Legislature, Judiciary</td><td>Investor confidence, policy decisions, business regulations</td></tr>
+                    <tr><td><strong>Economic Environment</strong></td><td>GDP, per capita income, monetary policy, fiscal policy, trade cycles, economic system (Capitalist/Socialist/Mixed)</td><td>Business survival, growth, profitability, investment decisions</td></tr>
+                    <tr><td><strong>Technological Environment</strong></td><td>Methods, techniques, innovation, R&D, automation, digitalization</td><td>Product design, efficiency, competitiveness, obsolescence risk</td></tr>
+                    <tr><td><strong>Legal Environment</strong></td><td>Contract Act, Industrial Dispute Act, Consumer Protection Act, GST, Competition Act, Companies Act</td><td>Compliance, legal framework, business operations</td></tr>
+                    <tr><td><strong>Global Environment</strong></td><td>WTO, international trade, cross-border flows, MNCs, foreign exchange</td><td>International competition, export/import opportunities</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================= Internal vs External Environment ================= -->
+    <div class="card"><h2><i class="fas fa-building"></i> Internal Environment (Controllable) vs External Environment (Uncontrollable)</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Internal Factors (Controllable)</th><th>External Factors (Uncontrollable)</th></tr></thead>
+                <tbody>
+                    <tr><td>Value System of founders/management</td><td>Natural Environment (climate, resources)</td></tr>
+                    <tr><td>Vision, Mission & Objectives</td><td>Social Environment (customs, values, trends)</td></tr>
+                    <tr><td>Management Structure & Board of Directors</td><td>Political Environment (stability, ideology)</td></tr>
+                    <tr><td>Internal Power Relationships</td><td>Economic Environment (GDP, policies, system)</td></tr>
+                    <tr><td>Human Resources (skill, morale, attitude)</td><td>Technological Environment (innovation, methods)</td></tr>
+                    <tr><td>Physical Assets & Facilities</td><td>Legal Environment (laws, regulations)</td></tr>
+                    <tr><td>Marketing Resources (brand equity, distribution)</td><td>Global Environment (WTO, international trade)</td></tr>
+                    <tr><td>Financial Factors (policies, position)</td><td>—</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================= LPG Policy Details ================= -->
+    <div class="card"><h2><i class="fas fa-chart-line"></i> New Economic Policy (LPG) - 24th July 1991</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Component</th><th>Meaning</th><th>Key Features / Measures</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Liberalization</strong></td><td>Eliminating unnecessary controls & restrictions</td><td>Abolishing Industrial Licensing, reduction in import duties, financial system reforms, reduction in taxation, freedom to fix prices, opening of telecom sector</td></tr>
+                    <tr><td><strong>Privatization</strong></td><td>Reducing government involvement; involving private sector</td><td>Disinvestment of PSU shares, reduction in public sector reserved industries, MOU system, less political interference, capital market discipline</td></tr>
+                    <tr><td><strong>Globalization</strong></td><td>Integration of national economy with world economy</td><td>Removing anti-export bias, minimizing import tariffs, free flow of goods/services/capital/technology, boundaryless world, direct foreign participation</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="highlight-badge"><strong>📌 Economic Systems:</strong> Capitalist (USA - private ownership) | Socialist (China - govt ownership) | Mixed (India - joint ownership)</div>
+    </div>
+
+    <!-- ================= Importance of Business Environment ================= -->
+    <div class="card"><h2><i class="fas fa-star"></i> Importance of Business Environment</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>#</th><th>Importance</th><th>Explanation</th></tr></thead>
+                <tbody>
+                    <tr><td>1</td><td>Determining Opportunities & Threats</td><td>Identifies business opportunities and helps overcome challenges</td></tr>
+                    <tr><td>2</td><td>Identifying Strength & Weakness</td><td>Helps evaluate firm's capabilities vis-à-vis technological & global development</td></tr>
+                    <tr><td>3</td><td>Continuous Learning</td><td>Motivates managers to update knowledge and skills</td></tr>
+                    <tr><td>4</td><td>Image Building</td><td>Shows sensitivity to environment, meets expectations of stakeholders</td></tr>
+                    <tr><td>5</td><td>Meeting Competition</td><td>Analyzes competitor strategies and formulates own strategies</td></tr>
+                    <tr><td>6</td><td>Giving Direction for Growth</td><td>Opens new frontiers of growth and expansion</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================= Impact of LPG on Business ================= -->
+    <div class="card"><h2><i class="fas fa-chart-line"></i> Impact of New Economic Policy on Business</h2>
+        <div class="resp-table">
+            <table>
+                <thead><td><th>Impact</th><th>Description</th></tr></thead>
+                <tbody>
+                    <tr><td>1</td><td>Increase in Competition</td><td>More players in the market due to liberalization</td></tr>
+                    <tr><td>2</td><td>More Demanding Customers</td><td>Customers have more choices and higher expectations</td></tr>
+                    <tr><td>3</td><td>Technological Changes</td><td>Rapid adoption of new technologies for competitiveness</td></tr>
+                    <tr><td>4</td><td>Need for Human Resource Development</td><td>Skill development, training, and upskilling required</td></tr>
+                    <tr><td>5</td><td>Customer Oriented Market</td><td>Shift from seller's market to buyer's market</td></tr>
+                    <tr><td>6</td><td>Discontinuation of Budget Support</td><td>PSUs must generate own resources</td></tr>
+                    <tr><td>7</td><td>Need for Expertise</td><td>Specialization in various fields necessary</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================= Case Study ================= -->
+    <div class="card"><h2><i class="fas fa-briefcase"></i> Case Study Analysis</h2>
+        <div class="qa-item"><div class="question">Case 1: Court bans polythene bags; govt gives subsidy to jute industry.</div><div class="answer">i) Legal Environment & Political Environment. ii) Business must adapt to environmental concerns and government policies.</div></div>
+        <div class="qa-item"><div class="question">Case 2: Lok Sabha 2014 result - Sensex rose by 1000 points in a day.</div><div class="answer">i) Political Environment - political stability and confidence. ii) Other dimensions: Economic Environment (GDP, policies), Social Environment (consumer trends).</div></div>
+        <div class="qa-item"><div class="question">Case 3: Company developed energy efficient light tubes lasting 20x longer.</div><div class="answer">i) Technological Environment. ii) Importance: Identifies opportunities, gives competitive advantage, leads to growth & profitability.</div></div>
+        <div class="qa-item"><div class="question">Case 4: Government allows oil marketing under public sector to fix own prices.</div><div class="answer">i) Economic reform: Liberalization. ii) Other reforms: Privatization and Globalization.</div></div>
+    </div>
+
+    <!-- ================= One Sentence Answers ================= -->
+    <div class="card"><h2><i class="fas fa-question-circle"></i> H. Answer in one sentence</h2>
+        <div class="qa-item"><div class="question">1) Which factors are included in internal environment?</div><div class="answer">Value system, vision-mission, management structure, human resources, physical assets, marketing and financial factors.</div></div>
+        <div class="qa-item"><div class="question">2) What are the powers of legislature?</div><div class="answer">Policy making, law making, budget approving, and executing control.</div></div>
+        <div class="qa-item"><div class="question">3) Who possess the factors of production in socialist economy?</div><div class="answer">Government (state ownership).</div></div>
+        <div class="qa-item"><div class="question">4) When did Indian government launch New Economic Policy?</div><div class="answer">24th July 1991.</div></div>
+        <div class="qa-item"><div class="question">5) How is the boundaryless world possible?</div><div class="answer">Through Globalization - free flow of goods, services, capital, technology, and people across nations.</div></div>
+    </div>
+
+    <!-- ================= Correct the underlined words ================= -->
+    <div class="card"><h2><i class="fas fa-edit"></i> I. Correct the underlined word</h2>
+        <div class="qa-item"><div class="question">1) External factors of business environment are controllable.</div><div class="answer">uncontrollable</div></div>
+        <div class="qa-item"><div class="question">2) Internal factors of business are beyond control.</div><div class="answer">within control / controllable</div></div>
+        <div class="qa-item"><div class="question">3) Natural resources are related to political environment.</div><div class="answer">natural</div></div>
+        <div class="qa-item"><div class="question">4) Privatization helps for global village.</div><div class="answer">Globalization</div></div>
+    </div>
+
+    <!-- ================= Justify Statements ================= -->
+    <div class="card"><h2><i class="fas fa-check-double"></i> Key Justifications</h2>
+        <div class="qa-item"><div class="question">Why are external factors of business environment beyond control?</div><div class="answer">External factors like natural conditions, government policies, economic changes, and social trends are determined by outside forces and individual businesses cannot change them.</div></div>
+        <div class="qa-item"><div class="question">Why should business firms be aware of changes in society?</div><div class="answer">Social changes affect consumer preferences, demand patterns, and business practices, requiring firms to adapt their products and strategies accordingly.</div></div>
+        <div class="qa-item"><div class="question">Why does political stability build confidence among business people?</div><div class="answer">Stable political environment ensures consistent policies, reduces risk, encourages long-term investments, and signals strength to investors.</div></div>
+    </div>
+
+    <!-- ================= Career Opportunities ================= -->
+    <div class="card"><h2><i class="fas fa-briefcase"></i> Career Opportunities</h2>
+        <div class="answer" style="display: block;">Financial Advisor · Legal Advisor · Tax Consultant · Technical Expert · Computer Operator (Data, Tally, Programming) · Fashion Designer · GST Expert</div>
+    </div>
+
+    <div class="footer-note"><i class="fas fa-globe"></i> Business Environment | Internal & External Factors | LPG Policy (1991) | Natural, Social, Political, Economic, Technological, Legal Dimensions | 11th Commerce OCM</div>
+</div>
+
+<!-- Popup for Translation -->
+<div id="translationPopup" class="popup-overlay">
+    <div class="popup-content">
+        <div class="popup-header">
+            <h3><i class="fas fa-language"></i> अनुवाद / Translation</h3>
+            <span class="close-popup" onclick="closePopup()">×</span>
+        </div>
+        <div class="popup-body" id="popupBody"></div>
+    </div>
+</div>
+
+<script>
+    const hindiSummary = `
+        <div style="font-family: 'Inter', sans-serif;">
+            <p><strong>🔹 व्यावसायिक पर्यावरण:</strong> व्यवसाय एकांत में कार्य नहीं करता। यह अपने पर्यावरण के साथ निरंतर संपर्क करता है। सफल व्यवसाय अवसरों और खतरों की पहचान करता है।</p>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 आंतरिक पर्यावरण (नियंत्रणीय कारक):</strong> मूल्य प्रणाली, दृष्टि-मिशन, प्रबंधन संरचना, मानव संसाधन, भौतिक संपत्ति, विपणन संसाधन, वित्तीय कारक।</div>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 बाह्य पर्यावरण (अनियंत्रणीय कारक):</strong> प्राकृतिक, सामाजिक, राजनीतिक, आर्थिक, तकनीकी, कानूनी और वैश्विक पर्यावरण।</div>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 नई आर्थिक नीति (LPG) - 24 जुलाई 1991:</strong><br>
+            • <strong>उदारीकरण:</strong> अनावश्यक नियंत्रण समाप्त - औद्योगिक लाइसेंसिंग समाप्त, आयात शुल्क में कमी।<br>
+            • <strong>निजीकरण:</strong> सरकारी भागीदारी कम - विनिवेश, सार्वजनिक क्षेत्र का पुनर्गठन।<br>
+            • <strong>वैश्वीकरण:</strong> राष्ट्रीय अर्थव्यवस्था का विश्व अर्थव्यवस्था से एकीकरण - सीमाहीन दुनिया।</div>
+            <p><strong>🔹 व्यावसायिक पर्यावरण का महत्व:</strong> अवसर और खतरे निर्धारण, शक्ति और कमजोरी पहचान, निरंतर सीखना, प्रतिमा निर्माण, प्रतिस्पर्धा का सामना, विकास की दिशा।</p>
+            <p><strong>🔹 LPG का प्रभाव:</strong> बढ़ती प्रतिस्पर्धा, अधिक मांग वाले ग्राहक, तीव्र तकनीकी परिवर्तन, मानव संसाधन विकास की आवश्यकता, ग्राहक-उन्मुख बाजार।</p>
+        </div>`;
+
+    const marathiSummary = `
+        <div style="font-family: 'Inter', sans-serif;">
+            <p><strong>🔹 व्यावसायिक पर्यावरण:</strong> व्यवसाय एकट्याने कार्य करत नाही. तो त्याच्या पर्यावरणाशी सतत संवाद साधतो. यशस्वी व्यवसाय संधी आणि धोके ओळखतो.</p>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 अंतर्गत पर्यावरण (नियंत्रित करण्याजोगे घटक):</strong> मूल्य प्रणाली, दृष्टी-मिशन, व्यवस्थापन रचना, मानव संसाधने, भौतिक मालमत्ता, विपणन संसाधने, वित्तीय घटक.</div>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 बाह्य पर्यावरण (अनियंत्रित घटक):</strong> नैसर्गिक, सामाजिक, राजकीय, आर्थिक, तांत्रिक, कायदेशीर आणि जागतिक पर्यावरण.</div>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 नवीन आर्थिक धोरण (LPG) - 24 जुलै 1991:</strong><br>
+            • <strong>उदारीकरण:</strong> अनावश्यक नियंत्रणे समाप्त - औद्योगिक परवाना समाप्त, आयात शुल्क कमी.<br>
+            • <strong>खासगीकरण:</strong> सरकारी सहभाग कमी - विनिवेश, सार्वजनिक क्षेत्राची पुनर्रचना.<br>
+            • <strong>जागतिकीकरण:</strong> राष्ट्रीय अर्थव्यवस्थेचे जागतिक अर्थव्यवस्थेशी एकीकरण - सीमारहित जग.</div>
+            <p><strong>🔹 व्यावसायिक पर्यावरणाचे महत्त्व:</strong> संधी व धोके निश्चिती, बलस्थाने व कमकुवतपणा ओळख, सतत शिकणे, प्रतिमा निर्मिती, स्पर्धेला तोंड, विकासाची दिशा.</p>
+            <p><strong>🔹 LPG चा परिणाम:</strong> वाढती स्पर्धा, अधिक मागणी करणारे ग्राहक, वेगवान तांत्रिक बदल, मानव संसाधन विकासाची गरज, ग्राहक-केंद्रित बाजारपेठ.</p>
+        </div>`;
+
+    function showTranslation(lang) {
+        const popup = document.getElementById('translationPopup');
+        const popupBody = document.getElementById('popupBody');
+        if (lang === 'hindi') popupBody.innerHTML = hindiSummary;
+        else popupBody.innerHTML = marathiSummary;
+        popup.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+    function closePopup() {
+        document.getElementById('translationPopup').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+    window.onclick = function(event) {
+        const popup = document.getElementById('translationPopup');
+        if (event.target === popup) closePopup();
+    }
+</script>
+</body>
+</html>

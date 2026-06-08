@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Chapter 4 | Forms of Business Organisation - 11th Commerce</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #eef2f9 0%, #e0e8f2 100%);
+            font-family: 'Inter', sans-serif;
+            padding: 32px 24px;
+            color: #0a2b3e;
+            line-height: 1.5;
+            overflow-y: scroll;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        body::-webkit-scrollbar { display: none; }
+        .container { max-width: 1400px; margin: 0 auto; }
+        .hero { text-align: center; margin-bottom: 40px; }
+        .hero h1 {
+            font-size: 2.4rem; font-weight: 800;
+            background: linear-gradient(135deg, #0b4b6b, #1f6e93, #2c7da0);
+            background-clip: text; -webkit-background-clip: text; color: transparent;
+            padding-bottom: 10px;
+            border-bottom: 4px solid #ffb347;
+            display: inline-block;
+        }
+        .summary-card {
+            background: linear-gradient(145deg, #ffffff, #f8fbfe);
+            border-radius: 2rem;
+            margin-bottom: 32px;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.12);
+            overflow: hidden;
+            border: 1px solid rgba(44,125,160,0.15);
+        }
+        .summary-header {
+            background: linear-gradient(105deg, #135b78 0%, #1f7a9e 100%);
+            padding: 20px 28px;
+            border-bottom: 4px solid #ffb74d;
+        }
+        .summary-header h2 {
+            color: white;
+            font-size: 1.6rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .summary-header h2 i { font-size: 1.8rem; color: #ffd966; }
+        .summary-body {
+            padding: 28px 32px;
+            max-height: 550px;
+            overflow-y: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .summary-body::-webkit-scrollbar { display: none; }
+        .summary-text { font-size: 1rem; line-height: 1.65; color: #1f3b4c; }
+        .summary-text p { margin-bottom: 14px; }
+        .summary-text strong { color: #135b78; }
+        .highlight-badge {
+            background: #eef3fc;
+            border-left: 4px solid #ffb74d;
+            padding: 10px 16px;
+            margin: 16px 0;
+            border-radius: 12px;
+        }
+        .lang-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px dashed #cbdde9;
+        }
+        .lang-btn {
+            background: #135b78; color: white; border: none;
+            padding: 10px 28px; border-radius: 50px; font-weight: 600;
+            cursor: pointer; transition: all 0.25s ease;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .lang-btn:hover { background: #ff8c42; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        .card {
+            background: rgba(255,255,255,0.97); border-radius: 1.8rem;
+            margin-bottom: 32px; padding: 28px 32px;
+            box-shadow: 0 15px 30px -10px rgba(0,0,0,0.08);
+            border: 1px solid rgba(255,255,255,0.6);
+        }
+        .card h2 {
+            font-size: 1.6rem; font-weight: 700; color: #135b78;
+            margin-bottom: 24px; padding-bottom: 8px;
+            border-bottom: 3px solid #ffb74d;
+            display: inline-block;
+        }
+        .card h2 i { margin-right: 12px; color: #ff8c42; }
+        .qa-item { margin-bottom: 22px; border-left: 3px solid #cbdde9; padding-left: 20px; }
+        .question { font-weight: 700; color: #1f4a5e; margin-bottom: 8px; display: flex; gap: 12px; flex-wrap: wrap; }
+        .answer {
+            background: #f8fafd; padding: 10px 18px; border-radius: 24px;
+            font-weight: 500; color: #216477; display: inline-block;
+            font-size: 0.92rem;
+        }
+        .true-badge { background: #e0f2e9; color: #1e6f3f; padding: 3px 14px; border-radius: 40px; font-weight: 700; font-size: 0.75rem; display: inline-block; margin-right: 12px; }
+        .false-badge { background: #ffe8e6; color: #bc4742; padding: 3px 14px; border-radius: 40px; font-weight: 700; font-size: 0.75rem; display: inline-block; margin-right: 12px; }
+        .resp-table { width: 100%; overflow-x: auto; margin: 16px 0; background: #f4f9fe; padding: 4px; border-radius: 20px; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; background: white; border-radius: 16px; overflow: hidden; }
+        th, td { border: 1px solid #cde1ef; padding: 10px 12px; text-align: left; vertical-align: top; }
+        th { background: #e0eaf5; font-weight: 700; color: #135b78; }
+        .popup-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+            justify-content: center; align-items: center; z-index: 1000;
+        }
+        .popup-content {
+            background: white; width: 90%; max-width: 900px; border-radius: 2rem;
+            position: relative; max-height: 85vh; overflow: hidden;
+            display: flex; flex-direction: column;
+        }
+        .popup-header {
+            background: linear-gradient(105deg, #135b78, #1f7a9e);
+            padding: 18px 24px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .close-popup {
+            font-size: 32px; cursor: pointer; color: #ffd966;
+            transition: 0.2s; line-height: 1;
+        }
+        .close-popup:hover { color: #fff; transform: rotate(90deg); }
+        .popup-body { padding: 24px; overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none; }
+        .popup-body::-webkit-scrollbar { display: none; }
+        @media (max-width: 768px) {
+            body { padding: 20px 16px; }
+            .card, .summary-body { padding: 20px 18px; }
+            .hero h1 { font-size: 1.8rem; }
+            th, td { padding: 6px 8px; font-size: 0.7rem; }
+        }
+        .footer-note { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #bdd4e4; font-size: 0.8rem; color: #2c6f8c; }
+        .org-grid { display: flex; flex-wrap: wrap; gap: 15px; margin: 20px 0; }
+        .org-card { flex: 1; min-width: 180px; background: linear-gradient(145deg, #135b78, #1f7a9e); border-radius: 1rem; padding: 16px; text-align: center; color: white; }
+        .org-card i { font-size: 2rem; margin-bottom: 8px; }
+        .org-card h3 { font-size: 1rem; margin-bottom: 4px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="hero">
+        <h1><i class="fas fa-building"></i> Chapter 4 · Forms of Business Organisation</h1>
+        <p style="margin-top: 12px;">Private Sector · Sole Trading · Partnership · JHF · Co-op Society · Joint Stock Company</p>
+    </div>
+
+    <!-- ================= ATTRACTIVE SUMMARY CARD ================= -->
+    <div class="summary-card">
+        <div class="summary-header">
+            <h2><i class="fas fa-file-alt"></i> 📘 Chapter Summary: Forms of Business Organisation</h2>
+        </div>
+        <div class="summary-body">
+            <div class="summary-text" id="summaryText">
+                <p><strong>🔹 Private Sector Organisations:</strong> Owned & managed by private entities (individuals or group) with profit motive. Includes Sole Trading Concern, Partnership Firm, Joint Hindu Family Business, Co-operative Society, Joint Stock Company.</p>
+                
+                <div class="org-grid">
+                    <div class="org-card"><i class="fas fa-user"></i><h3>Sole Trading</h3><small>One owner</small></div>
+                    <div class="org-card"><i class="fas fa-handshake"></i><h3>Partnership</h3><small>2-50 partners</small></div>
+                    <div class="org-card"><i class="fas fa-tree"></i><h3>JHF Business</h3><small>Karta + Coparceners</small></div>
+                    <div class="org-card"><i class="fas fa-hands-helping"></i><h3>Co-operative</h3><small>Service motive</small></div>
+                    <div class="org-card"><i class="fas fa-chart-line"></i><h3>Joint Stock</h3><small>Shareholders</small></div>
+                </div>
+
+                <div class="highlight-badge"><strong>📌 Sole Trading Concern:</strong> Oldest form - Single owner, unlimited liability, easy formation, quick decisions, maximum secrecy, but limited capital & managerial skill.</div>
+                <div class="highlight-badge"><strong>📌 Partnership Firm (Indian Partnership Act 1932):</strong> Minimum 2, max 50 partners; unlimited joint & several liability; agreement based; types: Active, Dormant, Nominal, Secret, Minor, Partner in profits only, Sub-partner, Quasi partner.</div>
+                <div class="highlight-badge"><strong>📌 Joint Hindu Family Business:</strong> Exists only in India; managed by Karta (senior most); coparceners by birth; unlimited liability of Karta, limited for coparceners.</div>
+                <div class="highlight-badge"><strong>📌 Co-operative Society:</strong> Voluntary association, service motive, democratic (one member one vote), registration compulsory, limited liability. Types: Consumer, Producer, Marketing, Farming, Housing, Credit.</div>
+                <div class="highlight-badge"><strong>📌 Joint Stock Company (Companies Act 2013):</strong> Artificial legal person, separate legal entity, common seal, perpetual succession, limited liability, transferable shares. Private (2-200 members) vs Public (min 7, no max).</div>
+                <p><strong>⭐ Latest Concept:</strong> One Person Company (OPC) introduced in Companies Act 2013 for solo entrepreneurs; Special Purpose Vehicle (SPV) for isolating financial risk.</p>
+            </div>
+            <div class="lang-buttons">
+                <button class="lang-btn" onclick="showTranslation('hindi')"><i class="fas fa-language"></i> हिंदी अनुवाद</button>
+                <button class="lang-btn" onclick="showTranslation('marathi')"><i class="fas fa-language"></i> मराठी अनुवाद</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= Section A: Multiple Choice ================= -->
+    <div class="card"><h2><i class="fas fa-check-square"></i> A. Select the correct option</h2>
+        <div class="qa-item"><div class="question">1) A sole trading concern ensures ________ business secrecy.</div><div class="answer">maximum</div></div>
+        <div class="qa-item"><div class="question">2) The members of Hindu undivided family business are called ________.</div><div class="answer">coparcener</div></div>
+        <div class="qa-item"><div class="question">3) The head of Joint Hindu Family Business is called as ________.</div><div class="answer">KARTA</div></div>
+        <div class="qa-item"><div class="question">4) Registration of partnership firm is ________ in Maharashtra.</div><div class="answer">compulsory</div></div>
+        <div class="qa-item"><div class="question">5) The liability of the shareholders in Joint Stock Company is ________.</div><div class="answer">limited</div></div>
+        <div class="qa-item"><div class="question">6) A Joint Stock Company is an artificial person created by ________.</div><div class="answer">Law</div></div>
+        <div class="qa-item"><div class="question">7) Registration of a Joint Stock Company is ________.</div><div class="answer">compulsory</div></div>
+        <div class="qa-item"><div class="question">8) ________ acts as a signature of the company.</div><div class="answer">Common seal</div></div>
+    </div>
+
+    <!-- ================= Section B: Match Pairs ================= -->
+    <div class="card"><h2><i class="fas fa-link"></i> B. Match the pairs</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Group A</th><th>Answer</th><th>Group B</th></tr></thead>
+                <tbody>
+                    <tr><td>Private Company</div></div></td><td>→</div></div><td>4) Maximum 200 members</div></div></tr>
+                    <tr><td>Public Company</div></div></td><td>→</div></div><td>6) Minimum seven members</div></div></tr>
+                    <tr><td>Common Seal</div></div></td><td>→</div></div><td>8) Signature of Company</div></div></tr>
+                    <tr><td>Partnership Act</div></div></td><td>→</div></div><td>3) 1932</div></div></tr>
+                    <tr><td>Joint Hindu Family Firms</div></div></td><td>→</div></div><td>1) Karta</div></div></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================= Section C: One word ================= -->
+    <div class="card"><h2><i class="fas fa-tag"></i> C. Give one word/phrase/term</h2>
+        <div class="qa-item"><div class="question">1) An elected body of representatives of co-operative Society for day to day administration.</div><div class="answer">Managing Committee</div></div>
+        <div class="qa-item"><div class="question">2) One man show type of business organisation.</div><div class="answer">Sole Trading Concern</div></div>
+        <div class="qa-item"><div class="question">3) A Partner who gives his name to partnership firm.</div><div class="answer">Nominal Partner</div></div>
+        <div class="qa-item"><div class="question">4) There is free transferability of shares in this company.</div><div class="answer">Public Company</div></div>
+        <div class="qa-item"><div class="question">5) The motto of the co-operative Society.</div><div class="answer">Each for all and all for each</div></div>
+    </div>
+
+    <!-- ================= Section D: True/False ================= -->
+    <div class="card"><h2><i class="fas fa-gavel"></i> D. State True or False</h2>
+        <div class="qa-item"><div class="question">1) Sole trader is the sole decision maker of the business.</div><div class="answer"><span class="true-badge">True</span></div></div>
+        <div class="qa-item"><div class="question">2) The liability of KARTA is unlimited.</div><div class="answer"><span class="true-badge">True</span></div></div>
+        <div class="qa-item"><div class="question">3) Joint Stock company can raise huge amount of capital.</div><div class="answer"><span class="true-badge">True</span></div></div>
+        <div class="qa-item"><div class="question">4) In partnership firm, liability of every partner is limited.</div><div class="answer"><span class="false-badge">False</span> It is unlimited, joint & several.</div></div>
+        <div class="qa-item"><div class="question">5) The membership of a co-operative society is compulsory.</div><div class="answer"><span class="false-badge">False</span> It is voluntary.</div></div>
+    </div>
+
+    <!-- ================= Comparison Table: 5 Forms of Business ================= -->
+    <div class="card"><h2><i class="fas fa-table"></i> Comparative Study: 5 Forms of Business Organisation</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Basis</th><th>Sole Trading</th><th>Partnership</th><th>JHF Business</th><th>Co-operative Society</th><th>Joint Stock Company</th></tr></thead>
+                <tbody>
+                    <tr><td>Formation</td><td>Easy</td><td>Simple</td><td>By birth</td><td>Compulsory registration</td><td>Complex, costly</td></tr>
+                    <tr><td>Liability</td><td>Unlimited</td><td>Unlimited, joint & several</td><td>Karta unlimited; coparceners limited</td><td>Limited</td><td>Limited</td></tr>
+                    <tr><td>Number of members</td><td>1</td><td>Min 2, Max 50</td><td>No limit</td><td>Min 10, no max</td><td>Private: 2-200; Public: Min 7</td></tr>
+                    <tr><td>Management</td><td>Sole trader</td><td>All partners</td><td>Karta</td><td>Managing Committee</td><td>Board of Directors</td></tr>
+                    <tr><td>Secrecy</td><td>Maximum</td><td>Shared</td><td>Maintained</td><td>Less</td><td>No secrecy</td></tr>
+                    <tr><td>Stability</td><td>Unstable</td><td>Unstable</td><td>Stable</td><td>Stable</td><td>Perpetual succession</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================= Types of Partners Table ================= -->
+    <div class="card"><h2><i class="fas fa-users"></i> Types of Partners in Partnership Firm</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Type</th><th>Description</th></tr></thead>
+                <tbody>
+                    <tr><td>Active Partner</td><td>Takes active part in day-to-day management; unlimited liability</td></tr>
+                    <tr><td>Dormant/Sleeping Partner</td><td>Contributes capital but does not take part in management</td></tr>
+                    <tr><td>Nominal Partner</td><td>Only lends name to firm; no capital contribution; liable to third parties</td></tr>
+                    <tr><td>Secret Partner</td><td>Membership kept secret from outsiders; takes part in management</td></tr>
+                    <tr><td>Minor as Partner</td><td>Below 18 years; admitted for benefits; not personally liable</td></tr>
+                    <tr><td>Partner in profits only</td><td>Shares only profits, not losses</td></tr>
+                    <tr><td>Quasi Partner</td><td>Retired partner left capital with firm; shares profit</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================= Types of Co-operative Societies ================= -->
+    <div class="card"><h2><i class="fas fa-handshake"></i> Types of Co-operative Societies</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Type</th><th>Purpose</th><th>Example</th></tr></thead>
+                <tbody>
+                    <tr><td>Consumer's Co-operative</td><td>Daily needs at reasonable prices</td><td>Super Bazaar, Apana Bazaar</td></tr>
+                    <tr><td>Producer's Co-operative</td><td>Help small producers & artisans</td><td>Industrial Service / Manufacturing Co-ops</td></tr>
+                    <tr><td>Marketing Co-operative</td><td>Sell output at remunerative prices</td><td>Milk co-operatives, AMUL</td></tr>
+                    <tr><td>Farming Co-operative</td><td>Collective farming for economies of scale</td><td>Joint farming societies</td></tr>
+                    <tr><td>Housing Co-operative</td><td>Provide housing to members</td><td>Housing societies</td></tr>
+                    <tr><td>Credit Co-operative</td><td>Provide financial help & savings habit</td><td>Urban/Rural credit societies</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================= Private vs Public Company ================= -->
+    <div class="card"><h2><i class="fas fa-building"></i> Private Company vs Public Company</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Basis</th><th>Private Company</th><th>Public Company</th></tr></thead>
+                <tbody>
+                    <tr><td>Members</td><td>Min 2, Max 200</td><td>Min 7, unlimited max</td></tr>
+                    <tr><td>Transfer of Shares</td><td>Not freely transferable</td><td>Freely transferable</td></tr>
+                    <tr><td>Directors</td><td>Minimum 2</td><td>Minimum 3</td></tr>
+                    <tr><td>Prospectus</td><td>Not required, file statement in lieu</td><td>Compulsory</td></tr>
+                    <tr><td>Commencement</td><td>After incorporation certificate</td><td>After commencement certificate</td></tr>
+                    <tr><td>Name suffix</td><td>"Private Limited"</td><td>"Limited"</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================= Merits & Demerits Summary ================= -->
+    <div class="card"><h2><i class="fas fa-star"></i> Merits & Demerits at a Glance</h2>
+        <div class="qa-item"><div class="question">✅ Sole Trading Merits</div><div class="answer">Easy formation, Quick decisions, Maximum secrecy, Direct motivation, Flexibility, Lower cost</div></div>
+        <div class="qa-item"><div class="question">⚠️ Sole Trading Demerits</div><div class="answer">Limited capital, Limited managerial skill, Unlimited liability, Lack of stability, No specialization</div></div>
+        <div class="qa-item"><div class="question">✅ Partnership Merits</div><div class="answer">More capital, Business secrecy, Continued existence, Flexibility, Specialization, Goodwill</div></div>
+        <div class="qa-item"><div class="question">⚠️ Partnership Demerits</div><div class="answer">Continuity problem, No legal status, Disputes, Non-transferability, Unlimited liability</div></div>
+        <div class="qa-item"><div class="question">✅ Joint Stock Company Merits</div><div class="answer">Huge capital, Professional management, Perpetual succession, Limited liability, Public confidence</div></div>
+        <div class="qa-item"><div class="question">⚠️ Joint Stock Company Demerits</div><div class="answer">Rigid formation, Lack of secrecy, Delay in decisions, High cost, No personal contact</div></div>
+    </div>
+
+    <!-- ================= One Sentence Answers ================= -->
+    <div class="card"><h2><i class="fas fa-question-circle"></i> H. Answer in one sentence</h2>
+        <div class="qa-item"><div class="question">1) What is Sole Trading Concern?</div><div class="answer">A business owned and managed by one person who bears all risks and enjoys all profits.</div></div>
+        <div class="qa-item"><div class="question">2) What is Partnership Firm?</div><div class="answer">An association of two or more persons who agree to share profits of a business carried on by all or any of them acting for all.</div></div>
+        <div class="qa-item"><div class="question">3) What is Joint Stock Company?</div><div class="answer">A voluntary association of persons with transferable shares, separate legal status, and perpetual succession, registered under Companies Act.</div></div>
+        <div class="qa-item"><div class="question">4) What is Minor Partner?</div><div class="answer">A person below 18 years admitted for benefits of partnership with consent of all partners, not personally liable.</div></div>
+    </div>
+
+    <!-- ================= Case Study ================= -->
+    <div class="card"><h2><i class="fas fa-briefcase"></i> Case Study Analysis</h2>
+        <div class="qa-item"><div class="question">Case: Mr. Raghunath's ancestral business with sons Kiran & Naman helping along with wives.</div><div class="answer">i) Joint Hindu Family Business; ii) Raghunath is Karta; iii) Kiran & Naman are Coparceners.</div></div>
+        <div class="qa-item"><div class="question">Case: Mr. Jumbo (CA) & Mrs. Timbo (Architect) running 'Buildsheet' in Nagpur.</div><div class="answer">i) Partnership Firm; ii) Partnership between two professionals; iii) Chartered Accountant & Architect.</div></div>
+    </div>
+
+    <!-- ================= Correct the words ================= -->
+    <div class="card"><h2><i class="fas fa-edit"></i> I. Correct the underlined word</h2>
+        <div class="qa-item"><div class="question">1) In public company, shares are not freely transferable.</div><div class="answer">are freely transferable</div></div>
+        <div class="qa-item"><div class="question">2) Registration of Joint Stock Company is not compulsory.</div><div class="answer">is compulsory</div></div>
+        <div class="qa-item"><div class="question">3) In partnership firm minimum three members are required.</div><div class="answer">two members</div></div>
+        <div class="qa-item"><div class="question">4) In Joint Hindu Family business the senior most member is called coparcener.</div><div class="answer">Karta</div></div>
+    </div>
+
+    <!-- ================= Just to Know ================= -->
+    <div class="card"><h2><i class="fas fa-newspaper"></i> Just to Know: Latest Concepts</h2>
+        <div class="highlight-badge"><strong>🌟 One Person Company (OPC):</strong> Introduced in Companies Act 2013 - allows a single person to create a corporate entity with limited liability.</div>
+        <div class="highlight-badge"><strong>🌟 Special Purpose Vehicle (SPV):</strong> A separate legal entity created for a specific objective to isolate financial risk.</div>
+        <div class="highlight-badge"><strong>🌟 Amul - Co-operative Success Story:</strong> Founded in 1946 in Anand, Gujarat by Dr. Verghese Kurien - Father of White Revolution in India.</div>
+    </div>
+
+    <div class="footer-note"><i class="fas fa-building"></i> Forms of Business Organisation | Sole Trading · Partnership · JHF · Co-op Society · Joint Stock Company | 11th Commerce OCM</div>
+</div>
+
+<!-- Popup for Translation -->
+<div id="translationPopup" class="popup-overlay">
+    <div class="popup-content">
+        <div class="popup-header">
+            <h3><i class="fas fa-language"></i> अनुवाद / Translation</h3>
+            <span class="close-popup" onclick="closePopup()">×</span>
+        </div>
+        <div class="popup-body" id="popupBody"></div>
+    </div>
+</div>
+
+<script>
+    const hindiSummary = `
+        <div style="font-family: 'Inter', sans-serif;">
+            <p><strong>🔹 निजी क्षेत्र के संगठन:</strong> निजी संस्थाओं द्वारा स्वामित्व एवं प्रबंधित। इनमें एकल स्वामित्व, साझेदारी, हिंदू अविभाजित परिवार, सहकारी समिति, संयुक्त पूंजी कंपनी शामिल हैं।</p>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 एकल स्वामित्व:</strong> एक मालिक, असीमित दायित्व, आसान गठन, त्वरित निर्णय, अधिकतम गोपनीयता।</div>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 साझेदारी (भारतीय साझेदारी अधिनियम 1932):</strong> न्यूनतम 2, अधिकतम 50 साझेदार; असीमित, संयुक्त एवं पृथक दायित्व। प्रकार: सक्रिय, प्रसुप्त, नाममात्र, गुप्त, अवयस्क, लाभांश मात्र साझेदार, उप-साझेदार, आभासी साझेदार।</div>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 हिंदू अविभाजित परिवार व्यवसाय:</strong> केवल भारत में; प्रबंधन कर्ता द्वारा; सह-साझेदार जन्म से; कर्ता का दायित्व असीमित, सह-साझेदारों का सीमित।</div>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 सहकारी समिति:</strong> स्वैच्छिक संघ, सेवा उद्देश्य, लोकतांत्रिक (एक सदस्य एक वोट), पंजीकरण अनिवार्य। प्रकार: उपभोक्ता, उत्पादक, विपणन, कृषि, आवास, ऋण सहकारी।</div>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 संयुक्त पूंजी कंपनी (कंपनी अधिनियम 2013):</strong> कृत्रिम कानूनी व्यक्ति, पृथक कानूनी अस्तित्व, सामान्य मुहर, शाश्वत उत्तराधिकार, सीमित दायित्व। प्राइवेट (2-200 सदस्य) vs पब्लिक (न्यूनतम 7, कोई अधिकतम सीमा नहीं)</div>
+            <p><strong>⭐ नवीनतम अवधारणाएँ:</strong> वन पर्सन कंपनी (OPC) - एकल व्यक्ति को सीमित दायित्व वाली कंपनी बनाने की अनुमति; स्पेशल पर्पस व्हीकल (SPV) - वित्तीय जोखिम अलग करने हेतु।</p>
+        </div>`;
+
+    const marathiSummary = `
+        <div style="font-family: 'Inter', sans-serif;">
+            <p><strong>🔹 खाजगी क्षेत्रातील संस्था:</strong> खाजगी संस्थांद्वारे मालकी व व्यवस्थापन. यामध्ये एकल स्वामित्व, भागीदारी, हिंदू अविभक्त कुटुंब, सहकारी संस्था, संयुक्त भांडवली कंपनी यांचा समावेश होतो.</p>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 एकल स्वामित्व:</strong> एक मालक, अमर्यादित दायित्व, सोपी निर्मिती, त्वरित निर्णय, कमाल गोपनीयता.</div>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 भागीदारी (भारतीय भागीदारी अधिनियम 1932):</strong> किमान 2, कमाल 50 भागीदार; अमर्यादित, संयुक्त व वेगळे दायित्व. प्रकार: सक्रिय, प्रसुप्त, नाममात्र, गुप्त, अल्पवयीन, केवळ नफ्यात भागीदार, उप-भागीदार.</div>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 हिंदू अविभक्त कुटुंब व्यवसाय:</strong> फक्त भारतात; व्यवस्थापन कर्ता करतो; सहभागी जन्माने; कर्ताचे दायित्व अमर्यादित, सहभागींचे मर्यादित.</div>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 सहकारी संस्था:</strong> ऐच्छिक संघटना, सेवा उद्दिष्ट, लोकशाही (एक सदस्य एक मत), नोंदणी बंधनकारक. प्रकार: ग्राहक, उत्पादक, विपणन, शेती, गृहनिर्माण, पत सहकारी.</div>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 संयुक्त भांडवली कंपनी (कंपनी अधिनियम 2013):</strong> कृत्रिम कायदेशीर व्यक्ती, वेगळे कायदेशीर अस्तित्व, सामान्य शिक्का, शाश्वत उत्तराधिकार, मर्यादित दायित्व. खाजगी (2-200 सदस्य) vs सार्वजनिक (किमान 7, कमाल मर्यादा नाही)</div>
+            <p><strong>⭐ नवीन संकल्पना:</strong> वन पर्सन कंपनी (OPC) - एकट्या व्यक्तीस मर्यादित दायित्वासह कंपनी स्थापन करण्याची परवानगी; स्पेशल पर्पस व्हीकल (SPV) - वित्तीय जोखीम विलग करण्यासाठी.</p>
+        </div>`;
+
+    function showTranslation(lang) {
+        const popup = document.getElementById('translationPopup');
+        const popupBody = document.getElementById('popupBody');
+        if (lang === 'hindi') popupBody.innerHTML = hindiSummary;
+        else popupBody.innerHTML = marathiSummary;
+        popup.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+    function closePopup() {
+        document.getElementById('translationPopup').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+    window.onclick = function(event) {
+        const popup = document.getElementById('translationPopup');
+        if (event.target === popup) closePopup();
+    }
+</script>
+</body>
+</html>

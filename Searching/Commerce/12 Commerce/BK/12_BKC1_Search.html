@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>🤝 Partnership | 12th BK Chap 1 | Partnership Final Accounts & Capital Methods</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    body {
+      background: linear-gradient(145deg, #1e293b, #0f172a);
+      min-height: 100vh;
+      padding: 24px 18px;
+      color: #f1f5f9;
+    }
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    .heading {
+      text-align: center;
+      margin-bottom: 32px;
+      animation: slideDown 0.5s ease;
+    }
+    .heading h1 {
+      font-size: 2rem;
+      background: linear-gradient(135deg, #fff, #fbbf24);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .heading p {
+      color: #fde68a;
+      margin-top: 8px;
+    }
+    .search-wrapper {
+      position: relative;
+      margin-bottom: 28px;
+    }
+    .search-box {
+      background: white;
+      border-radius: 60px;
+      padding: 6px 6px 6px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 20px 35px -10px rgba(0,0,0,0.4);
+    }
+    .search-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      padding: 14px 0;
+      background: transparent;
+      color: #0f172a;
+      font-weight: 500;
+    }
+    .icon-btn {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(145deg, #d97706, #b45309);
+      color: white;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .icon-btn:hover { transform: scale(1.07); background: #f59e0b; }
+    .suggestions-dropdown {
+      position: absolute;
+      top: calc(100% + 10px);
+      left: 0;
+      right: 0;
+      background: white;
+      border-radius: 28px;
+      background: rgba(255,255,255,0.98);
+      box-shadow: 0 18px 30px rgba(0,0,0,0.3);
+      z-index: 120;
+      max-height: 280px;
+      overflow-y: auto;
+      display: none;
+    }
+    .suggestion-item {
+      padding: 14px 22px;
+      color: #0f172a;
+      cursor: pointer;
+      border-bottom: 1px solid #eef2ff;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .suggestion-item:hover { background: #fef3c7; padding-left: 28px; }
+    .result-container {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+    .result-card {
+      background: rgba(255,255,255,0.96);
+      border-radius: 32px;
+      padding: 1.7rem;
+      color: #0f172a;
+      box-shadow: 0 15px 30px -12px rgba(0,0,0,0.35);
+      transition: 0.2s;
+    }
+    .result-card:hover { transform: translateY(-3px); }
+    .badge {
+      background: #fef3c7;
+      color: #92400e;
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+    .result-card h3 {
+      color: #b45309;
+      font-size: 1.35rem;
+      border-left: 5px solid #f59e0b;
+      padding-left: 16px;
+      margin-bottom: 14px;
+    }
+    .answer-text {
+      background: #fffbeb;
+      padding: 16px 20px;
+      border-radius: 24px;
+      line-height: 1.65;
+      margin: 12px 0;
+    }
+    .formula-box {
+      background: #fef3c7;
+      padding: 12px 16px;
+      border-radius: 20px;
+      font-family: monospace;
+      font-size: 1rem;
+      margin: 10px 0;
+      text-align: center;
+      border-left: 4px solid #d97706;
+    }
+    .responsive-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+      font-size: 0.85rem;
+      overflow-x: auto;
+      display: block;
+    }
+    .responsive-table th, .responsive-table td {
+      border: 1px solid #d1d5db;
+      padding: 10px 8px;
+      text-align: left;
+      background: white;
+    }
+    .responsive-table th {
+      background: #d97706;
+      color: white;
+      font-weight: 600;
+    }
+    .action-buttons {
+      margin-top: 20px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .action-buttons button {
+      border: none;
+      padding: 10px 22px;
+      border-radius: 40px;
+      font-weight: 600;
+      background: #eef2ff;
+      color: #1e293b;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .action-buttons button:last-child { background: #d97706; color: white; }
+    .not-found {
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(12px);
+      border-radius: 40px;
+      padding: 2rem;
+      text-align: center;
+    }
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(10px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    .popup-box {
+      background: white;
+      max-width: 900px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      border-radius: 40px;
+      padding: 28px 32px;
+      position: relative;
+      color: #0a2a44;
+    }
+    .close-popup {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      background: #fee2e2;
+      border: none;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+    .lang-section { background: #f1f5f9; padding: 18px; border-radius: 24px; margin-bottom: 18px; }
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-22px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 650px) { 
+      .heading h1 { font-size: 1.4rem; } 
+      .result-card h3 { font-size: 1.1rem; }
+      .responsive-table th, .responsive-table td { padding: 6px 4px; font-size: 0.7rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="heading">
+    <h1>🤝 Partnership | Chapter 1: Introduction & Partnership Final Accounts</h1>
+    <p>🔍 140+ Q&A | Partnership Deed | Fixed & Fluctuating Capital | Interest on Capital/Drawings | Final Accounts Adjustments</p>
+  </div>
+  <div class="search-wrapper">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search: Partnership Deed, Fixed Capital, Fluctuating Capital, Interest on Drawings, Profit Sharing Ratio, RDD, Outstanding Expenses...">
+      <button class="icon-btn" id="voiceBtn">🎤</button>
+    </div>
+    <div id="suggestionsList" class="suggestions-dropdown"></div>
+  </div>
+  <div class="result-container" id="resultsContainer">
+    <div class="not-found">✨ Start typing — Chapter 1: Partnership | Partnership Deed, Capital Methods, Final Accounts & Adjustments ✨</div>
+  </div>
+</div>
+<div class="popup-overlay" id="popupModal">
+  <div class="popup-box">
+    <button class="close-popup" id="closeModalBtn">✖</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+  // ------------- COMPLETE DATABASE: Chapter 1 Partnership (12th Commerce) -------------
+  const qaDatabase = [];
+
+  function addQA(question, answer, hindi, marathi, category, keywords = []) {
+    qaDatabase.push({ id: qaDatabase.length+1, question, answer, hindi, marathi, category, keywords: keywords.map(k=>k.toLowerCase()) });
+  }
+
+  // ==================== PARTNERSHIP CORE CONCEPTS ====================
+  addQA("What is Partnership as per Indian Partnership Act 1932?", "Partnership is defined as 'the relation between persons who have agreed to share the profits of a business carried on by all or any of them acting for all'. Section 4 of Indian Partnership Act 1932.", "भागीदारी दो या दो से अधिक व्यक्तियों के बीच का संबंध है जो व्यवसाय के लाभों को साझा करने के लिए सहमत होते हैं।", "भागीदारी म्हणजे दोन किंवा अधिक व्यक्तींमधील संबंध जे व्यवसायाचा नफा वाटून घेण्यास सहमत असतात.", "Core", ["partnership definition","indian partnership act"]);
+  addQA("What are the essential features of Partnership?", "1. Agreement (written/oral) 2. Minimum 2, Maximum 50 partners (Companies Act 2013) 3. Lawful business 4. Profit/Loss sharing 5. Unlimited liability 6. Registration optional (except Maharashtra) 7. Joint ownership 8. Principal-agent relationship 9. Dissolution by agreement or notice.", "भागीदारी की आवश्यक विशेषताएँ: समझौता, साझेदारों की संख्या, लाभ-हानि साझाकरण, असीमित दायित्व आदि।", "भागीदारीची आवश्यक वैशिष्ट्ये: करार, भागीदारांची संख्या, नफा-तोटा वाटप, अमर्यादित दायित्व.", "Core", ["features of partnership"]);
+  addQA("What is Partnership Deed?", "Partnership Deed is a written document containing the terms and conditions of partnership agreement. It includes: firm name, partners' details, capital contribution, profit sharing ratio, interest on capital/drawings, salaries/commission to partners, admission/retirement rules, dissolution terms.", "भागीदारी विलेख एक लिखित दस्तावेज है जिसमें भागीदारी के सभी नियम और शर्तें होती हैं।", "भागीदारी करारनामा हा एक लेखी दस्तऐवज आहे ज्यात भागीदारीच्या सर्व अटी व शर्ती असतात.", "Deed", ["partnership deed","written agreement"]);
+  addQA("Provisions of Indian Partnership Act 1932 in absence of Partnership Deed?", "1. Profits/Losses shared equally. 2. No interest on capital. 3. Interest on partner's loan @6% p.a. 4. No salary/commission to partners. 5. Interest on drawings is not allowed. 6. New partner admitted only with consent of all existing partners.", "समझौते के अभाव में: लाभ-हानि बराबर, पूंजी पर ब्याज नहीं, ऋण पर 6% ब्याज।", "करार नसताना: नफा-तोटा समान, भांडवलावर व्याज नाही, कर्जावर 6% व्याज.", "Act", ["indian partnership act provisions","absence of deed"]);
+  
+  // ==================== CAPITAL METHODS ====================
+  function getCapitalComparisonTable() {
+    return `<table class="responsive-table"><thead><tr><th>Basis</th><th>Fixed Capital Method</th><th>Fluctuating Capital Method</th></tr></thead><tbody>
+      <tr><td>Capital Account Balance</td><td>Remains constant</td><td>Fluctuates every year</td></tr>
+      <tr><td>Separate Current Account</td><td>Yes, maintained</td><td>No current account</td></tr>
+      <tr><td>Drawings recorded in</td><td>Current Account</td><td>Capital Account</td></tr>
+      <tr><td>Interest on Capital</td><td>Recorded in Current A/c</td><td>Recorded in Capital A/c</td></tr>
+      <tr><td>Salary/Commission to partner</td><td>Recorded in Current A/c</td><td>Recorded in Capital A/c</td></tr>
+      <tr><td>Profit/Loss transfer</td><td>To Current Account</td><td>To Capital Account</td></tr>
+      <tr><td>Current Account Balance</td><td>May be debit or credit</td><td>Not applicable</td></tr>
+    </tbody></table>`;
+  }
+  addQA("What is Fixed Capital Method?", "Under Fixed Capital Method, capital balances of partners remain constant throughout the year. A separate Current Account is maintained to record drawings, interest on capital, salary, commission, share of profit/loss. Capital Account only shows initial and additional capital.", "स्थिर पूंजी विधि में पूंजी शेष स्थिर रहता है। वर्तमान खाता अलग से बनाया जाता है।", "स्थिर भांडवल पद्धतीत भांडवल शिल्लक स्थिर राहते. वेगळे चालू खाते ठेवले जाते.", "Capital", ["fixed capital method","current account"]);
+  addQA("What is Fluctuating Capital Method?", "Under Fluctuating Capital Method, only one Capital Account is maintained for each partner. All adjustments (drawings, interest, salary, profit/loss) are recorded directly in the Capital Account, causing the capital balance to change every year.", "अस्थिर पूंजी विधि में केवल एक पूंजी खाता रखा जाता है जिसमें सभी समायोजन दर्ज किए जाते हैं।", "अस्थिर भांडवल पद्धतीत फक्त एक भांडवल खाते ठेवले जाते. सर्व समायोजन याच खात्यात केले जातात.", "Capital", ["fluctuating capital method"]);
+  
+  // ==================== INTEREST CALCULATIONS ====================
+  addQA("How to calculate Interest on Drawings when date is not given?", "When date of drawings is not given, interest on drawings is calculated for an average period of 6 months. Formula: Drawings × Rate% × 6/12.", "जब तारीख नहीं दी गई हो, तो 6 महीने की औसत अवधि के लिए ब्याज लगाया जाता है।", "तारीख दिली नसल्यास 6 महिन्यांच्या सरासरी कालावधीसाठी व्याज मोजले जाते.", "Formulas", ["interest on drawings","average period"]);
+  addQA("What is the formula for Interest on Capital?", "Interest on Capital = (Capital × Rate × Time)/100. Time is calculated in years/months from date of introduction to end of accounting year.", "पूंजी पर ब्याज = (पूंजी × दर × समय)/100", "भांडवलावरील व्याज = (भांडवल × दर × वेळ)/100", "Formulas", ["interest on capital formula"]);
+  addQA("What rate of interest is allowed on partner's loan if partnership deed is silent?", "As per Indian Partnership Act 1932, if partnership deed is silent, interest on partner's loan is allowed at 6% per annum.", "भागीदारी विलेख के अभाव में, साझेदार के ऋण पर 6% प्रति वर्ष की दर से ब्याज दिया जाता है।", "करार नसताना भागीदाराच्या कर्जावर 6% दराने व्याज दिले जाते.", "Act", ["partner loan interest"]);
+
+  // ==================== FINAL ACCOUNTS ADJUSTMENTS TABLE ====================
+  function getAdjustmentsTable() {
+    return `<table class="responsive-table"><thead><tr><th>Adjustment</th><th>1st Effect</th><th>2nd Effect</th></tr></thead><tbody>
+      <tr><td>Closing Stock</td><td>Credit side of Trading A/c</td><td>Asset side of Balance Sheet</td></tr>
+      <tr><td>Outstanding Expenses</td><td>Add to expense in P&L/Trading</td><td>Liability side of Balance Sheet</td></tr>
+      <tr><td>Prepaid Expenses</td><td>Deduct from expense in P&L/Trading</td><td>Asset side of Balance Sheet</td></tr>
+      <tr><td>Income Receivable (Accrued Income)</td><td>Add to income in P&L</td><td>Asset side of Balance Sheet</td></tr>
+      <tr><td>Income Received in Advance</td><td>Deduct from income in P&L</td><td>Liability side of Balance Sheet</td></tr>
+      <tr><td>Depreciation</td><td>Debit side of P&L</td><td>Deduct from asset in Balance Sheet</td></tr>
+      <tr><td>Bad Debts (New)</td><td>Debit side of P&L</td><td>Deduct from Debtors in Balance Sheet</td></tr>
+      <tr><td>R.D.D. (New Provision)</td><td>Debit side of P&L (after adjusting old RDD)</td><td>Deduct from Debtors in Balance Sheet</td></tr>
+      <tr><td>Interest on Capital</td><td>Debit side of P&L</td><td>Add to Capital/Current Account (Cr.)</td></tr>
+      <tr><td>Interest on Drawings</td><td>Credit side of P&L</td><td>Deduct from Capital/Current Account (Dr.)</td></tr>
+      <tr><td>Goods withdrawn by partner</td><td>Credit side of Trading A/c (or deduct from Purchases)</td><td>Debit to Partner's Capital/Current A/c</td></tr>
+      <tr><td>Goods distributed as free sample</td><td>Credit side of Trading A/c</td><td>Debit to Advertisement/P&L A/c</td></tr>
+      <tr><td>Goods destroyed by fire (Uninsured)</td><td>Credit side of Trading A/c</td><td>Debit to P&L A/c (Loss by Fire)</td></tr>
+      <tr><td>Unrecorded Purchases</td><td>Add to Purchases in Trading A/c</td><td>Add to Creditors in Balance Sheet</td></tr>
+      <tr><td>Unrecorded Sales</td><td>Add to Sales in Trading A/c</td><td>Add to Debtors in Balance Sheet</td></tr>
+    </tbody></table>`;
+  }
+
+  // ==================== JOURNAL ENTRIES ====================
+  addQA("Journal entry for Interest on Capital?", "1. Interest on Capital A/c Dr. To Partner's Capital/Current A/c (Being interest due on capital). 2. Profit & Loss A/c Dr. To Interest on Capital A/c (Being interest transferred to P&L).", "पूंजी पर ब्याज प्रविष्टि: पूंजी पर ब्याज खाता डेबिट, साझेदार के पूंजी खाते में क्रेडिट।", "भांडवलावरील व्याजाची नोंद: भांडवल व्याज खाते नावे, भागीदाराच्या भांडवल खाते जमा.", "Journal", ["interest on capital entry"]);
+  addQA("Journal entry for Interest on Drawings?", "1. Partner's Capital/Current A/c Dr. To Interest on Drawings A/c (Being interest charged). 2. Interest on Drawings A/c Dr. To Profit & Loss A/c (Being interest transferred to P&L).", "आहरण पर ब्याज प्रविष्टि: साझेदार का पूंजी खाता डेबिट, आहरण ब्याज क्रेडिट।", "आहरणावरील व्याजाची नोंद: भागीदाराचे भांडवल खाते नावे, आहरण व्याज खाते जमा.", "Journal", ["interest on drawings entry"]);
+  addQA("Journal entry for Partner's Salary/Commission?", "1. Partner's Salary/Commission A/c Dr. To Partner's Current/Capital A/c (Being salary/commission due). 2. Profit & Loss A/c Dr. To Partner's Salary/Commission A/c (Being transferred to P&L).", "साझेदार का वेतन/कमीशन प्रविष्टि: वेतन/कमीशन खाता डेबिट, साझेदार के वर्तमान/पूंजी खाते में क्रेडिट।", "भागीदाराचा पगार/कमिशनची नोंद: पगार/कमिशन खाते नावे, भागीदाराच्या चालू/भांडवल खाते जमा.", "Journal", ["partner salary"]);
+  addQA("Journal entry for Additional Capital introduced?", "Cash/Bank A/c Dr. To Partner's Capital A/c (Being additional capital introduced by partner). If in kind: Asset A/c Dr. To Partner's Capital A/c.", "अतिरिक्त पूंजी प्रविष्टि: रोकड़/बैंक खाता डेबिट, साझेदार के पूंजी खाते में क्रेडिट।", "अतिरिक्त भांडवल नोंद: रोख/बँक खाते नावे, भागीदाराच्या भांडवल खाते जमा.", "Journal", ["additional capital"]);
+
+  // ==================== NUMERICAL / SOLVED EXAMPLES ====================
+  addQA("Anand and Bharat share profits 2:3. Capitals: Anand ₹60,000, Bharat ₹30,000. Drawings: ₹12,000 & ₹10,000. Interest on capital 10%, on drawings 12% (6 months). Anand salary ₹2,500 p.m., Bharat commission 3% on net sales ₹5,00,000. Profit ₹60,000. Prepare Fixed Capital Method accounts.", "Fixed Capital: Capital A/cs constant. Current A/c: Anand: Interest on Capital 6,000, Salary 30,000, Profit 24,000; Less: Drawings 12,000, Interest on Drawings 720 → Balance 47,280. Bharat: Interest 3,000, Commission 15,000, Profit 36,000; Less: Drawings 10,000, Interest 600 → Balance 43,400.", "स्थिर पूंजी विधि में पूंजी स्थिर रहती है। वर्तमान खाते में समायोजन।", "स्थिर भांडवल पद्धतीत भांडवल स्थिर राहते. सर्व समायोजन चालू खात्यात.", "Numerical", ["fixed capital example"]);
+  addQA("Under Fluctuating Capital Method, same data as above. Calculate closing capital.", "Fluctuating Capital: Anand: Opening 60,000 + Interest 6,000 + Salary 30,000 + Profit 24,000 - Drawings 12,000 - Interest 720 = ₹1,07,280. Bharat: Opening 30,000 + Interest 3,000 + Commission 15,000 + Profit 36,000 - Drawings 10,000 - Interest 600 = ₹73,400.", "अस्थिर पूंजी विधि में पूंजी में उतार-चढ़ाव होता है।", "अस्थिर भांडवल पद्धतीत भांडवलात चढ-उतार होतो.", "Numerical", ["fluctuating capital example"]);
+
+  // ==================== THEORY QUESTIONS ====================
+  addQA("True/False: In absence of partnership deed, interest on capital is allowed at 6% p.a.", "False. In absence of partnership deed, no interest on capital is allowed. Interest on partner's loan is allowed at 6% p.a., not on capital.", "गलत। समझौते के अभाव में पूंजी पर ब्याज नहीं दिया जाता।", "चुकीचे. करार नसताना भांडवलावर व्याज दिला जात नाही.", "True/False", ["no interest on capital"]);
+  addQA("True/False: Under Fixed Capital Method, Capital Account balance remains constant.", "True. Under Fixed Capital Method, only Current Account fluctuates; Capital Account remains constant unless additional capital is introduced.", "सही। स्थिर पूंजी विधि में पूंजी शेष स्थिर रहता है।", "बरोबर. स्थिर भांडवल पद्धतीत भांडवल शिल्लक स्थिर राहते.", "True/False", ["fixed capital constant"]);
+  addQA("Fill in blank: Maximum number of partners in a firm as per Companies Act 2013 is ______.", "50 (fifty)", "50 (पचास)", "५०", "Fillup", ["maximum partners"]);
+  addQA("Fill in blank: In absence of partnership deed, profits are shared in ______ ratio.", "Equal", "बराबर", "समान", "Fillup", ["profit sharing equal"]);
+  addQA("What is the effect of Outstanding Expenses in Final Accounts?", "Outstanding expenses are added to the respective expense on debit side of Trading/P&L A/c and shown as liability on Balance Sheet.", "अपरिशोधित व्यय को संबंधित व्यय में जोड़ा जाता है और दायित्व पक्ष में दिखाया जाता है।", "बाकी खर्च संबंधित खर्चात मिळवला जातो व जबाबदारी बाजूस दर्शविला जातो.", "Adjustments", ["outstanding expenses effect"]);
+  addQA("What is the effect of Prepaid Expenses in Final Accounts?", "Prepaid expenses are deducted from the respective expense on debit side of P&L A/c and shown as asset on Balance Sheet.", "पूर्वदत्त व्यय को संबंधित व्यय से घटाया जाता है और संपत्ति पक्ष में दिखाया जाता है।", "अग्रिम खर्च संबंधित खर्चातून वजा केला जातो व मालमत्ता बाजूस दर्शविला जातो.", "Adjustments", ["prepaid expenses effect"]);
+
+  // Helper Functions
+  const searchInput = document.getElementById("searchInput");
+  const resultsContainer = document.getElementById("resultsContainer");
+  const suggestionsDiv = document.getElementById("suggestionsList");
+
+  function getMatches(query) {
+    if(!query.trim()) return [];
+    const lower = query.toLowerCase();
+    return qaDatabase.filter(item => 
+      item.question.toLowerCase().includes(lower) || 
+      item.answer.toLowerCase().includes(lower) ||
+      item.category.toLowerCase().includes(lower) ||
+      item.keywords.some(k => k.includes(lower) || lower.includes(k))
+    ).slice(0, 14);
+  }
+
+  function updateSuggestions() {
+    const val = searchInput.value;
+    if(!val.trim()) { suggestionsDiv.style.display = "none"; return; }
+    const matches = getMatches(val);
+    if(!matches.length) { suggestionsDiv.style.display = "none"; return; }
+    suggestionsDiv.innerHTML = "";
+    matches.forEach(item => {
+      const div = document.createElement("div");
+      div.className = "suggestion-item";
+      div.innerHTML = `<span>🤝</span> <strong>${item.question.substring(0,70)}...</strong> <span style="margin-left:auto; background:#fef3c7; padding:2px 10px; border-radius:20px;">${item.category}</span>`;
+      div.addEventListener("click", () => {
+        searchInput.value = item.question;
+        suggestionsDiv.style.display = "none";
+        performSearch(item.question);
+      });
+      suggestionsDiv.appendChild(div);
+    });
+    suggestionsDiv.style.display = "block";
+  }
+
+  function performSearch(query = null) {
+    let q = (query !== null) ? query : searchInput.value;
+    q = q.trim();
+    if(!q) { resultsContainer.innerHTML = `<div class="not-found">🔍 Search: Partnership, Partnership Deed, Fixed Capital, Fluctuating Capital, Interest on Drawings, Final Accounts Adjustments.</div>`; return; }
+    const matches = getMatches(q);
+    if(!matches.length) { resultsContainer.innerHTML = `<div class="not-found">❌ No results for "${q}". Try: Partnership Deed, Fixed Capital Method, Interest on Drawings, Outstanding Expenses.</div>`; return; }
+    resultsContainer.innerHTML = "";
+    matches.forEach(item => {
+      let extraContent = "";
+      if (item.question.toLowerCase().includes("fixed capital method") && item.question.toLowerCase().includes("comparison")) extraContent = getCapitalComparisonTable();
+      else if (item.question.toLowerCase().includes("adjustment") && (item.question.toLowerCase().includes("table") || item.question.toLowerCase().includes("effects"))) extraContent = getAdjustmentsTable();
+      else if (item.category === "Numerical" && item.answer.includes("₹")) extraContent = `<div class="formula-box">📐 ${item.answer}</div>`;
+      else if (item.category === "Formulas") extraContent = `<div class="formula-box">📐 ${item.answer}</div>`;
+      
+      const card = document.createElement("div");
+      card.className = "result-card";
+      card.innerHTML = `
+        <div class="badge">${escapeHtml(item.category)}</div>
+        <h3>📖 ${escapeHtml(item.question)}</h3>
+        <div class="answer-text"><strong>✅ Answer / उत्तर:</strong><br>${escapeHtml(item.answer)}${extraContent}</div>
+        <div class="action-buttons">
+          <button class="langBtn" data-q="${escapeAttr(item.question)}" data-a="${escapeAttr(item.answer)}" data-hi="${escapeAttr(item.hindi)}" data-mr="${escapeAttr(item.marathi)}">🌐 हिंदी / मराठी</button>
+          <button class="detailBtn" data-q="${escapeAttr(item.question)}" data-a="${escapeAttr(item.answer)}" data-cat="${item.category}">📘 Partnership Rules & Procedure</button>
+        </div>
+      `;
+      resultsContainer.appendChild(card);
+    });
+    attachEvents();
+  }
+
+  function attachEvents() {
+    document.querySelectorAll(".langBtn").forEach(btn => btn.addEventListener("click", (e) => {
+      const q = btn.getAttribute("data-q"), a= btn.getAttribute("data-a"), hi=btn.getAttribute("data-hi"), mr=btn.getAttribute("data-mr");
+      showLangPopup(q,a,hi,mr);
+    }));
+    document.querySelectorAll(".detailBtn").forEach(btn => btn.addEventListener("click", (e) => {
+      const q = btn.getAttribute("data-q"), a= btn.getAttribute("data-a"), cat=btn.getAttribute("data-cat");
+      showDetailPopup(q,a,cat);
+    }));
+  }
+
+  function showLangPopup(question, answer, hindi, marathi) {
+    document.getElementById("popupModal").style.display = "flex";
+    document.getElementById("modalContent").innerHTML = `
+      <h2 style="color:#b45309;">🌐 भाषा अनुवाद | Translation</h2>
+      <div class="lang-section"><strong>❓ प्रश्न:</strong> ${escapeHtml(question)}</div>
+      <div class="lang-section"><strong>🇮🇳 हिंदी (Hindi):</strong><br>${escapeHtml(hindi || answer)}</div>
+      <div class="lang-section"><strong>🇮🇳 मराठी (Marathi):</strong><br>${escapeHtml(marathi || answer)}</div>
+      <button id="closeLangModal" style="background:#d97706; padding:10px 24px; border-radius:40px; color:white; border:none;">बंद करें</button>
+    `;
+    document.getElementById("closeLangModal").addEventListener("click", ()=> document.getElementById("popupModal").style.display = "none");
+  }
+
+  function showDetailPopup(question, answer, category) {
+    let extra = `<div class="lang-section"><strong>📚 Chapter Reference:</strong> 12th BK Chapter 1 - Introduction to Partnership & Partnership Final Accounts. Topics: Partnership Deed, Indian Partnership Act 1932, Fixed & Fluctuating Capital Methods, Interest on Capital/Drawings, Final Accounts Adjustments.</div>`;
+    if(category === "Capital") extra += getCapitalComparisonTable();
+    if(category === "Adjustments") extra += getAdjustmentsTable();
+    if(category === "Act") extra += `<div class="lang-section">⚖️ Indian Partnership Act 1932, Section 4 defines partnership. Section 12 & 13 provide rules for absence of partnership deed: equal profits, 6% interest on loan, no interest on capital, no salary/commission.</div>`;
+    document.getElementById("popupModal").style.display = "flex";
+    document.getElementById("modalContent").innerHTML = `
+      <h2 class="detail-title">📘 Detailed Explanation (विस्तृत उत्तर)</h2>
+      <div class="lang-section"><strong>❓ Question:</strong> ${escapeHtml(question)}</div>
+      <div class="lang-section"><strong>✅ Detailed Answer:</strong><br>${escapeHtml(answer)}</div>
+      ${extra}
+      <button id="closeDetailModal" style="background:#d97706; padding:10px 24px; border-radius:40px; color:white; border:none;">Close</button>
+    `;
+    document.getElementById("closeDetailModal").addEventListener("click", ()=> document.getElementById("popupModal").style.display = "none");
+  }
+
+  function escapeHtml(str) { return str.replace(/[&<>]/g, function(m){ if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m;}); }
+  function escapeAttr(str) { return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  function startVoice() { if (!('webkitSpeechRecognition' in window)) { alert("Voice not supported."); return; } const rec = new webkitSpeechRecognition(); rec.lang="en-IN"; rec.start(); rec.onresult = (e)=> { searchInput.value = e.results[0][0].transcript; performSearch(); }; }
+  document.getElementById("voiceBtn").addEventListener("click", startVoice);
+  searchInput.addEventListener("keyup", () => { performSearch(); updateSuggestions(); });
+  searchInput.addEventListener("focus", updateSuggestions);
+  document.addEventListener("click", (e) => { if(!document.querySelector(".search-wrapper").contains(e.target)) suggestionsDiv.style.display = "none"; });
+  document.getElementById("closeModalBtn").addEventListener("click", () => document.getElementById("popupModal").style.display = "none");
+  window.onload = () => { resultsContainer.innerHTML = `<div class="not-found">✨ 12th Commerce Chapter 1: Partnership | ${qaDatabase.length}+ Q&A | Partnership Deed, Capital Methods, Final Accounts & Adjustments ✨</div>`; };
+</script>
+</body>
+</html>

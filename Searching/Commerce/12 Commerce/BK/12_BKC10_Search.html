@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>💻 Computer in Accounting | 12th BK Chap 10 | CAS, Features, Software, Tally</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    body {
+      background: linear-gradient(145deg, #0c1a2a, #0a1020);
+      min-height: 100vh;
+      padding: 24px 18px;
+      color: #f1f5f9;
+      overflow-y: scroll;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    body::-webkit-scrollbar { display: none; }
+    .container { max-width: 1300px; margin: 0 auto; }
+    .heading { text-align: center; margin-bottom: 35px; animation: slideDown 0.6s ease; }
+    .heading h1 {
+      font-size: 2rem;
+      background: linear-gradient(135deg, #ffffff, #60a5fa, #3b82f6);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+    }
+    .heading p { color: #bfdbfe; margin-top: 10px; font-weight: 500; }
+    .search-wrapper { position: relative; margin-bottom: 32px; }
+    .search-box {
+      background: rgba(255,255,255,0.97);
+      border-radius: 60px;
+      padding: 6px 6px 6px 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.45);
+    }
+    .search-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      padding: 15px 0;
+      background: transparent;
+      color: #0f172a;
+      font-weight: 500;
+    }
+    .icon-btn {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(145deg, #2563eb, #1e40af);
+      color: white;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: 0.25s;
+      box-shadow: 0 4px 12px rgba(37,99,235,0.4);
+    }
+    .icon-btn:hover { transform: scale(1.08); background: #2563eb; }
+    .suggestions-dropdown {
+      position: absolute;
+      top: calc(100% + 12px);
+      left: 0;
+      right: 0;
+      background: rgba(255,255,255,0.98);
+      border-radius: 32px;
+      box-shadow: 0 25px 40px -12px black;
+      z-index: 120;
+      max-height: 280px;
+      overflow-y: auto;
+      display: none;
+    }
+    .suggestion-item {
+      padding: 14px 24px;
+      color: #0f172a;
+      cursor: pointer;
+      border-bottom: 1px solid #f1f5f9;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      transition: 0.2s;
+    }
+    .suggestion-item:hover { background: #dbeafe; padding-left: 32px; }
+    .result-container { display: flex; flex-direction: column; gap: 24px; margin-top: 20px; }
+    .result-card {
+      background: rgba(255,255,255,0.96);
+      border-radius: 40px;
+      padding: 1.8rem;
+      color: #0f172a;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.4);
+      transition: 0.3s ease;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .result-card:hover { transform: translateY(-5px); }
+    .badge {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      color: #1e40af;
+      display: inline-block;
+      padding: 5px 16px;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+    .result-card h3 {
+      color: #1e3a8a;
+      font-size: 1.4rem;
+      border-left: 6px solid #3b82f6;
+      padding-left: 18px;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+    .answer-text {
+      background: #eff6ff;
+      padding: 18px 24px;
+      border-radius: 28px;
+      line-height: 1.7;
+      margin: 12px 0;
+      border: 1px solid #dbeafe;
+    }
+    .formula-box {
+      background: #e0e7ff;
+      padding: 12px 18px;
+      border-radius: 28px;
+      font-family: monospace;
+      font-size: 0.95rem;
+      margin: 14px 0;
+      text-align: center;
+      border-left: 6px solid #3b82f6;
+      font-weight: 600;
+    }
+    .responsive-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 0.85rem;
+      overflow-x: auto;
+      display: block;
+      border-radius: 24px;
+      overflow: hidden;
+    }
+    .responsive-table th, .responsive-table td {
+      border: 1px solid #e2e8f0;
+      padding: 12px 10px;
+      text-align: left;
+      background: white;
+    }
+    .responsive-table th { background: #2563eb; color: white; font-weight: 700; }
+    .action-buttons { margin-top: 22px; display: flex; gap: 15px; flex-wrap: wrap; }
+    .action-buttons button {
+      border: none;
+      padding: 10px 26px;
+      border-radius: 50px;
+      font-weight: 700;
+      background: #f1f5f9;
+      color: #1e293b;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .action-buttons button:last-child { background: #2563eb; color: white; box-shadow: 0 4px 10px rgba(37,99,235,0.3); }
+    .action-buttons button:hover { transform: scale(0.97); opacity: 0.9; }
+    .not-found {
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(16px);
+      border-radius: 60px;
+      padding: 2.5rem;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.88);
+      backdrop-filter: blur(12px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    .popup-box {
+      background: white;
+      max-width: 850px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      border-radius: 48px;
+      padding: 30px 34px;
+      position: relative;
+      color: #1e293b;
+    }
+    .close-popup {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      background: #fee2e2;
+      border: none;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+    .lang-section { background: #f8fafc; padding: 18px; border-radius: 28px; margin-bottom: 20px; }
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 650px) {
+      body { padding: 16px 12px; }
+      .heading h1 { font-size: 1.4rem; }
+      .result-card h3 { font-size: 1.1rem; }
+      .responsive-table th, .responsive-table td { padding: 8px 5px; font-size: 0.7rem; }
+      .result-card { padding: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="heading">
+    <h1>💻 Computer in Accounting | Chapter 10</h1>
+    <p>⚡ Computerized Accounting System · Features · Software Types · Tally ERP9 · Legal vs Pirated Software</p>
+  </div>
+  <div class="search-wrapper">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="🔎 Search: CAS, Features, Tally, Voucher Types, Ready-to-Use Software, Legal vs Pirated...">
+      <button class="icon-btn" id="voiceBtn">🎤</button>
+    </div>
+    <div id="suggestionsList" class="suggestions-dropdown"></div>
+  </div>
+  <div class="result-container" id="resultsContainer">
+    <div class="not-found">✨ Type above — Master Computerized Accounting System, Software & Tally ✨</div>
+  </div>
+</div>
+<div class="popup-overlay" id="popupModal">
+  <div class="popup-box">
+    <button class="close-popup" id="closeModalBtn">✖</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+  // ---------- COMPLETE DATABASE: COMPUTER IN ACCOUNTING (Chapter 10) ----------
+  const qaDatabase = [];
+
+  function addQA(question, answer, hindi, marathi, category, keywords = []) {
+    qaDatabase.push({ id: qaDatabase.length+1, question, answer, hindi, marathi, category, keywords: keywords.map(k=>k.toLowerCase()) });
+  }
+
+  // ==================== CORE CONCEPTS ====================
+  addQA("What is Computerized Accounting System (CAS)?", "Computerized Accounting System (CAS) is software that helps implement accounting processes using computers. It automates recording, storing, and processing financial transactions, and generates reports as per GAAP. It is user-friendly, integrated, and provides real-time information for decision making.", "कंप्यूटरीकृत लेखा प्रणाली सॉफ्टवेयर है जो कंप्यूटर का उपयोग करके लेखांकन प्रक्रियाओं को लागू करने में मदद करती है।", "संगणकीय लेखा प्रणाली हे सॉफ्टवेअर आहे जे संगणक वापरून लेखांकन प्रक्रिया राबविण्यास मदत करते.", "Core", ["CAS", "computerized accounting system"]);
+  addQA("What are the features of Computerized Accounting System?", "Features: 1) Integrated Data & Information 2) Accuracy & Speed 3) Quick Decision Making 4) Modern & Integrated 5) Immediate availability of Books of Accounts 6) Security (passwords) 7) Transparency 8) Grouping of Accounts.", "कंप्यूटरीकृत लेखा प्रणाली की विशेषताएँ", "संगणकीय लेखा प्रणालीची वैशिष्ट्ये", "Features", ["features of CAS"]);
+  addQA("What is the importance of Computerized Accounting System?", "Importance: 1) Automation 2) Multi-user Facilities 3) Accuracy 4) Speed 5) Reduction in Cost 6) Systematic & up-to-date records 7) Huge Storage Capacity 8) Compact 9) Transferability/Sharing Information.", "कंप्यूटरीकृत लेखा प्रणाली का महत्व", "संगणकीय लेखा प्रणालीचे महत्त्व", "Importance", ["importance of CAS"]);
+  addQA("What are the components of Computerized Accounting System?", "Components: (a) Hardware (computers, disk drives, monitors, printers, network) (b) Software (set of programs that direct computer) (c) Company Personnel (people who operate the system).", "कंप्यूटरीकृत लेखा प्रणाली के घटक", "संगणकीय लेखा प्रणालीचे घटक", "Components", ["components of CAS"]);
+  addQA("What is the difference between Manual Accounting and Computerized Accounting?", "Manual Accounting uses physical registers, manual calculations, handwritten ledgers, and manual financial statements. Computerized Accounting uses software, automatic calculations, instant reports, auto-generated trial balance, and automatic carry forward of balances.", "हस्तलेखा और कंप्यूटरीकृत लेखा के बीच अंतर", "हस्तलेखा व संगणकीय लेखा यातील फरक", "Comparison", ["manual vs computerized"]);
+
+  // ==================== TABLES ====================
+  function getComparisonTable() {
+    return `<table class="responsive-table"><thead><tr><th>Basis</th><th>Manual Accounting</th><th>Computerized Accounting</th></tr></thead><tbody>
+      <tr><td>Calculation</th><td>Done manually</td><td>Automatic by system</td></tr>
+      <tr><td>Ledger Accounts</td><td>Prepared manually by posting</td><td>Auto-generated from vouchers</td></tr>
+      <tr><td>Trial Balance</td><td>Prepared manually</td><td>Auto-generated</td></tr>
+      <tr><td>Adjustment Entries</td><td>Manual posting</td><td>Only entries passed; posting automatic</td></tr>
+      <tr><td>Financial Statements</td><td>Prepared manually</td><td>Auto-generated & updated instantly</td></tr>
+      <tr><td>Closing Books</td><td>Manual carry forward</td><td>Automatic carry forward</td></tr>
+    </tbody></table>`;
+  }
+  function getVoucherTable() {
+    return `<table class="responsive-table"><thead><tr><th>Voucher Type</th><th>Short Key</th><th>Usage</th></tr></thead><tbody>
+      <tr><td>Contra</td><td>F4</td><td>Cash deposited/withdrawn from bank, Bank to Bank transfer</td></tr>
+      <tr><td>Payment</td><td>F5</td><td>All types of payments (Cash & Bank)</td></tr>
+      <tr><td>Receipt</td><td>F6</td><td>Cash Receipt and Bank Receipt</td></tr>
+      <tr><td>Journal</td><td>F7</td><td>Non-cash transactions: Depreciation, provisions, credit purchase of fixed assets</td></tr>
+      <tr><td>Sales</td><td>F8</td><td>Cash sales & credit sales</td></tr>
+      <tr><td>Purchase</td><td>F9</td><td>Cash purchases & credit purchases</td></tr>
+    </tbody></table>`;
+  }
+  function getSoftwareTable() {
+    return `<table class="responsive-table"><thead><tr><th>Type</th><th>Description</th><th>Suitable For</th></tr></thead><tbody>
+      <tr><td>Ready-to-Use</td><td>Low cost, easy to learn, less secure</td><td>Small scale business</td></tr>
+      <tr><td>Customized</td><td>Modified as per user needs, high cost, better security</td><td>Large & medium businesses</td></tr>
+      <tr><td>Tailored</td><td>Designed for specific requirements, part of MIS</td><td>Large organizations with multi-users</td></tr>
+      <tr><td>Free & Open Source</td><td>Free download, e.g., GNU Khata</td><td>Small business with low budget</td></tr>
+    </tbody></table>`;
+  }
+
+  // ==================== TALLY / PRACTICAL ====================
+  addQA("How to create a company in Tally ERP9?", "Steps: Gateway of Tally > Company Info > Create Company. Then fill details: Company Name, Address, Financial Year, Books Beginning from, etc. and save.", "टैली में कंपनी बनाने के चरण", "टॅलीमध्ये कंपनी तयार करण्याच्या पायऱ्या", "Tally", ["create company tally"]);
+  addQA("How to create a ledger in Tally?", "Path: Gateway of Tally → Accounts Info → Ledgers → Single Ledger → Create. Enter Ledger Name, select Group (e.g., Sundry Debtors, Sundry Creditors, Cash, Bank), and save.", "टैली में लेजर बनाने की विधि", "टॅलीमध्ये लेजर तयार करण्याची पद्धत", "Tally", ["create ledger tally"]);
+  addQA("What are the different voucher types in Tally?", "Voucher types: Contra (F4) for bank deposits/withdrawals; Payment (F5) for payments; Receipt (F6) for receipts; Journal (F7) for non-cash transactions; Sales (F8) for sales; Purchase (F9) for purchases.", "टैली में विभिन्न वाउचर प्रकार", "टॅलीमधील विविध व्हाउचर प्रकार", "Tally", ["voucher types tally"]);
+  addQA("What is the difference between Legal and Pirated Accounting Software?", "Legal/Licensed software is fully functional, safe, can be updated as per statutory changes (GST, VAT). Pirated software is cracked, illegal to use, risky for data safety, and cannot be updated legally.", "कानूनी और चोरी के सॉफ्टवेयर के बीच अंतर", "कायदेशीर व चोरीच्या सॉफ्टवेअरमधील फरक", "Software", ["legal vs pirated"]);
+
+  // ==================== THEORY ====================
+  addQA("True/False: F5 function key is used for Payment Voucher in Tally.", "True. In Tally, F5 is the shortcut key for Payment Voucher. F4 is Contra, F6 is Receipt, F7 is Journal, F8 is Sales, F9 is Purchase.", "सही। टैली में F5 भुगतान वाउचर के लिए है।", "बरोबर. टॅलीमध्ये F5 ही देयक व्हाउचरसाठी आहे.", "True/False", ["f5 payment"]);
+  addQA("True/False: Accounting software cannot be customized to meet special requirements.", "False. Accounting software can be customized (modified) to meet special requirements of the user. Customized software is suitable for large and medium businesses.", "गलत। लेखा सॉफ्टवेयर को विशेष आवश्यकताओं के अनुसार अनुकूलित किया जा सकता है।", "चुकीचे. लेखा सॉफ्टवेअर विशेष गरजेनुसार सानुकूलित करता येते.", "True/False", ["customizable software"]);
+  addQA("Fill in blank: The shortcut key to save/accept information in Tally is ______.", "Ctrl + A", "Ctrl + A", "Ctrl + A", "Fillup", ["save shortcut tally"]);
+  addQA("Fill in blank: GNU Khata is an example of ______ source accounting software.", "Open", "ओपन", "ओपन", "Fillup", ["open source software"]);
+
+  // Helper functions
+  const searchInput = document.getElementById("searchInput");
+  const resultsContainer = document.getElementById("resultsContainer");
+  const suggestionsDiv = document.getElementById("suggestionsList");
+
+  function getMatches(q) {
+    const lower = q.toLowerCase();
+    return qaDatabase.filter(item => 
+      item.question.toLowerCase().includes(lower) || 
+      item.answer.toLowerCase().includes(lower) ||
+      item.category.toLowerCase().includes(lower) ||
+      item.keywords.some(k => k.includes(lower))
+    ).slice(0, 14);
+  }
+
+  function updateSuggestions() {
+    const val = searchInput.value.trim();
+    if(!val) { suggestionsDiv.style.display = "none"; return; }
+    const matches = getMatches(val);
+    if(!matches.length) { suggestionsDiv.style.display = "none"; return; }
+    suggestionsDiv.innerHTML = "";
+    matches.forEach(item => {
+      const div = document.createElement("div");
+      div.className = "suggestion-item";
+      div.innerHTML = `<span>💻</span> <strong>${item.question.substring(0,70)}</strong> <span style="margin-left:auto; background:#dbeafe; padding:2px 12px; border-radius:30px;">${item.category}</span>`;
+      div.addEventListener("click", () => {
+        searchInput.value = item.question;
+        suggestionsDiv.style.display = "none";
+        performSearch(item.question);
+      });
+      suggestionsDiv.appendChild(div);
+    });
+    suggestionsDiv.style.display = "block";
+  }
+
+  function performSearch(q = null) {
+    let query = (q !== null) ? q : searchInput.value.trim();
+    if(!query) { resultsContainer.innerHTML = `<div class="not-found">✨ Enter keywords: CAS, Features, Tally, Voucher Types, Ready-to-Use Software, Legal vs Pirated ✨</div>`; return; }
+    const matches = getMatches(query);
+    if(!matches.length) { resultsContainer.innerHTML = `<div class="not-found">❌ No results. Try: Computerized Accounting System, Tally, Voucher Types, Features.</div>`; return; }
+    resultsContainer.innerHTML = "";
+    matches.forEach(item => {
+      let extra = "";
+      if (item.question.toLowerCase().includes("difference between manual") || (item.question.toLowerCase().includes("manual vs"))) extra = getComparisonTable();
+      if (item.question.toLowerCase().includes("voucher types") && item.category === "Tally") extra = getVoucherTable();
+      if (item.question.toLowerCase().includes("types of accounting software") || (item.question.toLowerCase().includes("ready-to-use") && item.category === "Software")) extra = getSoftwareTable();
+      if (item.category === "Numerical" && item.answer.includes("%")) extra = `<div class="formula-box">📐 ${item.answer}</div>`;
+      
+      const card = document.createElement("div");
+      card.className = "result-card";
+      card.innerHTML = `
+        <div class="badge">⭐ ${escapeHtml(item.category)}</div>
+        <h3>📘 ${escapeHtml(item.question)}</h3>
+        <div class="answer-text"><strong>✅ Answer / उत्तर:</strong><br>${escapeHtml(item.answer)}${extra}</div>
+        <div class="action-buttons">
+          <button class="langBtn" data-q="${escapeAttr(item.question)}" data-a="${escapeAttr(item.answer)}" data-hi="${escapeAttr(item.hindi)}" data-mr="${escapeAttr(item.marathi)}">🌐 हिंदी / मराठी</button>
+          <button class="detailBtn" data-q="${escapeAttr(item.question)}" data-a="${escapeAttr(item.answer)}" data-cat="${item.category}">📘 Detailed Explanation</button>
+        </div>
+      `;
+      resultsContainer.appendChild(card);
+    });
+    attachEvents();
+  }
+
+  function attachEvents() {
+    document.querySelectorAll(".langBtn").forEach(btn => btn.addEventListener("click", (e) => {
+      const q = btn.getAttribute("data-q"), a= btn.getAttribute("data-a"), hi=btn.getAttribute("data-hi"), mr=btn.getAttribute("data-mr");
+      showLangPopup(q,a,hi,mr);
+    }));
+    document.querySelectorAll(".detailBtn").forEach(btn => btn.addEventListener("click", (e) => {
+      const q = btn.getAttribute("data-q"), a= btn.getAttribute("data-a"), cat=btn.getAttribute("data-cat");
+      showDetailPopup(q,a,cat);
+    }));
+  }
+
+  function showLangPopup(question, answer, hindi, marathi) {
+    document.getElementById("popupModal").style.display = "flex";
+    document.getElementById("modalContent").innerHTML = `
+      <h2 style="color:#1e40af;">🌐 भाषा अनुवाद</h2>
+      <div class="lang-section"><strong>❓ प्रश्न:</strong> ${escapeHtml(question)}</div>
+      <div class="lang-section"><strong>🇮🇳 हिंदी:</strong><br>${escapeHtml(hindi || answer)}</div>
+      <div class="lang-section"><strong>🇮🇳 मराठी:</strong><br>${escapeHtml(marathi || answer)}</div>
+      <button id="closeLangModal" style="background:#2563eb; padding:10px 26px; border-radius:40px; color:white;">बंद करें</button>
+    `;
+    document.getElementById("closeLangModal").addEventListener("click", ()=> document.getElementById("popupModal").style.display = "none");
+  }
+
+  function showDetailPopup(question, answer, category) {
+    let extra = `<div class="lang-section"><strong>📖 12th BK Chapter 10 - Computer in Accounting</strong><br>✔ CAS (Computerized Accounting System): Features, Importance, Components<br>✔ Hardware, Software, Personnel<br>✔ Manual vs Computerized Accounting<br>✔ Sourcing of Accounting Software: Ready-to-Use, Customized, Tailored, Free & Open Source<br>✔ Legal vs Pirated Software<br>✔ Tally ERP9: Company Creation, Ledger Creation, Voucher Types (F4 to F9)</div>`;
+    if(category === "Comparison") extra += getComparisonTable();
+    if(category === "Tally") extra += getVoucherTable();
+    if(category === "Software") extra += getSoftwareTable();
+    document.getElementById("popupModal").style.display = "flex";
+    document.getElementById("modalContent").innerHTML = `
+      <h2 style="color:#1e40af;">📘 Detailed Explanation</h2>
+      <div class="lang-section"><strong>❓ Question:</strong> ${escapeHtml(question)}</div>
+      <div class="lang-section"><strong>✅ Answer:</strong><br>${escapeHtml(answer)}</div>
+      ${extra}
+      <button id="closeDetailModal" style="background:#2563eb; padding:10px 26px; border-radius:40px;">Close</button>
+    `;
+    document.getElementById("closeDetailModal").addEventListener("click", ()=> document.getElementById("popupModal").style.display = "none");
+  }
+
+  function escapeHtml(str) { return str.replace(/[&<>]/g, m => m==='&'?'&amp;': m==='<'?'&lt;':'&gt;'); }
+  function escapeAttr(str) { return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function startVoice() { if (!('webkitSpeechRecognition' in window)) { alert("Voice not supported."); return; } const rec = new webkitSpeechRecognition(); rec.lang="en-IN"; rec.start(); rec.onresult = (e)=> { searchInput.value = e.results[0][0].transcript; performSearch(); }; }
+  document.getElementById("voiceBtn").addEventListener("click", startVoice);
+  searchInput.addEventListener("keyup", () => { performSearch(); updateSuggestions(); });
+  searchInput.addEventListener("focus", updateSuggestions);
+  document.addEventListener("click", (e) => { if(!document.querySelector(".search-wrapper").contains(e.target)) suggestionsDiv.style.display = "none"; });
+  document.getElementById("closeModalBtn").addEventListener("click", () => document.getElementById("popupModal").style.display = "none");
+  window.onload = () => { resultsContainer.innerHTML = `<div class="not-found">✨ 12th Commerce · Computer in Accounting · CAS, Software, Tally & Legal vs Pirated ✨</div>`; };
+</script>
+</body>
+</html>

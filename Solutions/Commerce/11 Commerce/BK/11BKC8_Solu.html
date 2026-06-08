@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Chapter 8 | Rectification of Errors - Exercise Answers</title>
+  <!-- Google Fonts + Font Awesome 6 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: linear-gradient(135deg, #eef2f9 0%, #e0e8f2 100%);
+      font-family: 'Inter', sans-serif;
+      padding: 32px 24px;
+      color: #0a2b3e;
+      line-height: 1.5;
+    }
+    .container { max-width: 1300px; margin: 0 auto; }
+    .hero { text-align: center; margin-bottom: 48px; }
+    .hero h1 {
+      font-size: 2.4rem; font-weight: 800;
+      background: linear-gradient(135deg, #0b4b6b, #1f6e93, #2c7da0);
+      background-clip: text; -webkit-background-clip: text; color: transparent;
+      display: inline-block; padding-bottom: 10px;
+      border-bottom: 4px solid #ffb347; margin-bottom: 16px;
+    }
+    .chapter-badge {
+      background: #0f4c5f20; backdrop-filter: blur(6px);
+      display: inline-block; padding: 6px 24px; border-radius: 40px;
+      font-size: 0.85rem; font-weight: 600; color: #1b6b8f;
+    }
+    .card {
+      background: rgba(255,255,255,0.97); border-radius: 2rem;
+      margin-bottom: 32px; padding: 28px 32px;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid rgba(255,255,255,0.6);
+    }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 25px 40px -14px rgba(0,0,0,0.15); }
+    .card h2 {
+      font-size: 1.7rem; font-weight: 700; color: #135b78;
+      margin-bottom: 28px; padding-bottom: 10px;
+      border-bottom: 3px solid #ffb74d; display: inline-block;
+    }
+    .card h2 i { margin-right: 12px; color: #ff8c42; }
+    .qa-item { margin-bottom: 22px; border-left: 3px solid #cbdde9; padding-left: 20px; }
+    .question {
+      font-weight: 700; font-size: 1rem; color: #1f4a5e;
+      margin-bottom: 8px; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+    }
+    .question i { color: #ff8c42; width: 26px; }
+    .answer {
+      background: #f8fafd; padding: 10px 18px; border-radius: 24px;
+      font-weight: 500; color: #216477; font-size: 0.94rem;
+      display: inline-block; max-width: 100%;
+      box-shadow: inset 0 1px 0 #fff, 0 1px 2px rgba(0,0,0,0.02);
+    }
+    .true-badge {
+      background: #e0f2e9; color: #1e6f3f; padding: 3px 14px;
+      border-radius: 40px; font-weight: 700; font-size: 0.75rem;
+      display: inline-block; margin-right: 12px;
+    }
+    .false-badge {
+      background: #ffe8e6; color: #bc4742; padding: 3px 14px;
+      border-radius: 40px; font-weight: 700; font-size: 0.75rem;
+      display: inline-block; margin-right: 12px;
+    }
+    .resp-table { width: 100%; overflow-x: auto; margin: 16px 0; border-radius: 20px; background: #f4f9fe; padding: 4px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.85rem; background: white; border-radius: 16px; overflow: hidden; }
+    th, td { border: 1px solid #cde1ef; padding: 10px 12px; text-align: left; vertical-align: top; }
+    th { background: #e0eaf5; font-weight: 700; color: #135b78; }
+    .highlight { background: #eef3fc; border-radius: 16px; padding: 12px 18px; margin: 12px 0; }
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px,1fr)); gap: 12px; margin-top: 12px; }
+    @media (max-width: 768px) {
+      body { padding: 20px 16px; }
+      .card { padding: 20px 18px; }
+      .card h2 { font-size: 1.4rem; }
+      .hero h1 { font-size: 1.8rem; }
+      .qa-item { padding-left: 12px; }
+      th, td { padding: 6px 8px; font-size: 0.75rem; }
+    }
+    .footer-note { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #bdd4e4; font-size: 0.8rem; color: #2c6f8c; }
+    .formula-box { font-family: monospace; background: #eef3fc; padding: 8px 12px; border-radius: 12px; display: inline-block; margin: 5px 0; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+    <h1><i class="fas fa-eraser"></i> Chapter 8 · Rectification of Errors</h1>
+    <div class="chapter-badge"><i class="fas fa-balance-scale"></i> Types of Errors | Suspense Account | Journal Proper | One-sided & Two-sided Errors</div>
+  </div>
+
+  <!-- ================= Q.1 Answer in One Sentence ================= -->
+  <div class="card">
+    <h2><i class="fas fa-question-circle"></i> Q.1 Answer in One Sentence</h2>
+    <div class="qa-item"><div class="question">1) What is meant by rectification of errors?</div><div class="answer">Rectification of errors means correcting the mistakes committed in the books of accounts by passing necessary journal entries or by adjusting the accounts.</div></div>
+    <div class="qa-item"><div class="question">2) What is meant by error of principle?</div><div class="answer">Error of principle occurs when a transaction is recorded against the accounting principles, such as treating capital expenditure as revenue expenditure.</div></div>
+    <div class="qa-item"><div class="question">3) What is meant by error of partial omission?</div><div class="answer">Error of partial omission occurs when a transaction is partially recorded, e.g., recorded in Journal but not posted to Ledger, which affects Trial Balance agreement.</div></div>
+    <div class="qa-item"><div class="question">4) What is meant by error of complete omission?</div><div class="answer">Error of complete omission occurs when a transaction is completely omitted from the books of accounts, which does not affect Trial Balance agreement.</div></div>
+    <div class="qa-item"><div class="question">5) What are compensating errors?</div><div class="answer">Compensating errors are two or more errors whose effect cancels each other, resulting in no impact on Trial Balance agreement.</div></div>
+  </div>
+
+  <!-- ================= Q.2 One word / term / phrase ================= -->
+  <div class="card">
+    <h2><i class="fas fa-tag"></i> Q.2 Give one word/term or phrase</h2>
+    <div class="qa-item"><div class="question">1) Errors which affect the agreement of Trial Balance.</div><div class="answer">One-sided errors</div></div>
+    <div class="qa-item"><div class="question">2) Taking the total more while closing books of accounts.</div><div class="answer">Overcasting</div></div>
+    <div class="qa-item"><div class="question">3) Error which arises when a transaction is partially or completely omitted.</div><div class="answer">Error of Omission</div></div>
+    <div class="qa-item"><div class="question">4) Transactions recorded due to violating of the accounting principles.</div><div class="answer">Error of Principle</div></div>
+    <div class="qa-item"><div class="question">5) Accounts to which difference in Trial Balance is transferred.</div><div class="answer">Suspense Account</div></div>
+    <div class="qa-item"><div class="question">6) Error in which the effect of one mistake is nullified by another mistake.</div><div class="answer">Compensating Error</div></div>
+    <div class="qa-item"><div class="question">7) Error which are not disclosed by the Trial Balance.</div><div class="answer">Two-sided errors / Errors of complete omission</div></div>
+    <div class="qa-item"><div class="question">8) Errors of incorrect entries or wrong posting.</div><div class="answer">Errors of Commission</div></div>
+  </div>
+
+  <!-- ================= Q.3 MCQs ================= -->
+  <div class="card">
+    <h2><i class="fas fa-check-square"></i> Q.3 Select the most appropriate alternative</h2>
+    <div class="qa-item"><div class="question">1) Rectification entries are passed in _______.</div><div class="answer">a) Journal Proper</div></div>
+    <div class="qa-item"><div class="question">2) The type of error for which journal entry is always required for rectification _______.</div><div class="answer">d) two sided error</div></div>
+    <div class="qa-item"><div class="question">3) Errors occurred due to wrong posting are called as errors of _______.</div><div class="answer">b) commission</div></div>
+    <div class="qa-item"><div class="question">4) If transaction is totally omitted from the Books, it is called _______.</div><div class="answer">b) Error of omission</div></div>
+    <div class="qa-item"><div class="question">5) Suspense Account is opened when _______ does not tally.</div><div class="answer">d) Trial Balance</div></div>
+  </div>
+
+  <!-- ================= Q.4 True False with reasons ================= -->
+  <div class="card">
+    <h2><i class="fas fa-gavel"></i> Q.4 State True or False with reasons</h2>
+    <div class="qa-item"><div class="question">1) Trial Balance is prepared from the balance of ledger accounts.</div><div class="answer"><span class="true-badge">True</span> Trial Balance lists all ledger account balances to check arithmetical accuracy.</div></div>
+    <div class="qa-item"><div class="question">2) A Trial Balance can agree in spite of certain errors.</div><div class="answer"><span class="true-badge">True</span> Errors like complete omission, compensating errors, errors of principle do not affect Trial Balance agreement.</div></div>
+    <div class="qa-item"><div class="question">3) Rectification entries are passed in Cash Book.</div><div class="answer"><span class="false-badge">False</span> Rectification entries are passed in Journal Proper.</div></div>
+    <div class="qa-item"><div class="question">4) There is no need to open a Suspense Account if the Trial Balance agrees.</div><div class="answer"><span class="true-badge">True</span> Suspense Account is opened only when Trial Balance does not agree.</div></div>
+    <div class="qa-item"><div class="question">5) All the errors can be rectified only through Suspense Account.</div><div class="answer"><span class="false-badge">False</span> Only one-sided errors after Trial Balance are rectified through Suspense Account; two-sided errors are rectified by journal entries directly.</div></div>
+  </div>
+
+  <!-- ================= Q.5 Agree or Disagree ================= -->
+  <div class="card">
+    <h2><i class="fas fa-thumbs-up"></i> Q.5 Do you agree or disagree?</h2>
+    <div class="qa-item"><div class="question">1) The unintentional omission or commission of amounts and accounts while recording transactions are known as an error.</div><div class="answer"><span class="true-badge">Agree</span> Errors are unintentional mistakes in accounting records.</div></div>
+    <div class="qa-item"><div class="question">2) Errors due to wrong recording, wrong posting, wrong totalling, wrong balancing are known as Arithmetical errors.</div><div class="answer"><span class="true-badge">Agree</span> These are errors of commission.</div></div>
+    <div class="qa-item"><div class="question">3) When one or more debit errors equal one or more credit errors it is said to be a Compensating error.</div><div class="answer"><span class="true-badge">Agree</span> Compensating errors cancel each other's effect.</div></div>
+    <div class="qa-item"><div class="question">4) The agreement of Trial balance is not affected when a transaction is not recorded at all in the original Books.</div><div class="answer"><span class="true-badge">Agree</span> Complete omission does not affect Trial Balance.</div></div>
+    <div class="qa-item"><div class="question">5) When a transaction is not recorded according to the principles of accounting it is known as Compensating errors.</div><div class="answer"><span class="false-badge">Disagree</span> It is known as Error of Principle.</div></div>
+  </div>
+
+  <!-- ================= Q.6 Complete the sentences ================= -->
+  <div class="card">
+    <h2><i class="fas fa-edit"></i> Q.6 Complete the following sentences</h2>
+    <div class="qa-item"><div class="question">1) _______ is assured only when there are no errors in the books of accounts.</div><div class="answer">Accuracy</div></div>
+    <div class="qa-item"><div class="question">2) Transactions recorded in contravention of the accounting principles are known as _______.</div><div class="answer">Errors of Principle</div></div>
+    <div class="qa-item"><div class="question">3) _______ entry depends generally on when the error is detected.</div><div class="answer">Rectification</div></div>
+    <div class="qa-item"><div class="question">4) Temporary account opened to rectify the entry is known as _______.</div><div class="answer">Suspense Account</div></div>
+    <div class="qa-item"><div class="question">5) Errors are caused due to _______ recording of transactions.</div><div class="answer">wrong / incorrect</div></div>
+  </div>
+
+  <!-- ================= Classification of Errors (Table) ================= -->
+  <div class="card">
+    <h2><i class="fas fa-table"></i> Types of Errors with Examples</h2>
+    <div class="resp-table">
+      <table>
+        <thead><tr><th>Type of Error</th><th>Meaning</th><th>Example</th><th>Effect on Trial Balance</th></tr></thead>
+        <tbody>
+          <tr><td>Error of Omission</td><td>Transaction partially or completely omitted</td><td>Complete: Credit sale not recorded at all<br>Partial: Sale recorded in Sales Book but not posted to customer's A/c</td><td>Complete: No effect<br>Partial: Affects</td></tr>
+          <tr><td>Error of Commission</td><td>Wrong recording, posting, totalling, casting</td><td>Purchase Book undercast by ₹500</td><td>Affects Trial Balance</td></tr>
+          <tr><td>Error of Principle</td><td>Violation of accounting principles</td><td>Wages for Machinery installation debited to Wages A/c instead of Machinery A/c</td><td>No effect (correct side, wrong account)</td></tr>
+          <tr><td>Compensating Error</td><td>Two or more errors cancelling each other</td><td>One account debited less by ₹300, another credited less by ₹300</td><td>No effect</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ================= Rectification Entry Format ================= -->
+  <div class="card">
+    <h2><i class="fas fa-pen-fancy"></i> Rectification Entry Principle</h2>
+    <div class="highlight">
+      <strong>Rectifying Entry = Reverse Wrong Entry + Pass Correct Entry</strong><br>
+      For one-sided errors after Trial Balance: Use Suspense Account.<br>
+      For two-sided errors: Direct Journal Entry in Journal Proper.
+    </div>
+  </div>
+
+  <!-- ================= Illustration 1 Style: Rectification Entries ================= -->
+  <div class="card">
+    <h2><i class="fas fa-clipboard-list"></i> Illustration: Rectify the following errors</h2>
+    <div class="resp-table">
+      <table>
+        <thead><tr><th>Sr. No.</th><th>Error</th><th>Rectifying Entry</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Goods sold to Aryan for ₹2,000 on credit not entered in Sales Book</td><td>Aryan's A/c Dr. 2,000 → To Sales A/c 2,000</td></tr>
+          <tr><td>2</td><td>₹600 paid for repairs to Machinery wrongly posted to Machinery A/c</td><td>Repairs A/c Dr. 600 → To Machinery A/c 600</td></tr>
+          <tr><td>3</td><td>Salaries ₹2,500 paid to Shrikant debited to his personal account</td><td>Salary A/c Dr. 2,500 → To Shrikant's A/c 2,500</td></tr>
+          <tr><td>4</td><td>Sale of old Furniture ₹2,000 treated as sale of goods</td><td>Sales A/c Dr. 2,000 → To Furniture A/c 2,000</td></tr>
+          <tr><td>5</td><td>₹7,000 withdrawn by proprietor debited to Trade Expenses A/c</td><td>Drawings A/c Dr. 7,000 → To Trade Expenses A/c 7,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ================= Suspense Account Illustration ================= -->
+  <div class="card">
+    <h2><i class="fas fa-exclamation-triangle"></i> Suspense Account (Illustration 6 Style)</h2>
+    <div class="resp-table">
+      <table>
+        <thead><tr><th colspan="4">Suspense Account (Dr.)</th></tr>
+        <tr><th>Particulars</th><th>Amount (₹)</th><th>Particulars</th><th>Amount (₹)</th></tr></thead>
+        <tbody>
+          <tr><td>To Balance b/d (difference)</td><td>620</td><td>By Repairs to Machinery A/c</td><td>380</td></tr>
+          <tr><td>To M/s Singh & Co. A/c</td><td>890</td><td>By Shah & Co. A/c</td><td>50</td></tr>
+          <tr><td></td><td></td><td>By Chetan & Co. A/c</td><td>730</td></tr>
+          <tr><td></td><td></td><td>By Lalit & Co. A/c</td><td>250</td></tr>
+          <tr><td></td><td></td><td>By Purchases A/c</td><td>100</td></tr>
+          <tr><td><strong>Total</strong></td><td><strong>1,510</strong></td><td><strong>Total</strong></td><td><strong>1,510</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="highlight"><i class="fas fa-lightbulb"></i> Suspense Account is opened when Trial Balance does not agree. After rectifying all one-sided errors, Suspense Account closes automatically.</div>
+  </div>
+
+  <!-- ================= One-sided vs Two-sided Errors ================= -->
+  <div class="card">
+    <h2><i class="fas fa-code-branch"></i> One-sided vs Two-sided Errors</h2>
+    <div class="grid-2">
+      <div class="highlight"><strong>One-sided Errors</strong><br>• Affect only one account<br>• Affect Trial Balance agreement<br>• Rectified through Suspense Account (if after Trial Balance)<br>• Example: Wrong totalling, omission of posting</div>
+      <div class="highlight"><strong>Two-sided Errors</strong><br>• Affect two or more accounts<br>• Do NOT affect Trial Balance agreement<br>• Rectified directly by Journal Entry in Journal Proper<br>• Example: Complete omission, error of principle</div>
+    </div>
+  </div>
+
+  <!-- ================= More Rectification Examples ================= -->
+  <div class="card">
+    <h2><i class="fas fa-tasks"></i> Additional Rectification Entries (Common Errors)</h2>
+    <div class="resp-table">
+      <table>
+        <thead><tr><th>Error</th><th>Rectifying Entry</th></tr></thead>
+        <tbody>
+          <tr><td>Sales Book overcast by ₹1,000</td><td>Sales A/c Dr. 1,000 → To Suspense A/c 1,000</td></tr>
+          <tr><td>Purchase Return Book undercast by ₹500</td><td>Suspense A/c Dr. 500 → To Purchase Return A/c 500</td></tr>
+          <tr><td>Goods purchased from Sujit ₹3,000 recorded in Sales Book</td><td>Purchases A/c Dr. 3,000, Sales A/c Dr. 3,000 → To Sujit's A/c 6,000</td></tr>
+          <tr><td>Cash received from customer ₹4,500 not posted to his account</td><td>Suspense A/c Dr. 4,500 → To Customer's A/c 4,500</td></tr>
+          <tr><td>Rent paid for proprietor's residence ₹1,200 debited to Rent A/c</td><td>Drawings A/c Dr. 1,200 → To Rent A/c 1,200</td></tr>
+          <tr><td>Repairs to Furniture ₹300 debited to Furniture A/c</td><td>Repairs A/c Dr. 300 → To Furniture A/c 300</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ================= Practical Problem 6 (Suspense Account) ================= -->
+  <div class="card">
+    <h2><i class="fas fa-calculator"></i> Practical Problem: Suspense Account (Difference ₹1,230)</h2>
+    <div class="resp-table">
+      <table>
+        <thead><tr><th>Particulars</th><th>Amount (₹)</th><th>Particulars</th><th>Amount (₹)</th></tr></thead>
+        <tbody>
+          <tr><td>To Balance b/d</td><td>1,230</td><td>By Sales A/c (overcast rectified)</td><td>1,000</td></tr>
+          <tr><td>To Aarti's A/c (short posting)</td><td>400</td><td>By Purchases A/c (overcast)</td><td>100</td></tr>
+          <tr><td>To Ranjeet's A/c (omitted)</td><td>500</td><td>By Commission A/c (short credit)</td><td>70</td></tr>
+          <tr><td>To Sameer's A/c</td><td>750</td><td></td><td></td></tr>
+          <tr><td><strong>Total</strong></td><td><strong>2,880</strong></td><td><strong>Total</strong></td><td><strong>1,170</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="highlight">Note: After rectification, Suspense Account should balance. The difference indicates additional errors to be located.</div>
+  </div>
+
+  <!-- ================= Summary Table: Effect of Errors on Trial Balance ================= -->
+  <div class="card">
+    <h2><i class="fas fa-chart-line"></i> Effect of Errors on Trial Balance</h2>
+    <div class="resp-table">
+      <table>
+        <thead><tr><th>Type of Error</th><th>Does Trial Balance Agree?</th><th>Rectification Method</th></tr></thead>
+        <tbody>
+          <tr><td>Complete Omission</td><td>Yes (agrees)</td><td>Journal Entry (two-sided)</td></tr>
+          <tr><td>Partial Omission (posting omitted)</td><td>No (disagrees)</td><td>Suspense Account</td></tr>
+          <tr><td>Wrong Recording in Subsidiary Book</td><td>Yes (if both accounts affected equally)</td><td>Journal Entry</td></tr>
+          <tr><td>Wrong Posting (one account only)</td><td>No</td><td>Suspense Account</td></tr>
+          <tr><td>Error of Principle</td><td>Yes</td><td>Journal Entry</td></tr>
+          <tr><td>Compensating Errors</td><td>Yes</td><td>Separate rectification entries</td></tr>
+          <tr><td>Casting Errors (overcast/undercast)</td><td>No</td><td>Suspense Account</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ================= Steps for Rectification ================= -->
+  <div class="card">
+    <h2><i class="fas fa-step-forward"></i> Steps for Rectification of Errors</h2>
+    <div class="highlight">
+      <strong>Step 1:</strong> Identify the wrong entry passed (if any).<br>
+      <strong>Step 2:</strong> Determine the correct entry that should have been passed.<br>
+      <strong>Step 3:</strong> Reverse the wrong effect and give the correct effect.<br>
+      <strong>Step 4:</strong> If one-sided error after Trial Balance → use Suspense Account.<br>
+      <strong>Step 5:</strong> Pass rectifying entry in Journal Proper.
+    </div>
+  </div>
+
+  <div class="footer-note">
+    <i class="fas fa-eraser"></i> Rectification of Errors: Ensuring accuracy in accounting records | Suspense Account: Temporary account for Trial Balance differences
+  </div>
+</div>
+</body>
+</html>

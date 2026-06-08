@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Chapter 9 | Final Accounts - Exercise Answers</title>
+  <!-- Google Fonts + Font Awesome 6 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: linear-gradient(135deg, #eef2f9 0%, #e0e8f2 100%);
+      font-family: 'Inter', sans-serif;
+      padding: 32px 24px;
+      color: #0a2b3e;
+      line-height: 1.5;
+    }
+    .container { max-width: 1300px; margin: 0 auto; }
+    .hero { text-align: center; margin-bottom: 48px; }
+    .hero h1 {
+      font-size: 2.4rem; font-weight: 800;
+      background: linear-gradient(135deg, #0b4b6b, #1f6e93, #2c7da0);
+      background-clip: text; -webkit-background-clip: text; color: transparent;
+      display: inline-block; padding-bottom: 10px;
+      border-bottom: 4px solid #ffb347; margin-bottom: 16px;
+    }
+    .chapter-badge {
+      background: #0f4c5f20; backdrop-filter: blur(6px);
+      display: inline-block; padding: 6px 24px; border-radius: 40px;
+      font-size: 0.85rem; font-weight: 600; color: #1b6b8f;
+    }
+    .card {
+      background: rgba(255,255,255,0.97); border-radius: 2rem;
+      margin-bottom: 32px; padding: 28px 32px;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid rgba(255,255,255,0.6);
+    }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 25px 40px -14px rgba(0,0,0,0.15); }
+    .card h2 {
+      font-size: 1.7rem; font-weight: 700; color: #135b78;
+      margin-bottom: 28px; padding-bottom: 10px;
+      border-bottom: 3px solid #ffb74d; display: inline-block;
+    }
+    .card h2 i { margin-right: 12px; color: #ff8c42; }
+    .qa-item { margin-bottom: 22px; border-left: 3px solid #cbdde9; padding-left: 20px; }
+    .question {
+      font-weight: 700; font-size: 1rem; color: #1f4a5e;
+      margin-bottom: 8px; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+    }
+    .question i { color: #ff8c42; width: 26px; }
+    .answer {
+      background: #f8fafd; padding: 10px 18px; border-radius: 24px;
+      font-weight: 500; color: #216477; font-size: 0.94rem;
+      display: inline-block; max-width: 100%;
+      box-shadow: inset 0 1px 0 #fff, 0 1px 2px rgba(0,0,0,0.02);
+    }
+    .true-badge {
+      background: #e0f2e9; color: #1e6f3f; padding: 3px 14px;
+      border-radius: 40px; font-weight: 700; font-size: 0.75rem;
+      display: inline-block; margin-right: 12px;
+    }
+    .false-badge {
+      background: #ffe8e6; color: #bc4742; padding: 3px 14px;
+      border-radius: 40px; font-weight: 700; font-size: 0.75rem;
+      display: inline-block; margin-right: 12px;
+    }
+    .resp-table { width: 100%; overflow-x: auto; margin: 16px 0; border-radius: 20px; background: #f4f9fe; padding: 4px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.85rem; background: white; border-radius: 16px; overflow: hidden; }
+    th, td { border: 1px solid #cde1ef; padding: 10px 12px; text-align: left; vertical-align: top; }
+    th { background: #e0eaf5; font-weight: 700; color: #135b78; }
+    .highlight { background: #eef3fc; border-radius: 16px; padding: 12px 18px; margin: 12px 0; }
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px,1fr)); gap: 12px; margin-top: 12px; }
+    @media (max-width: 768px) {
+      body { padding: 20px 16px; }
+      .card { padding: 20px 18px; }
+      .card h2 { font-size: 1.4rem; }
+      .hero h1 { font-size: 1.8rem; }
+      .qa-item { padding-left: 12px; }
+      th, td { padding: 6px 8px; font-size: 0.75rem; }
+    }
+    .footer-note { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #bdd4e4; font-size: 0.8rem; color: #2c6f8c; }
+    .formula-box { font-family: monospace; background: #eef3fc; padding: 8px 12px; border-radius: 12px; display: inline-block; margin: 5px 0; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+    <h1><i class="fas fa-chart-pie"></i> Chapter 9 · Final Accounts</h1>
+    <div class="chapter-badge"><i class="fas fa-balance-scale"></i> Trading A/c | Profit & Loss A/c | Balance Sheet | Adjustments</div>
+  </div>
+
+  <!-- ================= Q.1 Answer in One Sentence ================= -->
+  <div class="card">
+    <h2><i class="fas fa-question-circle"></i> Q.1 Answer in One Sentence</h2>
+    <div class="qa-item"><div class="question">1) What is a Trading A/c?</div><div class="answer">Trading Account is prepared to ascertain Gross Profit or Gross Loss of a business by recording direct expenses and incomes.</div></div>
+    <div class="qa-item"><div class="question">2) What do you mean by Profit & Loss A/c?</div><div class="answer">Profit & Loss Account is prepared to ascertain Net Profit or Net Loss by recording indirect expenses and indirect incomes.</div></div>
+    <div class="qa-item"><div class="question">3) Why Balance Sheet is prepared?</div><div class="answer">Balance Sheet is prepared to show the financial position of the business in terms of assets and liabilities on a specific date.</div></div>
+    <div class="qa-item"><div class="question">4) State the meaning of Final Accounts.</div><div class="answer">Final Accounts include Trading Account, Profit & Loss Account and Balance Sheet prepared at the end of financial year.</div></div>
+    <div class="qa-item"><div class="question">5) What is Net Profit?</div><div class="answer">Net Profit is the excess of credit side over debit side in Profit & Loss Account after considering all indirect items.</div></div>
+    <div class="qa-item"><div class="question">6) What do you mean by Gross Profit?</div><div class="answer">Gross Profit is the excess of credit side over debit side in Trading Account (Sales + Closing Stock - Cost of Goods Sold).</div></div>
+    <div class="qa-item"><div class="question">7) State the meaning of Accrued Income.</div><div class="answer">Accrued Income is income earned but not yet received during the accounting year.</div></div>
+    <div class="qa-item"><div class="question">8) State the meaning of Outstanding Expenses.</div><div class="answer">Outstanding Expenses are expenses incurred but not yet paid during the accounting year.</div></div>
+    <div class="qa-item"><div class="question">9) What is Depreciation?</div><div class="answer">Depreciation is gradual and continuous decrease in the value of fixed assets due to use, passage of time or obsolescence.</div></div>
+    <div class="qa-item"><div class="question">10) What do you mean by Prepaid Expenses?</div><div class="answer">Prepaid Expenses are expenses paid in advance for the next accounting period.</div></div>
+  </div>
+
+  <!-- ================= Q.2 One word / term / phrase ================= -->
+  <div class="card">
+    <h2><i class="fas fa-tag"></i> Q.2 Give a word, term or phrase</h2>
+    <div class="qa-item"><div class="question">1) Expenses paid before it is due.</div><div class="answer">Prepaid Expenses / Unexpired Expenses</div></div>
+    <div class="qa-item"><div class="question">2) Income due but not yet received.</div><div class="answer">Accrued Income / Outstanding Income</div></div>
+    <div class="qa-item"><div class="question">3) Carriage paid on sale of goods.</div><div class="answer">Carriage Outward</div></div>
+    <div class="qa-item"><div class="question">4) Statement of Assets & Liabilities.</div><div class="answer">Balance Sheet</div></div>
+    <div class="qa-item"><div class="question">5) Account prepared to know Net Profit or Net Loss.</div><div class="answer">Profit & Loss Account</div></div>
+    <div class="qa-item"><div class="question">6) Value of goods remaining unsold at the end of the year.</div><div class="answer">Closing Stock</div></div>
+    <div class="qa-item"><div class="question">7) Provision made to compensate loss on account of likely debts.</div><div class="answer">Reserve for Doubtful Debts / R.D.D.</div></div>
+    <div class="qa-item"><div class="question">8) Accounts prepared at end of year to know profit/loss and financial position.</div><div class="answer">Final Accounts</div></div>
+    <div class="qa-item"><div class="question">9) An amount spent on promoting sale of goods.</div><div class="answer">Advertisement Expenses</div></div>
+    <div class="qa-item"><div class="question">10) An additional information provided below the Trial Balance.</div><div class="answer">Adjustments</div></div>
+  </div>
+
+  <!-- ================= Q.3 MCQs ================= -->
+  <div class="card">
+    <h2><i class="fas fa-check-square"></i> Q.3 Select the most appropriate alternative</h2>
+    <div class="qa-item"><div class="question">1) _______ is excess of assets over liabilities.</div><div class="answer">b) Capital</div></div>
+    <div class="qa-item"><div class="question">2) Discount earned is transferred to credit side of _______ account.</div><div class="answer">b) Profit & Loss</div></div>
+    <div class="qa-item"><div class="question">3) _______ is a statement which shows the financial position of business on a specific date.</div><div class="answer">d) Balance Sheet</div></div>
+    <div class="qa-item"><div class="question">4) Outstanding expenses are shown on the _______ side of Balance Sheet.</div><div class="answer">b) Liability</div></div>
+    <div class="qa-item"><div class="question">5) Interest on Drawing is credited to _______ Account.</div><div class="answer">c) Capital</div></div>
+    <div class="qa-item"><div class="question">6) Debit balance of Trading Account means _______.</div><div class="answer">a) Gross Loss</div></div>
+    <div class="qa-item"><div class="question">7) Carriage Inward is debited to _______ Account.</div><div class="answer">a) Trading</div></div>
+    <div class="qa-item"><div class="question">8) Excess of credit over debit in Profit & Loss Account indicates _______.</div><div class="answer">a) Net Profit</div></div>
+    <div class="qa-item"><div class="question">9) Closing stock is always valued at cost or market price whichever is _______.</div><div class="answer">b) less</div></div>
+    <div class="qa-item"><div class="question">10) When specific date is not given, interest on drawing is charged for _______ month.</div><div class="answer">b) Six</div></div>
+  </div>
+
+  <!-- ================= Q.4 True False with reasons ================= -->
+  <div class="card">
+    <h2><i class="fas fa-gavel"></i> Q.4 State True or False with reasons</h2>
+    <div class="qa-item"><div class="question">1) In every adjustment at least there are three effects.</div><div class="answer"><span class="true-badge">True</span> Each adjustment affects Trading/P&L A/c and Balance Sheet in two places (total three effects).</div></div>
+    <div class="qa-item"><div class="question">2) Every item of Trial Balance has only one effect.</div><div class="answer"><span class="true-badge">True</span> Trial Balance items appear only once either in Trading/P&L A/c or Balance Sheet.</div></div>
+    <div class="qa-item"><div class="question">3) Income due but not received is a liability.</div><div class="answer"><span class="false-badge">False</span> Accrued income is an asset, not a liability.</div></div>
+    <div class="qa-item"><div class="question">4) Goodwill is not a fictitious asset.</div><div class="answer"><span class="true-badge">True</span> Goodwill is an intangible real asset, not fictitious.</div></div>
+    <div class="qa-item"><div class="question">5) Credit balance of Profit & Loss account shows net profit.</div><div class="answer"><span class="true-badge">True</span> Excess of credit over debit in P&L A/c is Net Profit.</div></div>
+  </div>
+
+  <!-- ================= Q.5 Fill in the blanks ================= -->
+  <div class="card">
+    <h2><i class="fas fa-edit"></i> Q.5 Fill in the blanks</h2>
+    <div class="qa-item"><div class="question">1) Gross Profit is transferred to _______ account.</div><div class="answer">Profit & Loss</div></div>
+    <div class="qa-item"><div class="question">2) Debit Balance of Trading Account indicates _______.</div><div class="answer">Gross Loss</div></div>
+    <div class="qa-item"><div class="question">3) Income Receivable appears on _______ side of Balance Sheet.</div><div class="answer">Assets</div></div>
+    <div class="qa-item"><div class="question">4) Interest on Bank Loan is debited to _______ A/c.</div><div class="answer">Profit & Loss</div></div>
+    <div class="qa-item"><div class="question">5) Profit and Loss account is prepared to find out _______ results of the business.</div><div class="answer">Net</div></div>
+    <div class="qa-item"><div class="question">6) All indirect / operating expenses are transferred to _______ account.</div><div class="answer">Profit & Loss</div></div>
+    <div class="qa-item"><div class="question">7) Interest on proprietor's drawing is credited to _______ account.</div><div class="answer">Capital</div></div>
+    <div class="qa-item"><div class="question">8) An excess of debit over credit in the Profit & Loss A/c represents the _______.</div><div class="answer">Net Loss</div></div>
+    <div class="qa-item"><div class="question">9) All direct expenses are transferred to _______ account.</div><div class="answer">Trading</div></div>
+    <div class="qa-item"><div class="question">10) Balance Sheet is _______ of assets & liabilities.</div><div class="answer">statement</div></div>
+  </div>
+
+  <!-- ================= Q.7 Agree or Disagree ================= -->
+  <div class="card">
+    <h2><i class="fas fa-thumbs-up"></i> Q.7 Do you agree or disagree?</h2>
+    <div class="qa-item"><div class="question">1) Reserve for bad debts is created by debiting Profit and Loss Account.</div><div class="answer"><span class="true-badge">Agree</span> R.D.D. is created by debiting P&L A/c and crediting R.D.D. A/c.</div></div>
+    <div class="qa-item"><div class="question">2) Balance Sheet is a statement as well as an account.</div><div class="answer"><span class="false-badge">Disagree</span> Balance Sheet is only a statement, not an account.</div></div>
+    <div class="qa-item"><div class="question">3) Indirect Expenses are debited to Trading Account.</div><div class="answer"><span class="false-badge">Disagree</span> Indirect expenses are debited to Profit & Loss Account.</div></div>
+    <div class="qa-item"><div class="question">4) Bank Overdraft is treated as an Internal Liability.</div><div class="answer"><span class="true-badge">Agree</span> Bank overdraft is shown on liability side of Balance Sheet.</div></div>
+    <div class="qa-item"><div class="question">5) Capital is excess of Liabilities over Assets.</div><div class="answer"><span class="false-badge">Disagree</span> Capital = Assets - Liabilities.</div></div>
+  </div>
+
+  <!-- ================= Q.8 Correct the statements ================= -->
+  <div class="card">
+    <h2><i class="fas fa-sync-alt"></i> Q.8 Correct and Rewrite the following statements</h2>
+    <div class="qa-item"><div class="question">1) Balancing figure of Trading Account is Net Profit or Net Loss.</div><div class="answer">Balancing figure of Trading Account is Gross Profit or Gross Loss.</div></div>
+    <div class="qa-item"><div class="question">2) All direct expenses are debited to Profit and Loss Account.</div><div class="answer">All direct expenses are debited to Trading Account.</div></div>
+    <div class="qa-item"><div class="question">3) When credit side of Profit and Loss account is greater than debit side, it is called Net Loss.</div><div class="answer">When credit side of Profit and Loss account is greater than debit side, it is called Net Profit.</div></div>
+    <div class="qa-item"><div class="question">4) Capital A/c Dr. To Profit and Loss Account (Being Net Profit transferred to Capital A/c).</div><div class="answer">Profit & Loss A/c Dr. To Capital A/c (Being Net Profit transferred to Capital A/c).</div></div>
+    <div class="qa-item"><div class="question">5) Trading A/c Dr. To Sales A/c (Being Sales transferred to Trading A/c).</div><div class="answer">Sales A/c Dr. To Trading A/c (Being Sales transferred to Trading A/c).</div></div>
+  </div>
+
+  <!-- ================= Q.9 Calculations ================= -->
+  <div class="card">
+    <h2><i class="fas fa-calculator"></i> Q.9 Calculate the following</h2>
+    <div class="qa-item"><div class="question">1) Calculate Capital: Building ₹20,000, Furniture ₹15,000, Debtors ₹30,000, Investments ₹10,000, Cash at Bank ₹5,000, Plant ₹20,000.</div><div class="answer">Total Assets = 20,000+15,000+30,000+10,000+5,000+20,000 = ₹1,00,000; Capital = Assets = ₹1,00,000 (No liabilities given)</div></div>
+    <div class="qa-item"><div class="question">2) Machinery ₹35,500 + installation ₹4,500 purchased 1st July 2018, depreciation @7% p.a. (year ending 31st March).</div><div class="answer">Cost = ₹40,000; Period = 9 months; Depreciation = 40,000 × 7% × 9/12 = ₹2,100</div></div>
+    <div class="qa-item"><div class="question">3) Loan ₹3,50,000 taken on 1st Oct 2018 @12% p.a. (year ending 31st March).</div><div class="answer">Period = 6 months; Interest = 3,50,000 × 12% × 6/12 = ₹21,000</div></div>
+    <div class="qa-item"><div class="question">4) Annual Insurance Premium ₹8,000 paid on 1st Dec 2018 (year ending 31st March).</div><div class="answer">Period = 4 months (Dec to March); Insurance = 8,000 × 4/12 = ₹2,667; Prepaid = ₹5,333</div></div>
+    <div class="qa-item"><div class="question">5) Calculate Gross Profit: Purchases ₹15,500, Sales ₹30,000, Carriage Inward ₹1,200, Opening Stock ₹5,000, Purchases Returns ₹500, Closing Stock ₹18,000.</div><div class="answer">Cost of Goods Sold = 5,000 + (15,500-500) + 1,200 = 21,200; Gross Profit = 30,000 - 21,200 = ₹8,800</div></div>
+  </div>
+
+  <!-- ================= Adjustment Effects Table ================= -->
+  <div class="card">
+    <h2><i class="fas fa-table"></i> Summary of Adjustments & Their Effects</h2>
+    <div class="resp-table">
+      <table>
+        <thead><tr><th>Adjustment</th><th>Effect in Trading/P&L A/c</th><th>Effect in Balance Sheet</th></tr></thead>
+        <tbody>
+          <tr><td>Closing Stock</td><td>Credited to Trading A/c</td><td>Shown as Asset</td></tr>
+          <tr><td>Outstanding Expenses</td><td>Added to respective expense</td><td>Shown as Liability</td></tr>
+          <tr><td>Prepaid Expenses</td><td>Deducted from respective expense</td><td>Shown as Asset</td></tr>
+          <tr><td>Accrued Income</td><td>Added to respective income</td><td>Shown as Asset</td></tr>
+          <tr><td>Income Received in Advance</td><td>Deducted from respective income</td><td>Shown as Liability</td></tr>
+          <tr><td>Depreciation</td><td>Debited to P&L A/c</td><td>Deducted from respective Asset</td></tr>
+          <tr><td>Bad Debts & R.D.D.</td><td>Debited to P&L A/c</td><td>Deducted from Debtors</td></tr>
+          <tr><td>Goods withdrawn for personal use</td><td>Deducted from Purchases / Credited to Trading</td><td>Deducted from Capital (Drawings)</td></tr>
+          <tr><td>Goods distributed as free samples</td><td>Debited to Advertisement / P&L</td><td>No effect</td></tr>
+          <tr><td>Interest on Capital</td><td>Debited to P&L A/c</td><td>Added to Capital</td></tr>
+          <tr><td>Interest on Drawings</td><td>Credited to P&L A/c</td><td>Deducted from Capital</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ================= Specimen Trading Account ================= -->
+  <div class="card">
+    <h2><i class="fas fa-chart-line"></i> Specimen: Trading Account</h2>
+    <div class="resp-table">
+      <table>
+        <thead><tr><th>Particulars</th><th>Amount (₹)</th><th>Particulars</th><th>Amount (₹)</th></tr></thead>
+        <tbody>
+          <tr><td>To Opening Stock</td><td>xxxx</td><td>By Sales</td><td>xxxx</td></tr>
+          <tr><td>To Purchases (Less Returns)</td><td>xxxx</td><td>Less: Sales Returns</td><td>(xxxx)</td></tr>
+          <tr><td>To Direct Expenses (Wages, Freight, Royalty, etc.)</td><td>xxxx</td><td>By Closing Stock</td><td>xxxx</td></tr>
+          <tr><td>To Gross Profit c/d (Balancing Figure)</td><td>xxxx</td><td>By Gross Loss c/d (if any)</td><td>xxxx</td></tr>
+          <tr><td><strong>Total</strong></td><td><strong>xxxx</strong></td><td><strong>Total</strong></td><td><strong>xxxx</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ================= Specimen Profit & Loss Account ================= -->
+  <div class="card">
+    <h2><i class="fas fa-file-invoice-dollar"></i> Specimen: Profit & Loss Account</h2>
+    <div class="resp-table">
+      <table>
+        <thead><tr><th>Particulars</th><th>Amount (₹)</th><th>Particulars</th><th>Amount (₹)</th></tr></thead>
+        <tbody>
+          <tr><td>To Gross Loss b/d (if any)</td><td>xxxx</td><td>By Gross Profit b/d</td><td>xxxx</td></tr>
+          <tr><td>To Indirect Expenses (Salaries, Rent, Insurance, Depreciation, etc.)</td><td>xxxx</td><td>By Indirect Incomes (Commission, Discount Received, Interest, etc.)</td><td>xxxx</td></tr>
+          <tr><td>To Net Profit (transferred to Capital)</td><td>xxxx</td><td>By Net Loss (transferred to Capital)</td><td>xxxx</td></tr>
+          <tr><td><strong>Total</strong></td><td><strong>xxxx</strong></td><td><strong>Total</strong></td><td><strong>xxxx</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ================= Specimen Balance Sheet ================= -->
+  <div class="card">
+    <h2><i class="fas fa-balance-scale"></i> Specimen: Balance Sheet</h2>
+    <div class="resp-table">
+      <table>
+        <thead><tr><th>Liabilities</th><th>Amount (₹)</th><th>Assets</th><th>Amount (₹)</th></tr></thead>
+        <tbody>
+          <tr><td>Capital (Opening)</td><td>xxxx</td><td>Fixed Assets (Building, Plant, Furniture, etc.)</td><td>xxxx</td></tr>
+          <tr><td>Add: Net Profit</td><td>xxxx</td><td>Less: Depreciation</td><td>(xxxx)</td></tr>
+          <tr><td>Less: Drawings</td><td>(xxxx)</td><td>Current Assets: Cash, Bank, Debtors, Stock, Prepaid Expenses, Accrued Income</td><td>xxxx</td></tr>
+          <tr><td>Current Liabilities: Creditors, Bills Payable, Outstanding Expenses, Bank Overdraft</td><td>xxxx</td><td></td><td></td></tr>
+          <tr><td><strong>Total</strong></td><td><strong>xxxx</strong></td><td><strong>Total</strong></td><td><strong>xxxx</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ================= Illustration 1 (Trading Account) ================= -->
+  <div class="card">
+    <h2><i class="fas fa-chart-simple"></i> Illustration: Trading Account (Sangita Traders)</h2>
+    <div class="resp-table">
+      <table>
+        <thead><tr><th>Particulars</th><th>Amount (₹)</th><th>Particulars</th><th>Amount (₹)</th></tr></thead>
+        <tbody>
+          <tr><td>To Opening Stock</td><td>22,000</td><td>By Sales (3,80,000 - 24,000)</td><td>3,56,000</td></tr>
+          <tr><td>To Purchases (1,90,000 - 6,400)</td><td>1,83,600</td><td>By Drawings (Goods withdrawn)</td><td>16,000</td></tr>
+          <tr><td>To Wages</td><td>16,000</td><td>By Closing Stock</td><td>36,000</td></tr>
+          <tr><td>To Royalties</td><td>11,000</td><td></td><td></td></tr>
+          <tr><td>To Factory Rent</td><td>4,200</td><td></td><td></td></tr>
+          <tr><td>To Manufacturing Expenses</td><td>8,400</td><td></td><td></td></tr>
+          <tr><td>To Motive Power</td><td>16,000</td><td></td><td></td></tr>
+          <tr><td>To Freight</td><td>7,400</td><td></td><td></td></tr>
+          <tr><td><strong>To Gross Profit c/d</strong></td><td><strong>1,39,400</strong></td><td><strong>Total</strong></td><td><strong>4,08,000</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ================= Closing Stock Valuation Principle ================= -->
+  <div class="card">
+    <h2><i class="fas fa-cubes"></i> Important: Closing Stock Valuation</h2>
+    <div class="highlight">
+      <strong>Principle:</strong> Closing Stock is valued at <strong>Cost Price or Market Price, whichever is less</strong> (Convention of Conservatism).<br>
+      Example: Cost ₹46,000, Market ₹40,000 → Closing Stock = ₹40,000 (as in Illustration 3)
+    </div>
+  </div>
+
+  <!-- ================= R.D.D. Calculation Example ================= -->
+  <div class="card">
+    <h2><i class="fas fa-percent"></i> R.D.D. & Discount on Debtors/Creditors</h2>
+    <div class="grid-2">
+      <div class="highlight"><strong>R.D.D. Calculation:</strong><br>Debtors after new bad debts × Rate%<br>If R.D.D. (old) is given, adjust in P&L A/c</div>
+      <div class="highlight"><strong>Discount on Debtors:</strong><br>Debtors after Bad debts & R.D.D. × Rate%<br>Debited to P&L A/c</div>
+      <div class="highlight"><strong>Discount on Creditors:</strong><br>Creditors × Rate%<br>Credited to P&L A/c (exception to conservatism)</div>
+    </div>
+  </div>
+
+  <div class="footer-note">
+    <i class="fas fa-chart-pie"></i> Final Accounts: Trading A/c (Gross Profit/Loss) → P&L A/c (Net Profit/Loss) → Balance Sheet (Financial Position)
+  </div>
+</div>
+</body>
+</html>

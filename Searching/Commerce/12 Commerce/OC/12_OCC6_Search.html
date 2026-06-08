@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>🌿 Social Responsibility of Business | 12th OC Chapter 6 | CSR · Business Ethics · Stakeholders · Environment</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    body {
+      background: linear-gradient(145deg, #f0fdf4, #dcfce7);
+      min-height: 100vh;
+      padding: 24px 18px;
+      color: #14532d;
+      overflow-y: scroll;
+      scrollbar-width: thin;
+    }
+    .container { max-width: 1350px; margin: 0 auto; }
+    .heading { text-align: center; margin-bottom: 35px; animation: slideDown 0.5s ease; }
+    .heading h1 {
+      font-size: 2rem;
+      background: linear-gradient(135deg, #166534, #15803d, #22c55e);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+    }
+    .heading p { color: #166534; margin-top: 10px; font-weight: 700; background: #ffffffcc; display: inline-block; padding: 5px 20px; border-radius: 40px; backdrop-filter: blur(4px);}
+    .rating-star { background: #bbf7d0; border-radius: 60px; padding: 4px 16px; display: inline-block; font-weight: bold; margin-top: 8px; color: #14532d; }
+    .search-wrapper { position: relative; margin-bottom: 32px; }
+    .search-box {
+      background: white;
+      border-radius: 60px;
+      padding: 6px 6px 6px 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.12);
+      border: 1px solid #86efac;
+    }
+    .search-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      padding: 15px 0;
+      background: transparent;
+      color: #1f2937;
+      font-weight: 500;
+    }
+    .icon-btn {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(145deg, #15803d, #166534);
+      color: white;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: 0.25s;
+      box-shadow: 0 4px 12px rgba(34,197,94,0.4);
+    }
+    .icon-btn:hover { transform: scale(1.05); background: #22c55e; }
+    .suggestions-dropdown {
+      position: absolute;
+      top: calc(100% + 12px);
+      left: 0;
+      right: 0;
+      background: white;
+      border-radius: 32px;
+      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.2);
+      z-index: 120;
+      max-height: 280px;
+      overflow-y: auto;
+      display: none;
+      border: 1px solid #86efac;
+    }
+    .suggestion-item {
+      padding: 14px 24px;
+      color: #1f2937;
+      cursor: pointer;
+      border-bottom: 1px solid #dcfce7;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      transition: 0.2s;
+    }
+    .suggestion-item:hover { background: #dcfce7; padding-left: 32px; }
+    .result-container { display: flex; flex-direction: column; gap: 24px; margin-top: 20px; }
+    .result-card {
+      background: white;
+      border-radius: 32px;
+      padding: 1.8rem;
+      color: #1f2937;
+      box-shadow: 0 12px 30px -10px rgba(0,0,0,0.08);
+      transition: 0.25s ease;
+      border: 1px solid #86efac;
+    }
+    .result-card:hover { transform: translateY(-4px); box-shadow: 0 20px 30px -12px rgba(0,0,0,0.12); }
+    .badge {
+      background: #dcfce7;
+      color: #166534;
+      display: inline-block;
+      padding: 5px 16px;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+    .result-card h3 {
+      color: #14532d;
+      font-size: 1.35rem;
+      border-left: 6px solid #22c55e;
+      padding-left: 18px;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+    .answer-text {
+      background: #f0fdf4;
+      padding: 18px 24px;
+      border-radius: 28px;
+      line-height: 1.7;
+      margin: 12px 0;
+      border: 1px solid #86efac;
+    }
+    .answer-text table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 0.9rem;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .answer-text th, .answer-text td {
+      border: 1px solid #bbf7d0;
+      padding: 10px 12px;
+      text-align: left;
+      background: white;
+    }
+    .answer-text th { background: #15803d; color: white; font-weight: 700; }
+    .formula-box {
+      background: #dcfce7;
+      padding: 12px 18px;
+      border-radius: 28px;
+      font-size: 0.95rem;
+      margin: 14px 0;
+      text-align: center;
+      border-left: 6px solid #22c55e;
+      font-weight: 600;
+    }
+    .action-buttons { margin-top: 22px; display: flex; gap: 15px; flex-wrap: wrap; }
+    .action-buttons button {
+      border: none;
+      padding: 10px 26px;
+      border-radius: 50px;
+      font-weight: 700;
+      background: #f0fdf4;
+      color: #14532d;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .action-buttons button:last-child { background: #22c55e; color: white; box-shadow: 0 2px 8px rgba(34,197,94,0.3);}
+    .action-buttons button:hover { transform: scale(0.97); opacity: 0.9; }
+    .not-found {
+      background: #f0fdf4;
+      border-radius: 48px;
+      padding: 2.5rem;
+      text-align: center;
+      font-size: 1.1rem;
+      color: #166534;
+      border: 1px solid #86efac;
+    }
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(10px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    .popup-box {
+      background: white;
+      max-width: 1100px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      border-radius: 48px;
+      padding: 30px 34px;
+      position: relative;
+      color: #1e293b;
+    }
+    .close-popup {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      background: #fee2e2;
+      border: none;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+    .lang-section { background: #f0fdf4; padding: 20px; border-radius: 28px; margin-bottom: 20px; border-left: 5px solid #22c55e; }
+    .lang-section h4 { color: #14532d; margin-bottom: 12px; font-size: 1.2rem; }
+    .detail-table { width: 100%; border-collapse: collapse; margin: 16px 0; background: white; border-radius: 20px; overflow: hidden; }
+    .detail-table th { background: #15803d; color: white; padding: 12px; text-align: left; }
+    .detail-table td { border: 1px solid #bbf7d0; padding: 10px 12px; vertical-align: top; }
+    .ascii-art {
+      background: #0f172a;
+      color: #86efac;
+      font-family: monospace;
+      font-size: 12px;
+      padding: 16px;
+      border-radius: 20px;
+      overflow-x: auto;
+      white-space: pre;
+      margin: 16px 0;
+      text-align: center;
+    }
+    .pie-chart-simple {
+      background: #f8fafc;
+      border-radius: 20px;
+      padding: 16px;
+      text-align: center;
+      font-weight: bold;
+    }
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 650px) {
+      body { padding: 16px 12px; }
+      .heading h1 { font-size: 1.4rem; }
+      .result-card h3 { font-size: 1.1rem; }
+      .result-card { padding: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="heading">
+    <h1>🌿 Social Responsibility of Business | 12th OC Chapter 6</h1>
+    <p>🤝 Social Responsibility · Stakeholders (Owners, Investors, Employees, Consumers, Govt, Community) · Business Ethics · CSR · Environment Protection</p>
+    <div class="rating-star">⭐ Rating: 10/10 — Detailed Tables & Graphical Explanations</div>
+  </div>
+  <div class="search-wrapper">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="🔎 Search: Social responsibility meaning, Trusteeship, Responsibilities towards employees/consumers, Business ethics features, CSR 2% rule, Environment protection 4Rs...">
+      <button class="icon-btn" id="voiceBtn">🎤</button>
+    </div>
+    <div id="suggestionsList" class="suggestions-dropdown"></div>
+  </div>
+  <div class="result-container" id="resultsContainer">
+    <div class="not-found">🌿 Social Responsibility Explorer — Search: Social responsibility, Trusteeship, Responsibilities to Owners/Employees/Consumers/Government/Society, Business Ethics, CSR ✨</div>
+  </div>
+</div>
+<div class="popup-overlay" id="popupModal">
+  <div class="popup-box">
+    <button class="close-popup" id="closeModalBtn">✖</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+  const qaDatabase = [];
+  function addQA(question, answer, category, keywords = [], detailedHTML = null) {
+    qaDatabase.push({ id: qaDatabase.length+1, question, answer, category, keywords: keywords.map(k=>k.toLowerCase()), detailedHTML });
+  }
+
+  // ========== CHAPTER 6: SOCIAL RESPONSIBILITY OF BUSINESS ==========
+  
+  addQA("What is Social Responsibility of Business? Need for Social Responsibility?",
+    `<strong>Social Responsibility</strong> refers to the obligation of business to protect and contribute to the interest of society. It goes beyond legal compliance and involves voluntary actions for social welfare.<br><br>
+     <table class="detail-table">
+        <tr><th>Need for Social Responsibility</th><th>Explanation</th></tr>
+        <tr><td>1. Concept of Trusteeship</th><td>Mahatma Gandhi's philosophy - businessmen as trustees of society</th></tr>
+        <tr><td colspan="2">2. Changing expectations of society | 3. Reputation & brand image</td></tr>
+        <tr><td colspan="2">4. Protection of environment | 5. Optimum utilisation of resources</td></tr>
+        <tr><td colspan="2">6. Pressure of Trade Unions | 7. Growth of Consumer Movement</td></tr>
+        <tr><td colspan="2">8. Government Control | 9. Long term self-interest</td></tr>
+        <tr><td colspan="2">10. Complexities of Social Problems | 11. Globalisation | 12. Role of Media</td></tr>
+      </table>
+     <div class="ascii-art">
+   ┌─────────────────────────────────────────────────────────┐
+   │              SOCIAL RESPONSIBILITY PYRAMID              │
+   │                     ┌─────────┐                         │
+   │                     │PHILANTHROPIC│  (Give back to society)│
+   │                   ┌─┴───────────┴─┐                       │
+   │                   │   ETHICAL     │  (Do what is right)   │
+   │                 ┌─┴───────────────┴─┐                     │
+   │                 │    LEGAL         │  (Obey the law)      │
+   │               ┌─┴───────────────────┴─┐                   │
+   │               │    ECONOMIC           │  (Be profitable)  │
+   │               └───────────────────────┘                   │
+   └─────────────────────────────────────────────────────────┘
+     </div>`,
+    "Social Responsibility", ["social responsibility meaning", "need for social responsibility", "trusteeship"]);
+
+  addQA("What are the responsibilities of business towards Employees?",
+    `<table class="detail-table">
+        <tr><th>Responsibility</th><th>Description</th></tr>
+        <tr><td>1. Job Security</th><td>Provides mental peace, loyalty, dedication</th></tr>
+        <tr><td>2. Fair Remuneration</th><td>Attractive salary, bonus, overtime, increments</th></tr>
+        <tr><td>3. Health & Safety Measures</th><td>Canteen, medical, sanitation, safety equipment (helmets, gloves, goggles)</th></tr>
+        <tr><td>4. Good Working Conditions</th><td>Lighting, ventilation, drinking water, pollution control</th></tr>
+        <tr><td>5. Recognition of Trade Unions</th><td>Maintain industrial peace, negotiate, avoid strikes/lockouts</th></tr>
+        <tr><td>6. Education & Training</th><td>Introduction training, refresher training for efficiency</th></tr>
+        <tr><td colspan="2">7. Workers Participation in Management (suggestion schemes, profit sharing)</td></tr>
+        <tr><td colspan="2">8. Promotion & Career Opportunities | 9. Proper Grievance Procedure | 10. Fair treatment to all</td></tr>
+      </table>`,
+    "Stakeholders", ["responsibilities towards employees", "employee rights"]);
+
+  addQA("What are the responsibilities of business towards Consumers?",
+    `<table class="detail-table">
+        <tr><th>Responsibility</th><th>Key Points</th></tr>
+        <tr><td>1. Good Quality Products</th><td>ISO standards, BIS, AGMARK, quality control</th></tr>
+        <tr><td>2. Fair Prices</th><td>MRP printed, no extra charges</th></tr>
+        <tr><td>3. Customer's Safety</th><td>Avoid unsafe products, warn if necessary</th></tr>
+        <tr><td>4. Honest Advertising</th><td>No false/misleading/vulgar ads</th></tr>
+        <tr><td colspan="2">5. After Sales Service (warranty, maintenance)</td></tr>
+        <tr><td colspan="2">6. Research & Development (improve quality, reduce cost)</td></tr>
+        <tr><td colspan="2">7. Regular Supply (no hoarding/black marketing)</td></tr>
+        <tr><td colspan="2">8. Attend Complaints (quick redressal)</td></tr>
+        <tr><td colspan="2">9. Training for consumers | 10. Avoid exploitation</td></tr>
+      </table>
+     <div class="formula-box">💡 Consumer is King — Business survival depends on consumer satisfaction.</div>`,
+    "Stakeholders", ["responsibilities towards consumers", "consumer rights"]);
+
+  addQA("What are the responsibilities of business towards Government?",
+    `<table class="detail-table">
+        <tr><th>Responsibility</th><th>Description</th></tr>
+        <tr><td colspan="2">1. Timely Payment of Taxes (Income tax, GST, wealth tax)</td></tr>
+        <tr><td colspan="2">2. Observing Rules & Regulations (licenses, laws)</td></tr>
+        <tr><td colspan="2">3. Earning Foreign Exchange (through exports)</td></tr>
+        <tr><td colspan="2">4. Economic Development (cooperate with govt targets)</td></tr>
+        <tr><td colspan="2">5. Implementing Socio-Economic Policies</td></tr>
+        <tr><td colspan="2">6. Suggestions to Government (before framing policies)</td></tr>
+        <tr><td colspan="2">7. No Favours (no bribery or influencing officials)</td></tr>
+        <tr><td colspan="2">8. Contributing during emergencies (floods, earthquakes)</td></tr>
+      </table>`,
+    "Stakeholders", ["responsibilities towards government", "tax payment"]);
+
+  addQA("What are the responsibilities of business towards Society/Community?",
+    `<table class="detail-table">
+        <tr><th>Responsibility</th><th>Description</th></tr>
+        <tr><td colspan="2">1. Protection of Environment (reduce air, water, noise pollution)</td></tr>
+        <tr><td colspan="2">2. Better & Maximum Use of Resources (scarce resources efficiently)</td></tr>
+        <tr><td colspan="2">3. Reservation for Weaker Section (economically weaker sections)</td></tr>
+        <tr><td colspan="2">4. Development of Backward Regions (set up industries in rural areas)</td></tr>
+        <tr><td colspan="2">5. Protest against Anti-Social Activities (no smuggling, bribery)</td></tr>
+        <tr><td colspan="2">6. Financial Assistance (donations for social causes)</td></tr>
+        <tr><td colspan="2">7. Prevent Congestions (spread industries, avoid city congestion)</td></tr>
+        <tr><td colspan="2">8. Employment Generation (expansion & diversification)</td></tr>
+      </table>`,
+    "Stakeholders", ["responsibilities towards society", "community responsibility"]);
+
+  addQA("What is Business Ethics? Features of Business Ethics?",
+    `<strong>Business Ethics</strong> refers to a code of conduct businesses follow while doing business. Derived from Greek word 'Ethos' meaning character.<br><br>
+     <table class="detail-table">
+        <tr><th>Feature</th><th>Explanation</th></tr>
+        <tr><td colspan="2">1. Code of conduct (what to do / what not to do)</td></tr>
+        <tr><td colspan="2">2. Based on Moral & Social Values (self-control, consumer welfare, service)</td></tr>
+        <tr><td colspan="2">3. Gives Protection to Social Groups (consumers, employees, shareholders)</td></tr>
+        <tr><td colspan="2">4. Provides Basic Framework (social, cultural, legal limits)</td></tr>
+        <tr><td colspan="2">5. Voluntary (self-discipline, not enforced by law)</td></tr>
+        <tr><td colspan="2">6. Requires Education & Guidance</td></tr>
+        <tr><td colspan="2">7. Relative Term (changes from business to business, country to country)</td></tr>
+        <tr><td colspan="2">8. New Concept (developed countries more strict)</td></tr>
+      </table>
+     <div class="ascii-art">
+   ┌──────────────────────────────────────────┐
+   │         BUSINESS ETHICS - DO'S & DON'T'S  │
+   ├──────────────────────────────────────────┤
+   │ ✓ Pay taxes & charges regularly          │
+   │ ✓ Pay fair wages & allowances            │
+   │ ✓ Supply quality goods at fair prices    │
+   │ ✗ Destroy healthy competition            │
+   │ ✗ Cheat or exploit customers             │
+   │ ✗ Resort to hoarding/black marketing     │
+   │ ✗ Create monopoly                        │
+   └──────────────────────────────────────────┘
+     </div>`,
+    "Business Ethics", ["business ethics meaning", "features of business ethics", "code of conduct"]);
+
+  addQA("What is Corporate Social Responsibility (CSR)? Applicability and Activities?",
+    `<strong>Corporate Social Responsibility (CSR)</strong> is a self-regulating business model where companies integrate social and environmental concerns in operations. Mandatory under Section 135 of Companies Act 2013 from 15 April 2014.<br><br>
+     <table class="detail-table">
+        <tr><th>CSR Applicability Criteria</th><th>Requirement</th></tr>
+        <tr><td>Net Worth ≥ ₹500 Crore OR Turnover ≥ ₹1000 Crore OR Net Profit ≥ ₹5 Crore</td><td>Must spend 2% of average net profit of last 3 years on CSR</td></tr>
+        <tr><td colspan="2">CSR Committee: Minimum 4 Directors, meets at least twice a year</td></tr>
+      </table>
+     <strong>CSR Activities (Schedule VII):</strong><br>
+     • Eradicating hunger, poverty, malnutrition<br>
+     • Promoting education, vocational skills<br>
+     • Reducing child mortality, improving maternal health<br>
+     • Environmental sustainability, ecological balance<br>
+     • Contribution to PM National Relief Fund<br>
+     • Rural development projects, slum area development<br><br>
+     <div class="formula-box">💰 Penalty for non-disclosure: ₹50,000 to ₹25,00,000; officers may face imprisonment up to 3 years or fine up to ₹5,00,000.</div>`,
+    "CSR", ["corporate social responsibility", "csr applicability", "csr activities", "2% rule"]);
+
+  addQA("What are the 4 Rs for Environment Protection?",
+    `<table class="detail-table">
+        <tr><th>R</th><th>Meaning</th><th>Priority</th></tr>
+        <tr><td>1. REDUCTION</td><td>Reduce waste generation at source</td><td>1st (Most Preferred)</td></tr>
+        <tr><td>2. REUSE</td><td>Use materials again if possible</td><td>2nd</td></tr>
+        <tr><td>3. RECYCLING</td><td>Process waste into new products</td><td>3rd</td></tr>
+        <tr><td>4. RECOVERY</td><td>Recover materials or energy from waste</td><td>4th</td></tr>
+      </table>
+     <div class="ascii-art">
+            🌍 ENVIRONMENT PROTECTION - 4 Rs 🌍
+         ┌─────────────────────────────────────┐
+         │                                     │
+         │    REDUCE  ──►  REUSE              │
+         │       │              │              │
+         │       ▼              ▼              │
+         │    RECYCLE  ──►  RECOVER           │
+         │                                     │
+         │  "Waste not, want not"              │
+         └─────────────────────────────────────┘
+     </div>`,
+    "Environment", ["4 rs", "environment protection", "pollution control"]);
+
+  addQA("What are the responsibilities of business towards Owners?",
+    `<table class="detail-table">
+        <tr><th>Responsibility</th><th>Description</th></tr>
+        <tr><td colspan="2">1. Reasonable Profit (growth, stability)</td></tr>
+        <tr><td colspan="2">2. Exploring Business Opportunities (expansion, diversification)</td></tr>
+        <tr><td colspan="2">3. Optimum Use of Capital (safety of capital)</td></tr>
+        <tr><td colspan="2">4. Minimise Wastages (time, money, manpower)</td></tr>
+        <tr><td colspan="2">5. Efficient Business (optimum resource utilisation)</td></tr>
+        <tr><td colspan="2">6. Fair Practices on Stock Exchange (no insider trading)</td></tr>
+        <tr><td colspan="2">7. Expansion and Diversification (R&D)</td></tr>
+        <tr><td colspan="2">8. Periodic Information (financial reports, circulars)</td></tr>
+        <tr><td colspan="2">9. Effective Use of Owners' Funds | 10. Creating Goodwill</td></tr>
+      </table>`,
+    "Stakeholders", ["responsibilities towards owners", "shareholder responsibility"]);
+
+  // Search Logic
+  const searchInput = document.getElementById("searchInput");
+  const resultsContainer = document.getElementById("resultsContainer");
+  const suggestionsDiv = document.getElementById("suggestionsList");
+
+  function getMatches(q) {
+    const lower = q.toLowerCase();
+    return qaDatabase.filter(item => 
+      item.question.toLowerCase().includes(lower) || 
+      item.answer.toLowerCase().includes(lower) ||
+      item.category.toLowerCase().includes(lower) ||
+      item.keywords.some(k => k.includes(lower))
+    ).slice(0, 18);
+  }
+
+  function updateSuggestions() {
+    const val = searchInput.value.trim();
+    if(!val) { suggestionsDiv.style.display = "none"; return; }
+    const matches = getMatches(val);
+    if(!matches.length) { suggestionsDiv.style.display = "none"; return; }
+    suggestionsDiv.innerHTML = "";
+    matches.forEach(item => {
+      const div = document.createElement("div");
+      div.className = "suggestion-item";
+      div.innerHTML = `<span>🌿</span> <strong>${item.question.substring(0,70)}</strong> <span style="margin-left:auto; background:#dcfce7; padding:2px 12px; border-radius:30px;">${item.category}</span>`;
+      div.addEventListener("click", () => {
+        searchInput.value = item.question;
+        suggestionsDiv.style.display = "none";
+        performSearch(item.question);
+      });
+      suggestionsDiv.appendChild(div);
+    });
+    suggestionsDiv.style.display = "block";
+  }
+
+  function performSearch(q = null) {
+    let query = (q !== null) ? q : searchInput.value.trim();
+    if(!query) { resultsContainer.innerHTML = `<div class="not-found">🌿 Search: Social responsibility, Trusteeship, Responsibilities to owners/employees/consumers, Business ethics, CSR 2% rule, Environment 4Rs...</div>`; return; }
+    const matches = getMatches(query);
+    if(!matches.length) { resultsContainer.innerHTML = `<div class="not-found">❌ No results. Try: Social responsibility meaning, Trusteeship, Responsibilities towards employees/consumers, Business ethics features, CSR.</div>`; return; }
+    resultsContainer.innerHTML = "";
+    matches.forEach(item => {
+      const card = document.createElement("div");
+      card.className = "result-card";
+      card.innerHTML = `
+        <div class="badge">📌 ${escapeHtml(item.category)}</div>
+        <h3>📘 ${escapeHtml(item.question)}</h3>
+        <div class="answer-text"><strong>✅ Detailed Answer:</strong><br>${item.answer}</div>
+        <div class="action-buttons">
+          <button class="detailBtn" data-id="${item.id}">🔍 In-Depth Explanation + Visuals</button>
+          <button class="extraTableBtn" data-cat="${item.category}">📊 Quick Reference Tables</button>
+        </div>
+      `;
+      resultsContainer.appendChild(card);
+    });
+    attachEvents(matches);
+  }
+
+  function attachEvents(matchesArray) {
+    document.querySelectorAll(".detailBtn").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const id = parseInt(btn.getAttribute("data-id"));
+        const item = qaDatabase.find(i => i.id === id);
+        if(item) showDetailedModal(item);
+      });
+    });
+    document.querySelectorAll(".extraTableBtn").forEach(btn => {
+      btn.addEventListener("click", () => showQuickTables());
+    });
+  }
+
+  function showDetailedModal(item) {
+    let detailedContent = `
+      <div class="lang-section">
+        <h4>❓ Question</h4>
+        <p style="font-size:1.1rem; font-weight:500;">${escapeHtml(item.question)}</p>
+      </div>
+      <div class="lang-section">
+        <h4>✅ Comprehensive Answer</h4>
+        <div>${item.answer}</div>
+      </div>
+    `;
+    
+    // Add category-specific deep visuals
+    if(item.category === "Social Responsibility") {
+      detailedContent += `<div class="lang-section"><h4>🌱 Gandhi's Trusteeship Philosophy</h4><div class="ascii-art">
+   "Wealthy people would be trustees of trusts that looked after welfare of people"
+   ┌────────────────────────────────────────────┐
+   │   BUSINESSMAN → TRUSTEE OF SOCIETY          │
+   │   Wealth → Held for benefit of society      │
+   │   Not for personal luxury                   │
+   └────────────────────────────────────────────┘
+      </div></div>`;
+    }
+    if(item.category === "Stakeholders") {
+      detailedContent += `<div class="lang-section"><h4>🤝 Six Interest Groups of Business</h4><div class="ascii-art">
+            ┌─────────────┐
+            │   OWNERS    │
+            ├─────────────┤
+            │  INVESTORS  │
+            ├─────────────┤
+            │  EMPLOYEES  │  ← Business must balance all
+            ├─────────────┤
+            │  CONSUMERS  │
+            ├─────────────┤
+            │  GOVERNMENT │
+            ├─────────────┤
+            │  COMMUNITY  │
+            └─────────────┘
+      </div></div>`;
+    }
+    if(item.category === "CSR") {
+      detailedContent += `<div class="lang-section"><h4>📊 CSR Spending Illustration</h4><div class="pie-chart-simple">
+   ┌─────────────────────────────────────┐
+   │  Company Average Net Profit = ₹100Cr│
+   │  2% CSR Spend = ₹2Cr mandatory      │
+   │  Activities: Education, Healthcare, │
+   │  Environment, Rural Development     │
+   └─────────────────────────────────────┘
+      </div></div>`;
+    }
+    if(item.category === "Business Ethics") {
+      detailedContent += `<div class="lang-section"><h4>⚖️ Ethical Dilemma Example</h4><div class="ascii-art">
+   Question: Should a company use child labour if legal?
+   Ethics says: NO. Moral values over profit.
+   Business Ethics = Choosing right over profitable.
+      </div></div>`;
+    }
+    if(item.category === "Environment") {
+      detailedContent += `<div class="lang-section"><h4>🌎 Environmental Impact of Business</h4><div class="ascii-art">
+   Business Effects:
+   • Air Pollution (Smoke, gases)
+   • Water Pollution (Industrial waste)
+   • Noise Pollution (Machinery)
+   • Electronic Garbage (E-waste)
+   
+   Solution: 4 Rs + Green Technology
+      </div></div>`;
+    }
+    
+    document.getElementById("popupModal").style.display = "flex";
+    document.getElementById("modalContent").innerHTML = `
+      <h2 style="color:#14532d; margin-bottom:20px;">📖 In-Depth Explanation + Visuals</h2>
+      ${detailedContent}
+      <button id="closeDetailModal" style="background:#22c55e; padding:10px 26px; border-radius:40px; margin-top:12px; border:none; color:white; cursor:pointer;">Close</button>
+    `;
+    document.getElementById("closeDetailModal").addEventListener("click", () => document.getElementById("popupModal").style.display = "none");
+  }
+
+  function showQuickTables() {
+    let content = `<div class="lang-section"><strong>📚 Chapter 6: Social Responsibility - Quick Reference</strong><br>`;
+    content += `<h4>🤝 Responsibilities at a Glance</h4>
+      <table class="detail-table">
+        <tr><th>Interest Group</th><th>Key Responsibilities</th></tr>
+        <tr><td>Owners</td><td>Reasonable profit, optimum capital use, fair stock exchange practices</td></tr>
+        <tr><td>Investors</td><td>Return on investment, transparency, proper disclosure, solvency</td></tr>
+        <tr><td>Employees</td><td>Job security, fair wages, safety, training, participation</td></tr>
+        <tr><td>Consumers</td><td>Quality, fair price, safety, after-sales service, honest ads</td></tr>
+        <tr><td>Government</td><td>Taxes, follow rules, earn foreign exchange, no bribes</td></tr>
+        <tr><td>Society</td><td>Environment protection, employment, backward region development</td></tr>
+      </table>`;
+    content += `<h4>📜 Business Ethics Summary</h4>
+      <table class="detail-table"><tr><th>Do's</th><th>Don'ts</th></tr>
+      <tr><td>Pay taxes, fair wages, quality goods</td><td>No hoarding, no black marketing, no monopoly</td></tr>
+      <tr><td>Service first, profit next</td><td>No unfair competition</td></tr>
+      <tr><td>Customer is king</td><td>No exploitation</td></tr>
+      </table>`;
+    content += `<div class="formula-box">💡 CSR: Companies with net worth ≥₹500Cr OR turnover ≥₹1000Cr OR profit ≥₹5Cr must spend 2% of avg profit on CSR activities (Schedule VII).</div>`;
+    document.getElementById("popupModal").style.display = "flex";
+    document.getElementById("modalContent").innerHTML = `<h2 style="color:#14532d;">📊 Social Responsibility - Reference Tables</h2>${content}<button id="closeModalInside" style="background:#22c55e; margin-top:20px; padding:10px 26px; border-radius:40px; color:white; border:none;">Close</button>`;
+    document.getElementById("closeModalInside").addEventListener("click", () => document.getElementById("popupModal").style.display = "none");
+  }
+
+  function escapeHtml(str) { return str.replace(/[&<>]/g, m => m==='&'?'&amp;': m==='<'?'&lt;':'&gt;'); }
+  function startVoice() { if (!('webkitSpeechRecognition' in window)) { alert("Voice search supported in Chrome/Edge."); return; } const rec = new webkitSpeechRecognition(); rec.lang="en-IN"; rec.start(); rec.onresult = (e)=> { searchInput.value = e.results[0][0].transcript; performSearch(); }; }
+  document.getElementById("voiceBtn").addEventListener("click", startVoice);
+  searchInput.addEventListener("keyup", () => { performSearch(); updateSuggestions(); });
+  searchInput.addEventListener("focus", updateSuggestions);
+  document.addEventListener("click", (e) => { if(!document.querySelector(".search-wrapper").contains(e.target)) suggestionsDiv.style.display = "none"; });
+  document.getElementById("closeModalBtn").addEventListener("click", () => document.getElementById("popupModal").style.display = "none");
+  window.onload = () => { resultsContainer.innerHTML = `<div class="not-found">🌿 12th OC Chapter 6: Social Responsibility of Business | Search: Social responsibility, Trusteeship, Responsibilities to Owners/Employees/Consumers/Government/Society, Business Ethics, CSR 2% rule ✨</div>`; };
+</script>
+</body>
+</html>

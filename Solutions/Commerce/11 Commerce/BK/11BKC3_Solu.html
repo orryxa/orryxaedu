@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Chapter 3 | Journal - Answers & Solutions</title>
+  <!-- Google Fonts + Font Awesome 6 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: linear-gradient(135deg, #eef2f9 0%, #e0e8f2 100%);
+      font-family: 'Inter', sans-serif;
+      padding: 32px 24px;
+      color: #0a2b3e;
+      line-height: 1.5;
+    }
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    /* header */
+    .hero {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #0b4b6b, #1f6e93, #2c7da0);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      display: inline-block;
+      padding-bottom: 10px;
+      border-bottom: 4px solid #ffb347;
+      margin-bottom: 16px;
+    }
+    .chapter-badge {
+      background: #0f4c5f20;
+      backdrop-filter: blur(6px);
+      display: inline-block;
+      padding: 6px 24px;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #1b6b8f;
+    }
+    /* card style */
+    .card {
+      background: rgba(255,255,255,0.97);
+      border-radius: 2rem;
+      margin-bottom: 32px;
+      padding: 28px 32px;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid rgba(255,255,255,0.6);
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 25px 40px -14px rgba(0,0,0,0.15);
+    }
+    .card h2 {
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: #135b78;
+      margin-bottom: 28px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid #ffb74d;
+      display: inline-block;
+    }
+    .card h2 i {
+      margin-right: 12px;
+      color: #ff8c42;
+    }
+    /* Q&A blocks */
+    .qa-item {
+      margin-bottom: 22px;
+      border-left: 3px solid #cbdde9;
+      padding-left: 20px;
+    }
+    .question {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #1f4a5e;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .question i {
+      color: #ff8c42;
+      width: 26px;
+    }
+    .answer {
+      background: #f8fafd;
+      padding: 10px 18px;
+      border-radius: 24px;
+      font-weight: 500;
+      color: #216477;
+      font-size: 0.94rem;
+      display: inline-block;
+      max-width: 100%;
+      box-shadow: inset 0 1px 0 #fff, 0 1px 2px rgba(0,0,0,0.02);
+    }
+    .true-badge {
+      background: #e0f2e9;
+      color: #1e6f3f;
+      padding: 3px 14px;
+      border-radius: 40px;
+      font-weight: 700;
+      font-size: 0.75rem;
+      display: inline-block;
+      margin-right: 12px;
+    }
+    .false-badge {
+      background: #ffe8e6;
+      color: #bc4742;
+      padding: 3px 14px;
+      border-radius: 40px;
+      font-weight: 700;
+      font-size: 0.75rem;
+      display: inline-block;
+      margin-right: 12px;
+    }
+    .calc-box {
+      background: #eef3fc;
+      border-radius: 20px;
+      padding: 12px 18px;
+      margin-top: 8px;
+      font-family: monospace;
+      font-weight: 600;
+    }
+    @media (max-width: 768px) {
+      body { padding: 20px 16px; }
+      .card { padding: 20px 18px; }
+      .card h2 { font-size: 1.4rem; }
+      .hero h1 { font-size: 1.8rem; }
+      .qa-item { padding-left: 12px; }
+    }
+    .footer-note {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #bdd4e4;
+      font-size: 0.8rem;
+      color: #2c6f8c;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .specimen-mini {
+      background: #f4f9fe;
+      border-radius: 20px;
+      padding: 14px;
+      font-size: 0.85rem;
+      font-family: monospace;
+      border: 1px solid #cde1ef;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+    <h1><i class="fas fa-book-journal-whills"></i> Chapter 3 · Journal</h1>
+    <div class="chapter-badge"><i class="fas fa-pen"></i> Book of Original Entry | GST | Trade & Cash Discount</div>
+  </div>
+
+  <!-- ================= Q.1 Short Answer ================= -->
+  <div class="card">
+    <h2><i class="fas fa-question-circle"></i> Q.1 Answer in One Sentence</h2>
+    <div class="qa-item"><div class="question"><i class="fas fa-journal-whills"></i> 1) What is Journal?</div><div class="answer">Journal is a book of original entry where business transactions are recorded chronologically with debit and credit aspects.</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-comment-dots"></i> 2) What is Narration?</div><div class="answer">Narration is a brief explanation of a journal entry written below the entry within brackets.</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-percent"></i> 3) What is GST?</div><div class="answer">GST (Goods and Services Tax) is a comprehensive indirect tax levied on supply of goods and services, introduced on 1st July 2017.</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-calendar"></i> 4) In which year GST was imposed by Central Government of India?</div><div class="answer">GST was imposed from 1st July 2017.</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-pen-fancy"></i> 5) What is meant by simple entry?</div><div class="answer">A simple journal entry involves only two accounts, one debit and one credit.</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-layer-group"></i> 6) What is the meaning of combined entry?</div><div class="answer">Combined (compound) entry has more than one debit or more than one credit or both.</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-credit-card"></i> 7) Which account is debited, when rent is paid by Debit card?</div><div class="answer">Rent A/c is debited and Bank A/c is credited.</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-tag"></i> 8) Which discount is not recorded in the books of account?</div><div class="answer">Trade discount is not recorded in the books of accounts.</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-sort-amount-down"></i> 9) In which order monthly transactions are recorded in a Journal?</div><div class="answer">Transactions are recorded in chronological order (date-wise).</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-truck"></i> 10) Which account is credited, when goods are sold on credit?</div><div class="answer">Sales A/c is credited.</div></div>
+  </div>
+
+  <!-- ================= Q.2 One word / term ================= -->
+  <div class="card">
+    <h2><i class="fas fa-tag"></i> Q.2 Give one word/term or phrase</h2>
+    <div class="qa-item"><div class="question">1) A book of prime entry.</div><div class="answer">Journal</div></div>
+    <div class="qa-item"><div class="question">2) The tax imposed by Central Government on Goods and Services.</div><div class="answer">GST</div></div>
+    <div class="qa-item"><div class="question">3) Brief explanation of an entry.</div><div class="answer">Narration</div></div>
+    <div class="qa-item"><div class="question">4) The process of recording transactions in the Journal.</div><div class="answer">Journalising</div></div>
+    <div class="qa-item"><div class="question">5) The French word from which the word Journal is derived.</div><div class="answer">JOUR (day)</div></div>
+    <div class="qa-item"><div class="question">6) Concession given for immediate payment.</div><div class="answer">Cash Discount</div></div>
+    <div class="qa-item"><div class="question">7) Entry in which more than one accounts are debited or credited.</div><div class="answer">Compound / Combined Entry</div></div>
+    <div class="qa-item"><div class="question">8) Anything taken by proprietor from business for his private use.</div><div class="answer">Drawings</div></div>
+    <div class="qa-item"><div class="question">9) Tax payable to the Government on purchase of goods.</div><div class="answer">Input Tax (CGST+SGST)</div></div>
+    <div class="qa-item"><div class="question">10) Page number of the ledger.</div><div class="answer">Ledger Folio (L.F.)</div></div>
+  </div>
+
+  <!-- ================= Q.3 MCQs ================= -->
+  <div class="card">
+    <h2><i class="fas fa-check-square"></i> Q.3 Select the most appropriate alternative</h2>
+    <div class="qa-item"><div class="question">1) _______ means explanation of the transactions recorded in the Journal.</div><div class="answer">a) Narration</div></div>
+    <div class="qa-item"><div class="question">2) _______ discount is not recorded in the books of accounts.</div><div class="answer">a) Trade</div></div>
+    <div class="qa-item"><div class="question">3) Recording of transaction in Journal is called _______.</div><div class="answer">b) journalising</div></div>
+    <div class="qa-item"><div class="question">4) Every Journal entry requires _______.</div><div class="answer">c) narration</div></div>
+    <div class="qa-item"><div class="question">5) The _______ column of the Journal is not recorded at the time of journalising.</div><div class="answer">c) ledger folio</div></div>
+    <div class="qa-item"><div class="question">6) Goods sold on credit should be debited to _______.</div><div class="answer">b) customer A/c</div></div>
+    <div class="qa-item"><div class="question">7) Wages paid for installation of Machinery should be debited to _______.</div><div class="answer">b) machinery A/c</div></div>
+    <div class="qa-item"><div class="question">8) The commission paid to the agent should be debited to _______.</div><div class="answer">c) commission A/c</div></div>
+    <div class="qa-item"><div class="question">9) Loan taken from Dena Bank should be credited to _______.</div><div class="answer">d) Dena Bank Loan A/c</div></div>
+    <div class="qa-item"><div class="question">10) Purchase of animals for cash should be debited to _______.</div><div class="answer">a) Live stock A/c</div></div>
+  </div>
+
+  <!-- ================= Q.4 True False with reasons ================= -->
+  <div class="card">
+    <h2><i class="fas fa-gavel"></i> Q.4 State True or False with reasons</h2>
+    <div class="qa-item"><div class="question">1) Narration is not required for each and every entry.</div><div class="answer"><span class="false-badge">False</span> Narration is required for every journal entry to explain the transaction.</div></div>
+    <div class="qa-item"><div class="question">2) A journal voucher is must for all transactions recorded in the Journal.</div><div class="answer"><span class="true-badge">True</span> Every journal entry is supported by a journal voucher as documentary evidence.</div></div>
+    <div class="qa-item"><div class="question">3) Cash discount allowed should be debited to discount A/c.</div><div class="answer"><span class="true-badge">True</span> Discount allowed is an expense/loss, hence debited.</div></div>
+    <div class="qa-item"><div class="question">4) Journal is a book of prime entry.</div><div class="answer"><span class="true-badge">True</span> Journal is the first book where transactions are recorded.</div></div>
+    <div class="qa-item"><div class="question">5) Trade discount is recorded in the books of accounts.</div><div class="answer"><span class="false-badge">False</span> Trade discount is not recorded; only net amount after trade discount is recorded.</div></div>
+    <div class="qa-item"><div class="question">6) Goods lost by theft is debited to goods A/c.</div><div class="answer"><span class="false-badge">False</span> Loss by theft A/c is debited, Purchases A/c is credited.</div></div>
+    <div class="qa-item"><div class="question">7) If rent is paid to landlord, landlord's A/c should be debited.</div><div class="answer"><span class="false-badge">False</span> Rent A/c is debited (expense), landlord is not directly debited.</div></div>
+    <div class="qa-item"><div class="question">8) Book Keeping records monetary and non-monetary transactions.</div><div class="answer"><span class="false-badge">False</span> Only monetary transactions are recorded.</div></div>
+    <div class="qa-item"><div class="question">9) Drawings made by the proprietor increases his capital.</div><div class="answer"><span class="false-badge">False</span> Drawings reduce the capital.</div></div>
+    <div class="qa-item"><div class="question">10) GST paid on purchase of goods Input tax A/c should be debited.</div><div class="answer"><span class="true-badge">True</span> Input CGST & Input SGST are debited (asset for set-off).</div></div>
+  </div>
+
+  <!-- ================= Q.5 Fill in the blanks ================= -->
+  <div class="card">
+    <h2><i class="fas fa-edit"></i> Q.5 Fill in the blanks</h2>
+    <div class="qa-item"><div class="question">1) The first book of original entry is the _______.</div><div class="answer">Journal</div></div>
+    <div class="qa-item"><div class="question">2) The process of recording transaction into journal is called _______.</div><div class="answer">Journalising</div></div>
+    <div class="qa-item"><div class="question">3) An explanation of the transaction recorded in the journal _______.</div><div class="answer">Narration</div></div>
+    <div class="qa-item"><div class="question">4) _______ discount is not recorded in the books of accounts.</div><div class="answer">Trade</div></div>
+    <div class="qa-item"><div class="question">5) _______ is concession allowed for bulk purchase of goods or for immediate payment.</div><div class="answer">Discount</div></div>
+    <div class="qa-item"><div class="question">6) Every Journal Entry requires _______.</div><div class="answer">Narration</div></div>
+    <div class="qa-item"><div class="question">7) _______ discount is always recorded in the books of accounts.</div><div class="answer">Cash</div></div>
+    <div class="qa-item"><div class="question">8) _______ is the document on the basis of which the entry is recorded in journal.</div><div class="answer">Journal Voucher</div></div>
+    <div class="qa-item"><div class="question">9) There are _______ parties to a cheque.</div><div class="answer">three (drawer, drawee, payee)</div></div>
+    <div class="qa-item"><div class="question">10) The _______ cheque is more safe than other cheques as it cannot be encashed on the counter of the bank.</div><div class="answer">Crossed</div></div>
+  </div>
+
+  <!-- ================= Q.9 Calculate the following ================= -->
+  <div class="card">
+    <h2><i class="fas fa-calculator"></i> Q.9 Numerical Calculations (GST & Discount)</h2>
+    <div class="qa-item"><div class="question">1) Purchased Motor Car ₹2,00,000 at 18% GST. Find GST amount.</div><div class="answer">GST = 2,00,000 × 18% = ₹36,000 (CGST ₹18,000, SGST ₹18,000)</div></div>
+    <div class="qa-item"><div class="question">2) Transport charges ₹10,000 @5% GST. Calculate CGST & SGST.</div><div class="answer">CGST = 2.5% = ₹250, SGST = 2.5% = ₹250, Total GST = ₹500</div></div>
+    <div class="qa-item"><div class="question">3) Bought goods ₹10,000 @5% GST and 10% cash discount. Calculate cash discount.</div><div class="answer">Net of GST? Cash discount is calculated on invoice price (excluding GST usually). Here cash discount = ₹10,000 × 10% = ₹1,000.</div></div>
+    <div class="qa-item"><div class="question">4) Received cheque ₹90,000 in full settlement of ₹1,00,000. Calculate discount rate.</div><div class="answer">Discount = ₹10,000, Rate = (10,000/1,00,000)×100 = 10%</div></div>
+    <div class="qa-item"><div class="question">5) Sold goods ₹1,00,000 at 10% Trade discount & 10% cash discount, received 50% amount by cheque.</div><div class="answer">After trade discount = ₹90,000; cash discount on 50% = 90,000×50%×10% = ₹4,500; Cheque received = (45,000 - 4,500) = ₹40,500.</div></div>
+  </div>
+
+  <!-- ================= Q.8 Agree or Disagree ================= -->
+  <div class="card">
+    <h2><i class="fas fa-thumbs-up"></i> Q.8 Do you agree or disagree?</h2>
+    <div class="qa-item"><div class="question">1) Narration is required for every entry.</div><div class="answer">Agree</div></div>
+    <div class="qa-item"><div class="question">2) GST stands for Goods and Sales Tax.</div><div class="answer">Disagree (Goods and Services Tax)</div></div>
+    <div class="qa-item"><div class="question">3) Trade discount is not recorded in the books of accounts.</div><div class="answer">Agree</div></div>
+    <div class="qa-item"><div class="question">4) Wages paid for installation of Machinery is debited to Wages Account.</div><div class="answer">Disagree (debited to Machinery A/c)</div></div>
+    <div class="qa-item"><div class="question">5) The process of entering transactions in a Journal is called Journalising.</div><div class="answer">Agree</div></div>
+  </div>
+
+  <!-- ================= Q.7 Correct the statements ================= -->
+  <div class="card">
+    <h2><i class="fas fa-sync-alt"></i> Q.7 Correct the following statements</h2>
+    <div class="qa-item"><div class="question">1) All business transactions are recorded in the Journal.</div><div class="answer">Only monetary transactions are recorded in the Journal.</div></div>
+    <div class="qa-item"><div class="question">2) Cash discount is not recorded in the books of accounts.</div><div class="answer">Cash discount is recorded in the books of accounts.</div></div>
+    <div class="qa-item"><div class="question">3) Journal is a book of Secondary entry.</div><div class="answer">Journal is a book of Prime entry (original entry).</div></div>
+    <div class="qa-item"><div class="question">4) GST is imposed by Government of India from 1st July 2018.</div><div class="answer">GST imposed from 1st July 2017.</div></div>
+    <div class="qa-item"><div class="question">5) Machinery purchased by the Proprietor decreases his capital.</div><div class="answer">Machinery purchased increases assets but capital remains same (unless financed by capital).</div></div>
+  </div>
+
+  <!-- ================= Q.6 Specimens (Creative) ================= -->
+  <div class="card">
+    <h2><i class="fas fa-receipt"></i> Q.6 Prepare specimen of (representative)</h2>
+    <div class="grid-2">
+      <div class="specimen-mini"><i class="fas fa-file-invoice"></i> <strong>Tax Invoice</strong><br>Seller: XYZ Traders, GSTIN: 27XXXXX<br>Item: Laptop ₹50,000, CGST 9% ₹4,500, SGST 9% ₹4,500 → Total ₹59,000</div>
+      <div class="specimen-mini"><i class="fas fa-receipt"></i> <strong>Receipt</strong><br>Received with thanks from Mr. A sum of ₹10,000 by cheque, dated ...</div>
+      <div class="specimen-mini"><i class="fas fa-ban"></i> <strong>Crossed Cheque</strong><br>Two parallel lines with “& Co” – payment only through bank account.</div>
+      <div class="specimen-mini"><i class="fas fa-money-bill"></i> <strong>Cash Voucher</strong><br>Voucher No. 101, Date: ___, Pay to: ____, Amount: ₹____, Signature.</div>
+    </div>
+  </div>
+
+  <!-- ================= Practical Problem Example (Journal Entry showcase) ================= -->
+  <div class="card">
+    <h2><i class="fas fa-pencil-ruler"></i> Practical Problem (Illustrative Journal Entry)</h2>
+    <div class="qa-item"><div class="question">Journalise: Started business with Cash ₹60,000, Bank ₹1,00,000, Goods ₹50,000.</div><div class="answer">Cash A/c Dr. 60,000; Bank A/c Dr. 1,00,000; Stock A/c Dr. 50,000 → To Capital A/c 2,10,000</div></div>
+    <div class="qa-item"><div class="question">Purchased goods from Mohan ₹80,000 at 10% Trade Discount.</div><div class="answer">Purchases A/c Dr. 72,000 → To Mohan A/c 72,000</div></div>
+    <div class="qa-item"><div class="question">Sold goods to Urmila ₹30,000 at 5% Trade Discount.</div><div class="answer">Urmila A/c Dr. 28,500 → To Sales A/c 28,500</div></div>
+    <div class="qa-item"><div class="question">Paid Rent ₹4,000 by debit card.</div><div class="answer">Rent A/c Dr. 4,000 → To Bank A/c 4,000</div></div>
+    <div class="qa-item"><div class="question">Goods distributed as free sample ₹5,000.</div><div class="answer">Advertisement A/c Dr. 5,000 → To Purchases A/c 5,000</div></div>
+    <div class="calc-box"><i class="fas fa-lightbulb"></i> Note: Trade discount is deducted before recording; GST entries require Input/Output CGST & SGST splits.</div>
+  </div>
+
+  <!-- ================= Fill table - Q.10 Completion ================= -->
+  <div class="card">
+    <h2><i class="fas fa-table"></i> Q.10 Complete the following table (Journal effects)</h2>
+    <div class="qa-item"><div class="question">1) Paid Income Tax ₹5,000 by cheque</div><div class="answer">Debit: Drawings A/c ₹5,000 | Credit: Bank A/c ₹5,000</div></div>
+    <div class="qa-item"><div class="question">2) Received from Sonali ₹20,000 by RTGS</div><div class="answer">Debit: Bank A/c ₹20,000 | Credit: Sonali A/c ₹20,000</div></div>
+    <div class="qa-item"><div class="question">3) Sanjay became insolvent, not received ₹500</div><div class="answer">Debit: Bad Debts A/c ₹500 | Credit: Sanjay A/c ₹500</div></div>
+    <div class="qa-item"><div class="question">4) Purchased Horse for ₹10,000</div><div class="answer">Debit: Live Stock A/c ₹10,000 | Credit: Cash A/c ₹10,000</div></div>
+    <div class="qa-item"><div class="question">5) Transferred from Fixed deposit A/c of proprietor to business Bank A/c ₹50,000</div><div class="answer">Debit: Bank A/c ₹50,000 | Credit: Capital A/c ₹50,000</div></div>
+  </div>
+
+  <div class="footer-note">
+    <i class="fas fa-journal-whills"></i> Journal – the first step of accounting cycle | Every debit has a corresponding credit.
+  </div>
+</div>
+</body>
+</html>

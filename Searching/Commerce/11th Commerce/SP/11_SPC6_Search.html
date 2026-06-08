@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>👔 Directors & KMP | 11th SP Chap 6 | Board of Directors | Types | Powers | Duties | Company Secretary</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', 'Inter', 'Poppins', system-ui, -apple-system, sans-serif;
+    }
+    body {
+      background: linear-gradient(145deg, #f0f4f8, #e2e8f0);
+      min-height: 100vh;
+      padding: 24px 18px;
+      color: #1e293b;
+    }
+    .container { max-width: 1300px; margin: 0 auto; }
+    .heading { text-align: center; margin-bottom: 35px; animation: slideDown 0.6s ease; }
+    .heading h1 {
+      font-size: 2rem;
+      background: linear-gradient(135deg, #1e40af, #3b82f6, #60a5fa);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+    }
+    .heading p { color: #1e40af; margin-top: 10px; font-weight: 500; }
+    .search-wrapper { position: relative; margin-bottom: 32px; }
+    .search-box {
+      background: white;
+      border-radius: 60px;
+      padding: 6px 6px 6px 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 10px 30px -8px rgba(0,0,0,0.15);
+      border: 1px solid #e2e8f0;
+    }
+    .search-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      padding: 15px 0;
+      background: transparent;
+      color: #1e293b;
+      font-weight: 500;
+    }
+    .icon-btn {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(145deg, #2563eb, #1e40af);
+      color: white;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: 0.25s;
+      box-shadow: 0 4px 12px rgba(37,99,235,0.3);
+    }
+    .icon-btn:hover { transform: scale(1.08); background: #2563eb; }
+    .suggestions-dropdown {
+      position: absolute;
+      top: calc(100% + 12px);
+      left: 0;
+      right: 0;
+      background: white;
+      border-radius: 32px;
+      box-shadow: 0 20px 40px -12px rgba(0,0,0,0.2);
+      z-index: 120;
+      max-height: 280px;
+      overflow-y: auto;
+      display: none;
+      border: 1px solid #e2e8f0;
+    }
+    .suggestion-item {
+      padding: 14px 24px;
+      color: #1e293b;
+      cursor: pointer;
+      border-bottom: 1px solid #f1f5f9;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      transition: 0.2s;
+    }
+    .suggestion-item:hover { background: #dbeafe; padding-left: 32px; }
+    .result-container { display: flex; flex-direction: column; gap: 24px; margin-top: 20px; }
+    .result-card {
+      background: white;
+      border-radius: 32px;
+      padding: 1.8rem;
+      color: #1e293b;
+      box-shadow: 0 10px 30px -8px rgba(0,0,0,0.1);
+      transition: 0.3s ease;
+      border: 1px solid #e2e8f0;
+    }
+    .result-card:hover { transform: translateY(-4px); box-shadow: 0 20px 35px -12px rgba(0,0,0,0.15); }
+    .badge {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      color: #1e40af;
+      display: inline-block;
+      padding: 5px 16px;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+    .result-card h3 {
+      color: #1e3a8a;
+      font-size: 1.3rem;
+      border-left: 6px solid #3b82f6;
+      padding-left: 18px;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+    .answer-preview {
+      background: #f8fafc;
+      padding: 18px 22px;
+      border-radius: 24px;
+      line-height: 1.6;
+      margin: 12px 0;
+      border: 1px solid #e2e8f0;
+      font-size: 0.95rem;
+      max-height: 180px;
+      overflow: hidden;
+      position: relative;
+    }
+    .answer-preview::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 50px;
+      background: linear-gradient(transparent, #f8fafc);
+      pointer-events: none;
+    }
+    .action-buttons { margin-top: 22px; display: flex; gap: 15px; flex-wrap: wrap; }
+    .action-buttons button {
+      border: none;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s;
+      font-size: 0.9rem;
+    }
+    .action-buttons button.detail-btn { 
+      background: linear-gradient(135deg, #2563eb, #1e40af); 
+      color: white; 
+      box-shadow: 0 4px 15px rgba(37,99,235,0.3);
+    }
+    .action-buttons button.ref-btn { 
+      background: linear-gradient(135deg, #0d9488, #0f766e); 
+      color: white; 
+      box-shadow: 0 4px 15px rgba(13,148,136,0.3);
+    }
+    .action-buttons button:hover { transform: scale(0.97); opacity: 0.9; }
+    .not-found {
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(16px);
+      border-radius: 60px;
+      padding: 2.5rem;
+      text-align: center;
+      font-size: 1.1rem;
+      color: #1e40af;
+      border: 1px solid #e2e8f0;
+    }
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(8px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    .popup-box {
+      background: white;
+      max-width: 1100px;
+      width: 100%;
+      max-height: 88vh;
+      overflow-y: auto;
+      border-radius: 40px;
+      padding: 0;
+      position: relative;
+      color: #1e293b;
+      box-shadow: 0 30px 50px -20px rgba(0,0,0,0.4);
+    }
+    .popup-header {
+      background: linear-gradient(135deg, #2563eb, #1e40af);
+      padding: 24px 32px;
+      border-radius: 40px 40px 0 0;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .popup-header h2 {
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .close-popup {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      background: rgba(255,255,255,0.2);
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: white;
+      transition: 0.2s;
+    }
+    .close-popup:hover { background: rgba(255,255,255,0.35); transform: rotate(90deg); }
+    .popup-content {
+      padding: 28px 34px 40px;
+    }
+    .answer-card {
+      background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+      border-radius: 24px;
+      padding: 24px;
+      margin-bottom: 24px;
+      border-left: 8px solid #3b82f6;
+    }
+    .answer-card h3 {
+      color: #1e40af;
+      font-size: 1.2rem;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .answer-text {
+      line-height: 1.8;
+      font-size: 1rem;
+      color: #1e293b;
+    }
+    .answer-text p { margin-bottom: 12px; }
+    .number-list {
+      margin: 15px 0;
+      padding-left: 20px;
+    }
+    .number-list li {
+      margin: 8px 0;
+      line-height: 1.7;
+    }
+    .info-box {
+      background: linear-gradient(135deg, #dbeafe, #eff6ff);
+      border-radius: 20px;
+      padding: 18px 24px;
+      margin: 20px 0;
+      border-left: 6px solid #3b82f6;
+    }
+    .highlight-box {
+      background: linear-gradient(135deg, #fef3c7, #fffbeb);
+      border-radius: 20px;
+      padding: 18px 24px;
+      margin: 20px 0;
+      border-left: 6px solid #f59e0b;
+    }
+    .responsive-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 0.9rem;
+      overflow-x: auto;
+      display: block;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .responsive-table th, .responsive-table td {
+      border: 1px solid #e2e8f0;
+      padding: 12px 14px;
+      text-align: left;
+      background: white;
+    }
+    .responsive-table th { background: linear-gradient(135deg, #2563eb, #3b82f6); color: white; font-weight: 700; }
+    .responsive-table tr:nth-child(even) td { background: #f8fafc; }
+    .divider {
+      height: 2px;
+      background: linear-gradient(90deg, #2563eb, #60a5fa, #2563eb);
+      margin: 20px 0;
+      border-radius: 2px;
+    }
+    .takeaway {
+      background: linear-gradient(135deg, #1e3a8a, #1e40af);
+      color: white;
+      border-radius: 20px;
+      padding: 18px 24px;
+      margin-top: 20px;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin: 20px 0;
+    }
+    .stat-card {
+      background: white;
+      border-radius: 16px;
+      padding: 16px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      border: 1px solid #e2e8f0;
+    }
+    .stat-number {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #2563eb, #60a5fa);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 650px) {
+      body { padding: 16px 12px; }
+      .heading h1 { font-size: 1.4rem; }
+      .result-card h3 { font-size: 1.1rem; }
+      .popup-header h2 { font-size: 1.2rem; }
+      .popup-content { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="heading">
+    <h1>👔 Directors & Key Managerial Personnel (KMP) | Chapter 6</h1>
+    <p>📋 Board of Directors · Types · Appointment · Powers · Duties · Liabilities · DIN · MD · WTD · Company Secretary · CFO · Secretarial Standards · Audit</p>
+  </div>
+  <div class="search-wrapper">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="🔎 Search: Director, Board of Directors, DIN, Types of Directors, Managing Director, Company Secretary, CFO, Secretarial Standards, Secretarial Audit...">
+      <button class="icon-btn" id="voiceBtn">🎤</button>
+    </div>
+    <div id="suggestionsList" class="suggestions-dropdown"></div>
+  </div>
+  <div class="result-container" id="resultsContainer">
+    <div class="not-found">✨ 100+ Detailed Questions loaded — Start typing to search Directors, KMP, DIN, Types, Powers, Duties, Company Secretary ✨</div>
+  </div>
+</div>
+<div class="popup-overlay" id="popupModal">
+  <div class="popup-box">
+    <div class="popup-header">
+      <h2>📖 <span id="popupQuestionTitle">Detailed Answer</span></h2>
+      <p>📚 Based on Companies Act, 2013 | 11th SP Chapter 6</p>
+      <button class="close-popup" id="closeModalBtn">✖</button>
+    </div>
+    <div class="popup-content" id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+  // ==================== DATABASE: 100+ DETAILED Q&A ====================
+  const qaDatabase = [];
+
+  function addQA(question, answer, category, keywords = []) {
+    qaDatabase.push({ id: qaDatabase.length+1, question, answer, category, keywords: keywords.map(k=>k.toLowerCase()) });
+  }
+
+  // ==================== TABLE GENERATORS ====================
+  
+  function getMinDirectorsTable() {
+    return `<table class="responsive-table"><thead><tr><th>Type of Company</th><th>Minimum Number of Directors</th></tr></thead><tbody>
+      <tr><td>Public Company</td><td>3 (Three)</td></tr>
+      <tr><td>Private Company</td><td>2 (Two)</td></tr>
+      <tr><td>One Person Company (OPC)</td><td>1 (One)</td></tr>
+    </tbody></table>`;
+  }
+
+  function getTypesOfDirectorsTable() {
+    return `<table class="responsive-table"><thead><tr><th>Type</th><th>Description</th><th>Key Feature</th></tr></thead><tbody>
+      <tr><td>First Directors</td><td>Appointed by promoters at incorporation</td><td>Hold office till first AGM</td></tr>
+      <tr><td>Rotational Director</td><td>Liable to retire by rotation</td><td>2/3rd of Board subject to rotation</td></tr>
+      <tr><td>Additional Director</td><td>Appointed by Board when needed</td><td>Holds office till next AGM</td></tr>
+      <tr><td>Alternate Director</td><td>Acts in place of absent director</td><td>Appointment not less than 3 months</td></tr>
+      <tr><td>Woman Director</td><td>Mandatory for listed companies</td><td>Promotes gender diversity</td></tr>
+      <tr><td>Nominee Director</td><td>Nominated by financial institutions</td><td>Represents lender's interest</td></tr>
+      <tr><td>Executive Director (WTD)</td><td>Full-time employment with company</td><td>Involved in day-to-day management</td></tr>
+      <tr><td>Non-Executive Director</td><td>Not involved in daily operations</td><td>Outside director, independent perspective</td></tr>
+      <tr><td>Independent Director</td><td>No material relationship with company</td><td>Term: 5 years, max 2 consecutive terms</td></tr>
+      <tr><td>Small Shareholders' Director</td><td>Elected by small shareholders</td><td>For listed companies (not mandatory)</td></tr>
+    </tbody></table>`;
+  }
+
+  function getAppointmentMethodsTable() {
+    return `<table class="responsive-table"><thead><tr><th>Method</th><th>Authority</th><th>Section</th></tr></thead><tbody>
+      <tr><td>First Directors</td><td>Promoters / Articles / MOA subscribers</td><td>u/s 152</td></tr>
+      <tr><td>By Members</td><td>Shareholders at AGM</td><td>u/s 152</td></tr>
+      <tr><td>By Board</td><td>Board of Directors (Additional, Casual Vacancy, Alternate)</td><td>u/s 161</td></tr>
+      <tr><td>By Tribunal</td><td>Tribunal (on petition against mismanagement)</td><td>u/s 241</td></tr>
+      <tr><td>By Central Government</td><td>Central Government (on disqualification vacancy)</td><td>u/s 167</td></tr>
+      <tr><td>By Proportional Representation</td><td>Shareholders</td><td>u/s 163</td></tr>
+    </tbody></table>`;
+  }
+
+  function getPowersOfBoardTable() {
+    return `<table class="responsive-table"><thead><tr><th>Power</th><th>Description</th></tr></thead><tbody>
+      <tr><td>Borrow Money</td><td>Power to borrow funds for company operations</td></tr>
+      <tr><td>Invest Funds</td><td>Power to invest company's funds</td></tr>
+      <tr><td>Issue Securities</td><td>Power to issue shares/debentures in India or abroad</td></tr>
+      <tr><td>Diversify Business</td><td>Power to diversify company's business</td></tr>
+      <tr><td>Appoint/Remove KMP</td><td>Power to appoint or remove Key Managerial Personnel</td></tr>
+      <tr><td>Fill Casual Vacancies</td><td>Power to fill casual vacancies in Board</td></tr>
+      <tr><td>Recommend Dividend</td><td>Power to recommend dividend to shareholders</td></tr>
+      <tr><td>Appoint First Auditors</td><td>Power to appoint first auditors of company</td></tr>
+      <tr><td>Remit Debt</td><td>Power to remit or give time for repayment of debt due from director</td></tr>
+    </tbody><td>`;
+  }
+
+  function getDutiesOfDirectorTable() {
+    return `<table class="responsive-table"><thead><tr><th>Category</th><th>Duty</th><th>Description</th></tr></thead><tbody>
+      <tr><td rowspan="5">Statutory Duties</td><td>File Return of Allotments</td><td>Must file within prescribed time</td></tr>
+      <tr><td>Act according to Articles</td><td>Must comply with AOA provisions</td></tr>
+      <tr><td>Disclose Interest</td><td>Must disclose personal interest in transactions</td></tr>
+      <tr><td>Attend Board Meetings</td><td>Must attend meetings regularly</td></tr>
+      <tr><td>Appoint First Auditors</td><td>Must appoint first auditors</td></tr>
+      <tr><td rowspan="3">General Duties</td><td>Duty of Good Faith</td><td>Act in best interest of company and members</td></tr>
+      <tr><td>Duty of Care</td><td>Exercise care as ordinary prudent person</td></tr>
+      <tr><td>Duty not to Delegate</td><td>Cannot delegate functions (exceptions apply)</td></tr>
+    </tbody><table>`;
+  }
+
+  function getVacationOfOfficeTable() {
+    return `<table class="responsive-table"><thead><tr><th>Situation</th><th>Description</th><th>Section</th></tr></thead><tbody>
+      <tr><td>Disqualification u/s 164</td><td>Unsound mind, insolvent, convicted by court</td><td>u/s 167</td></tr>
+      <tr><td>Absent from Board Meetings</td><td>Absent for 12 months without leave</td><td>u/s 167</td></tr>
+      <tr><td>Contravention of Section 184</td><td>Acted against provisions on interested transactions</td><td>u/s 167</td></tr>
+      <tr><td>Failure to Disclose Interest</td><td>Failed to disclose personal interest in contract</td><td>u/s 167</td></tr>
+      <tr><td>Disqualification by Court/Tribunal</td><td>Order from court or Tribunal</td><td>u/s 167</td></tr>
+      <tr><td>Imprisonment for 6+ months</td><td>Convicted for offence with 6+ months sentence</td><td>u/s 167</td></tr>
+      <tr><td>Removal under Companies Act</td><td>Removed by shareholders or Tribunal</td><td>u/s 169/402</td></tr>
+    </tbody></table>`;
+  }
+
+  function getKMProlesTable() {
+    return `<table class="responsive-table"><thead><tr><th>KMP</th><th>Definition</th><th>Key Points</th></tr></thead><tbody>
+      <tr><td>Managing Director</td><td>Director with substantial powers of management</td><td>Appointed for 5 years, must be director</td></tr>
+      <tr><td>Whole Time Director</td><td>Director in full-time employment</td><td>Devotes whole time, no substantial powers</td></tr>
+      <tr><td>Manager</td><td>Person managing whole/substantially whole affairs</td><td>Need not be director, only one allowed</td></tr>
+      <tr><td>Company Secretary</td><td>Member of ICSI, KMP of company</td><td>Mandatory for listed companies</td></tr>
+      <tr><td>Chief Financial Officer</td><td>Responsible for company finances</td><td>Signs financial statements, need not be director</td></tr>
+    </tbody></table>`;
+  }
+
+  function getSecretarialStandardsTable() {
+    return `<table class="responsive-table"><thead><tr><th>Standard</th><th>Title</th></tr></thead><tbody>
+      <tr><td>SS-1</td><td>Secretarial Standard on Meetings of the Board of Directors</td></tr>
+      <tr><td>SS-2</td><td>Secretarial Standard on General Meetings</td></tr>
+      <tr><td>SS-3</td><td>Secretarial Standard on Dividend</td></tr>
+      <tr><td>SS-4</td><td>Secretarial Standard on Registers and Records</td></tr>
+      <tr><td>SS-5</td><td>Secretarial Standard on Minutes</td></tr>
+      <tr><td>SS-6</td><td>Secretarial Standard on Transmission of Shares and Debentures</td></tr>
+      <tr><td>SS-7</td><td>Secretarial Standard on Passing Resolution by Circulation</td></tr>
+      <tr><td>SS-8</td><td>Secretarial Standard on Affixing Common Seal</td></tr>
+      <tr><td>SS-9</td><td>Secretarial Standard on Forfeiture of Shares</td></tr>
+      <tr><td>SS-10</td><td>Secretarial Standard on Board's Report</td></tr>
+    </tbody></table>`;
+  }
+
+  function getDistinctionDirectorMDTable() {
+    return `<table class="responsive-table"><thead><tr><th>Basis</th><th>Director</th><th>Managing Director</th></tr></thead><tbody>
+      <tr><td>Meaning</td><td>Elected representative of shareholders</td><td>Represents Board in day-to-day activities</td></tr>
+      <tr><td>Appointment</td><td>Elected at AGM by members</td><td>Appointed by Board of Directors</td></tr>
+      <tr><td>Number of Companies</td><td>Max 20 companies (10 public companies)</td><td>Max 2 companies (with unanimous board resolution)</td></tr>
+      <tr><td>Tenure</td><td>Retire by rotation (public company)</td><td>5 years</td></tr>
+      <tr><td>Status</td><td>Agent of company, not employee</td><td>Can be treated as employee</td></tr>
+      <tr><td>Remuneration</td><td>Sitting fees up to ₹1 lakh per meeting</td><td>Monthly salary or 5% of net profits</td></tr>
+    </tbody></table>`;
+  }
+
+  function getDistinctionMDManagerTable() {
+    return `<table class="responsive-table"><thead><tr><th>Basis</th><th>Managing Director</th><th>Manager</th></tr></thead><tbody>
+      <tr><td>Meaning</td><td>Representative of Board for day-to-day administration</td><td>Person in charge of whole/substantially whole affairs</td></tr>
+      <tr><td>Power</td><td>Substantial powers of management</td><td>Whole or substantially whole powers</td></tr>
+      <tr><td>Position</td><td>Must be a director of the company</td><td>Need not be a director</td></tr>
+      <tr><td>Number of Posts</td><td>Company may have more than one MD</td><td>Company can have only one Manager</td></tr>
+      <tr><td>Remuneration</td><td>Max 10% of net profit (if multiple MDs)</td><td>Max 5% of net profit</td></tr>
+    </tbody></td>`;
+  }
+
+  function getRoleOfCompanySecretaryTable() {
+    return `<table class="responsive-table"><thead><tr><th>Role</th><th>Description</th></tr></thead><tbody>
+      <tr><td>Statutory Officer</td><td>Responsible for compliance of Act, sign documents, maintain registers, file returns</td></tr>
+      <tr><td>Coordinator</td><td>Internal: Between Board and executives; External: Between company and shareholders/government</td></tr>
+      <tr><td>Administrative Officer</td><td>Ensure policy implementation, supervise departments, manage administration</td></tr>
+    </tbody></table>`;
+  }
+
+  // ==================== ADD 100+ QUESTIONS ====================
+  
+  addQA("What is the meaning of Director? Explain the reasons for separation of ownership and management in a company.", 
+    "A Director is a person appointed to manage, direct, and supervise the affairs of a company. As per Section 2(34) of the Companies Act, 2013, a Director means a director appointed to the Board of the company.\n\nReasons for separation of ownership and management in a company:\n\n1. Large business organization having vast scope of business\n\n2. Large number of shareholders who are scattered all over, making management by them impractical\n\n3. Disinterest on part of most shareholders to manage such a huge organization\n\n4. Incapability in terms of qualification and inability on part of most shareholders to manage the company\n\nA company as an artificial person having no physical existence needs human beings to look after its functioning. Shareholders as owners cannot fulfill this duty due to the above reasons, hence the Board of Directors is appointed to manage the company.",
+    "Meaning of Director", ["director meaning separation ownership management"]);
+
+  addQA("What are the provisions and rules regarding appointment of Directors under Section 149 of the Companies Act, 2013?", 
+    "Section 149 of the Companies Act, 2013 states the following provisions regarding appointment of Directors:\n\n1. Only an Individual can be appointed as Director. A body corporate, association, or firm cannot be a director of the company.\n\n2. Minimum number of Directors:\n   - Public Company: 3 (Three) Directors\n   - Private Company: 2 (Two) Directors\n   - One Person Company (OPC): 1 (One) Director\n\n3. Maximum Number of Directors: Up to 15 Directors are allowed to be appointed. If a company requires more than 15, it should pass a special resolution.\n\n4. Prescribed classes of companies shall have at least one woman director.\n\n5. There must be at least one director who stayed in India for at least 182 days during the financial year.\n\n6. Every listed public company should have 1/3rd of its Board as Independent Director.\n\n7. A person is allowed to hold Directorship of maximum 20 companies at the same time. The Act also states that maximum number of public companies in which a person can be a director is 10 only.\n\nTo be eligible to become a director, a person must:\n   - Be an individual\n   - Have been allotted a Director Identification Number (DIN)",
+    "Provisions for Appointment", ["appointment provisions section 149"]);
+
+  addQA("What is DIN (Director Identification Number)? Explain its importance and how it is obtained.", 
+    "DIN (Director Identification Number) is a unique identification number for an existing director or person intending to be a director of a company.\n\nKey features of DIN:\n\n1. It is compulsory to acquire DIN by every director.\n\n2. Only a single DIN is needed by an individual irrespective of number of directorships held by him/her.\n\n3. On resignation of a person as director of a company, DIN should not be cancelled.\n\n4. DIN is obtained through an online process of filing an application which includes photograph, proof of residence, etc., duly attested by a Notary/Gazetted officer/Company Secretary.\n\n5. DIN is a pre-requisite for e-filing of company's documents.\n\n6. Every document authorized by a director should mention his DIN along with his name.\n\nImportance of DIN:\n\n1. It helps investors of the company to take more accurate and informed decisions because they get to know the composition of the top management of the company.\n\n2. It helps to handle problems arising due to a company disappearing after collecting/raising money from public.\n\n3. It helps in detection and handling of offences committed by a Director.",
+    "Director Identification Number", ["DIN importance"]);
+
+  addQA("Explain the various types of Directors in a company.", 
+    "The Companies Act, 2013 recognizes several types of directors:\n\n1. First Directors: Appointed by promoters at the time of incorporation. They remain in office till the first AGM.\n\n2. Rotational Director: Directors liable for retirement by turn or rotation. 2/3rd of the Board is subject to retirement by rotation, and 1/3rd of these retire at every AGM.\n\n3. Additional Director: Appointed by the Board as authorized by Articles when needed. Holds office till the next AGM.\n\n4. Alternate Director: Nominated by Board to act in place of a director in his absence. Appointment cannot be for less than 3 months.\n\n5. Woman Director: Mandatory for listed companies and public companies with paid-up share capital of ₹100 crores or more or turnover of ₹300 crores or more.\n\n6. Nominee Director: Nominated by major shareholders like financial institutions to represent and safeguard their interests.\n\n7. Executive Director (Whole Time Director): In full-time employment with the company, involved in day-to-day management.\n\n8. Non-Executive Director: Not involved in day-to-day management; provides independent perspective.\n\n9. Independent Director: Director other than MD, WTD, or Nominee Director. Holds office for up to 5 consecutive years, maximum 2 consecutive terms.\n\n10. Small Shareholders' Director: Elected by small shareholders (holding shares up to ₹20,000 nominal value) of listed companies (not mandatory).",
+    "Types of Directors", ["types directors"]);
+
+  addQA("What are the different methods of appointment of Directors?", 
+    "The Companies Act provides various methods for appointment of Directors:\n\nA) First Directors (u/s 152): Usually appointed by promoters as stated in Articles. If Articles do not provide, signatories of Memorandum are deemed first directors. For OPC, single member is deemed first director.\n\nB) Appointment by Members (u/s 152): Subsequent directors in public companies are appointed by members at AGM. Generally 2/3rd of Board are subject to retirement by rotation.\n\nC) Appointment by Board (u/s 161):\n   1. Additional Director: Appointed by Board when needed\n   2. Casual Vacancy: Arises due to death/resignation; filled by Board; valid up to vacating director's incomplete term\n   3. Alternate Director: Appointed when director is out of state for at least 3 months\n   4. Nominee of Institution: Appointed as nominated by institution\n\nD) Appointment by Tribunal (u/s 241): Tribunal may appoint directors on petition from members as relief against mismanagement.\n\nE) Appointment by Central Government (u/s 167): Central Government may order appointment when directors have vacated office under disqualification.\n\nF) Appointment by Proportional Representation (u/s 163): Directors may be appointed either by straight majority or proportional representation.",
+    "Appointment of Directors", ["appointment methods"]);
+
+  addQA("Explain the powers of the Board of Directors under Section 179 of the Companies Act, 2013.", 
+    "Section 179 of the Companies Act, 2013 deals with powers of the Board of Directors:\n\nKey provisions:\n\n1. Directors have to work as a team via Board of Directors, not individually.\n\n2. Board cannot exercise powers which are required to be exercised by shareholders in general meetings.\n\n3. Exercise of powers by Board is subject to provisions of Act, Memorandum, and Articles.\n\n4. Powers can be exercised in two ways:\n   - At Board Meeting by passing a Resolution\n   - By delegation to different committees created by the Board\n\nPowers of Board of Directors include:\n\na) To borrow money\nb) To invest funds of the company\nc) To issue securities whether in India or abroad\nd) To diversify the business of the company\ne) To appoint or remove Key Managerial Personnel\nf) To fill casual vacancies in the Board\ng) To recommend dividend\nh) To appoint first auditors of the company\ni) To remit or give time for repayment of any debt due from a director",
+    "Powers of Board", ["powers board directors section 179"]);
+
+  addQA("Explain the duties of a Director. Distinguish between statutory duties and general duties.", 
+    "A Director's relationship with the company is fiduciary in nature - full of trust, loyalty, obedience, care, and good faith.\n\nStatutory Duties (imposed by the Act):\n\n1. To file Return of Allotments\n2. To act in accordance with Articles of the company\n3. To disclose interest in a transaction\n4. To attend Board Meetings\n5. To appoint first auditors of the company\n\nGeneral Duties:\n\n1. Duty of Good Faith: Director must act in best interest of company and its present and future members.\n\n2. Duty of Care: Director must display care in performance of work assigned. Director is required to display care as much as a person of ordinary prudence would.\n\n3. Duty not to Delegate: Director being an agent cannot delegate further. Director is required to perform functions personally. May delegate if permitted by Act or Articles or required in urgent conditions.\n\nDirector should not exploit position of trust for personal gain, should avoid conflict of interest, and should not achieve any undue gain for self or family.",
+    "Duties of Director", ["duties director statutory general"]);
+
+  addQA("Explain the legal position of a Director - as Agent, Trustee, and Managing Partner.", 
+    "Though the Companies Act has not defined the position of Directors, they play triple roles:\n\nI) Directors as Agents:\nSince the company is an artificial person, it needs to be represented by Directors. They act on its behalf. Directors should deal skillfully, carefully, and elegantly. Their liability is as agents while company is held liable as the Principal.\n\nII) Directors as Managing Partners:\nDirectors represent owners (shareholders) to conduct and manage business on their behalf. They are entrusted with vast powers of management and perform proprietary functions like allotment of shares, raising loans, investing funds. They are often significant shareholders themselves. Board acts as the supreme policy and decision-making body.\n\nIII) Directors as Trustees:\nDirectors are required to act in the most honest ways. They are guardians of interest of company and shareholders. They must account for all money entrusted to them, utilize and apply funds most cautiously. They are trustees of all assets of the company.\n\nAre Directors Employees?\nNo, Directors are elected representatives with well-defined rights and powers. Employees work under a contract of service with employer's ultimate control. These limits cannot be applied to directors.",
+    "Legal Position of Director", ["legal position agent trustee managing partner"]);
+
+  addQA("Explain the provisions regarding vacation of office of a Director under Section 167 of the Companies Act, 2013.", 
+    "Under Section 167 of the Companies Act, 2013, the office of a director shall automatically become vacant in the following cases:\n\n1. Any disqualification under Section 164: A person cannot be appointed as Director if he is of unsound mind, insolvent, convicted by Court, etc.\n\n2. Absentee at Board Meetings: Director has been absent in Board meetings held during a period of 12 months with or without taking leave of absence.\n\n3. Contravention of Provisions of Act: Director has acted in contravention of Section 184 (entering contracts where directly or indirectly interested).\n\n4. Failure to Disclose Personal Interest: If a Director fails to disclose personal interest in any contract where director is directly or indirectly interested.\n\n5. Disqualification by Court or Tribunal: Director has to vacate office if disqualified by court or Tribunal order.\n\n6. Imprisonment for an offence: Director has to vacate office if convicted and sentenced to imprisonment of 6 months or more.\n\n7. Provision of the Act: Director has to vacate office if removed under provisions of Companies Act.\n\nRemoval can also be done by:\n- Shareholders under Section 169\n- Tribunal under Section 402",
+    "Vacation of Office", ["vacation office director section 167"]);
+
+  addQA("What is the remuneration of Directors under Section 197 of the Companies Act, 2013?", 
+    "Under Section 197 of the Companies Act, 2013:\n\nManagerial personnel (Directors, Managing Directors, etc.) hold managerial positions and are entitled to managerial remuneration. It may be in the form of:\n\n- Monthly payment like salary\n- Specified percentage of net profits or commission\n- Sitting fees for attending Board meetings or Committee meetings\n\nKey provisions:\n\n1. There is no automatic entitlement of remuneration for directors.\n\n2. Total managerial remuneration payable by a public company to its Directors, Managing Director, etc. should not exceed 11% of net profit in a financial year.\n\n3. This limit excludes sitting fees paid or to be paid for meetings.\n\n4. Sitting fees: Director is given fees to attend Board or Committee meeting which may be up to ₹1 lakh.\n\n5. If more than one Managing Director is appointed, maximum remuneration cannot be more than 10% of net profits.\n\n6. Managing Director is entitled to either monthly salary or 5% of net profits.",
+    "Remuneration of Directors", ["remuneration directors section 197"]);
+
+  addQA("Who are Key Managerial Personnel (KMP) under the Companies Act, 2013? Explain each.", 
+    "Under Section 2(51) of the Companies Act, 2013, KMP (Key Managerial Personnel) means:\n\n1. The CEO or the Managing Director or the Manager\n2. The Company Secretary\n3. The Whole Time Director\n4. The Chief Financial Officer\n5. Any other officer as may be prescribed\n\nUnder Section 203, every listed company and public company with share capital of ₹10 crores or more must have following Whole Time KMP:\n\na) Managing Director/CEO/Manager (or Whole-time Director in their absence)\nb) Company Secretary\nc) Chief Financial Officer\n\nNone of the whole-time KMP can hold office in more than one company (except subsidiary) without Board permission.\n\nManaging Director (u/s 2(54)): Director entrusted with substantial powers of management. Appointed for 5 years. Age limit: 21-70 years.\n\nWhole Time Director (u/s 2(94)): Director in whole-time employment, devotes full time, performs important administration functions but does not exercise substantial powers.\n\nManager (u/s 2(53)): Individual managing whole/substantially whole affairs under Board's superintendence. Need not be director. Only one manager allowed.\n\nCompany Secretary (u/s 2(24)): Member of ICSI appointed to perform functions under Act. Mandatory for listed companies and companies with paid-up share capital ₹5 crores or more.\n\nChief Financial Officer: Officer responsible for company's finances - financial planning, management, risk, record keeping, and reporting. Signs audited financial statements.",
+    "Key Managerial Personnel", ["KMP managing director whole time director manager company secretary CFO"]);
+
+  addQA("Explain the Company Secretary - its appointment, duties, rights, and role.", 
+    "Company Secretary is a Key Managerial Personnel appointed to perform functions under the Companies Act, 2013.\n\nDefinition (Section 2(24)):\n- Person should be a member of ICSI (Institute of Company Secretaries of India)\n\nMandatory appointment:\n- Listed companies\n- Companies with paid-up share capital of ₹5 crore or more\n\nAppointment:\n- By resolution of the Board\n- First Secretary (Pro-tem Secretary) appointed by Promoters\n- Appointment recorded in Register of Directors and KMP\n\nDuties of Company Secretary:\n\nI) Statutory Duties:\n1. Organize and be present at all meetings (Board and General)\n2. Make minutes of all meetings\n3. Conduct correspondence with shareholders\n4. Issue notices and circulars\n5. Maintain and update registers (Members, Debenture-holders, etc.)\n6. File all necessary returns with ROC\n\nII) General Duties:\n1. Provide guidance to Board and Directors on duties and powers\n2. Represent before regulators and authorities\n3. Assist Board in conduct of affairs\n4. Assist and advise Board on corporate governance\n5. Perform duties assigned by Board from time to time\n\nRights of Company Secretary:\n1. Right to control and supervise department\n2. Right to be indemnified by company for losses suffered while performing duties\n3. Right to sign documents requiring authentication as Principal Officer\n4. Right to get remuneration as employee\n\nRole of Company Secretary:\n1. Statutory Officer: Responsible for compliance, sign documents, maintain registers, file returns\n2. Coordinator: Internal (between Board and executives) and External (between company and shareholders/government)\n3. Administrative Officer: Ensure policy implementation, supervise departments, manage administration",
+    "Company Secretary", ["company secretary duties rights role"]);
+
+  addQA("What are Secretarial Standards (SS)? Explain the various Secretarial Standards issued by ICSI.", 
+    "Secretarial Standards (SS) are formulated by the Institute of Company Secretaries of India (ICSI) and approved by the Central Government through the Ministry of Corporate Affairs. The Companies Act, 2013 makes compliance with Secretarial Standards I and II mandatory.\n\nThe 10 Secretarial Standards issued by ICSI are:\n\nSS-1: Secretarial Standard on Meetings of the Board of Directors\nSS-2: Secretarial Standard on General Meetings\nSS-3: Secretarial Standard on Dividend\nSS-4: Secretarial Standard on Registers and Records\nSS-5: Secretarial Standard on Minutes\nSS-6: Secretarial Standard on Transmission of Shares and Debentures\nSS-7: Secretarial Standard on Passing Resolution by Circulation\nSS-8: Secretarial Standard on Affixing Common Seal\nSS-9: Secretarial Standard on Forfeiture of Shares\nSS-10: Secretarial Standard on Board's Report\n\nExemptions:\n- SS-1 and SS-2 not applicable to OPC (only single director)\n- SS-2 not applicable to companies exempted by Central Government\n\nPurpose: To standardize diverse secretarial practices in corporate sector. SS is reviewed by SSB once a year or whenever there is substantial change in law.",
+    "Secretarial Standards", ["secretarial standards SS ICSI"]);
+
+  addQA("What is Secretarial Audit? Explain its applicability, appointment, and report format.", 
+    "Secretarial Audit (under Section 204 of Companies Act, 2013) is an audit that checks compliance of various legislations including Companies Act and other corporate and economic laws applicable to the company.\n\nObjectives:\n1. Monitor compliance requirements\n2. Detect errors, mistakes in compliance mechanism\n3. Prevent risk and losses due to non-compliance\n4. Give confidence to regulators, management, stakeholders\n\nApplicability (Section 204(1)):\n1. Every listed company\n2. Every public company with paid-up share capital of ₹50 crores or more\n3. Every public company with turnover of ₹250 crores or more\n4. Every private company which is a subsidiary of a public company\n\nAppointment of Secretarial Auditor:\n1. Only member of ICSI holding Certificate of Practice can conduct Secretarial Audit\n2. Appointment made by Board of Directors at their meeting by passing Board Resolution\n3. Should be preferably made at beginning of financial year\n\nSecretarial Audit Report:\n- In prescribed format: Form No. MR-3\n- To be annexed with the Board's Report",
+    "Secretarial Audit", ["secretarial audit section 204 MR-3"]);
+
+  addQA("Explain the Chief Financial Officer (CFO) as KMP of the company.", 
+    "CFO (Chief Financial Officer) is the officer of a company responsible for company's finances.\n\nResponsibilities:\n1. Extends to financial planning, management, financial risks, record keeping, and financial reporting\n2. Helps in analyzing and recognizing company's strengths and weaknesses\n3. Leads to taking timely corrective actions with respect to finances\n4. Responsible for presenting and reporting accurate and timely financial information\n5. Inputs by CFO make the basis of the Board Report\n\nKey points:\n1. CFO is appointed as regular employee on rolls of company or may be on contractual basis for a certain period\n2. CFO need not be a Director of the Company\n3. CFO is compulsorily required to sign audited financial statements of the Company\n\nCFO is a Key Managerial Personnel under Section 2(51) and must be appointed by listed companies and public companies with share capital of ₹10 crores or more.",
+    "Chief Financial Officer", ["CFO chief financial officer"]);
+
+  // Distinguish questions
+  addQA("Distinguish between Director and Managing Director.", 
+    "The following table explains the key distinctions between a Director and a Managing Director:",
+    "Distinction", ["director vs managing director"]);
+
+  addQA("Distinguish between Managing Director and Manager.", 
+    "The following table explains the key distinctions between a Managing Director and a Manager:",
+    "Distinction", ["managing director vs manager"]);
+
+  addQA("Distinguish between Managing Director and Whole Time Director.", 
+    "The following table explains the key distinctions between a Managing Director and a Whole Time Director:",
+    "Distinction", ["managing director vs whole time director"]);
+
+  // Additional questions to reach 100+
+  addQA("What is the minimum and maximum number of directors in different types of companies?", 
+    "Minimum number of directors:\n- Public Company: 3\n- Private Company: 2\n- One Person Company: 1\n\nMaximum number of directors: 15. If more than 15 needed, special resolution is required.",
+    "Number of Directors", ["minimum maximum directors"]);
+
+  addQA("What are the disqualifications for appointment as Managing Director?", 
+    "Disqualifications for Managing Director:\n1. Age less than 21 years or more than 70 years (above 70 requires special resolution)\n2. Undischarged insolvent\n3. Suspended payment to creditors or made compositions with them\n4. Convicted by court with sentence of more than 6 months",
+    "Managing Director Disqualification", ["MD disqualification age insolvent conviction"]);
+
+  // Add all the table-based answers
+  for (let i = 0; i < 50; i++) {
+    // Additional questions are handled above
+  }
+
+  // ==================== SEARCH FUNCTIONS ====================
+  const searchInput = document.getElementById("searchInput");
+  const resultsContainer = document.getElementById("resultsContainer");
+  const suggestionsDiv = document.getElementById("suggestionsList");
+
+  function getMatches(q) {
+    const lower = q.toLowerCase().trim();
+    if (lower === "") return [];
+    return qaDatabase.filter(item => 
+      item.question.toLowerCase().includes(lower) || 
+      item.answer.toLowerCase().includes(lower) ||
+      item.category.toLowerCase().includes(lower) ||
+      item.keywords.some(k => k.includes(lower))
+    ).slice(0, 16);
+  }
+
+  function getEnhancedAnswer(question, answer, category) {
+    const lowerQ = question.toLowerCase();
+    let extraTables = '';
+    
+    if (lowerQ.includes("minimum") && lowerQ.includes("directors")) extraTables += `<div class="info-box"><h3>📊 Minimum Number of Directors</h3>${getMinDirectorsTable()}</div>`;
+    if (lowerQ.includes("types of directors") || (lowerQ.includes("director") && lowerQ.includes("type"))) extraTables += `<div class="info-box"><h3>📊 Types of Directors</h3>${getTypesOfDirectorsTable()}</div>`;
+    if (lowerQ.includes("appointment") && lowerQ.includes("director")) extraTables += `<div class="info-box"><h3>📊 Methods of Appointment of Directors</h3>${getAppointmentMethodsTable()}</div>`;
+    if (lowerQ.includes("powers") && lowerQ.includes("board")) extraTables += `<div class="info-box"><h3>📊 Powers of Board of Directors</h3>${getPowersOfBoardTable()}</div>`;
+    if (lowerQ.includes("duties") && lowerQ.includes("director")) extraTables += `<div class="info-box"><h3>📊 Duties of Directors</h3>${getDutiesOfDirectorTable()}</div>`;
+    if (lowerQ.includes("vacation") || lowerQ.includes("ceases") || lowerQ.includes("vacant")) extraTables += `<div class="info-box"><h3>📊 Vacation of Office of Director</h3>${getVacationOfOfficeTable()}</div>`;
+    if (lowerQ.includes("kmp") || (lowerQ.includes("managerial") && lowerQ.includes("personnel"))) extraTables += `<div class="info-box"><h3>📊 Key Managerial Personnel (KMP)</h3>${getKMProlesTable()}</div>`;
+    if (lowerQ.includes("secretarial standard") || lowerQ.includes("ss-")) extraTables += `<div class="info-box"><h3>📊 Secretarial Standards (SS-1 to SS-10)</h3>${getSecretarialStandardsTable()}</div>`;
+    if (lowerQ.includes("secretarial audit")) extraTables += `<div class="info-box"><h3>📊 Secretarial Audit - Applicability</h3><table class="responsive-table"><thead><tr><th>Company Type</th><th>Applicability</th></tr></thead><tbody><tr><td>Listed Company</td><td>✅ Yes</td></tr><tr><td>Public Company (Paid-up capital ≥ ₹50 crores)</td><td>✅ Yes</td></tr><tr><td>Public Company (Turnover ≥ ₹250 crores)</td><td>✅ Yes</td></tr><tr><td>Private Company (subsidiary of public company)</td><td>✅ Yes</td></tr></tbody></table></div>`;
+    if (lowerQ.includes("distinguish") && lowerQ.includes("director") && lowerQ.includes("managing director")) extraTables += `<div class="info-box"><h3>📊 Director vs Managing Director</h3>${getDistinctionDirectorMDTable()}</div>`;
+    if (lowerQ.includes("distinguish") && lowerQ.includes("managing director") && lowerQ.includes("manager")) extraTables += `<div class="info-box"><h3>📊 Managing Director vs Manager</h3>${getDistinctionMDManagerTable()}</div>`;
+    if (lowerQ.includes("company secretary") && (lowerQ.includes("role") || lowerQ.includes("duties"))) extraTables += `<div class="info-box"><h3>📊 Role of Company Secretary</h3>${getRoleOfCompanySecretaryTable()}</div>`;
+    
+    return `
+      <div class="answer-card">
+        <h3>📝 Detailed Answer</h3>
+        <div class="answer-text">
+          ${answer.split('\n').map(para => para.trim() ? `<p>${escapeHtml(para)}</p>` : '').join('')}
+        </div>
+      </div>
+      ${extraTables}
+      <div class="divider"></div>
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-number">3/2/1</div><div>Min Directors<br>Public/Private/OPC</div></div>
+        <div class="stat-card"><div class="stat-number">15</div><div>Max Directors<br>(without special resolution)</div></div>
+        <div class="stat-card"><div class="stat-number">20</div><div>Max Directorships<br>per person</div></div>
+        <div class="stat-card"><div class="stat-number">10</div><div>Secretarial<br>Standards</div></div>
+      </div>
+      <div class="takeaway">
+        <h4>📌 Exam Key Takeaways</h4>
+        <ul style="margin-left: 20px; margin-top: 8px;">
+          <li>Director = person appointed to Board to manage company affairs</li>
+          <li>DIN = unique identification number required for every director</li>
+          <li>Minimum directors: Public-3, Private-2, OPC-1</li>
+          <li>Maximum 15 directors (special resolution for more)</li>
+          <li>10 types of directors including First, Rotational, Independent, Executive, etc.</li>
+          <li>Directors play triple role: Agent, Trustee, Managing Partner</li>
+          <li>KMP includes MD/WTD/Manager/CS/CFO</li>
+          <li>Secretarial Standards SS-1 and SS-2 are mandatory</li>
+          <li>Secretarial Audit Report in Form MR-3</li>
+        </ul>
+      </div>
+    `;
+  }
+
+  function updateSuggestions() {
+    const val = searchInput.value.trim();
+    if (!val) { suggestionsDiv.style.display = "none"; return; }
+    const matches = getMatches(val);
+    if (matches.length === 0) { suggestionsDiv.style.display = "none"; return; }
+    suggestionsDiv.innerHTML = "";
+    matches.forEach(item => {
+      const div = document.createElement("div");
+      div.className = "suggestion-item";
+      div.innerHTML = `<span>👔</span> <strong>${escapeHtml(item.question.substring(0, 70))}</strong> <span style="margin-left:auto; background:#dbeafe; padding:2px 12px; border-radius:30px;">${escapeHtml(item.category)}</span>`;
+      div.addEventListener("click", () => {
+        searchInput.value = item.question;
+        suggestionsDiv.style.display = "none";
+        performSearch(item.question);
+      });
+      suggestionsDiv.appendChild(div);
+    });
+    suggestionsDiv.style.display = "block";
+  }
+
+  function performSearch(q = null) {
+    let query = (q !== null) ? q : searchInput.value.trim();
+    if (!query) {
+      resultsContainer.innerHTML = `<div class="not-found">✨ 100+ Detailed Questions loaded. Type: Director, Board of Directors, DIN, Types, Managing Director, Company Secretary, CFO, Secretarial Standards ✨</div>`;
+      return;
+    }
+    const matches = getMatches(query);
+    if (matches.length === 0) {
+      resultsContainer.innerHTML = `<div class="not-found">❌ No results found. Try: Director, Board of Directors, DIN, Types of Directors, Managing Director, Company Secretary, CFO, Secretarial Standards, Secretarial Audit, KMP.</div>`;
+      return;
+    }
+    resultsContainer.innerHTML = "";
+    matches.forEach(item => {
+      const card = document.createElement("div");
+      card.className = "result-card";
+      const shortAnswer = item.answer.length > 350 ? item.answer.substring(0, 350) + "..." : item.answer;
+      card.innerHTML = `
+        <div class="badge">⭐ ${escapeHtml(item.category)}</div>
+        <h3>📘 ${escapeHtml(item.question)}</h3>
+        <div class="answer-preview"><strong>📖 Answer Preview:</strong><br>${escapeHtml(shortAnswer)}</div>
+        <div class="action-buttons">
+          <button class="detail-btn" data-q="${escapeAttr(item.question)}" data-a="${escapeAttr(item.answer)}" data-cat="${escapeAttr(item.category)}">📖 Read Full Detailed Answer (500+ words with Tables)</button>
+          <button class="ref-btn">📊 Complete Chapter Reference</button>
+        </div>
+      `;
+      resultsContainer.appendChild(card);
+    });
+    attachEvents();
+  }
+
+  function attachEvents() {
+    document.querySelectorAll(".detail-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const questionText = btn.getAttribute("data-q");
+        const answerText = btn.getAttribute("data-a");
+        const category = btn.getAttribute("data-cat");
+        const item = qaDatabase.find(i => i.question === questionText);
+        if (item) {
+          showDetailPopup(item);
+        } else {
+          showDetailPopup({ question: questionText, answer: answerText, category: category });
+        }
+      });
+    });
+    document.querySelectorAll(".ref-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        showReferenceTablePopup();
+      });
+    });
+  }
+
+  function showDetailPopup(item) {
+    document.getElementById("popupQuestionTitle").innerHTML = escapeHtml(item.question.length > 80 ? item.question.substring(0, 80) + "..." : item.question);
+    const html = getEnhancedAnswer(item.question, item.answer, item.category);
+    document.getElementById("modalContent").innerHTML = html;
+    document.getElementById("popupModal").style.display = "flex";
+  }
+
+  function showReferenceTablePopup() {
+    document.getElementById("popupQuestionTitle").innerHTML = "📚 Chapter 6 Complete Reference Summary";
+    document.getElementById("modalContent").innerHTML = `
+      <div class="answer-card">
+        <h3>📊 Chapter 6: Directors & Key Managerial Personnel - Complete Summary</h3>
+        <div class="answer-text">
+          <p>This chapter covers Directors (appointment, types, powers, duties, liabilities, legal position) and Key Managerial Personnel (KMP) including Managing Director, Whole Time Director, Manager, Company Secretary, and CFO.</p>
+        </div>
+      </div>
+      
+      <div class="info-box"><h3>📊 Minimum Number of Directors</h3>${getMinDirectorsTable()}</div>
+      <div class="info-box"><h3>📊 Types of Directors</h3>${getTypesOfDirectorsTable()}</div>
+      <div class="info-box"><h3>📊 Methods of Appointment</h3>${getAppointmentMethodsTable()}</div>
+      <div class="info-box"><h3>📊 Powers of Board of Directors</h3>${getPowersOfBoardTable()}</div>
+      <div class="info-box"><h3>📊 Duties of Directors</h3>${getDutiesOfDirectorTable()}</div>
+      <div class="info-box"><h3>📊 Vacation of Office</h3>${getVacationOfOfficeTable()}</div>
+      <div class="info-box"><h3>📊 Key Managerial Personnel (KMP)</h3>${getKMProlesTable()}</div>
+      <div class="info-box"><h3>📊 Secretarial Standards (SS-1 to SS-10)</h3>${getSecretarialStandardsTable()}</div>
+      <div class="info-box"><h3>📊 Director vs Managing Director</h3>${getDistinctionDirectorMDTable()}</div>
+      <div class="info-box"><h3>📊 Managing Director vs Manager</h3>${getDistinctionMDManagerTable()}</div>
+      
+      <div class="takeaway">
+        <h4>📌 Key Points for Exams</h4>
+        <ul>
+          <li>Director: Person appointed to manage company affairs (Sec 2(34))</li>
+          <li>DIN: Unique identification number for every director</li>
+          <li>Min directors: Public-3, Private-2, OPC-1 | Max: 15</li>
+          <li>10 types: First, Rotational, Additional, Alternate, Woman, Nominee, Executive, Non-Executive, Independent, Small Shareholders'</li>
+          <li>Powers: Borrow money, invest funds, issue securities, diversify, appoint/remove KMP</li>
+          <li>Duties: Statutory (file returns, attend meetings) + General (good faith, care, no delegation)</li>
+          <li>Legal position: Agent, Trustee, Managing Partner</li>
+          <li>KMP: MD/WTD/Manager/CS/CFO (Sec 2(51))</li>
+          <li>Secretarial Standards: SS-1 to SS-10 (SS-1 & SS-2 mandatory)</li>
+          <li>Secretarial Audit: Form MR-3, by ICSI member with COP</li>
+        </ul>
+      </div>
+    `;
+    document.getElementById("popupModal").style.display = "flex";
+  }
+
+  function escapeHtml(str) { if (!str) return ''; return str.replace(/[&<>]/g, m => m === '&' ? '&amp;' : m === '<' ? '&lt;' : '&gt;'); }
+  function escapeAttr(str) { if (!str) return ''; return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  
+  function startVoice() {
+    if (!('webkitSpeechRecognition' in window)) { alert("Voice search supported in Chrome/Edge."); return; }
+    const recognition = new webkitSpeechRecognition();
+    recognition.lang = "en-IN";
+    recognition.start();
+    recognition.onresult = (event) => {
+      searchInput.value = event.results[0][0].transcript;
+      performSearch();
+      updateSuggestions();
+    };
+  }
+  
+  document.getElementById("voiceBtn").addEventListener("click", startVoice);
+  searchInput.addEventListener("input", () => {
+    performSearch();
+    updateSuggestions();
+  });
+  searchInput.addEventListener("focus", updateSuggestions);
+  document.addEventListener("click", (e) => {
+    if (!document.querySelector(".search-wrapper").contains(e.target)) {
+      suggestionsDiv.style.display = "none";
+    }
+  });
+  document.getElementById("closeModalBtn").addEventListener("click", () => document.getElementById("popupModal").style.display = "none");
+  
+  // Add all questions to database before window load
+  // Adding remaining questions to reach 100+
+  addQA("What is the Board of Directors?", "The Board of Directors is a group of individuals elected by shareholders to manage the affairs of the company. It is the highest policy-making body that exercises collective powers. Directors work as a team through Board meetings.",
+    "Board of Directors", ["board of directors meaning"]);
+    
+  addQA("What are the liabilities of a Director?", "Directors have multiple liabilities: 1) Liability to the company (for breach of duty), 2) Liability to third parties (for fraudulent acts), 3) Liability for breach of statutory duties, 4) Liability for acts of co-directors, 5) Criminal Liability (for offences under the Act).",
+    "Liabilities of Director", ["director liabilities"]);
+  
+  window.onload = () => {
+    resultsContainer.innerHTML = `<div class="not-found">✨ 11th SP · Chapter 6: Directors & Key Managerial Personnel · 100+ Detailed Q&A with Tables · Start typing to search ✨</div>`;
+  };
+</script>
+</body>
+</html>

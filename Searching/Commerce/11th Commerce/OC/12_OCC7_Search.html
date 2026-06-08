@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>🌍 Business Environment | 11th OC Chapter 7 | Dimensions, LPG Policy, Internal & External Factors</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    body {
+      background: linear-gradient(145deg, #ecfdf5, #d1fae5);
+      min-height: 100vh;
+      padding: 24px 18px;
+      color: #1e293b;
+      overflow-y: scroll;
+      scrollbar-width: thin;
+    }
+    .container { max-width: 1300px; margin: 0 auto; }
+    .heading { text-align: center; margin-bottom: 35px; animation: slideDown 0.5s ease; }
+    .heading h1 {
+      font-size: 2rem;
+      background: linear-gradient(135deg, #065f46, #059669, #10b981);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+    }
+    .heading p { color: #065f46; margin-top: 10px; font-weight: 600; background: #ffffffcc; display: inline-block; padding: 5px 18px; border-radius: 40px; backdrop-filter: blur(4px);}
+    .search-wrapper { position: relative; margin-bottom: 32px; }
+    .search-box {
+      background: white;
+      border-radius: 60px;
+      padding: 6px 6px 6px 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.12);
+      border: 1px solid #6ee7b7;
+    }
+    .search-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      padding: 15px 0;
+      background: transparent;
+      color: #0f172a;
+      font-weight: 500;
+    }
+    .icon-btn {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(145deg, #059669, #065f46);
+      color: white;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: 0.25s;
+      box-shadow: 0 4px 12px rgba(5,150,105,0.4);
+    }
+    .icon-btn:hover { transform: scale(1.05); background: #059669; }
+    .suggestions-dropdown {
+      position: absolute;
+      top: calc(100% + 12px);
+      left: 0;
+      right: 0;
+      background: white;
+      border-radius: 32px;
+      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.2);
+      z-index: 120;
+      max-height: 280px;
+      overflow-y: auto;
+      display: none;
+      border: 1px solid #6ee7b7;
+    }
+    .suggestion-item {
+      padding: 14px 24px;
+      color: #0f172a;
+      cursor: pointer;
+      border-bottom: 1px solid #ecfdf5;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      transition: 0.2s;
+    }
+    .suggestion-item:hover { background: #d1fae5; padding-left: 32px; }
+    .result-container { display: flex; flex-direction: column; gap: 24px; margin-top: 20px; }
+    .result-card {
+      background: white;
+      border-radius: 32px;
+      padding: 1.8rem;
+      color: #0f172a;
+      box-shadow: 0 12px 30px -10px rgba(0,0,0,0.08);
+      transition: 0.25s ease;
+      border: 1px solid #a7f3d0;
+    }
+    .result-card:hover { transform: translateY(-4px); box-shadow: 0 20px 30px -12px rgba(0,0,0,0.12); }
+    .badge {
+      background: #d1fae5;
+      color: #065f46;
+      display: inline-block;
+      padding: 5px 16px;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+    .result-card h3 {
+      color: #065f46;
+      font-size: 1.35rem;
+      border-left: 6px solid #34d399;
+      padding-left: 18px;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+    .answer-text {
+      background: #f0fdf4;
+      padding: 18px 24px;
+      border-radius: 28px;
+      line-height: 1.7;
+      margin: 12px 0;
+      border: 1px solid #bbf7d0;
+    }
+    .formula-box {
+      background: #dcfce7;
+      padding: 12px 18px;
+      border-radius: 28px;
+      font-family: monospace;
+      font-size: 0.95rem;
+      margin: 14px 0;
+      text-align: center;
+      border-left: 6px solid #059669;
+      font-weight: 600;
+    }
+    .responsive-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 0.85rem;
+      overflow-x: auto;
+      display: block;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .responsive-table th, .responsive-table td {
+      border: 1px solid #e2e8f0;
+      padding: 12px 10px;
+      text-align: left;
+      background: white;
+    }
+    .responsive-table th { background: #059669; color: white; font-weight: 700; }
+    .action-buttons { margin-top: 22px; display: flex; gap: 15px; flex-wrap: wrap; }
+    .action-buttons button {
+      border: none;
+      padding: 10px 26px;
+      border-radius: 50px;
+      font-weight: 700;
+      background: #f1f5f9;
+      color: #1e293b;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .action-buttons button:last-child { background: #34d399; color: #064e3b; box-shadow: 0 2px 8px rgba(52,211,153,0.3);}
+    .action-buttons button:hover { transform: scale(0.97); opacity: 0.9; }
+    .not-found {
+      background: #f0fdf4;
+      border-radius: 48px;
+      padding: 2.5rem;
+      text-align: center;
+      font-size: 1.1rem;
+      color: #065f46;
+      border: 1px solid #bbf7d0;
+    }
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(10px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    .popup-box {
+      background: white;
+      max-width: 950px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      border-radius: 48px;
+      padding: 30px 34px;
+      position: relative;
+      color: #1e293b;
+    }
+    .close-popup {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      background: #fee2e2;
+      border: none;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+    .lang-section { background: #f8fafc; padding: 18px; border-radius: 28px; margin-bottom: 20px; border-left: 5px solid #34d399; }
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 650px) {
+      body { padding: 16px 12px; }
+      .heading h1 { font-size: 1.4rem; }
+      .result-card h3 { font-size: 1.1rem; }
+      .result-card { padding: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="heading">
+    <h1>🌍 Business Environment | OC Chapter 7</h1>
+    <p>📌 Dimensions: Natural · Social · Political · Economic · Technological · Legal | New Economic Policy (LPG) 1991</p>
+  </div>
+  <div class="search-wrapper">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="🔎 Search: Business Environment, Liberalization, Privatization, Globalization, Social Environment, Political Environment, LPG Policy 1991...">
+      <button class="icon-btn" id="voiceBtn">🎤</button>
+    </div>
+    <div id="suggestionsList" class="suggestions-dropdown"></div>
+  </div>
+  <div class="result-container" id="resultsContainer">
+    <div class="not-found">🌍 Type above — Explore Business Environment: Dimensions, Internal/External Factors, LPG Policy (Liberalization, Privatization, Globalization) ✨</div>
+  </div>
+</div>
+<div class="popup-overlay" id="popupModal">
+  <div class="popup-box">
+    <button class="close-popup" id="closeModalBtn">✖</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+  const qaDatabase = [];
+
+  function addQA(question, answer, category, keywords = []) {
+    qaDatabase.push({ id: qaDatabase.length+1, question, answer, category, keywords: keywords.map(k=>k.toLowerCase()) });
+  }
+
+  // ============ INTRODUCTION & MEANING ============
+  addQA("What is Business Environment? Define.", "Business Environment comprises of factors which can affect business, including strengths, weaknesses, government policies, economic conditions, socio-cultural factors, natural factors, and global trends. According to Bayard O. Wheeler: 'The total of all things external to firm and industries which affect their organization and operations is called Business Environment.'", "Introduction", ["business environment meaning", "definition"]);
+  addQA("What is the importance of Business Environment?", "1) Determining opportunities and threats 2) Identifying firm's strength and weakness 3) Continuous learning 4) Image Building 5) Meeting Competition 6) Giving Direction for growth.", "Importance", ["importance of business environment"]);
+
+  // ============ INTERNAL ENVIRONMENT (Controllable) ============
+  addQA("What are internal (controllable) factors of Business Environment?", "1) Value System 2) Vision, Mission and Objectives 3) Management Structure and Nature 4) Internal Power Relationship 5) Human Resources 6) Physical Assets and Facilities 7) Marketing Resources 8) Financial Factors.", "Internal", ["internal environment", "controllable factors"]);
+
+  // ============ DIMENSIONS OF BUSINESS ENVIRONMENT ============
+  addQA("What is Natural Environment in business?", "Natural Environment comprises factors like climate, minerals, soil, landforms, rivers, oceans, and natural resources. All elements of natural environment have considerable influence on business functions. Manufacturing depends on physical environment for raw material, water, fuel. Mining, oil drilling, agriculture depend on nature.", "Dimensions", ["natural environment"]);
+  addQA("What is Social Environment in business?", "Social Environment includes class structure, customs, traditions, values, ethics, beliefs, social trends, poverty, literacy, life expectancy. Social aspects: literacy level, educational system, cultural heritage, standard of living. Social trends like health consciousness have created opportunities for gyms and fast food.", "Dimensions", ["social environment"]);
+  addQA("What is Political Environment?", "Political Environment includes stability and peace in the country, specific attitudes of elected representatives, ideology of political parties. Indian political system comprises three vital institutions: Legislature (policy making, law making), Government (execution), Judiciary (settles disputes). Political stability builds investor confidence.", "Dimensions", ["political environment"]);
+  addQA("What is Economic Environment?", "Economic Environment comprises economic conditions (GDP, per capita income, capital availability), economic policies (industrial, monetary, foreign investment, EXIM), and economic systems. Economic systems: Capitalist (USA), Socialist (China), Mixed (India).", "Dimensions", ["economic environment"]);
+  addQA("What is Technological Environment?", "Technological Environment consists of methods and techniques adopted for production. Technology is the most dramatic force shaping business. Scientific research for innovation is a regular activity. Example: Digital India initiative. Businesses must adopt new technologies to survive.", "Dimensions", ["technological environment"]);
+  addQA("What is Legal Environment? List important business laws.", "Legal Environment means business must operate within the legal framework. Important laws: Indian Contract Act 1872, Workmen's Compensation Act 1923, Industrial Dispute Act 1947, Standards of Weight and Measures Act 1969, Consumer Protection Act 1986, Competition Act 2002.", "Dimensions", ["legal environment"]);
+
+  // ============ NEW ECONOMIC POLICY 1991 (LPG) ============
+  addQA("When was New Economic Policy introduced? What is LPG?", "The New Economic Policy was introduced on 24th July 1991. It is known as Liberalization, Privatization and Globalization (LPG Policy). It replaced the earlier industrial licensing system.", "LPG", ["new economic policy", "lpg policy 1991"]);
+  addQA("What is Liberalization?", "Liberalization refers to eliminating unnecessary controls and restrictions for smooth functioning of business. It includes: abolishing industrial licensing, reducing import duties, financial system reformation, reducing taxation, attracting foreign investment, freedom to fix prices, opening telecom sectors.", "LPG", ["liberalization"]);
+  addQA("What is Privatization? Why is it needed?", "Privatization means reducing government involvement by involving private sector. It includes disinvestment of PSU shares, reducing industries reserved for public sector. Need: More Efficiency, Less political Interference, Reduction in labor problems, Ensuring accountability, Capital Market discipline.", "LPG", ["privatization"]);
+  addQA("What is Globalization?", "Globalization means integration of national economy and societies through cross-country flows of information, ideas, technologies, goods, services, capital, finance and people. It creates a 'boundaryless world'. Features: freedom to operate anywhere, buying/selling globally, direct foreign participation, exchange of technology.", "LPG", ["globalization"]);
+
+  // ============ IMPACT OF NEW ECONOMIC POLICY ============
+  addQA("What is the impact of New Economic Policy on business?", "1) Increase in competition 2) More demanding customers 3) Tremendous changes in technology 4) Necessity for change 5) Need for developing human resource 6) Customer oriented market 7) Discontinuation of budget support by government 8) Need for expertise in various fields.", "Impact", ["impact of lpg", "new economic policy impact"]);
+
+  // ============ ADDITIONAL ============
+  addQA("What are the three economic systems?", "1) Capitalist Economy (Free market) - private ownership, e.g., USA 2) Socialist Economy - government owns factors of production, e.g., China 3) Mixed Economy - joint ownership by government and private, e.g., India.", "Dimensions", ["economic systems"]);
+  addQA("True/False: External factors of business environment are controllable.", "False. External factors of business environment are uncontrollable (beyond control of business). Internal factors are controllable.", "True/False", []);
+  addQA("True/False: New economic policy promoted liberal economic policy.", "True. The New Economic Policy 1991 promoted liberalization, privatization and globalization.", "True/False", []);
+  addQA("Fill in blank: The New Economic Policy was introduced on ______ July 1991.", "24th", "Fillup", []);
+
+  // ============ TABLES ============
+  function getDimensionsTable() {
+    return `<table class="responsive-table"><thead><tr><th>Dimension</th><th>Key Factors</th><th>Examples</th></tr></thead><tbody>
+      <tr><td>Natural</th><td>Climate, minerals, soil, water, natural resources</td><td>Agriculture, mining, oil drilling</td></tr>
+      <tr><td>Social</td><td>Customs, traditions, values, literacy, social trends</td><td>Festivals, health consciousness, family budget</td></tr>
+      <tr><td>Political</td><td>Stability, ideology of parties, Legislature, Govt, Judiciary</td><td>Election results affecting stock market</td></tr>
+      <tr><td>Economic</td><td>GDP, per capita income, policies, economic systems</td><td>Capitalist, Socialist, Mixed economy</td></tr>
+      <tr><td>Technological</td><td>Production methods, innovation, R&D</td><td>Digital India, automation, IT revolution</td></tr>
+      <tr><td>Legal</td><td>Laws, regulations, court decisions</td><td>Contract Act, Consumer Protection Act, GST</td></tr>
+    </tbody></table>`;
+  }
+
+  function getLPGSchemeTable() {
+    return `<table class="responsive-table"><thead><tr><th>Policy</th><th>Meaning</th><th>Key Features</th></tr></thead><tbody>
+      <tr><td>Liberalization</td><td>Removing unnecessary controls</td><td>Abolishing licensing, reducing tariffs, attracting FDI, freedom to fix prices</td></tr>
+      <tr><td>Privatization</td><td>Reducing government role, involving private sector</td><td>Disinvestment, MOU system, reducing reserved industries</td></tr>
+      <tr><td>Globalization</td><td>Integrating national economy with world</td><td>Boundaryless world, free flow of goods/services/capital, direct foreign participation</td></tr>
+    </tbody></tr>`;
+  }
+
+  function getInternalExternalTable() {
+    return `<table class="responsive-table"><thead><tr><th>Type</th><th>Nature</th><th>Factors</th></tr></thead><tbody>
+      <tr><td>Internal Environment</td><td>Controllable</td><td>Value system, vision, management structure, human resources, physical assets, financial factors</td></tr>
+      <tr><td>External Environment</td><td>Uncontrollable</td><td>Natural, Social, Political, Economic, Technological, Legal</td></tr>
+    </tbody></table>`;
+  }
+
+  // Search and display
+  const searchInput = document.getElementById("searchInput");
+  const resultsContainer = document.getElementById("resultsContainer");
+  const suggestionsDiv = document.getElementById("suggestionsList");
+
+  function getMatches(q) {
+    const lower = q.toLowerCase();
+    return qaDatabase.filter(item => 
+      item.question.toLowerCase().includes(lower) || 
+      item.answer.toLowerCase().includes(lower) ||
+      item.category.toLowerCase().includes(lower) ||
+      item.keywords.some(k => k.includes(lower))
+    ).slice(0, 16);
+  }
+
+  function updateSuggestions() {
+    const val = searchInput.value.trim();
+    if(!val) { suggestionsDiv.style.display = "none"; return; }
+    const matches = getMatches(val);
+    if(!matches.length) { suggestionsDiv.style.display = "none"; return; }
+    suggestionsDiv.innerHTML = "";
+    matches.forEach(item => {
+      const div = document.createElement("div");
+      div.className = "suggestion-item";
+      div.innerHTML = `<span>🌍</span> <strong>${item.question.substring(0,70)}</strong> <span style="margin-left:auto; background:#d1fae5; padding:2px 12px; border-radius:30px;">${item.category}</span>`;
+      div.addEventListener("click", () => {
+        searchInput.value = item.question;
+        suggestionsDiv.style.display = "none";
+        performSearch(item.question);
+      });
+      suggestionsDiv.appendChild(div);
+    });
+    suggestionsDiv.style.display = "block";
+  }
+
+  function performSearch(q = null) {
+    let query = (q !== null) ? q : searchInput.value.trim();
+    if(!query) { resultsContainer.innerHTML = `<div class="not-found">🌍 Type keywords: Business Environment, Liberalization, Privatization, Globalization, Social Environment, Political Environment, LPG 1991 ✨</div>`; return; }
+    const matches = getMatches(query);
+    if(!matches.length) { resultsContainer.innerHTML = `<div class="not-found">❌ No results. Try: Business Environment meaning, Dimensions, LPG policy, Liberalization, Privatization, Globalization, Impact of new economic policy.</div>`; return; }
+    resultsContainer.innerHTML = "";
+    matches.forEach(item => {
+      let extra = "";
+      const qtext = item.question.toLowerCase();
+      if (qtext.includes("dimensions") && item.category === "Dimensions") extra = getDimensionsTable();
+      if (qtext.includes("liberalization") || qtext.includes("privatization") || (qtext.includes("lpg") && item.category === "LPG")) extra = getLPGSchemeTable();
+      if (qtext.includes("internal") || (qtext.includes("controllable"))) extra = getInternalExternalTable();
+      if (item.category === "Impact") extra = `<div class="formula-box">📈 Impact: Increased competition, demanding customers, tech changes, customer-oriented market, need for HR development, reduced govt budget support.</div>`;
+      
+      const card = document.createElement("div");
+      card.className = "result-card";
+      card.innerHTML = `
+        <div class="badge">📌 ${escapeHtml(item.category)}</div>
+        <h3>📘 ${escapeHtml(item.question)}</h3>
+        <div class="answer-text"><strong>✅ Answer / Explanation:</strong><br>${escapeHtml(item.answer)}${extra}</div>
+        <div class="action-buttons">
+          <button class="detailBtn" data-q="${escapeAttr(item.question)}" data-a="${escapeAttr(item.answer)}" data-cat="${item.category}">📖 Detailed Explanation</button>
+          <button class="extraTableBtn" data-type="${item.category}">📋 Reference Tables</button>
+        </div>
+      `;
+      resultsContainer.appendChild(card);
+    });
+    attachEvents();
+  }
+
+  function attachEvents() {
+    document.querySelectorAll(".detailBtn").forEach(btn => btn.addEventListener("click", (e) => {
+      const q = btn.getAttribute("data-q"), a = btn.getAttribute("data-a"), cat = btn.getAttribute("data-cat");
+      showDetailPopup(q, a, cat);
+    }));
+    document.querySelectorAll(".extraTableBtn").forEach(btn => btn.addEventListener("click", () => {
+      let content = `<div class="lang-section"><strong>📚 Business Environment - Quick Reference</strong><br>`;
+      content += `<h4>🌍 Dimensions of Business Environment</h4>${getDimensionsTable()}`;
+      content += `<hr><h4>🏛️ Internal vs External Environment</h4>${getInternalExternalTable()}`;
+      content += `<hr><h4>📜 New Economic Policy 1991 (LPG)</h4>${getLPGSchemeTable()}`;
+      content += `<hr><div class="formula-box">💡 Key Facts: Business Environment = sum of all external forces affecting business. LPG introduced 24 July 1991. Liberalization = removing controls. Privatization = reducing govt role. Globalization = boundaryless world.</div>`;
+      content += `</div>`;
+      document.getElementById("popupModal").style.display = "flex";
+      document.getElementById("modalContent").innerHTML = `<h2 style="color:#065f46;">📊 Business Environment - Complete Reference</h2>${content}<button id="closeModalInside" style="background:#059669; margin-top:20px; padding:10px 26px; border-radius:40px; color:white;">Close</button>`;
+      document.getElementById("closeModalInside").addEventListener("click", ()=> document.getElementById("popupModal").style.display = "none");
+    }));
+  }
+
+  function showDetailPopup(question, answer, category) {
+    let extraInfo = `<div class="lang-section"><strong>📖 11th OC Chapter 7 - Business Environment</strong><br>✔ Business Environment: Sum total of external forces affecting business (Wheeler)<br>✔ Importance: Opportunities/threats, strengths/weaknesses, continuous learning, image building<br>✔ 6 Dimensions: Natural, Social, Political, Economic, Technological, Legal<br>✔ Internal Factors (Controllable): Value system, vision, HR, physical assets<br>✔ External Factors (Uncontrollable): All dimensions above<br>✔ New Economic Policy 1991 (LPG): Liberalization, Privatization, Globalization</div>`;
+    if(category === "Dimensions") extraInfo += `<div class="lang-section"><h4>Complete Dimensions Table</h4>${getDimensionsTable()}</div>`;
+    if(category === "LPG") extraInfo += `<div class="lang-section"><h4>LPG Policy Details</h4>${getLPGSchemeTable()}<br>Liberalization: Abolished licensing, reduced tariffs, attracted FDI. Privatization: Disinvestment, MOU system. Globalization: Integration with world economy.</div>`;
+    if(category === "Internal") extraInfo += `<div class="lang-section"><h4>Internal (Controllable) Factors</h4>Value System, Vision/Mission, Management Structure, Internal Power Relations, Human Resources, Physical Assets, Marketing Resources, Financial Factors.</div>`;
+    document.getElementById("popupModal").style.display = "flex";
+    document.getElementById("modalContent").innerHTML = `
+      <h2 style="color:#065f46;">📘 Detailed Explanation</h2>
+      <div class="lang-section"><strong>❓ Question:</strong> ${escapeHtml(question)}</div>
+      <div class="lang-section"><strong>✅ Answer:</strong><br>${escapeHtml(answer)}</div>
+      ${extraInfo}
+      <button id="closeDetailModal" style="background:#34d399; padding:10px 26px; border-radius:40px; margin-top:12px;">Close</button>
+    `;
+    document.getElementById("closeDetailModal").addEventListener("click", ()=> document.getElementById("popupModal").style.display = "none");
+  }
+
+  function escapeHtml(str) { return str.replace(/[&<>]/g, m => m==='&'?'&amp;': m==='<'?'&lt;':'&gt;'); }
+  function escapeAttr(str) { return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function startVoice() { if (!('webkitSpeechRecognition' in window)) { alert("Voice search supported in Chrome/Edge."); return; } const rec = new webkitSpeechRecognition(); rec.lang="en-IN"; rec.start(); rec.onresult = (e)=> { searchInput.value = e.results[0][0].transcript; performSearch(); }; }
+  document.getElementById("voiceBtn").addEventListener("click", startVoice);
+  searchInput.addEventListener("keyup", () => { performSearch(); updateSuggestions(); });
+  searchInput.addEventListener("focus", updateSuggestions);
+  document.addEventListener("click", (e) => { if(!document.querySelector(".search-wrapper").contains(e.target)) suggestionsDiv.style.display = "none"; });
+  document.getElementById("closeModalBtn").addEventListener("click", () => document.getElementById("popupModal").style.display = "none");
+  window.onload = () => { resultsContainer.innerHTML = `<div class="not-found">🌍 11th OC | Business Environment | Search Dimensions, LPG Policy, Liberalization, Privatization, Globalization ✨</div>`; };
+</script>
+</body>
+</html>

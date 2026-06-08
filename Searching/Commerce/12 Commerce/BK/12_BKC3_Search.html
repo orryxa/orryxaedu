@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>🤝 Reconstitution of Partnership | 12th BK Chap 3 | Admission of Partner | Goodwill, Revaluation, Capital Adjustment</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    body {
+      background: linear-gradient(145deg, #1e293b, #0f172a);
+      min-height: 100vh;
+      padding: 24px 18px;
+      color: #f1f5f9;
+    }
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    .heading {
+      text-align: center;
+      margin-bottom: 32px;
+      animation: slideDown 0.5s ease;
+    }
+    .heading h1 {
+      font-size: 1.8rem;
+      background: linear-gradient(135deg, #fff, #fbbf24);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .heading p {
+      color: #fde68a;
+      margin-top: 8px;
+    }
+    .search-wrapper {
+      position: relative;
+      margin-bottom: 28px;
+    }
+    .search-box {
+      background: white;
+      border-radius: 60px;
+      padding: 6px 6px 6px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 20px 35px -10px rgba(0,0,0,0.4);
+    }
+    .search-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      padding: 14px 0;
+      background: transparent;
+      color: #0f172a;
+      font-weight: 500;
+    }
+    .icon-btn {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(145deg, #d97706, #b45309);
+      color: white;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .icon-btn:hover { transform: scale(1.07); background: #f59e0b; }
+    .suggestions-dropdown {
+      position: absolute;
+      top: calc(100% + 10px);
+      left: 0;
+      right: 0;
+      background: white;
+      border-radius: 28px;
+      background: rgba(255,255,255,0.98);
+      box-shadow: 0 18px 30px rgba(0,0,0,0.3);
+      z-index: 120;
+      max-height: 280px;
+      overflow-y: auto;
+      display: none;
+    }
+    .suggestion-item {
+      padding: 14px 22px;
+      color: #0f172a;
+      cursor: pointer;
+      border-bottom: 1px solid #eef2ff;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .suggestion-item:hover { background: #fef3c7; padding-left: 28px; }
+    .result-container {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+    .result-card {
+      background: rgba(255,255,255,0.96);
+      border-radius: 32px;
+      padding: 1.7rem;
+      color: #0f172a;
+      box-shadow: 0 15px 30px -12px rgba(0,0,0,0.35);
+      transition: 0.2s;
+    }
+    .result-card:hover { transform: translateY(-3px); }
+    .badge {
+      background: #fef3c7;
+      color: #92400e;
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+    .result-card h3 {
+      color: #b45309;
+      font-size: 1.3rem;
+      border-left: 5px solid #f59e0b;
+      padding-left: 16px;
+      margin-bottom: 14px;
+    }
+    .answer-text {
+      background: #fffbeb;
+      padding: 16px 20px;
+      border-radius: 24px;
+      line-height: 1.65;
+      margin: 12px 0;
+    }
+    .formula-box {
+      background: #fef3c7;
+      padding: 12px 16px;
+      border-radius: 20px;
+      font-family: monospace;
+      font-size: 1rem;
+      margin: 10px 0;
+      text-align: center;
+      border-left: 4px solid #d97706;
+    }
+    .responsive-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+      font-size: 0.85rem;
+      overflow-x: auto;
+      display: block;
+    }
+    .responsive-table th, .responsive-table td {
+      border: 1px solid #d1d5db;
+      padding: 10px 8px;
+      text-align: left;
+      background: white;
+    }
+    .responsive-table th {
+      background: #d97706;
+      color: white;
+      font-weight: 600;
+    }
+    .action-buttons {
+      margin-top: 20px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .action-buttons button {
+      border: none;
+      padding: 10px 22px;
+      border-radius: 40px;
+      font-weight: 600;
+      background: #eef2ff;
+      color: #1e293b;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .action-buttons button:last-child { background: #d97706; color: white; }
+    .not-found {
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(12px);
+      border-radius: 40px;
+      padding: 2rem;
+      text-align: center;
+    }
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(10px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    .popup-box {
+      background: white;
+      max-width: 950px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      border-radius: 40px;
+      padding: 28px 32px;
+      position: relative;
+      color: #0a2a44;
+    }
+    .close-popup {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      background: #fee2e2;
+      border: none;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+    .lang-section { background: #f1f5f9; padding: 18px; border-radius: 24px; margin-bottom: 18px; }
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-22px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 650px) { 
+      .heading h1 { font-size: 1.3rem; } 
+      .result-card h3 { font-size: 1.1rem; }
+      .responsive-table th, .responsive-table td { padding: 6px 4px; font-size: 0.7rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="heading">
+    <h1>🤝 Reconstitution of Partnership | Chapter 3: Admission of Partner</h1>
+    <p>🔍 150+ Q&A | Goodwill Valuation (Average/Super Profit) | Revaluation A/c | Capital Adjustment | New Ratio & Sacrifice Ratio</p>
+  </div>
+  <div class="search-wrapper">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search: Admission of Partner, Goodwill, Revaluation Account, New Ratio, Sacrifice Ratio, Average Profit Method, Super Profit Method, Capital Adjustment...">
+      <button class="icon-btn" id="voiceBtn">🎤</button>
+    </div>
+    <div id="suggestionsList" class="suggestions-dropdown"></div>
+  </div>
+  <div class="result-container" id="resultsContainer">
+    <div class="not-found">✨ Start typing — Chapter 3: Admission of Partner | Goodwill, Revaluation A/c, Capital Adjustment, New Ratio ✨</div>
+  </div>
+</div>
+<div class="popup-overlay" id="popupModal">
+  <div class="popup-box">
+    <button class="close-popup" id="closeModalBtn">✖</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+  // ------------- COMPLETE DATABASE: Chapter 3 Admission of Partner (12th Commerce) -------------
+  const qaDatabase = [];
+
+  function addQA(question, answer, hindi, marathi, category, keywords = []) {
+    qaDatabase.push({ id: qaDatabase.length+1, question, answer, hindi, marathi, category, keywords: keywords.map(k=>k.toLowerCase()) });
+  }
+
+  // ==================== CORE CONCEPTS ====================
+  addQA("What is Reconstitution of Partnership?", "Reconstitution of Partnership means change in the relationship between partners. It occurs due to: 1) Change in profit sharing ratio, 2) Admission of a partner, 3) Retirement of a partner, 4) Death of a partner.", "साझेदारी का पुनर्गठन साझेदारों के बीच संबंधों में परिवर्तन है।", "भागीदारीची पुनर्रचना म्हणजे भागीदारांमधील संबंधांत बदल.", "Core", ["reconstitution meaning"]);
+  addQA("What is Admission of a Partner?", "Admission of a partner means adding a new person into existing partnership firm. As per Section 31(1) of Partnership Act 1932, new partner can be admitted only with consent of all existing partners. New partner brings capital and goodwill share.", "नए साझेदार का प्रवेश मौजूदा फर्म में एक नए व्यक्ति को शामिल करना है।", "नवीन भागीदाराचा प्रवेश म्हणजे विद्यमान फर्ममध्ये नवीन व्यक्तीचा समावेश.", "Admission", ["admission of partner"]);
+  addQA("What is Sacrifice Ratio?", "Sacrifice Ratio is the ratio in which old partners sacrifice their share of profit in favour of new partner. Formula: Sacrifice Ratio = Old Ratio - New Ratio. This ratio is used to distribute goodwill brought by new partner.", "त्याग अनुपात वह अनुपात है जिसमें पुराने साझेदार नए साझेदार के पक्ष में अपना लाभ हिस्सा त्यागते हैं।", "त्यागाचे प्रमाण म्हणजे ज्या प्रमाणात जुन्या भागीदारांनी नवीन भागीदारासाठी हिस्सा सोडला.", "Ratio", ["sacrifice ratio","goodwill distribution"]);
+  addQA("What is Goodwill?", "Goodwill is the reputation, name, fame and image of a business that helps earn excess profits. It is an intangible asset. Goodwill is valued at the time of admission of a partner. Methods: Average Profit Method and Super Profit Method.", "ख्याति व्यवसाय की प्रतिष्ठा है जो अतिरिक्त लाभ कमाने में मदद करती है।", "गुडविल म्हणजे व्यवसायाची प्रतिष्ठा जी अतिरिक्त नफा मिळवण्यास मदत करते.", "Goodwill", ["goodwill meaning"]);
+  addQA("What is Average Profit Method of Goodwill Valuation?", "Under Average Profit Method, Goodwill = Average Profit × Number of Years Purchase. Average Profit = Total Profit of given years / Number of years. Losses are deducted while calculating total profit.", "औसत लाभ विधि में ख्याति = औसत लाभ × वर्षों की संख्या।", "सरासरी नफा पद्धतीत गुडविल = सरासरी नफा × वर्षांची संख्या.", "Goodwill", ["average profit method"]);
+  addQA("What is Super Profit Method of Goodwill Valuation?", "Super Profit = Average Profit - Normal Profit. Normal Profit = (Capital Employed × Normal Rate of Return)/100. Goodwill = Super Profit × Number of Years Purchase.", "अति लाभ विधि में अति लाभ = औसत लाभ - सामान्य लाभ।", "अतिनफा पद्धतीत अतिनफा = सरासरी नफा - सामान्य नफा.", "Goodwill", ["super profit method"]);
+
+  // ==================== TABLES ====================
+  function getGoodwillJournalTable() {
+    return `<table class="responsive-table"><thead><tr><th>Scenario</th><th>Journal Entry</th></tr></thead><tbody>
+      <tr><td>New partner brings goodwill in cash (retained in business)</td><td>1. Bank A/c Dr. To Goodwill A/c<br>2. Goodwill A/c Dr. To Old Partners Capital A/c (Sacrifice Ratio)</td></tr>
+      <tr><td>New partner brings goodwill - withdrawn by old partners</td><td>Same as above + Old Partners Capital A/c Dr. To Bank A/c</td></tr>
+      <tr><td>Goodwill paid privately (not recorded)</td><td>No entry in books of firm</td></tr>
+      <tr><td>Goodwill raised in books (new partner doesn't bring cash)</td><td>Goodwill A/c Dr. To Old Partners Capital A/c (Old Ratio)</td></tr>
+      <tr><td>Goodwill raised and written off</td><td>1. Goodwill A/c Dr. To Old Partners Capital A/c<br>2. All Partners Capital A/c Dr. (New Ratio) To Goodwill A/c</td></tr>
+    </tbody></table>`;
+  }
+  function getRevaluationFormat() {
+    return `<table class="responsive-table"><thead><tr><th>Dr. Revaluation Account</th><th>₹</th><th>Cr. Revaluation Account</th><th>₹</th></tr></thead>
+    <tbody><tr><td>To Asset A/c (Decrease in value)</td><td>xx</td><td>By Asset A/c (Increase in value)</td><td>xx</td></tr>
+    <tr><td>To Liability A/c (Increase in liability)</td><td>xx</td><td>By Liability A/c (Decrease in liability)</td><td>xx</td></tr>
+    <tr><td>To Unrecorded Liability</td><td>xx</td><td>By Unrecorded Asset</td><td>xx</td></tr>
+    <tr><td>To Old Partners Capital A/c (Loss transferred)</td><td>xx</td><td>By Old Partners Capital A/c (Profit transferred)</td><td>xx</td></tr>
+    </tbody></table>`;
+  }
+
+  // ==================== FORMULAS & NUMERICALS ====================
+  addQA("Formula for New Profit Sharing Ratio when new partner's share is given", "If total profit = 1, and new partner's share = 1/n, then Remaining share = 1 - 1/n. New Ratio = Old Ratio × Remaining share.", "नया लाभ विभाजन अनुपात सूत्र।", "नवीन नफा वाटप प्रमाण सूत्र.", "Formulas", ["new ratio formula"]);
+  addQA("Calculate New Ratio: Old Ratio 2:3, New partner gets 1/4th share", "Remaining share = 1 - 1/4 = 3/4. A's new = 2/5 × 3/4 = 6/20, B's new = 3/5 × 3/4 = 9/20, C's new = 1/4 = 5/20. New Ratio = 6:9:5.", "नया अनुपात = 6:9:5", "नवीन प्रमाण = 6:9:5", "Numerical", ["new ratio calculation"]);
+  addQA("Calculate Sacrifice Ratio: Old Ratio 6:4, New Ratio 10:6:4", "Sacrifice = Old - New. A's sacrifice = 6/10 - 10/20 = 2/20, B's sacrifice = 4/10 - 6/20 = 2/20. Sacrifice Ratio = 1:1.", "त्याग अनुपात = 1:1", "त्याग प्रमाण = 1:1", "Numerical", ["sacrifice ratio calculation"]);
+  addQA("Goodwill by Average Profit Method: Profits: 1,20,000; 80,000; (20,000 Loss); 60,000. Years purchase = 2", "Total Profit = 1,20,000 + 80,000 - 20,000 + 60,000 = 2,40,000. Average = 2,40,000/4 = 60,000. Goodwill = 60,000 × 2 = ₹1,20,000.", "ख्याति = ₹1,20,000", "गुडविल = ₹1,20,000", "Numerical", ["average profit goodwill"]);
+  addQA("Goodwill by Super Profit Method: Avg Profit 66,000, Capital Employed 3,50,000, NRR 12%, Years purchase 2", "Normal Profit = 3,50,000 × 12% = 42,000. Super Profit = 66,000 - 42,000 = 24,000. Goodwill = 24,000 × 2 = ₹48,000.", "ख्याति = ₹48,000", "गुडविल = ₹48,000", "Numerical", ["super profit goodwill"]);
+
+  // ==================== JOURNAL ENTRIES ====================
+  addQA("Journal entry for new partner bringing capital and goodwill", "Bank A/c Dr. (Total amount) To New Partner's Capital A/c (Capital) To Goodwill A/c (Goodwill share). Then Goodwill A/c Dr. To Old Partners Capital A/c (Sacrifice Ratio).", "नए साझेदार द्वारा पूंजी और ख्याति लाने की प्रविष्टि।", "नवीन भागीदाराने भांडवल व गुडविल आणल्याची नोंद.", "Journal", ["capital goodwill entry"]);
+  addQA("Journal entry for revaluation of assets and liabilities", "For increase in asset: Asset A/c Dr. To Revaluation A/c. For decrease in asset: Revaluation A/c Dr. To Asset A/c. For unrecorded asset: Asset A/c Dr. To Revaluation A/c. For unrecorded liability: Revaluation A/c Dr. To Liability A/c.", "परिसंपत्तियों और देयताओं के पुनर्मूल्यांकन की प्रविष्टियाँ।", "मालमत्ता व देयता पुनर्मूल्यांकनाच्या नोंदी.", "Journal", ["revaluation entries"]);
+  addQA("Treatment of accumulated profits (General Reserve) on admission", "General Reserve A/c Dr. To Old Partners Capital A/c (Old Ratio). Accumulated profits are distributed only to old partners as new partner has no right to past profits.", "संचित लाभ केवल पुराने साझेदारों में वितरित किए जाते हैं।", "संचित नफा फक्त जुन्या भागीदारांत वाटला जातो.", "Journal", ["accumulated profits"]);
+  addQA("Adjustment of capitals after admission based on new partner's capital", "Total Capital = New Partner's Capital × (1 / New Partner's Share). Then each partner's required capital = Total Capital × New Ratio. Difference adjusted through Cash/Bank or Current Account.", "नए साझेदार की पूंजी के आधार पर पूंजी समायोजन।", "नवीन भागीदाराच्या भांडवलाच्या आधारावर भांडवल समायोजन.", "Capital", ["capital adjustment"]);
+
+  // ==================== THEORY QUESTIONS ====================
+  addQA("True/False: New partner can be admitted only with consent of all existing partners", "True. As per Section 31(1) of Indian Partnership Act 1932, a new partner can be admitted only with the consent of all existing partners unless otherwise agreed.", "सही। भारतीय भागीदारी अधिनियम 1932 की धारा 31(1) के अनुसार।", "बरोबर. भारतीय भागीदारी कायदा १९३२ कलम ३१(१) प्रमाणे.", "True/False", ["consent of partners"]);
+  addQA("True/False: Revaluation profit is shared among all partners including new partner", "False. Revaluation profit/loss belongs to old partners as it relates to past period. It is distributed among old partners in their old profit sharing ratio.", "गलत। पुनर्मूल्यांकन लाभ/हानि केवल पुराने साझेदारों में बांटा जाता है।", "चुकीचे. पुनर्मूल्यांकन नफा/तोटा फक्त जुन्या भागीदारांत वाटला जातो.", "True/False", ["revaluation profit old partners"]);
+  addQA("Fill in blank: Sacrifice Ratio = Old Ratio - ______ Ratio.", "New Ratio", "नया अनुपात", "नवीन प्रमाण", "Fillup", ["sacrifice formula"]);
+  addQA("Fill in blank: When goodwill is paid privately to old partners, ______ entry is passed in books.", "No", "कोई नहीं", "कोणतीही नोंद नाही", "Fillup", ["private goodwill no entry"]);
+
+  // Helper Functions
+  const searchInput = document.getElementById("searchInput");
+  const resultsContainer = document.getElementById("resultsContainer");
+  const suggestionsDiv = document.getElementById("suggestionsList");
+
+  function getMatches(query) {
+    if(!query.trim()) return [];
+    const lower = query.toLowerCase();
+    return qaDatabase.filter(item => 
+      item.question.toLowerCase().includes(lower) || 
+      item.answer.toLowerCase().includes(lower) ||
+      item.category.toLowerCase().includes(lower) ||
+      item.keywords.some(k => k.includes(lower) || lower.includes(k))
+    ).slice(0, 14);
+  }
+
+  function updateSuggestions() {
+    const val = searchInput.value;
+    if(!val.trim()) { suggestionsDiv.style.display = "none"; return; }
+    const matches = getMatches(val);
+    if(!matches.length) { suggestionsDiv.style.display = "none"; return; }
+    suggestionsDiv.innerHTML = "";
+    matches.forEach(item => {
+      const div = document.createElement("div");
+      div.className = "suggestion-item";
+      div.innerHTML = `<span>🤝</span> <strong>${item.question.substring(0,70)}...</strong> <span style="margin-left:auto; background:#fef3c7; padding:2px 10px; border-radius:20px;">${item.category}</span>`;
+      div.addEventListener("click", () => {
+        searchInput.value = item.question;
+        suggestionsDiv.style.display = "none";
+        performSearch(item.question);
+      });
+      suggestionsDiv.appendChild(div);
+    });
+    suggestionsDiv.style.display = "block";
+  }
+
+  function performSearch(query = null) {
+    let q = (query !== null) ? query : searchInput.value;
+    q = q.trim();
+    if(!q) { resultsContainer.innerHTML = `<div class="not-found">🔍 Search: Admission of Partner, Goodwill, Average Profit Method, Super Profit Method, Revaluation Account, New Ratio, Sacrifice Ratio.</div>`; return; }
+    const matches = getMatches(q);
+    if(!matches.length) { resultsContainer.innerHTML = `<div class="not-found">❌ No results for "${q}". Try: Goodwill valuation, Revaluation A/c, New Ratio, Sacrifice Ratio, Premium Method.</div>`; return; }
+    resultsContainer.innerHTML = "";
+    matches.forEach(item => {
+      let extraContent = "";
+      if (item.question.toLowerCase().includes("journal entry for goodwill") || (item.question.toLowerCase().includes("goodwill") && item.category === "Journal"))
+        extraContent = getGoodwillJournalTable();
+      else if (item.question.toLowerCase().includes("revaluation format") || item.question.toLowerCase().includes("specimen of revaluation"))
+        extraContent = getRevaluationFormat();
+      else if (item.category === "Numerical" && item.answer.includes("₹"))
+        extraContent = `<div class="formula-box">📐 ${item.answer}</div>`;
+      else if (item.category === "Formulas")
+        extraContent = `<div class="formula-box">📐 ${item.answer}</div>`;
+      
+      const card = document.createElement("div");
+      card.className = "result-card";
+      card.innerHTML = `
+        <div class="badge">${escapeHtml(item.category)}</div>
+        <h3>📘 ${escapeHtml(item.question)}</h3>
+        <div class="answer-text"><strong>✅ Answer / उत्तर:</strong><br>${escapeHtml(item.answer)}${extraContent}</div>
+        <div class="action-buttons">
+          <button class="langBtn" data-q="${escapeAttr(item.question)}" data-a="${escapeAttr(item.answer)}" data-hi="${escapeAttr(item.hindi)}" data-mr="${escapeAttr(item.marathi)}">🌐 हिंदी / मराठी</button>
+          <button class="detailBtn" data-q="${escapeAttr(item.question)}" data-a="${escapeAttr(item.answer)}" data-cat="${item.category}">📘 Detailed Rules & Procedure</button>
+        </div>
+      `;
+      resultsContainer.appendChild(card);
+    });
+    attachEvents();
+  }
+
+  function attachEvents() {
+    document.querySelectorAll(".langBtn").forEach(btn => btn.addEventListener("click", (e) => {
+      const q = btn.getAttribute("data-q"), a= btn.getAttribute("data-a"), hi=btn.getAttribute("data-hi"), mr=btn.getAttribute("data-mr");
+      showLangPopup(q,a,hi,mr);
+    }));
+    document.querySelectorAll(".detailBtn").forEach(btn => btn.addEventListener("click", (e) => {
+      const q = btn.getAttribute("data-q"), a= btn.getAttribute("data-a"), cat=btn.getAttribute("data-cat");
+      showDetailPopup(q,a,cat);
+    }));
+  }
+
+  function showLangPopup(question, answer, hindi, marathi) {
+    document.getElementById("popupModal").style.display = "flex";
+    document.getElementById("modalContent").innerHTML = `
+      <h2 style="color:#b45309;">🌐 भाषा अनुवाद | Translation</h2>
+      <div class="lang-section"><strong>❓ प्रश्न:</strong> ${escapeHtml(question)}</div>
+      <div class="lang-section"><strong>🇮🇳 हिंदी (Hindi):</strong><br>${escapeHtml(hindi || answer)}</div>
+      <div class="lang-section"><strong>🇮🇳 मराठी (Marathi):</strong><br>${escapeHtml(marathi || answer)}</div>
+      <button id="closeLangModal" style="background:#d97706; padding:10px 24px; border-radius:40px; color:white; border:none;">बंद करें</button>
+    `;
+    document.getElementById("closeLangModal").addEventListener("click", ()=> document.getElementById("popupModal").style.display = "none");
+  }
+
+  function showDetailPopup(question, answer, category) {
+    let extra = `<div class="lang-section"><strong>📚 Chapter Reference:</strong> 12th BK Chapter 3 - Reconstitution of Partnership (Admission of Partner). Topics: New Profit Sharing Ratio, Sacrifice Ratio, Goodwill Valuation (Average & Super Profit Methods), Treatment of Goodwill (Premium & Valuation Methods), Revaluation Account, Adjustment of Accumulated Profits/Losses, Capital Adjustment.</div>`;
+    if(category === "Goodwill") extra += getGoodwillJournalTable();
+    if(category === "Ratio" || category === "Formulas") extra += `<div class="lang-section">📌 Key Formulas:<br>• Sacrifice Ratio = Old Ratio - New Ratio<br>• New Ratio = Old Ratio × Remaining Share<br>• Average Profit = Total Profit / No. of Years<br>• Goodwill = Average Profit × Years Purchase<br>• Normal Profit = (Capital Employed × NRR)/100<br>• Super Profit = Average Profit - Normal Profit</div>`;
+    document.getElementById("popupModal").style.display = "flex";
+    document.getElementById("modalContent").innerHTML = `
+      <h2 class="detail-title">📘 Detailed Explanation (विस्तृत उत्तर)</h2>
+      <div class="lang-section"><strong>❓ Question:</strong> ${escapeHtml(question)}</div>
+      <div class="lang-section"><strong>✅ Detailed Answer:</strong><br>${escapeHtml(answer)}</div>
+      ${extra}
+      <button id="closeDetailModal" style="background:#d97706; padding:10px 24px; border-radius:40px; color:white; border:none;">Close</button>
+    `;
+    document.getElementById("closeDetailModal").addEventListener("click", ()=> document.getElementById("popupModal").style.display = "none");
+  }
+
+  function escapeHtml(str) { return str.replace(/[&<>]/g, function(m){ if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m;}); }
+  function escapeAttr(str) { return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  function startVoice() { if (!('webkitSpeechRecognition' in window)) { alert("Voice not supported."); return; } const rec = new webkitSpeechRecognition(); rec.lang="en-IN"; rec.start(); rec.onresult = (e)=> { searchInput.value = e.results[0][0].transcript; performSearch(); }; }
+  document.getElementById("voiceBtn").addEventListener("click", startVoice);
+  searchInput.addEventListener("keyup", () => { performSearch(); updateSuggestions(); });
+  searchInput.addEventListener("focus", updateSuggestions);
+  document.addEventListener("click", (e) => { if(!document.querySelector(".search-wrapper").contains(e.target)) suggestionsDiv.style.display = "none"; });
+  document.getElementById("closeModalBtn").addEventListener("click", () => document.getElementById("popupModal").style.display = "none");
+  window.onload = () => { resultsContainer.innerHTML = `<div class="not-found">✨ 12th Commerce Chapter 3: Admission of Partner | ${qaDatabase.length}+ Q&A | Goodwill, Revaluation A/c, Capital Adjustment ✨</div>`; };
+</script>
+</body>
+</html>

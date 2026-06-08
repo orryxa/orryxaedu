@@ -1,0 +1,1816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Science Textbooks | Orryxa Education</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            overflow-y: scroll;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        :root {
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+            --header-bg: linear-gradient(135deg, #0b2b26 0%, #1a4d46 100%);
+            --menu-bg: #ffffff;
+            --tool-bg: #f1f5f9;
+            --footer-bg: #e2e8f0;
+            --accent: #f5b042;
+            --accent-dark: #e09d2a;
+            --accent-light: #fef3c7;
+            --success: #10b981;
+            --error: #ef4444;
+            --info: #3b82f6;
+            --warning: #f59e0b;
+            --table-header: #0f3b34;
+            --table-row-hover: #f1f5f9;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+        }
+
+        body.dark-mode {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --card-bg: #1e293b;
+            --border-color: #334155;
+            --header-bg: linear-gradient(135deg, #061a16 0%, #0f3b34 100%);
+            --menu-bg: #1e293b;
+            --tool-bg: #0f172a;
+            --footer-bg: #0f172a;
+            --accent-light: #2d2d3a;
+            --table-header: #1a5c52;
+            --table-row-hover: #334155;
+        }
+
+        /* Toast Container */
+        .toast-container {
+            position: fixed;
+            top: 90px;
+            right: 20px;
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .toast {
+            min-width: 280px;
+            max-width: 380px;
+            background: var(--card-bg);
+            border-radius: var(--radius-md);
+            padding: 1rem 1.2rem;
+            box-shadow: var(--shadow-xl);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            animation: toastSlideIn 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+        }
+        
+        @keyframes toastSlideIn {
+            from { transform: translateX(100%) scale(0.9); opacity: 0; }
+            to { transform: translateX(0) scale(1); opacity: 1; }
+        }
+        
+        .toast.success { border-left: 4px solid var(--success); }
+        .toast.error { border-left: 4px solid var(--error); }
+        .toast.info { border-left: 4px solid var(--info); }
+        .toast.warning { border-left: 4px solid var(--warning); }
+        
+        .toast i:first-child { font-size: 1.2rem; }
+        .toast-content { flex: 1; }
+        .toast-title { font-weight: 700; font-size: 0.85rem; margin-bottom: 3px; }
+        .toast-message { font-size: 0.75rem; color: var(--text-secondary); }
+        
+        .toast-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            background: rgba(0,0,0,0.1);
+            width: 100%;
+        }
+        
+        .toast-progress-bar {
+            height: 100%;
+            width: 100%;
+            background: currentColor;
+            animation: progress 3s linear forwards;
+        }
+        
+        @keyframes progress { from { width: 100%; } to { width: 0%; } }
+
+        /* Sticky Header */
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--header-bg);
+            backdrop-filter: blur(10px);
+            padding: 0.75rem 2rem;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+        
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-area h1 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #f9e7b3, #ffd966);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            cursor: pointer;
+            letter-spacing: -0.5px;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #f5b042, #ffd966);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: #0b2b26;
+        }
+        
+        .menu-toggle-btn {
+            display: none;
+            background: rgba(255,255,245,0.15);
+            border: none;
+            color: white;
+            font-size: 1.3rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: var(--radius-sm);
+            width: 40px;
+            height: 40px;
+            transition: all 0.2s;
+        }
+        
+        .menu-toggle-btn:hover { background: rgba(255,255,245,0.25); transform: scale(1.02); }
+        
+        .desktop-auth-buttons { display: flex; gap: 0.8rem; align-items: center; }
+        
+        .desktop-profile-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255,255,245,0.1);
+            padding: 0.4rem 0.8rem 0.4rem 0.4rem;
+            border-radius: 50px;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s;
+        }
+        
+        .desktop-profile-container:hover { background: rgba(255,255,245,0.2); }
+        
+        .profile-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f5b042, #ffd966);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #0b2b26;
+            overflow: hidden;
+        }
+        
+        .profile-circle img { width: 100%; height: 100%; object-fit: cover; }
+        .profile-circle .spinner-small {
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 0.6s ease-in-out infinite;
+        }
+        
+        .profile-info { display: flex; flex-direction: column; }
+        .profile-name { color: white; font-weight: 600; font-size: 0.85rem; }
+        .profile-email { color: rgba(255,255,255,0.7); font-size: 0.7rem; }
+        
+        .profile-dropdown {
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background: var(--card-bg);
+            border-radius: var(--radius-md);
+            min-width: 220px;
+            box-shadow: var(--shadow-xl);
+            overflow: hidden;
+            visibility: hidden;
+            opacity: 0;
+            transition: all 0.2s;
+            z-index: 1001;
+            border: 1px solid var(--border-color);
+        }
+        
+        .desktop-profile-container.active .profile-dropdown { visibility: visible; opacity: 1; top: 55px; }
+        
+        .dropdown-item {
+            padding: 0.8rem 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .dropdown-item:hover { background: var(--tool-bg); padding-left: 1.5rem; }
+        .logout-item { color: var(--error); }
+        
+        .btn-login, .btn-signup {
+            padding: 0.45rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+        
+        .btn-login {
+            background: rgba(255,255,245,0.15);
+            color: white;
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn-login:hover { background: rgba(255,255,245,0.25); transform: translateY(-1px); }
+        
+        .btn-signup {
+            background: var(--accent);
+            color: #0b2b26;
+        }
+        
+        .btn-signup:hover { background: var(--accent-dark); transform: translateY(-1px); }
+        
+        .dark-mode-toggle {
+            background: rgba(255,255,245,0.15);
+            border: none;
+            border-radius: 40px;
+            padding: 0.45rem 0.9rem;
+            cursor: pointer;
+            color: white;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+        
+        .dark-mode-toggle:hover { background: rgba(255,255,245,0.25); transform: scale(1.02); }
+
+        /* Desktop Navigation */
+        .desktop-menu-nav {
+            background: var(--menu-bg);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 70px;
+            z-index: 999;
+            backdrop-filter: blur(10px);
+        }
+        
+        .desktop-menu-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.6rem 2rem;
+        }
+        
+        .desktop-menu-item {
+            padding: 0.6rem 1.3rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 40px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+        }
+        
+        .desktop-menu-item i { font-size: 0.9rem; }
+        .desktop-menu-item:hover { background: var(--accent-light); transform: translateY(-2px); }
+        .desktop-menu-item.active {
+            background: var(--accent);
+            color: #0b2b26;
+        }
+
+        /* Mobile Sidebar */
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px);
+            z-index: 2000;
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.3s;
+        }
+        
+        .sidebar-overlay.active { visibility: visible; opacity: 1; }
+        
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 280px;
+            height: 100%;
+            background: var(--bg-secondary);
+            box-shadow: var(--shadow-xl);
+            z-index: 2001;
+            transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+        
+        .sidebar.active { left: 0; }
+        
+        .sidebar-header {
+            background: var(--header-bg);
+            padding: 2rem 1.5rem;
+            text-align: center;
+        }
+        
+        .sidebar-profile-circle {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, #f5b042, #ffd966);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #0b2b26;
+            overflow: hidden;
+        }
+        
+        .sidebar-user-name { color: white; font-weight: 700; margin-bottom: 0.3rem; }
+        .sidebar-user-email { color: rgba(255,255,255,0.8); font-size: 0.75rem; }
+        
+        .sidebar-auth-buttons {
+            display: flex;
+            gap: 0.8rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        
+        .sidebar-auth-buttons button {
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        
+        .sidebar-auth-buttons button:first-child {
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+        
+        .sidebar-auth-buttons button:last-child {
+            background: var(--accent);
+            color: #0b2b26;
+        }
+        
+        .sidebar-menu { flex: 1; padding: 1rem 0; }
+        
+        .sidebar-menu-item {
+            padding: 0.8rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .sidebar-menu-item:hover { background: var(--tool-bg); padding-left: 2rem; }
+        .sidebar-menu-item i { width: 24px; color: var(--accent); }
+        .sidebar-menu-item.active { background: var(--accent-light); color: var(--accent); }
+        
+        .sidebar-footer {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .sidebar-dark-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .toggle-switch {
+            position: relative;
+            width: 50px;
+            height: 24px;
+            background: #cbd5e1;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .toggle-switch.active { background: var(--accent); }
+        .toggle-slider {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            transition: 0.2s;
+        }
+        
+        .toggle-switch.active .toggle-slider { left: 28px; }
+        
+        .close-sidebar {
+            position: absolute;
+            top: 0.8rem;
+            right: 0.8rem;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            transition: all 0.2s;
+        }
+        
+        .close-sidebar:hover { background: rgba(255,255,255,0.3); transform: scale(1.05); }
+
+        /* Main Content */
+        .content-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            min-height: calc(100vh - 140px);
+        }
+        
+        .page-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .back-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 0.6rem 1.2rem;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-primary);
+            transition: all 0.2s;
+        }
+        
+        .back-btn:hover { background: var(--accent-light); border-color: var(--accent); transform: translateX(-3px); }
+        
+        .page-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0 0 0.5rem 0;
+        }
+        
+        .section-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Sync Status Indicator */
+        .sync-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.7rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 40px;
+            background: var(--tool-bg);
+        }
+        
+        .sync-status i {
+            font-size: 0.65rem;
+        }
+        
+        .sync-status.syncing i {
+            animation: spin 1s linear infinite;
+        }
+        
+        .sync-status.updated {
+            background: var(--success);
+            color: white;
+        }
+        
+        /* Subject Cards */
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .subject-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .subject-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(245,176,66,0.1), transparent);
+            transition: left 0.5s;
+        }
+        
+        .subject-card:hover::before { left: 100%; }
+        
+        .subject-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .subject-card i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 12px;
+            display: block;
+            transition: transform 0.3s;
+        }
+        
+        .subject-card:hover i { transform: scale(1.1); }
+        
+        .subject-card strong {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        /* Chapters Table - Premium Design */
+        .chapters-wrapper {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            animation: fadeInUp 0.4s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .chapter-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            min-width: 500px;
+        }
+        
+        .chapter-table th {
+            background: var(--table-header);
+            color: white;
+            padding: 1rem 1rem;
+            font-weight: 600;
+            text-align: left;
+            position: sticky;
+            top: 0;
+        }
+        
+        .chapter-table td {
+            padding: 1rem 1rem;
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: middle;
+            transition: background 0.2s;
+        }
+        
+        .chapter-table tr {
+            transition: all 0.2s;
+        }
+        
+        .chapter-table tr:hover {
+            background: var(--table-row-hover);
+        }
+        
+        .chapter-table tr.updated {
+            animation: highlightFade 1s ease-out;
+        }
+        
+        @keyframes highlightFade {
+            0% { background: var(--accent-light); }
+            100% { background: transparent; }
+        }
+        
+        .chapter-table .sr-col {
+            width: 80px;
+            font-weight: 600;
+            color: var(--accent);
+        }
+        
+        .chapter-table .action-col {
+            width: 110px;
+            text-align: center;
+        }
+        
+        .view-table-btn {
+            background: var(--accent);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.75rem;
+            color: #0b2b26;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .view-table-btn:hover {
+            background: var(--accent-dark);
+            transform: scale(1.05);
+        }
+
+        /* Loading States */
+        .loading-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem;
+        }
+        
+        .spinner-circle {
+            width: 48px;
+            height: 48px;
+            border: 3px solid var(--border-color);
+            border-radius: 50%;
+            border-top-color: var(--accent);
+            animation: spin 0.8s linear infinite;
+            margin-bottom: 1rem;
+        }
+        
+        @keyframes spin { to { transform: rotate(360deg); } }
+        
+        .empty-state, .error-state {
+            text-align: center;
+            padding: 3rem;
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            color: var(--text-secondary);
+        }
+        
+        .empty-state i, .error-state i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .cache-badge {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: var(--card-bg);
+            padding: 0.3rem 0.8rem;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            box-shadow: var(--shadow-sm);
+            z-index: 999;
+            pointer-events: none;
+            backdrop-filter: blur(10px);
+        }
+
+        .footer-note {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--footer-bg);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .sticky-header { padding: 0.5rem 1rem; }
+            .desktop-menu-nav { display: none; }
+            .menu-toggle-btn { display: block; }
+            .desktop-auth-buttons, .desktop-profile-container { display: none !important; }
+            .content-wrapper { padding: 1rem; }
+            .page-title { font-size: 1.6rem; }
+            .subjects-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem; }
+            .subject-card { padding: 1rem; }
+            .subject-card i { font-size: 1.8rem; }
+            .chapter-table th, .chapter-table td { padding: 0.75rem 0.6rem; }
+            .chapter-table .sr-col { width: 60px; font-size: 0.85rem; }
+            .view-table-btn { padding: 0.4rem 0.7rem; font-size: 0.7rem; }
+            .toast-container { top: 80px; right: 10px; left: 10px; }
+            .toast { max-width: calc(100% - 20px); min-width: auto; }
+            .cache-badge { bottom: 10px; left: 10px; font-size: 0.6rem; }
+            .page-header { flex-direction: column; align-items: flex-start; }
+        }
+        
+        @media (min-width: 769px) {
+            .sidebar, .sidebar-overlay { display: none; }
+        }
+        
+        @media (min-width: 1024px) {
+            .content-wrapper { padding: 2rem 3rem; }
+            .subjects-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+<header class="sticky-header">
+    <div class="header-container">
+        <div class="logo-area">
+            <button class="menu-toggle-btn" id="menuToggleBtn"><i class="fas fa-bars"></i></button>
+            <div class="logo-icon">🔬</div>
+            <div class="logo-area" id="logoHomeBtn"><h1>Orryxa Education</h1></div>
+        </div>
+        <div class="desktop-auth-buttons" id="desktopAuthButtons">
+            <button class="btn-login" id="openLoginBtn"><i class="fas fa-key"></i> Log in</button>
+            <button class="btn-signup" id="openSignupBtn"><i class="fas fa-user-plus"></i> Sign up</button>
+            <button class="dark-mode-toggle" id="darkModeToggleBtn"><i class="fas fa-moon"></i></button>
+        </div>
+        <div class="desktop-profile-container" id="desktopProfileContainer" style="display: none;">
+            <div class="profile-circle" id="desktopProfileCircle"><span id="desktopInitial">U</span></div>
+            <div class="profile-info">
+                <span class="profile-name" id="desktopName"></span>
+                <span class="profile-email" id="desktopEmail"></span>
+            </div>
+            <i class="fas fa-chevron-down" style="color: white; font-size: 0.7rem;"></i>
+            <div class="profile-dropdown" id="desktopDropdown">
+                <div class="dropdown-item" id="desktopMyAccount"><i class="fas fa-user-circle"></i> My Account</div>
+                <div class="dropdown-item logout-item" id="desktopLogout"><i class="fas fa-sign-out-alt"></i> Logout</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<nav class="desktop-menu-nav">
+    <div class="desktop-menu-container">
+        <div class="desktop-menu-item active" data-page="textbook"><i class="fas fa-book-open"></i> Text Books</div>
+        <div class="desktop-menu-item" data-page="notes"><i class="fas fa-pen-fancy"></i> Notes</div>
+        <div class="desktop-menu-item" data-page="solutions"><i class="fas fa-lightbulb"></i> Solutions</div>
+        <div class="desktop-menu-item" data-page="questionpapers"><i class="fas fa-file-alt"></i> Question Papers</div>
+        <div class="desktop-menu-item" data-page="project"><i class="fas fa-laptop-code"></i> Projects</div>
+    </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<div class="sidebar" id="sidebar">
+    <button class="close-sidebar" id="closeSidebarBtn"><i class="fas fa-times"></i></button>
+    <div class="sidebar-header">
+        <div class="sidebar-profile-circle" id="sidebarProfileCircle"><span id="sidebarInitial">U</span></div>
+        <div class="sidebar-user-name" id="sidebarUserName">Guest User</div>
+        <div class="sidebar-user-email" id="sidebarUserEmail">Please login</div>
+        <div class="sidebar-auth-buttons" id="sidebarAuthButtons">
+            <button id="sidebarLoginBtn"><i class="fas fa-key"></i> Login</button>
+            <button id="sidebarSignupBtn"><i class="fas fa-user-plus"></i> Signup</button>
+        </div>
+    </div>
+    <div class="sidebar-menu">
+        <div class="sidebar-menu-item active" data-page="textbook"><i class="fas fa-book-open"></i> Text Books</div>
+        <div class="sidebar-menu-item" data-page="notes"><i class="fas fa-pen-fancy"></i> Notes</div>
+        <div class="sidebar-menu-item" data-page="solutions"><i class="fas fa-lightbulb"></i> Solutions</div>
+        <div class="sidebar-menu-item" data-page="questionpapers"><i class="fas fa-file-alt"></i> Question Papers</div>
+        <div class="sidebar-menu-item" data-page="project"><i class="fas fa-laptop-code"></i> Projects</div>
+        <div class="sidebar-menu-item" id="sidebarMyAccount" style="display: none;"><i class="fas fa-user-circle"></i> My Account</div>
+        <div class="sidebar-menu-item" id="sidebarLogout" style="display: none;"><i class="fas fa-sign-out-alt"></i> Logout</div>
+    </div>
+    <div class="sidebar-footer">
+        <div class="sidebar-dark-toggle">
+            <span><i class="fas fa-moon"></i> Dark Mode</span>
+            <div class="toggle-switch" id="sidebarDarkToggle">
+                <div class="toggle-slider"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content-wrapper" id="mainContent">
+    <div id="dynamicView"></div>
+</div>
+
+<div class="footer-note"><i class="fas fa-graduation-cap"></i> Orryxa Education — 2025 | Science Textbooks</div>
+<div class="toast-container" id="toastContainer"></div>
+<div class="cache-badge" id="cacheBadge">📦 Loading...</div>
+
+<script>
+    // =====================================================
+    // SCIENCE.HTML - WITH SUBJECT-SHEET MAPPING & CACHING
+    // Version: 4.0
+    // =====================================================
+
+    // Configuration
+    const CONFIG = {
+        SCRIPT_URL: "https://script.google.com/macros/s/AKfycbzoDds81u8M5N8micA_hoIBgCS7aCFm0NUmwW6XLH4m_fRJ8R9pGqjgFGMeBxBd2dSL/exec",
+        TEXTBOOK_SPREADSHEET_ID: "1gYIcSbCcPf_wM8AwutYbtyyj_9BGKF2zsov35EtLnww",
+        LOGIN_SPREADSHEET_ID: "13UD1vMsopDesYMuYF4ZgXwRGE25vaR-PWl9hIGml0OE",
+        SHEET_NAME: "Login_Portal",
+        CACHE_PREFIX: "orryxa_cache_science_",
+        CACHE_DURATION_MS: 5 * 60 * 1000,
+        SYNC_INTERVAL_MS: 30000,
+        FETCH_TIMEOUT_MS: 15000,
+        MAX_RETRY_ATTEMPTS: 3,
+        RETRY_DELAY_MS: 3000
+    };
+
+    // Subject to Sheet Name Mapping for Science
+    const SUBJECT_SHEET_MAP = {
+        "Language": "Language",
+        "Biology": "Biology",
+        "Physics": "Physics",
+        "Chemistry": "Chemistry",
+        "Maths Part 1": "Maths Part 1",
+        "Maths Part 2": "Maths Part 2",
+        "Geography": "Geography",
+        "Information Technology": "IT",
+        "Physical Education": "PE",
+        "Environmental Studies": "EVS"
+    };
+
+    // Subject Icons
+    const SUBJECT_ICONS = {
+        'Language': 'fas fa-language',
+        'Biology': 'fas fa-dna',
+        'Physics': 'fas fa-atom',
+        'Chemistry': 'fas fa-flask',
+        'Maths Part 1': 'fas fa-square-root-alt',
+        'Maths Part 2': 'fas fa-square-root-alt',
+        'Geography': 'fas fa-globe',
+        'Information Technology': 'fas fa-laptop-code',
+        'Physical Education': 'fas fa-futbol',
+        'Environmental Studies': 'fas fa-leaf'
+    };
+
+    // Global Variables
+    let currentUser = null;
+    let cachedUserData = null;
+    let syncInterval = null;
+    let currentStandard = null;
+    let currentSubject = null;
+    let currentChapterData = null;
+    let chapterDataHash = null;
+    let isSyncingChapters = false;
+
+    // =====================================================
+    // UTILITY FUNCTIONS
+    // =====================================================
+
+    function getSheetName(standard, subject) {
+        const standardNum = standard.includes("11th") ? "11" : "12";
+        const mappedSubject = SUBJECT_SHEET_MAP[subject] || subject.replace(/\s+/g, '_');
+        return `${standardNum}_${mappedSubject}`;
+    }
+
+    function showToast(message, type = 'info', title = '') {
+        let container = document.getElementById('toastContainer');
+        if (!container) {
+            container = document.createElement('div');
+            container.id = 'toastContainer';
+            container.className = 'toast-container';
+            document.body.appendChild(container);
+        }
+        
+        const toast = document.createElement('div');
+        toast.className = `toast ${type}`;
+        
+        let icon = '';
+        let defaultTitle = '';
+        switch(type) {
+            case 'success': icon = '<i class="fas fa-check-circle"></i>'; defaultTitle = 'Success'; break;
+            case 'error': icon = '<i class="fas fa-exclamation-circle"></i>'; defaultTitle = 'Error'; break;
+            case 'warning': icon = '<i class="fas fa-exclamation-triangle"></i>'; defaultTitle = 'Warning'; break;
+            default: icon = '<i class="fas fa-info-circle"></i>'; defaultTitle = 'Info';
+        }
+        
+        toast.innerHTML = `
+            ${icon}
+            <div class="toast-content">
+                <div class="toast-title">${title || defaultTitle}</div>
+                <div class="toast-message">${message}</div>
+            </div>
+            <div class="toast-progress"><div class="toast-progress-bar"></div></div>
+        `;
+        
+        container.appendChild(toast);
+        
+        setTimeout(() => {
+            toast.style.animation = 'slideOut 0.3s ease';
+            setTimeout(() => { if (toast.parentNode) toast.remove(); }, 300);
+        }, 3000);
+        
+        toast.addEventListener('click', () => {
+            toast.style.animation = 'slideOut 0.3s ease';
+            setTimeout(() => { if (toast.parentNode) toast.remove(); }, 300);
+        });
+    }
+
+    function extractFileId(link) {
+        if (!link) return null;
+        const patterns = [
+            /\/d\/([a-zA-Z0-9_-]+)/,
+            /id=([a-zA-Z0-9_-]+)/,
+            /\/file\/d\/([a-zA-Z0-9_-]+)/,
+            /([a-zA-Z0-9_-]{25,})/
+        ];
+        for (let pattern of patterns) {
+            const match = link.match(pattern);
+            if (match && match[1]) return match[1];
+        }
+        return null;
+    }
+
+    function getPdfUrl(link) {
+        const fileId = extractFileId(link);
+        return fileId ? `https://lh3.googleusercontent.com/d/${fileId}` : link;
+    }
+
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+
+    function escapeAttr(str) {
+        if (!str) return '';
+        return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    function getStandardFromURL() {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get('standard');
+    }
+
+    function getSubjectFromURL() {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get('subject');
+    }
+
+    // =====================================================
+    // CACHE MANAGEMENT
+    // =====================================================
+
+    function getCacheKey(sheetName) {
+        return `${CONFIG.CACHE_PREFIX}${sheetName}`;
+    }
+
+    function saveToCache(sheetName, data) {
+        try {
+            const cacheData = {
+                data: data,
+                timestamp: Date.now(),
+                hash: JSON.stringify(data)
+            };
+            localStorage.setItem(getCacheKey(sheetName), JSON.stringify(cacheData));
+            console.log(`[Cache] Saved ${sheetName} to cache`);
+            
+            const badge = document.getElementById('cacheBadge');
+            if (badge) {
+                badge.innerHTML = '💾 Saving to cache...';
+                setTimeout(() => {
+                    badge.innerHTML = '📦 Cache ready';
+                    setTimeout(() => { badge.style.opacity = '0.5'; }, 2000);
+                }, 1000);
+            }
+            return true;
+        } catch (e) {
+            console.warn('[Cache] Save failed:', e);
+            return false;
+        }
+    }
+
+    function loadFromCache(sheetName) {
+        try {
+            const cached = localStorage.getItem(getCacheKey(sheetName));
+            if (!cached) return null;
+            
+            const cacheData = JSON.parse(cached);
+            const isExpired = (Date.now() - cacheData.timestamp) > CONFIG.CACHE_DURATION_MS;
+            
+            if (isExpired) {
+                console.log(`[Cache] ${sheetName} expired`);
+                return null;
+            }
+            
+            console.log(`[Cache] Loaded ${sheetName} from cache (${Math.round((Date.now() - cacheData.timestamp)/1000)}s old)`);
+            
+            const badge = document.getElementById('cacheBadge');
+            if (badge) {
+                badge.innerHTML = '📦 Cache active';
+                badge.style.opacity = '0.7';
+                setTimeout(() => { badge.style.opacity = '0.5'; }, 2000);
+            }
+            return cacheData.data;
+        } catch (e) {
+            console.warn('[Cache] Load failed:', e);
+            return null;
+        }
+    }
+
+    // =====================================================
+    // DATA FETCHING WITH CACHE
+    // =====================================================
+
+    async function fetchWithTimeout(url, timeout = CONFIG.FETCH_TIMEOUT_MS, retries = CONFIG.MAX_RETRY_ATTEMPTS) {
+        for (let attempt = 1; attempt <= retries; attempt++) {
+            try {
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), timeout);
+                const response = await fetch(url, { signal: controller.signal });
+                clearTimeout(timeoutId);
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                return response;
+            } catch (error) {
+                console.warn(`Fetch attempt ${attempt} failed:`, error.message);
+                if (attempt === retries) throw error;
+                await new Promise(resolve => setTimeout(resolve, CONFIG.RETRY_DELAY_MS));
+            }
+        }
+    }
+
+    async function fetchSheetData(sheetName, forceRefresh = false) {
+        if (!forceRefresh) {
+            const cachedData = loadFromCache(sheetName);
+            if (cachedData) return cachedData;
+        }
+        
+        try {
+            const url = `${CONFIG.SCRIPT_URL}?spreadsheetId=${CONFIG.TEXTBOOK_SPREADSHEET_ID}&sheetName=${encodeURIComponent(sheetName)}`;
+            const response = await fetchWithTimeout(url, CONFIG.FETCH_TIMEOUT_MS, 2);
+            const data = await response.json();
+            
+            if (data.status === 'success' && Array.isArray(data.data)) {
+                saveToCache(sheetName, data.data);
+                return data.data;
+            }
+            return [];
+        } catch(e) {
+            console.error('Fetch sheet data error:', e);
+            const expiredCache = localStorage.getItem(getCacheKey(sheetName));
+            if (expiredCache) {
+                try {
+                    const cacheData = JSON.parse(expiredCache);
+                    console.log(`[Cache] Using expired cache for ${sheetName} due to network error`);
+                    return cacheData.data;
+                } catch(ce) {}
+            }
+            return [];
+        }
+    }
+
+    // =====================================================
+    // CHAPTER DATA COMPARISON & UI UPDATE
+    // =====================================================
+
+    function compareChapterData(oldData, newData) {
+        if (!oldData || !newData) return { hasChanges: true, changes: [] };
+        if (oldData.length !== newData.length) {
+            return { hasChanges: true, changes: [{ type: 'length', old: oldData.length, new: newData.length }] };
+        }
+        
+        const changes = [];
+        for (let i = 0; i < oldData.length; i++) {
+            const oldRow = oldData[i];
+            const newRow = newData[i];
+            
+            const oldSrNo = oldRow['Sr. No'] || oldRow['Sr No'] || '';
+            const newSrNo = newRow['Sr. No'] || newRow['Sr No'] || '';
+            const oldChapter = oldRow['Chapter Name'] || oldRow['Chapter'] || '';
+            const newChapter = newRow['Chapter Name'] || newRow['Chapter'] || '';
+            const oldLink = oldRow['Link'] || oldRow['Drive Link'] || '';
+            const newLink = newRow['Link'] || newRow['Drive Link'] || '';
+            
+            if (oldSrNo !== newSrNo || oldChapter !== newChapter || oldLink !== newLink) {
+                changes.push({
+                    index: i,
+                    srNo: newSrNo,
+                    chapterName: newChapter,
+                    link: newLink
+                });
+            }
+        }
+        
+        return { hasChanges: changes.length > 0, changes: changes };
+    }
+
+    function animateUpdatedRow(rowIndex) {
+        const rows = document.querySelectorAll('.chapter-table tbody tr');
+        if (rows[rowIndex]) {
+            rows[rowIndex].classList.add('updated');
+            setTimeout(() => {
+                rows[rowIndex].classList.remove('updated');
+            }, 1000);
+        }
+    }
+
+    async function updateChapterTableWithChanges(newData, changes) {
+        if (!changes || changes.length === 0) return false;
+        
+        console.log(`[Sync] Updating ${changes.length} changed rows`);
+        
+        for (const change of changes) {
+            const rowIndex = change.index;
+            const rows = document.querySelectorAll('.chapter-table tbody tr');
+            
+            if (rows[rowIndex]) {
+                const srCell = rows[rowIndex].querySelector('td:first-child');
+                if (srCell) srCell.innerHTML = change.srNo;
+                
+                const chapterCell = rows[rowIndex].querySelector('td:nth-child(2)');
+                if (chapterCell) chapterCell.innerHTML = escapeHtml(change.chapterName);
+                
+                const viewBtn = rows[rowIndex].querySelector('.view-table-btn');
+                if (viewBtn) viewBtn.setAttribute('data-link', change.link);
+                
+                animateUpdatedRow(rowIndex);
+            }
+        }
+        
+        currentChapterData = newData;
+        chapterDataHash = JSON.stringify(newData);
+        
+        const sheetName = getSheetName(currentStandard, currentSubject);
+        saveToCache(sheetName, newData);
+        
+        showToast(`Chapter data updated (${changes.length} change${changes.length > 1 ? 's' : ''})`, 'info', 'Background Sync');
+        
+        return true;
+    }
+
+    async function checkForChapterUpdates() {
+        if (!currentSubject || !currentStandard || isSyncingChapters) return false;
+        
+        isSyncingChapters = true;
+        
+        try {
+            const sheetName = getSheetName(currentStandard, currentSubject);
+            const latestData = await fetchSheetData(sheetName, true);
+            
+            if (!latestData || latestData.length === 0) return false;
+            
+            const comparison = compareChapterData(currentChapterData, latestData);
+            
+            if (comparison.hasChanges) {
+                console.log('[Sync] Chapter changes detected:', comparison.changes.length);
+                await updateChapterTableWithChanges(latestData, comparison.changes);
+                return true;
+            }
+            return false;
+        } catch (error) {
+            console.error('[Sync] Chapter sync error:', error);
+            return false;
+        } finally {
+            isSyncingChapters = false;
+        }
+    }
+
+    // =====================================================
+    // BACKGROUND SYNC SYSTEM
+    // =====================================================
+
+    function startBackgroundSync() {
+        if (syncInterval) clearInterval(syncInterval);
+        
+        if (currentSubject && currentStandard) {
+            console.log(`[Sync] Starting background chapter sync every ${CONFIG.SYNC_INTERVAL_MS / 1000} seconds`);
+            syncInterval = setInterval(() => {
+                checkForChapterUpdates();
+            }, CONFIG.SYNC_INTERVAL_MS);
+        }
+    }
+
+    function stopBackgroundSync() {
+        if (syncInterval) {
+            clearInterval(syncInterval);
+            syncInterval = null;
+            console.log('[Sync] Background sync stopped');
+        }
+    }
+
+    // =====================================================
+    // USER AUTHENTICATION FUNCTIONS
+    // =====================================================
+
+    async function fetchWithTimeoutAuth(url, timeout = CONFIG.FETCH_TIMEOUT_MS) {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), timeout);
+        try {
+            const response = await fetch(url, { signal: controller.signal });
+            clearTimeout(timeoutId);
+            return response;
+        } catch (error) {
+            clearTimeout(timeoutId);
+            throw error;
+        }
+    }
+
+    async function fetchAllUsers() {
+        try {
+            const url = `${CONFIG.SCRIPT_URL}?spreadsheetId=${CONFIG.LOGIN_SPREADSHEET_ID}&sheetName=${CONFIG.SHEET_NAME}`;
+            const response = await fetchWithTimeoutAuth(url);
+            const data = await response.json();
+            if (data.status === 'success' && Array.isArray(data.data)) {
+                return data.data;
+            }
+            return null;
+        } catch (error) {
+            console.error('Fetch users error:', error);
+            return null;
+        }
+    }
+
+    async function getLatestUserData(email) {
+        if (!email) return null;
+        const users = await fetchAllUsers();
+        if (!users) return null;
+        return users.find(u => (u['Email Id'] || '').toString().trim().toLowerCase() === email.toLowerCase()) || null;
+    }
+
+    async function updateUserInterface(newUser) {
+        if (!newUser) return false;
+        
+        const firstName = newUser['First Name'] || '';
+        const lastName = newUser['Last Name'] || '';
+        const fullName = `${firstName} ${lastName}`.trim() || 'User';
+        const email = newUser['Email Id'] || '';
+        const initial = firstName.charAt(0).toUpperCase() || 'U';
+        
+        const desktopName = document.getElementById('desktopName');
+        const desktopEmail = document.getElementById('desktopEmail');
+        const desktopInitial = document.getElementById('desktopInitial');
+        
+        if (desktopName) desktopName.innerText = fullName;
+        if (desktopEmail) desktopEmail.innerText = email;
+        if (desktopInitial) desktopInitial.innerText = initial;
+        
+        const sidebarUserName = document.getElementById('sidebarUserName');
+        const sidebarUserEmail = document.getElementById('sidebarUserEmail');
+        const sidebarInitial = document.getElementById('sidebarInitial');
+        
+        if (sidebarUserName) sidebarUserName.innerText = fullName;
+        if (sidebarUserEmail) sidebarUserEmail.innerText = email;
+        if (sidebarInitial) sidebarInitial.innerText = initial;
+        
+        return true;
+    }
+
+    async function updateAllUI() {
+        const isLoggedIn = currentUser !== null;
+        const firstName = currentUser?.['First Name'] || '';
+        const lastName = currentUser?.['Last Name'] || '';
+        const fullName = `${firstName} ${lastName}`.trim();
+        const email = currentUser?.['Email Id'] || '';
+        const initial = firstName.charAt(0).toUpperCase() || 'U';
+        
+        const desktopAuth = document.getElementById('desktopAuthButtons');
+        const desktopProfile = document.getElementById('desktopProfileContainer');
+        
+        if (desktopAuth && desktopProfile) {
+            if (isLoggedIn) {
+                desktopAuth.style.display = 'none';
+                desktopProfile.style.display = 'flex';
+                const desktopName = document.getElementById('desktopName');
+                const desktopEmail = document.getElementById('desktopEmail');
+                const desktopInitial = document.getElementById('desktopInitial');
+                if (desktopName) desktopName.innerText = fullName || 'User';
+                if (desktopEmail) desktopEmail.innerText = email || '';
+                if (desktopInitial) desktopInitial.innerText = initial;
+            } else {
+                desktopAuth.style.display = 'flex';
+                desktopProfile.style.display = 'none';
+            }
+        }
+        
+        const sidebarAuth = document.getElementById('sidebarAuthButtons');
+        const sidebarMyAccount = document.getElementById('sidebarMyAccount');
+        const sidebarLogout = document.getElementById('sidebarLogout');
+        const sidebarUserName = document.getElementById('sidebarUserName');
+        const sidebarUserEmail = document.getElementById('sidebarUserEmail');
+        const sidebarCircle = document.getElementById('sidebarProfileCircle');
+        const sidebarInitial = document.getElementById('sidebarInitial');
+        
+        if (isLoggedIn) {
+            if (sidebarAuth) sidebarAuth.style.display = 'none';
+            if (sidebarUserName) sidebarUserName.innerText = fullName || 'User';
+            if (sidebarUserEmail) sidebarUserEmail.innerText = email || '';
+            if (sidebarInitial) sidebarInitial.innerText = initial;
+            if (sidebarCircle) sidebarCircle.innerHTML = `<span>${initial}</span>`;
+            if (sidebarMyAccount) sidebarMyAccount.style.display = 'flex';
+            if (sidebarLogout) sidebarLogout.style.display = 'flex';
+        } else {
+            if (sidebarAuth) sidebarAuth.style.display = 'flex';
+            if (sidebarUserName) sidebarUserName.innerText = 'Guest User';
+            if (sidebarUserEmail) sidebarUserEmail.innerText = 'Please login';
+            if (sidebarInitial) sidebarInitial.innerText = 'U';
+            if (sidebarCircle) sidebarCircle.innerHTML = '<span>U</span>';
+            if (sidebarMyAccount) sidebarMyAccount.style.display = 'none';
+            if (sidebarLogout) sidebarLogout.style.display = 'none';
+        }
+    }
+
+    async function loginUser(email, password) {
+        const users = await fetchAllUsers();
+        if (!users) {
+            showToast('Unable to connect to server', 'error', 'Connection Error');
+            return false;
+        }
+        
+        const user = users.find(u => {
+            const userEmail = (u['Email Id'] || '').toString().trim().toLowerCase();
+            const userPassword = (u['Password'] || '').toString().trim();
+            return userEmail === email.toLowerCase() && userPassword === password;
+        });
+        
+        if (user) {
+            currentUser = JSON.parse(JSON.stringify(user));
+            cachedUserData = JSON.parse(JSON.stringify(user));
+            localStorage.setItem('orryxa_current_user', JSON.stringify(user));
+            await updateAllUI();
+            await updateUserInterface(currentUser);
+            return true;
+        }
+        return false;
+    }
+
+    async function logout() {
+        stopBackgroundSync();
+        currentUser = null;
+        cachedUserData = null;
+        localStorage.removeItem('orryxa_current_user');
+        await updateAllUI();
+        showToast('Logged out successfully', 'success', 'Logged Out');
+    }
+
+    // =====================================================
+    // PAGE CONTENT FUNCTIONS
+    // =====================================================
+
+    function renderSubjects() {
+        const subjects = [
+            "Language", 
+            "Biology", "Chemistry", "Physics", 
+            "Maths Part 1", "Maths Part 2", 
+            "Geography", "Information Technology", 
+            "Physical Education", "Environmental Studies"
+        ];
+        
+        let html = `<div class="page-header">
+                        <button class="back-btn" id="backToTextbooksBtn"><i class="fas fa-arrow-left"></i> Back to Textbooks</button>
+                    </div>
+                    <h1 class="page-title">🔬 ${currentStandard} - Science</h1>
+                    <p class="section-subtitle">Choose a subject to explore chapter-wise PDFs and study materials</p>
+                    <div class="subjects-grid">`;
+        
+        subjects.forEach(sub => {
+            const icon = SUBJECT_ICONS[sub] || 'fas fa-book';
+            html += `<div class="subject-card" data-subject="${sub}">
+                        <i class="${icon}"></i>
+                        <strong>${sub}</strong>
+                     </div>`;
+        });
+        html += `</div>`;
+        document.getElementById('dynamicView').innerHTML = html;
+        
+        document.getElementById('backToTextbooksBtn').onclick = () => { window.location.href = 'textbook.html'; };
+        
+        document.querySelectorAll('.subject-card').forEach(card => {
+            card.addEventListener('click', async () => { 
+                currentSubject = card.dataset.subject; 
+                await renderChapters(); 
+                const url = new URL(window.location);
+                url.searchParams.set('subject', currentSubject);
+                window.history.pushState({}, '', url);
+                startBackgroundSync();
+            });
+        });
+    }
+
+    async function renderChapters() {
+        document.getElementById('dynamicView').innerHTML = `<div class="loading-container"><div class="spinner-circle"></div><div>Loading chapters...</div></div>`;
+        
+        const sheetName = getSheetName(currentStandard, currentSubject);
+        
+        let data = await fetchSheetData(sheetName, false);
+        
+        if (!data || data.length === 0) {
+            data = await fetchSheetData(sheetName, true);
+        }
+        
+        if (!data || data.length === 0) {
+            document.getElementById('dynamicView').innerHTML = `
+                <div class="page-header"><button class="back-btn" id="backToSubjectsBtn"><i class="fas fa-arrow-left"></i> Back to Subjects</button></div>
+                <div class="empty-state"><i class="fas fa-exclamation-triangle"></i><h3>No Chapters Found</h3><p>No chapters available for ${currentSubject}</p></div>`;
+            document.getElementById('backToSubjectsBtn').onclick = () => renderSubjects();
+            return;
+        }
+        
+        currentChapterData = data;
+        chapterDataHash = JSON.stringify(data);
+        
+        let html = `<div class="page-header">
+                        <div>
+                            <button class="back-btn" id="backToSubjectsBtn"><i class="fas fa-arrow-left"></i> Back to Subjects</button>
+                        </div>
+                        <div class="sync-status" id="syncStatus" style="display: none;">
+                            <i class="fas fa-sync-alt"></i> <span>Syncing...</span>
+                        </div>
+                    </div>
+                    <h1 class="page-title">📘 ${currentSubject}</h1>
+                    <p class="section-subtitle">${data.length} chapters available • Auto-sync enabled</p>
+                    <div class="chapters-wrapper">
+                        <table class="chapter-table">
+                            <thead>
+                                <tr><th class="sr-col">Sr. No</th><th>Chapter Name</th><th class="action-col">Action</th></tr>
+                            </thead>
+                            <tbody>`;
+        
+        data.forEach((row, idx) => {
+            let srNo = row['Sr. No'] || row['Sr No'] || row['Serial No'] || (idx + 1);
+            let chapterName = row['Chapter Name'] || row['Chapter'] || row['Topic'] || 'Untitled';
+            let link = row['Link'] || row['Drive Link'] || row['PDF Link'] || '';
+            html += `<tr data-row-index="${idx}">
+                        <td class="sr-col">${escapeHtml(String(srNo))}</td>
+                        <td>${escapeHtml(chapterName)}</td>
+                        <td class="action-col">
+                            <button class="view-table-btn" data-link="${escapeAttr(link)}" data-chapter="${escapeAttr(chapterName)}">
+                                <i class="fas fa-eye"></i> View
+                            </button>
+                                                 </td>
+                       </tr>`;
+        });
+        
+        html += `</tbody>
+                 </table>
+                </div>`;
+        
+        document.getElementById('dynamicView').innerHTML = html;
+        document.getElementById('backToSubjectsBtn').onclick = () => {
+            stopBackgroundSync();
+            renderSubjects();
+        };
+        
+        document.querySelectorAll('.view-table-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const link = btn.getAttribute('data-link');
+                const chapter = btn.getAttribute('data-chapter');
+                if (link && link !== '') {
+                    const pdfUrl = getPdfUrl(link);
+                    window.location.href = `viewpdf.html?pdf=${encodeURIComponent(pdfUrl)}&chapter=${encodeURIComponent(chapter)}&standard=${encodeURIComponent(currentStandard)}&subject=${encodeURIComponent(currentSubject)}`;
+                } else {
+                    showToast('No PDF link available', 'warning');
+                }
+            });
+        });
+        
+        startBackgroundSync();
+    }
+
+    // =====================================================
+    // USER AUTO-SYNC (Profile Updates)
+    // =====================================================
+
+    let userSyncInterval = null;
+
+    function compareUserData(oldUser, newUser) {
+        if (!oldUser || !newUser) return true;
+        const fields = ['First Name', 'Last Name', 'Email Id', 'Mobile Number', 'Image'];
+        for (let field of fields) {
+            if ((oldUser[field] || '') !== (newUser[field] || '')) return true;
+        }
+        return false;
+    }
+
+    async function checkUserProfileUpdates() {
+        if (!currentUser || !currentUser['Email Id']) return;
+        try {
+            const latestData = await getLatestUserData(currentUser['Email Id']);
+            if (latestData && compareUserData(currentUser, latestData)) {
+                currentUser = latestData;
+                cachedUserData = latestData;
+                localStorage.setItem('orryxa_current_user', JSON.stringify(currentUser));
+                await updateUserInterface(currentUser);
+                await updateAllUI();
+                showToast('Your profile has been updated', 'success', 'Profile Sync');
+            }
+        } catch (error) {
+            console.error('User sync error:', error);
+        }
+    }
+
+    function startUserAutoSync() {
+        if (userSyncInterval) clearInterval(userSyncInterval);
+        if (currentUser && currentUser['Email Id']) {
+            userSyncInterval = setInterval(() => checkUserProfileUpdates(), 30000);
+        }
+    }
+
+    function stopUserAutoSync() {
+        if (userSyncInterval) {
+            clearInterval(userSyncInterval);
+            userSyncInterval = null;
+        }
+    }
+
+    // =====================================================
+    // SIDEBAR & UI FUNCTIONS
+    // =====================================================
+
+    function openSidebar() {
+        document.getElementById('sidebar').classList.add('active');
+        document.getElementById('sidebarOverlay').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeSidebar() {
+        document.getElementById('sidebar').classList.remove('active');
+        document.getElementById('sidebarOverlay').classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    function navigateTo(page) {
+        const pageUrls = {
+            'textbook': 'textbook.html',
+            'notes': 'notes.html',
+            'solutions': 'solutions.html',
+            'questionpapers': 'questionpapers.html',
+            'project': 'project.html'
+        };
+        const url = pageUrls[page];
+        if (url) window.location.href = url;
+    }
+
+    function initDarkMode() {
+        const darkMode = localStorage.getItem('darkMode') === 'enabled';
+        if (darkMode) document.body.classList.add('dark-mode');
+        updateDarkModeToggle();
+    }
+
+    function toggleDarkMode() {
+        document.body.classList.toggle('dark-mode');
+        localStorage.setItem('darkMode', document.body.classList.contains('dark-mode') ? 'enabled' : 'disabled');
+        updateDarkModeToggle();
+        showToast(`Dark mode ${document.body.classList.contains('dark-mode') ? 'enabled' : 'disabled'}`, 'info', 'Theme');
+    }
+
+    function updateDarkModeToggle() {
+        const isDark = document.body.classList.contains('dark-mode');
+        const darkToggle = document.getElementById('sidebarDarkToggle');
+        if (darkToggle) {
+            if (isDark) darkToggle.classList.add('active');
+            else darkToggle.classList.remove('active');
+        }
+    }
+
+    // =====================================================
+    // EVENT LISTENERS SETUP
+    // =====================================================
+
+    function setupEventListeners() {
+        const logoBtn = document.getElementById('logoHomeBtn');
+        if (logoBtn) logoBtn.onclick = () => { window.location.href = 'index.html'; };
+        
+        const menuToggle = document.getElementById('menuToggleBtn');
+        if (menuToggle) menuToggle.onclick = openSidebar;
+        
+        const closeSidebarBtn = document.getElementById('closeSidebarBtn');
+        if (closeSidebarBtn) closeSidebarBtn.onclick = closeSidebar;
+        
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        if (sidebarOverlay) sidebarOverlay.onclick = closeSidebar;
+        
+        const sidebarDarkToggle = document.getElementById('sidebarDarkToggle');
+        if (sidebarDarkToggle) sidebarDarkToggle.onclick = toggleDarkMode;
+        
+        const darkModeBtn = document.getElementById('darkModeToggleBtn');
+        if (darkModeBtn) darkModeBtn.onclick = toggleDarkMode;
+        
+        const profileContainer = document.getElementById('desktopProfileContainer');
+        if (profileContainer) {
+            profileContainer.addEventListener('click', (e) => {
+                e.stopPropagation();
+                profileContainer.classList.toggle('active');
+            });
+            document.addEventListener('click', () => {
+                profileContainer.classList.remove('active');
+            });
+        }
+        
+        const desktopMyAccount = document.getElementById('desktopMyAccount');
+        if (desktopMyAccount) {
+            desktopMyAccount.onclick = () => {
+                if (currentUser) {
+                    showToast(`Name: ${currentUser['First Name']} ${currentUser['Last Name']}\nEmail: ${currentUser['Email Id']}\nMobile: +91 ${currentUser['Mobile Number']}`, 'info', 'My Account');
+                } else {
+                    window.location.href = 'myaccount.html';
+                }
+            };
+        }
+        
+        const desktopLogout = document.getElementById('desktopLogout');
+        if (desktopLogout) desktopLogout.onclick = () => logout();
+        
+        const sidebarLoginBtn = document.getElementById('sidebarLoginBtn');
+        if (sidebarLoginBtn) sidebarLoginBtn.onclick = () => { closeSidebar(); window.location.href = 'myaccount.html'; };
+        
+        const sidebarSignupBtn = document.getElementById('sidebarSignupBtn');
+        if (sidebarSignupBtn) sidebarSignupBtn.onclick = () => { closeSidebar(); window.location.href = 'myaccount.html'; };
+        
+        const sidebarMyAccount = document.getElementById('sidebarMyAccount');
+        if (sidebarMyAccount) {
+            sidebarMyAccount.onclick = () => {
+                if (currentUser) {
+                    showToast(`Name: ${currentUser['First Name']} ${currentUser['Last Name']}\nEmail: ${currentUser['Email Id']}\nMobile: +91 ${currentUser['Mobile Number']}`, 'info', 'My Account');
+                }
+                closeSidebar();
+            };
+        }
+        
+        const sidebarLogout = document.getElementById('sidebarLogout');
+        if (sidebarLogout) sidebarLogout.onclick = () => { logout(); closeSidebar(); };
+        
+        const openLoginBtn = document.getElementById('openLoginBtn');
+        if (openLoginBtn) openLoginBtn.onclick = () => { window.location.href = 'myaccount.html'; };
+        
+        const openSignupBtn = document.getElementById('openSignupBtn');
+        if (openSignupBtn) openSignupBtn.onclick = () => { window.location.href = 'myaccount.html'; };
+        
+        document.querySelectorAll('.desktop-menu-item, .sidebar-menu-item').forEach(el => {
+            if (!el.hasAttribute('data-page')) return;
+            el.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const page = el.getAttribute('data-page');
+                if (page) navigateTo(page);
+                closeSidebar();
+            });
+        });
+        
+        let touchStartX = 0;
+        document.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; });
+        document.addEventListener('touchend', (e) => {
+            let touchEndX = e.changedTouches[0].clientX;
+            if (touchStartX < 30 && touchEndX > touchStartX + 50) openSidebar();
+        });
+    }
+
+    // =====================================================
+    // INITIALIZATION
+    // =====================================================
+
+    async function init() {
+        console.log('[Science] Initializing with subject-sheet mapping...');
+        initDarkMode();
+        setupEventListeners();
+        
+        const savedUser = localStorage.getItem('orryxa_current_user');
+        if (savedUser) {
+            try {
+                currentUser = JSON.parse(savedUser);
+                cachedUserData = JSON.parse(savedUser);
+                await updateAllUI();
+                await updateUserInterface(currentUser);
+                showToast(`Welcome back, ${currentUser['First Name'] || 'User'}!`, 'success', 'Welcome');
+                startUserAutoSync();
+            } catch(e) {
+                console.error('Error parsing saved user:', e);
+                await updateAllUI();
+            }
+        } else {
+            await updateAllUI();
+        }
+        
+        currentStandard = getStandardFromURL();
+        const urlSubject = getSubjectFromURL();
+        
+        if (!currentStandard || (currentStandard !== "11th Science" && currentStandard !== "12th Science")) {
+            document.getElementById('dynamicView').innerHTML = `<div class="empty-state"><i class="fas fa-exclamation-triangle" style="font-size: 3rem;"></i><h3>Invalid Selection</h3><p>Please go back and select 11th Science or 12th Science.</p><button class="back-btn" onclick="window.location.href='textbook.html'" style="margin-top: 1rem;">Go to Textbooks</button></div>`;
+        } else if (urlSubject) {
+            currentSubject = urlSubject;
+            await renderChapters();
+            startBackgroundSync();
+            startUserAutoSync();
+        } else {
+            renderSubjects();
+        }
+        
+        const cacheBadge = document.getElementById('cacheBadge');
+        if (cacheBadge) {
+            cacheBadge.innerHTML = '📦 Cache ready';
+            setTimeout(() => { cacheBadge.style.opacity = '0.5'; }, 2000);
+        }
+    }
+
+    window.showToast = showToast;
+    init();
+</script>
+</body>
+</html>

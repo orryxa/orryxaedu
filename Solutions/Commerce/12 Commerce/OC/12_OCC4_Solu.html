@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Chapter 4 | Business Services - Complete Q.1 to Q.8 with Answers | 12th Commerce OCM</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #eef5fc 0%, #e0eef8 100%);
+            font-family: 'Inter', sans-serif;
+            padding: 32px 24px;
+            color: #0a2b3e;
+            line-height: 1.5;
+        }
+        .container { max-width: 1400px; margin: 0 auto; }
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 40px;
+            background: linear-gradient(145deg, #ffffff, #f8fbfe);
+            padding: 30px 20px;
+            border-radius: 2rem;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+        }
+        .hero h1 {
+            font-size: 2.4rem; font-weight: 800;
+            background: linear-gradient(135deg, #1e4a6e, #2c7da0, #3b9ac6);
+            background-clip: text; -webkit-background-clip: text; color: transparent;
+        }
+        .hero p { color: #2c7da0; font-weight: 500; margin-top: 10px; }
+        
+        .section-card {
+            background: white;
+            border-radius: 1.8rem;
+            margin-bottom: 32px;
+            padding: 28px 32px;
+            box-shadow: 0 15px 30px -12px rgba(0,0,0,0.08);
+            border: 1px solid rgba(44,125,160,0.15);
+            transition: transform 0.2s;
+        }
+        .section-card:hover { transform: translateY(-2px); }
+        
+        .section-title {
+            font-size: 1.6rem; font-weight: 800; color: #1e4a6e;
+            border-left: 6px solid #ffaa33;
+            padding-left: 20px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .section-title i { color: #ff8c42; font-size: 1.6rem; }
+        
+        .sub-title {
+            font-size: 1.3rem; font-weight: 700; color: #2c7da0;
+            margin: 25px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #ffaa33;
+            display: inline-block;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .data-table th {
+            background: linear-gradient(105deg, #1e4a6e, #2c7da0);
+            color: white;
+            padding: 14px 12px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        .data-table td {
+            border: 1px solid #e0eef5;
+            padding: 12px;
+            vertical-align: top;
+            background-color: #fff;
+        }
+        .data-table tr:hover td { background-color: #f8fcff; }
+        
+        .answer-box {
+            background: #eef3fc;
+            padding: 16px 20px;
+            border-radius: 1rem;
+            margin: 15px 0;
+            border-left: 4px solid #ffaa33;
+        }
+        .answer-box p { margin-bottom: 8px; }
+        .answer-box strong { color: #1e4a6e; }
+        
+        .qa-item {
+            margin-bottom: 24px;
+            border-left: 3px solid #cbdde9;
+            padding-left: 20px;
+        }
+        .question {
+            font-weight: 700;
+            color: #1e4a6e;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+        .answer-inline {
+            background: #eef3fc;
+            padding: 8px 16px;
+            border-radius: 28px;
+            display: inline-block;
+            font-weight: 500;
+            color: #135b78;
+        }
+        .true-badge {
+            background: #e0f2e9;
+            color: #1e6f3f;
+            padding: 4px 16px;
+            border-radius: 40px;
+            font-weight: 700;
+            display: inline-block;
+        }
+        .false-badge {
+            background: #ffe8e6;
+            color: #bc4742;
+            padding: 4px 16px;
+            border-radius: 40px;
+            font-weight: 700;
+            display: inline-block;
+        }
+        .completion-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        .completion-item {
+            background: #f0f6fa;
+            padding: 12px 18px;
+            border-radius: 12px;
+            flex: 1;
+            min-width: 200px;
+        }
+        .footer-note {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #cde1ef;
+            color: #2c6f8c;
+            font-size: 0.85rem;
+        }
+        hr { margin: 20px 0; border: 0; height: 1px; background: linear-gradient(90deg, transparent, #cde1ef, transparent); }
+        @media (max-width: 768px) {
+            body { padding: 20px 16px; }
+            .section-card { padding: 20px 18px; }
+            .section-title { font-size: 1.3rem; }
+            .data-table th, .data-table td { font-size: 0.75rem; padding: 8px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="hero">
+        <h1><i class="fas fa-concierge-bell"></i> Chapter 4 · Business Services</h1>
+        <p>Complete Question Bank Q.1 to Q.8 | MCQ | Match | One Word | True/False | Odd One | Complete | Table | One Sentence | Correct Word | Arrange Order | Distinguish | Brief | Case Study | Long Answers</p>
+    </div>
+
+    <!-- ================= Q.1 (A) ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-check-circle"></i> Q.1 (A) Select the correct option and rewrite the sentence</div>
+        <div class="qa-item"><div class="question">1) Door to door service is provided by __________ transport.</div><div class="answer-inline">b) road</div></div>
+        <div class="qa-item"><div class="question">2) __________ creates time utility.</div><div class="answer-inline">a) Warehouse</div></div>
+        <div class="qa-item"><div class="question">3) __________ warehouses provide facilities for perishable commodities.</div><div class="answer-inline">b) Cold storage</div></div>
+        <div class="qa-item"><div class="question">4) __________ policy covers all types of risks of a vessel while it is anchored at the port.</div><div class="answer-inline">a) Port risk</div></div>
+        <div class="qa-item"><div class="question">5) Principle of __________ is not applicable to life insurance.</div><div class="answer-inline">c) indemnity</div></div>
+    </div>
+
+    <!-- ================= Q.1 (B) ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-link"></i> Q.1 (B) Match the pairs</div>
+        <table class="data-table">
+            <thead><tr><th>Group A</th><th>Answer</th><th>Group B</th></tr></thead>
+            <tbody>
+                <tr><td>A) Air Transport</td><td>→</td><td>3) Fastest mode of transport</td></tr>
+                <tr><td>B) Warehousing</td><td>→</td><td>1) Time utility</td></tr>
+                <tr><td>C) Money remittance</td><td>→</td><td>5) Western Union Money Transfer</td></tr>
+                <tr><td>D) Pipeline Transport</td><td>→</td><td>7) Petroleum and gas</td></tr>
+                <tr><td>E) Business Service</td><td>→</td><td>2) Intangible in nature</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ================= Q.1 (C) ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-tag"></i> Q.1 (C) Give one word/phrase/term</div>
+        <div class="qa-item"><div class="question">1) Warehouses owned, managed and controlled by central and state governments.</div><div class="answer-inline">Government warehouse</div></div>
+        <div class="qa-item"><div class="question">2) Art of exchanging ideas, facts, information from one person to another.</div><div class="answer-inline">Communication</div></div>
+        <div class="qa-item"><div class="question">3) Rail system where track consists of a single rail or a beam.</div><div class="answer-inline">Monorail</div></div>
+        <div class="qa-item"><div class="question">4) Transport system used to carry petroleum and gases.</div><div class="answer-inline">Pipeline transport</div></div>
+        <div class="qa-item"><div class="question">5) Ministry that looks after development of surface transport in India.</div><div class="answer-inline">Ministry of Road Transport and Highways (MoRTH)</div></div>
+    </div>
+
+    <!-- ================= Q.1 (D) ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-gavel"></i> Q.1 (D) State True or False</div>
+        <div class="qa-item"><div class="question">1) Business services are important for growth of business.</div><div class="answer-inline"><span class="true-badge">True</span></div></div>
+        <div class="qa-item"><div class="question">2) Current Account is opened by salaried persons.</div><div class="answer-inline"><span class="false-badge">False</span> (Opened by businessmen)</div></div>
+        <div class="qa-item"><div class="question">3) NEFT stands for National Electric Fund Transfer.</div><div class="answer-inline"><span class="false-badge">False</span> (Electronic)</div></div>
+        <div class="qa-item"><div class="question">4) Air transport is cheapest mode of transport.</div><div class="answer-inline"><span class="false-badge">False</span> (Costliest)</div></div>
+        <div class="qa-item"><div class="question">5) Internet links devices worldwide using TCP/IP protocol suite.</div><div class="answer-inline"><span class="true-badge">True</span></div></div>
+    </div>
+
+    <!-- ================= Q.1 (E) ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-puzzle-piece"></i> Q.1 (E) Find the odd one</div>
+        <div class="qa-item"><div class="question">1) Primary credit co-operative society, state co-operative bank, district co-operative bank, exchange bank.</div><div class="answer-inline">Exchange bank (others are co-operative banks)</div></div>
+        <div class="qa-item"><div class="question">2) NABARD, RBI, SIDBI, EXIM.</div><div class="answer-inline">RBI (Central Bank; others are specialised banks)</div></div>
+        <div class="qa-item"><div class="question">3) Direct mail, Logistics post, Business post, Parcel.</div><div class="answer-inline">Parcel (others are specialised postal services)</div></div>
+        <div class="qa-item"><div class="question">4) Endowment policy, Whole life policy, Money back policy, Blanket policy.</div><div class="answer-inline">Blanket policy (Marine insurance; others are Life insurance)</div></div>
+    </div>
+
+    <!-- ================= Q.1 (F) ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-language"></i> Q.1 (F) Complete the sentence</div>
+        <div class="completion-grid">
+            <div class="completion-item"><strong>1)</strong> The term bank comes from the French word ______.<br><span class="answer-inline" style="margin-top:5px; display:inline-block;">Banco</span></div>
+            <div class="completion-item"><strong>2)</strong> ______ warehouses provide facilities for perishable commodities.<br><span class="answer-inline" style="margin-top:5px; display:inline-block;">Cold storage</span></div>
+            <div class="completion-item"><strong>3)</strong> In ______ policy, several ships belonging to one owner are insured under the same policy.<br><span class="answer-inline" style="margin-top:5px; display:inline-block;">fleet</span></div>
+            <div class="completion-item"><strong>4)</strong> ______ banking refers to use of banking services with help of mobile phones.<br><span class="answer-inline" style="margin-top:5px; display:inline-block;">Mobile</span></div>
+        </div>
+    </div>
+
+    <!-- ================= Q.1 (G) ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-table"></i> Q.1 (G) Select correct option and complete the table</div>
+        <table class="data-table">
+            <thead><tr><th>Group A</th><th>Answer</th><th>Group B</th></tr></thead>
+            <tbody>
+                <tr><td>1) fund transfer on real time and gross basis</td><td>→</td><td>RTGS</td></tr>
+                <tr><td>2) loans to meet long term capital requirements</td><td>→</td><td>long term loans</td></tr>
+                <tr><td>3) Account operated by salaried and businessmen both</td><td>→</td><td>recurring deposit</td></tr>
+                <tr><td>4) Central bank</td><td>→</td><td>apex financial institution in banking industry of country</td></tr>
+                <tr><td>5) Principal financial institution for MSMEs</td><td>→</td><td>SIDBI</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ================= Q.1 (H) ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-question-circle"></i> Q.1 (H) Answer in one sentence</div>
+        <div class="qa-item"><div class="question">1) What is debit card?</div><div class="answer-inline">A card that deducts amount directly from holder's bank account at time of transaction.</div></div>
+        <div class="qa-item"><div class="question">2) What is 'subject matter' in insurance?</div><div class="answer-inline">The life, property, cargo or entity which is insured against risk.</div></div>
+        <div class="qa-item"><div class="question">3) What is government warehouse?</div><div class="answer-inline">Warehouses owned, managed and controlled by central or state governments (CWC, FCI).</div></div>
+        <div class="qa-item"><div class="question">4) What is air transport?</div><div class="answer-inline">Movement of goods and passengers through airways using aircrafts, helicopters.</div></div>
+        <div class="qa-item"><div class="question">5) What is communication?</div><div class="answer-inline">The art of exchanging ideas, facts, information from one person or entity to another.</div></div>
+    </div>
+
+    <!-- ================= Q.1 (I) ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-edit"></i> Q.1 (I) Correct the underlined word and rewrite</div>
+        <div class="qa-item"><div class="question">1) Overdraft facility is available for <u>savings</u> bank account holder.</div><div class="answer-inline">Current bank account holder</div></div>
+        <div class="qa-item"><div class="question">2) Services are <u>tangible</u> in nature.</div><div class="answer-inline">intangible</div></div>
+        <div class="qa-item"><div class="question">3) Insurance helps to <u>maximize</u> the risks in the business.</div><div class="answer-inline">minimise</div></div>
+        <div class="qa-item"><div class="question">4) The <u>foreign</u> bank is the apex financial institution in banking industry.</div><div class="answer-inline">Central</div></div>
+        <div class="qa-item"><div class="question">5) RTGS stands for <u>Reasonable</u> Time Gross Settlement.</div><div class="answer-inline">Real</div></div>
+    </div>
+
+    <!-- ================= Q.1 (J) ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-sort-amount-down"></i> Q.1 (J) Arrange in proper order</div>
+        <div class="qa-item"><div class="question">1) Claim, Accident, Taking the policy, Compensation</div><div class="answer-inline">Taking the policy → Accident → Claim → Compensation</div></div>
+        <div class="qa-item"><div class="question">2) Email, Inland letter, Courier</div><div class="answer-inline">Inland letter → Courier → Email</div></div>
+    </div>
+
+    <!-- ================= Q.2 ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-chalkboard-teacher"></i> Q.2 Explain the following terms/concepts</div>
+        <div class="qa-item"><div class="question">1) Transport</div><div class="answer-box">Transport is the movement of people, animals and goods from one location to another. Modes include road, rail, air, water, pipeline, ropeway, monorail. It creates place utility and is essential for trade.</div></div>
+        <div class="qa-item"><div class="question">2) Communication</div><div class="answer-box">Communication is the art of exchanging ideas, facts, information using postal (mail, eMO, iMO, ePost) or modern means (courier, internet, email). It facilitates business transactions and decision-making.</div></div>
+        <div class="qa-item"><div class="question">3) Banking</div><div class="answer-box">Banking refers to accepting deposits from public for lending/investment, repayable on demand, and providing other financial services like fund transfer, locker facility, bill payment, etc.</div></div>
+        <div class="qa-item"><div class="question">4) Insurance</div><div class="answer-box">Insurance is a contract where insurer compensates insured against specified losses in exchange for premium. It is a risk management tool based on principles like utmost good faith, insurable interest, indemnity, etc.</div></div>
+        <div class="qa-item"><div class="question">5) Warehousing</div><div class="answer-box">Warehousing is storage of goods from production till consumption, creating time utility and price stability. Functions include storage, risk bearing, financing, grading, packing, and processing.</div></div>
+    </div>
+
+    <!-- ================= Q.3 Case Study ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-briefcase"></i> Q.3 Study the case/situation and express your opinion</div>
+        <div class="qa-item"><div class="question">1) Ms. Harshali's customers deposit bill amount in her account. She pays various payments from this account.</div><div class="answer-box">i) Type of account: <strong>Current Account</strong><br>ii) Modern money transfer: <strong>RTGS / NEFT / IMPS</strong><br>iii) Facilities: Overdraft, cheque book, internet banking, statement of account.</div></div>
+        <div class="qa-item"><div class="question">2) Mr. Jagan (salaried) wants policy for his two children for protection & future needs.</div><div class="answer-box">i) Suitable policy: <strong>Child Insurance Plan / Money-back Policy</strong><br>ii) Beneficiaries: <strong>His two children</strong><br>iii) Principle involved: <strong>Utmost good faith & Insurable interest</strong></div></div>
+        <div class="qa-item"><div class="question">3) Mr. Sharan (manufacturer) has stock of raw material & finished goods. Needs safeguarding, transport, funds.</div><div class="answer-box">i) Safeguard goods: <strong>Insurance (Fire/Marine insurance)</strong><br>ii) Remove difficulty of place: <strong>Transport services</strong><br>iii) Financial support: <strong>Banking / Development Bank (SFC, IFCI, SIDBI)</strong></div></div>
+        <div class="qa-item"><div class="question">4) Mr. Amit (businessman) has factories in Pune & Nashik, lives with wife & 2 daughters.</div><div class="answer-box">i) Life insurance for wife & children? <strong>Yes — anyone with insurable interest can take.</strong><br>ii) Marine insurance for factories? <strong>No — marine insurance is for ships/cargo.</strong><br>iii) Insurance for factory fire loss? <strong>Fire Insurance</strong></div></div>
+    </div>
+
+    <!-- ================= Q.4 DISTINGUISH BETWEEN (All 9 in Tabular) ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-balance-scale"></i> Q.4 Distinguish Between (Detailed Tabular Analysis)</div>
+        
+        <div class="sub-title">1) Duty Paid Warehouse vs Bonded Warehouse</div>
+        <table class="data-table"><thead><tr><th>Basis</th><th>Duty Paid Warehouse</th><th>Bonded Warehouse</th></tr></thead>
+        <tbody><tr><td>Meaning</td><td>Warehouse after customs duty payment</td><td>Warehouse before customs duty payment under bond</td></tr>
+        <tr><td>Customs Duty</td><td>Already paid</td><td>Not paid; goods under bond</td></tr>
+        <tr><td>Control</td><td>Not under strict custom supervision</td><td>Under strict custom authorities</td></tr>
+        <tr><td>Withdrawal</td><td>Goods can be withdrawn freely</td><td>Cannot withdraw without paying duty</td></tr>
+        <tr><td>Location</td><td>Near port & dock areas</td><td>At ports or custom checkpoints</td></tr></tbody></table>
+
+        <div class="sub-title">2) Central Bank vs Commercial Bank</div>
+        <table class="data-table"><thead><tr><th>Basis</th><th>Central Bank (RBI)</th><th>Commercial Bank</th></tr></thead>
+        <tbody><tr><td>Currency Printing</td><td>Sole authority to print currency</td><td>Cannot print currency</td></tr>
+        <tr><td>Deposits from</td><td>Does not accept from public</td><td>Accepts from public & businesses</td></tr>
+        <tr><td>Loans to</td><td>Banks & financial institutions</td><td>Individuals, industries, trade</td></tr>
+        <tr><td>Monetary Policy</td><td>Frames monetary & credit policy</td><td>Follows RBI policies</td></tr>
+        <tr><td>Number in India</td><td>Only one (RBI)</td><td>Many public/private/foreign banks</td></tr></tbody></table>
+
+        <div class="sub-title">3) Road Transport vs Air Transport</div>
+        <table class="data-table"><thead><tr><th>Basis</th><th>Road Transport</th><th>Air Transport</th></tr></thead>
+        <tbody><tr><td>Speed</td><td>Slow, affected by traffic</td><td>Fastest mode</td></tr>
+        <tr><td>Cost</td><td>Low for short distances</td><td>Very expensive</td></tr>
+        <tr><td>Door to Door</td><td>Yes</td><td>No</td></tr>
+        <tr><td>Carrying Capacity</td><td>Limited</td><td>Limited by weight</td></tr>
+        <tr><td>Suitable for</td><td>Short distance, perishable goods</td><td>Long distance, valuable goods, emergency</td></tr></tbody></table>
+
+        <div class="sub-title">4) Life Insurance vs Marine Insurance</div>
+        <table class="data-table"><thead><tr><th>Basis</th><th>Life Insurance</th><th>Marine Insurance</th></tr></thead>
+        <tbody><tr><td>Subject Matter</td><td>Human life</td><td>Cargo, ship, freight</td></tr>
+        <tr><td>Principle of Indemnity</td><td>Not applicable</td><td>Applicable</td></tr>
+        <tr><td>Policy Tenure</td><td>Long term (5-30 years)</td><td>Short term (up to 1 year)</td></tr>
+        <tr><td>Surrender Value</td><td>Yes</td><td>No</td></tr>
+        <tr><td>Insurable Interest</td><td>At time of contract only</td><td>At contract & at loss time</td></tr></tbody></table>
+
+        <div class="sub-title">5) Savings Account vs Current Account</div>
+        <table class="data-table"><thead><tr><th>Basis</th><th>Savings Account</th><th>Current Account</th></tr></thead>
+        <tbody><tr><td>Who opens</td><td>Salaried persons, individuals</td><td>Businessmen, firms, institutions</td></tr>
+        <tr><td>Interest Rate</td><td>Low (3-4%)</td><td>No interest</td></tr>
+        <tr><td>Withdrawal Limit</td><td>Restrictions</td><td>Unlimited</td></tr>
+        <tr><td>Overdraft Facility</td><td>Not available</td><td>Available</td></tr>
+        <tr><td>Minimum Balance</td><td>Low</td><td>High</td></tr></tbody></table>
+
+        <div class="sub-title">6) Life Insurance vs Fire Insurance</div>
+        <table class="data-table"><thead><tr><th>Basis</th><th>Life Insurance</th><th>Fire Insurance</th></tr></thead>
+        <tbody><tr><td>Subject Matter</td><td>Human life</td><td>Property, goods, buildings</td></tr>
+        <tr><td>Indemnity</td><td>Not applicable</td><td>Applicable</td></tr>
+        <tr><td>Claim Payment</td><td>On death OR maturity</td><td>Only if loss by fire during term</td></tr>
+        <tr><td>Tenure</td><td>Long term</td><td>Short term (1 year)</td></tr>
+        <tr><td>Surrender Value</td><td>Yes</td><td>No</td></tr></tbody></table>
+
+        <div class="sub-title">7) Road Transport vs Rail Transport</div>
+        <table class="data-table"><thead><tr><th>Basis</th><th>Road Transport</th><th>Rail Transport</th></tr></thead>
+        <tbody><tr><td>Door to Door</td><td>Yes</td><td>No</td></tr>
+        <tr><td>Carrying Capacity</td><td>Limited</td><td>Huge (bulk goods)</td></tr>
+        <tr><td>Speed</td><td>Slower</td><td>Faster over long distance</td></tr>
+        <tr><td>Cost</td><td>Low for short distance</td><td>Cheaper for long distance & bulk</td></tr>
+        <tr><td>Flexibility</td><td>Very flexible</td><td>Fixed routes</td></tr></tbody></table>
+
+        <div class="sub-title">8) Rail Transport vs Air Transport</div>
+        <table class="data-table"><thead><tr><th>Basis</th><th>Rail Transport</th><th>Air Transport</th></tr></thead>
+        <tbody><tr><td>Speed</td><td>Moderate to fast</td><td>Fastest</td></tr>
+        <tr><td>Cost</td><td>Low for bulk/long distance</td><td>Very high</td></tr>
+        <tr><td>Carrying Capacity</td><td>Very high</td><td>Limited</td></tr>
+        <tr><td>Weather Impact</td><td>Less affected</td><td>Highly affected</td></tr>
+        <tr><td>Suitable for</td><td>Heavy goods, long distance</td><td>Valuable/perishable, emergency</td></tr></tbody></table>
+
+        <div class="sub-title">9) Current Account vs Fixed Deposit Account</div>
+        <table class="data-table"><thead><tr><th>Basis</th><th>Current Account</th><th>Fixed Deposit Account</th></tr></thead>
+        <tbody><tr><td>Interest Rate</td><td>No interest</td><td>High interest</td></tr>
+        <tr><td>Withdrawal</td><td>Unlimited</td><td>Cannot withdraw before maturity</td></tr>
+        <tr><td>Overdraft/Loan</td><td>Overdraft available</td><td>Loan up to 90% of FD</td></tr>
+        <tr><td>Documents</td><td>Passbook, cheque book</td><td>Fixed Deposit Receipt (FDR)</td></tr>
+        <tr><td>Nature</td><td>Continuous</td><td>Fixed term</td></tr></tbody></table>
+    </div>
+
+    <!-- ================= Q.5 ANSWER IN BRIEF ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-pen-alt"></i> Q.5 Answer in Brief (Detailed Explanations)</div>
+        <div class="qa-item"><div class="question">1) State four types of deposits.</div><div class="answer-box"><strong>Fixed Deposit (FD):</strong> Fixed amount for fixed period, higher interest, FDR issued.<br><strong>Recurring Deposit (RD):</strong> Monthly fixed deposit, lump sum on maturity.<br><strong>Saving Account:</strong> For individuals, low interest, passbook facility.<br><strong>Current Account:</strong> For businessmen, no interest, overdraft facility.</div></div>
+        <div class="qa-item"><div class="question">2) State four modes of transport.</div><div class="answer-box"><strong>Road Transport:</strong> Door-to-door, flexible, short distance.<br><strong>Rail Transport:</strong> Bulk goods, long distance, cost-effective.<br><strong>Air Transport:</strong> Fastest, valuable/perishable goods, expensive.<br><strong>Water Transport:</strong> Cheapest for bulky goods, international trade.</div></div>
+        <div class="qa-item"><div class="question">3) State four life insurance policies.</div><div class="answer-box"><strong>Whole Life:</strong> Insured for whole life; amount on death.<br><strong>Endowment:</strong> Sum assured + bonus on maturity or death.<br><strong>Term Insurance:</strong> Pure protection, lowest premium.<br><strong>Money-back:</strong> Periodic survival benefits + full sum assured.</div></div>
+        <div class="qa-item"><div class="question">4) State any four features of business services.</div><div class="answer-box"><strong>Intangibility:</strong> Cannot be seen/touched.<br><strong>Inseparability:</strong> Service & provider cannot be separated.<br><strong>Inconsistency:</strong> Quality varies each time.<br><strong>Perishability:</strong> Cannot be stored; lost if not used.</div></div>
+        <div class="qa-item"><div class="question">5) State money remittance services of postal department.</div><div class="answer-box"><strong>eMO (Electronic Money Order):</strong> Traditional money order electronically.<br><strong>iMO (Instant Money Order):</strong> Web-based instant transfer ₹1000-50,000.<br><strong>International Money Transfer:</strong> Inward remittances via Western Union.</div></div>
+    </div>
+
+    <!-- ================= Q.6 JUSTIFY ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-check-double"></i> Q.6 Justify the following statements</div>
+        <div class="qa-item"><div class="question">1) Air transport is fastest mode of transport.</div><div class="answer-box">True — Because it travels at very high speed (900+ km/h), covers long distances in hours, suitable for emergency & perishable goods.</div></div>
+        <div class="qa-item"><div class="question">2) Communication is essential for growth of business.</div><div class="answer-box">True — Without communication, orders, payments, market information cannot flow; modern business relies on instant communication.</div></div>
+        <div class="qa-item"><div class="question">3) Principle of subrogation is applicable to all contracts of indemnity.</div><div class="answer-box">True — After compensation, insurer gets rights over damaged property; prevents insured from profiting twice.</div></div>
+        <div class="qa-item"><div class="question">4) Warehousing is important.</div><div class="answer-box">True — Creates time utility, stabilizes prices, provides storage, enables financing, reduces risk.</div></div>
+        <div class="qa-item"><div class="question">5) Cash can be withdrawn from ATM at any time.</div><div class="answer-box">True — ATMs operate 24×7, provide round-the-clock cash withdrawal and other banking services.</div></div>
+    </div>
+
+    <!-- ================= Q.7 ATTEMPT THE FOLLOWING ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-tasks"></i> Q.7 Attempt the following (Detailed Explanations)</div>
+        
+        <div class="qa-item"><div class="question">1) Explain money remittance services of post department.</div><div class="answer-box">India Post offers three main money remittance services: <strong>eMO</strong> (Electronic Money Order — traditional money order delivered at doorstep), <strong>iMO</strong> (Instant Money Order — web-based instant transfer ₹1,000-50,000), and <strong>International Money Transfer</strong> (inward remittances from 195+ countries via Western Union).</div></div>
+        
+        <div class="qa-item"><div class="question">2) Explain marine insurance policies.</div><div class="answer-box"><strong>Types:</strong> Voyage (specific voyage), Time (fixed period), Mixed (voyage+time), Valued (agreed value), Blanket (max limit), Port risk (vessel at port), Fleet (several ships of same owner), Block (cargo in all transport modes).</div></div>
+        
+        <div class="qa-item"><div class="question">3) Explain types of warehouses.</div><div class="answer-box"><strong>Types:</strong> Private (own use), Public (general public, fee), Bonded (imported goods before duty), Duty paid (after duty), Government (CWC, FCI), Co-operative (societies), Cold storage (perishable goods).</div></div>
+        
+        <div class="qa-item"><div class="question">4) Explain utility functions of banks.</div><div class="answer-box">Utility functions include: Issue of drafts/cheques, locker facility, project reports, gift cheques & gold coins, underwriting services, gold-related services (buying/selling, gold funds, ETFs).</div></div>
+        
+        <div class="qa-item"><div class="question">5) Explain modes of traditional communication.</div><div class="answer-box">Traditional postal modes: Inland Letter (confidential), Envelope (enclosures), Parcel (insured), Book Post (printed matter), Registered Post (proof of delivery), Speed Post (fast delivery).</div></div>
+        
+        <div class="qa-item"><div class="question">6) Explain disadvantages of air transport.</div><div class="answer-box">Disadvantages: High cost, weather dependent, limited capacity, no door-to-door service, high infrastructure investment, international restrictions, not suitable for short distances.</div></div>
+        
+        <div class="qa-item"><div class="question">7) Describe the role of transport.</div><div class="answer-box">Role: Mobility of goods & people, creates place utility, expands market, supports industrialization, employment generation, promotes international trade, emergency services during calamities.</div></div>
+        
+        <div class="qa-item"><div class="question">8) What are the functions of warehouses?</div><div class="answer-box">Functions: Storage, price stabilization, risk bearing, financing, grading & packing, transportation, time & place utility, processing (ripening, polishing, blending).</div></div>
+    </div>
+
+    <!-- ================= Q.8 LONG ANSWER TYPE ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-file-alt"></i> Q.8 Answer the following (Long Answer Type - Detailed Explanations)</div>
+        
+        <div class="qa-item"><div class="question">1) What is insurance? Explain principles of insurance.</div>
+        <div class="answer-box"><strong>Insurance:</strong> Contract where insurer compensates insured against losses for premium.<br><strong>7 Principles:</strong><br>• Utmost Good Faith — disclose all material facts<br>• Insurable Interest — financial interest in subject matter<br>• Indemnity — compensate actual loss (not for life insurance)<br>• Subrogation — rights transfer to insurer after compensation<br>• Contribution — proportionate payment by multiple insurers<br>• Mitigation of Loss — insured must minimize loss<br>• Causa-Proxima — nearest cause determines liability.</div></div>
+        
+        <div class="qa-item"><div class="question">2) Define bank. Explain different types of banks.</div>
+        <div class="answer-box"><strong>Definition:</strong> Bank accepts deposits from public for lending/investment, repayable on demand (Banking Regulation Act, 1949).<br><strong>Types:</strong> Central (RBI), Commercial (SBI, HDFC), Co-operative (primary/district/state), Development (IFCI, SIDBI, EXIM), Exchange (forex), RRB (rural areas), Savings (Postal), Investment (M&A), Specialised (NABARD), Small Finance & Payment Banks.</div></div>
+        
+        <div class="qa-item"><div class="question">3) What is warehouse? Explain its different functions.</div>
+        <div class="answer-box"><strong>Warehouse:</strong> Establishment for storage/accumulation of goods from production to consumption.<br><strong>Functions:</strong> Storage, price stabilization, risk bearing, financing (loans against warehouse receipts), grading & packing, transportation, time & place utility, processing (ripening fruits, polishing paddy, blending tea).</div></div>
+        
+        <div class="qa-item"><div class="question">4) What is Services? Explain in detail different business services.</div>
+        <div class="answer-box"><strong>Services:</strong> Intangible acts that do not result in ownership (Philip Kotler).<br><strong>Business Services:</strong><br>• Banking — deposits, loans, e-banking (ATM, RTGS, NEFT, IMPS)<br>• Insurance — risk protection, 7 principles, life/marine/fire<br>• Transport — moves goods/people; road, rail, air, water, pipeline<br>• Warehousing — storage, price stability, financing<br>• Communication — postal (mail, eMO, iMO) & modern (courier, internet, email).</div></div>
+        
+        <div class="qa-item"><div class="question">5) What is communication? Explain in detail various types of communication.</div>
+        <div class="answer-box"><strong>Communication:</strong> Art of exchanging ideas/information using medium.<br><strong>Postal Services:</strong> Mail (inland, envelope, parcel), Specialised (Business Post, Logistics, Bill Mail), Money Remittance (eMO, iMO, International), Retail (e-Post).<br><strong>Modern Means:</strong> Courier (speed, tracking), Internet (global network, WWW), Email (electronic mail, store-and-forward).</div></div>
+        
+        <div class="qa-item"><div class="question">6) What is road transport? Explain its advantages and disadvantages.</div>
+        <div class="answer-box"><strong>Road Transport:</strong> Movement on land using vehicles (buses, trucks, cars). India has village roads, highways; MoRTH oversees development.<br><strong>Advantages:</strong> Door-to-door, flexible, low cost for short distance, suitable for perishable goods, feeder to other modes.<br><strong>Disadvantages:</strong> Limited capacity, weather affected, accidents, pollution, not economical for long distance.</div></div>
+    </div>
+
+    <!-- Answer Key Summary -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-key"></i> Answer Key (Quick Reference)</div>
+        <table class="data-table">
+            <table><th>Q.1(A)</th><td>1) road &nbsp; 2) warehouse &nbsp; 3) cold storage &nbsp; 4) port risk &nbsp; 5) indemnity</td></tr>
+            <tr><th>Q.1(D)</th><td>True: 1,5 &nbsp; False: 2,3,4</td></tr>
+            <tr><th>Q.1(E)</th><td>1) exchange bank &nbsp; 2) RBI &nbsp; 3) Parcel &nbsp; 4) Blanket policy</td></tr>
+            <tr><th>Q.1(F)</th><td>1) Banco &nbsp; 2) Cold storage &nbsp; 3) fleet &nbsp; 4) Mobile</td></tr>
+            <tr><th>Q.1(I)</th><td>1) Current &nbsp; 2) intangible &nbsp; 3) minimise &nbsp; 4) Central &nbsp; 5) Real</td></tr>
+            <tr><th>Q.1(J)</th><td>1) Taking policy → Accident → Claim → Compensation &nbsp; 2) Inland letter → Courier → Email</td></tr>
+        </table>
+    </div>
+
+    <div class="footer-note">
+        <i class="fas fa-graduation-cap"></i> Chapter 4: Business Services — Complete Q.1 to Q.8 with Answers | MCQ | Match | One Word | True/False | Odd One | Complete | Table | One Sentence | Correct Word | Arrange Order | Distinguish (9 Tables) | Brief | Case Study | Justify | Attempt | Long Answers | 12th Commerce OCM
+    </div>
+</div>
+</body>
+</html>

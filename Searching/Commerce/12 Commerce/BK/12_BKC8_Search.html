@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>🏢 Company Accounts: Issue of Shares | 12th BK Chap 8 | Share Capital, Forfeiture, Re-issue</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    body {
+      background: linear-gradient(145deg, #0c1a2a, #0a1020);
+      min-height: 100vh;
+      padding: 24px 18px;
+      color: #f1f5f9;
+      overflow-y: scroll;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    body::-webkit-scrollbar { display: none; }
+    .container { max-width: 1300px; margin: 0 auto; }
+    .heading { text-align: center; margin-bottom: 35px; animation: slideDown 0.6s ease; }
+    .heading h1 {
+      font-size: 2rem;
+      background: linear-gradient(135deg, #ffffff, #60a5fa, #3b82f6);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+    }
+    .heading p { color: #bfdbfe; margin-top: 10px; font-weight: 500; }
+    .search-wrapper { position: relative; margin-bottom: 32px; }
+    .search-box {
+      background: rgba(255,255,255,0.97);
+      border-radius: 60px;
+      padding: 6px 6px 6px 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.45);
+    }
+    .search-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      padding: 15px 0;
+      background: transparent;
+      color: #0f172a;
+      font-weight: 500;
+    }
+    .icon-btn {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(145deg, #2563eb, #1e40af);
+      color: white;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: 0.25s;
+      box-shadow: 0 4px 12px rgba(37,99,235,0.4);
+    }
+    .icon-btn:hover { transform: scale(1.08); background: #2563eb; }
+    .suggestions-dropdown {
+      position: absolute;
+      top: calc(100% + 12px);
+      left: 0;
+      right: 0;
+      background: rgba(255,255,255,0.98);
+      border-radius: 32px;
+      box-shadow: 0 25px 40px -12px black;
+      z-index: 120;
+      max-height: 280px;
+      overflow-y: auto;
+      display: none;
+    }
+    .suggestion-item {
+      padding: 14px 24px;
+      color: #0f172a;
+      cursor: pointer;
+      border-bottom: 1px solid #f1f5f9;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      transition: 0.2s;
+    }
+    .suggestion-item:hover { background: #dbeafe; padding-left: 32px; }
+    .result-container { display: flex; flex-direction: column; gap: 24px; margin-top: 20px; }
+    .result-card {
+      background: rgba(255,255,255,0.96);
+      border-radius: 40px;
+      padding: 1.8rem;
+      color: #0f172a;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.4);
+      transition: 0.3s ease;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .result-card:hover { transform: translateY(-5px); }
+    .badge {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      color: #1e40af;
+      display: inline-block;
+      padding: 5px 16px;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+    .result-card h3 {
+      color: #1e3a8a;
+      font-size: 1.4rem;
+      border-left: 6px solid #3b82f6;
+      padding-left: 18px;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+    .answer-text {
+      background: #eff6ff;
+      padding: 18px 24px;
+      border-radius: 28px;
+      line-height: 1.7;
+      margin: 12px 0;
+      border: 1px solid #dbeafe;
+    }
+    .formula-box {
+      background: #e0e7ff;
+      padding: 12px 18px;
+      border-radius: 28px;
+      font-family: monospace;
+      font-size: 0.95rem;
+      margin: 14px 0;
+      text-align: center;
+      border-left: 6px solid #3b82f6;
+      font-weight: 600;
+    }
+    .responsive-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 0.85rem;
+      overflow-x: auto;
+      display: block;
+      border-radius: 24px;
+      overflow: hidden;
+    }
+    .responsive-table th, .responsive-table td {
+      border: 1px solid #e2e8f0;
+      padding: 12px 10px;
+      text-align: left;
+      background: white;
+    }
+    .responsive-table th { background: #2563eb; color: white; font-weight: 700; }
+    .action-buttons { margin-top: 22px; display: flex; gap: 15px; flex-wrap: wrap; }
+    .action-buttons button {
+      border: none;
+      padding: 10px 26px;
+      border-radius: 50px;
+      font-weight: 700;
+      background: #f1f5f9;
+      color: #1e293b;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .action-buttons button:last-child { background: #2563eb; color: white; box-shadow: 0 4px 10px rgba(37,99,235,0.3); }
+    .action-buttons button:hover { transform: scale(0.97); opacity: 0.9; }
+    .not-found {
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(16px);
+      border-radius: 60px;
+      padding: 2.5rem;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.88);
+      backdrop-filter: blur(12px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    .popup-box {
+      background: white;
+      max-width: 850px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      border-radius: 48px;
+      padding: 30px 34px;
+      position: relative;
+      color: #1e293b;
+    }
+    .close-popup {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      background: #fee2e2;
+      border: none;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+    .lang-section { background: #f8fafc; padding: 18px; border-radius: 28px; margin-bottom: 20px; }
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 650px) {
+      body { padding: 16px 12px; }
+      .heading h1 { font-size: 1.4rem; }
+      .result-card h3 { font-size: 1.1rem; }
+      .responsive-table th, .responsive-table td { padding: 8px 5px; font-size: 0.7rem; }
+      .result-card { padding: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="heading">
+    <h1>🏢 Company Accounts: Issue of Shares | Chapter 8</h1>
+    <p>⚡ Share Capital · Types of Shares · Issue at Par/Premium/Discount · Oversubscription · Forfeiture & Re-issue</p>
+  </div>
+  <div class="search-wrapper">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="🔎 Search: Authorised Capital, Prospectus, Oversubscription, Forfeiture, Calls in Arrears, Re-issue of Shares...">
+      <button class="icon-btn" id="voiceBtn">🎤</button>
+    </div>
+    <div id="suggestionsList" class="suggestions-dropdown"></div>
+  </div>
+  <div class="result-container" id="resultsContainer">
+    <div class="not-found">✨ Type above — Master Share Capital, Forfeiture, Re-issue & Related Journal Entries ✨</div>
+  </div>
+</div>
+<div class="popup-overlay" id="popupModal">
+  <div class="popup-box">
+    <button class="close-popup" id="closeModalBtn">✖</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+  // ---------- COMPLETE DATABASE: ISSUE OF SHARES (Chapter 8) ----------
+  const qaDatabase = [];
+
+  function addQA(question, answer, hindi, marathi, category, keywords = []) {
+    qaDatabase.push({ id: qaDatabase.length+1, question, answer, hindi, marathi, category, keywords: keywords.map(k=>k.toLowerCase()) });
+  }
+
+  // ==================== CORE CONCEPTS ====================
+  addQA("What is Authorised Capital?", "Authorised Capital (Nominal/Registered Capital) is the maximum amount of share capital a company is authorised to issue by its Memorandum of Association. It can be increased by following legal procedure.", "अधिकृत पूंजी वह अधिकतम राशि है जिसे जारी करने की कंपनी को अनुमति होती है।", "अधिकृत भांडवल ही कंपनीला जारी करण्याची परवानगी असलेली कमाल रक्कम.", "Capital", ["authorised capital", "nominal capital"]);
+  addQA("What is Issued Capital?", "Issued Capital is that part of Authorised Capital which is offered to the public for subscription. Company may issue shares in one or more tranches.", "निर्गमित पूंजी अधिकृत पूंजी का वह भाग है जो जनता को सब्सक्रिप्शन के लिए पेश किया जाता है।", "निर्गमित भांडवल म्हणजे अधिकृत भांडवलाचा जनतेसाठी देऊ केलेला भाग.", "Capital", ["issued capital"]);
+  addQA("What is Subscribed Capital?", "Subscribed Capital is that part of Issued Capital which is actually subscribed (applied for and allotted) by the public. It may be equal to or less than Issued Capital.", "अभिदत्त पूंजी निर्गमित पूंजी का वह भाग है जो जनता द्वारा वास्तव में अभिदत्त किया गया है।", "अभिदत्त भांडवल म्हणजे निर्गमित भांडवलाचा जनतेकडून अभिदत्त घेतलेला भाग.", "Capital", ["subscribed capital"]);
+  addQA("What is Called-up Capital?", "Called-up Capital is the portion of Subscribed Capital that the company has demanded (called) from shareholders. The company may call only part of the face value initially.", "आहूत पूंजी अभिदत्त पूंजी का वह भाग है जो कंपनी ने शेयरधारकों से मांगा है।", "आहूत भांडवल म्हणजे अभिदत्त भांडवलाचा कंपनीने मागणी केलेला भाग.", "Capital", ["called up capital"]);
+  addQA("What is Calls in Arrears?", "Calls in Arrears is the amount called up by the company but not yet paid by shareholders. It is shown as a deduction from Paid-up Capital in Balance Sheet.", "मांग पर बकाया वह राशि है जो कंपनी द्वारा मांगी गई लेकिन शेयरधारकों द्वारा भुगतान नहीं की गई।", "मागणी बाकी म्हणजे कंपनीने मागणी केलेली पण भागीदाराने न दिलेली रक्कम.", "Terms", ["calls in arrears"]);
+  addQA("What is Share Premium (Securities Premium)?", "When shares are issued at a price higher than face value, the excess amount is called Share Premium. It is credited to Securities Premium Account and shown on Liability side of Balance Sheet. It can be used for specific purposes like issuing bonus shares, writing off preliminary expenses, etc.", "शेयर प्रीमियम अंकित मूल्य से अधिक पर शेयर जारी करने पर प्राप्त अतिरिक्त राशि है।", "शेयर प्रीमियम म्हणजे दर्शनी किमतीपेक्षा जास्त किंमतीवर शेअर जारी केल्यावर मिळणारी अतिरिक्त रक्कम.", "Premium", ["share premium", "securities premium"]);
+  addQA("What is Forfeiture of Shares?", "Forfeiture of shares is the cancellation of shares by the company when a shareholder fails to pay allotment or call money despite reminders. The shareholder loses their rights and the company can re-issue these shares.", "शेयरों का हरण कंपनी द्वारा शेयरों को रद्द करना है जब शेयरधारक आवंटन या कॉल राशि का भुगतान करने में विफल रहता है।", "शेअर्स जप्त करणे म्हणजे भागीदाराने वाटप किंवा मागणी रक्कम न दिल्यास कंपनी ते शेअर्स रद्द करते.", "Forfeiture", ["forfeiture of shares"]);
+
+  // ==================== TABLES ====================
+  function getShareCapitalTable() {
+    return `<table class="responsive-table"><thead><tr><th>Type</th><th>Meaning</th></tr></thead><tbody>
+      <tr><td>Authorised Capital</td><td>Maximum capital company can issue (Memorandum of Association)</td></tr>
+      <tr><td>Issued Capital</td><td>Part of Authorised Capital offered to public</td></tr>
+      <tr><td>Subscribed Capital</td><td>Part of Issued Capital actually subscribed by public</td></tr>
+      <tr><td>Called-up Capital</td><td>Part of Subscribed Capital demanded by company</td></tr>
+      <tr><td>Paid-up Capital</td><td>Called-up Capital minus Calls in Arrears</td></tr>
+      <tr><td>Calls in Arrears</td><td>Unpaid amount by shareholders</td></tr>
+    </tbody></tr>`;
+  }
+  function getForfeitureEntryTable() {
+    return `<table class="responsive-table"><thead><tr><th>Situation</th><th>Journal Entry</th></tr></thead><tbody>
+      <tr><td>Forfeiture (Premium received)</td><td>Share Capital A/c Dr. (Called-up amount)<br>To Share Forfeiture A/c (Amount received)<br>To Calls in Arrears A/c (Unpaid amount)</td></tr>
+      <tr><td>Forfeiture (Premium not received)</td><td>Share Capital A/c Dr.<br>Share Premium/Securities Premium A/c Dr.<br>To Calls in Arrears A/c<br>To Share Forfeiture A/c</td></tr>
+      <tr><td>Re-issue at discount</td><td>Bank A/c Dr., Share Forfeiture A/c Dr. (max. discount allowed)<br>To Share Capital A/c</td></tr>
+      <tr><td>Transfer to Capital Reserve</td><td>Share Forfeiture A/c Dr.<br>To Capital Reserve A/c</td></tr>
+    </tbody></table>`;
+  }
+
+  // ==================== JOURNAL ENTRIES THEORY ====================
+  addQA("What is the journal entry for Share Application money received?", "Bank A/c Dr. To Share Application A/c (with the amount received on application).", "शेयर आवेदन राशि प्राप्त होने की प्रविष्टि।", "शेअर अर्ज रक्कम मिळाल्याची नोंद.", "Journal", ["application entry"]);
+  addQA("What is the journal entry for transferring Application money to Share Capital?", "Share Application A/c Dr. To Share Capital A/c (for shares allotted).", "आवेदन राशि का शेयर पूंजी में स्थानांतरण।", "अर्ज रकमेचे शेअर भांडवलात हस्तांतरण.", "Journal", ["transfer application"]);
+  addQA("What is the journal entry for Allotment money due?", "Share Allotment A/c Dr. To Share Capital A/c (and To Securities Premium A/c if premium is due on allotment).", "आवंटन राशि देय होने की प्रविष्टि।", "वाटप रक्कम देय होण्याची नोंद.", "Journal", ["allotment due"]);
+  addQA("What is the journal entry for oversubscription with pro-rata allotment?", "Share Application A/c Dr. To Share Capital A/c (for shares allotted) To Share Allotment A/c (excess adjusted towards allotment). Excess application money may also be refunded.", "अधि अभिदान और समानुपातिक आवंटन की प्रविष्टि।", "अतिअभिदान व प्रमाणिक वाटपाची नोंद.", "Journal", ["oversubscription", "prorata"]);
+
+  // ==================== NUMERICAL & THEORY ====================
+  addQA("Calculate: Company issued 10,000 shares of ₹10 each at 10% premium. Find total share premium.", "Share Premium per share = 10% of ₹10 = ₹1. Total Share Premium = 10,000 × ₹1 = ₹10,000.", "कुल शेयर प्रीमियम = ₹10,000", "एकूण शेअर प्रीमियम = ₹10,000", "Numerical", ["premium calculation"]);
+  addQA("Calculate Paid-up Capital: 80,000 shares of ₹10 each fully subscribed, one shareholder holding 100 shares failed to pay final call of ₹20 per share.", "Called-up per share = ₹10 (assuming fully called). Calls in Arrears = 100 × ₹20 = ₹2,000 (but as per problem, it's final call of ₹20 on ₹100 shares? Let's compute: Paid-up = (80,000 × 10) - (100 × 20) = 8,00,000 - 2,000 = ₹7,98,000.", "प्रदत्त पूंजी = ₹7,98,000", "प्रदत्त भांडवल = ₹7,98,000", "Numerical", ["paid up capital"]);
+  addQA("True/False: Shares can be issued at a discount in a public issue as per Companies Act 2013.", "False. As per Companies Act 2013, public issue of shares cannot be made at a discount. However, private companies may issue at discount under certain conditions.", "गलत। कंपनी अधिनियम 2013 के अनुसार, सार्वजनिक निर्गम में शेयर छूट पर जारी नहीं किए जा सकते।", "चुकीचे.", "True/False", ["issue at discount public"]);
+
+  // Helper functions
+  const searchInput = document.getElementById("searchInput");
+  const resultsContainer = document.getElementById("resultsContainer");
+  const suggestionsDiv = document.getElementById("suggestionsList");
+
+  function getMatches(q) {
+    const lower = q.toLowerCase();
+    return qaDatabase.filter(item => 
+      item.question.toLowerCase().includes(lower) || 
+      item.answer.toLowerCase().includes(lower) ||
+      item.category.toLowerCase().includes(lower) ||
+      item.keywords.some(k => k.includes(lower))
+    ).slice(0, 14);
+  }
+
+  function updateSuggestions() {
+    const val = searchInput.value.trim();
+    if(!val) { suggestionsDiv.style.display = "none"; return; }
+    const matches = getMatches(val);
+    if(!matches.length) { suggestionsDiv.style.display = "none"; return; }
+    suggestionsDiv.innerHTML = "";
+    matches.forEach(item => {
+      const div = document.createElement("div");
+      div.className = "suggestion-item";
+      div.innerHTML = `<span>🏢</span> <strong>${item.question.substring(0,70)}</strong> <span style="margin-left:auto; background:#dbeafe; padding:2px 12px; border-radius:30px;">${item.category}</span>`;
+      div.addEventListener("click", () => {
+        searchInput.value = item.question;
+        suggestionsDiv.style.display = "none";
+        performSearch(item.question);
+      });
+      suggestionsDiv.appendChild(div);
+    });
+    suggestionsDiv.style.display = "block";
+  }
+
+  function performSearch(q = null) {
+    let query = (q !== null) ? q : searchInput.value.trim();
+    if(!query) { resultsContainer.innerHTML = `<div class="not-found">✨ Enter keywords: Authorised Capital, Forfeiture, Pro-rata, Share Premium, Calls in Arrears ✨</div>`; return; }
+    const matches = getMatches(query);
+    if(!matches.length) { resultsContainer.innerHTML = `<div class="not-found">❌ No results. Try: Share Capital, Oversubscription, Forfeiture, Re-issue, Share Premium.</div>`; return; }
+    resultsContainer.innerHTML = "";
+    matches.forEach(item => {
+      let extra = "";
+      if (item.question.toLowerCase().includes("types of share capital") || (item.question.toLowerCase().includes("share capital") && item.category === "Capital")) extra = getShareCapitalTable();
+      if (item.question.toLowerCase().includes("forfeiture entry") || item.question.toLowerCase().includes("forfeiture of shares journal")) extra = getForfeitureEntryTable();
+      if (item.category === "Numerical" && item.answer.includes("₹")) extra = `<div class="formula-box">📐 ${item.answer}</div>`;
+      
+      const card = document.createElement("div");
+      card.className = "result-card";
+      card.innerHTML = `
+        <div class="badge">⭐ ${escapeHtml(item.category)}</div>
+        <h3>📘 ${escapeHtml(item.question)}</h3>
+        <div class="answer-text"><strong>✅ Answer / उत्तर:</strong><br>${escapeHtml(item.answer)}${extra}</div>
+        <div class="action-buttons">
+          <button class="langBtn" data-q="${escapeAttr(item.question)}" data-a="${escapeAttr(item.answer)}" data-hi="${escapeAttr(item.hindi)}" data-mr="${escapeAttr(item.marathi)}">🌐 हिंदी / मराठी</button>
+          <button class="detailBtn" data-q="${escapeAttr(item.question)}" data-a="${escapeAttr(item.answer)}" data-cat="${item.category}">📘 Detailed Explanation</button>
+        </div>
+      `;
+      resultsContainer.appendChild(card);
+    });
+    attachEvents();
+  }
+
+  function attachEvents() {
+    document.querySelectorAll(".langBtn").forEach(btn => btn.addEventListener("click", (e) => {
+      const q = btn.getAttribute("data-q"), a= btn.getAttribute("data-a"), hi=btn.getAttribute("data-hi"), mr=btn.getAttribute("data-mr");
+      showLangPopup(q,a,hi,mr);
+    }));
+    document.querySelectorAll(".detailBtn").forEach(btn => btn.addEventListener("click", (e) => {
+      const q = btn.getAttribute("data-q"), a= btn.getAttribute("data-a"), cat=btn.getAttribute("data-cat");
+      showDetailPopup(q,a,cat);
+    }));
+  }
+
+  function showLangPopup(question, answer, hindi, marathi) {
+    document.getElementById("popupModal").style.display = "flex";
+    document.getElementById("modalContent").innerHTML = `
+      <h2 style="color:#1e40af;">🌐 भाषा अनुवाद</h2>
+      <div class="lang-section"><strong>❓ प्रश्न:</strong> ${escapeHtml(question)}</div>
+      <div class="lang-section"><strong>🇮🇳 हिंदी:</strong><br>${escapeHtml(hindi || answer)}</div>
+      <div class="lang-section"><strong>🇮🇳 मराठी:</strong><br>${escapeHtml(marathi || answer)}</div>
+      <button id="closeLangModal" style="background:#2563eb; padding:10px 26px; border-radius:40px; color:white;">बंद करें</button>
+    `;
+    document.getElementById("closeLangModal").addEventListener("click", ()=> document.getElementById("popupModal").style.display = "none");
+  }
+
+  function showDetailPopup(question, answer, category) {
+    let extra = `<div class="lang-section"><strong>📖 12th BK Chapter 8 - Company Accounts: Issue of Shares</strong><br>✔ Types of Share Capital (Authorised, Issued, Subscribed, Called-up, Paid-up)<br>✔ Types of Shares (Equity, Preference)<br>✔ Issue at Par, Premium, Discount (not allowed for public issue now)<br>✔ Oversubscription, Pro-rata Allotment<br>✔ Calls in Arrears, Calls in Advance<br>✔ Forfeiture and Re-issue of Shares</div>`;
+    if(category === "Capital") extra += getShareCapitalTable();
+    if(category === "Forfeiture" || (category === "Journal" && question.toLowerCase().includes("forfeit"))) extra += getForfeitureEntryTable();
+    document.getElementById("popupModal").style.display = "flex";
+    document.getElementById("modalContent").innerHTML = `
+      <h2 style="color:#1e40af;">📘 Detailed Explanation</h2>
+      <div class="lang-section"><strong>❓ Question:</strong> ${escapeHtml(question)}</div>
+      <div class="lang-section"><strong>✅ Answer:</strong><br>${escapeHtml(answer)}</div>
+      ${extra}
+      <button id="closeDetailModal" style="background:#2563eb; padding:10px 26px; border-radius:40px;">Close</button>
+    `;
+    document.getElementById("closeDetailModal").addEventListener("click", ()=> document.getElementById("popupModal").style.display = "none");
+  }
+
+  function escapeHtml(str) { return str.replace(/[&<>]/g, m => m==='&'?'&amp;': m==='<'?'&lt;':'&gt;'); }
+  function escapeAttr(str) { return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function startVoice() { if (!('webkitSpeechRecognition' in window)) { alert("Voice not supported."); return; } const rec = new webkitSpeechRecognition(); rec.lang="en-IN"; rec.start(); rec.onresult = (e)=> { searchInput.value = e.results[0][0].transcript; performSearch(); }; }
+  document.getElementById("voiceBtn").addEventListener("click", startVoice);
+  searchInput.addEventListener("keyup", () => { performSearch(); updateSuggestions(); });
+  searchInput.addEventListener("focus", updateSuggestions);
+  document.addEventListener("click", (e) => { if(!document.querySelector(".search-wrapper").contains(e.target)) suggestionsDiv.style.display = "none"; });
+  document.getElementById("closeModalBtn").addEventListener("click", () => document.getElementById("popupModal").style.display = "none");
+  window.onload = () => { resultsContainer.innerHTML = `<div class="not-found">✨ 12th Commerce · Company Accounts: Issue of Shares · Share Capital, Forfeiture & Re-issue ✨</div>`; };
+</script>
+</body>
+</html>

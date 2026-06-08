@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Chapter 6 | Dissolution of Partnership Firm - 12th Commerce</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #eef2f9 0%, #e0e8f2 100%);
+            font-family: 'Inter', sans-serif;
+            padding: 32px 24px;
+            color: #0a2b3e;
+            line-height: 1.5;
+            overflow-y: scroll;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        body::-webkit-scrollbar { display: none; }
+        .container { max-width: 1300px; margin: 0 auto; }
+        .hero { text-align: center; margin-bottom: 40px; }
+        .hero h1 {
+            font-size: 2.4rem; font-weight: 800;
+            background: linear-gradient(135deg, #0b4b6b, #1f6e93, #2c7da0);
+            background-clip: text; -webkit-background-clip: text; color: transparent;
+            padding-bottom: 10px;
+            border-bottom: 4px solid #ffb347;
+            display: inline-block;
+        }
+        /* ATTRACTIVE SUMMARY CARD */
+        .summary-card {
+            background: linear-gradient(145deg, #ffffff, #f8fbfe);
+            border-radius: 2rem;
+            margin-bottom: 32px;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.12);
+            transition: transform 0.2s;
+            overflow: hidden;
+            border: 1px solid rgba(44, 125, 160, 0.15);
+        }
+        .summary-card:hover { transform: translateY(-3px); }
+        .summary-header {
+            background: linear-gradient(105deg, #135b78 0%, #1f7a9e 100%);
+            padding: 20px 28px;
+            border-bottom: 4px solid #ffb74d;
+        }
+        .summary-header h2 {
+            color: white;
+            font-size: 1.6rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .summary-header h2 i { font-size: 1.8rem; color: #ffd966; }
+        .summary-body {
+            padding: 28px 32px;
+            max-height: 420px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+        }
+        .summary-body::-webkit-scrollbar {
+            width: 5px;
+            background: #e0e8f2;
+        }
+        .summary-body::-webkit-scrollbar-thumb {
+            background: #ffb74d;
+            border-radius: 10px;
+        }
+        .summary-text { font-size: 1rem; line-height: 1.65; color: #1f3b4c; }
+        .summary-text p { margin-bottom: 14px; }
+        .summary-text strong { color: #135b78; font-weight: 700; }
+        .highlight-badge {
+            background: #eef3fc;
+            border-left: 4px solid #ffb74d;
+            padding: 10px 16px;
+            margin: 16px 0;
+            border-radius: 12px;
+        }
+        .lang-buttons { 
+            display: flex; 
+            gap: 15px; 
+            flex-wrap: wrap;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px dashed #cbdde9;
+        }
+        .lang-btn {
+            background: #135b78; color: white; border: none;
+            padding: 10px 28px; border-radius: 50px; font-weight: 600;
+            cursor: pointer; transition: all 0.25s ease;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .lang-btn:hover { background: #ff8c42; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        
+        /* Cards */
+        .card {
+            background: rgba(255,255,255,0.97); border-radius: 1.8rem;
+            margin-bottom: 32px; padding: 28px 32px;
+            box-shadow: 0 15px 30px -10px rgba(0,0,0,0.08);
+            transition: 0.2s;
+            border: 1px solid rgba(255,255,255,0.6);
+        }
+        .card h2 {
+            font-size: 1.6rem; font-weight: 700; color: #135b78;
+            margin-bottom: 24px; padding-bottom: 8px;
+            border-bottom: 3px solid #ffb74d;
+            display: inline-block;
+        }
+        .card h2 i { margin-right: 12px; color: #ff8c42; }
+        .qa-item { margin-bottom: 22px; border-left: 3px solid #cbdde9; padding-left: 20px; }
+        .question { font-weight: 700; color: #1f4a5e; margin-bottom: 8px; display: flex; gap: 12px; flex-wrap: wrap; }
+        .answer {
+            background: #f8fafd; padding: 10px 18px; border-radius: 24px;
+            font-weight: 500; color: #216477; display: inline-block; width: auto;
+            font-size: 0.92rem;
+        }
+        .true-badge { background: #e0f2e9; color: #1e6f3f; padding: 3px 14px; border-radius: 40px; font-weight: 700; font-size: 0.75rem; display: inline-block; margin-right: 12px; }
+        .false-badge { background: #ffe8e6; color: #bc4742; padding: 3px 14px; border-radius: 40px; font-weight: 700; font-size: 0.75rem; display: inline-block; margin-right: 12px; }
+        .resp-table { width: 100%; overflow-x: auto; margin: 16px 0; background: #f4f9fe; padding: 4px; border-radius: 20px; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; background: white; border-radius: 16px; overflow: hidden; }
+        th, td { border: 1px solid #cde1ef; padding: 10px 12px; text-align: left; vertical-align: top; }
+        th { background: #e0eaf5; font-weight: 700; color: #135b78; }
+        .highlight { background: #eef3fc; border-radius: 16px; padding: 12px 18px; margin: 12px 0; }
+        @media (max-width: 768px) {
+            body { padding: 20px 16px; }
+            .card, .summary-body { padding: 20px 18px; }
+            .hero h1 { font-size: 1.8rem; }
+            .summary-header { padding: 16px 20px; }
+            .summary-header h2 { font-size: 1.3rem; }
+            th, td { padding: 6px 8px; font-size: 0.75rem; }
+        }
+        .footer-note { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #bdd4e4; font-size: 0.8rem; color: #2c6f8c; }
+        
+        /* MODERN POPUP - SCROLLABLE INSIDE, HIDDEN SCROLLBAR */
+        .popup-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8); backdrop-filter: blur(8px);
+            justify-content: center; align-items: center; z-index: 1000;
+        }
+        .popup-content {
+            background: linear-gradient(145deg, #ffffff, #fefefe);
+            width: 92%; max-width: 620px; border-radius: 2rem;
+            position: relative;
+            box-shadow: 0 30px 50px rgba(0,0,0,0.3);
+            animation: fadeInUp 0.35s ease;
+            overflow: hidden;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .popup-header {
+            background: linear-gradient(105deg, #135b78, #1f7a9e);
+            padding: 20px 28px;
+            border-bottom: 3px solid #ffb74d;
+        }
+        .popup-header h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .close-popup {
+            position: absolute;
+            top: 15px;
+            right: 22px;
+            font-size: 32px;
+            cursor: pointer;
+            color: #ffd966;
+            transition: 0.2s;
+            z-index: 10;
+            background: rgba(0,0,0,0.2);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .close-popup:hover {
+            color: #fff;
+            background: #ff8c42;
+            transform: rotate(90deg);
+        }
+        .popup-body-scroll {
+            max-height: 60vh;
+            overflow-y: auto;
+            padding: 28px 30px;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE/Edge */
+        }
+        .popup-body-scroll::-webkit-scrollbar {
+            display: none; /* Chrome/Safari - hides scrollbar but keeps scroll */
+        }
+        .translation-text {
+            font-size: 0.98rem;
+            line-height: 1.7;
+            color: #1f3b4c;
+        }
+        .translation-text p { margin-bottom: 14px; }
+        .translation-text strong { color: #135b78; }
+        .translation-highlight {
+            background: #eef3fc;
+            border-left: 4px solid #ffb74d;
+            padding: 10px 16px;
+            margin: 16px 0;
+            border-radius: 12px;
+            font-size: 0.92rem;
+        }
+        @media (max-width: 550px) {
+            .popup-content { width: 95%; }
+            .popup-body-scroll { padding: 20px; }
+            .popup-header h3 { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="hero">
+        <h1><i class="fas fa-building"></i> Chapter 6 · Dissolution of Partnership Firm</h1>
+    </div>
+
+    <!-- ================= ATTRACTIVE SUMMARY CARD ================= -->
+    <div class="summary-card">
+        <div class="summary-header">
+            <h2><i class="fas fa-file-alt"></i> 📘 Chapter Summary: Dissolution of Partnership Firm</h2>
+        </div>
+        <div class="summary-body">
+            <div class="summary-text">
+                <p><strong>🔹 Meaning:</strong> Dissolution means complete closure of partnership business. As per <strong>Indian Partnership Act 1932, Sec. 39</strong> — dissolution of partnership between all partners is called <strong>dissolution of firm</strong>. All assets are realized, liabilities paid, and books closed permanently.</p>
+                <div class="highlight-badge"><strong>📌 Key Point:</strong> Dissolution of Partnership ≠ Dissolution of Firm. Partnership may continue with reconstitution, but Firm dissolution ends everything.</div>
+                <p><strong>🔹 Settlement Order (Sec.48):</strong> <br> 1️⃣ Realisation expenses → 2️⃣ Outside liabilities → 3️⃣ Partners' loans → 4️⃣ Partners' capital (in profit sharing ratio).</p>
+                <p><strong>🔹 Key Accounts:</strong> <strong>Realisation A/c</strong> (Nominal A/c) – transfers all assets (except cash) & third-party liabilities; shows profit/loss on dissolution. <strong>Partners' Capital A/c</strong> – adjusted for reserves, revaluation profit/loss, and final settlement.</p>
+                <p><strong>🔹 Insolvency of Partner:</strong> If a partner has debit balance (deficiency) and is insolvent, the loss is borne by <strong>solvent partners in their profit sharing ratio</strong>.</p>
+                <p><strong>🔹 When ALL partners are insolvent:</strong> Third party liabilities are not transferred to Realisation A/c. <strong>Deficiency A/c</strong> is opened to close the books after distributing available cash proportionately.</p>
+                <p><strong>⭐ Important Journal Entries:</strong> Transfer of assets & liabilities to Realisation A/c, sale of assets, payment to creditors, transfer of realisation profit/loss to partners' capital, final settlement.</p>
+            </div>
+            <div class="lang-buttons">
+                <button class="lang-btn" onclick="showTranslation('hindi')"><i class="fas fa-language"></i> हिंदी अनुवाद</button>
+                <button class="lang-btn" onclick="showTranslation('marathi')"><i class="fas fa-language"></i> मराठी अनुवाद</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= Objective Questions ================= -->
+    <div class="card"><h2><i class="fas fa-check-square"></i> A. Select the most appropriate alternative</h2>
+        <div class="qa-item"><div class="question">1) In case of dissolution, assets and liabilities are transferred to _______ Account.</div><div class="answer">c) Realisation Account</div></div>
+        <div class="qa-item"><div class="question">2) Dissolution expenses are credited to _______ Account.</div><div class="answer">b) Cash / Bank Account</div></div>
+        <div class="qa-item"><div class="question">3) Deficiency of insolvent partner will be suffered by solvent partners in their _______ ratio.</div><div class="answer">b) Profit sharing ratio</div></div>
+        <div class="qa-item"><div class="question">4) If any asset is taken over by partner from firm his capital account will be _______.</div><div class="answer">b) Debited</div></div>
+        <div class="qa-item"><div class="question">5) If any unrecorded liability is paid on dissolution, _______ account is debited.</div><div class="answer">b) Realisation Account</div></div>
+        <div class="qa-item"><div class="question">6) Partnership is completely dissolved when partners become _______.</div><div class="answer">b) Insolvent</div></div>
+        <div class="qa-item"><div class="question">7) Assets and liabilities are transferred to Realisation account at their _______ values.</div><div class="answer">d) Book</div></div>
+        <div class="qa-item"><div class="question">8) If number of partners falls below two, the firm stands _______.</div><div class="answer">a) Dissolved</div></div>
+        <div class="qa-item"><div class="question">9) Realisation account is _______ on realisation of asset.</div><div class="answer">b) Credited</div></div>
+        <div class="qa-item"><div class="question">10) All activities cease on _______ of firm.</div><div class="answer">a) Dissolution</div></div>
+    </div>
+
+    <!-- ================= One word / term ================= -->
+    <div class="card"><h2><i class="fas fa-tag"></i> B. Give word / term / phrase</h2>
+        <div class="qa-item"><div class="question">1) Debit balance of Realisation account.</div><div class="answer">Loss on Realisation</div></div>
+        <div class="qa-item"><div class="question">2) Winding up of partnership business.</div><div class="answer">Dissolution of Firm</div></div>
+        <div class="qa-item"><div class="question">3) Account opened to find profit/loss on realisation.</div><div class="answer">Realisation Account</div></div>
+        <div class="qa-item"><div class="question">4) Debit balance of an Insolvent Partner's Capital Account.</div><div class="answer">Capital Deficiency</div></div>
+        <div class="qa-item"><div class="question">5) Credit balance of Realisation Account.</div><div class="answer">Profit on Realisation</div></div>
+        <div class="qa-item"><div class="question">6) Conversion of asset into cash on dissolution.</div><div class="answer">Realisation</div></div>
+        <div class="qa-item"><div class="question">7) Liability likely to arise in future.</div><div class="answer">Contingent Liability</div></div>
+        <div class="qa-item"><div class="question">8) Assets not recorded in books.</div><div class="answer">Unrecorded Assets</div></div>
+    </div>
+
+    <!-- ================= True/False ================= -->
+    <div class="card"><h2><i class="fas fa-gavel"></i> C. True or False with reasons</h2>
+        <div class="qa-item"><div class="question">1) Firm must be dissolved on retirement of a partner.</div><div class="answer"><span class="false-badge">False</span> Firm may continue with remaining partners (reconstitution).</div></div>
+        <div class="qa-item"><div class="question">2) On dissolution Cash/Bank Account is closed automatically.</div><div class="answer"><span class="true-badge">True</span> After final payments, balance becomes zero.</div></div>
+        <div class="qa-item"><div class="question">3) On dissolution Bank Overdraft is transferred to Realisation Account.</div><div class="answer"><span class="true-badge">True</span> It is a third-party liability, hence transferred.</div></div>
+        <div class="qa-item"><div class="question">4) Solvent partner with debit balance does not share deficiency of insolvent partner.</div><div class="answer"><span class="false-badge">False</span> All solvent partners share deficiency in PSR.</div></div>
+        <div class="qa-item"><div class="question">5) At dissolution, all assets should be transferred to Realisation account.</div><div class="answer"><span class="true-badge">True</span> Except cash/bank & fictitious assets.</div></div>
+        <div class="qa-item"><div class="question">6) Debit balance of insolvent partner's capital account is capital deficiency.</div><div class="answer"><span class="true-badge">True</span> It represents amount due from partner.</div></div>
+        <div class="qa-item"><div class="question">7) Loan from partner is transferred to Realisation account.</div><div class="answer"><span class="false-badge">False</span> Partner's loan is paid after third-party liabilities, not transferred.</div></div>
+    </div>
+
+    <!-- ================= Calculations ================= -->
+    <div class="card"><h2><i class="fas fa-calculator"></i> D. Calculate the following</h2>
+        <div class="qa-item"><div class="question">1) Vishal's deficiency ₹6,000, ratio 3:2:1 (Vishal 1). Distribute among Vinod & Vijay.</div><div class="answer">Vinod = 6,000×3/5 = ₹3,600; Vijay = 6,000×2/5 = ₹2,400</div></div>
+        <div class="qa-item"><div class="question">2) Creditors 30k, Bills Payable 20k, Bank Loan 10k, available ₹40,000. Creditors get?</div><div class="answer">Total liabilities 60k, ratio 3:2:1. Creditors get 40,000×3/6 = ₹20,000</div></div>
+        <div class="qa-item"><div class="question">3) Insolvent partner: Debit side total ₹10,000, Credit side ₹6,000. Deficiency?</div><div class="answer">Deficiency = 10,000 - 6,000 = ₹4,000</div></div>
+        <div class="qa-item"><div class="question">4) Insolvent partner debit 15,000, brought cash ₹6,000. Insolvency loss to solvent partners?</div><div class="answer">Loss = 15,000 - 6,000 = ₹9,000</div></div>
+        <div class="qa-item"><div class="question">5) Realisation profit ₹6,000, ratio 3:2:1. Amount to each partner?</div><div class="answer">3:2:1 → A=3,000, B=2,000, C=1,000</div></div>
+    </div>
+
+    <!-- ================= Settlement Order Table ================= -->
+    <div class="card"><h2><i class="fas fa-list-ol"></i> Order of Payment (Sec.48 – Indian Partnership Act)</h2>
+        <div class="resp-table"><table><thead><tr><th>Priority</th><th>Payment Description</th></tr></thead>
+        <tbody><tr><td>1st</td><td>Realisation / Dissolution Expenses</td></tr>
+        <tr><td>2nd</td><td>Outside Liabilities (Creditors, Bills Payable, Bank Loan, Outstanding Expenses)</td></tr>
+        <tr><td>3rd</td><td>Partners' Loans (if any)</td></tr>
+        <tr><td>4th</td><td>Partners' Capital (in Profit Sharing Ratio)</td></tr>
+        </tbody></table></div>
+    </div>
+
+    <!-- ================= Journal Entries Summary ================= -->
+    <div class="card"><h2><i class="fas fa-book"></i> Key Journal Entries (Dissolution)</h2>
+        <div class="resp-table"><td><thead><tr><th>Transaction</th><th>Entry</th></tr></thead>
+        <tbody>
+            <tr><td>Transfer of Assets (except cash)</td><td>Realisation A/c Dr. → To Individual Asset A/c</td></tr>
+            <tr><td>Transfer of External Liabilities</td><td>Liability A/c Dr. → To Realisation A/c</td></tr>
+            <tr><td>Sale of Assets (cash)</td><td>Cash/Bank A/c Dr. → To Realisation A/c</td></tr>
+            <tr><td>Payment to Creditors</td><td>Realisation A/c Dr. → To Cash/Bank A/c</td></tr>
+            <tr><td>Realisation Expenses paid</td><td>Realisation A/c Dr. → To Cash/Bank A/c</td></tr>
+            <tr><td>Profit on Realisation transfer</td><td>Realisation A/c Dr. → To Partners' Capital A/c (PSR)</td></tr>
+            <tr><td>Loss on Realisation transfer</td><td>Partners' Capital A/c Dr. (PSR) → To Realisation A/c</td></tr>
+            <tr><td>Final Settlement to Partner</td><td>Partner's Capital A/c Dr. → To Cash/Bank A/c</td></tr>
+        </tbody></table></div>
+    </div>
+
+    <!-- ================= Insolvency treatment table ================= -->
+    <div class="card"><h2><i class="fas fa-exclamation-triangle"></i> Insolvency of a Partner (Capital Deficiency)</h2>
+        <div class="resp-table"><table><thead><tr><th>Situation</th><th>Treatment</th></tr></thead>
+        <tbody>
+            <tr><td>Insolvent partner's capital shows Debit balance</td><td>Deficiency transferred to solvent partners in Profit Sharing Ratio</td></tr>
+            <tr><td>All partners insolvent</td><td>Open Deficiency A/c; external liabilities paid proportionately; books closed</td></tr>
+            <tr><td>Amount recovered from insolvent partner's estate</td><td>Cash/Bank A/c Dr. → To Insolvent Partner's Capital A/c</td></tr>
+        </tbody></table></div>
+    </div>
+
+    <!-- ======== Illustration: Realisation Account Sample ======== -->
+    <div class="card"><h2><i class="fas fa-chart-line"></i> Illustration: Realisation Account (Riddhi & Siddhi)</h2>
+        <div class="resp-table"><table><thead><tr><th>Dr. Realisation Account Cr.</th><th>₹</th><th></th><th>₹</th></tr></thead>
+        <tbody>
+            <tr><td>To Building</td><td>60,000</td><td>By Creditors</td><td>30,000</td></tr>
+            <tr><td>To Furniture</td><td>24,000</td><td>By R.D.D.</td><td>1,600</td></tr>
+            <tr><td>To Machinery</td><td>20,000</td><td>By Bank (Assets realised)</td><td>1,03,000</td></tr>
+            <tr><td>To Debtors</td><td>17,600</td><td>By Riddhi's Capital (Investment taken)</td><td>10,000</td></tr>
+            <tr><td>To Stock</td><td>40,000</td><td>By Siddhi's Loan</td><td>1,000</td></tr>
+            <tr><td>To Investment</td><td>8,000</td><td>By Partners' Capital (Loss transfer)</td><td>36,000</td></tr>
+            <tr><td>To Bank (Creditors paid)</td><td>34,000</td><td></td><td></td></tr>
+            <tr><td><strong>Total</strong></td><td><strong>2,05,600</strong></td><td><strong>Total</strong></td><td><strong>2,05,600</strong></td></tr>
+        </tbody></table></div>
+    </div>
+
+    <div class="footer-note"><i class="fas fa-building"></i> Dissolution of Firm: Complete closure | Realisation A/c = Nominal A/c | Insolvency deficiency shared by solvent partners in PSR</div>
+</div>
+
+<!-- MODERN POPUP with SCROLLABLE INSIDE & HIDDEN SCROLLBAR -->
+<div id="translationPopup" class="popup-overlay">
+    <div class="popup-content">
+        <div class="popup-header">
+            <h3><i class="fas fa-language"></i> अनुवाद · Translation</h3>
+        </div>
+        <div class="close-popup" onclick="closePopup()">&times;</div>
+        <div class="popup-body-scroll" id="popupScrollBody">
+            <div id="popupBodyContent" class="translation-text">
+                <!-- Dynamic content will load here -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const hindiContent = `
+        <div>
+            <p><strong>🔹 अर्थ:</strong> विघटन का अर्थ है साझेदारी व्यवसाय का पूर्ण समापन। <strong>भारतीय साझेदारी अधिनियम 1932, धारा 39</strong> के अनुसार — सभी साझेदारों के बीच साझेदारी का विघटन <strong>फर्म का विघटन</strong> कहलाता है। सभी परिसंपत्तियों का नकदीकरण किया जाता है, देयताओं का भुगतान किया जाता है और पुस्तकें स्थायी रूप से बंद कर दी जाती हैं।</p>
+            <div class="translation-highlight"><strong>📌 महत्वपूर्ण:</strong> साझेदारी का विघटन ≠ फर्म का विघटन। साझेदारी पुनर्गठन से जारी रह सकती है, लेकिन फर्म का विघटन सब कुछ समाप्त कर देता है।</div>
+            <p><strong>🔹 भुगतान क्रम (धारा 48):</strong> <br> 1️⃣ वसूली व्यय → 2️⃣ बाह्य देनदारियाँ → 3️⃣ साझेदारों के ऋण → 4️⃣ साझेदारों की पूंजी (लाभ विभाजन अनुपात में)।</p>
+            <p><strong>🔹 मुख्य खाते:</strong> <strong>वसूली खाता</strong> (नाममात्र खाता) – सभी परिसंपत्तियाँ (नकदी को छोड़कर) और तृतीय-पक्ष देनदारियाँ स्थानांतरित करता है; विघटन पर लाभ/हानि दिखाता है। <strong>साझेदारों का पूंजी खाता</strong> – संचित कोष, पुनर्मूल्यांकन लाभ/हानि और अंतिम निपटान के लिए समायोजित किया जाता है।</p>
+            <p><strong>🔹 साझेदार की दिवालियापन:</strong> यदि साझेदार के पूंजी खाते में डेबिट शेष (घाटा) है और वह दिवालिया है, तो यह हानि <strong>सॉल्वेंट साझेदारों द्वारा उनके लाभ विभाजन अनुपात में</strong> वहन की जाती है।</p>
+            <p><strong>🔹 जब सभी साझेदार दिवालिया हों:</strong> तृतीय पक्ष की देनदारियाँ वसूली खाते में स्थानांतरित नहीं की जाती हैं। पुस्तकों को बंद करने के लिए <strong>डेफिसिएंसी खाता</strong> खोला जाता है।</p>
+            <p><strong>⭐ महत्वपूर्ण जर्नल प्रविष्टियाँ:</strong> वसूली खाते में परिसंपत्तियों और देनदारियों का स्थानांतरण, परिसंपत्तियों की बिक्री, लेनदारों को भुगतान, वसूली लाभ/हानि का साझेदारों के पूंजी खाते में स्थानांतरण, अंतिम निपटान।</p>
+        </div>`;
+
+    const marathiContent = `
+        <div>
+            <p><strong>🔹 अर्थ:</strong> विघटन म्हणजे भागीदारी व्यवसायाचे संपूर्ण समापन. <strong>भारतीय भागीदारी कायदा 1932, कलम 39</strong> नुसार — सर्व भागीदारांमधील भागीदारीचे विघटन म्हणजे <strong>फर्मचे विघटन</strong>. सर्व मालमत्तांचे रोखीत रूपांतर केले जाते, देयके भरली जातात आणि पुस्तके कायमची बंद केली जातात.</p>
+            <div class="translation-highlight"><strong>📌 महत्त्वाचे:</strong> भागीदारीचे विघटन ≠ फर्मचे विघटन. भागीदारी पुनर्रचनेने सुरू राहू शकते, परंतु फर्मचे विघटन सर्वकाही संपवते.</div>
+            <p><strong>🔹 भरणा क्रम (कलम 48):</strong> <br> 1️⃣ वसुली खर्च → 2️⃣ बाह्य देयके → 3️⃣ भागीदारांची कर्जे → 4️⃣ भागीदारांचे भांडवल (नफा वाटप गुणोत्तरात).</p>
+            <p><strong>🔹 प्रमुख खाती:</strong> <strong>वसुली खाते</strong> (नाममात्र खाते) – सर्व मालमत्ता (रोख वगळून) आणि तृतीयपक्षाच्या देयकांचे हस्तांतरण करते; विघटनावर नफा/तोटा दर्शवते. <strong>भागीदारांचे भांडवल खाते</strong> – संचित निधी, पुनर्मूल्यांकन नफा/तोटा आणि अंतिम समायोजनासाठी समायोजित केले जाते.</p>
+            <p><strong>🔹 भागीदाराची दिवाळखोरी:</strong> जर भागीदाराच्या भांडवल खात्यात डेबिट शिल्लक (तूट) असेल आणि तो दिवाळखोर असेल, तर ही तूट <strong>इतर सॉल्व्हेंट भागीदारांनी त्यांच्या नफा वाटप गुणोत्तरात</strong> वाहून न्यावी.</p>
+            <p><strong>🔹 जेव्हा सर्व भागीदार दिवाळखोर असतात:</strong> तृतीयपक्षाच्या देयकांचे वसुली खात्यात हस्तांतरण होत नाही. पुस्तके बंद करण्यासाठी <strong>तूट खाते</strong> उघडले जाते.</p>
+            <p><strong>⭐ महत्त्वाच्या जर्नल नोंदी:</strong> वसुली खात्यात मालमत्ता व देयके हस्तांतरित करणे, मालमत्तांची विक्री, कर्जदारांना भरणा करणे, वसुली नफा/तोटा भागीदारांच्या भांडवल खात्यात हस्तांतरित करणे, अंतिम समायोजन.</p>
+        </div>`;
+
+    function showTranslation(lang) {
+        const popup = document.getElementById('translationPopup');
+        const contentDiv = document.getElementById('popupBodyContent');
+        if (lang === 'hindi') {
+            contentDiv.innerHTML = hindiContent;
+        } else if (lang === 'marathi') {
+            contentDiv.innerHTML = marathiContent;
+        }
+        popup.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+    function closePopup() {
+        document.getElementById('translationPopup').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+    window.onclick = function(event) {
+        const popup = document.getElementById('translationPopup');
+        if (event.target === popup) closePopup();
+    }
+</script>
+</body>
+</html>

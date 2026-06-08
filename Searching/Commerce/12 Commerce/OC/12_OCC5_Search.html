@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>🌐 E-Business & Outsourcing | 12th OC Chapter 5 | Online Transaction · BPO · KPO · LPO</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    body {
+      background: linear-gradient(145deg, #f0f9ff, #d9f0ec);
+      min-height: 100vh;
+      padding: 24px 18px;
+      color: #0c4a6e;
+      overflow-y: scroll;
+      scrollbar-width: thin;
+    }
+    .container { max-width: 1350px; margin: 0 auto; }
+    .heading { text-align: center; margin-bottom: 35px; animation: slideDown 0.5s ease; }
+    .heading h1 {
+      font-size: 2rem;
+      background: linear-gradient(135deg, #0f3b5c, #1e6f5c, #289672);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+    }
+    .heading p { color: #0f3b5c; margin-top: 10px; font-weight: 700; background: #ffffffcc; display: inline-block; padding: 5px 20px; border-radius: 40px; backdrop-filter: blur(4px);}
+    .rating-star { background: #cbdff2; border-radius: 60px; padding: 4px 16px; display: inline-block; font-weight: bold; margin-top: 8px; color: #0c4a6e; }
+    .search-wrapper { position: relative; margin-bottom: 32px; }
+    .search-box {
+      background: white;
+      border-radius: 60px;
+      padding: 6px 6px 6px 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.12);
+      border: 1px solid #8bc6d4;
+    }
+    .search-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      padding: 15px 0;
+      background: transparent;
+      color: #1f2937;
+      font-weight: 500;
+    }
+    .icon-btn {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(145deg, #1e6f5c, #0f3b5c);
+      color: white;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: 0.25s;
+      box-shadow: 0 4px 12px rgba(30,111,92,0.4);
+    }
+    .icon-btn:hover { transform: scale(1.05); background: #289672; }
+    .suggestions-dropdown {
+      position: absolute;
+      top: calc(100% + 12px);
+      left: 0;
+      right: 0;
+      background: white;
+      border-radius: 32px;
+      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.2);
+      z-index: 120;
+      max-height: 280px;
+      overflow-y: auto;
+      display: none;
+      border: 1px solid #8bc6d4;
+    }
+    .suggestion-item {
+      padding: 14px 24px;
+      color: #1f2937;
+      cursor: pointer;
+      border-bottom: 1px solid #e0f2fe;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      transition: 0.2s;
+    }
+    .suggestion-item:hover { background: #d4eefc; padding-left: 32px; }
+    .result-container { display: flex; flex-direction: column; gap: 24px; margin-top: 20px; }
+    .result-card {
+      background: white;
+      border-radius: 32px;
+      padding: 1.8rem;
+      color: #1f2937;
+      box-shadow: 0 12px 30px -10px rgba(0,0,0,0.08);
+      transition: 0.25s ease;
+      border: 1px solid #b9dfe8;
+    }
+    .result-card:hover { transform: translateY(-4px); box-shadow: 0 20px 30px -12px rgba(0,0,0,0.12); }
+    .badge {
+      background: #d9f0f5;
+      color: #1e6f5c;
+      display: inline-block;
+      padding: 5px 16px;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+    .result-card h3 {
+      color: #0f3b5c;
+      font-size: 1.35rem;
+      border-left: 6px solid #289672;
+      padding-left: 18px;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+    .answer-text {
+      background: #f1fafe;
+      padding: 18px 24px;
+      border-radius: 28px;
+      line-height: 1.7;
+      margin: 12px 0;
+      border: 1px solid #b9dfe8;
+    }
+    .answer-text table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 0.9rem;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .answer-text th, .answer-text td {
+      border: 1px solid #cbd5e1;
+      padding: 10px 12px;
+      text-align: left;
+      background: white;
+    }
+    .answer-text th { background: #1e6f5c; color: white; font-weight: 700; }
+    .formula-box {
+      background: #d9e6ff;
+      padding: 12px 18px;
+      border-radius: 28px;
+      font-family: monospace;
+      font-size: 0.95rem;
+      margin: 14px 0;
+      text-align: center;
+      border-left: 6px solid #289672;
+      font-weight: 600;
+    }
+    .action-buttons { margin-top: 22px; display: flex; gap: 15px; flex-wrap: wrap; }
+    .action-buttons button {
+      border: none;
+      padding: 10px 26px;
+      border-radius: 50px;
+      font-weight: 700;
+      background: #eff6ff;
+      color: #0f3b5c;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .action-buttons button:last-child { background: #289672; color: white; box-shadow: 0 2px 8px rgba(40,150,114,0.3);}
+    .action-buttons button:hover { transform: scale(0.97); opacity: 0.9; }
+    .not-found {
+      background: #f1fafe;
+      border-radius: 48px;
+      padding: 2.5rem;
+      text-align: center;
+      font-size: 1.1rem;
+      color: #1e6f5c;
+      border: 1px solid #b9dfe8;
+    }
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(10px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    .popup-box {
+      background: white;
+      max-width: 1100px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      border-radius: 48px;
+      padding: 30px 34px;
+      position: relative;
+      color: #1e293b;
+    }
+    .close-popup {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      background: #fee2e2;
+      border: none;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+    .lang-section { background: #eff6ff; padding: 20px; border-radius: 28px; margin-bottom: 20px; border-left: 5px solid #289672; }
+    .lang-section h4 { color: #0f3b5c; margin-bottom: 12px; font-size: 1.2rem; }
+    .detail-table { width: 100%; border-collapse: collapse; margin: 16px 0; background: white; border-radius: 20px; overflow: hidden; }
+    .detail-table th { background: #1e6f5c; color: white; padding: 12px; text-align: left; }
+    .detail-table td { border: 1px solid #cbd5e1; padding: 10px 12px; vertical-align: top; }
+    .ascii-art {
+      background: #0f172a;
+      color: #a5f3c3;
+      font-family: monospace;
+      font-size: 12px;
+      padding: 16px;
+      border-radius: 20px;
+      overflow-x: auto;
+      white-space: pre;
+      margin: 16px 0;
+      text-align: center;
+    }
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 650px) {
+      body { padding: 16px 12px; }
+      .heading h1 { font-size: 1.4rem; }
+      .result-card h3 { font-size: 1.1rem; }
+      .result-card { padding: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="heading">
+    <h1>🌐 E-Business & Outsourcing | 12th OC Chapter 5</h1>
+    <p>💻 E-Business · Scope (B2B, B2C, C2C, C2B, B2A, C2A) · Online Transaction · Outsourcing · BPO · KPO · LPO</p>
+    <div class="rating-star">⭐ Rating: 10/10 — Detailed Tables & Visual Explanations</div>
+  </div>
+  <div class="search-wrapper">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="🔎 Search: E-business meaning, B2B B2C C2C, Online transaction steps, Outsourcing advantages, BPO vs KPO, LPO...">
+      <button class="icon-btn" id="voiceBtn">🎤</button>
+    </div>
+    <div id="suggestionsList" class="suggestions-dropdown"></div>
+  </div>
+  <div class="result-container" id="resultsContainer">
+    <div class="not-found">🌐 E-Business & Outsourcing Explorer — Search E-Business, Scope (B2B/B2C/C2C), Online Transaction, Outsourcing, BPO, KPO, LPO ✨</div>
+  </div>
+</div>
+<div class="popup-overlay" id="popupModal">
+  <div class="popup-box">
+    <button class="close-popup" id="closeModalBtn">✖</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+  const qaDatabase = [];
+  function addQA(question, answer, category, keywords = [], detailedHTML = null) {
+    qaDatabase.push({ id: qaDatabase.length+1, question, answer, category, keywords: keywords.map(k=>k.toLowerCase()), detailedHTML });
+  }
+
+  // ========== CHAPTER 5: E-BUSINESS & OUTSOURCING ==========
+  
+  addQA("What is E-Business? Meaning and definition.", 
+    `<strong>E-Business (Electronic Business)</strong> refers to the administration of conducting business via the internet. IBM coined the term in 1997. It includes buying/selling goods/services, customer support, and technical support online.<br><br>
+     <table class="detail-table">
+        <tr><th>Aspect</th><th>Details</th></tr>
+        <tr><td>Origin</td><td>Term derived from "e-mail" and "e-commerce". First used by IBM in October 1997.</td></tr>
+        <tr><td>Scope</td><td>Broader than e-commerce - includes all business processes (marketing, supply chain, customer service).</td></tr>
+        <tr><td>Key Feature</td><td>Uses internet, intranet, extranet to connect people, processes, and systems.</td></tr>
+     </table>
+     <div class="ascii-art">
+┌─────────────────────────────────────────┐
+│            E-BUSINESS (Superset)        │
+│  ┌─────────────┐  ┌─────────────────┐   │
+│  │ E-COMMERCE  │  │  E-CUSTOMER     │   │
+│  │ (Buy/Sell)  │  │  SUPPORT        │   │
+│  └─────────────┘  └─────────────────┘   │
+│  ┌─────────────┐  ┌─────────────────┐   │
+│  │ E-SUPPLY    │  │  E-COLLABORATION│   │
+│  │ CHAIN       │  │  (B2B)          │   │
+│  └─────────────┘  └─────────────────┘   │
+└─────────────────────────────────────────┘
+     </div>`,
+    "E-Business", ["e-business meaning", "electronic business", "definition"]);
+
+  addQA("What are the 6 types/scopes of E-Business? (B2B, B2C, C2C, C2B, B2A, C2A)",
+    `<table class="detail-table">
+        <tr><th>Type</th><th>Full Form</th><th>Description</th><th>Example</th></tr>
+        <tr><td>B2B</td><td>Business to Business</td><td>Transactions between two business entities</td><td>Manufacturer buying raw materials from supplier</td></tr>
+        <tr><td>B2C</td><td>Business to Consumer</td><td>Business selling directly to end consumers</td><td>Flipkart, Amazon</td></tr>
+        <tr><td>C2C</td><td>Consumer to Consumer</td><td>Consumers selling to other consumers via platform</td><td>eBay, OLX</td></tr>
+        <tr><td>C2B</td><td>Consumer to Business</td><td>Consumer requests service, business bids</td><td>Pest control, taxi booking (Uber)</td></tr>
+        <tr><td>B2A</td><td>Business to Administration</td><td>Business transactions with government</td><td>Company registration, tax payment</td></tr>
+        <tr><td>C2A</td><td>Consumer to Administration</td><td>Citizen transactions with government</td><td>Passport, Aadhaar, license applications</td></tr>
+     </table>
+     <div class="ascii-art">
+           🌍 E-BUSINESS SCOPE 🌍
+    ┌──────────┐    ┌──────────┐
+    │   B2B    │◄──►│   B2C    │
+    │ Business │    │ Business │
+    │ to       │    │ to       │
+    │ Business │    │ Consumer │
+    └──────────┘    └──────────┘
+         ▲               ▲
+         │               │
+         ▼               ▼
+    ┌──────────┐    ┌──────────┐
+    │   C2B    │    │   C2C    │
+    │ Consumer │    │ Consumer │
+    │ to       │    │ to       │
+    │ Business │    │ Consumer │
+    └──────────┘    └──────────┘
+    ┌──────────┐    ┌──────────┐
+    │   B2A    │    │   C2A    │
+    │ Business │    │ Consumer │
+    │ to Admin │    │ to Admin │
+    └──────────┘    └──────────┘
+     </div>`,
+    "E-Business Scope", ["b2b", "b2c", "c2c", "c2b", "types of e-business"]);
+
+  addQA("What are the benefits/advantages of E-Business?",
+    `<table class="detail-table">
+        <tr><th>Benefit</th><th>Description</th></tr>
+        <tr><td>1. Ease of formation</td><td>Easy to start compared to traditional business</td></tr>
+        <tr><td>2. Lower investment</td><td>No physical store, less manpower required</td></tr>
+        <tr><td>3. Convenience</td><td>24×7×365 availability - anytime, anywhere</td></tr>
+        <tr><td>4. Speed</td><td>Information exchange at click of mouse</td></tr>
+        <tr><td>5. Global access</td><td>Sell/buy from anywhere in the world</td></tr>
+        <tr><td>6. Paperless society</td><td>Reduced paperwork, easy recording</td></tr>
+        <tr><td>7. Government support</td><td>Favourable policies, transparency</td></tr>
+        <tr><td>8. Easy payment</td><td>Credit card, fund transfer, COD available</td></tr>
+     </table>
+     <div class="formula-box">💡 Key Takeaway: E-business breaks geographical barriers and operates 24/7 with lower costs.</div>`,
+    "E-Business Benefits", ["advantages of e-business", "benefits"]);
+
+  addQA("What are the limitations/disadvantages of E-Business?",
+    `<table class="detail-table">
+        <tr><th>Limitation</th><th>Description</th></tr>
+        <tr><td>1. Lack of personal touch</td><td>Cannot touch/feel products before purchase</td></tr>
+        <tr><td>2. Delivery time</td><td>Products take time to reach (not instant)</td></tr>
+        <tr><td>3. Security issues</td><td>Risk of hacking, financial fraud, scams</td></tr>
+        <tr><td>4. Government interference</td><td>Monitoring can lead to business interference</td></tr>
+        <tr><td>5. High risk</td><td>No direct contact, difficult legal action in fraud</td></tr>
+     </table>`,
+    "E-Business Limitations", ["disadvantages of e-business", "limitations"]);
+
+  addQA("What is the procedure/steps of Online Transaction?",
+    `<strong>3 Main Steps in Online Transaction:</strong><br><br>
+     <table class="detail-table">
+        <tr><th>Step</th><th>Process</th><th>Details</th></tr>
+        <tr><td>1️⃣ Registration</td><td>First step</td><td>Fill registration form, create account with email ID, name, address. Shopping cart records selected items.</td></tr>
+        <tr><td>2️⃣ Placing Order</td><td>Second step</td><td>Add products to shopping cart, select quantity, proceed to payment.</td></tr>
+        <tr><td>3️⃣ Payment Mechanism</td><td>Last step</td><td>Choose payment method: COD, Cheque, Net Banking, Credit/Debit Card, Digital Cash.</td></tr>
+     </table>
+     <div class="ascii-art">
+      ONLINE TRANSACTION FLOW:
+      ┌──────────┐    ┌──────────┐    ┌──────────┐
+      │REGISTER  │───▶│ PLACE    │───▶│ PAYMENT  │
+      │(Sign up) │    │ ORDER    │    │ (COD/    │
+      │          │    │ (Cart)   │    │ Card/NB) │
+      └──────────┘    └──────────┘    └──────────┘
+     </div>`,
+    "Online Transaction", ["online transaction steps", "procedure", "payment methods"]);
+
+  addQA("What is Outsourcing? Need and advantages?",
+    `<strong>Outsourcing</strong> is contracting business functions (especially non-core) to specialized agencies. Examples: canteen, security, sanitation, wedding arrangements.<br><br>
+     <strong>Need for Outsourcing:</strong> High specialization, global competition, focus on core activities.<br><br>
+     <table class="detail-table">
+        <tr><th>Advantage</th><th>Description</th></tr>
+        <tr><td>1. Overall cost advantage</td><td>Reduces cost, saves training expenses</td></tr>
+        <tr><td>2. Stimulates entrepreneurship</td><td>Creates employment and exports</td></tr>
+        <tr><td>3. Low manpower cost</td><td>Cheaper than host company</td></tr>
+        <tr><td>4. Access to experts</td><td>Professional, high quality services</td></tr>
+        <tr><td>5. Focus on core processes</td><td>Company concentrates on main business</td></tr>
+        <tr><td>6. Reduced investment</td><td>No need for latest technology/infrastructure</td></tr>
+        <tr><td>7. Increased efficiency</td><td>Productivity in non-core areas improves</td></tr>
+        <tr><td>8. Knowledge sharing</td><td>Best practices and goodwill boost</td></tr>
+     </table>`,
+    "Outsourcing", ["outsourcing meaning", "advantages of outsourcing", "need"]);
+
+  addQA("What are the disadvantages/limitations of Outsourcing?",
+    `<table class="detail-table">
+        <tr><th>Disadvantage</th><th>Description</th></tr>
+        <tr><td>1. Lack of customer focus</td><td>Vendor may cater to multiple organizations</td></tr>
+        <tr><td>2. Security & confidentiality threat</td><td>Confidential info may leak to third party</td></tr>
+        <tr><td>3. Dissatisfactory services</td><td>Delayed delivery, substandard quality</td></tr>
+        <tr><td>4. Ethical issues</td><td>Takes away local employment opportunities</td></tr>
+        <tr><td>5. Other issues</td><td>Contract misunderstanding, poor communication, delayed services</td></tr>
+     </table>`,
+    "Outsourcing Limitations", ["disadvantages of outsourcing", "limitations"]);
+
+  addQA("What is BPO (Business Process Outsourcing)? Types?",
+    `<strong>BPO</strong> is outsourcing of peripheral activities to third party to minimize cost and increase efficiency.<br><br>
+     <strong>Key Terms:</strong><br>
+     • Offshore BPO: Outside own country<br>
+     • Onshore BPO: Within own country<br>
+     • Nearshore BPO: Neighbouring country<br><br>
+     <table class="detail-table">
+        <tr><th>Advantage</th><th>Disadvantage</th></tr>
+        <tr><td>✓ Productivity improvement</td><td>✗ Communication problems</td></tr>
+        <tr><td>✓ Optimum resource utilization</td><td>✗ Different time zones</td></tr>
+        <tr><td>✓ Cost reduction</td><td>✗ Loss of control</td></tr>
+        <tr><td>✓ Access to skilled manpower</td><td></td></tr>
+     </table>`,
+    "BPO", ["bpo meaning", "business process outsourcing"]);
+
+  addQA("What is KPO (Knowledge Process Outsourcing)? How is it different from BPO?",
+    `<strong>KPO</strong> is a subset of BPO involving outsourcing of knowledge-based, high-level tasks requiring expertise.<br><br>
+     <table class="detail-table">
+        <tr><th>Basis</th><th>BPO</th><th>KPO</th></tr>
+        <tr><td>Meaning</td><td>Outsourcing non-primary activities</td><td>Outsourcing knowledge/information functions</td></tr>
+        <tr><td>Complexity</td><td>Less complex</td><td>Highly complex</td></tr>
+        <tr><td>Requirement</td><td>Process expertise</td><td>Knowledge expertise</td></tr>
+        <tr><td>Talent</td><td>Good communication skills</td><td>Professional qualified workers (MBA, PhD)</td></tr>
+        <tr><td>Focus</td><td>Low level processes</td><td>High level processes</td></tr>
+     </table>`,
+    "KPO", ["kpo meaning", "knowledge process outsourcing", "bpo vs kpo"]);
+
+  addQA("What is LPO (Legal Process Outsourcing)?",
+    `<strong>LPO</strong> is a value-added BPO service involving outsourcing of legal work such as document review, contract management, legal research, patent filing.<br><br>
+     <strong>Advantages:</strong><br>
+     • Cost savings on legal staffing<br>
+     • Flexible staffing based on workload<br>
+     • Access to global talent pool<br><br>
+     <strong>Disadvantages:</strong><br>
+     • Authenticity and security concerns<br>
+     • Need for in-depth knowledge of laws<br>
+     • Cultural/language barriers<br>
+     • Geographical hurdles`,
+    "LPO", ["lpo meaning", "legal process outsourcing"]);
+
+  addQA("Distinguish between Traditional Business and E-Business.",
+    `<table class="detail-table">
+        <tr><th>Point</th><th>Traditional Business</th><th>E-Business</th></tr>
+        <tr><td>Formation</td><td>Lengthy, complicated procedure</td><td>Easy to form</td></tr>
+        <tr><td>Setting up cost</td><td>Huge capital required</td><td>Very nominal cost</td></tr>
+        <tr><td>Risk involved</td><td>Less risk (personal interaction)</td><td>High risk (no direct contact)</td></tr>
+        <tr><td>Scope</td><td>Limited to local area</td><td>Global, vast scope</td></tr>
+        <tr><td>Customer interaction</td><td>Face-to-face</td><td>No face-to-face</td></tr>
+        <tr><td>Physical inspection</td><td>Possible before purchase</td><td>Not possible</td></tr>
+        <tr><td>Delivery</td><td>Instant</td><td>Takes time</td></tr>
+        <tr><td>Accessibility</td><td>Limited time</td><td>24×7×365</td></tr>
+     </table>`,
+    "Comparison", ["traditional vs e-business"]);
+
+  // Search Logic
+  const searchInput = document.getElementById("searchInput");
+  const resultsContainer = document.getElementById("resultsContainer");
+  const suggestionsDiv = document.getElementById("suggestionsList");
+
+  function getMatches(q) {
+    const lower = q.toLowerCase();
+    return qaDatabase.filter(item => 
+      item.question.toLowerCase().includes(lower) || 
+      item.answer.toLowerCase().includes(lower) ||
+      item.category.toLowerCase().includes(lower) ||
+      item.keywords.some(k => k.includes(lower))
+    ).slice(0, 18);
+  }
+
+  function updateSuggestions() {
+    const val = searchInput.value.trim();
+    if(!val) { suggestionsDiv.style.display = "none"; return; }
+    const matches = getMatches(val);
+    if(!matches.length) { suggestionsDiv.style.display = "none"; return; }
+    suggestionsDiv.innerHTML = "";
+    matches.forEach(item => {
+      const div = document.createElement("div");
+      div.className = "suggestion-item";
+      div.innerHTML = `<span>🌐</span> <strong>${item.question.substring(0,70)}</strong> <span style="margin-left:auto; background:#d9f0f5; padding:2px 12px; border-radius:30px;">${item.category}</span>`;
+      div.addEventListener("click", () => {
+        searchInput.value = item.question;
+        suggestionsDiv.style.display = "none";
+        performSearch(item.question);
+      });
+      suggestionsDiv.appendChild(div);
+    });
+    suggestionsDiv.style.display = "block";
+  }
+
+  function performSearch(q = null) {
+    let query = (q !== null) ? q : searchInput.value.trim();
+    if(!query) { resultsContainer.innerHTML = `<div class="not-found">🌐 Search: E-Business, B2B/B2C/C2C, Online transaction steps, Outsourcing, BPO, KPO, LPO...</div>`; return; }
+    const matches = getMatches(query);
+    if(!matches.length) { resultsContainer.innerHTML = `<div class="not-found">❌ No results. Try: E-business meaning, B2B, C2C, Online transaction steps, Advantages of outsourcing, BPO vs KPO.</div>`; return; }
+    resultsContainer.innerHTML = "";
+    matches.forEach(item => {
+      const card = document.createElement("div");
+      card.className = "result-card";
+      card.innerHTML = `
+        <div class="badge">📌 ${escapeHtml(item.category)}</div>
+        <h3>📘 ${escapeHtml(item.question)}</h3>
+        <div class="answer-text"><strong>✅ Detailed Answer:</strong><br>${item.answer}</div>
+        <div class="action-buttons">
+          <button class="detailBtn" data-id="${item.id}">🔍 In-Depth Explanation + Visuals</button>
+          <button class="extraTableBtn" data-cat="${item.category}">📊 Quick Reference Tables</button>
+        </div>
+      `;
+      resultsContainer.appendChild(card);
+    });
+    attachEvents(matches);
+  }
+
+  function attachEvents(matchesArray) {
+    document.querySelectorAll(".detailBtn").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const id = parseInt(btn.getAttribute("data-id"));
+        const item = qaDatabase.find(i => i.id === id);
+        if(item) showDetailedModal(item);
+      });
+    });
+    document.querySelectorAll(".extraTableBtn").forEach(btn => {
+      btn.addEventListener("click", () => showQuickTables());
+    });
+  }
+
+  function showDetailedModal(item) {
+    let detailedContent = `
+      <div class="lang-section">
+        <h4>❓ Question</h4>
+        <p style="font-size:1.1rem; font-weight:500;">${escapeHtml(item.question)}</p>
+      </div>
+      <div class="lang-section">
+        <h4>✅ Comprehensive Answer</h4>
+        <div>${item.answer}</div>
+      </div>
+    `;
+    
+    // Add extra deep knowledge with visuals
+    if(item.category === "E-Business") {
+      detailedContent += `<div class="lang-section"><h4>📈 E-Business Evolution Timeline</h4><pre style="background:#f0f4ff; padding:12px; border-radius:16px;">
+1997 ─── IBM coins "E-Business" term
+1999 ─── Shift from B2C to B2B focus
+2001 ─── Expansion to e-governance, e-learning, m-commerce
+2004 ─── US online shopping reaches $3-7 trillion
+Present ─── AI, Blockchain, Metaverse commerce
+      </pre></div>`;
+    }
+    if(item.category === "E-Business Scope") {
+      detailedContent += `<div class="lang-section"><h4>🌍 Real-World Examples</h4>
+        <ul style="margin-left:20px;">
+          <li><strong>B2B:</strong> Alibaba, IndiaMART</li>
+          <li><strong>B2C:</strong> Flipkart, Amazon, Myntra</li>
+          <li><strong>C2C:</strong> eBay, OLX, Quikr</li>
+          <li><strong>C2B:</strong> Uber, Ola, UrbanClap</li>
+          <li><strong>B2A:</strong> GST portal, MCA21</li>
+          <li><strong>C2A:</strong> Passport Seva, DigiLocker</li>
+        </ul>
+      </div>`;
+    }
+    if(item.category === "Online Transaction") {
+      detailedContent += `<div class="lang-section"><h4>💳 Payment Methods Explained</h4>
+        <table class="detail-table">
+          <tr><th>Method</th><th>How it works</th></tr>
+          <tr><td>Cash on Delivery (COD)</td><td>Pay at doorstep when product arrives</td></tr>
+          <tr><td>Cheque</td><td>Send cheque, seller ships after realization</td></tr>
+          <tr><td>Net Banking</td><td>Direct transfer from buyer to seller account</td></tr>
+          <tr><td>Credit/Debit Card</td><td>Plastic money, instant deduction</td></tr>
+          <tr><td>Digital Cash</td><td>Electronic currency (e-wallets like Paytm, PhonePe)</td></tr>
+        </table>
+      </div>`;
+    }
+    if(item.category === "BPO") {
+      detailedContent += `<div class="lang-section"><h4>📞 BPO in India</h4><p>India is a global BPO hub due to English-speaking workforce, lower costs, and 24/7 time zone advantage. Major BPO centers: Bengaluru, Hyderabad, Mumbai, NCR, Pune.</p></div>`;
+    }
+    if(item.category === "KPO") {
+      detailedContent += `<div class="lang-section"><h4>🧠 KPO vs BPO - Key Difference</h4><div class="ascii-art">
+   BPO (Process Focus)          KPO (Knowledge Focus)
+   ┌─────────────────┐          ┌─────────────────┐
+   │ Call Centers    │          │ R&D Services    │
+   │ Data Entry      │          │ Legal Research  │
+   │ Customer Support│          │ Financial Analytics│
+   │ Payroll Processing│        │ Market Research │
+   └─────────────────┘          └─────────────────┘
+      </div></div>`;
+    }
+    if(item.category === "Outsourcing") {
+      detailedContent += `<div class="lang-section"><h4>🏭 Popular Outsourcing Examples</h4><ul><li>Infosys, TCS, Wipro - IT outsourcing</li><li>Security services (SIS, G4S)</li><li>Catering (Sodexo, Compass Group)</li><li>Facility management</li></ul></div>`;
+    }
+    
+    document.getElementById("popupModal").style.display = "flex";
+    document.getElementById("modalContent").innerHTML = `
+      <h2 style="color:#0f3b5c; margin-bottom:20px;">📖 In-Depth Explanation + Visuals</h2>
+      ${detailedContent}
+      <button id="closeDetailModal" style="background:#289672; padding:10px 26px; border-radius:40px; margin-top:12px; border:none; color:white; cursor:pointer;">Close</button>
+    `;
+    document.getElementById("closeDetailModal").addEventListener("click", () => document.getElementById("popupModal").style.display = "none");
+  }
+
+  function showQuickTables() {
+    let content = `<div class="lang-section"><strong>📚 Chapter 5: E-Business & Outsourcing - Quick Reference</strong><br>`;
+    content += `<h4>🌐 E-Business vs Traditional Business</h4>
+      <table class="detail-table">
+        <tr><th>Parameter</th><th>E-Business</th><th>Traditional Business</th></tr>
+        <tr><td>Formation</th><td>Easy</td><td>Complex</td></tr>
+        <tr><td>Investment</th><td>Low</td><td>High</td></tr>
+        <tr><td>Risk</th><td>High</td><td>Low</td></tr>
+        <tr><td>Global Reach</th><td>Yes</td><td>Limited</td></tr>
+        <tr><td>24x7 Availability</th><td>Yes</td><td>No</td></tr>
+      </table>`;
+    content += `<h4>📊 BPO vs KPO vs LPO</h4>
+      <table class="detail-table">
+        <tr><th>Parameter</th><th>BPO</th><th>KPO</th><th>LPO</th></tr>
+        <tr><td>Focus</th><td>Process</td><td>Knowledge</td><td>Legal</td></tr>
+        <tr><td>Complexity</th><td>Low</td><td>High</td><td>Very High</td></tr>
+        <tr><td>Requirement</th><td>Communication</td><td>Expertise/Degree</td><td>Law Degree</td></tr>
+        <tr><td>Examples</th><td>Call center, data entry</td><td>R&D, analytics</td><td>Contract review, patent</td></tr>
+      </table>`;
+    content += `<div class="formula-box">💡 Key Takeaways: E-business is superset of e-commerce; 6 types (B2B, B2C, C2C, C2B, B2A, C2A); Online transaction: Registration → Order → Payment; Outsourcing reduces cost & focuses on core; BPO (process), KPO (knowledge), LPO (legal).</div>`;
+    document.getElementById("popupModal").style.display = "flex";
+    document.getElementById("modalContent").innerHTML = `<h2 style="color:#0f3b5c;">📊 E-Business & Outsourcing - Reference Tables</h2>${content}<button id="closeModalInside" style="background:#289672; margin-top:20px; padding:10px 26px; border-radius:40px; color:white; border:none;">Close</button>`;
+    document.getElementById("closeModalInside").addEventListener("click", () => document.getElementById("popupModal").style.display = "none");
+  }
+
+  function escapeHtml(str) { return str.replace(/[&<>]/g, m => m==='&'?'&amp;': m==='<'?'&lt;':'&gt;'); }
+  function startVoice() { if (!('webkitSpeechRecognition' in window)) { alert("Voice search supported in Chrome/Edge."); return; } const rec = new webkitSpeechRecognition(); rec.lang="en-IN"; rec.start(); rec.onresult = (e)=> { searchInput.value = e.results[0][0].transcript; performSearch(); }; }
+  document.getElementById("voiceBtn").addEventListener("click", startVoice);
+  searchInput.addEventListener("keyup", () => { performSearch(); updateSuggestions(); });
+  searchInput.addEventListener("focus", updateSuggestions);
+  document.addEventListener("click", (e) => { if(!document.querySelector(".search-wrapper").contains(e.target)) suggestionsDiv.style.display = "none"; });
+  document.getElementById("closeModalBtn").addEventListener("click", () => document.getElementById("popupModal").style.display = "none");
+  window.onload = () => { resultsContainer.innerHTML = `<div class="not-found">🌐 12th OC Chapter 5: E-Business & Outsourcing | Search E-Business, B2B/B2C/C2C, Online Transaction Steps, Outsourcing Advantages, BPO/KPO/LPO ✨</div>`; };
+</script>
+</body>
+</html>

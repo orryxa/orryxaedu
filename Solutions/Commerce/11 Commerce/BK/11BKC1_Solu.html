@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Chapter 1 Mastery | Accounting Exercise Answers</title>
+  <!-- Google Fonts & Simple Icons (Material Icons for visual attraction) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(145deg, #eef2f9 0%, #d9e2ef 100%);
+      font-family: 'Inter', sans-serif;
+      padding: 32px 24px;
+      color: #1a2c3e;
+      line-height: 1.5;
+    }
+
+    /* main container */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    /* header area with gradient and floating effect */
+    .hero {
+      text-align: center;
+      margin-bottom: 48px;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #0b3b5f, #1b5a8c);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.01em;
+      display: inline-block;
+      padding: 0 16px 12px;
+      border-bottom: 4px solid #2c7da0;
+      margin-bottom: 12px;
+    }
+
+    .badge-chapter {
+      background: rgba(27, 90, 140, 0.12);
+      backdrop-filter: blur(4px);
+      display: inline-block;
+      padding: 6px 20px;
+      border-radius: 60px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #1f5e8e;
+      letter-spacing: 0.3px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    /* card modern style */
+    .card {
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(0px);
+      border-radius: 32px;
+      margin-bottom: 32px;
+      padding: 28px 30px;
+      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0,0,0,0.02);
+      transition: transform 0.2s ease, box-shadow 0.25s;
+      border: 1px solid rgba(255,255,255,0.6);
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 25px 40px -14px rgba(0, 0, 0, 0.18);
+    }
+
+    /* section headers with accent */
+    .card h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #0c4e6e;
+      margin-bottom: 28px;
+      padding-bottom: 12px;
+      border-bottom: 3px solid #ffb74d;
+      display: inline-block;
+      letter-spacing: -0.3px;
+      position: relative;
+    }
+
+    .card h2:after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 40%;
+      height: 3px;
+      background: #ffa726;
+      border-radius: 4px;
+    }
+
+    /* question - answer blocks */
+    .qa-block {
+      margin-bottom: 24px;
+      border-left: 3px solid #cbdbe6;
+      padding-left: 18px;
+      transition: all 0.15s;
+    }
+
+    .question {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #1f3b4c;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .question i {
+      color: #ff8c42;
+      font-size: 0.9rem;
+      width: 24px;
+      text-align: center;
+    }
+
+    .answer {
+      color: #2c6979;
+      margin-bottom: 6px;
+      line-height: 1.55;
+      font-weight: 500;
+      background: #f8fafd;
+      padding: 10px 16px;
+      border-radius: 18px;
+      font-size: 0.95rem;
+      display: inline-block;
+      width: auto;
+      max-width: 100%;
+      box-shadow: inset 0 1px 0 #ffffff, 0 1px 2px rgba(0,0,0,0.02);
+    }
+
+    /* for true/false inline styling */
+    .true {
+      color: #2b7a4b;
+      background: #e0f2e9;
+      padding: 2px 12px;
+      border-radius: 40px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    .false {
+      color: #bc4742;
+      background: #ffe6e5;
+      padding: 2px 12px;
+      border-radius: 40px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    /* special for answers that contain true/false + reason */
+    .answer-reason {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 12px;
+    }
+
+    /* make each answer consistent */
+    .inline-tf {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* number indicators subtle */
+    .card .qa-block:first-of-type {
+      margin-top: 6px;
+    }
+
+    /* small decorative icons */
+    .section-icon {
+      margin-right: 12px;
+      font-size: 1.5rem;
+      vertical-align: middle;
+      color: #ffa726;
+    }
+
+    /* grid optimization for large screens? keep cards column-style */
+    @media (min-width: 1024px) {
+      body {
+        padding: 40px 48px;
+      }
+      .card {
+        padding: 32px 38px;
+      }
+    }
+
+    /* mobile first adjustments */
+    @media (max-width: 768px) {
+      body {
+        padding: 20px 16px;
+      }
+      .card {
+        padding: 22px 20px;
+        border-radius: 28px;
+        margin-bottom: 24px;
+      }
+      .hero h1 {
+        font-size: 1.85rem;
+      }
+      .card h2 {
+        font-size: 1.45rem;
+      }
+      .answer {
+        font-size: 0.9rem;
+        padding: 8px 14px;
+      }
+      .qa-block {
+        padding-left: 12px;
+      }
+      .question {
+        font-size: 0.93rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card h2 {
+        font-size: 1.35rem;
+      }
+      .answer {
+        width: 100%;
+      }
+      .true, .false {
+        font-size: 0.75rem;
+        padding: 2px 10px;
+      }
+    }
+
+    /* subtle animations */
+    .card {
+      animation: fadeSlideUp 0.4s ease-out backwards;
+    }
+    @keyframes fadeSlideUp {
+      0% {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* staggered delay for each card? not necessary but adds charm */
+    .card:nth-child(1) { animation-delay: 0.02s; }
+    .card:nth-child(2) { animation-delay: 0.06s; }
+    .card:nth-child(3) { animation-delay: 0.1s; }
+    .card:nth-child(4) { animation-delay: 0.14s; }
+    .card:nth-child(5) { animation-delay: 0.18s; }
+    .card:nth-child(6) { animation-delay: 0.22s; }
+
+    /* custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      background: #cfdfed;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2c7da0;
+      border-radius: 10px;
+    }
+
+    /* footer love */
+    .footer-note {
+      text-align: center;
+      margin-top: 38px;
+      font-size: 0.8rem;
+      color: #4b6b7e;
+      font-weight: 500;
+      border-top: 1px solid rgba(44, 125, 160, 0.2);
+      padding-top: 24px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="hero">
+    <h1><i class="fas fa-book-open" style="color: #ffa726; margin-right: 12px;"></i>Chapter 1 · Exercise Answers</h1>
+    <div class="badge-chapter"><i class="fas fa-graduation-cap"></i> Foundations of Book-keeping & Accountancy</div>
+  </div>
+
+  <!-- Q1 - Answer in One Sentence -->
+  <div class="card">
+    <h2><i class="fas fa-pen-fancy section-icon"></i> Q.1 Answer in One Sentence</h2>
+    <div class="qa-block"><div class="question"><i class="fas fa-question-circle"></i> 1) What is Book-keeping ?</div><div class="answer">Book-keeping is the art of recording business transactions in a systematic manner.</div></div>
+    <div class="qa-block"><div class="question"><i class="fas fa-question-circle"></i> 2) What is meant by Goods?</div><div class="answer">Goods are commodities or articles in which a trader deals.</div></div>
+    <div class="qa-block"><div class="question"><i class="fas fa-question-circle"></i> 3) What is Capital?</div><div class="answer">Capital is the amount invested in the business by the proprietor.</div></div>
+    <div class="qa-block"><div class="question"><i class="fas fa-question-circle"></i> 4) What is Drawings?</div><div class="answer">Drawings are cash or goods withdrawn by the owner for personal use.</div></div>
+    <div class="qa-block"><div class="question"><i class="fas fa-question-circle"></i> 5) What is Goodwill?</div><div class="answer">Goodwill is the reputation of a business expressed in terms of money.</div></div>
+  </div>
+
+  <!-- Q2 - Word / Term / Phrase -->
+  <div class="card">
+    <h2><i class="fas fa-tag section-icon"></i> Q.2 Give the Word / Term / Phrase</h2>
+    <div class="qa-block"><div class="question"><i class="fas fa-database"></i> 1) Recording of business transactions.</div><div class="answer">Book-keeping</div></div>
+    <div class="qa-block"><div class="question"><i class="fas fa-chart-line"></i> 2) Amount invested in business by the proprietor.</div><div class="answer">Capital</div></div>
+    <div class="qa-block"><div class="question"><i class="fas fa-handshake"></i> 3) A person to whom amount is payable.</div><div class="answer">Creditor</div></div>
+    <div class="qa-block"><div class="question"><i class="fas fa-exchange-alt"></i> 4) Exchange between two persons.</div><div class="answer">Transaction</div></div>
+    <div class="qa-block"><div class="question"><i class="fas fa-chart-simple"></i> 5) Excess of expenses over income.</div><div class="answer">Loss</div></div>
+    <div class="qa-block"><div class="question"><i class="fas fa-building"></i> 6) A person whose assets are sufficient enough to meet business obligations.</div><div class="answer">Solvent Person</div></div>
+    <div class="qa-block"><div class="question"><i class="fas fa-chart-pie"></i> 7) Book-keeping is providing all required financial information to the businessman.</div><div class="answer">Financial Information</div></div>
+    <div class="qa-block"><div class="question"><i class="fas fa-boxes"></i> 8) Property of any description owned by Proprietor.</div><div class="answer">Asset</div></div>
+    <div class="qa-block"><div class="question"><i class="fas fa-coins"></i> 9) Assets which remain in the business for short time and can be converted into cash easily.</div><div class="answer">Current Assets</div></div>
+    <div class="qa-block"><div class="question"><i class="fas fa-percent"></i> 10) Allowance given on catalogue price of goods.</div><div class="answer">Trade Discount</div></div>
+  </div>
+
+  <!-- Q3 - Select the Most Appropriate Alternative -->
+  <div class="card">
+    <h2><i class="fas fa-check-double section-icon"></i> Q.3 Select the Most Appropriate Alternative</h2>
+    <div class="qa-block"><div class="question"><i class="far fa-circle"></i> 1) Surplus of income over expenses is __________.</div><div class="answer">Profit</div></div>
+    <div class="qa-block"><div class="question"><i class="far fa-circle"></i> 2) In __________ basis of accounting, actual cash receipts and actual cash payments are recorded.</div><div class="answer">Cash Basis</div></div>
+    <div class="qa-block"><div class="question"><i class="far fa-circle"></i> 3) Amount which is not recoverable from customer is known as __________.</div><div class="answer">Bad Debts</div></div>
+    <div class="qa-block"><div class="question"><i class="far fa-circle"></i> 4) Accounts must honestly disclose all material information is known as __________.</div><div class="answer">Disclosure Concept</div></div>
+    <div class="qa-block"><div class="question"><i class="far fa-circle"></i> 5) A commodity in which a trader deals is known as __________.</div><div class="answer">Goods</div></div>
+    <div class="qa-block"><div class="question"><i class="far fa-circle"></i> 6) __________ means reputation of a business valued in terms of money.</div><div class="answer">Goodwill</div></div>
+    <div class="qa-block"><div class="question"><i class="far fa-circle"></i> 7) Cash Flow Statement is prepared under __________.</div><div class="answer">AS-3</div></div>
+    <div class="qa-block"><div class="question"><i class="far fa-circle"></i> 8) Immediate recognition of loss is supported by principle of __________.</div><div class="answer">Conservatism</div></div>
+    <div class="qa-block"><div class="question"><i class="far fa-circle"></i> 9) Brief explanation of an entry is called __________.</div><div class="answer">Narration</div></div>
+    <div class="qa-block"><div class="question"><i class="far fa-circle"></i> 10) Exchange of things or services between two parties is termed as __________.</div><div class="answer">Transaction</div></div>
+  </div>
+
+  <!-- Q4 - True or False with Reasons (enhanced visual) -->
+  <div class="card">
+    <h2><i class="fas fa-balance-scale section-icon"></i> Q.4 State Whether True or False with Reasons</h2>
+    <div class="qa-block"><div class="question"><i class="fas fa-gavel"></i> 1) Book-keeping and accounting are one and the same thing.</div><div class="answer"><span class="false">False</span> Book-keeping records transactions whereas accounting includes summarizing, analysis and interpretation.</div></div>
+    <div class="qa-block"><div class="question"><i class="fas fa-gavel"></i> 2) Conservatism means to follow safe side.</div><div class="answer"><span class="true">True</span> Conservatism means anticipating losses but not profits.</div></div>
+    <div class="qa-block"><div class="question"><i class="fas fa-gavel"></i> 3) The double entry system is based on “Dual Aspect” concept.</div><div class="answer"><span class="true">True</span> Every debit has a corresponding credit.</div></div>
+    <div class="qa-block"><div class="question"><i class="fas fa-gavel"></i> 4) Bank overdraft is an asset of the business.</div><div class="answer"><span class="false">False</span> Bank overdraft is a liability of the business.</div></div>
+    <div class="qa-block"><div class="question"><i class="fas fa-gavel"></i> 5) Solvent person is a person whose assets are more than liabilities.</div><div class="answer"><span class="true">True</span> Such a person can pay all obligations.</div></div>
+    <div class="qa-block"><div class="question"><i class="fas fa-gavel"></i> 6) Cash discount does not appear in the books of accounts.</div><div class="answer"><span class="false">False</span> Cash discount appears in the books of accounts.</div></div>
+    <div class="qa-block"><div class="question"><i class="fas fa-gavel"></i> 7) A transaction is concerned with money or money’s worth.</div><div class="answer"><span class="true">True</span> Transactions involve exchange of money or money’s worth.</div></div>
+    <div class="qa-block"><div class="question"><i class="fas fa-gavel"></i> 8) Accounting is the language of business.</div><div class="answer"><span class="true">True</span> Accounting communicates business information.</div></div>
+    <div class="qa-block"><div class="question"><i class="fas fa-gavel"></i> 9) In civilization, accounting was done by owners.</div><div class="answer"><span class="false">False</span> Earlier accounting was done by agents.</div></div>
+    <div class="qa-block"><div class="question"><i class="fas fa-gavel"></i> 10) Book-keeping is useful to find out all tax liabilities.</div><div class="answer"><span class="true">True</span> It helps in calculating taxes like GST and Income Tax.</div></div>
+  </div>
+
+  <!-- Q5 - Do You Agree or Disagree -->
+  <div class="card">
+    <h2><i class="fas fa-thumbs-up section-icon"></i> Q.5 Do You Agree or Disagree</h2>
+    <div class="qa-block"><div class="question"><i class="fas fa-comment"></i> 1) Accounting is useful only to the owner.</div><div class="answer">Disagree - Accounting is useful to owners, investors, government, lenders and management.</div></div>
+    <div class="qa-block"><div class="question"><i class="fas fa-comment"></i> 2) Book-keeping is an art, science and profession.</div><div class="answer">Disagree - Book-keeping is mainly an art and science.</div></div>
+    <div class="qa-block"><div class="question"><i class="fas fa-comment"></i> 3) Bills Payable is an asset of the business.</div><div class="answer">Disagree - Bills Payable is a liability.</div></div>
+    <div class="qa-block"><div class="question"><i class="fas fa-comment"></i> 4) In Book-keeping and Accountancy only non monetary transactions are recorded.</div><div class="answer">Disagree - Only monetary transactions are recorded.</div></div>
+    <div class="qa-block"><div class="question"><i class="fas fa-comment"></i> 5) Totalling of Journal or Ledger is called as casting.</div><div class="answer">Agree - Totalling is known as casting.</div></div>
+  </div>
+
+  <!-- Q6 - Complete the Following Sentences -->
+  <div class="card">
+    <h2><i class="fas fa-puzzle-piece section-icon"></i> Q.6 Complete the Following Sentences</h2>
+    <div class="qa-block"><div class="question"><i class="fas fa-arrow-right"></i> 1) Revenue arising as a result of business transactions is known as __________.</div><div class="answer">Income</div></div>
+    <div class="qa-block"><div class="question"><i class="fas fa-arrow-right"></i> 2) Excess of gross profit over operating expenses is __________.</div><div class="answer">Net Profit</div></div>
+    <div class="qa-block"><div class="question"><i class="fas fa-arrow-right"></i> 3) An expenditure which is revenue in nature but benefit is not exhausted within one year is called __________.</div><div class="answer">Deferred Revenue Expenditure</div></div>
+    <div class="qa-block"><div class="question"><i class="fas fa-arrow-right"></i> 4) Amount deducted by seller from list price of goods at the time of sale is __________.</div><div class="answer">Trade Discount</div></div>
+    <div class="qa-block"><div class="question"><i class="fas fa-arrow-right"></i> 5) A person to whom business owes money for goods or services is known as __________.</div><div class="answer">Creditor</div></div>
+  </div>
+
+  <div class="footer-note">
+    <i class="fas fa-check-circle" style="color:#2c7da0;"></i> Master the fundamentals — Systematic recording leads to financial clarity
+  </div>
+</div>
+
+</body>
+</html>

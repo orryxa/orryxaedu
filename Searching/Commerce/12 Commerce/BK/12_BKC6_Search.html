@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>📦 Dissolution of Partnership Firm | 12th BK Chap 6 | Realisation, Insolvency, Deficiency</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    /* Hide scrollbar but keep functionality */
+    body {
+      background: linear-gradient(145deg, #0f172a, #0a0f1f);
+      min-height: 100vh;
+      padding: 24px 18px;
+      color: #f1f5f9;
+      overflow-y: scroll;
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE/Edge */
+    }
+    body::-webkit-scrollbar {
+      display: none; /* Chrome/Safari/Opera */
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    /* Animated Gradient Heading */
+    .heading {
+      text-align: center;
+      margin-bottom: 35px;
+      animation: slideDown 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+    .heading h1 {
+      font-size: 2rem;
+      background: linear-gradient(135deg, #ffffff, #fbbf24, #f97316);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .heading p {
+      color: #fde68a;
+      margin-top: 10px;
+      font-size: 1rem;
+      font-weight: 500;
+      backdrop-filter: blur(4px);
+    }
+
+    /* Modern Search Box */
+    .search-wrapper {
+      position: relative;
+      margin-bottom: 32px;
+    }
+    .search-box {
+      background: rgba(255,255,255,0.97);
+      border-radius: 60px;
+      padding: 6px 6px 6px 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.1);
+      backdrop-filter: blur(2px);
+      transition: all 0.2s;
+    }
+    .search-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      padding: 15px 0;
+      background: transparent;
+      color: #0f172a;
+      font-weight: 500;
+    }
+    .icon-btn {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(145deg, #f97316, #ea580c);
+      color: white;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 12px rgba(249,115,22,0.4);
+    }
+    .icon-btn:hover { transform: scale(1.08); background: #f97316; box-shadow: 0 6px 16px rgba(249,115,22,0.6); }
+
+    /* Suggestions */
+    .suggestions-dropdown {
+      position: absolute;
+      top: calc(100% + 12px);
+      left: 0;
+      right: 0;
+      background: rgba(255,255,255,0.98);
+      border-radius: 32px;
+      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.4);
+      z-index: 120;
+      max-height: 280px;
+      overflow-y: auto;
+      display: none;
+      backdrop-filter: blur(8px);
+      scrollbar-width: thin;
+    }
+    .suggestion-item {
+      padding: 14px 24px;
+      color: #0f172a;
+      cursor: pointer;
+      border-bottom: 1px solid #f1f5f9;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      transition: 0.2s;
+      font-weight: 500;
+    }
+    .suggestion-item:hover { background: #fef3c7; padding-left: 32px; }
+
+    /* Modern Card Design */
+    .result-container {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .result-card {
+      background: rgba(255,255,255,0.96);
+      border-radius: 40px;
+      padding: 1.8rem;
+      color: #0f172a;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.4);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255,255,255,0.3);
+      backdrop-filter: blur(2px);
+    }
+    .result-card:hover { transform: translateY(-5px); box-shadow: 0 28px 40px -15px rgba(0,0,0,0.5); }
+    .badge {
+      background: linear-gradient(135deg, #fef3c7, #ffedd5);
+      color: #9a3412;
+      display: inline-block;
+      padding: 5px 16px;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      letter-spacing: 0.5px;
+      box-shadow: inset 0 0 2px rgba(0,0,0,0.05);
+    }
+    .result-card h3 {
+      color: #9a3412;
+      font-size: 1.4rem;
+      border-left: 6px solid #f97316;
+      padding-left: 18px;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+    .answer-text {
+      background: #fef9e6;
+      padding: 18px 24px;
+      border-radius: 28px;
+      line-height: 1.7;
+      margin: 12px 0;
+      font-size: 0.98rem;
+      border: 1px solid #ffedd5;
+    }
+    .formula-box {
+      background: #fffbeb;
+      padding: 14px 18px;
+      border-radius: 28px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.95rem;
+      margin: 14px 0;
+      text-align: center;
+      border-left: 6px solid #f97316;
+      font-weight: 600;
+      color: #b45309;
+    }
+    .responsive-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 0.85rem;
+      overflow-x: auto;
+      display: block;
+      border-radius: 24px;
+      overflow: hidden;
+    }
+    .responsive-table th, .responsive-table td {
+      border: 1px solid #e2e8f0;
+      padding: 12px 10px;
+      text-align: left;
+      background: white;
+    }
+    .responsive-table th {
+      background: #f97316;
+      color: white;
+      font-weight: 700;
+    }
+    .action-buttons {
+      margin-top: 22px;
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    .action-buttons button {
+      border: none;
+      padding: 10px 26px;
+      border-radius: 50px;
+      font-weight: 700;
+      background: #f1f5f9;
+      color: #1e293b;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.85rem;
+    }
+    .action-buttons button:last-child { background: #f97316; color: white; box-shadow: 0 4px 10px rgba(249,115,22,0.3); }
+    .action-buttons button:hover { transform: scale(0.97); opacity: 0.9; }
+
+    .not-found {
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(16px);
+      border-radius: 60px;
+      padding: 2.5rem;
+      text-align: center;
+      font-size: 1.1rem;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    /* Popup */
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.88);
+      backdrop-filter: blur(12px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    .popup-box {
+      background: white;
+      max-width: 850px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      border-radius: 48px;
+      padding: 30px 34px;
+      position: relative;
+      color: #1e293b;
+      scrollbar-width: thin;
+    }
+    .close-popup {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      background: #fee2e2;
+      border: none;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .lang-section { background: #f8fafc; padding: 18px; border-radius: 28px; margin-bottom: 20px; }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 650px) {
+      body { padding: 18px 14px; }
+      .heading h1 { font-size: 1.4rem; }
+      .result-card h3 { font-size: 1.1rem; }
+      .responsive-table th, .responsive-table td { padding: 8px 5px; font-size: 0.7rem; }
+      .result-card { padding: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="heading">
+    <h1>🏚️ Dissolution of Partnership Firm | Chapter 6</h1>
+    <p>⚡ Realisation Account · Insolvency of Partner · Capital Deficiency · Section 48 · Garner vs Murray Rule</p>
+  </div>
+  <div class="search-wrapper">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="🔎 Search: Realisation Account, Insolvent Partner, Deficiency, Garner vs Murray, Section 48...">
+      <button class="icon-btn" id="voiceBtn">🎤</button>
+    </div>
+    <div id="suggestionsList" class="suggestions-dropdown"></div>
+  </div>
+  <div class="result-container" id="resultsContainer">
+    <div class="not-found">✨ Type above — Master Dissolution, Realisation A/c, Capital Deficiency & Insolvency ✨</div>
+  </div>
+</div>
+<div class="popup-overlay" id="popupModal">
+  <div class="popup-box">
+    <button class="close-popup" id="closeModalBtn">✖</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+  // ---------- COMPLETE DATABASE: DISSOLUTION OF PARTNERSHIP FIRM (Chapter 6) ----------
+  const qaDatabase = [];
+
+  function addQA(question, answer, hindi, marathi, category, keywords = []) {
+    qaDatabase.push({ id: qaDatabase.length+1, question, answer, hindi, marathi, category, keywords: keywords.map(k=>k.toLowerCase()) });
+  }
+
+  // ==================== CORE CONCEPTS (most important) ====================
+  addQA("What is Dissolution of Partnership Firm?", "Dissolution of partnership firm means complete closure of the business. All assets are sold (realised), all liabilities are paid off, and the partnership among all partners ends. As per Section 39 of Indian Partnership Act 1932: 'The dissolution of partnership between all the partners of a firm is called the dissolution of a firm.'", "साझेदारी फर्म का विघटन व्यवसाय का पूर्ण समापन है।", "भागीदारी फर्मचे विघटन म्हणजे व्यवसायाची संपूर्ण बंदिस्ती.", "Core", ["dissolution meaning","section 39"]);
+  addQA("Difference between Dissolution of Partnership and Dissolution of Firm", "Dissolution of Partnership changes the relationship but business may continue (reconstitution). Dissolution of Firm means complete closure – business stops, assets realised, liabilities paid. Dissolution of Firm automatically implies dissolution of partnership, but vice versa may not be true. Key: Business continues vs discontinues; Revaluation vs Realisation; Books not closed vs finally closed.", "साझेदारी का विघटन और फर्म का विघटन में अंतर।", "भागीदारीचे विघटन व फर्मचे विघटन यातील फरक.", "Core", ["difference dissolution"]);
+  addQA("What is Realisation Account?", "Realisation Account is a Nominal Account opened at dissolution to find profit/loss on realisation of assets and settlement of liabilities. All assets (except cash/bank/fictitious) transferred to debit side; all third party liabilities transferred to credit side. Profit (credit balance) or Loss (debit balance) transferred to Partners' Capital Accounts in profit sharing ratio.", "वसूली खाता विघटन के समय खोला जाने वाला नाममात्र खाता है।", "वसुली खाते हे विघटनाच्या वेळी उघडले जाणारे नाममात्र खाते आहे.", "Realisation", ["realisation account"]);
+  addQA("Order of payment as per Section 48 of Partnership Act", "As per Section 48: 1) Realisation/Dissolution expenses, 2) Outside liabilities (Creditors, Bills Payable, Bank Overdraft, Outstanding expenses), 3) Partners' loans, 4) Partners' Capital balances (surplus distributed in profit sharing ratio). This order is mandatory.", "भुगतान क्रम: व्यय, बाह्य देयताएँ, साझेदारों के ऋण, पूंजी।", "देयक क्रम: खर्च, बाह्य देयता, भागीदार कर्ज, भांडवल.", "Core", ["section 48","order of payment"]);
+  addQA("What is Capital Deficiency?", "Capital deficiency is the debit balance in a partner's Capital Account after all adjustments (realisation loss, reserves, etc.) at dissolution. If partner is insolvent, the deficiency is borne by solvent partners in their profit sharing ratio (Garner vs Murray rule).", "पूंजी की कमी साझेदार के पूंजी खाते में डेबिट शेष है।", "भांडवल तूट म्हणजे भागीदाराच्या भांडवल खात्यातील नावे शिल्लक.", "Formulas", ["capital deficiency","insolvency"]);
+  addQA("Garner vs Murray Rule", "When a partner is insolvent, the capital deficiency (debit balance) of the insolvent partner should be borne by the solvent partners in their profit sharing ratio (not capital ratio). This applies only when partnership deed is silent about deficiency distribution.", "गार्नर बनाम मरे नियम: अस्वस्थ साझेदार की कमी लाभ अनुपात में वहन की जाती है।", "गार्नर वि. मरे: दिवाळखोराची तूट नफा प्रमाणात वहन करावी.", "Formulas", ["garner vs murray"]);
+
+  // ==================== TABLES (responsive) ====================
+  function getRealisationFormat() {
+    return `<table class="responsive-table"><thead><tr><th>Dr. Realisation Account</th><th>₹</th><th>Cr. Realisation Account</th><th>₹</th></tr></thead>
+    <tbody>
+      <tr><td>To Sundry Assets A/c (Book Value)</td><td>xxx</td><td>By Sundry Liabilities A/c (Third party)</td><td>xxx</td></tr>
+      <tr><td>To Cash/Bank (Liabilities paid)</td><td>xxx</td><td>By Cash/Bank (Assets realised)</td><td>xxx</td></tr>
+      <tr><td>To Cash/Bank (Realisation Expenses)</td><td>xxx</td><td>By Partner's Capital A/c (Assets taken over)</td><td>xxx</td></tr>
+      <tr><td>To Partner's Capital A/c (Profit transferred)</td><td>xxx</td><td>By Partner's Capital A/c (Loss transferred)</td><td>xxx</td></tr>
+    </tbody></table>`;
+  }
+  function getInsolvencyTable() {
+    return `<table class="responsive-table"><thead><tr><th>Scenario</th><th>Treatment</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Simple Dissolution (All solvent)</strong></td><td>All partners bring/pay cash as per capital balance</td></tr>
+      <tr><td><strong>Insolvent Partner (Deficiency)</strong></td><td>Deficiency borne by solvent partners in profit sharing ratio (Garner vs Murray)</td></tr>
+      <tr><td><strong>Recovery from insolvent's private estate</strong></td><td>Cash/Bank Dr. To Insolvent Partner's Capital A/c</td></tr>
+      <tr><td><strong>Deficiency transferred</strong></td><td>Solvent Partners Capital A/c Dr. To Insolvent Partner's Capital A/c</td></tr>
+      <tr><td><strong>All partners insolvent</strong></td><td>Outside liabilities NOT transferred to Realisation A/c; Deficiency A/c prepared</td></tr>
+    </tbody></table>`;
+  }
+
+  // ==================== ADDITIONAL TOPICS ====================
+  addQA("Journal entry for transferring assets to Realisation A/c", "Realisation A/c Dr. To Sundry Assets A/c (Building, Machinery, Furniture, Debtors, Stock, Goodwill). Cash/Bank and fictitious assets NOT transferred.", "संपत्तियों को वसूली खाते में स्थानांतरित करना।", "मालमत्ता वसुली खात्यात हस्तांतरित करणे.", "Journal", ["transfer assets"]);
+  addQA("Journal entry for insolvent partner's deficiency shared by solvent partners", "Solvent Partner's Capital A/c Dr. To Insolvent Partner's Capital A/c (in profit sharing ratio). This closes the deficiency of insolvent partner.", "अस्वस्थ साझेदार की कमी का हस्तांतरण।", "दिवाळखोर भागीदाराच्या तूट हस्तांतरण.", "Journal", ["deficiency transfer journal"]);
+  addQA("True/False: Realisation loss is transferred only to solvent partners", "False. Realisation loss is transferred to ALL partners (including insolvent) in profit sharing ratio before calculating deficiency.", "गलत। वसूली हानि सभी साझेदारों में बांटी जाती है।", "चुकीचे. वसुली तोटा सर्व भागीदारांत वाटतो.", "True/False", ["realisation loss all"]);
+
+  // ==================== NUMERICAL / APPLIED ====================
+  addQA("Calculate Deficiency Distribution: Vinod, Vijay, Vishal share 3:2:1, Vishal deficiency ₹6,000", "Deficiency borne by Vinod and Vijay in ratio 3:2. Vinod = 6,000 × 3/5 = ₹3,600; Vijay = 6,000 × 2/5 = ₹2,400.", "Vinod ₹3,600, Vijay ₹2,400", "विनोद ₹3,600, विजय ₹2,400", "Numerical", ["deficiency calc"]);
+  addQA("What amount will creditors get if all partners insolvent? Creditors 30,000, Bills Payable 20,000, Bank Loan 10,000, Bank Balance 40,000", "Available ₹40,000. Total liabilities = ₹60,000. Creditors get proportionate: (30,000/60,000)×40,000 = ₹20,000.", "लेनदारों को ₹20,000 मिलेंगे।", "लेनदारांना ₹20,000 मिळतील.", "Numerical", ["creditors payment insolvency"]);
+
+  // Helper functions
+  const searchInput = document.getElementById("searchInput");
+  const resultsContainer = document.getElementById("resultsContainer");
+  const suggestionsDiv = document.getElementById("suggestionsList");
+
+  function getMatches(query) {
+    if(!query.trim()) return [];
+    const lower = query.toLowerCase();
+    return qaDatabase.filter(item => 
+      item.question.toLowerCase().includes(lower) || 
+      item.answer.toLowerCase().includes(lower) ||
+      item.category.toLowerCase().includes(lower) ||
+      item.keywords.some(k => k.includes(lower) || lower.includes(k))
+    ).slice(0, 14);
+  }
+
+  function updateSuggestions() {
+    const val = searchInput.value;
+    if(!val.trim()) { suggestionsDiv.style.display = "none"; return; }
+    const matches = getMatches(val);
+    if(!matches.length) { suggestionsDiv.style.display = "none"; return; }
+    suggestionsDiv.innerHTML = "";
+    matches.forEach(item => {
+      const div = document.createElement("div");
+      div.className = "suggestion-item";
+      div.innerHTML = `<span>⚖️</span> <strong>${item.question.substring(0,70)}...</strong> <span style="margin-left:auto; background:#fef3c7; padding:2px 12px; border-radius:30px;">${item.category}</span>`;
+      div.addEventListener("click", () => {
+        searchInput.value = item.question;
+        suggestionsDiv.style.display = "none";
+        performSearch(item.question);
+      });
+      suggestionsDiv.appendChild(div);
+    });
+    suggestionsDiv.style.display = "block";
+  }
+
+  function performSearch(query = null) {
+    let q = (query !== null) ? query : searchInput.value;
+    q = q.trim();
+    if(!q) { resultsContainer.innerHTML = `<div class="not-found">✨ Enter keywords: Realisation, Insolvency, Deficiency, Section 48, Garner vs Murray ✨</div>`; return; }
+    const matches = getMatches(q);
+    if(!matches.length) { resultsContainer.innerHTML = `<div class="not-found">❌ No results for "${q}". Try: Realisation Account, Insolvent Partner, Capital Deficiency, Garner vs Murray.</div>`; return; }
+    resultsContainer.innerHTML = "";
+    matches.forEach(item => {
+      let extra = "";
+      if (item.question.toLowerCase().includes("realisation account format") || (item.question.toLowerCase().includes("format") && item.category === "Realisation"))
+        extra = getRealisationFormat();
+      else if (item.question.toLowerCase().includes("insolvency treatment") || (item.question.toLowerCase().includes("insolvent") && item.category !== "Numerical"))
+        extra = getInsolvencyTable();
+      else if (item.category === "Numerical" && item.answer.includes("₹"))
+        extra = `<div class="formula-box">📐 ${item.answer}</div>`;
+      else if (item.category === "Formulas")
+        extra = `<div class="formula-box">📐 ${item.answer}</div>`;
+      
+      const card = document.createElement("div");
+      card.className = "result-card";
+      card.innerHTML = `
+        <div class="badge">🔥 ${escapeHtml(item.category)}</div>
+        <h3>📚 ${escapeHtml(item.question)}</h3>
+        <div class="answer-text"><strong>✅ Answer / उत्तर :</strong><br>${escapeHtml(item.answer)}${extra}</div>
+        <div class="action-buttons">
+          <button class="langBtn" data-q="${escapeAttr(item.question)}" data-a="${escapeAttr(item.answer)}" data-hi="${escapeAttr(item.hindi)}" data-mr="${escapeAttr(item.marathi)}">🌐 हिंदी / मराठी</button>
+          <button class="detailBtn" data-q="${escapeAttr(item.question)}" data-a="${escapeAttr(item.answer)}" data-cat="${item.category}">📘 Detailed Explanation</button>
+        </div>
+      `;
+      resultsContainer.appendChild(card);
+    });
+    attachEvents();
+  }
+
+  function attachEvents() {
+    document.querySelectorAll(".langBtn").forEach(btn => btn.addEventListener("click", (e) => {
+      const q = btn.getAttribute("data-q"), a= btn.getAttribute("data-a"), hi=btn.getAttribute("data-hi"), mr=btn.getAttribute("data-mr");
+      showLangPopup(q,a,hi,mr);
+    }));
+    document.querySelectorAll(".detailBtn").forEach(btn => btn.addEventListener("click", (e) => {
+      const q = btn.getAttribute("data-q"), a= btn.getAttribute("data-a"), cat=btn.getAttribute("data-cat");
+      showDetailPopup(q,a,cat);
+    }));
+  }
+
+  function showLangPopup(question, answer, hindi, marathi) {
+    document.getElementById("popupModal").style.display = "flex";
+    document.getElementById("modalContent").innerHTML = `
+      <h2 style="color:#b45309;">🌐 भाषा अनुवाद | Translation</h2>
+      <div class="lang-section"><strong>❓ प्रश्न:</strong> ${escapeHtml(question)}</div>
+      <div class="lang-section"><strong>🇮🇳 हिंदी (Hindi):</strong><br>${escapeHtml(hindi || answer)}</div>
+      <div class="lang-section"><strong>🇮🇳 मराठी (Marathi):</strong><br>${escapeHtml(marathi || answer)}</div>
+      <button id="closeLangModal" style="background:#f97316; padding:10px 26px; border-radius:40px; color:white; border:none;">बंद करें</button>
+    `;
+    document.getElementById("closeLangModal").addEventListener("click", ()=> document.getElementById("popupModal").style.display = "none");
+  }
+
+  function showDetailPopup(question, answer, category) {
+    let extra = `<div class="lang-section"><strong>📖 12th BK Chapter 6 - Dissolution of Partnership Firm</strong><br>✔ Realisation Account, Section 48 order of payment<br>✔ Insolvent Partner → Capital Deficiency shared by solvent partners (Garner vs Murray)<br>✔ All partners insolvent → Deficiency Account prepared</div>`;
+    if(category === "Realisation") extra += getRealisationFormat();
+    if(category === "Journal" || (category === "Formulas" && question.toLowerCase().includes("insolvent"))) extra += getInsolvencyTable();
+    if(category === "Core") extra += `<div class="lang-section">⚡ Sec.48: Expenses → Outside Liabilities → Partners' Loans → Partners' Capital</div>`;
+    document.getElementById("popupModal").style.display = "flex";
+    document.getElementById("modalContent").innerHTML = `
+      <h2 class="detail-title" style="color:#b45309;">📘 Detailed Explanation</h2>
+      <div class="lang-section"><strong>❓ Question:</strong> ${escapeHtml(question)}</div>
+      <div class="lang-section"><strong>✅ Detailed Answer:</strong><br>${escapeHtml(answer)}</div>
+      ${extra}
+      <button id="closeDetailModal" style="background:#f97316; padding:10px 26px; border-radius:40px; color:white; border:none;">Close</button>
+    `;
+    document.getElementById("closeDetailModal").addEventListener("click", ()=> document.getElementById("popupModal").style.display = "none");
+  }
+
+  function escapeHtml(str) { return str.replace(/[&<>]/g, function(m){ if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m;}); }
+  function escapeAttr(str) { return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  function startVoice() { if (!('webkitSpeechRecognition' in window)) { alert("Voice support requires Chrome/Edge."); return; } const rec = new webkitSpeechRecognition(); rec.lang="en-IN"; rec.start(); rec.onresult = (e)=> { searchInput.value = e.results[0][0].transcript; performSearch(); }; }
+  document.getElementById("voiceBtn").addEventListener("click", startVoice);
+  searchInput.addEventListener("keyup", () => { performSearch(); updateSuggestions(); });
+  searchInput.addEventListener("focus", updateSuggestions);
+  document.addEventListener("click", (e) => { if(!document.querySelector(".search-wrapper").contains(e.target)) suggestionsDiv.style.display = "none"; });
+  document.getElementById("closeModalBtn").addEventListener("click", () => document.getElementById("popupModal").style.display = "none");
+  window.onload = () => { resultsContainer.innerHTML = `<div class="not-found">✨ 12th Commerce · Dissolution of Partnership Firm · Realisation, Insolvency & Garner vs Murray ✨</div>`; };
+</script>
+</body>
+</html>

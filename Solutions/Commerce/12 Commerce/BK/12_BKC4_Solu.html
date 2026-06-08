@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Chapter 4 | Retirement of Partner - 12th Commerce</title>
+  <!-- Google Fonts + Font Awesome 6 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: linear-gradient(135deg, #eef2f9 0%, #e0e8f2 100%);
+      font-family: 'Inter', sans-serif;
+      padding: 32px 24px;
+      color: #0a2b3e;
+      line-height: 1.5;
+    }
+    .container { max-width: 1300px; margin: 0 auto; }
+    .hero { text-align: center; margin-bottom: 48px; }
+    .hero h1 {
+      font-size: 2.4rem; font-weight: 800;
+      background: linear-gradient(135deg, #0b4b6b, #1f6e93, #2c7da0);
+      background-clip: text; -webkit-background-clip: text; color: transparent;
+      display: inline-block; padding-bottom: 10px;
+      border-bottom: 4px solid #ffb347; margin-bottom: 16px;
+    }
+    .chapter-badge {
+      background: #0f4c5f20; backdrop-filter: blur(6px);
+      display: inline-block; padding: 6px 24px; border-radius: 40px;
+      font-size: 0.85rem; font-weight: 600; color: #1b6b8f;
+    }
+    .card {
+      background: rgba(255,255,255,0.97); border-radius: 2rem;
+      margin-bottom: 32px; padding: 28px 32px;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid rgba(255,255,255,0.6);
+    }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 25px 40px -14px rgba(0,0,0,0.15); }
+    .card h2 {
+      font-size: 1.7rem; font-weight: 700; color: #135b78;
+      margin-bottom: 28px; padding-bottom: 10px;
+      border-bottom: 3px solid #ffb74d; display: inline-block;
+    }
+    .card h2 i { margin-right: 12px; color: #ff8c42; }
+    .qa-item { margin-bottom: 22px; border-left: 3px solid #cbdde9; padding-left: 20px; }
+    .question {
+      font-weight: 700; font-size: 1rem; color: #1f4a5e;
+      margin-bottom: 8px; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+    }
+    .question i { color: #ff8c42; width: 26px; }
+    .answer {
+      background: #f8fafd; padding: 10px 18px; border-radius: 24px;
+      font-weight: 500; color: #216477; font-size: 0.94rem;
+      display: inline-block; max-width: 100%;
+      box-shadow: inset 0 1px 0 #fff, 0 1px 2px rgba(0,0,0,0.02);
+    }
+    .true-badge {
+      background: #e0f2e9; color: #1e6f3f; padding: 3px 14px;
+      border-radius: 40px; font-weight: 700; font-size: 0.75rem;
+      display: inline-block; margin-right: 12px;
+    }
+    .false-badge {
+      background: #ffe8e6; color: #bc4742; padding: 3px 14px;
+      border-radius: 40px; font-weight: 700; font-size: 0.75rem;
+      display: inline-block; margin-right: 12px;
+    }
+    .resp-table { width: 100%; overflow-x: auto; margin: 16px 0; border-radius: 20px; background: #f4f9fe; padding: 4px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.85rem; background: white; border-radius: 16px; overflow: hidden; }
+    th, td { border: 1px solid #cde1ef; padding: 10px 12px; text-align: left; vertical-align: top; }
+    th { background: #e0eaf5; font-weight: 700; color: #135b78; }
+    .highlight { background: #eef3fc; border-radius: 16px; padding: 12px 18px; margin: 12px 0; }
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px,1fr)); gap: 12px; margin-top: 12px; }
+    @media (max-width: 768px) {
+      body { padding: 20px 16px; }
+      .card { padding: 20px 18px; }
+      .card h2 { font-size: 1.4rem; }
+      .hero h1 { font-size: 1.8rem; }
+      .qa-item { padding-left: 12px; }
+      th, td { padding: 6px 8px; font-size: 0.75rem; }
+    }
+    .footer-note { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #bdd4e4; font-size: 0.8rem; color: #2c6f8c; }
+    .formula { font-family: monospace; background: #eef3fc; padding: 4px 8px; border-radius: 8px; display: inline-block; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+    <h1><i class="fas fa-user-minus"></i> Chapter 4 · Retirement of Partner</h1>
+    <div class="chapter-badge"><i class="fas fa-handshake"></i> New Ratio | Gain Ratio | Goodwill | Revaluation | Settlement</div>
+  </div>
+
+  <!-- ================= Section A: Multiple Choice ================= -->
+  <div class="card">
+    <h2><i class="fas fa-check-square"></i> A. Select the most appropriate alternative</h2>
+    <div class="qa-item"><div class="question">1) Profit/Loss from revaluation on retirement is shared by _______.</div><div class="answer">b) All the partners (including retiring partner)</div></div>
+    <div class="qa-item"><div class="question">2) Decrease in asset value should be _______ to Profit & Loss Adjustment Account.</div><div class="answer">a) Debited</div></div>
+    <div class="qa-item"><div class="question">3) Retired partner's capital balance is transferred to his _______ account if not paid.</div><div class="answer">a) Loan</div></div>
+    <div class="qa-item"><div class="question">4) Gain Ratio = _______ Ratio - Old Ratio.</div><div class="answer">a) New</div></div>
+    <div class="qa-item"><div class="question">5) New Ratio = Old Ratio + _______ Ratio.</div><div class="answer">a) Gain</div></div>
+    <div class="qa-item"><div class="question">6) Apte (1/2), Bhate (3/10), Chitale (1/5). If Apte retires, new ratio = _______.</div><div class="answer">b) 3:2 (Bhate:Chitale = 3/10 : 1/5 = 3:2)</div></div>
+  </div>
+
+  <!-- ================= Section B: One word/term/phrase ================= -->
+  <div class="card">
+    <h2><i class="fas fa-tag"></i> B. Write the word/term/phrase</h2>
+    <div class="qa-item"><div class="question">1) Credit balance of Profit and Loss Adjustment Account.</div><div class="answer">Profit on Revaluation</div></div>
+    <div class="qa-item"><div class="question">2) Ratio in which continuing partners benefit due to retirement.</div><div class="answer">Gain Ratio</div></div>
+    <div class="qa-item"><div class="question">3) Debit balance of Revaluation Account.</div><div class="answer">Loss on Revaluation</div></div>
+    <div class="qa-item"><div class="question">4) Ratio obtained by deducting Old Ratio from New Ratio.</div><div class="answer">Gain Ratio</div></div>
+    <div class="qa-item"><div class="question">5) Money value of business reputation earned over years.</div><div class="answer">Goodwill</div></div>
+    <div class="qa-item"><div class="question">6) Account where revaluation profit/loss is transferred.</div><div class="answer">Partners' Capital / Current Account</div></div>
+  </div>
+
+  <!-- ================= Section C: True or False with Reasons ================= -->
+  <div class="card">
+    <h2><i class="fas fa-gavel"></i> C. State True or False with reasons</h2>
+    <div class="qa-item"><div class="question">1) Gain ratio = New ratio - Old ratio.</div><div class="answer"><span class="true-badge">True</span> Gain ratio is the excess of new ratio over old ratio for continuing partners.</div></div>
+    <div class="qa-item"><div class="question">2) Retiring partner's share of profit up to retirement date is debited to P&L Suspense A/c.</div><div class="answer"><span class="true-badge">True</span> P&L Suspense A/c is debited and retiring partner's capital is credited.</div></div>
+    <div class="qa-item"><div class="question">3) On retirement, sacrifice ratio is considered.</div><div class="answer"><span class="false-badge">False</span> On retirement, gain ratio is considered; sacrifice ratio is at admission.</div></div>
+    <div class="qa-item"><div class="question">4) Retiring partner is called an outgoing partner.</div><div class="answer"><span class="true-badge">True</span> Partner who leaves the firm is outgoing partner.</div></div>
+    <div class="qa-item"><div class="question">5) Remaining partners share goodwill in their new profit sharing ratio.</div><div class="answer"><span class="true-badge">True</span> Continuing partners share retiring partner's goodwill in gain ratio.</div></div>
+    <div class="qa-item"><div class="question">6) Retiring partner is not entitled to share in General Reserve.</div><div class="answer"><span class="false-badge">False</span> Retiring partner gets his share of General Reserve in old ratio.</div></div>
+  </div>
+
+  <!-- ================= Section D: Fill in the blanks ================= -->
+  <div class="card">
+    <h2><i class="fas fa-edit"></i> D. Fill in the blanks</h2>
+    <div class="qa-item"><div class="question">1) New Ratio (less) _______ = Gain ratio.</div><div class="answer">Old Ratio</div></div>
+    <div class="qa-item"><div class="question">2) Retiring Partner's share of goodwill is _______ to remaining partner's capital account.</div><div class="answer">debited</div></div>
+    <div class="qa-item"><div class="question">3) Revaluation A/c is also known as _______ account.</div><div class="answer">Profit & Loss Adjustment</div></div>
+    <div class="qa-item"><div class="question">4) On retirement, balance in Current Account of partner is transferred to his _______ account.</div><div class="answer">Capital</div></div>
+    <div class="qa-item"><div class="question">5) Proportion in which continuing partners get retiring partner's share is known as _______ ratio.</div><div class="answer">Gain</div></div>
+  </div>
+
+  <!-- ================= Section E: Answer in short ================= -->
+  <div class="card">
+    <h2><i class="fas fa-question-circle"></i> E. Answer the following</h2>
+    <div class="qa-item"><div class="question">1) What is Retirement of a Partner?</div><div class="answer">When a partner ceases to be a partner and remaining partners continue business, it is called retirement.</div></div>
+    <div class="qa-item"><div class="question">2) What is Benefit/Gain Ratio?</div><div class="answer">Ratio in which continuing partners acquire retiring partner's share = New Ratio - Old Ratio.</div></div>
+    <div class="qa-item"><div class="question">3) What is New Ratio?</div><div class="answer">Ratio in which continuing partners decide to share future profits and losses after retirement.</div></div>
+    <div class="qa-item"><div class="question">4) How is amount due to retiring partner settled?</div><div class="answer">By cash payment in lump sum, installments, or transferred to Loan Account.</div></div>
+    <div class="qa-item"><div class="question">5) How is Gain Ratio calculated?</div><div class="answer">Gain Ratio = New Ratio - Old Ratio (for continuing partners).</div></div>
+    <div class="qa-item"><div class="question">6) Why is retiring partner's capital credited with goodwill?</div><div class="answer">Because goodwill represents firm's reputation earned by past efforts of all partners including retiring partner.</div></div>
+  </div>
+
+  <!-- ================= Formulas Summary ================= -->
+  <div class="card">
+    <h2><i class="fas fa-square-root-alt"></i> Important Formulas</h2>
+    <div class="grid-2">
+      <div class="highlight"><strong>New Ratio (when no specific acquisition)</strong><br>Cancel retiring partner's share from old ratio</div>
+      <div class="highlight"><strong>Gain Ratio</strong><br>Gain = New Ratio - Old Ratio</div>
+      <div class="highlight"><strong>New Ratio = Old Ratio + Gain Ratio</strong></div>
+      <div class="highlight"><strong>Revaluation Profit/Loss</strong><br>Distributed to ALL partners (including retiring) in OLD ratio</div>
+      <div class="highlight"><strong>Reserves/Accumulated Profit</strong><br>Distributed to ALL partners in OLD ratio</div>
+      <div class="highlight"><strong>Goodwill (Retirement)</strong><br>Retiring partner's share credited to him; continuing partners debit in GAIN ratio</div>
+    </div>
+  </div>
+
+  <!-- ================= Journal Entries for Retirement ================= -->
+  <div class="card">
+    <h2><i class="fas fa-book"></i> Journal Entries for Retirement</h2>
+    <div class="resp-table">
+      <table>
+        <thead><tr><th>Transaction</th><th>Journal Entry</th></tr></thead>
+        <tbody>
+          <tr><td>Revaluation Profit (Increase in asset / Decrease in liability)</td><td>Asset/Liability A/c Dr. → To Revaluation A/c<br>Revaluation A/c Dr. → To All Partners' Capital A/c (Old ratio)</td></tr>
+          <tr><td>Revaluation Loss (Decrease in asset / Increase in liability)</td><td>Revaluation A/c Dr. → To Asset/Liability A/c<br>All Partners' Capital A/c Dr. (Old ratio) → To Revaluation A/c</td></tr>
+          <tr><td>Reserve/Accumulated Profit transferred</td><td>Reserve/General Reserve A/c Dr. → To All Partners' Capital A/c (Old ratio)</td></tr>
+          <tr><td>Goodwill raised for retiring partner's share (retained)</td><td>Goodwill A/c Dr. → To Retiring Partner's Capital A/c</td></tr>
+          <tr><td>Goodwill raised and written off</td><td>Goodwill A/c Dr. → To Retiring Partner's Capital A/c<br>Continuing Partners' Capital A/c Dr. (Gain ratio) → To Goodwill A/c</td></tr>
+          <tr><td>Amount due to retiring partner paid/transferred</td><td>Retiring Partner's Capital A/c Dr. → To Cash/Bank A/c<br>OR To Retiring Partner's Loan A/c</td></tr>
+          <tr><td>Profit up to retirement date (Proportionate)</td><td>P&L Suspense A/c Dr. → To Retiring Partner's Capital A/c</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ================= Specimen: Revaluation Account ================= -->
+  <div class="card">
+    <h2><i class="fas fa-chart-line"></i> Specimen: Revaluation Account (Retirement)</h2>
+    <div class="resp-table">
+      <table>
+        <thead><tr><th>Dr. Revaluation Account Cr.</th><th>₹</th><th></th><th>₹</th></tr></thead>
+        <tbody>
+          <tr><td>To Asset A/c (Decrease)</td><td>xxx</td><td>By Asset A/c (Increase)</td><td>xxx</td></tr>
+          <tr><td>To Liability A/c (Increase)</td><td>xxx</td><td>By Liability A/c (Decrease)</td><td>xxx</td></tr>
+          <tr><td>To Partners' Capital A/c (Profit transferred)</td><td>xxx</td><td>By Partners' Capital A/c (Loss transferred)</td><td>xxx</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="highlight">Note: Revaluation profit/loss is distributed to ALL partners (including retiring) in OLD profit sharing ratio.</div>
+  </div>
+
+  <!-- ================= Specimen: Partner's Capital Account ================= -->
+  <div class="card">
+    <h2><i class="fas fa-user-clock"></i> Specimen: Partner's Capital Account (Retirement)</h2>
+    <div class="resp-table">
+      <table>
+        <thead><tr><th colspan="4">Dr. Partners' Capital Account Cr.</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Particulars (Debit side)</strong></td><td>₹</td><td><strong>Particulars (Credit side)</strong></td><td>₹</td></tr>
+          <tr><td>To Revaluation A/c (Loss)</td><td>xxx</td><td>By Balance b/d</td><td>xxx</td></tr>
+          <tr><td>To Goodwill A/c (written off)</td><td>xxx</td><td>By Revaluation A/c (Profit)</td><td>xxx</td></tr>
+          <tr><td>To Cash/Bank A/c (withdrawal)</td><td>xxx</td><td>By General Reserve A/c</td><td>xxx</td></tr>
+          <tr><td>To Retiring Partner's Loan A/c</td><td>xxx</td><td>By Goodwill A/c (raised)</td><td>xxx</td></tr>
+          <tr><td>To Balance c/d</td><td>xxx</td><td>By P&L Suspense A/c (profit)</td><td>xxx</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ================= Retirement Settlement Methods ================= -->
+  <div class="card">
+    <h2><i class="fas fa-coins"></i> Settlement of Amount Due to Retiring Partner</h2>
+    <div class="grid-2">
+      <div class="highlight"><i class="fas fa-rupee-sign"></i> <strong>Lump Sum Payment</strong><br>Entire amount paid in one installment at retirement.</div>
+      <div class="highlight"><i class="fas fa-hand-holding-usd"></i> <strong>Installment Payment</strong><br>Amount paid over time; balance transferred to Loan Account with interest.</div>
+      <div class="highlight"><i class="fas fa-file-invoice"></i> <strong>Transfer to Loan Account</strong><br>Full amount transferred to retiring partner's loan account.</div>
+      <div class="highlight"><i class="fas fa-exchange-alt"></i> <strong>Partial Payment + Loan</strong><br>Part paid in cash, balance transferred to Loan Account.</div>
+    </div>
+  </div>
+
+  <!-- ======== Complete Illustration ======== -->
+  <div class="card">
+    <h2><i class="fas fa-calculator"></i> Illustration: Retirement of Pradhan (Problem 1)</h2>
+    <div class="highlight">
+      <strong>Revaluation Loss: ₹6,000</strong> (Stock ↓1,750, Furniture ↓250, RDD ↑900, Machinery ↓3,300, Creditors ↓200)<br>
+      <strong>Pradhan's Final Capital: ₹34,000</strong> (Paid ₹5,000 cash, Balance ₹29,000 to Loan A/c)<br>
+      <strong>New Balance Sheet Total: ₹1,56,900</strong> (Goodwill ₹20,000 raised)
+    </div>
+    <div class="resp-table">
+      <table>
+        <thead><tr><th>Dr. Revaluation Account Cr.</th><th>₹</th><th></th><th>₹</th></tr></thead>
+        <tbody>
+          <tr><td>To Stock A/c</td><td>1,750</td><td>By Creditors A/c</td><td>200</td></tr>
+          <tr><td>To Furniture A/c</td><td>250</td><td>By Partners' Capital (Loss):</td><td></td></tr>
+          <tr><td>To R.D.D. A/c</td><td>900</td><td>Raja 3,000, Rani 1,800, Pradhan 1,200</td><td>6,000</td></tr>
+          <tr><td>To Machinery A/c</td><td>3,300</td><td></td><td></td></tr>
+          <tr><td><strong>Total</strong></td><td><strong>6,200</strong></td><td><strong>Total</strong></td><td><strong>6,200</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ======== Gain Ratio Calculation Example ======== -->
+  <div class="card">
+    <h2><i class="fas fa-chart-line"></i> Illustration: Gain Ratio Calculation</h2>
+    <div class="highlight">
+      <strong>Old Ratio (A:B:C = 4:3:2). B retires. A and C share future equally (1:1).</strong><br>
+      A's Gain = 1/2 - 4/9 = (9-8)/18 = 1/18<br>
+      C's Gain = 1/2 - 2/9 = (9-4)/18 = 5/18<br>
+      <strong>Gain Ratio (A:C) = 1:5</strong>
+    </div>
+  </div>
+
+  <div class="footer-note">
+    <i class="fas fa-user-minus"></i> Retirement of Partner: New Ratio | Gain Ratio = New - Old | Revaluation shared by all partners | Goodwill credited to retiring partner
+  </div>
+</div>
+</body>
+</html>

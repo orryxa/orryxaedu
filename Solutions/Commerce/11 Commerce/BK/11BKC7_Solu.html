@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Chapter 7 | Depreciation - Exercise Answers</title>
+  <!-- Google Fonts + Font Awesome 6 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: linear-gradient(135deg, #eef2f9 0%, #e0e8f2 100%);
+      font-family: 'Inter', sans-serif;
+      padding: 32px 24px;
+      color: #0a2b3e;
+      line-height: 1.5;
+    }
+    .container { max-width: 1300px; margin: 0 auto; }
+    .hero { text-align: center; margin-bottom: 48px; }
+    .hero h1 {
+      font-size: 2.4rem; font-weight: 800;
+      background: linear-gradient(135deg, #0b4b6b, #1f6e93, #2c7da0);
+      background-clip: text; -webkit-background-clip: text; color: transparent;
+      display: inline-block; padding-bottom: 10px;
+      border-bottom: 4px solid #ffb347; margin-bottom: 16px;
+    }
+    .chapter-badge {
+      background: #0f4c5f20; backdrop-filter: blur(6px);
+      display: inline-block; padding: 6px 24px; border-radius: 40px;
+      font-size: 0.85rem; font-weight: 600; color: #1b6b8f;
+    }
+    .card {
+      background: rgba(255,255,255,0.97); border-radius: 2rem;
+      margin-bottom: 32px; padding: 28px 32px;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid rgba(255,255,255,0.6);
+    }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 25px 40px -14px rgba(0,0,0,0.15); }
+    .card h2 {
+      font-size: 1.7rem; font-weight: 700; color: #135b78;
+      margin-bottom: 28px; padding-bottom: 10px;
+      border-bottom: 3px solid #ffb74d; display: inline-block;
+    }
+    .card h2 i { margin-right: 12px; color: #ff8c42; }
+    .qa-item { margin-bottom: 22px; border-left: 3px solid #cbdde9; padding-left: 20px; }
+    .question {
+      font-weight: 700; font-size: 1rem; color: #1f4a5e;
+      margin-bottom: 8px; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+    }
+    .question i { color: #ff8c42; width: 26px; }
+    .answer {
+      background: #f8fafd; padding: 10px 18px; border-radius: 24px;
+      font-weight: 500; color: #216477; font-size: 0.94rem;
+      display: inline-block; max-width: 100%;
+      box-shadow: inset 0 1px 0 #fff, 0 1px 2px rgba(0,0,0,0.02);
+    }
+    .true-badge {
+      background: #e0f2e9; color: #1e6f3f; padding: 3px 14px;
+      border-radius: 40px; font-weight: 700; font-size: 0.75rem;
+      display: inline-block; margin-right: 12px;
+    }
+    .false-badge {
+      background: #ffe8e6; color: #bc4742; padding: 3px 14px;
+      border-radius: 40px; font-weight: 700; font-size: 0.75rem;
+      display: inline-block; margin-right: 12px;
+    }
+    .resp-table { width: 100%; overflow-x: auto; margin: 16px 0; border-radius: 20px; background: #f4f9fe; padding: 4px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.85rem; background: white; border-radius: 16px; overflow: hidden; }
+    th, td { border: 1px solid #cde1ef; padding: 10px 12px; text-align: left; vertical-align: top; }
+    th { background: #e0eaf5; font-weight: 700; color: #135b78; }
+    .highlight { background: #eef3fc; border-radius: 16px; padding: 12px 18px; margin: 12px 0; }
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px,1fr)); gap: 12px; margin-top: 12px; }
+    @media (max-width: 768px) {
+      body { padding: 20px 16px; }
+      .card { padding: 20px 18px; }
+      .card h2 { font-size: 1.4rem; }
+      .hero h1 { font-size: 1.8rem; }
+      .qa-item { padding-left: 12px; }
+      th, td { padding: 6px 8px; font-size: 0.75rem; }
+    }
+    .footer-note { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #bdd4e4; font-size: 0.8rem; color: #2c6f8c; }
+    .formula-box { font-family: monospace; background: #eef3fc; padding: 8px 12px; border-radius: 12px; display: inline-block; margin: 5px 0; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+    <h1><i class="fas fa-chart-line"></i> Chapter 7 · Depreciation</h1>
+    <div class="chapter-badge"><i class="fas fa-calculator"></i> Fixed Assets | SLM | WDV | Journal Entries | Sale of Asset</div>
+  </div>
+
+  <!-- ================= Q.1 Answer in One Sentence ================= -->
+  <div class="card">
+    <h2><i class="fas fa-question-circle"></i> Q.1 Answer in One Sentence</h2>
+    <div class="qa-item"><div class="question">1) What is depreciation?</div><div class="answer">Depreciation is a gradual, continuous and permanent reduction in the value of a fixed asset due to wear and tear, passage of time or obsolescence.</div></div>
+    <div class="qa-item"><div class="question">2) Why depreciation is charged?</div><div class="answer">Depreciation is charged to ascertain true profit or loss and to show true financial position of the business.</div></div>
+    <div class="qa-item"><div class="question">3) What is a 'Scrap Value' of an asset?</div><div class="answer">Scrap value is the estimated realizable value of an asset at the end of its useful life.</div></div>
+    <div class="qa-item"><div class="question">4) Why depreciation is charged even in the year of loss?</div><div class="answer">Depreciation is a non-cash expense and must be charged regardless of profit or loss to reflect correct asset value.</div></div>
+    <div class="qa-item"><div class="question">5) Which account is credited when depreciation is charged?</div><div class="answer">Asset account is credited when depreciation is charged.</div></div>
+    <div class="qa-item"><div class="question">6) Where is the profit or loss on sale of asset transferred?</div><div class="answer">Profit or loss on sale of asset is transferred to Profit & Loss Account.</div></div>
+    <div class="qa-item"><div class="question">7) To which account balance on Depreciation A/c is transferred?</div><div class="answer">Balance of Depreciation A/c is transferred to Profit & Loss A/c.</div></div>
+    <div class="qa-item"><div class="question">8) What is the formula to calculate depreciation by Straight Line Method?</div><div class="answer">Depreciation p.a. = (Original Cost - Scrap Value) / Estimated Life of Asset (in years).</div></div>
+    <div class="qa-item"><div class="question">9) What is Fixed Instalment Method?</div><div class="answer">Fixed Instalment Method (Straight Line Method) charges equal amount of depreciation every year on original cost.</div></div>
+    <div class="qa-item"><div class="question">10) Which account is debited when expenses are paid on installation of Machinery?</div><div class="answer">Machinery A/c (Asset A/c) is debited for installation expenses.</div></div>
+  </div>
+
+  <!-- ================= Q.2 One word / term / phrase ================= -->
+  <div class="card">
+    <h2><i class="fas fa-tag"></i> Q.2 Write the word/term/phrase</h2>
+    <div class="qa-item"><div class="question">1) A continuous, gradual and permanent reduction in the value of a fixed asset.</div><div class="answer">Depreciation</div></div>
+    <div class="qa-item"><div class="question">2) The expenditure incurred for purchase, installation charges etc. of an asset.</div><div class="answer">Capital Expenditure / Cost of Asset</div></div>
+    <div class="qa-item"><div class="question">3) The amount that a fixed asset is expected to realise on its disposal.</div><div class="answer">Scrap Value / Residual Value</div></div>
+    <div class="qa-item"><div class="question">4) The period for which the asset remains in working condition.</div><div class="answer">Estimated Useful Life</div></div>
+    <div class="qa-item"><div class="question">5) The method of depreciation in which the total depreciation is equally spread over the life of the asset.</div><div class="answer">Straight Line Method / Fixed Instalment Method</div></div>
+    <div class="qa-item"><div class="question">6) The method of depreciation in which the rate is fixed but amount reduces every year.</div><div class="answer">Written Down Value Method / Diminishing Balance Method</div></div>
+    <div class="qa-item"><div class="question">7) The type of asset on which depreciation is charged.</div><div class="answer">Fixed Asset</div></div>
+    <div class="qa-item"><div class="question">8) Expenses incurred for fixation of the new asset to bring it in working condition.</div><div class="answer">Installation Charges</div></div>
+    <div class="qa-item"><div class="question">9) Excess of Selling price of fixed asset over its Written Down Value.</div><div class="answer">Profit on Sale of Asset</div></div>
+    <div class="qa-item"><div class="question">10) Method of depreciation that cannot reach to zero value.</div><div class="answer">Written Down Value Method</div></div>
+  </div>
+
+  <!-- ================= Q.3 MCQs ================= -->
+  <div class="card">
+    <h2><i class="fas fa-check-square"></i> Q.3 Select the most appropriate alternative</h2>
+    <div class="qa-item"><div class="question">1) Decrease in the value of fixed assets is known as _______.</div><div class="answer">a) Depreciation</div></div>
+    <div class="qa-item"><div class="question">2) Depreciation is charged only on _______ assets.</div><div class="answer">a) Fixed</div></div>
+    <div class="qa-item"><div class="question">3) The amount spent on installation of new machinery is a _______ expenditure.</div><div class="answer">b) Capital</div></div>
+    <div class="qa-item"><div class="question">4) The amount that a fixed asset is expected to realise on its disposal is known as _______.</div><div class="answer">b) Scrap value</div></div>
+    <div class="qa-item"><div class="question">5) The amount of depreciation reduces year after year under _______.</div><div class="answer">b) Written Down Value Method</div></div>
+    <div class="qa-item"><div class="question">6) The amount of depreciation remains constant every year under _______.</div><div class="answer">a) Straight Line Method</div></div>
+    <div class="qa-item"><div class="question">7) The balance of depreciation account is transferred to _______.</div><div class="answer">c) Profit & Loss A/c</div></div>
+  </div>
+
+  <!-- ================= Q.4 True False with reasons ================= -->
+  <div class="card">
+    <h2><i class="fas fa-gavel"></i> Q.4 State True or False with reasons</h2>
+    <div class="qa-item"><div class="question">1) Depreciation is charged on fixed assets.</div><div class="answer"><span class="true-badge">True</span> Depreciation is applicable only to fixed assets (except land).</div></div>
+    <div class="qa-item"><div class="question">2) Depreciation increases the value of the asset.</div><div class="answer"><span class="false-badge">False</span> Depreciation reduces the value of asset.</div></div>
+    <div class="qa-item"><div class="question">3) Balance of depreciation account is transferred to Profit & Loss A/c.</div><div class="answer"><span class="true-badge">True</span> Depreciation is an expense and transferred to P&L A/c.</div></div>
+    <div class="qa-item"><div class="question">4) The Profit or Loss on sale of fixed asset is ascertained only after charging depreciation.</div><div class="answer"><span class="true-badge">True</span> Depreciation upto sale date must be charged to find correct WDV.</div></div>
+    <div class="qa-item"><div class="question">5) Wages paid for installation of Machinery are debited to Wages A/c.</div><div class="answer"><span class="false-badge">False</span> Wages for installation are debited to Machinery A/c (capitalized).</div></div>
+    <div class="qa-item"><div class="question">6) It is not necessary to depreciate an asset if it is not in use.</div><div class="answer"><span class="false-badge">False</span> Depreciation is charged due to passage of time even if not in use.</div></div>
+    <div class="qa-item"><div class="question">7) Depreciation is charged on Current Assets only.</div><div class="answer"><span class="false-badge">False</span> Depreciation is charged on Fixed Assets only.</div></div>
+    <div class="qa-item"><div class="question">8) Depreciation need not be charged when business is making losses.</div><div class="answer"><span class="false-badge">False</span> Depreciation must be charged irrespective of profit or loss.</div></div>
+  </div>
+
+  <!-- ================= Q.5 Complete the sentences ================= -->
+  <div class="card">
+    <h2><i class="fas fa-edit"></i> Q.5 Complete the following sentences</h2>
+    <div class="qa-item"><div class="question">1) Depreciation is charged on _______ asset.</div><div class="answer">fixed</div></div>
+    <div class="qa-item"><div class="question">2) Wages paid for Installation / fixation of Machinery is debited to _______ account.</div><div class="answer">Machinery</div></div>
+    <div class="qa-item"><div class="question">3) Under _______ system, the amount of depreciation changes every year.</div><div class="answer">Written Down Value</div></div>
+    <div class="qa-item"><div class="question">4) Depreciation = (Cost of asset - _______ ) / Estimated Working Life of the Asset.</div><div class="answer">Scrap Value</div></div>
+    <div class="qa-item"><div class="question">5) Gradual and permanent decrease in the value of asset is known as _______.</div><div class="answer">Depreciation</div></div>
+    <div class="qa-item"><div class="question">6) In Fixed Instalment System the amount of depreciation is _______ every year.</div><div class="answer">constant / same</div></div>
+    <div class="qa-item"><div class="question">7) The amount spent on installation of Machinery is a _______ expenditure.</div><div class="answer">Capital</div></div>
+    <div class="qa-item"><div class="question">8) _______ is the value which an asset realises at the end of its useful life.</div><div class="answer">Scrap Value</div></div>
+    <div class="qa-item"><div class="question">9) Depreciation Account is a _______ account.</div><div class="answer">Nominal</div></div>
+    <div class="qa-item"><div class="question">10) Depreciation is derived from a Latin word _______.</div><div class="answer">Depretium</div></div>
+  </div>
+
+  <!-- ================= Q.6 Agree or Disagree ================= -->
+  <div class="card">
+    <h2><i class="fas fa-thumbs-up"></i> Q.6 Do you agree or disagree?</h2>
+    <div class="qa-item"><div class="question">1) Depreciation is non-cash expense.</div><div class="answer"><span class="true-badge">Agree</span> No cash outflow occurs when depreciation is charged.</div></div>
+    <div class="qa-item"><div class="question">2) Under written down value method the Depreciation curve slopes parallel to 'X' axis.</div><div class="answer"><span class="false-badge">Disagree</span> It slopes downward; Straight Line Method is parallel to X-axis.</div></div>
+    <div class="qa-item"><div class="question">3) The rate of depreciation depends upon the life of fixed asset.</div><div class="answer"><span class="true-badge">Agree</span> Longer life means lower rate of depreciation.</div></div>
+    <div class="qa-item"><div class="question">4) The terminal value of asset never affects the annual amount of depreciation.</div><div class="answer"><span class="false-badge">Disagree</span> Scrap value directly affects depreciable amount.</div></div>
+    <div class="qa-item"><div class="question">5) By charging depreciation on fixed assets ascertainment of true and fair financial position is possible.</div><div class="answer"><span class="true-badge">Agree</span> Depreciation ensures assets are not overvalued.</div></div>
+  </div>
+
+  <!-- ================= Q.7 Correct the statements ================= -->
+  <div class="card">
+    <h2><i class="fas fa-sync-alt"></i> Q.7 Correct the following statements</h2>
+    <div class="qa-item"><div class="question">1) Residual value of an asset increases the amount of annual depreciation.</div><div class="answer">Residual value decreases the amount of annual depreciation.</div></div>
+    <div class="qa-item"><div class="question">2) Depreciation is calculated on all assets.</div><div class="answer">Depreciation is calculated on Fixed Assets only (excluding Land).</div></div>
+    <div class="qa-item"><div class="question">3) Under written down value method depreciation is calculated on original cost of an asset.</div><div class="answer">Under WDV, depreciation is calculated on opening written down value each year.</div></div>
+    <div class="qa-item"><div class="question">4) Depreciation provided on asset is debited to asset account.</div><div class="answer">Depreciation provided on asset is credited to asset account.</div></div>
+    <div class="qa-item"><div class="question">5) Profit on sale of asset is credited to asset account.</div><div class="answer">Profit on sale of asset is credited to Profit on Sale of Asset A/c (then to P&L).</div></div>
+  </div>
+
+  <!-- ================= Q.8 Calculations (Numerical) ================= -->
+  <div class="card">
+    <h2><i class="fas fa-calculator"></i> Q.8 Calculate the following</h2>
+    <div class="qa-item"><div class="question">1) Machine costing ₹23,000, life 7 years, scrap value ₹2,000. Find depreciation p.a.</div><div class="answer">Depreciation = (23,000 - 2,000) / 7 = ₹21,000 / 7 = <strong>₹3,000 p.a.</strong></div></div>
+    <div class="qa-item"><div class="question">2) Computer cost ₹40,000, depreciation @8% p.a. Calculate depreciation.</div><div class="answer">Depreciation = 40,000 × 8/100 = <strong>₹3,200 p.a.</strong></div></div>
+    <div class="qa-item"><div class="question">3) Furniture purchased 1st Oct 2015 for ₹2,80,000 + installation ₹20,000, depreciation @6% SLM on 31st March 2016.</div><div class="answer">Cost = ₹3,00,000; Period = 6 months; Depreciation = 3,00,000 × 6% × 6/12 = <strong>₹9,000</strong></div></div>
+    <div class="qa-item"><div class="question">4) Machinery purchased 1st Jan 2016 for ₹2,00,000, depreciation @10% WDV, books closed 31st March. Find WDV as on 31st March 2017.</div><div class="answer">For 2015-16 (3 months): Dep = 2,00,000 × 10% × 3/12 = ₹5,000; WDV = ₹1,95,000.<br>For 2016-17: Dep = 1,95,000 × 10% = ₹19,500; WDV on 31/3/17 = <strong>₹1,75,500</strong></div></div>
+    <div class="qa-item"><div class="question">5) Machinery sold for ₹7,000 on 1st July 2016 (original cost ₹10,000 purchased 1st April 2015), depreciation @10% SLM. Find profit/loss.</div><div class="answer">Depreciation 2015-16: ₹1,000; 2016-17 (3 months): ₹250; Total depreciation = ₹1,250; WDV = ₹8,750; Sale price ₹7,000 → <strong>Loss = ₹1,750</strong></div></div>
+  </div>
+
+  <!-- ================= Difference between SLM and WDV (Table) ================= -->
+  <div class="card">
+    <h2><i class="fas fa-table"></i> Difference: Fixed Instalment Method vs Written Down Value Method</h2>
+    <div class="resp-table">
+      <table>
+        <thead><tr><th>Points</th><th>Fixed Instalment Method (SLM)</th><th>Written Down Value Method (WDV)</th></tr></thead>
+        <tbody>
+          <tr><td>Charged on</td><td>Original cost of the asset</td><td>Reduced balance (WDV) each year</td></tr>
+          <tr><td>Amount of depreciation</td><td>Remains same each year</td><td>Goes on decreasing each year</td></tr>
+          <tr><td>Value of asset</td><td>Can be reduced to Zero</td><td>Cannot be reduced to Zero</td></tr>
+          <tr><td>Recognition by Tax Law</td><td>Not recognized</td><td>Recognized by Income Tax Act</td></tr>
+          <tr><td>Suitability</td><td>Where repair charges are less and obsolescence is low</td><td>Where repair charges increase in later years</td></tr>
+          <tr><td>Depreciation Curve</td><td>Parallel to X-axis</td><td>Slopes downward from left to right</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ================= Journal Entries for Depreciation (Summary Table) ================= -->
+  <div class="card">
+    <h2><i class="fas fa-book"></i> Journal Entries for Depreciation (Summary)</h2>
+    <div class="resp-table">
+      <table>
+        <thead><tr><th>Transaction</th><th>Debit</th><th>Credit</th></tr></thead>
+        <tbody>
+          <tr><td>Purchase of asset for cash</td><td>Asset A/c</td><td>Cash/Bank A/c</td></tr>
+          <tr><td>Installation charges paid</td><td>Asset A/c</td><td>Cash/Bank A/c</td></tr>
+          <tr><td>Charging depreciation</td><td>Depreciation A/c</td><td>Asset A/c</td></tr>
+          <tr><td>Transfer of depreciation to P&L</td><td>Profit & Loss A/c</td><td>Depreciation A/c</td></tr>
+          <tr><td>Sale of asset at profit</td><td>Bank A/c</td><td>Asset A/c (WDV) & Profit on Sale A/c</td></tr>
+          <tr><td>Sale of asset at loss</td><td>Bank A/c & Loss on Sale A/c</td><td>Asset A/c (WDV)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="highlight"><i class="fas fa-lightbulb"></i> Depreciation is a non-cash expense; it reduces asset value and is charged to P&L A/c.</div>
+  </div>
+
+  <!-- ================= Causes of Depreciation ================= -->
+  <div class="card">
+    <h2><i class="fas fa-list-ul"></i> Causes of Depreciation</h2>
+    <div class="grid-2">
+      <div class="highlight"><i class="fas fa-tools"></i> <strong>1. Wear and Tear</strong><br>Due to regular use of asset.</div>
+      <div class="highlight"><i class="fas fa-clock"></i> <strong>2. Passage of Time</strong><br>Assets like patents, copyrights lose value over time.</div>
+      <div class="highlight"><i class="fas fa-microchip"></i> <strong>3. Obsolescence</strong><br>Technological advancements make old assets outdated.</div>
+      <div class="highlight"><i class="fas fa-tree"></i> <strong>4. Depletion</strong><br>Wasting assets like mines, quarries.</div>
+      <div class="highlight"><i class="fas fa-bolt"></i> <strong>5. Natural Calamities</strong><br>Fire, floods, earthquakes, accidents.</div>
+      <div class="highlight"><i class="fas fa-chart-line"></i> <strong>6. Market Value Changes</strong><br>Fluctuations in market price.</div>
+    </div>
+  </div>
+
+  <!-- ================= Formulas for Depreciation ================= -->
+  <div class="card">
+    <h2><i class="fas fa-square-root-alt"></i> Important Formulas</h2>
+    <div class="qa-item"><div class="question">Straight Line Method (SLM)</div><div class="answer">Depreciation p.a. = (Original Cost - Scrap Value) / Estimated Life (years)</div></div>
+    <div class="qa-item"><div class="question">SLM (when rate given)</div><div class="answer">Depreciation p.a. = Original Cost × Rate of Depreciation / 100</div></div>
+    <div class="qa-item"><div class="question">Written Down Value Method (WDV)</div><div class="answer">Depreciation = Opening WDV × Rate / 100</div></div>
+    <div class="qa-item"><div class="question">Original Cost of Asset</div><div class="answer">Purchase Price + Installation Charges + Freight + Brokerage + Any incidental cost</div></div>
+    <div class="qa-item"><div class="question">Profit/Loss on Sale of Asset</div><div class="answer">Selling Price - Written Down Value on date of sale (Profit if positive, Loss if negative)</div></div>
+  </div>
+
+  <!-- ================= Practical Problem Example (SLM) ================= -->
+  <div class="card">
+    <h2><i class="fas fa-chart-simple"></i> Practical Problem (Illustration 1 Style) - Machinery A/c (SLM)</h2>
+    <div class="resp-table">
+      <table>
+        <thead><tr><th>Date</th><th>Particulars</th><th>J.F.</th><th>Amount (₹)</th><th>Date</th><th>Particulars</th><th>J.F.</th><th>Amount (₹)</th></tr></thead>
+        <tbody>
+          <tr><td>2015 Apr 1</td><td>To Bank A/c</td><td></td><td>2,00,000</td><td>2016 Mar 31</td><td>By Depreciation A/c</td><td></td><td>20,000</td></tr>
+          <tr><td></td><td></td><td></td><td></td><td></td><td>By Balance c/d</td><td></td><td>1,80,000</td></tr>
+          <tr><td colspan="4">2,00,000</td><td colspan="4">2,00,000</td></tr>
+          <tr><td>2016 Apr 1</td><td>To Balance b/d</td><td></td><td>1,80,000</td><td>2017 Mar 31</td><td>By Depreciation A/c</td><td></td><td>20,000</td></tr>
+          <tr><td></td><td></td><td></td><td></td><td></td><td>By Balance c/d</td><td></td><td>1,60,000</td></tr>
+          <tr><td colspan="4">1,80,000</td><td colspan="4">1,80,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="highlight"><i class="fas fa-check-circle"></i> Depreciation charged @10% p.a. on Original Cost = ₹20,000 each year.</div>
+  </div>
+
+  <!-- ================= WDV Example ================= -->
+  <div class="card">
+    <h2><i class="fas fa-chart-line"></i> Practical Problem: Depreciation under WDV Method</h2>
+    <div class="highlight">
+      <strong>Asset Cost: ₹80,000 | Rate: 10% p.a. | WDV Method</strong><br>
+      Year 1: Dep = 80,000 × 10% = ₹8,000 → WDV = ₹72,000<br>
+      Year 2: Dep = 72,000 × 10% = ₹7,200 → WDV = ₹64,800<br>
+      Year 3: Dep = 64,800 × 10% = ₹6,480 → WDV = ₹58,320<br>
+      Year 4: Dep = 58,320 × 10% = ₹5,832 → WDV = ₹52,488
+    </div>
+  </div>
+
+  <!-- ================= Summary of Factors ================= -->
+  <div class="card">
+    <h2><i class="fas fa-chart-pie"></i> Factors to be considered while charging Depreciation</h2>
+    <div class="grid-2">
+      <div class="highlight"><strong>1. Cost of Asset</strong><br>Original cost including installation.</div>
+      <div class="highlight"><strong>2. Estimated Useful Life</strong><br>Expected period of service.</div>
+      <div class="highlight"><strong>3. Scrap / Residual Value</strong><br>Value at end of useful life.</div>
+    </div>
+  </div>
+
+  <div class="footer-note">
+    <i class="fas fa-chart-line"></i> Depreciation: Allocating cost of fixed asset over its useful life | SLM (equal charge) | WDV (declining charge)
+  </div>
+</div>
+</body>
+</html>

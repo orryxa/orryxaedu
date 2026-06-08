@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>🏭 Small Scale Industry & Business | 11th OC Chapter 3 | SSI, MSMED, Setup Steps</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    body {
+      background: linear-gradient(145deg, #e8f5e9, #c8e6d9);
+      min-height: 100vh;
+      padding: 24px 18px;
+      color: #1e293b;
+      overflow-y: scroll;
+      scrollbar-width: thin;
+    }
+    .container { max-width: 1300px; margin: 0 auto; }
+    .heading { text-align: center; margin-bottom: 35px; animation: slideDown 0.5s ease; }
+    .heading h1 {
+      font-size: 2rem;
+      background: linear-gradient(135deg, #1b5e20, #2e7d32, #43a047);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+    }
+    .heading p { color: #1b5e20; margin-top: 10px; font-weight: 600; background: #ffffffcc; display: inline-block; padding: 5px 18px; border-radius: 40px; backdrop-filter: blur(4px);}
+    .search-wrapper { position: relative; margin-bottom: 32px; }
+    .search-box {
+      background: white;
+      border-radius: 60px;
+      padding: 6px 6px 6px 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.12);
+      border: 1px solid #a5d6a7;
+    }
+    .search-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      padding: 15px 0;
+      background: transparent;
+      color: #0f172a;
+      font-weight: 500;
+    }
+    .icon-btn {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(145deg, #2e7d32, #1b5e20);
+      color: white;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: 0.25s;
+      box-shadow: 0 4px 12px rgba(46,125,50,0.4);
+    }
+    .icon-btn:hover { transform: scale(1.05); background: #2e7d32; }
+    .suggestions-dropdown {
+      position: absolute;
+      top: calc(100% + 12px);
+      left: 0;
+      right: 0;
+      background: white;
+      border-radius: 32px;
+      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.2);
+      z-index: 120;
+      max-height: 280px;
+      overflow-y: auto;
+      display: none;
+      border: 1px solid #a5d6a7;
+    }
+    .suggestion-item {
+      padding: 14px 24px;
+      color: #0f172a;
+      cursor: pointer;
+      border-bottom: 1px solid #e8f5e9;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      transition: 0.2s;
+    }
+    .suggestion-item:hover { background: #c8e6c9; padding-left: 32px; }
+    .result-container { display: flex; flex-direction: column; gap: 24px; margin-top: 20px; }
+    .result-card {
+      background: white;
+      border-radius: 32px;
+      padding: 1.8rem;
+      color: #0f172a;
+      box-shadow: 0 12px 30px -10px rgba(0,0,0,0.08);
+      transition: 0.25s ease;
+      border: 1px solid #c8e6c9;
+    }
+    .result-card:hover { transform: translateY(-4px); box-shadow: 0 20px 30px -12px rgba(0,0,0,0.12); }
+    .badge {
+      background: #e8f5e9;
+      color: #1b5e20;
+      display: inline-block;
+      padding: 5px 16px;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+    .result-card h3 {
+      color: #1b5e20;
+      font-size: 1.35rem;
+      border-left: 6px solid #43a047;
+      padding-left: 18px;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+    .answer-text {
+      background: #f1f8e9;
+      padding: 18px 24px;
+      border-radius: 28px;
+      line-height: 1.7;
+      margin: 12px 0;
+      border: 1px solid #c5e1a5;
+    }
+    .formula-box {
+      background: #dcedc8;
+      padding: 12px 18px;
+      border-radius: 28px;
+      font-family: monospace;
+      font-size: 0.95rem;
+      margin: 14px 0;
+      text-align: center;
+      border-left: 6px solid #2e7d32;
+      font-weight: 600;
+    }
+    .responsive-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 0.85rem;
+      overflow-x: auto;
+      display: block;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .responsive-table th, .responsive-table td {
+      border: 1px solid #e2e8f0;
+      padding: 12px 10px;
+      text-align: left;
+      background: white;
+    }
+    .responsive-table th { background: #2e7d32; color: white; font-weight: 700; }
+    .action-buttons { margin-top: 22px; display: flex; gap: 15px; flex-wrap: wrap; }
+    .action-buttons button {
+      border: none;
+      padding: 10px 26px;
+      border-radius: 50px;
+      font-weight: 700;
+      background: #f1f5f9;
+      color: #1e293b;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .action-buttons button:last-child { background: #43a047; color: white; box-shadow: 0 2px 8px rgba(67,160,71,0.3);}
+    .action-buttons button:hover { transform: scale(0.97); opacity: 0.9; }
+    .not-found {
+      background: #f1f8e9;
+      border-radius: 48px;
+      padding: 2.5rem;
+      text-align: center;
+      font-size: 1.1rem;
+      color: #2e7d32;
+      border: 1px solid #c5e1a5;
+    }
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(10px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    .popup-box {
+      background: white;
+      max-width: 850px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      border-radius: 48px;
+      padding: 30px 34px;
+      position: relative;
+      color: #1e293b;
+    }
+    .close-popup {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      background: #fee2e2;
+      border: none;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+    .lang-section { background: #f8fafc; padding: 18px; border-radius: 28px; margin-bottom: 20px; border-left: 5px solid #43a047; }
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 650px) {
+      body { padding: 16px 12px; }
+      .heading h1 { font-size: 1.4rem; }
+      .result-card h3 { font-size: 1.1rem; }
+      .result-card { padding: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="heading">
+    <h1>🏭 Small Scale Industry & Business | OC Chapter 3</h1>
+    <p>📌 MSMED Act · Importance · Advantages · Challenges · 11 Steps to Setup SSI</p>
+  </div>
+  <div class="search-wrapper">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="🔎 Search: SSI meaning, MSMED classification, advantages of small scale, challenges, steps to setup, labour intensive, export contribution...">
+      <button class="icon-btn" id="voiceBtn">🎤</button>
+    </div>
+    <div id="suggestionsList" class="suggestions-dropdown"></div>
+  </div>
+  <div class="result-container" id="resultsContainer">
+    <div class="not-found">🏭 Type above — Explore Small Scale Industry: Meaning, Importance, Advantages, Challenges, and 11 Steps to Setup ✨</div>
+  </div>
+</div>
+<div class="popup-overlay" id="popupModal">
+  <div class="popup-box">
+    <button class="close-popup" id="closeModalBtn">✖</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+  // ==================== DATABASE: SMALL SCALE INDUSTRY (11th OC Chapter 3) ====================
+  const qaDatabase = [];
+
+  function addQA(question, answer, category, keywords = []) {
+    qaDatabase.push({ id: qaDatabase.length+1, question, answer, category, keywords: keywords.map(k=>k.toLowerCase()) });
+  }
+
+  // ---------- MEANING & DEFINITION / MSMED ----------
+  addQA("What is the meaning of Small Scale Industry (SSI)?", "Small Scale Industries are those industries in which manufacturing, providing services, and production are done on small scale or micro scale. Traditionally, industries organized on a small scale producing goods with help of machines, labour and power are considered as SSI. Capital investment in plant and machinery is the primary criteria.", "Meaning", ["ssi meaning", "small scale industry definition"]);
+  addQA("What is the MSMED Act 2006?", "MSMED stands for Micro, Small and Medium Enterprises Development Act, 2006. It classifies businesses into Manufacturing and Services sectors based on investment in plant & machinery or equipment. It provides the legal framework for classification of micro, small and medium enterprises.", "MSMED", ["msmed act", "msmed 2006"]);
+  addQA("What is the classification of businesses under MSMED Act 2006?", "Businesses are classified into two sectors: 1) Manufacturing Sector 2) Services Sector. Based on investment: Micro (Manufacturing: up to ₹25 lakhs; Services: up to ₹10 lakhs), Small (Manufacturing: ₹25 lakhs to ₹5 crores; Services: ₹10 lakhs to ₹2 crores), Medium (Manufacturing: ₹5-10 crores; Services: ₹2-5 crores).", "MSMED", ["classification", "msmed limits"]);
+  addQA("What is the definition of Small Scale Industry as per traditional norms?", "Investment in fixed assets like plant and equipment either held on ownership terms or on lease or hire purchase should not be more than one crore rupees. The unit cannot be owned, controlled or auxiliary for any other industrial unit.", "Meaning", ["definition old"]);
+  addQA("What is Micro Manufacturing Sector as per MSMED?", "A manufacturing unit where investment in plant and machinery does not exceed ₹25 lakhs is classified as Micro Manufacturing Sector.", "MSMED", ["micro manufacturing"]);
+
+  // ---------- IMPORTANCE OF SSI (7 points) ----------
+  addQA("What is the importance of Small Scale Industries?", "1) Job Opportunities - second largest employment generator 2) Regional Balance - can be setup with minimal capital 3) Increase Competitive Strength - low cost products 4) Maximum Use of Natural Resources - labour intensive, local resources 5) Reduces Migration - creates rural employment 6) Support to Large Scale Industries - supply raw material, spare parts 7) Developing New Entrepreneurs - attracts young first generation entrepreneurs.", "Importance", ["importance of ssi", "role of small scale"]);
+  addQA("How do SSI contribute to regional balance?", "SSI can be setup with minimum amount of capital using simple technologies and local resources. They help develop backward regions and contribute to balanced development of the country.", "Importance", []);
+  addQA("How do SSI support large scale industries?", "Many large scale industries depend on SSI for raw materials, semi-finished goods, and spare parts. SSI act as ancillaries to large industries.", "Importance", []);
+
+  // ---------- ADVANTAGES OF SSI (11 points) ----------
+  addQA("What are the advantages of Small Scale Industries?", "1) Large Employment - labour abundant country 2) Less Capital Requirement 3) Utilization of Domestic Resources 4) Increases Industrial Output 5) Contribution to Export - nearly 40% of industrial exports 6) Equitable Distribution - reduces inequalities 7) Earning Foreign Exchange 8) Opportunities for Entrepreneurship 9) Cost Efficiency 10) Reduces Migration 11) Flexibility in Operation.", "Advantages", ["advantages of ssi", "benefits of small scale"]);
+  addQA("What percentage of industrial exports do SSI contribute?", "Nearly 40% of the industrial exports are contributed by Small Scale Industries. Products like hosiery, gems & jewellery, handicrafts, coir products, processed food, engineering goods contribute substantially.", "Advantages", ["export contribution"]);
+  addQA("Why is SSI called labour intensive?", "SSI uses more labour than other factors of production. India is labour abundant, and SSI creates large employment opportunities with low gestation period. They provide jobs to unskilled and semi-skilled workers.", "Advantages", ["labour intensive"]);
+  addQA("How does SSI promote equitable distribution?", "Large scale industries lead to income inequalities. SSI being labour intensive distributes income among more number of workers, resulting in both economic and social welfare.", "Advantages", []);
+  addQA("What makes SSI cost efficient?", "SSI can adopt micro production methods offering better quality and more variety at lower cost. Their expenses are lower compared to large scale industries due to lower overheads.", "Advantages", []);
+
+  // ---------- CHALLENGES / PROBLEMS OF SSI (9 points) ----------
+  addQA("What are the challenges faced by Small Scale Industries?", "1) Old Methods of Production - outdated technology 2) Inadequate Finance - lack of working capital 3) Problem of Raw Material - inadequate supply 4) Labour Problem - unskilled workers, low wages, high absenteeism 5) Marketing Problem - dependence on middlemen 6) Problem of Transport - lack of facilities 7) Sickness - internal & external causes 8) Power Shortage and Irregular Supply 9) Global Competition due to LPG policies.", "Challenges", ["problems of ssi", "challenges before ssi"]);
+  addQA("What is sickness in SSI? What are its causes?", "Sickness refers to industrial units facing continuous losses. Internal causes: lack of skilled labour, managerial skills, marketing skills. External causes: delayed payments, shortage of working capital, inadequate loans, lack of demand.", "Challenges", ["sickness"]);
+  addQA("Why is marketing a problem for SSI?", "Marketing is weaker area for SSI. They depend excessively on middlemen who exploit them with low prices and delayed payments. Direct marketing is not feasible due to lack of infrastructure.", "Challenges", ["marketing problem"]);
+  addQA("How does power shortage affect SSI?", "Higher power costs, load shedding, frequent power cuts, irregular supply, voltage fluctuation, and rising power charges badly affect productivity of small scale industries.", "Challenges", ["power shortage"]);
+
+  // ---------- STEPS IN SETTING UP SSI (11 steps) ----------
+  addQA("What are the steps in setting up a Small Scale business?", "1) Decision of Business Area 2) Study of Business Environment 3) Selection of Product 4) Selection of Place 5) Selection of Technology 6) Business Proposal 7) Finance 8) Registration 9) Actual Arrangements of Resources (Physical, Power, Staffing) 10) Production and Marketing of Product 11) Review or Feedback for Future Changes.", "Setup Steps", ["steps to setup ssi", "setting up small business"]);
+  addQA("What is the first step in setting up a Small Scale business?", "Decision of Business Area. The entrepreneur must decide the type of business (proprietorship, partnership, corporation) and analyze his strengths and weaknesses to determine suitable business type and size.", "Setup Steps", ["first step"]);
+  addQA("Why is registration important for SSI?", "Registration with District Industries Centre (DIC) is worthwhile. The entrepreneur submits application with relevant documents to local DIC. Registration helps in availing government benefits, subsidies, and assistance.", "Setup Steps", ["registration"]);
+  addQA("What are the physical resources needed while setting up SSI?", "Physical resources include allocating space for operations, choosing production methods, purchasing machinery, and hiring employees for different departments.", "Setup Steps", []);
+  addQA("What is business proposal or project appraisal?", "Project appraisal is assessment of a project. The entrepreneur appraises the project from economic, financial, technical, market, social and managerial point of view before setting up enterprise.", "Setup Steps", ["project appraisal"]);
+
+  // ---------- ADDITIONAL TOPICS ----------
+  addQA("What are examples of Traditional Small Scale Industries?", "Handloom, Coir, Handicrafts, Sericulture, Khadi, Village industries.", "Examples", ["traditional industries"]);
+  addQA("What are examples of Modern Small Scale Industries?", "Bicycle parts, Electronic appliances, Sewing machines, Engineering goods, Spare parts manufacturing, Pharma products.", "Examples", ["modern industries"]);
+  addQA("True/False: Small Scale Industries use advanced technology.", "False. Generally SSI use outdated technology and old methods of production, resulting in low productivity.", "True/False", []);
+  addQA("True/False: Small Scale Industries contribute nearly 40% to industrial exports.", "True. SSI contribute nearly 40% of India's industrial exports through products like handicrafts, gems, engineering goods, etc.", "True/False", []);
+  addQA("Fill in blank: India is ______ abundant country.", "labour", "Fillup", []);
+  addQA("Fill in blank: SSI requires ______ capital as compared to large scale industries.", "less", "Fillup", []);
+  addQA("Where does an entrepreneur register SSI?", "District Industries Centre (DIC). The entrepreneur obtains prescribed form from DIC and submits application with relevant documents.", "Setup Steps", ["dic registration"]);
+  addQA("What is the recent amendment to MSMED Act 2006?", "The classification basis changed from 'investment in plant & machinery' to 'annual turnover'. Micro: turnover ≤ ₹5 crore; Small: ₹5-75 crore; Medium: ₹75-250 crore. This enhances ease of doing business.", "MSMED", ["amendment", "new classification"]);
+
+  // Tables: MSMED Classification Table
+  function getMSMEDTable() {
+    return `<table class="responsive-table"><thead><tr><th>Category</th><th>Manufacturing Sector (Investment)</th><th>Services Sector (Investment)</th></tr></thead><tbody>
+      <tr><td>📌 Micro</td><td>Does not exceed ₹25 lakhs</td><td>Does not exceed ₹10 lakhs</td></tr>
+      <tr><td>🏭 Small</td><td>More than ₹25 lakhs but ≤ ₹5 crores</td><td>More than ₹10 lakhs but ≤ ₹2 crores</td></tr>
+      <tr><td>⚙️ Medium</td><td>More than ₹5 crores but ≤ ₹10 crores</td><td>More than ₹2 crores but ≤ ₹5 crores</td></tr>
+    </tbody></table>`;
+  }
+  
+  function getStepsTable() {
+    return `<table class="responsive-table"><thead><tr><th>Step</th><th>Description</th></tr></thead><tbody>
+      <tr><td>1</td><td>Decision of Business Area - decide proprietorship/partnership/corporation</td></tr>
+      <tr><td>2</td><td>Study of Business Environment - industrial policy, economic policy</td></tr>
+      <tr><td>3</td><td>Selection of Product - market research, competition analysis</td></tr>
+      <tr><td>4</td><td>Selection of Place - nearness to market, raw material, labour</td></tr>
+      <tr><td>5</td><td>Selection of Technology - determine money, material, equipment</td></tr>
+      <tr><td>6</td><td>Business Proposal - project appraisal (economic, financial, technical)</td></tr>
+      <tr><td>7</td><td>Finance - arrange capital (own or borrowed)</td></tr>
+      <tr><td>8</td><td>Registration - with District Industries Centre (DIC)</td></tr>
+      <tr><td>9</td><td>Arrangement of Resources - physical, power, staffing</td></tr>
+      <tr><td>10</td><td>Production and Marketing</td></tr>
+      <tr><td>11</td><td>Review or Feedback for Future Changes</td></tr>
+    </tbody></table>`;
+  }
+
+  // Search and display logic
+  const searchInput = document.getElementById("searchInput");
+  const resultsContainer = document.getElementById("resultsContainer");
+  const suggestionsDiv = document.getElementById("suggestionsList");
+
+  function getMatches(q) {
+    const lower = q.toLowerCase();
+    return qaDatabase.filter(item => 
+      item.question.toLowerCase().includes(lower) || 
+      item.answer.toLowerCase().includes(lower) ||
+      item.category.toLowerCase().includes(lower) ||
+      item.keywords.some(k => k.includes(lower))
+    ).slice(0, 16);
+  }
+
+  function updateSuggestions() {
+    const val = searchInput.value.trim();
+    if(!val) { suggestionsDiv.style.display = "none"; return; }
+    const matches = getMatches(val);
+    if(!matches.length) { suggestionsDiv.style.display = "none"; return; }
+    suggestionsDiv.innerHTML = "";
+    matches.forEach(item => {
+      const div = document.createElement("div");
+      div.className = "suggestion-item";
+      div.innerHTML = `<span>🏭</span> <strong>${item.question.substring(0,70)}</strong> <span style="margin-left:auto; background:#e8f5e9; padding:2px 12px; border-radius:30px;">${item.category}</span>`;
+      div.addEventListener("click", () => {
+        searchInput.value = item.question;
+        suggestionsDiv.style.display = "none";
+        performSearch(item.question);
+      });
+      suggestionsDiv.appendChild(div);
+    });
+    suggestionsDiv.style.display = "block";
+  }
+
+  function performSearch(q = null) {
+    let query = (q !== null) ? q : searchInput.value.trim();
+    if(!query) { resultsContainer.innerHTML = `<div class="not-found">✨ Type keywords: SSI Meaning, MSMED Classification, Advantages, Challenges, Steps to Setup, Labour Intensive, Export 40% ✨</div>`; return; }
+    const matches = getMatches(query);
+    if(!matches.length) { resultsContainer.innerHTML = `<div class="not-found">❌ No results. Try: Small Scale Industry, importance of SSI, advantages, challenges, steps to setup, MSMED Act.</div>`; return; }
+    resultsContainer.innerHTML = "";
+    matches.forEach(item => {
+      let extra = "";
+      const qtext = item.question.toLowerCase();
+      if (qtext.includes("classification") && item.category === "MSMED") extra = getMSMEDTable();
+      if (qtext.includes("steps in setting up") || (qtext.includes("steps to setup"))) extra = getStepsTable();
+      if (qtext.includes("advantages") && item.category === "Advantages") extra = `<div class="formula-box">✅ Key: Large Employment, Less Capital, Export 40%, Equitable Distribution, Cost Efficiency, Flexibility.</div>`;
+      if (qtext.includes("challenges") || qtext.includes("problems")) extra = `<div class="formula-box">⚠️ Major: Old tech, Inadequate finance, Raw material, Labour, Marketing, Transport, Sickness, Power shortage, Global competition.</div>`;
+      
+      const card = document.createElement("div");
+      card.className = "result-card";
+      card.innerHTML = `
+        <div class="badge">📌 ${escapeHtml(item.category)}</div>
+        <h3>📘 ${escapeHtml(item.question)}</h3>
+        <div class="answer-text"><strong>✅ Answer / Explanation:</strong><br>${escapeHtml(item.answer)}${extra}</div>
+        <div class="action-buttons">
+          <button class="detailBtn" data-q="${escapeAttr(item.question)}" data-a="${escapeAttr(item.answer)}" data-cat="${item.category}">📖 Detailed Explanation</button>
+          <button class="extraTableBtn" data-type="${item.category}">📋 Reference Table</button>
+        </div>
+      `;
+      resultsContainer.appendChild(card);
+    });
+    attachEvents();
+  }
+
+  function attachEvents() {
+    document.querySelectorAll(".detailBtn").forEach(btn => btn.addEventListener("click", (e) => {
+      const q = btn.getAttribute("data-q"), a = btn.getAttribute("data-a"), cat = btn.getAttribute("data-cat");
+      showDetailPopup(q, a, cat);
+    }));
+    document.querySelectorAll(".extraTableBtn").forEach(btn => btn.addEventListener("click", () => {
+      const type = btn.getAttribute("data-type");
+      let content = `<div class="lang-section"><strong>📚 Small Scale Industry - Quick Reference</strong><br>`;
+      content += `<h4>🏭 MSMED Classification (2006)</h4>${getMSMEDTable()}`;
+      content += `<hr><h4>📋 11 Steps to Setup SSI</h4>${getStepsTable()}`;
+      content += `<hr><div class="formula-box">💡 SSI contributes 40% to industrial exports | Labour intensive | Less capital requirement | Faces 9 major challenges</div>`;
+      content += `</div>`;
+      document.getElementById("popupModal").style.display = "flex";
+      document.getElementById("modalContent").innerHTML = `<h2 style="color:#1b5e20;">🏭 SSI Complete Overview</h2>${content}<button id="closeModalInside" style="background:#2e7d32; margin-top:20px; padding:10px 26px; border-radius:40px; color:white;">Close</button>`;
+      document.getElementById("closeModalInside").addEventListener("click", ()=> document.getElementById("popupModal").style.display = "none");
+    }));
+  }
+
+  function showDetailPopup(question, answer, category) {
+    let extraInfo = `<div class="lang-section"><strong>📖 11th OC Chapter 3 - Small Scale Industry & Business</strong><br>✔ SSI: Manufacturing/services on small scale, capital investment criteria<br>✔ MSMED Act 2006: Micro, Small, Medium classification<br>✔ Importance: Jobs, regional balance, support to large industries<br>✔ Advantages: Large employment, less capital, 40% exports, equitable distribution<br>✔ Challenges: Old tech, finance, raw material, marketing, sickness, power, global competition<br>✔ 11 Steps to Setup: from Business Area decision to Review</div>`;
+    if(category === "MSMED") extraInfo += `<div class="lang-section"><h4>MSMED Classification Table</h4>${getMSMEDTable()}</div>`;
+    if(category === "Setup Steps") extraInfo += `<div class="lang-section"><h4>Complete 11 Steps</h4>${getStepsTable()}</div>`;
+    if(category === "Advantages") extraInfo += `<div class="lang-section">🌟 <strong>Top Benefits:</strong> Large employment generation, utilizes domestic resources, contributes 40% to exports, cost efficiency, flexibility, reduces migration.</div>`;
+    if(category === "Challenges") extraInfo += `<div class="lang-section">⚠️ <strong>Solutions to Challenges:</strong> Modernization, easy finance schemes, marketing support from government, skill development, reliable power infrastructure.</div>`;
+    document.getElementById("popupModal").style.display = "flex";
+    document.getElementById("modalContent").innerHTML = `
+      <h2 style="color:#1b5e20;">📘 Detailed Explanation</h2>
+      <div class="lang-section"><strong>❓ Question:</strong> ${escapeHtml(question)}</div>
+      <div class="lang-section"><strong>✅ Answer:</strong><br>${escapeHtml(answer)}</div>
+      ${extraInfo}
+      <button id="closeDetailModal" style="background:#43a047; padding:10px 26px; border-radius:40px; margin-top:12px; color:white;">Close</button>
+    `;
+    document.getElementById("closeDetailModal").addEventListener("click", ()=> document.getElementById("popupModal").style.display = "none");
+  }
+
+  function escapeHtml(str) { return str.replace(/[&<>]/g, m => m==='&'?'&amp;': m==='<'?'&lt;':'&gt;'); }
+  function escapeAttr(str) { return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function startVoice() { if (!('webkitSpeechRecognition' in window)) { alert("Voice search supported in Chrome/Edge."); return; } const rec = new webkitSpeechRecognition(); rec.lang="en-IN"; rec.start(); rec.onresult = (e)=> { searchInput.value = e.results[0][0].transcript; performSearch(); }; }
+  document.getElementById("voiceBtn").addEventListener("click", startVoice);
+  searchInput.addEventListener("keyup", () => { performSearch(); updateSuggestions(); });
+  searchInput.addEventListener("focus", updateSuggestions);
+  document.addEventListener("click", (e) => { if(!document.querySelector(".search-wrapper").contains(e.target)) suggestionsDiv.style.display = "none"; });
+  document.getElementById("closeModalBtn").addEventListener("click", () => document.getElementById("popupModal").style.display = "none");
+  window.onload = () => { resultsContainer.innerHTML = `<div class="not-found">🏭 11th OC | Small Scale Industry & Business | Search Meaning, MSMED, Advantages, Challenges, 11 Setup Steps ✨</div>`; };
+</script>
+</body>
+</html>

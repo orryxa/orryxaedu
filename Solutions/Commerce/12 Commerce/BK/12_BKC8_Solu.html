@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Chapter 8 | Company Accounts: Issue of Shares - 12th Commerce</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #eef2f9 0%, #e0e8f2 100%);
+            font-family: 'Inter', sans-serif;
+            padding: 32px 24px;
+            color: #0a2b3e;
+            line-height: 1.5;
+            overflow-y: scroll;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        body::-webkit-scrollbar { display: none; }
+        .container { max-width: 1300px; margin: 0 auto; }
+        .hero { text-align: center; margin-bottom: 40px; }
+        .hero h1 {
+            font-size: 2.4rem; font-weight: 800;
+            background: linear-gradient(135deg, #0b4b6b, #1f6e93, #2c7da0);
+            background-clip: text; -webkit-background-clip: text; color: transparent;
+            padding-bottom: 10px;
+            border-bottom: 4px solid #ffb347;
+            display: inline-block;
+        }
+        /* Summary Card */
+        .summary-card {
+            background: linear-gradient(145deg, #ffffff, #f8fbfe);
+            border-radius: 2rem;
+            margin-bottom: 32px;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.12);
+            overflow: hidden;
+            border: 1px solid rgba(44,125,160,0.15);
+        }
+        .summary-header {
+            background: linear-gradient(105deg, #135b78 0%, #1f7a9e 100%);
+            padding: 20px 28px;
+            border-bottom: 4px solid #ffb74d;
+        }
+        .summary-header h2 {
+            color: white;
+            font-size: 1.6rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .summary-header h2 i { font-size: 1.8rem; color: #ffd966; }
+        .summary-body {
+            padding: 28px 32px;
+            max-height: 480px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+        }
+        .summary-body::-webkit-scrollbar { width: 5px; background: #e0e8f2; }
+        .summary-body::-webkit-scrollbar-thumb { background: #ffb74d; border-radius: 10px; }
+        .summary-text { font-size: 1rem; line-height: 1.65; color: #1f3b4c; }
+        .summary-text p { margin-bottom: 14px; }
+        .summary-text strong { color: #135b78; }
+        .highlight-badge {
+            background: #eef3fc;
+            border-left: 4px solid #ffb74d;
+            padding: 10px 16px;
+            margin: 16px 0;
+            border-radius: 12px;
+        }
+        .lang-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px dashed #cbdde9;
+        }
+        .lang-btn {
+            background: #135b78; color: white; border: none;
+            padding: 10px 28px; border-radius: 50px; font-weight: 600;
+            cursor: pointer; transition: all 0.25s ease;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .lang-btn:hover { background: #ff8c42; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        
+        .card {
+            background: rgba(255,255,255,0.97); border-radius: 1.8rem;
+            margin-bottom: 32px; padding: 28px 32px;
+            box-shadow: 0 15px 30px -10px rgba(0,0,0,0.08);
+            border: 1px solid rgba(255,255,255,0.6);
+        }
+        .card h2 {
+            font-size: 1.6rem; font-weight: 700; color: #135b78;
+            margin-bottom: 24px; padding-bottom: 8px;
+            border-bottom: 3px solid #ffb74d;
+            display: inline-block;
+        }
+        .card h2 i { margin-right: 12px; color: #ff8c42; }
+        .qa-item { margin-bottom: 22px; border-left: 3px solid #cbdde9; padding-left: 20px; }
+        .question { font-weight: 700; color: #1f4a5e; margin-bottom: 8px; display: flex; gap: 12px; flex-wrap: wrap; }
+        .answer {
+            background: #f8fafd; padding: 10px 18px; border-radius: 24px;
+            font-weight: 500; color: #216477; display: inline-block;
+            font-size: 0.92rem;
+        }
+        .true-badge { background: #e0f2e9; color: #1e6f3f; padding: 3px 14px; border-radius: 40px; font-weight: 700; font-size: 0.75rem; display: inline-block; margin-right: 12px; }
+        .false-badge { background: #ffe8e6; color: #bc4742; padding: 3px 14px; border-radius: 40px; font-weight: 700; font-size: 0.75rem; display: inline-block; margin-right: 12px; }
+        .resp-table { width: 100%; overflow-x: auto; margin: 16px 0; background: #f4f9fe; padding: 4px; border-radius: 20px; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; background: white; border-radius: 16px; overflow: hidden; }
+        th, td { border: 1px solid #cde1ef; padding: 10px 12px; text-align: left; vertical-align: top; }
+        th { background: #e0eaf5; font-weight: 700; color: #135b78; }
+        .popup-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); backdrop-filter: blur(5px);
+            justify-content: center; align-items: center; z-index: 1000;
+        }
+        .popup-content {
+            background: white; width: 90%; max-width: 650px; border-radius: 1.8rem;
+            position: relative; max-height: 85vh; overflow: hidden;
+            display: flex; flex-direction: column;
+        }
+        .popup-header {
+            background: linear-gradient(105deg, #135b78, #1f7a9e);
+            padding: 18px 24px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .close-popup {
+            font-size: 32px; cursor: pointer; color: #ffd966;
+            transition: 0.2s; line-height: 1;
+        }
+        .close-popup:hover { color: #fff; transform: rotate(90deg); }
+        .popup-body { padding: 24px; overflow-y: auto; scrollbar-width: thin; }
+        @media (max-width: 768px) {
+            body { padding: 20px 16px; }
+            .card, .summary-body { padding: 20px 18px; }
+            .hero h1 { font-size: 1.8rem; }
+            th, td { padding: 6px 8px; font-size: 0.75rem; }
+        }
+        .footer-note { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #bdd4e4; font-size: 0.8rem; color: #2c6f8c; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="hero">
+        <h1><i class="fas fa-chart-line"></i> Chapter 8 · Company Accounts: Issue of Shares</h1>
+    </div>
+
+    <!-- ================= ATTRACTIVE SUMMARY CARD ================= -->
+    <div class="summary-card">
+        <div class="summary-header">
+            <h2><i class="fas fa-file-alt"></i> 📘 Chapter Summary: Issue of Shares</h2>
+        </div>
+        <div class="summary-body">
+            <div class="summary-text" id="summaryText">
+                <p><strong>🔹 Share & Share Capital:</strong> Share is the smallest unit of company's capital. <strong>Share Capital</strong> is the capital raised by issuing shares. Types: <strong>Authorised Capital</strong> (maximum), <strong>Issued Capital</strong> (offered), <strong>Subscribed Capital</strong> (actually taken), <strong>Called-up Capital</strong> (demanded), <strong>Paid-up Capital</strong> (received), <strong>Calls in Arrears</strong> (unpaid), <strong>Reserve Capital</strong> (called only on winding up).</p>
+                <div class="highlight-badge"><strong>📌 Key Point:</strong> Equity Shares (risk bearers, variable dividend) vs Preference Shares (fixed dividend, priority in repayment).</div>
+                <p><strong>🔹 Issue at Par, Premium & Discount:</strong> <strong>At Par</strong> (face value). <strong>At Premium</strong> (issue price > face value; premium credited to Securities Premium A/c). <strong>At Discount</strong> (issue price < face value; discount is loss; not allowed for public issue now).</p>
+                <p><strong>🔹 Over/Under Subscription & Pro-rata Allotment:</strong> <strong>Over subscription</strong> → applications > shares; reject, refund, or pro-rata allotment. <strong>Under subscription</strong> → applications < shares; allot only applied shares. <strong>Pro-rata</strong> → allotment proportionately, excess application money adjusted toward allotment.</p>
+                <p><strong>🔹 Forfeiture & Re-issue:</strong> Shares forfeited for non-payment of calls. <strong>Share Capital A/c debited</strong> (called-up amount), <strong>Share Forfeiture A/c credited</strong> (amount received). Re-issue at discount (≤ forfeited amount). Balance transferred to <strong>Capital Reserve</strong>.</p>
+                <p><strong>⭐ Important Journal Entries:</strong> Application receipt & transfer, Allotment due & receipt, Calls due & receipt, Calls in Arrears, Forfeiture, Re-issue, Transfer to Capital Reserve.</p>
+            </div>
+            <div class="lang-buttons">
+                <button class="lang-btn" onclick="showTranslation('hindi')"><i class="fas fa-language"></i> हिंदी अनुवाद</button>
+                <button class="lang-btn" onclick="showTranslation('marathi')"><i class="fas fa-language"></i> मराठी अनुवाद</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= Section A: Objective Questions ================= -->
+    <div class="card"><h2><i class="fas fa-check-square"></i> A. Select the most appropriate alternative</h2>
+        <div class="qa-item"><div class="question">1) Share Forfeiture A/c balance is transferred to _______ after re-issue.</div><div class="answer">b) Capital Reserve</div></div>
+        <div class="qa-item"><div class="question">2) Premium received on shares is shown on _______ of Balance Sheet.</div><div class="answer">a) Liability side</div></div>
+        <div class="qa-item"><div class="question">3) Shareholders get _______ on shares.</div><div class="answer">d) Dividend</div></div>
+        <div class="qa-item"><div class="question">4) Document inviting subscription to shares is _______.</div><div class="answer">a) Prospectus</div></div>
+        <div class="qa-item"><div class="question">5) Minimum application money should be _______ of nominal value (SEBI).</div><div class="answer">d) 5%</div></div>
+        <div class="qa-item"><div class="question">6) When shares are forfeited, Share Capital A/c is _______.</div><div class="answer">b) debited</div></div>
+        <div class="qa-item"><div class="question">7) Shareholder's liability in Joint Stock Company is _______.</div><div class="answer">b) Limited</div></div>
+        <div class="qa-item"><div class="question">8) Authorised Capital is also called _______.</div><div class="answer">a) Nominal capital</div></div>
+        <div class="qa-item"><div class="question">9) Unpaid amount on allotment & calls is transferred to _______ A/c.</div><div class="answer">c) calls in arrears</div></div>
+        <div class="qa-item"><div class="question">10) Forfeiture provision must be in _______.</div><div class="answer">a) Articles of Association</div></div>
+    </div>
+
+    <!-- ================= Section B: One word/term ================= -->
+    <div class="card"><h2><i class="fas fa-tag"></i> B. Give one word/term/phrase</h2>
+        <div class="qa-item"><div class="question">1) Amount called-up but not received.</div><div class="answer">Calls in Arrears</div></div>
+        <div class="qa-item"><div class="question">2) Issue of share at its face value.</div><div class="answer">Issue at Par</div></div>
+        <div class="qa-item"><div class="question">3) Person who purchases shares of a company.</div><div class="answer">Shareholder</div></div>
+        <div class="qa-item"><div class="question">4) Business form where huge capital can be raised.</div><div class="answer">Joint Stock Company</div></div>
+        <div class="qa-item"><div class="question">5) Capital subscribed by the public.</div><div class="answer">Subscribed Capital</div></div>
+        <div class="qa-item"><div class="question">6) Shares with preferential rights at winding up.</div><div class="answer">Preference Shares</div></div>
+        <div class="qa-item"><div class="question">7) Shares with no fixed dividend.</div><div class="answer">Equity Shares</div></div>
+        <div class="qa-item"><div class="question">8) Part of subscribed capital not called-up.</div><div class="answer">Uncalled Capital</div></div>
+    </div>
+
+    <!-- ================= Section C: True/False ================= -->
+    <div class="card"><h2><i class="fas fa-gavel"></i> C. State True or False with reasons</h2>
+        <div class="qa-item"><div class="question">1) Directors can forfeit shares for any reason.</div><div class="answer"><span class="false-badge">False</span> Only for non-payment of calls as per Articles.</div></div>
+        <div class="qa-item"><div class="question">2) After application money, directors can immediately allot shares.</div><div class="answer"><span class="false-badge">False</span> Must meet minimum subscription requirement.</div></div>
+        <div class="qa-item"><div class="question">3) Joint Stock Company emerged after Industrial Revolution.</div><div class="answer"><span class="true-badge">True</span> To meet large capital needs.</div></div>
+        <div class="qa-item"><div class="question">4) Equity shareholders get guaranteed dividend.</div><div class="answer"><span class="false-badge">False</span> Dividend depends on profits.</div></div>
+        <div class="qa-item"><div class="question">5) Face value and market value are always same.</div><div class="answer"><span class="false-badge">False</span> Market value fluctuates.</div></div>
+        <div class="qa-item"><div class="question">6) Sweat shares are issued to public.</div><div class="answer"><span class="false-badge">False</span> Issued to directors/employees for know-how.</div></div>
+        <div class="qa-item"><div class="question">7) In pro-rata allotment, excess application money must be refunded.</div><div class="answer"><span class="false-badge">False</span> Adjusted against allotment.</div></div>
+        <div class="qa-item"><div class="question">8) Calls in Advance is shown on asset side.</div><div class="answer"><span class="false-badge">False</span> Shown on liability side.</div></div>
+        <div class="qa-item"><div class="question">9) Authorised Capital = Nominal Capital.</div><div class="answer"><span class="true-badge">True</span> Both mean maximum capital.</div></div>
+        <div class="qa-item"><div class="question">10) Paid-up capital can exceed Called-up capital.</div><div class="answer"><span class="false-badge">False</span> Paid-up ≤ Called-up.</div></div>
+    </div>
+
+    <!-- ================= Types of Share Capital Table ================= -->
+    <div class="card"><h2><i class="fas fa-chart-pie"></i> Types of Share Capital</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Type</th><th>Meaning</th></tr></thead>
+                <tbody>
+                    <tr><td>Authorised / Nominal Capital</td><td>Maximum capital company can issue (MoA)</td></tr>
+                    <tr><td>Issued Capital</td><td>Part of authorised capital offered to public</td></tr>
+                    <tr><td>Subscribed Capital</td><td>Part of issued capital actually subscribed by public</td></tr>
+                    <tr><td>Called-up Capital</td><td>Amount demanded from shareholders on shares</td></tr>
+                    <tr><td>Paid-up Capital</td><td>Amount actually received (Called-up - Calls in Arrears)</td></tr>
+                    <tr><td>Reserve Capital</td><td>Part called only on winding up (special resolution)</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================= Journal Entries Summary Table ================= -->
+    <div class="card"><h2><i class="fas fa-book"></i> Basic Journal Entries (Issue of Shares)</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Transaction</th><th>Entry</th></tr></thead>
+                <tbody>
+                    <tr><td>Application money received</td><td>Bank A/c Dr. → To Share Application A/c</td></tr>
+                    <tr><td>Application money transferred to capital</td><td>Share Application A/c Dr. → To Share Capital A/c</td></tr>
+                    <tr><td>Allotment due</td><td>Share Allotment A/c Dr. → To Share Capital A/c</td></tr>
+                    <tr><td>Allotment received</td><td>Bank A/c Dr. → To Share Allotment A/c</td></tr>
+                    <tr><td>Call due</td><td>Share Call A/c Dr. → To Share Capital A/c</td></tr>
+                    <tr><td>Call received</td><td>Bank A/c Dr. → To Share Call A/c</td></tr>
+                    <tr><td>Forfeiture of shares</td><td>Share Capital A/c Dr. → To Calls in Arrears A/c, To Share Forfeiture A/c</td></tr>
+                    <tr><td>Re-issue of forfeited shares</td><td>Bank A/c Dr., Share Forfeiture A/c Dr. → To Share Capital A/c</td></tr>
+                    <tr><td>Transfer to Capital Reserve</td><td>Share Forfeiture A/c Dr. → To Capital Reserve A/c</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================= Forfeiture & Reissue Calculation Table ================= -->
+    <div class="card"><h2><i class="fas fa-calculator"></i> Forfeiture & Re-issue Calculations</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Situation</th><th>Calculation</th></tr></thead>
+                <tbody>
+                    <tr><td>Equity shares ₹10 each, final call ₹2 unpaid, forfeited 1000 shares</td><td>Share Capital = 1000×10=10,000; Forfeiture = Amount received (10,000 - 2,000 unpaid)=8,000</td></tr>
+                    <tr><td>Re-issued @₹6 per share fully paid (1000 shares)</td><td>Bank = 6,000; Forfeiture loss on reissue = 4,000; Net Forfeiture balance = 8,000-4,000=4,000 → Capital Reserve</td></tr>
+                    <tr><td>Shares originally at premium (₹3), premium not received</td><td>Share Premium A/c also debited at forfeiture</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================= Sample Illustration: Over Subscription & Pro-rata ================= -->
+    <div class="card"><h2><i class="fas fa-chart-simple"></i> Illustration: Over Subscription & Pro-rata Allotment</h2>
+        <div class="highlight">
+            Company issued 10,000 shares @ ₹10 (₹2 app, ₹5 allot, ₹3 call). Applications for 20,000 shares. Pro-rata allotment. Excess application money adjusted with allotment.<br><br>
+            <strong>Working:</strong> Application received = 20,000×2=40,000; Transfer to capital = 10,000×2=20,000; Excess adjusted = 20,000 towards allotment. Allotment due = 10,000×5=50,000; Net allotment received = 50,000 - 20,000 = 30,000.
+        </div>
+    </div>
+
+    <!-- ========= Calculation Problems ========= -->
+    <div class="card"><h2><i class="fas fa-percent"></i> G. Calculate the following</h2>
+        <div class="qa-item"><div class="question">1) 500 shares: app ₹3, allot ₹4 paid, final call ₹3 unpaid. Forfeiture amount?</div><div class="answer">Amount received = 500×(3+4)= ₹3,500</div></div>
+        <div class="qa-item"><div class="question">2) 10,000 shares ₹10 each at 10% premium. Total premium?</div><div class="answer">10,000 × 10 × 10% = ₹10,000</div></div>
+        <div class="qa-item"><div class="question">3) Excess app 5,000 shares @₹4. 1,000 rejected, pro-rata. Application money adjusted?</div><div class="answer">Excess = 5,000×4=20,000; Refund = 1,000×4=4,000; Adjusted = 16,000</div></div>
+        <div class="qa-item"><div class="question">4) 80,000 shares ₹10 each issued & fully subscribed at 20% premium. Equity Share Capital?</div><div class="answer">80,000 × 10 = ₹8,00,000 (Premium separate)</div></div>
+        <div class="qa-item"><div class="question">5) 20,000 shares ₹100 each at par, fully called. 100 shares failed final call of ₹20. Paid-up capital?</div><div class="answer">(20,000×100) - (100×20) = 20,00,000 - 2,000 = ₹19,98,000</div></div>
+    </div>
+
+    <!-- ========= Section E: Answer in one sentence ========= -->
+    <div class="card"><h2><i class="fas fa-question-circle"></i> E. Answer in one sentence only</h2>
+        <div class="qa-item"><div class="question">1) What are Preference shares?</div><div class="answer">Shares with preferential right to dividend and capital repayment.</div></div>
+        <div class="qa-item"><div class="question">2) What is Registered/Nominal Capital?</div><div class="answer">Maximum capital company can issue as per Memorandum.</div></div>
+        <div class="qa-item"><div class="question">3) What is Reserve Capital?</div><div class="answer">Part of subscribed capital not called up except at winding up.</div></div>
+        <div class="qa-item"><div class="question">4) What is Over subscription?</div><div class="answer">When applications received exceed shares offered.</div></div>
+        <div class="qa-item"><div class="question">5) Which account is debited on receiving first call money?</div><div class="answer">Bank A/c is debited.</div></div>
+    </div>
+
+    <div class="footer-note"><i class="fas fa-chart-line"></i> Company Accounts: Issue of Shares | Authorised → Issued → Subscribed → Called-up → Paid-up | Calls in Arrears | Forfeiture & Re-issue | Capital Reserve</div>
+</div>
+
+<!-- Popup for Translation -->
+<div id="translationPopup" class="popup-overlay">
+    <div class="popup-content">
+        <div class="popup-header">
+            <h3><i class="fas fa-language"></i> अनुवाद / Translation</h3>
+            <span class="close-popup" onclick="closePopup()">×</span>
+        </div>
+        <div class="popup-body" id="popupBody"></div>
+    </div>
+</div>
+
+<script>
+    const hindiSummary = `
+        <div style="font-family: 'Inter', sans-serif;">
+            <p><strong>🔹 शेयर और शेयर पूंजी:</strong> शेयर कंपनी की पूंजी की सबसे छोटी इकाई है। <strong>शेयर पूंजी</strong> शेयर जारी करके जुटाई गई पूंजी है। प्रकार: <strong>अधिकृत पूंजी</strong> (अधिकतम), <strong>निर्गमित पूंजी</strong> (जारी), <strong>अभिदत्त पूंजी</strong> (लिया गया), <strong>आवाहित पूंजी</strong> (मांगा गया), <strong>संदत्त पूंजी</strong> (प्राप्त), <strong>अनादत्त आह्वान</strong> (अप्राप्त), <strong>आरक्षित पूंजी</strong> (केवल समापन पर)।</p>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0; border-radius:12px;"><strong>📌 महत्वपूर्ण:</strong> इक्विटी शेयर (जोखिम वाहक, परिवर्तनशील लाभांश) बनाम वरीयता शेयर (निश्चित लाभांश, पुनर्भुगतान में प्राथमिकता)।</div>
+            <p><strong>🔹 सममूल्य, प्रीमियम और छूट पर जारी:</strong> <strong>सममूल्य</strong> (अंकित मूल्य)। <strong>प्रीमियम पर</strong> (जारी मूल्य > अंकित मूल्य; प्रीमियम प्रतिभूति प्रीमियम खाते में)। <strong>छूट पर</strong> (जारी मूल्य < अंकित मूल्य; अब सार्वजनिक निर्गम के लिए अनुमति नहीं)।</p>
+            <p><strong>🔹 अधि-अभिदान, अल्प-अभिदान और समानुपातिक आवंटन:</strong> <strong>अधि-अभिदान</strong> → आवेदन > शेयर; अस्वीकार, धनवापसी या समानुपातिक आवंटन। <strong>अल्प-अभिदान</strong> → आवेदन < शेयर; केवल आवेदित शेयरों का आवंटन। <strong>समानुपातिक</strong> → आनुपातिक आवंटन, अतिरिक्त आवेदन राशि आवंटन में समायोजित।</p>
+            <p><strong>🔹 शेयरों का अपहरण और पुनर्निर्गम:</strong> आह्वान का भुगतान न करने पर शेयर अपहृत। <strong>शेयर पूंजी खाता डेबिट</strong> (आवाहित राशि), <strong>शेयर अपहरण खाता क्रेडिट</strong> (प्राप्त राशि)। पुनर्निर्गम छूट पर (अपहृत राशि से अधिक नहीं)। शेष <strong>पूंजी आरक्षित</strong> में स्थानांतरित।</p>
+            <p><strong>⭐ महत्वपूर्ण जर्नल प्रविष्टियाँ:</strong> आवेदन प्राप्ति एवं अंतरण, आवंटन देय एवं प्राप्ति, आह्वान देय एवं प्राप्ति, अनादत्त आह्वान, अपहरण, पुनर्निर्गम, पूंजी आरक्षित में अंतरण।</p>
+        </div>`;
+
+    const marathiSummary = `
+        <div style="font-family: 'Inter', sans-serif;">
+            <p><strong>🔹 शेअर आणि शेअर भांडवल:</strong> शेअर म्हणजे कंपनीच्या भांडवलाची सर्वात लहान एकक. <strong>शेअर भांडवल</strong> हे शेअर्स जारी करून उभारलेले भांडवल आहे. प्रकार: <strong>अधिकृत भांडवल</strong> (कमाल), <strong>निर्गमित भांडवल</strong> (दिले जाते), <strong>अभिदत्त भांडवल</strong> (घेतले जाते), <strong>आवाहित भांडवल</strong> (मागणी केली), <strong>संदत्त भांडवल</strong> (प्राप्त), <strong>अनादत्त आह्वान</strong> (न मिळालेले), <strong>आरक्षित भांडवल</strong> (फक्त विघटनावर).</p>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0; border-radius:12px;"><strong>📌 महत्त्वाचे:</strong> इक्विटी शेअर्स (जोखीम सहन करणारे, बदलते लाभांश) विरुद्ध प्राधान्य शेअर्स (निश्चित लाभांश, परतफेडीत प्राधान्य).</div>
+            <p><strong>🔹 सममूल्य, प्रीमियम व सवलतीवर निर्गमन:</strong> <strong>सममूल्य</strong> (दर्शनी किंमत). <strong>प्रीमियमवर</strong> (निर्गमन किंमत > दर्शनी किंमत; प्रीमियम रोखे प्रीमियम खात्यात). <strong>सवलतीवर</strong> (निर्गमन किंमत < दर्शनी किंमत; सार्वजनिक निर्गमनात आता परवानगी नाही).</p>
+            <p><strong>🔹 अतिअभिदान, अल्पअभिदान व प्रमाणबद्ध वाटप:</strong> <strong>अतिअभिदान</strong> → अर्ज > शेअर्स; नाकारणे, परतावा किंवा प्रमाणबद्ध वाटप. <strong>अल्पअभिदान</strong> → अर्ज < शेअर्स; फक्त अर्ज केलेल्या शेअर्सचे वाटप. <strong>प्रमाणबद्ध</strong> → प्रमाणात वाटप, अतिरिक्त अर्ज रक्कम वाटपात समायोजित.</p>
+            <p><strong>🔹 शेअर्स जप्ती आणि पुनर्निर्गमन:</strong> आह्वान न भरल्यास शेअर्स जप्त. <strong>शेअर भांडवल खाते डेबिट</strong> (आवाहित रक्कम), <strong>शेअर जप्ती खाते क्रेडिट</strong> (मिळालेली रक्कम). पुनर्निर्गमन सवलतीवर (जप्त रकमेपेक्षा जास्त नाही). शिल्लक <strong>भांडवल राखीव</strong> मध्ये हस्तांतरित.</p>
+            <p><strong>⭐ महत्त्वाच्या जर्नल नोंदी:</strong> अर्ज प्राप्ती व हस्तांतरण, वाटप देय व प्राप्ती, आह्वान देय व प्राप्ती, अनादत्त आह्वान, जप्ती, पुनर्निर्गमन, भांडवल राखीव मध्ये हस्तांतरण.</p>
+        </div>`;
+
+    function showTranslation(lang) {
+        const popup = document.getElementById('translationPopup');
+        const popupBody = document.getElementById('popupBody');
+        if (lang === 'hindi') popupBody.innerHTML = hindiSummary;
+        else popupBody.innerHTML = marathiSummary;
+        popup.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+    function closePopup() {
+        document.getElementById('translationPopup').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+    window.onclick = function(event) {
+        const popup = document.getElementById('translationPopup');
+        if (event.target === popup) closePopup();
+    }
+</script>
+</body>
+</html>

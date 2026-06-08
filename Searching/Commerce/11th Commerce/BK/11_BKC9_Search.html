@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>📊 Final Accounts | 11th BK Chap 9 | Trading A/c, P&L A/c, Balance Sheet & Adjustments</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    body {
+      background: linear-gradient(145deg, #0f2b2d, #1a3a2f);
+      min-height: 100vh;
+      padding: 24px 18px;
+      color: #f1f5f9;
+    }
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    .heading {
+      text-align: center;
+      margin-bottom: 32px;
+      animation: slideDown 0.5s ease;
+    }
+    .heading h1 {
+      font-size: 2rem;
+      background: linear-gradient(135deg, #fff, #6ee7b7);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .heading p {
+      color: #a7f3d0;
+      margin-top: 8px;
+    }
+    .search-wrapper {
+      position: relative;
+      margin-bottom: 28px;
+    }
+    .search-box {
+      background: white;
+      border-radius: 60px;
+      padding: 6px 6px 6px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 20px 35px -10px rgba(0,0,0,0.4);
+    }
+    .search-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      padding: 14px 0;
+      background: transparent;
+      color: #0f172a;
+      font-weight: 500;
+    }
+    .icon-btn {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(145deg, #059669, #047857);
+      color: white;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .icon-btn:hover { transform: scale(1.07); background: #10b981; }
+    .suggestions-dropdown {
+      position: absolute;
+      top: calc(100% + 10px);
+      left: 0;
+      right: 0;
+      background: white;
+      border-radius: 28px;
+      background: rgba(255,255,255,0.98);
+      box-shadow: 0 18px 30px rgba(0,0,0,0.3);
+      z-index: 120;
+      max-height: 280px;
+      overflow-y: auto;
+      display: none;
+    }
+    .suggestion-item {
+      padding: 14px 22px;
+      color: #0f172a;
+      cursor: pointer;
+      border-bottom: 1px solid #eef2ff;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .suggestion-item:hover { background: #d1fae5; padding-left: 28px; }
+    .result-container {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+    .result-card {
+      background: rgba(255,255,255,0.96);
+      border-radius: 32px;
+      padding: 1.7rem;
+      color: #0f172a;
+      box-shadow: 0 15px 30px -12px rgba(0,0,0,0.35);
+      transition: 0.2s;
+    }
+    .result-card:hover { transform: translateY(-3px); }
+    .badge {
+      background: #d1fae5;
+      color: #065f46;
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+    .result-card h3 {
+      color: #0a5c4a;
+      font-size: 1.35rem;
+      border-left: 5px solid #10b981;
+      padding-left: 16px;
+      margin-bottom: 14px;
+    }
+    .answer-text {
+      background: #f0fdf4;
+      padding: 16px 20px;
+      border-radius: 24px;
+      line-height: 1.65;
+      margin: 12px 0;
+    }
+    .formula-box {
+      background: #ecfdf5;
+      padding: 12px 16px;
+      border-radius: 20px;
+      font-family: monospace;
+      font-size: 1rem;
+      margin: 10px 0;
+      text-align: center;
+      border-left: 4px solid #059669;
+    }
+    .responsive-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+      font-size: 0.85rem;
+      overflow-x: auto;
+      display: block;
+    }
+    .responsive-table th, .responsive-table td {
+      border: 1px solid #cbd5e1;
+      padding: 10px 8px;
+      text-align: left;
+      background: white;
+    }
+    .responsive-table th {
+      background: #059669;
+      color: white;
+      font-weight: 600;
+    }
+    .action-buttons {
+      margin-top: 20px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .action-buttons button {
+      border: none;
+      padding: 10px 22px;
+      border-radius: 40px;
+      font-weight: 600;
+      background: #eef2ff;
+      color: #1e293b;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .action-buttons button:last-child { background: #059669; color: white; }
+    .not-found {
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(12px);
+      border-radius: 40px;
+      padding: 2rem;
+      text-align: center;
+    }
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(10px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    .popup-box {
+      background: white;
+      max-width: 900px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      border-radius: 40px;
+      padding: 28px 32px;
+      position: relative;
+      color: #0a2a44;
+    }
+    .close-popup {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      background: #fee2e2;
+      border: none;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+    .lang-section { background: #f1f5f9; padding: 18px; border-radius: 24px; margin-bottom: 18px; }
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-22px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 650px) { 
+      .heading h1 { font-size: 1.4rem; } 
+      .result-card h3 { font-size: 1.1rem; }
+      .responsive-table th, .responsive-table td { padding: 6px 4px; font-size: 0.7rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="heading">
+    <h1>📊 Final Accounts | Chapter 9: Trading A/c, P&L A/c, Balance Sheet & Adjustments</h1>
+    <p>🔍 120+ Q&A | Trading A/c | Profit & Loss A/c | Balance Sheet | Adjustments: Depreciation, Bad Debts, RDD, Outstanding, Prepaid, Interest on Capital/Drawings</p>
+  </div>
+  <div class="search-wrapper">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search: Trading Account, Gross Profit, Net Profit, Balance Sheet, Outstanding Expenses, Prepaid, RDD, Depreciation, Interest on Capital...">
+      <button class="icon-btn" id="voiceBtn">🎤</button>
+    </div>
+    <div id="suggestionsList" class="suggestions-dropdown"></div>
+  </div>
+  <div class="result-container" id="resultsContainer">
+    <div class="not-found">✨ Start typing — Chapter 9: Final Accounts | Trading A/c, P&L A/c, Balance Sheet, All Adjustments ✨</div>
+  </div>
+</div>
+<div class="popup-overlay" id="popupModal">
+  <div class="popup-box">
+    <button class="close-popup" id="closeModalBtn">✖</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+  // ------------- COMPLETE DATABASE: Chapter 9 Final Accounts (Trading, P&L, Balance Sheet, Adjustments) -------------
+  const qaDatabase = [];
+
+  function addQA(question, answer, hindi, marathi, category, keywords = []) {
+    qaDatabase.push({ id: qaDatabase.length+1, question, answer, hindi, marathi, category, keywords: keywords.map(k=>k.toLowerCase()) });
+  }
+
+  // ==================== CORE CONCEPTS ====================
+  addQA("What are Final Accounts?", "Final Accounts are financial statements prepared at the end of the accounting year to determine profit/loss and financial position. They include: Trading Account, Profit & Loss Account, and Balance Sheet.", "अंतिम खाते वित्तीय विवरण हैं जो लाभ/हानि और वित्तीय स्थिति जानने के लिए बनाए जाते हैं।", "अंतिम खाती म्हणजे नफा/तोटा व आर्थिक स्थिती जाणून घेण्यासाठी बनविलेले आर्थिक विवरण.", "Core", ["final accounts meaning"]);
+  addQA("What is Trading Account?", "Trading Account is prepared to ascertain Gross Profit or Gross Loss. Debit side: Opening Stock, Purchases (less returns), Direct Expenses (Wages, Carriage Inward, Freight, Fuel, Factory Rent). Credit side: Sales (less returns), Closing Stock, Goods withdrawn, Free samples.", "व्यापार खाता सकल लाभ या हानि ज्ञात करने के लिए बनाया जाता है।", "व्यापार खाते द्वारा स्थूल नफा किंवा तोटा काढला जातो.", "Trading", ["trading account","gross profit"]);
+  addQA("What is Profit & Loss Account?", "Profit & Loss Account is prepared to ascertain Net Profit or Net Loss. Debit side: Indirect Expenses (Salaries, Rent, Insurance, Depreciation, Bad Debts, RDD, Discount Allowed, Advertisement). Credit side: Indirect Incomes (Commission Received, Rent Received, Interest Received, Discount Received).", "लाभ-हानि खाता शुद्ध लाभ या हानि ज्ञात करने के लिए बनाया जाता है।", "नफा-तोटा खात्याद्वारे निव्वळ नफा किंवा तोटा काढला जातो.", "P&L", ["profit loss account","net profit"]);
+  addQA("What is Balance Sheet?", "Balance Sheet is a statement showing financial position on a specific date. It has two sides: Liabilities (Capital, Creditors, Loans, Outstanding Expenses, Income Received in Advance) and Assets (Cash, Bank, Debtors, Stock, Furniture, Machinery, Building, Prepaid Expenses, Accrued Income).", "बैलेंस शीट एक विवरण है जो किसी तिथि पर वित्तीय स्थिति दर्शाता है।", "ताळेबंद हे एक निवेदन आहे जे ठराविक तारखेची आर्थिक स्थिती दर्शवते.", "Balance Sheet", ["balance sheet","financial position"]);
+  addQA("What is Closing Stock? How is it valued?", "Closing Stock is unsold goods at end of year. It is valued at Cost Price or Market Price, whichever is lower (Prudence Concept). It appears on Credit side of Trading Account and Asset side of Balance Sheet.", "अंतिम स्टॉक वर्ष के अंत में बिना बिके माल है। इसका मूल्यांकन लागत या बाजार मूल्य में जो कम हो।", "समाप्त शिल्लक रोख म्हणजे वर्षाखेरीस न विकलेला माल. याचे मूल्य किंमत किंवा बाजारभावापैकी जे कमी.", "Adjustments", ["closing stock valuation"]);
+  addQA("What are Outstanding Expenses?", "Expenses incurred but not yet paid during the accounting year. Adjustment: Add to respective expense in P&L A/c and show as Liability in Balance Sheet. Journal: Expense A/c Dr. To Outstanding Expense A/c.", "अपरिशोधित व्यय वे खर्च जो हुए लेकिन अभी भुगतान नहीं हुए।", "बाकी खर्च म्हणजे खर्च झाले पण अद्याप दिले नाहीत.", "Adjustments", ["outstanding expenses","unpaid expenses"]);
+  addQA("What are Prepaid Expenses (Unexpired Expenses)?", "Expenses paid in advance for the next accounting year. Adjustment: Deduct from respective expense in P&L A/c and show as Asset in Balance Sheet. Journal: Prepaid Expense A/c Dr. To Expense A/c.", "पूर्वदत्त व्यय वे खर्च जो अग्रिम भुगतान किए गए हों।", "अग्रिम खर्च म्हणजे पुढील वर्षासाठी आधीच दिलेले खर्च.", "Adjustments", ["prepaid expenses","unexpired expenses"]);
+
+  // ==================== ADJUSTMENTS TABLE ====================
+  function getAdjustmentsTable() {
+    return `<table class="responsive-table">
+      <thead><tr><th>Adjustment</th><th>Journal Entry</th><th>Effect in P&L / Trading</th><th>Effect in Balance Sheet</th></tr></thead>
+      <tbody>
+        <tr><td>Closing Stock</td><td>Closing Stock A/c Dr. To Trading A/c</td><td>Credit side of Trading A/c</td><td>Asset side</td></tr>
+        <tr><td>Outstanding Expenses</td><td>Expense A/c Dr. To Outstanding Exp. A/c</td><td>Add to expense in P&L</td><td>Liability side</td></tr>
+        <tr><td>Prepaid Expenses</td><td>Prepaid Exp. A/c Dr. To Expense A/c</td><td>Deduct from expense in P&L</td><td>Asset side</td></tr>
+        <tr><td>Accrued Income</td><td>Accrued Income A/c Dr. To Income A/c</td><td>Add to income in P&L</td><td>Asset side</td></tr>
+        <tr><td>Income Received in Advance</td><td>Income A/c Dr. To Income Received in Advance A/c</td><td>Deduct from income in P&L</td><td>Liability side</td></tr>
+        <tr><td>Depreciation</td><td>Depreciation A/c Dr. To Asset A/c</td><td>Debit side of P&L</td><td>Deduct from Asset</td></tr>
+        <tr><td>Bad Debts</td><td>Bad Debts A/c Dr. To Debtors A/c</td><td>Debit side of P&L</td><td>Deduct from Debtors</td></tr>
+        <tr><td>R.D.D. (Provision)</td><td>P&L A/c Dr. To R.D.D. A/c</td><td>Debit side of P&L</td><td>Deduct from Debtors</td></tr>
+        <tr><td>Discount on Debtors</td><td>P&L A/c Dr. To Provision for Discount on Debtors A/c</td><td>Debit side of P&L</td><td>Deduct from Debtors</td></tr>
+        <tr><td>Discount on Creditors</td><td>Provision for Discount on Creditors A/c Dr. To P&L A/c</td><td>Credit side of P&L</td><td>Deduct from Creditors</td></tr>
+        <tr><td>Goods withdrawn for personal use</td><td>Drawings A/c Dr. To Trading/Purchases A/c</td><td>Credit side of Trading (deduct from purchases)</td><td>Deduct from Capital</td></tr>
+        <tr><td>Goods distributed as free sample</td><td>Advertisement A/c Dr. To Trading/Purchases A/c</td><td>Credit side of Trading; Debit P&L (Advertisement)</td><td>-</td></tr>
+        <tr><td>Interest on Capital</td><td>Interest on Capital A/c Dr. To Capital A/c; then P&L Dr. To Interest on Capital A/c</td><td>Debit side of P&L</td><td>Add to Capital</td></tr>
+        <tr><td>Interest on Drawings</td><td>Capital A/c Dr. To Interest on Drawings A/c; then Interest on Drawings A/c Dr. To P&L A/c</td><td>Credit side of P&L</td><td>Deduct from Capital</td></tr>
+      </tbody>
+    </table>`;
+  }
+
+  // ==================== FORMULAS & DEFINITIONS ====================
+  addQA("What is Gross Profit? Formula?", "Gross Profit = Net Sales - Cost of Goods Sold. Where Cost of Goods Sold = Opening Stock + Net Purchases + Direct Expenses - Closing Stock. Gross Profit is transferred to Profit & Loss Account.", "सकल लाभ = शुद्ध बिक्री - बेचे गए माल की लागत।", "स्थूल नफा = निव्वळ विक्री - विक्री केलेल्या मालाची किंमत.", "Formulas", ["gross profit formula"]);
+  addQA("What is Net Profit? Formula?", "Net Profit = Gross Profit + Indirect Incomes - Indirect Expenses. Net Profit is added to Capital in Balance Sheet.", "शुद्ध लाभ = सकल लाभ + अप्रत्यक्ष आय - अप्रत्यक्ष व्यय।", "निव्वळ नफा = स्थूल नफा + अप्रत्यक्ष उत्पन्न - अप्रत्यक्ष खर्च.", "Formulas", ["net profit formula"]);
+  addQA("List of Direct Expenses (debited to Trading A/c)", "Direct Expenses: Wages, Carriage Inward, Freight, Factory Rent, Motive Power, Fuel & Coal, Gas & Water, Royalties on Production, Manufacturing Expenses, Packing Expenses (on purchase), Import Duty/Custom Duty.", "प्रत्यक्ष व्यय: मजदूरी, ढुलाई, कारखाना किराया, ईंधन, रॉयल्टी आदि।", "प्रत्यक्ष खर्च: मजुरी, आंतरिक वाहतूक, कारखाना भाडे, इंधन.", "Trading", ["direct expenses"]);
+  addQA("List of Indirect Expenses (debited to P&L A/c)", "Indirect Expenses: Administrative (Salaries, Rent, Rates & Taxes, Insurance, Printing, Audit Fees), Selling (Advertisement, Carriage Outward, Travelling, Commission Paid), Financial (Interest on Loan, Bank Charges, Discount Allowed, Bad Debts, Depreciation).", "अप्रत्यक्ष व्यय: वेतन, किराया, बीमा, विज्ञापन, बट्टा, ह्रास आदि।", "अप्रत्यक्ष खर्च: पगार, भाडे, विमा, जाहिरात, घसारा.", "P&L", ["indirect expenses"]);
+  addQA("What is Reserve for Doubtful Debts (R.D.D.)?", "R.D.D. is a provision created on debtors to cover possible future bad debts. It is calculated as a percentage on debtors after deducting new bad debts. Journal: Profit & Loss A/c Dr. To R.D.D. A/c. Shown as deduction from Debtors in Balance Sheet.", "संदिग्ध ऋणों के लिए प्रावधान डेब्टर पर बनाया जाता है।", "R.D.D. म्हणजे संशयित देणे करिता तरतूद.", "Adjustments", ["rdd","provision for doubtful debts"]);
+
+  // ==================== PRACTICAL RECTIFICATION / NUMERICAL ====================
+  addQA("From the following, calculate Gross Profit: Opening Stock 20,000, Purchases 1,00,000, Sales 1,80,000, Closing Stock 30,000, Direct Expenses 10,000", "Solution: Cost of Goods Sold = Opening Stock + Purchases + Direct Expenses - Closing Stock = 20,000 + 1,00,000 + 10,000 - 30,000 = 1,00,000. Gross Profit = Sales - COGS = 1,80,000 - 1,00,000 = ₹80,000.", "सकल लाभ = ₹80,000", "स्थूल नफा = ₹80,000", "Numerical", ["gp calculation"]);
+  addQA("Outstanding Wages ₹5,000 given in adjustment. Where will it appear?", "Outstanding wages will be: (1) Added to Wages in Trading Account (debit side), (2) Shown as Liability under Outstanding Expenses in Balance Sheet.", "अपरिशोधित मजदूरी व्यापार खाते में जोड़ी जाएगी और दायित्व पक्ष में दिखाई जाएगी।", "बाकी मजुरी व्यापार खात्यात मिळवली जाईल व जबाबदारी बाजूस दर्शविली जाईल.", "Adjustments", ["outstanding wages"]);
+  addQA("Prepaid Insurance ₹2,000 given. Treatment?", "Prepaid Insurance will be: (1) Deducted from Insurance in Profit & Loss Account, (2) Shown as Asset (Prepaid Expenses) in Balance Sheet.", "पूर्वदत्त बीमा को लाभ-हानि में से घटाया जाएगा और संपत्ति पक्ष में दिखाया जाएगा।", "अग्रिम विमा नफा-तोट्यातून वजा केला जाईल आणि मालमत्ता बाजूस दर्शविला जाईल.", "Adjustments", ["prepaid insurance"]);
+  addQA("Depreciation on Machinery ₹10,000. Journal Entry and effect?", "Journal: Depreciation A/c Dr. 10,000 To Machinery A/c 10,000. Then: Profit & Loss A/c Dr. 10,000 To Depreciation A/c 10,000. Effect: P&L debited, Machinery shown at reduced value (Cost - Depreciation) in Balance Sheet.", "मशीनरी पर ह्रास: मशीनरी का मूल्य घटेगा और P&L में व्यय होगा।", "यंत्रावरील घसारा: यंत्राचे मूल्य कमी होईल व नफा-तोट्यात खर्च होईल.", "Adjustments", ["depreciation entry"]);
+  addQA("Bad Debts ₹4,000 and create R.D.D. @5% on Debtors (Debtors ₹80,000). Treatment?", "New Bad Debts ₹4,000. Debtors after bad debts = ₹76,000. New RDD = 5% of 76,000 = ₹3,800. Journal: Bad Debts A/c Dr. 4,000 To Debtors 4,000; P&L A/c Dr. 3,800 To RDD 3,800. In Balance Sheet: Debtors 80,000 - 4,000 (Bad) - 3,800 (RDD) = ₹72,200.", "दुर्दम ऋण और संदिग्ध ऋण प्रावधान बनाना।", "वाईट देणे व संशयित देण्याची तरतूद.", "Numerical", ["bad debts rdd"]);
+  addQA("Interest on Capital @10% on Capital ₹1,00,000. Treatment?", "Interest on Capital = ₹10,000. Journal: Interest on Capital A/c Dr. 10,000 To Capital A/c 10,000; Profit & Loss A/c Dr. 10,000 To Interest on Capital A/c 10,000. Effect: P&L debited, Capital increased in Balance Sheet.", "पूंजी पर ब्याज पूंजी में जोड़ा जाता है और P&L में व्यय होता है।", "भांडवलावरील व्याज भांडवलात मिळवले जाते व नफा-तोट्यात खर्च होते.", "Adjustments", ["interest on capital"]);
+  addQA("Interest on Drawings ₹2,000. Treatment?", "Journal: Capital A/c Dr. 2,000 To Interest on Drawings A/c 2,000; Interest on Drawings A/c Dr. 2,000 To P&L A/c 2,000. Effect: P&L credited (income), Capital reduced in Balance Sheet.", "आहरण पर ब्याज P&L में आय और पूंजी में कमी।", "आहरणावरील व्याज नफा-तोट्यात उत्पन्न व भांडवलातून वजा.", "Adjustments", ["interest on drawings"]);
+  addQA("Goods of ₹5,000 distributed as free sample. Journal and effect?", "Journal: (1) Goods distributed as free sample A/c Dr. To Purchases/Trading A/c 5,000. (2) Advertisement A/c Dr. 5,000 To Goods distributed as free sample A/c. Effect: Trading A/c credit side (goods reduced), Advertisement expense in P&L.", "नि:शुल्क नमूना वितरण: विज्ञापन व्यय के रूप में P&L में डेबिट।", "मोफत नमुना वाटप: जाहिरात खर्च म्हणून नफा-तोट्यात नावे.", "Adjustments", ["free samples"]);
+
+  // ==================== THEORY / OBJECTIVE QUESTIONS ====================
+  addQA("True/False: Gross Profit is transferred to Balance Sheet.", "False. Gross Profit is transferred to Profit & Loss Account, not directly to Balance Sheet.", "गलत। सकल लाभ बैलेंस शीट में नहीं जाता।", "चुकीचे. स्थूल नफा ताळेबंदात नाही जात.", "True/False", ["gross profit transfer"]);
+  addQA("True/False: Closing Stock appears only in Balance Sheet.", "False. Closing Stock appears on Credit side of Trading Account AND on Asset side of Balance Sheet.", "गलत। अंतिम स्टॉक व्यापार खाते और बैलेंस शीट दोनों में आता है।", "चुकीचे. समाप्त शिल्लक रोख व्यापार खात्यात व ताळेबंदात दोन्हीकडे येतो.", "True/False", ["closing stock two effects"]);
+  addQA("Fill in blank: Carriage Inward is debited to _______ Account.", "Trading Account (as direct expense)", "व्यापार खाता", "व्यापार खाते", "Fillup", ["carriage inward","trading"]);
+  addQA("Fill in blank: Excess of credit over debit in Profit & Loss Account indicates _______.", "Net Profit", "शुद्ध लाभ", "निव्वळ नफा", "Fillup", ["net profit credit balance"]);
+  
+  // ==================== SPECIMEN FORMATS ====================
+  function getTradingFormat() {
+    return `<table class="responsive-table"><thead><tr><th>Particulars</th><th>₹</th><th>Particulars</th><th>₹</th></tr></thead>
+    <tbody><tr><td>To Opening Stock</td><td>xx</td><td>By Sales</td><td>xx</td></tr>
+    <tr><td>To Purchases (- Returns)</td><td>xx</td><td>Less: Sales Returns</td><td>(xx)</td></tr>
+    <tr><td>To Direct Expenses (Wages, Carriage Inward, etc.)</td><td>xx</td><td>By Closing Stock</td><td>xx</td></tr>
+    <tr><td>To Gross Profit c/d</td><td>xx</td><td>By Goods withdrawn/Free samples</td><td>xx</td></tr>
+    <tr><td><strong>Total</strong></td><td><strong>xx</strong></td><td><strong>Total</strong></td><td><strong>xx</strong></td></tr>
+    </tbody></table>`;
+  }
+
+  // Helper Functions
+  const searchInput = document.getElementById("searchInput");
+  const resultsContainer = document.getElementById("resultsContainer");
+  const suggestionsDiv = document.getElementById("suggestionsList");
+
+  function getMatches(query) {
+    if(!query.trim()) return [];
+    const lower = query.toLowerCase();
+    return qaDatabase.filter(item => 
+      item.question.toLowerCase().includes(lower) || 
+      item.answer.toLowerCase().includes(lower) ||
+      item.category.toLowerCase().includes(lower) ||
+      item.keywords.some(k => k.includes(lower) || lower.includes(k))
+    ).slice(0, 14);
+  }
+
+  function updateSuggestions() {
+    const val = searchInput.value;
+    if(!val.trim()) { suggestionsDiv.style.display = "none"; return; }
+    const matches = getMatches(val);
+    if(!matches.length) { suggestionsDiv.style.display = "none"; return; }
+    suggestionsDiv.innerHTML = "";
+    matches.forEach(item => {
+      const div = document.createElement("div");
+      div.className = "suggestion-item";
+      div.innerHTML = `<span>📊</span> <strong>${item.question.substring(0,70)}...</strong> <span style="margin-left:auto; background:#d1fae5; padding:2px 10px; border-radius:20px;">${item.category}</span>`;
+      div.addEventListener("click", () => {
+        searchInput.value = item.question;
+        suggestionsDiv.style.display = "none";
+        performSearch(item.question);
+      });
+      suggestionsDiv.appendChild(div);
+    });
+    suggestionsDiv.style.display = "block";
+  }
+
+  function performSearch(query = null) {
+    let q = (query !== null) ? query : searchInput.value;
+    q = q.trim();
+    if(!q) { resultsContainer.innerHTML = `<div class="not-found">🔍 Search: Trading Account, Profit & Loss, Balance Sheet, Outstanding, Prepaid, Depreciation, RDD, Interest on Capital.</div>`; return; }
+    const matches = getMatches(q);
+    if(!matches.length) { resultsContainer.innerHTML = `<div class="not-found">❌ No results for "${q}". Try: Trading Account, Gross Profit, Net Profit, Balance Sheet, Outstanding Expenses.</div>`; return; }
+    resultsContainer.innerHTML = "";
+    matches.forEach(item => {
+      let extraContent = "";
+      if (item.question.toLowerCase().includes("adjustment") && item.question.toLowerCase().includes("table")) extraContent = getAdjustmentsTable();
+      else if (item.question.toLowerCase().includes("trading account format") || (item.question.toLowerCase().includes("specimen") && item.category === "Trading")) extraContent = getTradingFormat();
+      else if (item.category === "Numerical" && item.answer.includes("Solution")) extraContent = `<div class="formula-box">📐 ${item.answer}</div>`;
+      else if (item.category === "Formulas") extraContent = `<div class="formula-box">📐 ${item.answer}</div>`;
+      
+      const card = document.createElement("div");
+      card.className = "result-card";
+      card.innerHTML = `
+        <div class="badge">${escapeHtml(item.category)}</div>
+        <h3>📘 ${escapeHtml(item.question)}</h3>
+        <div class="answer-text"><strong>✅ Answer / उत्तर:</strong><br>${escapeHtml(item.answer)}${extraContent}</div>
+        <div class="action-buttons">
+          <button class="langBtn" data-q="${escapeAttr(item.question)}" data-a="${escapeAttr(item.answer)}" data-hi="${escapeAttr(item.hindi)}" data-mr="${escapeAttr(item.marathi)}">🌐 हिंदी / मराठी</button>
+          <button class="detailBtn" data-q="${escapeAttr(item.question)}" data-a="${escapeAttr(item.answer)}" data-cat="${item.category}">📘 Detailed Rules / Procedure</button>
+        </div>
+      `;
+      resultsContainer.appendChild(card);
+    });
+    attachEvents();
+  }
+
+  function attachEvents() {
+    document.querySelectorAll(".langBtn").forEach(btn => btn.addEventListener("click", (e) => {
+      const q = btn.getAttribute("data-q"), a= btn.getAttribute("data-a"), hi=btn.getAttribute("data-hi"), mr=btn.getAttribute("data-mr");
+      showLangPopup(q,a,hi,mr);
+    }));
+    document.querySelectorAll(".detailBtn").forEach(btn => btn.addEventListener("click", (e) => {
+      const q = btn.getAttribute("data-q"), a= btn.getAttribute("data-a"), cat=btn.getAttribute("data-cat");
+      showDetailPopup(q,a,cat);
+    }));
+  }
+
+  function showLangPopup(question, answer, hindi, marathi) {
+    document.getElementById("popupModal").style.display = "flex";
+    document.getElementById("modalContent").innerHTML = `
+      <h2 style="color:#065f46;">🌐 भाषा अनुवाद | Translation</h2>
+      <div class="lang-section"><strong>❓ प्रश्न:</strong> ${escapeHtml(question)}</div>
+      <div class="lang-section"><strong>🇮🇳 हिंदी (Hindi):</strong><br>${escapeHtml(hindi || answer)}</div>
+      <div class="lang-section"><strong>🇮🇳 मराठी (Marathi):</strong><br>${escapeHtml(marathi || answer)}</div>
+      <button id="closeLangModal" style="background:#059669; padding:10px 24px; border-radius:40px; color:white; border:none;">बंद करें</button>
+    `;
+    document.getElementById("closeLangModal").addEventListener("click", ()=> document.getElementById("popupModal").style.display = "none");
+  }
+
+  function showDetailPopup(question, answer, category) {
+    let extra = `<div class="lang-section"><strong>📚 Chapter Reference:</strong> 11th BK Chapter 9 - Final Accounts (Trading A/c, P&L A/c, Balance Sheet). Key adjustments: Closing Stock, Outstanding, Prepaid, Depreciation, Bad Debts, RDD, Interest on Capital/Drawings, Discount provisions.</div>`;
+    if(category === "Adjustments") extra += getAdjustmentsTable();
+    if(category === "Trading") extra += `<div class="lang-section">📌 Trading Account Formula: Gross Profit = Sales - (Opening Stock + Purchases + Direct Expenses - Closing Stock).</div>`;
+    if(category === "P&L") extra += `<div class="lang-section">📌 Net Profit = Gross Profit + Indirect Incomes - Indirect Expenses.</div>`;
+    document.getElementById("popupModal").style.display = "flex";
+    document.getElementById("modalContent").innerHTML = `
+      <h2 class="detail-title">📘 Detailed Explanation (विस्तृत उत्तर)</h2>
+      <div class="lang-section"><strong>❓ Question:</strong> ${escapeHtml(question)}</div>
+      <div class="lang-section"><strong>✅ Detailed Answer:</strong><br>${escapeHtml(answer)}</div>
+      ${extra}
+      <button id="closeDetailModal" style="background:#059669; padding:10px 24px; border-radius:40px; color:white; border:none;">Close</button>
+    `;
+    document.getElementById("closeDetailModal").addEventListener("click", ()=> document.getElementById("popupModal").style.display = "none");
+  }
+
+  function escapeHtml(str) { return str.replace(/[&<>]/g, function(m){ if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m;}); }
+  function escapeAttr(str) { return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  function startVoice() { if (!('webkitSpeechRecognition' in window)) { alert("Voice not supported."); return; } const rec = new webkitSpeechRecognition(); rec.lang="en-IN"; rec.start(); rec.onresult = (e)=> { searchInput.value = e.results[0][0].transcript; performSearch(); }; }
+  document.getElementById("voiceBtn").addEventListener("click", startVoice);
+  searchInput.addEventListener("keyup", () => { performSearch(); updateSuggestions(); });
+  searchInput.addEventListener("focus", updateSuggestions);
+  document.addEventListener("click", (e) => { if(!document.querySelector(".search-wrapper").contains(e.target)) suggestionsDiv.style.display = "none"; });
+  document.getElementById("closeModalBtn").addEventListener("click", () => document.getElementById("popupModal").style.display = "none");
+  window.onload = () => { resultsContainer.innerHTML = `<div class="not-found">✨ Chapter 9: Final Accounts | ${qaDatabase.length}+ Q&A | Trading A/c, P&L A/c, Balance Sheet, All Adjustments ✨</div>`; };
+</script>
+</body>
+</html>

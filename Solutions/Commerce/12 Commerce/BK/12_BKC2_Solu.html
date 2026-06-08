@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Chapter 2 | Not for Profit Concerns - 12th Commerce</title>
+  <!-- Google Fonts + Font Awesome 6 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: linear-gradient(135deg, #eef2f9 0%, #e0e8f2 100%);
+      font-family: 'Inter', sans-serif;
+      padding: 32px 24px;
+      color: #0a2b3e;
+      line-height: 1.5;
+    }
+    .container { max-width: 1300px; margin: 0 auto; }
+    .hero { text-align: center; margin-bottom: 48px; }
+    .hero h1 {
+      font-size: 2.4rem; font-weight: 800;
+      background: linear-gradient(135deg, #0b4b6b, #1f6e93, #2c7da0);
+      background-clip: text; -webkit-background-clip: text; color: transparent;
+      display: inline-block; padding-bottom: 10px;
+      border-bottom: 4px solid #ffb347; margin-bottom: 16px;
+    }
+    .chapter-badge {
+      background: #0f4c5f20; backdrop-filter: blur(6px);
+      display: inline-block; padding: 6px 24px; border-radius: 40px;
+      font-size: 0.85rem; font-weight: 600; color: #1b6b8f;
+    }
+    .card {
+      background: rgba(255,255,255,0.97); border-radius: 2rem;
+      margin-bottom: 32px; padding: 28px 32px;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid rgba(255,255,255,0.6);
+    }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 25px 40px -14px rgba(0,0,0,0.15); }
+    .card h2 {
+      font-size: 1.7rem; font-weight: 700; color: #135b78;
+      margin-bottom: 28px; padding-bottom: 10px;
+      border-bottom: 3px solid #ffb74d; display: inline-block;
+    }
+    .card h2 i { margin-right: 12px; color: #ff8c42; }
+    .qa-item { margin-bottom: 22px; border-left: 3px solid #cbdde9; padding-left: 20px; }
+    .question {
+      font-weight: 700; font-size: 1rem; color: #1f4a5e;
+      margin-bottom: 8px; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+    }
+    .question i { color: #ff8c42; width: 26px; }
+    .answer {
+      background: #f8fafd; padding: 10px 18px; border-radius: 24px;
+      font-weight: 500; color: #216477; font-size: 0.94rem;
+      display: inline-block; max-width: 100%;
+      box-shadow: inset 0 1px 0 #fff, 0 1px 2px rgba(0,0,0,0.02);
+    }
+    .true-badge {
+      background: #e0f2e9; color: #1e6f3f; padding: 3px 14px;
+      border-radius: 40px; font-weight: 700; font-size: 0.75rem;
+      display: inline-block; margin-right: 12px;
+    }
+    .false-badge {
+      background: #ffe8e6; color: #bc4742; padding: 3px 14px;
+      border-radius: 40px; font-weight: 700; font-size: 0.75rem;
+      display: inline-block; margin-right: 12px;
+    }
+    .resp-table { width: 100%; overflow-x: auto; margin: 16px 0; border-radius: 20px; background: #f4f9fe; padding: 4px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.85rem; background: white; border-radius: 16px; overflow: hidden; }
+    th, td { border: 1px solid #cde1ef; padding: 10px 12px; text-align: left; vertical-align: top; }
+    th { background: #e0eaf5; font-weight: 700; color: #135b78; }
+    .highlight { background: #eef3fc; border-radius: 16px; padding: 12px 18px; margin: 12px 0; }
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px,1fr)); gap: 12px; margin-top: 12px; }
+    @media (max-width: 768px) {
+      body { padding: 20px 16px; }
+      .card { padding: 20px 18px; }
+      .card h2 { font-size: 1.4rem; }
+      .hero h1 { font-size: 1.8rem; }
+      .qa-item { padding-left: 12px; }
+      th, td { padding: 6px 8px; font-size: 0.75rem; }
+    }
+    .footer-note { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #bdd4e4; font-size: 0.8rem; color: #2c6f8c; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+    <h1><i class="fas fa-hand-holding-heart"></i> Chapter 2 · Not for Profit Concerns</h1>
+    <div class="chapter-badge"><i class="fas fa-chart-line"></i> Receipts & Payments A/c | Income & Expenditure A/c | Balance Sheet</div>
+  </div>
+
+  <!-- ================= Objective Type Questions ================= -->
+  <div class="card">
+    <h2><i class="fas fa-check-square"></i> A. Select the most appropriate alternative</h2>
+    <div class="qa-item"><div class="question">1) Not for Profit Concern renders _______ services to public at large.</div><div class="answer">b) Social</div></div>
+    <div class="qa-item"><div class="question">2) Donation for Scholarship Fund is _______.</div><div class="answer">a) Capital Receipt</div></div>
+    <div class="qa-item"><div class="question">3) Income and Expenditure Account is a _______ Account.</div><div class="answer">d) Nominal</div></div>
+    <div class="qa-item"><div class="question">4) Outstanding subscription at the end of the Accounting Year represents _______.</div><div class="answer">c) An Asset</div></div>
+    <div class="qa-item"><div class="question">5) Subscription received in advance during the accounting year is _______.</div><div class="answer">d) A Liability</div></div>
+    <div class="qa-item"><div class="question">6) Excess of Income over Expenditure is termed as _______.</div><div class="answer">c) Surplus</div></div>
+    <div class="qa-item"><div class="question">7) Not for Profit Concerns prepares _______ account instead of Profit and Loss account.</div><div class="answer">b) Income and Expenditure</div></div>
+    <div class="qa-item"><div class="question">8) Closing balance of Receipts and Payments account usually represent _______.</div><div class="answer">b) Cash and Bank balance</div></div>
+    <div class="qa-item"><div class="question">9) Not for Profit Organization is also called _______ organization.</div><div class="answer">a) Service</div></div>
+    <div class="qa-item"><div class="question">10) Expenditure on Purchase of Building is a _______ Expenditure.</div><div class="answer">a) Capital</div></div>
+  </div>
+
+  <!-- ================= Write the word/term/phrase ================= -->
+  <div class="card">
+    <h2><i class="fas fa-tag"></i> B. Write the word/term/phrase</h2>
+    <div class="qa-item"><div class="question">1) The form of organization providing services to the society only.</div><div class="answer">Not for Profit Concern</div></div>
+    <div class="qa-item"><div class="question">2) Account prepared by Not for Profit Concern instead of Profit and Loss Account.</div><div class="answer">Income and Expenditure Account</div></div>
+    <div class="qa-item"><div class="question">3) Donation received for a specific purpose.</div><div class="answer">Specific Donation</div></div>
+    <div class="qa-item"><div class="question">4) Receipts which are not recurring in nature.</div><div class="answer">Capital Receipts</div></div>
+    <div class="qa-item"><div class="question">5) Account which records only revenue items in case of Not for Profit Concern.</div><div class="answer">Income and Expenditure Account</div></div>
+    <div class="qa-item"><div class="question">6) Account which records only cash transactions in case of Not for Profit Concern.</div><div class="answer">Receipts and Payments Account</div></div>
+    <div class="qa-item"><div class="question">7) Income earned during the year but not received during the year.</div><div class="answer">Accrued Income / Outstanding Income</div></div>
+    <div class="qa-item"><div class="question">8) Credit balance of Income and Expenditure Account.</div><div class="answer">Surplus</div></div>
+    <div class="qa-item"><div class="question">9) Excess of total assets over total liabilities of a Not for Profit Concern.</div><div class="answer">Capital Fund</div></div>
+    <div class="qa-item"><div class="question">10) Non-recurring receipts not forming part of regular flow of income.</div><div class="answer">Capital Receipts</div></div>
+  </div>
+
+  <!-- ================= True or False with Reasons ================= -->
+  <div class="card">
+    <h2><i class="fas fa-gavel"></i> C. State True or False with reasons</h2>
+    <div class="qa-item"><div class="question">1) Not for Profit Concerns do not have profit motive.</div><div class="answer"><span class="true-badge">True</span> Their primary objective is to provide service, not to earn profit.</div></div>
+    <div class="qa-item"><div class="question">2) Charitable Institutions prepare Profit and Loss Account.</div><div class="answer"><span class="false-badge">False</span> They prepare Income and Expenditure Account.</div></div>
+    <div class="qa-item"><div class="question">3) Receipts and Payments Account and Income and Expenditure Account are same.</div><div class="answer"><span class="false-badge">False</span> R&P A/c is real account (cash basis); I&E A/c is nominal account (accrual basis).</div></div>
+    <div class="qa-item"><div class="question">4) Income and Expenditure Account represents either surplus or deficit.</div><div class="answer"><span class="true-badge">True</span> Surplus if income > expenditure; Deficit if expenditure > income.</div></div>
+    <div class="qa-item"><div class="question">5) Receipts and Payments Account has no opening balance.</div><div class="answer"><span class="false-badge">False</span> It starts with opening cash and bank balances.</div></div>
+    <div class="qa-item"><div class="question">6) Not for Profit Concerns do not prepare Balance Sheet.</div><div class="answer"><span class="false-badge">False</span> They prepare Balance Sheet to show financial position.</div></div>
+    <div class="qa-item"><div class="question">7) Purchase of Sports Equipment is a Capital Expenditure.</div><div class="answer"><span class="true-badge">True</span> It is an asset purchased for long-term use.</div></div>
+    <div class="qa-item"><div class="question">8) Income and Expenditure Account is a Real Account.</div><div class="answer"><span class="false-badge">False</span> It is a Nominal Account.</div></div>
+    <div class="qa-item"><div class="question">9) Receipts and Payments Account contains only current year transactions.</div><div class="answer"><span class="false-badge">False</span> It includes previous, current and next year transactions.</div></div>
+    <div class="qa-item"><div class="question">10) Excess of Assets over Liabilities is called Capital Fund.</div><div class="answer"><span class="true-badge">True</span> Capital Fund = Total Assets - Total Liabilities.</div></div>
+  </div>
+
+  <!-- ================= Fill in the Blanks ================= -->
+  <div class="card">
+    <h2><i class="fas fa-edit"></i> D. Fill in the blanks</h2>
+    <div class="qa-item"><div class="question">1) Not for Profit Organization never is engaged in _______ activities.</div><div class="answer">trading / profit making</div></div>
+    <div class="qa-item"><div class="question">2) Not for Profit organization is called _______ organization.</div><div class="answer">service</div></div>
+    <div class="qa-item"><div class="question">3) Receipts and Payments Account falls under the category of _______ Account.</div><div class="answer">Real</div></div>
+    <div class="qa-item"><div class="question">4) In Receipts and Payments Account the summary of _______ transactions are recorded.</div><div class="answer">cash and bank</div></div>
+    <div class="qa-item"><div class="question">5) Income and Expenditure Account is similar to the _______ account of Trading Concern.</div><div class="answer">Profit and Loss</div></div>
+    <div class="qa-item"><div class="question">6) Credit side of Receipts and Payments Account shows cash _______.</div><div class="answer">payments</div></div>
+    <div class="qa-item"><div class="question">7) Income and Expenditure Account is a _______ Account.</div><div class="answer">Nominal</div></div>
+    <div class="qa-item"><div class="question">8) Mumbai University prepares _______ Account instead of Profit and Loss account.</div><div class="answer">Income and Expenditure</div></div>
+    <div class="qa-item"><div class="question">9) Subscription received from members is considered as _______ receipts.</div><div class="answer">revenue</div></div>
+    <div class="qa-item"><div class="question">10) Transactions recorded in Income and Expenditure Account are related only to the _______ year.</div><div class="answer">current</div></div>
+  </div>
+
+  <!-- ================= Answer in one sentence ================= -->
+  <div class="card">
+    <h2><i class="fas fa-question-circle"></i> E. Answer in one sentence only</h2>
+    <div class="qa-item"><div class="question">1) What do you mean by 'Not for Profit Concern'?</div><div class="answer">Organizations established to provide social service without profit motive, e.g., clubs, hospitals, schools.</div></div>
+    <div class="qa-item"><div class="question">2) Which organizations prepare Income and Expenditure Account?</div><div class="answer">Not for Profit concerns like schools, colleges, clubs, hospitals, trusts prepare Income and Expenditure Account.</div></div>
+    <div class="qa-item"><div class="question">3) What is Receipts and Payments Account?</div><div class="answer">A summary of all cash and bank receipts and payments for a particular period, irrespective of revenue/capital nature.</div></div>
+    <div class="qa-item"><div class="question">4) Why Income and Expenditure Account is prepared?</div><div class="answer">To ascertain surplus or deficit of a Not for Profit concern for an accounting year.</div></div>
+    <div class="qa-item"><div class="question">5) What is Capital Fund?</div><div class="answer">Excess of total assets over total liabilities of a Not for Profit concern.</div></div>
+    <div class="qa-item"><div class="question">6) What is Subscription?</div><div class="answer">Annual fees paid by members to Not for Profit concern, a major revenue source.</div></div>
+    <div class="qa-item"><div class="question">7) What is Legacy?</div><div class="answer">Gift received under a will on death of a donor.</div></div>
+    <div class="qa-item"><div class="question">8) What is Surplus?</div><div class="answer">Excess of income over expenditure in Income and Expenditure Account.</div></div>
+    <div class="qa-item"><div class="question">9) What do you mean by Non Recurring Expenses?</div><div class="answer">Expenses incurred occasionally, not forming part of regular operations (Capital Expenditure).</div></div>
+    <div class="qa-item"><div class="question">10) To which account Surplus or Deficit is transferred?</div><div class="answer">Surplus or Deficit is transferred to Capital Fund in Balance Sheet.</div></div>
+  </div>
+
+  <!-- ================= Complete the Table ================= -->
+  <div class="card">
+    <h2><i class="fas fa-table"></i> F.I. Complete the Table (Income/Expenditure/Surplus or Deficit)</h2>
+    <div class="resp-table">
+      <table>
+        <thead><tr><th>Sr.No.</th><th>Income (₹)</th><th>Expenditure (₹)</th><th>Surplus/Deficit (₹)</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>10,000</td><td>15,000</td><td>5,000 (Deficit)</td></tr>
+          <tr><td>2</td><td>8,000</td><td>4,000</td><td>4,000 (Surplus)</td></tr>
+          <tr><td>3</td><td>23,000</td><td>15,000</td><td>8,000 (Surplus)</td></tr>
+          <tr><td>4</td><td>7,500</td><td>9,000</td><td>1,500 (Deficit)</td></tr>
+          <tr><td>5</td><td>15,000</td><td>11,300</td><td>3,700 (Surplus)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ================= Salaries Paid Table ================= -->
+  <div class="card">
+    <h2><i class="fas fa-table"></i> F.II. Salaries Paid during the year</h2>
+    <div class="resp-table">
+      <table>
+        <thead><tr><th>Sr.No.</th><th>Total (₹)</th><th>Prepaid/Outstanding</th><th>Expenditure for the year (₹)</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>1,100</td><td>Prepaid 100</td><td>1,000</td></tr>
+          <tr><td>2</td><td>2,700</td><td>Prepaid 700</td><td>2,000</td></tr>
+          <tr><td>3</td><td>8,250</td><td>Prepaid 1,600</td><td>6,650</td></tr>
+          <tr><td>4</td><td>1,200</td><td>Outstanding 200</td><td>1,400</td></tr>
+          <tr><td>5</td><td>5,100</td><td>Outstanding 600</td><td>5,700</td></tr>
+          <tr><td>6</td><td>1,800</td><td>Outstanding 400</td><td>2,200</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ================= Calculations ================= -->
+  <div class="card">
+    <h2><i class="fas fa-calculator"></i> G. Calculate the following</h2>
+    <div class="qa-item"><div class="question">1) 10% p.a. Depreciation on Furniture ₹50,000 for three months.</div><div class="answer">Depreciation = 50,000 × 10% × 3/12 = ₹1,250</div></div>
+    <div class="qa-item"><div class="question">2) 12% p.a. Interest on Bank Loan ₹80,000 for 1 year.</div><div class="answer">Interest = 80,000 × 12% = ₹9,600</div></div>
+    <div class="qa-item"><div class="question">3) Opening Stock of Stationery ₹5,000, Purchases ₹7,000, Outstanding Bill ₹12,000, Closing Stock ₹1,000. Stationery Consumed?</div><div class="answer">Consumed = 5,000 + 7,000 + 12,000 - 1,000 = ₹23,000</div></div>
+    <div class="qa-item"><div class="question">4) Salary ₹10,000, Outstanding Salary ₹5,000. Salary to be debited to I&E A/c?</div><div class="answer">Salary = 10,000 + 5,000 = ₹15,000</div></div>
+    <div class="qa-item"><div class="question">5) Library Books ₹50,000, less 10% Depreciation = ?</div><div class="answer">Depreciation = ₹5,000; Book value = ₹45,000</div></div>
+  </div>
+
+  <!-- ================= Find odd one ================= -->
+  <div class="card">
+    <h2><i class="fas fa-search"></i> H. Find odd one</h2>
+    <div class="qa-item"><div class="question">1) Trading Account, Profit and Loss Account, Receipts and Payments Account, Balance Sheet</div><div class="answer">Receipts and Payments Account (others are for profit organizations)</div></div>
+    <div class="qa-item"><div class="question">2) Machinery, Furniture, Computers, Salaries</div><div class="answer">Salaries (expense; others are assets)</div></div>
+    <div class="qa-item"><div class="question">3) Subscription, Stationery, Interest Received, Locker Rent received</div><div class="answer">Stationery (expense; others are incomes)</div></div>
+    <div class="qa-item"><div class="question">4) Reliance Industries, Venna Vidya Mandir, Laxmi Hospital, Manoj Sports club</div><div class="answer">Reliance Industries (profit organization; others are Not for Profit)</div></div>
+    <div class="qa-item"><div class="question">5) Surplus, Deficit, Net Profit, Capital Fund</div><div class="answer">Capital Fund (balance sheet item; others are income statement results)</div></div>
+  </div>
+
+  <!-- ================= Difference: Receipts & Payments vs Income & Expenditure ================= -->
+  <div class="card">
+    <h2><i class="fas fa-table"></i> Distinguish between: Receipts & Payments A/c and Income & Expenditure A/c</h2>
+    <div class="resp-table">
+      <table>
+        <thead><tr><th>Point</th><th>Receipts & Payments Account</th><th>Income & Expenditure Account</th></tr></thead>
+        <tbody>
+          <tr><td>Type of Account</td><td>Real Account</td><td>Nominal Account</td></tr>
+          <tr><td>Nature</td><td>Similar to Cash Book</td><td>Similar to Profit & Loss A/c</td></tr>
+          <tr><td>Opening Balance</td><td>Has opening cash/bank balance</td><td>No opening balance</td></tr>
+          <tr><td>Basis</td><td>Cash basis</td><td>Accrual basis</td></tr>
+          <tr><td>Records</td><td>All receipts & payments (Revenue + Capital)</td><td>Only revenue incomes & expenses</td></tr>
+          <tr><td>Non-cash items</td><td>Not recorded</td><td>Recorded (depreciation, outstanding, prepaid)</td></tr>
+          <tr><td>Closing balance</td><td>Cash and Bank balance</td><td>Surplus or Deficit</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ================= Types of Receipts and Payments ================= -->
+  <div class="card">
+    <h2><i class="fas fa-chart-pie"></i> Types of Receipts and Payments</h2>
+    <div class="grid-2">
+      <div class="highlight"><strong>Capital Receipts</strong><br>• Non-recurring<br>• e.g., Donation for Building, Life Membership Fees, Sale of Fixed Asset, Legacies<br>• Added to Capital Fund / Liability side</div>
+      <div class="highlight"><strong>Revenue Receipts</strong><br>• Recurring<br>• e.g., Subscription, Entrance Fees (if revenue), Rent, Interest<br>• Credited to Income & Expenditure A/c</div>
+      <div class="highlight"><strong>Capital Expenditure</strong><br>• Non-recurring<br>• e.g., Purchase of Building, Furniture, Equipment<br>• Shown on Asset side of Balance Sheet</div>
+      <div class="highlight"><strong>Revenue Expenditure</strong><br>• Recurring<br>• e.g., Salaries, Rent, Printing, Stationery<br>• Debited to Income & Expenditure A/c</div>
+    </div>
+  </div>
+
+  <!-- ================= Treatment of Important Items ================= -->
+  <div class="card">
+    <h2><i class="fas fa-list-ul"></i> Treatment of Important Items in Final Accounts</h2>
+    <div class="resp-table">
+      <table>
+        <thead><tr><th>Item</th><th>Treatment in Income & Expenditure A/c</th><th>Treatment in Balance Sheet</th></tr></thead>
+        <tbody>
+          <tr><td>Outstanding Expenses</td><td>Add to respective expense</td><td>Liability side</td></tr>
+          <tr><td>Prepaid Expenses</td><td>Deduct from respective expense</td><td>Asset side</td></tr>
+          <tr><td>Outstanding Income</td><td>Add to respective income</td><td>Asset side</td></tr>
+          <tr><td>Income Received in Advance</td><td>Deduct from respective income</td><td>Liability side</td></tr>
+          <tr><td>Depreciation</td><td>Debit side</td><td>Deduct from asset</td></tr>
+          <tr><td>Specific Donation</td><td>Not recorded (capital receipt)</td><td>Liability side (specific fund)</td></tr>
+          <tr><td>General Donation</td><td>Credit side (revenue income)</td><td>—</td></tr>
+          <tr><td>Entrance Fees</td><td>Partly/fully as per policy</td><td>Capitalised portion added to Capital Fund</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ================= Specimen Formats ================= -->
+  <div class="card">
+    <h2><i class="fas fa-file-alt"></i> Specimen: Receipts & Payments Account</h2>
+    <div class="highlight">
+      <strong>Dr. Receipts & Payments Account for the year ended 31st March, 20__ Cr.</strong><br>
+      To Balance b/d (Cash + Bank) | To Subscriptions | To Entrance Fees | To Donations | By Salaries | By Rent | By Stationery | By Balance c/d (Cash + Bank)
+    </div>
+  </div>
+
+  <div class="card">
+    <h2><i class="fas fa-file-invoice"></i> Specimen: Income & Expenditure Account</h2>
+    <div class="highlight">
+      <strong>Dr. Income & Expenditure Account for the year ended 31st March, 20__ Cr.</strong><br>
+      To Salaries | To Rent | To Stationery | By Subscriptions | By Entrance Fees | By Donations | By Surplus (balancing figure)
+    </div>
+  </div>
+
+  <div class="card">
+    <h2><i class="fas fa-balance-scale"></i> Specimen: Balance Sheet (Not for Profit Concern)</h2>
+    <div class="highlight">
+      <strong>Liabilities:</strong> Capital Fund, Specific Funds, Outstanding Expenses, Income Received in Advance<br>
+      <strong>Assets:</strong> Fixed Assets (less depreciation), Cash in Hand, Cash at Bank, Investments, Outstanding Income, Prepaid Expenses, Closing Stock of Stationery/Sports Materials
+    </div>
+  </div>
+
+  <!-- ================= Subscription Calculation (Working Note) ================= -->
+  <div class="card">
+    <h2><i class="fas fa-calculator"></i> Subscription Income Calculation (Accrual Basis)</h2>
+    <div class="resp-table">
+      <table>
+        <thead><tr><th>Particulars</th><th>Amount (₹)</th></tr></thead>
+        <tbody>
+          <tr><td>Subscription received as per Receipts & Payments A/c</td><td>xxxx</td></tr>
+          <tr><td>Add: Outstanding Subscription at end of current year</td><td>+ xxxx</td></tr>
+          <tr><td>Less: Outstanding Subscription at beginning of current year</td><td>- xxxx</td></tr>
+          <tr><td>Add: Subscription received in advance at beginning of current year</td><td>+ xxxx</td></tr>
+          <tr><td>Less: Subscription received in advance at end of current year</td><td>- xxxx</td></tr>
+          <tr><td><strong>Subscription credited to Income & Expenditure A/c</strong></td><td><strong>xxxx</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ================= Stationery Consumed Calculation ================= -->
+  <div class="card">
+    <h2><i class="fas fa-calculator"></i> Stationery / Sports Material Consumed</h2>
+    <div class="highlight">
+      <strong>Formula:</strong><br>
+      Opening Stock of Stationery + Purchases + Outstanding Bill - Closing Stock = Stationery Consumed<br>
+      (Stationery Consumed is debited to Income & Expenditure Account)
+    </div>
+  </div>
+
+  <div class="footer-note">
+    <i class="fas fa-hand-holding-heart"></i> Not for Profit Concerns: Service motive | Receipts & Payments (Cash basis) | Income & Expenditure (Accrual basis) | Balance Sheet shows Capital Fund
+  </div>
+</div>
+</body>
+</html>

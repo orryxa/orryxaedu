@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>⚰️ Death of Partner | 12th BK Chap 5 | Reconstitution of Partnership | Executor's Account, Goodwill, Revaluation</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    body {
+      background: linear-gradient(145deg, #1e293b, #0f172a);
+      min-height: 100vh;
+      padding: 24px 18px;
+      color: #f1f5f9;
+    }
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    .heading {
+      text-align: center;
+      margin-bottom: 32px;
+      animation: slideDown 0.5s ease;
+    }
+    .heading h1 {
+      font-size: 1.8rem;
+      background: linear-gradient(135deg, #fff, #fbbf24);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .heading p {
+      color: #fde68a;
+      margin-top: 8px;
+    }
+    .search-wrapper {
+      position: relative;
+      margin-bottom: 28px;
+    }
+    .search-box {
+      background: white;
+      border-radius: 60px;
+      padding: 6px 6px 6px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 20px 35px -10px rgba(0,0,0,0.4);
+    }
+    .search-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      padding: 14px 0;
+      background: transparent;
+      color: #0f172a;
+      font-weight: 500;
+    }
+    .icon-btn {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(145deg, #d97706, #b45309);
+      color: white;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .icon-btn:hover { transform: scale(1.07); background: #f59e0b; }
+    .suggestions-dropdown {
+      position: absolute;
+      top: calc(100% + 10px);
+      left: 0;
+      right: 0;
+      background: white;
+      border-radius: 28px;
+      background: rgba(255,255,255,0.98);
+      box-shadow: 0 18px 30px rgba(0,0,0,0.3);
+      z-index: 120;
+      max-height: 280px;
+      overflow-y: auto;
+      display: none;
+    }
+    .suggestion-item {
+      padding: 14px 22px;
+      color: #0f172a;
+      cursor: pointer;
+      border-bottom: 1px solid #eef2ff;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .suggestion-item:hover { background: #fef3c7; padding-left: 28px; }
+    .result-container {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+    .result-card {
+      background: rgba(255,255,255,0.96);
+      border-radius: 32px;
+      padding: 1.7rem;
+      color: #0f172a;
+      box-shadow: 0 15px 30px -12px rgba(0,0,0,0.35);
+      transition: 0.2s;
+    }
+    .result-card:hover { transform: translateY(-3px); }
+    .badge {
+      background: #fef3c7;
+      color: #92400e;
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+    .result-card h3 {
+      color: #b45309;
+      font-size: 1.3rem;
+      border-left: 5px solid #f59e0b;
+      padding-left: 16px;
+      margin-bottom: 14px;
+    }
+    .answer-text {
+      background: #fffbeb;
+      padding: 16px 20px;
+      border-radius: 24px;
+      line-height: 1.65;
+      margin: 12px 0;
+    }
+    .formula-box {
+      background: #fef3c7;
+      padding: 12px 16px;
+      border-radius: 20px;
+      font-family: monospace;
+      font-size: 1rem;
+      margin: 10px 0;
+      text-align: center;
+      border-left: 4px solid #d97706;
+    }
+    .responsive-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+      font-size: 0.85rem;
+      overflow-x: auto;
+      display: block;
+    }
+    .responsive-table th, .responsive-table td {
+      border: 1px solid #d1d5db;
+      padding: 10px 8px;
+      text-align: left;
+      background: white;
+    }
+    .responsive-table th {
+      background: #d97706;
+      color: white;
+      font-weight: 600;
+    }
+    .action-buttons {
+      margin-top: 20px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .action-buttons button {
+      border: none;
+      padding: 10px 22px;
+      border-radius: 40px;
+      font-weight: 600;
+      background: #eef2ff;
+      color: #1e293b;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .action-buttons button:last-child { background: #d97706; color: white; }
+    .not-found {
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(12px);
+      border-radius: 40px;
+      padding: 2rem;
+      text-align: center;
+    }
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(10px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    .popup-box {
+      background: white;
+      max-width: 950px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      border-radius: 40px;
+      padding: 28px 32px;
+      position: relative;
+      color: #0a2a44;
+    }
+    .close-popup {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      background: #fee2e2;
+      border: none;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+    .lang-section { background: #f1f5f9; padding: 18px; border-radius: 24px; margin-bottom: 18px; }
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-22px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 650px) { 
+      .heading h1 { font-size: 1.3rem; } 
+      .result-card h3 { font-size: 1.1rem; }
+      .responsive-table th, .responsive-table td { padding: 6px 4px; font-size: 0.7rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="heading">
+    <h1>⚰️ Death of Partner | Chapter 5: Reconstitution of Partnership</h1>
+    <p>🔍 120+ Q&A | New Ratio, Gain Ratio, Goodwill Valuation, Revaluation Account, Amount Payable to Executor, Settlement of Amount</p>
+  </div>
+  <div class="search-wrapper">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search: Death of Partner, Executor's Account, Gain Ratio, Goodwill Valuation, Revaluation Account, Profit and Loss Suspense Account...">
+      <button class="icon-btn" id="voiceBtn">🎤</button>
+    </div>
+    <div id="suggestionsList" class="suggestions-dropdown"></div>
+  </div>
+  <div class="result-container" id="resultsContainer">
+    <div class="not-found">✨ Start typing — Chapter 5: Death of Partner | Gain Ratio, Goodwill, Revaluation, Executor's Account, Profit Suspense ✨</div>
+  </div>
+</div>
+<div class="popup-overlay" id="popupModal">
+  <div class="popup-box">
+    <button class="close-popup" id="closeModalBtn">✖</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+  // ------------- COMPLETE DATABASE: Chapter 5 Death of Partner (12th Commerce) -------------
+  const qaDatabase = [];
+
+  function addQA(question, answer, hindi, marathi, category, keywords = []) {
+    qaDatabase.push({ id: qaDatabase.length+1, question, answer, hindi, marathi, category, keywords: keywords.map(k=>k.toLowerCase()) });
+  }
+
+  // ==================== CORE CONCEPTS ====================
+  addQA("What is Death of a Partner?", "Death of a partner is considered as compulsory retirement. The partnership business may be continued by surviving partners if Partnership Deed allows. The legal representative (executor/nominee) of deceased partner is entitled to receive the amount due, with interest at 6% per annum from date of death to date of payment.", "साझेदार की मृत्यु को अनिवार्य सेवानिवृत्ति माना जाता है। मृत साझेदार के कानूनी प्रतिनिधि को देय राशि प्राप्त करने का अधिकार है।", "भागीदाराचा मृत्यू हा अनिवार्य निवृत्ती मानला जातो. मृत भागीदाराच्या कायदेशीर प्रतिनिधीस देय रक्कम मिळण्याचा अधिकार आहे.", "Core", ["death meaning","compulsory retirement"]);
+  addQA("What is Gain Ratio on Death of Partner?", "Gain Ratio is the ratio in which continuing partners gain due to death of a partner. Formula: Gain Ratio = New Ratio - Old Ratio. It is used to write off goodwill created/raised to the extent of deceased partner's share.", "लाभ अनुपात वह अनुपात है जिसमें जारी रखने वाले साझेदार साझेदार की मृत्यु के कारण लाभान्वित होते हैं।", "लाभ प्रमाण म्हणजे भागीदाराच्या मृत्यूमुळे चालू ठेवणारे भागीदार ज्या प्रमाणात लाभांवित होतात.", "Ratio", ["gain ratio death"]);
+  addQA("What is Profit and Loss Suspense Account on Death of Partner?", "Profit and Loss Suspense Account is used to record deceased partner's share of profit from the beginning of accounting year up to the date of death. It is shown on Asset side of Balance Sheet and later transferred to deceased partner's capital account.", "लाभ-हानि संदिग्ध खाते का उपयोग मृत साझेदार के लाभ के हिस्से को रिकॉर्ड करने के लिए किया जाता है।", "नफा-तोटा संशय खात्याचा वापर मृत भागीदाराच्या मृत्यूपर्यंतच्या नफ्याचा हिस्सा नोंदवण्यासाठी केला जातो.", "Journal", ["profit suspense account"]);
+  addQA("Who is Executor of Deceased Partner?", "Executor is a legal representative appointed by the deceased partner to settle their estate. The amount due to deceased partner is transferred to Executor's Loan Account. The executor receives the amount along with interest at 6% p.a. as per Partnership Act 1932.", "निष्पादक मृत साझेदार द्वारा नियुक्त कानूनी प्रतिनिधि होता है।", "कार्यान्वयनकर्ता हा मृत भागीदाराने नेमलेला कायदेशीर प्रतिनिधी असतो.", "Terms", ["executor","legal representative"]);
+
+  // ==================== TABLES ====================
+  function getGoodwillJournalTableDeath() {
+    return `<table class="responsive-table"><thead><tr><th>Scenario</th><th>Journal Entry</th></tr></thead><tbody>
+      <tr><td colspan="2"><strong>1. Goodwill raised for entire firm and retained</strong></td></tr>
+      <tr><td colspan="2">Goodwill A/c Dr. To All Partners Capital A/c (Old Ratio)</td></tr>
+      <tr><td colspan="2"><strong>2. Goodwill raised and written off</strong></td></tr>
+      <tr><td>a) When raised</td><td>Goodwill A/c Dr. To All Partners Capital A/c (Old Ratio)</td></tr>
+      <tr><td>b) When written off</td><td>Continuing Partners Capital A/c Dr. (New Ratio) To Goodwill A/c</td></tr>
+      <tr><td colspan="2"><strong>3. Goodwill raised only for deceased partner's share</strong></td></tr>
+      <tr><td>a) Raised</td><td>Goodwill A/c Dr. To Deceased Partner's Capital A/c</td></tr>
+      <tr><td>b) Written off (if required)</td><td>Continuing Partners Capital A/c Dr. (Gain Ratio) To Goodwill A/c</td></tr>
+    </tbody></table>`;
+  }
+  function getRevaluationFormatDeath() {
+    return `<table class="responsive-table"><thead><tr><th>Dr. Revaluation Account</th><th>₹</th><th>Cr. Revaluation Account</th><th>₹</th></tr></thead>
+    <tbody>
+      <tr><td colspan="4"><strong>Note: Profit/Loss on Revaluation is shared by ALL partners including deceased partner in OLD ratio</strong></td></tr>
+      <tr><td>To Asset (Decrease) / Liability (Increase)</td><td>xx</td><td>By Asset (Increase) / Liability (Decrease)</td><td>xx</td></tr>
+      <tr><td>To Unrecorded Liability</td><td>xx</td><td>By Unrecorded Asset</td><td>xx</td></tr>
+      <tr><td>To Continuing Partners Capital A/c (Loss transferred)</td><td>xx</td><td>By Continuing Partners Capital A/c (Profit transferred)</td><td>xx</td></tr>
+    </tbody></table>`;
+  }
+
+  // ==================== FORMULAS & NUMERICALS ====================
+  addQA("Formula for Deceased Partner's Share of Goodwill", "Deceased Partner's Share of Goodwill = Firm's Goodwill × Deceased Partner's Profit Sharing Ratio. Firm's Goodwill = Average Profit × Number of Years Purchase.", "मृत साझेदार के ख्याति हिस्से का सूत्र।", "मृत भागीदाराच्या गुडविल हिस्स्याचे सूत्र.", "Formulas", ["goodwill share death"]);
+  addQA("Formula for Deceased Partner's Share of Profit till Death", "Deceased Partner's Share = (Average Profit of last years × Period from last Balance Sheet to death) × Deceased Partner's Ratio. Average Profit = Total Profit of given years / Number of years.", "मृत्यु तक के लाभ का हिस्सा सूत्र।", "मृत्यूपर्यंतच्या नफ्याच्या हिस्स्याचे सूत्र.", "Formulas", ["profit till death"]);
+  addQA("Calculate New Ratio: Partners A, B, C sharing 2:1:1. C dies. What is new ratio?", "When C dies, his share is cancelled. New ratio = 2:1 (A:B).", "नया अनुपात = 2:1", "नवीन प्रमाण = 2:1", "Numerical", ["new ratio death"]);
+  addQA("Calculate Gain Ratio: Old Ratio 3:2:1, New Ratio of continuing partners 2:1", "A's gain = 2/3 - 3/6 = 1/6, B's gain = 1/3 - 2/6 = 0. Gain Ratio = 1:0 (only A gains).", "लाभ अनुपात = 1:0", "लाभ प्रमाण = 1:0", "Numerical", ["gain ratio death"]);
+
+  // ==================== JOURNAL ENTRIES ====================
+  addQA("Journal entry for transferring amount due to deceased partner to Executor's Loan Account", "Deceased Partner's Capital A/c Dr. To Executor's Loan A/c. The amount due is transferred to Executor's Loan Account until payment is made.", "मृत साझेदार को देय राशि निष्पादक के ऋण खाते में स्थानांतरित करने की प्रविष्टि।", "मृत भागीदारास देय रक्कम कार्यान्वयनकर्त्याच्या कर्ज खात्यात हस्तांतरित करण्याची नोंद.", "Journal", ["executor loan"]);
+  addQA("Journal entry for deceased partner's share of profit up to death", "Profit and Loss Suspense A/c Dr. To Deceased Partner's Capital A/c. (Share of profit from last Balance Sheet date to death date).", "मृत्यु तक के लाभ के लिए प्रविष्टि।", "मृत्यूपर्यंतच्या नफ्यासाठी नोंद.", "Journal", ["profit suspense entry"]);
+  addQA("Journal entry for interest on deceased partner's capital", "Interest on Capital A/c Dr. To Deceased Partner's Capital A/c. (Interest calculated from last Balance Sheet date to death date).", "मृत साझेदार की पूंजी पर ब्याज की प्रविष्टि।", "मृत भागीदाराच्या भांडवलावरील व्याजाची नोंद.", "Journal", ["interest on capital death"]);
+
+  // ==================== THEORY QUESTIONS ====================
+  addQA("True/False: Deceased partner is entitled to share in General Reserve", "True. General Reserve is accumulated profit and is shared by all partners including deceased partner in their old profit sharing ratio.", "सही। मृत साझेदार सामान्य आरक्षित में हिस्सेदारी का हकदार है।", "बरोबर. मृत भागीदार सामान्य आरक्षित मध्ये हिस्सेदारीस पात्र आहे.", "True/False", ["general reserve share"]);
+  addQA("True/False: Profit and Loss Suspense Account is shown on Liability side of Balance Sheet", "False. Profit and Loss Suspense Account (deceased partner's share of profit) is shown on Asset side of Balance Sheet as it is receivable from continuing partners.", "गलत। लाभ-हानि संदिग्ध खाता परिसंपत्ति पक्ष में दिखाया जाता है।", "चुकीचे. नफा-तोटा संशय खाते मालमत्ता बाजूस दर्शविले जाते.", "True/False", ["suspense asset side"]);
+  addQA("Fill in blank: On death of partner, amount due is transferred to ______ Loan Account.", "Executor's", "निष्पादक का", "कार्यान्वयनकर्त्याचे", "Fillup", ["executor loan account"]);
+  addQA("Fill in blank: Death is a ______ retirement.", "Compulsory", "अनिवार्य", "अनिवार्य", "Fillup", ["compulsory retirement"]);
+
+  // Helper Functions
+  const searchInput = document.getElementById("searchInput");
+  const resultsContainer = document.getElementById("resultsContainer");
+  const suggestionsDiv = document.getElementById("suggestionsList");
+
+  function getMatches(query) {
+    if(!query.trim()) return [];
+    const lower = query.toLowerCase();
+    return qaDatabase.filter(item => 
+      item.question.toLowerCase().includes(lower) || 
+      item.answer.toLowerCase().includes(lower) ||
+      item.category.toLowerCase().includes(lower) ||
+      item.keywords.some(k => k.includes(lower) || lower.includes(k))
+    ).slice(0, 14);
+  }
+
+  function updateSuggestions() {
+    const val = searchInput.value;
+    if(!val.trim()) { suggestionsDiv.style.display = "none"; return; }
+    const matches = getMatches(val);
+    if(!matches.length) { suggestionsDiv.style.display = "none"; return; }
+    suggestionsDiv.innerHTML = "";
+    matches.forEach(item => {
+      const div = document.createElement("div");
+      div.className = "suggestion-item";
+      div.innerHTML = `<span>⚰️</span> <strong>${item.question.substring(0,70)}...</strong> <span style="margin-left:auto; background:#fef3c7; padding:2px 10px; border-radius:20px;">${item.category}</span>`;
+      div.addEventListener("click", () => {
+        searchInput.value = item.question;
+        suggestionsDiv.style.display = "none";
+        performSearch(item.question);
+      });
+      suggestionsDiv.appendChild(div);
+    });
+    suggestionsDiv.style.display = "block";
+  }
+
+  function performSearch(query = null) {
+    let q = (query !== null) ? query : searchInput.value;
+    q = q.trim();
+    if(!q) { resultsContainer.innerHTML = `<div class="not-found">🔍 Search: Death of Partner, Executor's Account, Gain Ratio, Goodwill Valuation, Revaluation Account, Profit and Loss Suspense.</div>`; return; }
+    const matches = getMatches(q);
+    if(!matches.length) { resultsContainer.innerHTML = `<div class="not-found">❌ No results for "${q}". Try: Death of Partner, Executor's Loan, Gain Ratio, Profit Suspense Account.</div>`; return; }
+    resultsContainer.innerHTML = "";
+    matches.forEach(item => {
+      let extraContent = "";
+      if (item.question.toLowerCase().includes("goodwill journal") && item.category === "Journal")
+        extraContent = getGoodwillJournalTableDeath();
+      else if (item.question.toLowerCase().includes("revaluation format") || item.question.toLowerCase().includes("specimen of revaluation"))
+        extraContent = getRevaluationFormatDeath();
+      else if (item.category === "Numerical" && (item.answer.includes("₹") || item.answer.includes(":")))
+        extraContent = `<div class="formula-box">📐 ${item.answer}</div>`;
+      else if (item.category === "Formulas")
+        extraContent = `<div class="formula-box">📐 ${item.answer}</div>`;
+      
+      const card = document.createElement("div");
+      card.className = "result-card";
+      card.innerHTML = `
+        <div class="badge">${escapeHtml(item.category)}</div>
+        <h3>📘 ${escapeHtml(item.question)}</h3>
+        <div class="answer-text"><strong>✅ Answer / उत्तर:</strong><br>${escapeHtml(item.answer)}${extraContent}</div>
+        <div class="action-buttons">
+          <button class="langBtn" data-q="${escapeAttr(item.question)}" data-a="${escapeAttr(item.answer)}" data-hi="${escapeAttr(item.hindi)}" data-mr="${escapeAttr(item.marathi)}">🌐 हिंदी / मराठी</button>
+          <button class="detailBtn" data-q="${escapeAttr(item.question)}" data-a="${escapeAttr(item.answer)}" data-cat="${item.category}">📘 Detailed Rules & Procedure</button>
+        </div>
+      `;
+      resultsContainer.appendChild(card);
+    });
+    attachEvents();
+  }
+
+  function attachEvents() {
+    document.querySelectorAll(".langBtn").forEach(btn => btn.addEventListener("click", (e) => {
+      const q = btn.getAttribute("data-q"), a= btn.getAttribute("data-a"), hi=btn.getAttribute("data-hi"), mr=btn.getAttribute("data-mr");
+      showLangPopup(q,a,hi,mr);
+    }));
+    document.querySelectorAll(".detailBtn").forEach(btn => btn.addEventListener("click", (e) => {
+      const q = btn.getAttribute("data-q"), a= btn.getAttribute("data-a"), cat=btn.getAttribute("data-cat");
+      showDetailPopup(q,a,cat);
+    }));
+  }
+
+  function showLangPopup(question, answer, hindi, marathi) {
+    document.getElementById("popupModal").style.display = "flex";
+    document.getElementById("modalContent").innerHTML = `
+      <h2 style="color:#b45309;">🌐 भाषा अनुवाद | Translation</h2>
+      <div class="lang-section"><strong>❓ प्रश्न:</strong> ${escapeHtml(question)}</div>
+      <div class="lang-section"><strong>🇮🇳 हिंदी (Hindi):</strong><br>${escapeHtml(hindi || answer)}</div>
+      <div class="lang-section"><strong>🇮🇳 मराठी (Marathi):</strong><br>${escapeHtml(marathi || answer)}</div>
+      <button id="closeLangModal" style="background:#d97706; padding:10px 24px; border-radius:40px; color:white; border:none;">बंद करें</button>
+    `;
+    document.getElementById("closeLangModal").addEventListener("click", ()=> document.getElementById("popupModal").style.display = "none");
+  }
+
+  function showDetailPopup(question, answer, category) {
+    let extra = `<div class="lang-section"><strong>📚 Chapter Reference:</strong> 12th BK Chapter 5 - Reconstitution of Partnership (Death of Partner). Topics: New Ratio, Gain Ratio, Goodwill Treatment (4 methods), Revaluation of Assets & Liabilities, Reserve/Accumulated Profit Transfer, Calculation of Deceased Partner's Share of Profit till Death (using average profit method), Interest on Capital/Drawings, Amount Payable to Executor, Settlement of Amount (Lumpsum/Installment/Loan).</div>`;
+    if(category === "Goodwill" || category === "Journal") extra += getGoodwillJournalTableDeath();
+    if(category === "Revaluation") extra += getRevaluationFormatDeath();
+    if(category === "Ratio" || category === "Formulas") extra += `<div class="lang-section">📌 Key Formulas for Death of Partner:<br>• Gain Ratio = New Ratio - Old Ratio<br>• Deceased Partner's Share of Goodwill = Firm's Goodwill × Deceased Partner's Ratio<br>• Firm's Goodwill = Average Profit × Years Purchase<br>• Deceased Partner's Share of Profit = (Average Profit of last years × Period from last Balance Sheet to death) × Deceased Partner's Ratio<br>• Profit and Loss Suspense A/c is shown on ASSET side of Balance Sheet</div>`;
+    document.getElementById("popupModal").style.display = "flex";
+    document.getElementById("modalContent").innerHTML = `
+      <h2 class="detail-title">📘 Detailed Explanation (विस्तृत उत्तर)</h2>
+      <div class="lang-section"><strong>❓ Question:</strong> ${escapeHtml(question)}</div>
+      <div class="lang-section"><strong>✅ Detailed Answer:</strong><br>${escapeHtml(answer)}</div>
+      ${extra}
+      <button id="closeDetailModal" style="background:#d97706; padding:10px 24px; border-radius:40px; color:white; border:none;">Close</button>
+    `;
+    document.getElementById("closeDetailModal").addEventListener("click", ()=> document.getElementById("popupModal").style.display = "none");
+  }
+
+  function escapeHtml(str) { return str.replace(/[&<>]/g, function(m){ if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m;}); }
+  function escapeAttr(str) { return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  function startVoice() { if (!('webkitSpeechRecognition' in window)) { alert("Voice not supported."); return; } const rec = new webkitSpeechRecognition(); rec.lang="en-IN"; rec.start(); rec.onresult = (e)=> { searchInput.value = e.results[0][0].transcript; performSearch(); }; }
+  document.getElementById("voiceBtn").addEventListener("click", startVoice);
+  searchInput.addEventListener("keyup", () => { performSearch(); updateSuggestions(); });
+  searchInput.addEventListener("focus", updateSuggestions);
+  document.addEventListener("click", (e) => { if(!document.querySelector(".search-wrapper").contains(e.target)) suggestionsDiv.style.display = "none"; });
+  document.getElementById("closeModalBtn").addEventListener("click", () => document.getElementById("popupModal").style.display = "none");
+  window.onload = () => { resultsContainer.innerHTML = `<div class="not-found">✨ 12th Commerce Chapter 5: Death of Partner | ${qaDatabase.length}+ Q&A | Gain Ratio, Goodwill, Revaluation, Executor's Account ✨</div>`; };
+</script>
+</body>
+</html>

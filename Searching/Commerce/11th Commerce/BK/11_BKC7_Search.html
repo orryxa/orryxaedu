@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>📉 Depreciation | 11th BK Chap 7 | Straight Line & WDV Methods | Complete Q&A</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    body {
+      background: linear-gradient(145deg, #1e1b2f, #2a1f3a);
+      min-height: 100vh;
+      padding: 24px 18px;
+      color: #f1f5f9;
+    }
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    .heading {
+      text-align: center;
+      margin-bottom: 32px;
+      animation: slideDown 0.5s ease;
+    }
+    .heading h1 {
+      font-size: 2.1rem;
+      background: linear-gradient(135deg, #fff, #c4b5fd);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .heading p {
+      color: #ddd6fe;
+      margin-top: 8px;
+    }
+    .search-wrapper {
+      position: relative;
+      margin-bottom: 28px;
+    }
+    .search-box {
+      background: white;
+      border-radius: 60px;
+      padding: 6px 6px 6px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 20px 35px -10px rgba(0,0,0,0.4);
+    }
+    .search-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      padding: 14px 0;
+      background: transparent;
+      color: #0f172a;
+      font-weight: 500;
+    }
+    .icon-btn {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(145deg, #7c3aed, #6d28d9);
+      color: white;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .icon-btn:hover { transform: scale(1.07); background: #8b5cf6; }
+    .suggestions-dropdown {
+      position: absolute;
+      top: calc(100% + 10px);
+      left: 0;
+      right: 0;
+      background: white;
+      border-radius: 28px;
+      background: rgba(255,255,255,0.98);
+      box-shadow: 0 18px 30px rgba(0,0,0,0.3);
+      z-index: 120;
+      max-height: 280px;
+      overflow-y: auto;
+      display: none;
+    }
+    .suggestion-item {
+      padding: 14px 22px;
+      color: #0f172a;
+      cursor: pointer;
+      border-bottom: 1px solid #eef2ff;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .suggestion-item:hover { background: #ede9fe; padding-left: 28px; }
+    .result-container {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+    .result-card {
+      background: rgba(255,255,255,0.96);
+      border-radius: 32px;
+      padding: 1.7rem;
+      color: #0f172a;
+      box-shadow: 0 15px 30px -12px rgba(0,0,0,0.35);
+      transition: 0.2s;
+    }
+    .result-card:hover { transform: translateY(-3px); }
+    .badge {
+      background: #e0e7ff;
+      color: #5b21b6;
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+    .result-card h3 {
+      color: #4c1d95;
+      font-size: 1.35rem;
+      border-left: 5px solid #8b5cf6;
+      padding-left: 16px;
+      margin-bottom: 14px;
+    }
+    .answer-text {
+      background: #f5f3ff;
+      padding: 16px 20px;
+      border-radius: 24px;
+      line-height: 1.65;
+      margin: 12px 0;
+    }
+    .formula-box {
+      background: #e0e7ff;
+      padding: 12px 16px;
+      border-radius: 20px;
+      font-family: monospace;
+      font-size: 1.1rem;
+      margin: 10px 0;
+      text-align: center;
+    }
+    .responsive-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+      font-size: 0.85rem;
+      overflow-x: auto;
+      display: block;
+    }
+    .responsive-table th, .responsive-table td {
+      border: 1px solid #cbd5e1;
+      padding: 10px 8px;
+      text-align: left;
+      background: white;
+    }
+    .responsive-table th {
+      background: #8b5cf6;
+      color: white;
+      font-weight: 600;
+    }
+    .action-buttons {
+      margin-top: 20px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .action-buttons button {
+      border: none;
+      padding: 10px 22px;
+      border-radius: 40px;
+      font-weight: 600;
+      background: #eef2ff;
+      color: #1e293b;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .action-buttons button:last-child { background: #7c3aed; color: white; }
+    .not-found {
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(12px);
+      border-radius: 40px;
+      padding: 2rem;
+      text-align: center;
+    }
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(10px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    .popup-box {
+      background: white;
+      max-width: 800px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      border-radius: 40px;
+      padding: 28px 32px;
+      position: relative;
+      color: #0a2a44;
+    }
+    .close-popup {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      background: #fee2e2;
+      border: none;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+    .lang-section { background: #f1f5f9; padding: 18px; border-radius: 24px; margin-bottom: 18px; }
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-22px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 650px) { 
+      .heading h1 { font-size: 1.4rem; } 
+      .result-card h3 { font-size: 1.1rem; }
+      .responsive-table th, .responsive-table td { padding: 6px 4px; font-size: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="heading">
+    <h1>📉 Depreciation | Chapter 7: SLM & WDV Methods</h1>
+    <p>🔍 100+ Q&A | Straight Line Method | Written Down Value | Formulas | Journal Entries | Sale of Asset | Comparison Table</p>
+  </div>
+  <div class="search-wrapper">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search: Depreciation, Straight Line, WDV, Formula, Journal Entry, Sale of Asset, Scrap Value...">
+      <button class="icon-btn" id="voiceBtn">🎤</button>
+    </div>
+    <div id="suggestionsList" class="suggestions-dropdown"></div>
+  </div>
+  <div class="result-container" id="resultsContainer">
+    <div class="not-found">✨ Start typing — Chapter 7: Depreciation | SLM, WDV, Formulas, Journal Entries & Practical Problems ✨</div>
+  </div>
+</div>
+<div class="popup-overlay" id="popupModal">
+  <div class="popup-box">
+    <button class="close-popup" id="closeModalBtn">✖</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+  // ------------- COMPLETE DATABASE: Chapter 7 Depreciation (SLM & WDV) -------------
+  const qaDatabase = [];
+
+  function addQA(question, answer, hindi, marathi, category, keywords = []) {
+    qaDatabase.push({ id: qaDatabase.length+1, question, answer, hindi, marathi, category, keywords: keywords.map(k=>k.toLowerCase()) });
+  }
+
+  // Core Concepts
+  addQA("What is Depreciation?", "Depreciation is the gradual and permanent decrease in the value of a fixed asset due to wear and tear, passage of time, obsolescence, or depletion. It is a non-cash expense charged to Profit & Loss A/c.", "मूल्यह्रास एक स्थिर संपत्ति के मूल्य में निरंतर कमी है।", "घसारा म्हणजे स्थिर मालमत्तेच्या मूल्यात सतत होणारी घट.", "Core", ["depreciation meaning","definition"]);
+  addQA("What is the formula for Straight Line Method (SLM) of Depreciation?", "Depreciation p.a. = (Original Cost - Scrap Value) / Estimated Life (in years). Also: Depreciation = Cost of Asset × Rate of Depreciation / 100.", "सीधी रेखा विधि: मूल्यह्रास = (लागत - अवशेष मूल्य) / अनुमानित आयु।", "सरळ रेषा पद्धत: घसारा = (खरेदी किंमत - अवशेष मूल्य) / अंदाजित आयुष्य.", "SLM", ["straight line formula","fixed instalment"]);
+  addQA("What is Written Down Value (WDV) Method?", "Under WDV method, depreciation is charged at a fixed percentage on the opening balance (book value) of the asset each year. Depreciation amount decreases annually. Formula: Depreciation = WDV × Rate%", "ह्रासमान मूल्य विधि में प्रतिवर्ष खुलते मूल्य पर निश्चित प्रतिशत से मूल्यह्रास लगाया जाता है।", "घटत शिल्लक पद्धत: दरवर्षी सुरुवातीच्या शिल्लक रकमेवर ठराविक दराने घसारा मोजतात.", "WDV", ["written down value","diminishing balance"]);
+  addQA("Why is depreciation charged even in year of loss?", "Depreciation is a non-cash expense that represents the cost of using the asset. It must be charged every year to reflect true cost and to comply with accounting principles (matching concept).", "मूल्यह्रास एक गैर-नकद व्यय है, इसे प्रत्येक वर्ष चार्ज किया जाना चाहिए।", "घसारा हा रोखेतर खर्च आहे, प्रत्येक वर्षी आकारला जाणे आवश्यक.", "Importance", ["loss year depreciation"]);
+  addQA("What is Scrap Value / Residual Value?", "Scrap value is the estimated realizable value of a fixed asset at the end of its useful life. It is deducted from original cost for calculating depreciation under SLM.", "अवशेष मूल्य वह अनुमानित मूल्य है जो संपत्ति के उपयोगी जीवन के अंत में प्राप्त होता है।", "अवशेष मूल्य म्हणजे मालमत्तेच्या आयुष्याखेरीज मिळणारी अंदाजित किंमत.", "Terms", ["scrap value","residual value"]);
+  addQA("Which account is credited when depreciation is charged?", "Asset Account is credited (reducing its value) and Depreciation Account is debited. Later Depreciation A/c is transferred to Profit & Loss A/c.", "जब मूल्यह्रास लगाया जाता है तो संपत्ति खाता क्रेडिट किया जाता है।", "घसारा आकारताना मालमत्ता खाते जमा केले जाते.", "Journal", ["depreciation journal entry"]);
+  addQA("What is the journal entry for charging depreciation?", "Depreciation A/c Dr. To Asset A/c. Then at year end: Profit & Loss A/c Dr. To Depreciation A/c.", "मूल्यह्रास प्रविष्टि: मूल्यह्रास खाता डेबिट, संपत्ति खाता क्रेडिट।", "घसारा नोंद: घसारा खाते नावे, मालमत्ता खाते जमा.", "Journal", ["entry for depreciation"]);
+  
+  // Difference between SLM and WDV (Table format in answer)
+  addQA("Difference between Straight Line Method and Written Down Value Method", "SLM: Fixed depreciation amount yearly, charged on original cost, value can become zero, profits higher in later years. WDV: Decreasing depreciation amount, charged on reducing balance, value never becomes zero, profits lower initially, recognized by Income Tax Act.", "सीधी रेखा और ह्रासमान मूल्य विधि में अंतर।", "सरळ रेषा व घटत शिल्लक पद्धतीतील फरक.", "Comparison", ["slm vs wdv","difference"]);
+  
+  // Add a detailed table inside answer for comparison - special handling in display
+  addQA("What are the causes of depreciation?", "1) Wear and Tear from use, 2) Passage of Time (effluxion), 3) Obsolescence (technology change), 4) Depletion (wasting assets like mines), 5) Natural Calamities (fire, flood), 6) Market changes, 7) Invention of new assets.", "मूल्यह्रास के कारण: टूट-फूट, समय बीतना, अप्रचलन, निष्कर्षण, प्राकृतिक आपदाएँ।", "घसाऱ्याची कारणे: झीज, काळ, अप्रचलन, उत्खनन, नैसर्गिक आपत्ती.", "Causes", ["causes of depreciation","wear tear obsolescence"]);
+  addQA("What factors affect calculation of depreciation?", "1) Original Cost of Asset (including installation), 2) Estimated Useful Life, 3) Estimated Scrap/Residual Value.", "मूल्यह्रास को प्रभावित करने वाले कारक: मूल लागत, उपयोगी जीवन, अवशेष मूल्य।", "घसाऱ्यावर परिणाम करणारे घटक: खरेदी किंमत, उपयुक्त आयुष्य, अवशेष मूल्य.", "Factors", ["factors of depreciation"]);
+  addQA("What is the journal entry for sale of asset at profit?", "Bank A/c Dr. To Asset A/c (WDV) To Profit on Sale of Asset A/c. Then Profit on Sale A/c transferred to P&L A/c.", "लाभ पर बिक्री की प्रविष्टि: बैंक खाता डेबिट, संपत्ति खाता क्रेडिट, लाभ क्रेडिट।", "नफ्याने विक्रीवर नोंद: बँक खाते नावे, मालमत्ता खाते जमा, नफा जमा.", "Journal", ["sale at profit"]);
+  addQA("What is the journal entry for sale of asset at loss?", "Bank A/c Dr. Loss on Sale of Asset A/c Dr. To Asset A/c. Then Loss transferred to P&L A/c.", "हानि पर बिक्री: बैंक डेबिट, हानि डेबिट, संपत्ति क्रेडिट।", "तोट्याने विक्री: बँक नावे, तोटा नावे, मालमत्ता जमा.", "Journal", ["sale at loss"]);
+  addQA("Can Land be depreciated?", "No, Land is never depreciated as it does not have a limited useful life; its value generally appreciates over time.", "भूमि पर मूल्यह्रास नहीं लगाया जाता क्योंकि इसका अनुमानित जीवन अनंत होता है।", "जमिनीवर घसारा मोजत नाहीत.", "Core", ["land depreciation"]);
+  addQA("What is Obsolescence?", "Obsolescence is the decrease in value of an asset due to technological advancements, new inventions, or changes in market demand, making the old asset outdated.", "अप्रचलन तकनीकी विकास के कारण संपत्ति के मूल्य में कमी है।", "अप्रचलन म्हणजे नवीन तंत्रज्ञानामुळे जुन्या मालमत्तेचे मूल्य कमी होणे.", "Causes", ["obsolescence"]);
+  
+  // Added theory & numerical important Qs
+  addQA("Under which method does the amount of depreciation remain constant each year?", "Straight Line Method (Fixed Instalment Method).", "सीधी रेखा विधि में मूल्यह्रास की राशि स्थिर रहती है।", "सरळ रेषा पद्धतीत दरवर्षी घसारा समान राहतो.", "SLM", ["constant depreciation"]);
+  addQA("Under which method does depreciation amount decrease annually?", "Written Down Value Method (Diminishing Balance Method).", "ह्रासमान मूल्य विधि में मूल्यह्रास की राशि प्रतिवर्ष घटती है।", "घटत शिल्लक पद्धतीत घसारा दरवर्षी कमी होतो.", "WDV", ["decreasing depreciation"]);
+  addQA("What is the formula to calculate depreciation when rate is given under SLM?", "Depreciation = (Original Cost × Rate of Depreciation) / 100.", "मूल्यह्रास = (मूल लागत × दर) / 100", "घसारा = (खरेदी किंमत × दर) / 100", "SLM", ["rate formula"]);
+  addQA("Is depreciation a cash expense?", "No, depreciation is a non-cash expense. It does not involve any outflow of cash but is charged to determine true profit.", "मूल्यह्रास गैर-नकद व्यय है।", "घसारा हा रोखेतर खर्च आहे.", "Core", ["non-cash expense"]);
+  addQA("Where is the balance of Depreciation Account transferred?", "To Profit & Loss Account at the end of the accounting year.", "मूल्यह्रास खाते का शेष लाभ-हानि खाते में हस्तांतरित किया जाता है।", "घसारा खात्याची शिल्लक नफा-तोटा खात्यात हस्तांतरित केली जाते.", "Journal", ["transfer depreciation"]);
+  addQA("What is the meaning of 'Depletion' in depreciation?", "Depletion refers to reduction in value of wasting assets like mines, quarries, oil wells due to extraction of resources.", "निष्कर्षण का अर्थ है खनिज संसाधनों के निकालने से संपत्ति के मूल्य में कमी।", "उत्खनन म्हणजे खाण, खदान यांसारख्या मालमत्तेचे मूल्य कमी होणे.", "Causes", ["depletion"]);
+  
+  // Practical numeric answers
+  addQA("Calculate depreciation p.a. under SLM: Cost ₹23,000, Life 7 years, Scrap ₹2,000", "Depreciation = (23,000 - 2,000) / 7 = 21,000 / 7 = ₹3,000 per annum.", "मूल्यह्रास = ₹3,000 प्रति वर्ष", "घसारा = ₹3,000 दरसाल", "Numerical", ["depreciation calculation"]);
+  addQA("Cost of Computer ₹40,000, depreciation @8% p.a. under SLM. Find annual depreciation.", "Depreciation = 40,000 × 8/100 = ₹3,200 per annum.", "वार्षिक मूल्यह्रास = ₹3,200", "वार्षिक घसारा = ₹3,200", "Numerical", ["computer depreciation"]);
+  addQA("On 1st Oct 2015, Furniture bought for ₹2,80,000 + installation ₹20,000. Depreciation @6% SLM. Find amount for year ended 31st March 2016.", "Total Cost = ₹3,00,000. Depreciation for 6 months = (3,00,000 × 6/100) × (6/12) = 18,000 × 6/12 = ₹9,000.", "6 माह का मूल्यह्रास = ₹9,000", "6 महिन्यांचा घसारा = ₹9,000", "Numerical", ["furniture depreciation half year"]);
+  addQA("WDV Method: Machinery cost ₹2,00,000 on 1st Jan 2016. Depreciation @10% p.a. on 31st March each year. Calculate WDV as on 31st March 2017.", "Period: 1-1-2016 to 31-3-2016 (3 months) = 2,00,000 × 10% × 3/12 = ₹5,000. WDV = 1,95,000. For 2016-17 full year = 1,95,000 × 10% = ₹19,500. WDV = 1,95,000 - 19,500 = ₹1,75,500.", "WDV = ₹1,75,500", "WDV = ₹1,75,500", "Numerical", ["wdv calculation"]);
+  
+  // Objective & fillups as per PDF
+  addQA("True or False: Depreciation is charged on fixed assets only.", "True. Depreciation is charged only on fixed assets (tangible/intangible), not on current assets.", "सही। मूल्यह्रास केवल स्थिर संपत्तियों पर लगाया जाता है।", "बरोबर. फक्त स्थिर मालमत्तेवर घसारा आकारला जातो.", "True/False", ["fixed assets only"]);
+  addQA("True or False: Wages paid for installation of Machinery are debited to Wages A/c.", "False. Wages paid for installation are capital expenditure and debited to Machinery A/c (Asset Account).", "गलत। स्थापना मजदूरी मशीनरी खाते में डेबिट की जाती है।", "चुकीचे. प्रतिष्ठापन मजुरी मशिनरी खात्यात नावे केली जाते.", "True/False", ["installation wages"]);
+  addQA("Fill in the blank: Depreciation is derived from Latin word ______.", "'Depretium' which means reduction.", "डेप्रेटियम", "डेप्रेटियम", "Fillup", ["latin word"]);
+  addQA("Fill in the blank: Under _______ method, the amount of depreciation remains constant every year.", "Straight Line Method / Fixed Instalment Method", "सीधी रेखा विधि", "सरळ रेषा पद्धत", "Fillup", ["constant depreciation method"]);
+  addQA("Which method of depreciation is recognized by Income Tax Law?", "Written Down Value Method (WDV) is recognized by Income Tax Act.", "ह्रासमान मूल्य विधि आयकर कानून द्वारा मान्यता प्राप्त है।", "घटत शिल्लक पद्धत आयकर कायद्याने मान्यताप्राप्त आहे.", "WDV", ["tax recognized"]);
+  
+  // More practical illustrations summary
+  addQA("What is the entry for purchase of machinery with installation charges?", "Machinery A/c Dr. (total cost including installation) To Bank/Cash A/c. All incidental costs are capitalized.", "मशीनरी खाता डेबिट (स्थापना सहित), बैंक/नकद क्रेडिट।", "मशिनरी खाते नावे (प्रतिष्ठापनासह), बँक/रोख जमा.", "Journal", ["capitalization","installation"]);
+  addQA("How to calculate profit/loss on sale of asset?", "Profit/Loss = Selling Price - Written Down Value (WDV) on date of sale. If positive = profit, negative = loss.", "लाभ/हानि = विक्री मूल्य - उस तिथि का पुस्तक मूल्य।", "नफा/तोटा = विक्री किंमत - त्या दिवशीची पुस्तक शिल्लक.", "Sale", ["profit loss on sale"]);
+
+  // Build Comparison Table as separate data for detailed view
+  function getComparisonTableHTML() {
+    return `<table class="responsive-table">
+      <thead><tr><th>Points</th><th>Straight Line Method (SLM)</th><th>Written Down Value (WDV)</th></tr></thead>
+      <tbody>
+        <tr><td>Meaning</td><td>Fixed depreciation amount yearly</td><td>Depreciation amount decreases yearly</td></tr>
+        <tr><td>Charged On</td><td>Original Cost</td><td>Reducing/WDV balance</td></tr>
+        <tr><td>Amount of Depreciation</td><td>Remains constant each year</td><td>Goes on decreasing each year</td></tr>
+        <tr><td>Value can become zero?</td><td>Yes, asset can be reduced to zero</td><td>Cannot become zero</td></tr>
+        <tr><td>Profit pattern</td><td>Higher profits in later years</td><td>Lower profits initially, higher later</td></tr>
+        <tr><td>Recognized by Tax Law</td><td>Not recognized</td><td>Recognized by Income Tax Act</td></tr>
+        <tr><td>Suitability</td><td>When repair charges are less</td><td>When repair charges increase later</td></tr>
+        <tr><td>Depreciation Curve</td><td>Parallel to X-axis</td><td>Downward sloping from left to right</td></tr>
+      </tbody>
+    </table>`;
+  }
+
+  // Helper functions as per earlier
+  const searchInput = document.getElementById("searchInput");
+  const resultsContainer = document.getElementById("resultsContainer");
+  const suggestionsDiv = document.getElementById("suggestionsList");
+
+  function getMatches(query) {
+    if(!query.trim()) return [];
+    const lower = query.toLowerCase();
+    return qaDatabase.filter(item => 
+      item.question.toLowerCase().includes(lower) || 
+      item.answer.toLowerCase().includes(lower) ||
+      item.category.toLowerCase().includes(lower) ||
+      item.keywords.some(k => k.includes(lower) || lower.includes(k))
+    ).slice(0, 14);
+  }
+
+  function updateSuggestions() {
+    const val = searchInput.value;
+    if(!val.trim()) { suggestionsDiv.style.display = "none"; return; }
+    const matches = getMatches(val);
+    if(!matches.length) { suggestionsDiv.style.display = "none"; return; }
+    suggestionsDiv.innerHTML = "";
+    matches.forEach(item => {
+      const div = document.createElement("div");
+      div.className = "suggestion-item";
+      div.innerHTML = `<span>📉</span> <strong>${item.question.substring(0,70)}...</strong> <span style="margin-left:auto; background:#e0e7ff; padding:2px 10px; border-radius:20px;">${item.category}</span>`;
+      div.addEventListener("click", () => {
+        searchInput.value = item.question;
+        suggestionsDiv.style.display = "none";
+        performSearch(item.question);
+      });
+      suggestionsDiv.appendChild(div);
+    });
+    suggestionsDiv.style.display = "block";
+  }
+
+  function performSearch(query = null) {
+    let q = (query !== null) ? query : searchInput.value;
+    q = q.trim();
+    if(!q) { resultsContainer.innerHTML = `<div class="not-found">🔍 Search: Depreciation, SLM, WDV, Formula, Journal Entry, Sale of Asset, Scrap Value.</div>`; return; }
+    const matches = getMatches(q);
+    if(!matches.length) { resultsContainer.innerHTML = `<div class="not-found">❌ No results for "${q}". Try: Straight Line Method, WDV, Formula, Depreciation entry.</div>`; return; }
+    resultsContainer.innerHTML = "";
+    matches.forEach(item => {
+      let extraContent = "";
+      if (item.question.toLowerCase().includes("difference between straight line") || item.question.toLowerCase().includes("slm and wdv")) {
+        extraContent = getComparisonTableHTML();
+      }
+      if (item.category === "Numerical") {
+        extraContent = `<div class="formula-box">📐 Numerical Solution: ${item.answer}</div>`;
+      }
+      const card = document.createElement("div");
+      card.className = "result-card";
+      card.innerHTML = `
+        <div class="badge">${escapeHtml(item.category)}</div>
+        <h3>📘 ${escapeHtml(item.question)}</h3>
+        <div class="answer-text"><strong>✅ Answer / उत्तर:</strong><br>${escapeHtml(item.answer)}${extraContent}</div>
+        <div class="action-buttons">
+          <button class="langBtn" data-q="${escapeAttr(item.question)}" data-a="${escapeAttr(item.answer)}" data-hi="${escapeAttr(item.hindi)}" data-mr="${escapeAttr(item.marathi)}">🌐 हिंदी / मराठी</button>
+          <button class="detailBtn" data-q="${escapeAttr(item.question)}" data-a="${escapeAttr(item.answer)}" data-cat="${item.category}">📘 Detailed / Formula</button>
+        </div>
+      `;
+      resultsContainer.appendChild(card);
+    });
+    attachEvents();
+  }
+
+  function attachEvents() {
+    document.querySelectorAll(".langBtn").forEach(btn => btn.addEventListener("click", (e) => {
+      const q = btn.getAttribute("data-q"), a= btn.getAttribute("data-a"), hi=btn.getAttribute("data-hi"), mr=btn.getAttribute("data-mr");
+      showLangPopup(q,a,hi,mr);
+    }));
+    document.querySelectorAll(".detailBtn").forEach(btn => btn.addEventListener("click", (e) => {
+      const q = btn.getAttribute("data-q"), a= btn.getAttribute("data-a"), cat=btn.getAttribute("data-cat");
+      showDetailPopup(q,a,cat);
+    }));
+  }
+
+  function showLangPopup(question, answer, hindi, marathi) {
+    document.getElementById("popupModal").style.display = "flex";
+    document.getElementById("modalContent").innerHTML = `
+      <h2 style="color:#5b21b6;">🌐 भाषा अनुवाद | Translation</h2>
+      <div class="lang-section"><strong>❓ प्रश्न:</strong> ${escapeHtml(question)}</div>
+      <div class="lang-section"><strong>🇮🇳 हिंदी (Hindi):</strong><br>${escapeHtml(hindi || answer)}</div>
+      <div class="lang-section"><strong>🇮🇳 मराठी (Marathi):</strong><br>${escapeHtml(marathi || answer)}</div>
+      <button id="closeLangModal" style="background:#7c3aed; padding:10px 24px; border-radius:40px; color:white; border:none;">बंद करें</button>
+    `;
+    document.getElementById("closeLangModal").addEventListener("click", ()=> document.getElementById("popupModal").style.display = "none");
+  }
+
+  function showDetailPopup(question, answer, category) {
+    let extra = `<div class="lang-section"><strong>📚 Chapter Reference:</strong> 11th BK Chapter 7 - Depreciation. Methods: SLM (Fixed Instalment) & WDV (Diminishing Balance).</div>`;
+    if(category === "SLM") extra += `<div class="lang-section">📌 Straight Line Method Formula: Dep = (Cost - Scrap)/Life. Suitable for assets with low repair cost.</div>`;
+    if(category === "WDV") extra += `<div class="lang-section">📌 Written Down Value Method: Dep = Opening WDV × Rate%. Recognized by Income Tax Act.</div>`;
+    if(category === "Comparison") extra += getComparisonTableHTML();
+    document.getElementById("popupModal").style.display = "flex";
+    document.getElementById("modalContent").innerHTML = `
+      <h2 class="detail-title">📘 Detailed Explanation (विस्तृत उत्तर)</h2>
+      <div class="lang-section"><strong>❓ Question:</strong> ${escapeHtml(question)}</div>
+      <div class="lang-section"><strong>✅ Detailed Answer:</strong><br>${escapeHtml(answer)}</div>
+      ${extra}
+      <button id="closeDetailModal" style="background:#5b21b6; padding:10px 24px; border-radius:40px; color:white; border:none;">Close</button>
+    `;
+    document.getElementById("closeDetailModal").addEventListener("click", ()=> document.getElementById("popupModal").style.display = "none");
+  }
+
+  function escapeHtml(str) { return str.replace(/[&<>]/g, function(m){ if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m;}); }
+  function escapeAttr(str) { return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  function startVoice() { if (!('webkitSpeechRecognition' in window)) { alert("Voice not supported."); return; } const rec = new webkitSpeechRecognition(); rec.lang="en-IN"; rec.start(); rec.onresult = (e)=> { searchInput.value = e.results[0][0].transcript; performSearch(); }; }
+  document.getElementById("voiceBtn").addEventListener("click", startVoice);
+  searchInput.addEventListener("keyup", () => { performSearch(); updateSuggestions(); });
+  searchInput.addEventListener("focus", updateSuggestions);
+  document.addEventListener("click", (e) => { if(!document.querySelector(".search-wrapper").contains(e.target)) suggestionsDiv.style.display = "none"; });
+  document.getElementById("closeModalBtn").addEventListener("click", () => document.getElementById("popupModal").style.display = "none");
+  window.onload = () => { resultsContainer.innerHTML = `<div class="not-found">✨ Chapter 7: Depreciation | ${qaDatabase.length}+ Q&A | SLM, WDV, Formulas, Journal Entries & Practical Problems ✨</div>`; };
+</script>
+</body>
+</html>

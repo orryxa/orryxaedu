@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Chapter 6 | Institutes Supporting Business - 11th Commerce</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #eef2f9 0%, #e0e8f2 100%);
+            font-family: 'Inter', sans-serif;
+            padding: 32px 24px;
+            color: #0a2b3e;
+            line-height: 1.5;
+            overflow-y: scroll;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        body::-webkit-scrollbar { display: none; }
+        .container { max-width: 1400px; margin: 0 auto; }
+        .hero { text-align: center; margin-bottom: 40px; }
+        .hero h1 {
+            font-size: 2.4rem; font-weight: 800;
+            background: linear-gradient(135deg, #0b4b6b, #1f6e93, #2c7da0);
+            background-clip: text; -webkit-background-clip: text; color: transparent;
+            padding-bottom: 10px;
+            border-bottom: 4px solid #ffb347;
+            display: inline-block;
+        }
+        .summary-card {
+            background: linear-gradient(145deg, #ffffff, #f8fbfe);
+            border-radius: 2rem;
+            margin-bottom: 32px;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.12);
+            overflow: hidden;
+            border: 1px solid rgba(44,125,160,0.15);
+        }
+        .summary-header {
+            background: linear-gradient(105deg, #135b78 0%, #1f7a9e 100%);
+            padding: 20px 28px;
+            border-bottom: 4px solid #ffb74d;
+        }
+        .summary-header h2 {
+            color: white;
+            font-size: 1.6rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .summary-header h2 i { font-size: 1.8rem; color: #ffd966; }
+        .summary-body {
+            padding: 28px 32px;
+            max-height: 550px;
+            overflow-y: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .summary-body::-webkit-scrollbar { display: none; }
+        .summary-text { font-size: 1rem; line-height: 1.65; color: #1f3b4c; }
+        .summary-text p { margin-bottom: 14px; }
+        .summary-text strong { color: #135b78; }
+        .highlight-badge {
+            background: #eef3fc;
+            border-left: 4px solid #ffb74d;
+            padding: 10px 16px;
+            margin: 16px 0;
+            border-radius: 12px;
+        }
+        .lang-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px dashed #cbdde9;
+        }
+        .lang-btn {
+            background: #135b78; color: white; border: none;
+            padding: 10px 28px; border-radius: 50px; font-weight: 600;
+            cursor: pointer; transition: all 0.25s ease;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .lang-btn:hover { background: #ff8c42; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        .card {
+            background: rgba(255,255,255,0.97); border-radius: 1.8rem;
+            margin-bottom: 32px; padding: 28px 32px;
+            box-shadow: 0 15px 30px -10px rgba(0,0,0,0.08);
+            border: 1px solid rgba(255,255,255,0.6);
+        }
+        .card h2 {
+            font-size: 1.6rem; font-weight: 700; color: #135b78;
+            margin-bottom: 24px; padding-bottom: 8px;
+            border-bottom: 3px solid #ffb74d;
+            display: inline-block;
+        }
+        .card h2 i { margin-right: 12px; color: #ff8c42; }
+        .qa-item { margin-bottom: 22px; border-left: 3px solid #cbdde9; padding-left: 20px; }
+        .question { font-weight: 700; color: #1f4a5e; margin-bottom: 8px; display: flex; gap: 12px; flex-wrap: wrap; }
+        .answer {
+            background: #f8fafd; padding: 10px 18px; border-radius: 24px;
+            font-weight: 500; color: #216477; display: inline-block;
+            font-size: 0.92rem;
+        }
+        .true-badge { background: #e0f2e9; color: #1e6f3f; padding: 3px 14px; border-radius: 40px; font-weight: 700; font-size: 0.75rem; display: inline-block; margin-right: 12px; }
+        .false-badge { background: #ffe8e6; color: #bc4742; padding: 3px 14px; border-radius: 40px; font-weight: 700; font-size: 0.75rem; display: inline-block; margin-right: 12px; }
+        .resp-table { width: 100%; overflow-x: auto; margin: 16px 0; background: #f4f9fe; padding: 4px; border-radius: 20px; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; background: white; border-radius: 16px; overflow: hidden; }
+        th, td { border: 1px solid #cde1ef; padding: 10px 12px; text-align: left; vertical-align: top; }
+        th { background: #e0eaf5; font-weight: 700; color: #135b78; }
+        .popup-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+            justify-content: center; align-items: center; z-index: 1000;
+        }
+        .popup-content {
+            background: white; width: 90%; max-width: 950px; border-radius: 2rem;
+            position: relative; max-height: 85vh; overflow: hidden;
+            display: flex; flex-direction: column;
+        }
+        .popup-header {
+            background: linear-gradient(105deg, #135b78, #1f7a9e);
+            padding: 18px 24px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .close-popup {
+            font-size: 32px; cursor: pointer; color: #ffd966;
+            transition: 0.2s; line-height: 1;
+        }
+        .close-popup:hover { color: #fff; transform: rotate(90deg); }
+        .popup-body { padding: 24px; overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none; }
+        .popup-body::-webkit-scrollbar { display: none; }
+        @media (max-width: 768px) {
+            body { padding: 20px 16px; }
+            .card, .summary-body { padding: 20px 18px; }
+            .hero h1 { font-size: 1.8rem; }
+            th, td { padding: 6px 8px; font-size: 0.7rem; }
+        }
+        .footer-note { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #bdd4e4; font-size: 0.8rem; color: #2c6f8c; }
+        .inst-grid { display: flex; flex-wrap: wrap; gap: 15px; margin: 20px 0; }
+        .inst-card { flex: 1; min-width: 160px; background: linear-gradient(145deg, #135b78, #1f7a9e); border-radius: 1rem; padding: 16px; text-align: center; color: white; }
+        .inst-card i { font-size: 2rem; margin-bottom: 8px; }
+        .inst-card h3 { font-size: 1.1rem; margin-bottom: 4px; }
+        .inst-card small { font-size: 0.7rem; opacity: 0.9; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="hero">
+        <h1><i class="fas fa-university"></i> Chapter 6 · Institutes Supporting Business</h1>
+        <p style="margin-top: 12px;">SIDBI · NABARD · KVIC · SHG · World Bank | Financial Support for MSMEs & Rural Development</p>
+    </div>
+
+    <!-- ================= ATTRACTIVE SUMMARY CARD ================= -->
+    <div class="summary-card">
+        <div class="summary-header">
+            <h2><i class="fas fa-file-alt"></i> 📘 Chapter Summary: Institutes Supporting Business</h2>
+        </div>
+        <div class="summary-body">
+            <div class="summary-text" id="summaryText">
+                <p><strong>🔹 Introduction:</strong> Finance is the lifeblood of business. Various financial institutes provide short-term and long-term finance, advisory services, and developmental support to MSMEs, agriculture, rural industries, and women entrepreneurs.</p>
+                
+                <div class="inst-grid">
+                    <div class="inst-card"><i class="fas fa-building"></i><h3>SIDBI</h3><small>1990 | MSME Finance</small></div>
+                    <div class="inst-card"><i class="fas fa-tractor"></i><h3>NABARD</h3><small>1982 | Rural Credit</small></div>
+                    <div class="inst-card"><i class="fas fa-hand-sparkles"></i><h3>KVIC</h3><small>1957 | Khadi & Village</small></div>
+                    <div class="inst-card"><i class="fas fa-female"></i><h3>SHG</h3><small>Women Empowerment</small></div>
+                    <div class="inst-card"><i class="fas fa-globe"></i><h3>World Bank</h3><small>1944 | Global Dev</small></div>
+                </div>
+
+                <div class="highlight-badge"><strong>📌 SIDBI (Small Industrial Development Bank of India) - est. 2nd April 1990:</strong> Principal financial institution for MSMEs. Head office at Lucknow. Provides Direct Finance, Indirect Finance, Micro Finance. Digital initiatives: SIDBI Startup Mitra (March 17, 2016) & Udyami Mitra Portal. Subsidiaries: SVCL, CGTMSE, SMERA, ISTSL, ISARC, MUDRA.</div>
+                <div class="highlight-badge"><strong>📌 NABARD (National Bank for Agriculture & Rural Development) - est. 12th July 1982:</strong> Apex bank for agricultural finance. Provides refinancing to SCBs, RRBs, LDBs. Supervises RRBs & Cooperative Banks. Promotes Green, Blue & White Revolution.</div>
+                <div class="highlight-badge"><strong>📌 KVIC (Khadi & Village Industries Commission) - est. April 1957:</strong> Statutory body under MSME Ministry, HQ Mumbai. Promotes khadi & village industries, generates employment, organizes training, R&D, marketing support. MoU with NID for design support.</div>
+                <div class="highlight-badge"><strong>📌 Self Help Groups (SHGs):</strong> Small homogeneous group (5-20 members) for mutual help, savings, collateral-free loans. Based on "helping each other" & "unity is strength". Promotes women empowerment, entrepreneurship, democratic setup (one member one vote). NABARD initiated SHG-Bank Linkage Programme (1992).</div>
+                <div class="highlight-badge"><strong>📌 World Bank (Bretton Woods Conference 1944):</strong> HQ Washington D.C. Comprises IBRD (middle-income loans) & IDA (interest-free loans to poor countries). Goals by 2030: End extreme poverty (below $1.90/day to ≤3%) & Promote shared prosperity (bottom 40% income growth).</div>
+                <p><strong>⭐ Key Personalities:</strong> Dr. Muhammad Yunus (Father of Microfinance) - founded Grameen Bank (Oct 1983), jointly won Nobel Peace Prize 2006. Dr. B. Sivaraman - Chairman of CRAFICARD committee for NABARD.</p>
+            </div>
+            <div class="lang-buttons">
+                <button class="lang-btn" onclick="showTranslation('hindi')"><i class="fas fa-language"></i> हिंदी अनुवाद</button>
+                <button class="lang-btn" onclick="showTranslation('marathi')"><i class="fas fa-language"></i> मराठी अनुवाद</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= Section A: Multiple Choice ================= -->
+    <div class="card"><h2><i class="fas fa-check-square"></i> A. Select the correct option</h2>
+        <div class="qa-item"><div class="question">1) Small Industrial Development Bank of India (SIDBI) was established in ________.</div><div class="answer">b) 1990</div></div>
+        <div class="qa-item"><div class="question">2) SIDBI was established under the Small Industrial Development Bank of India Act, ________.</div><div class="answer">a) 1988</div></div>
+        <div class="qa-item"><div class="question">3) ________ is Principal Financial Institution for promotion of MSME sector in India.</div><div class="answer">c) SIDBI</div></div>
+        <div class="qa-item"><div class="question">4) ________ came into existence on July 12, 1982.</div><div class="answer">a) NABARD</div></div>
+        <div class="qa-item"><div class="question">5) CRAFICARD committee was constituted under Chairmanship of ________.</div><div class="answer">b) Shivaraman</div></div>
+        <div class="qa-item"><div class="question">6) All India Khadi and Village Industries Board was set up in the year ________.</div><div class="answer">a) 1953</div></div>
+        <div class="qa-item"><div class="question">7) In April ________ KVIC was established.</div><div class="answer">c) 1957</div></div>
+    </div>
+
+    <!-- ================= Section B: Match Pairs ================= -->
+    <div class="card"><h2><i class="fas fa-link"></i> B. Match the pairs</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Group A</th><th>Answer</th><th>Group B</th></tr></thead>
+                <tbody>
+                    <tr><td>SIDBI</div></div></td><td>→</div></div><td>Principal Institution for MSME</div></div></tr>
+                    <tr><td>NABARD</div></div></td><td>→</div></div><td>Apex institution for agricultural finance</div></div></tr>
+                    <tr><td>KVIC</div></div></td><td>→</div></div><td>Khadi & Village Industries promotion</div></div></tr>
+                    <tr><td>Dr. Muhammad Yunus</div></div></td><td>→</div></div><td>Father of Microfinance / Grameen Bank</div></div></tr>
+                    <tr><td>World Bank</div></div></td><td>→</div></div><td>International development finance</div></div></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================= Section C: One word ================= -->
+    <div class="card"><h2><i class="fas fa-tag"></i> C. Give one word/phrase/term</h2>
+        <div class="qa-item"><div class="question">1) Life blood of business.</div><div class="answer">Finance</div></div>
+        <div class="qa-item"><div class="question">2) Digital initiative by SIDBI launched on March 17th, 2016.</div><div class="answer">SIDBI Startup Mitra</div></div>
+        <div class="qa-item"><div class="question">3) The apex institution for agricultural finance.</div><div class="answer">NABARD</div></div>
+        <div class="qa-item"><div class="question">4) The Bangladeshi economist, known as the Father of Microfinance.</div><div class="answer">Dr. Muhammad Yunus</div></div>
+        <div class="qa-item"><div class="question">5) International organization dedicated to providing finance to developing nations.</div><div class="answer">World Bank</div></div>
+    </div>
+
+    <!-- ================= Section D: True/False ================= -->
+    <div class="card"><h2><i class="fas fa-gavel"></i> D. State True or False</h2>
+        <div class="qa-item"><div class="question">1) SIDBI was established on 2nd April, 1990.</div><div class="answer"><span class="true-badge">True</span></div></div>
+        <div class="qa-item"><div class="question">2) SIDBI has its head office at Mumbai.</div><div class="answer"><span class="false-badge">False</span> Head office at Lucknow</div></div>
+        <div class="qa-item"><div class="question">3) NABARD came into existence on July 12, 1982.</div><div class="answer"><span class="true-badge">True</span></div></div>
+        <div class="qa-item"><div class="question">4) The NABARD has been recognised as the apex institution for financing large scale Industries.</div><div class="answer"><span class="false-badge">False</span> For agricultural & rural development</div></div>
+        <div class="qa-item"><div class="question">5) Self Help Group is a large group of homogeneous individuals.</div><div class="answer"><span class="false-badge">False</span> Small group (5-20 members)</div></div>
+    </div>
+
+    <!-- ================= Features Comparison Table ================= -->
+    <div class="card"><h2><i class="fas fa-table"></i> Comparative Study: Financial Institutes at a Glance</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Institute</th><th>Established</th><th>Head Office</th><th>Parent/Act</th><th>Focus Area</th></tr></thead>
+                <tbody>
+                    <tr><td>SIDBI</div></div></td><td>2nd April 1990</div></div></td><td>Lucknow</div></div></td><td>SIDBI Act 1988</div></div></td><td>MSME Finance, Refinance</div></div></tr>
+                    <tr><td>NABARD</div></div></td><td>12th July 1982</div></div></td><td>Mumbai</div></div></td><td>NABARD Act 1981</div></div></td><td>Agriculture & Rural Credit</div></div></tr>
+                    <tr><td>KVIC</div></div></td><td>April 1957</div></div></td><td>Mumbai</div></div></td><td>KVIC Act 1956</div></div></td><td>Khadi & Village Industries</div></div></td>
+                    <tr><td>World Bank</div></div></td><td>1944 (Bretton Woods)</div></div></td><td>Washington D.C.</div></div></td><td>IBRD + IDA</div></div></td><td>Global Dev, Poverty Reduction</div></div></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================= SIDBI Features Table ================= -->
+    <div class="card"><h2><i class="fas fa-chart-line"></i> SIDBI: Key Features & Subsidiaries</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Feature</th><th>Description</th></tr></thead>
+                <tbody>
+                    <tr><td>Principal Financial Institution</td><td>For MSME sector; provides short & long term finance</td></tr>
+                    <tr><td>Sustainable Development</td><td>Energy efficient finance, climate control, reduce emissions</td></tr>
+                    <tr><td>Advisory Function</td><td>Mentor for MSMEs, marketing channels, technology upgradation</td></tr>
+                    <tr><td>SVCL (1999)</td><td>SIDBI Venture Capital Ltd - venture capital for emerging sectors</td></tr>
+                    <tr><td>CGTMSE</td><td>Credit Guarantee Fund Trust - collateral free credit guarantee</td></tr>
+                    <tr><td>SMERA</td><td>SME Rating Agency - third party ratings for MSMEs</td></tr>
+                    <tr><td>MUDRA</td><td>Micro Units Development & Refinance Agency - funding unfunded micro enterprises</td></tr>
+                    <tr><td>Digital Initiatives</td><td>SIDBI Startup Mitra (17/3/2016) & Udyami Mitra Portal</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================= NABARD Features ================= -->
+    <div class="card"><h2><i class="fas fa-tractor"></i> NABARD: Key Features</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Feature</th><th>Description</th></tr></thead>
+                <tbody>
+                    <tr><td>Apex Bank</td><td>Supreme institution for agricultural & rural credit</td></tr>
+                    <tr><td>Refinancing Facilities</td><td>To SCBs, RRBs, LDBs; short, medium & long term credit</td></tr>
+                    <tr><td>Supervision</td><td>Inspects RRBs & Cooperative Banks (as per BR Act 1949)</td></tr>
+                    <tr><td>Rural Industries</td><td>Refinance to SSI, cottage industries, skill development</td></tr>
+                    <tr><td>Natural Calamities</td><td>Refinancing during droughts, floods, crop failure</td></tr>
+                    <tr><td>National Development</td><td>Green Revolution, Blue Revolution, White Revolution</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================= KVIC Features ================= -->
+    <div class="card"><h2><i class="fas fa-hand-sparkles"></i> KVIC: Key Features</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Feature</th><th>Description</th></tr></thead>
+                <tbody>
+                    <tr><td>Rural Development</td><td>Planning, promotion & production of Khadi & village industries</td></tr>
+                    <tr><td>Employment Generation</td><td>Non-farm employment in rural areas</td></tr>
+                    <tr><td>Entrepreneurship Development</td><td>Training programmes for artisans, skill development</td></tr>
+                    <tr><td>Financial Assistance</td><td>Funds from MSME Ministry, implemented via State Boards</td></tr>
+                    <tr><td>Research & Development</td><td>MoU with NID for design support; new products like Khadi denim jeans</td></tr>
+                    <tr><td>Marketing & Promotion</td><td>Exhibitions, seminars, quality standards for genuineness</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================= SHG Features ================= -->
+    <div class="card"><h2><i class="fas fa-female"></i> Self Help Groups (SHGs) - Women Empowerment</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Feature</th><th>Description</th></tr></thead>
+                <tbody>
+                    <tr><td>Formation</td><td>Small homogeneous group (5-20 members); registration not compulsory</td></tr>
+                    <tr><td>Democratic Setup</td><td>Collective leadership; one member one vote; elect leader</td></tr>
+                    <tr><td>Habit of Saving</td><td>Regular small savings → common fund → lending to members</td></tr>
+                    <tr><td>Mutual Trust</td><td>Basic philosophy: "helping each other" & "unity is strength"</td></tr>
+                    <tr><td>Collateral Free Loan</td><td>No documentation; timely repayment; escape money lenders</td></tr>
+                    <tr><td>Women Empowerment</td><td>Enhances status, participation, decision making, socio-economic progress</td></tr>
+                    <tr><td>Promotes Entrepreneurship</td><td>Micro enterprises, skill training, marketing support</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="highlight-badge"><strong>📢 SHG-Bank Linkage Programme</strong> initiated by NABARD since 1992. Dr. Muhammad Yunus (Father of Microfinance) founded Grameen Bank (Oct 1983) - Nobel Peace Prize 2006.</div>
+    </div>
+
+    <!-- ================= World Bank Features ================= -->
+    <div class="card"><h2><i class="fas fa-globe"></i> World Bank: Structure & Goals</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Feature</th><th>Description</th></tr></thead>
+                <tbody>
+                    <tr><td>Establishment</td><td>Bretton Woods Conference 1944; HQ Washington D.C.</td></tr>
+                    <tr><td>IBRD</td><td>International Bank for Reconstruction & Development - debt to middle-income countries</td></tr>
+                    <tr><td>IDA</td><td>International Development Association - interest-free loans to poor countries</td></tr>
+                    <tr><td>IFC</td><td>International Finance Corporation - private sector investment</td></tr>
+                    <tr><td>MIGA</td><td>Multilateral Investment Guarantee Agency - promotes FDI</td></tr>
+                    <tr><td>Goal 2030 (1)</td><td>End extreme poverty - people below $1.90/day to ≤3%</td></tr>
+                    <tr><td>Goal 2030 (2)</td><td>Promote shared prosperity - income growth of bottom 40%</td></tr>
+                    <tr><td>Board of Governors</td><td>Supreme policy body - one Governor per member country</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================= One Sentence Answers ================= -->
+    <div class="card"><h2><i class="fas fa-question-circle"></i> G. Answer in one sentence</h2>
+        <div class="qa-item"><div class="question">1) What is SIDBI?</div><div class="answer">Small Industrial Development Bank of India is the principal financial institution for promotion, financing and development of MSMEs.</div></div>
+        <div class="qa-item"><div class="question">2) What is NABARD?</div><div class="answer">National Bank for Agriculture and Rural Development is an apex institution providing credit for agriculture and rural development.</div></div>
+        <div class="qa-item"><div class="question">3) What is Grameen Bank?</div><div class="answer">Grameen Bank was founded in Bangladesh in October 1983 by Dr. Muhammad Yunus to provide small loans to poor without collateral.</div></div>
+        <div class="qa-item"><div class="question">4) What is SHG?</div><div class="answer">Self Help Group is a small homogeneous group of individuals who come together for common fund through savings and collateral-free loans.</div></div>
+        <div class="qa-item"><div class="question">5) What is Udyami Mitra?</div><div class="answer">Udyami Mitra is a digital portal launched by SIDBI to improve accessibility of credit and handholding services to MSMEs.</div></div>
+    </div>
+
+    <!-- ================= Case Study ================= -->
+    <div class="card"><h2><i class="fas fa-briefcase"></i> Case Study Analysis</h2>
+        <div class="qa-item"><div class="question">Case: Anand completed MBA, wants to start SSI, looking for lender/investor.</div><div class="answer">i) Anand is the promoter/entrepreneur. ii) SSI = Small Scale Industry. iii) Digital ways: SIDBI Startup Mitra portal, Udyami Mitra portal, online loan applications, government schemes like MUDRA, crowdfunding platforms.</div></div>
+    </div>
+
+    <!-- ================= Correct the underlined words ================= -->
+    <div class="card"><h2><i class="fas fa-edit"></i> H. Correct the underlined word</h2>
+        <div class="qa-item"><div class="question">1) SIDBI is established to provide only long-term finance to MSMEs.</div><div class="answer">short-term and long-term</div></div>
+        <div class="qa-item"><div class="question">2) The NABARD has been recognised as the apex institution for industrial finance.</div><div class="answer">agricultural and rural</div></div>
+        <div class="qa-item"><div class="question">3) Self-help groups are based on the fundamental principle of to earn profit.</div><div class="answer">helping each other / mutual trust</div></div>
+        <div class="qa-item"><div class="question">4) World Bank provides high interest loan.</div><div class="answer">low-interest / interest-free</div></div>
+    </div>
+
+    <!-- ================= Justify Statements Section ================= -->
+    <div class="card"><h2><i class="fas fa-check-double"></i> Key Justifications</h2>
+        <div class="qa-item"><div class="question">Why is SIDBI called institute for promotion of MSMEs?</div><div class="answer">SIDBI provides direct/indirect finance, refinance, venture capital, credit guarantee, rating services, and digital platforms like Startup Mitra & Udyami Mitra exclusively for MSMEs.</div></div>
+        <div class="qa-item"><div class="question">Why is Mutual Trust the soul of SHG?</div><div class="answer">SHGs operate on collective responsibility, collateral-free loans based on trust, and members guarantee each other's repayment, building confidence and social capital.</div></div>
+        <div class="qa-item"><div class="question">Why is SHG important for women empowerment?</div><div class="answer">SHGs provide knowledge, finance, leadership opportunities, decision-making power, and socio-economic progress, enhancing women's status in family and society.</div></div>
+    </div>
+
+    <!-- ================= Nodal Agencies & Digital Initiatives ================= -->
+    <div class="card"><h2><i class="fas fa-laptop-code"></i> Digital Initiatives & Nodal Agencies</h2>
+        <div class="highlight-badge">🚀 <strong>SIDBI Startup Mitra</strong> (17 March 2016) - Platform connecting startups with incubators, investors, mentors, banks</div>
+        <div class="highlight-badge">🚀 <strong>Udyami Mitra Portal</strong> - Online loan application, document upload, track status, handholding support for MSMEs</div>
+        <div class="highlight-badge">🚀 <strong>SIDBI</strong> acts as Nodal/Implementing Agency for Government subsidy schemes for MSMEs</div>
+        <div class="highlight-badge">🚀 <strong>NABARD</strong> - SHG-Bank Linkage Programme (1992), promotes Green/Blue/White Revolution</div>
+    </div>
+
+    <div class="footer-note"><i class="fas fa-university"></i> Institutes Supporting Business | SIDBI · NABARD · KVIC · SHG · World Bank | MSME · Rural Credit · Women Empowerment | 11th Commerce OCM</div>
+</div>
+
+<!-- Popup for Translation -->
+<div id="translationPopup" class="popup-overlay">
+    <div class="popup-content">
+        <div class="popup-header">
+            <h3><i class="fas fa-language"></i> अनुवाद / Translation</h3>
+            <span class="close-popup" onclick="closePopup()">×</span>
+        </div>
+        <div class="popup-body" id="popupBody"></div>
+    </div>
+</div>
+
+<script>
+    const hindiSummary = `
+        <div style="font-family: 'Inter', sans-serif;">
+            <p><strong>🔹 परिचय:</strong> वित्त व्यवसाय की जीवनधारा है। विभिन्न वित्तीय संस्थान MSME, कृषि, ग्रामीण उद्योगों और महिला उद्यमियों को अल्पकालिक और दीर्घकालिक वित्त, सलाहकार सेवाएँ प्रदान करते हैं।</p>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 SIDBI (1990):</strong> MSME के लिए प्रमुख वित्तीय संस्थान। मुख्यालय लखनऊ। डिजिटल पहल: स्टार्टअप मित्र (17 मार्च 2016) और उद्यमी मित्र पोर्टल। सहायक: SVCL, CGTMSE, SMERA, MUDRA।</div>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 NABARD (12 जुलाई 1982):</strong> कृषि वित्त के लिए शीर्ष संस्थान। SCBs, RRBs को पुनर्वित्त। हरित, नीली और श्वेत क्रांति को बढ़ावा।</div>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 KVIC (अप्रैल 1957):</strong> खादी एवं ग्रामोद्योग आयोग - MSME मंत्रालय के अधीन। रोजगार सृजन, कौशल विकास, अनुसंधान, विपणन।</div>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 स्वयं सहायता समूह (SHG):</strong> 5-20 सदस्यों का छोटा समूह; बचत, संपार्श्विक मुक्त ऋण; महिला सशक्तिकरण; लोकतांत्रिक ढाँचा (एक सदस्य एक वोट)। NABARD ने 1992 में SHG-बैंक लिंकेज कार्यक्रम शुरू किया।</div>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 विश्व बैंक (1944):</strong> मुख्यालय वाशिंगटन डी.सी.। IBRD (मध्यम आय वाले देशों के लिए ऋण) और IDA (गरीब देशों के लिए ब्याज मुक्त ऋण)। 2030 लक्ष्य: अत्यधिक गरीबी समाप्त करना और साझा समृद्धि को बढ़ावा देना।</div>
+            <p><strong>⭐ प्रमुख व्यक्तित्व:</strong> डॉ. मुहम्मद यूनुस (माइक्रोफाइनेंस के जनक) - ग्रामीण बैंक (अक्टूबर 1983) के संस्थापक, नोबेल शांति पुरस्कार 2006।</p>
+        </div>`;
+
+    const marathiSummary = `
+        <div style="font-family: 'Inter', sans-serif;">
+            <p><strong>🔹 परिचय:</strong> वित्त हा व्यवसायाचा जीवनाधार आहे. विविध वित्तीय संस्था MSME, कृषी, ग्रामीण उद्योग आणि महिला उद्योजकांना अल्पकालीन व दीर्घकालीन वित्त पुरवतात.</p>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 SIDBI (1990):</strong> MSME साठी प्रमुख वित्तीय संस्था. मुख्यालय लखनौ. डिजिटल उपक्रम: स्टार्टअप मित्र (17 मार्च 2016) आणि उद्यमी मित्र पोर्टल.</div>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 NABARD (12 जुलै 1982):</strong> कृषी वित्तासाठी शीर्ष संस्था. SCBs, RRBs ला पुनर्वित्त. हरित, निळी व श्वेत क्रांती.</div>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 KVIC (एप्रिल 1957):</strong> खादी व ग्रामोद्योग आयोग - MSME मंत्रालयाखाली. रोजगार निर्मिती, कौशल्य विकास, संशोधन, विपणन.</div>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 स्वयंसहायता गट (SHG):</strong> 5-20 सदस्यांचा छोटा गट; बचत, तारणमुक्त कर्ज; महिला सक्षमीकरण; लोकशाही पद्धत (एक सदस्य एक मत). NABARD ने 1992 मध्ये SHG-बँक दुवा कार्यक्रम सुरू केला.</div>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 जागतिक बँक (1944):</strong> मुख्यालय वॉशिंग्टन डी.सी. IBRD (मध्यम उत्पन्न देशांसाठी कर्ज) आणि IDA (गरीब देशांसाठी व्याजमुक्त कर्ज). 2030 चे ध्येय: अत्यंत गरिबी संपवणे आणि सामायिक समृद्धी.</div>
+            <p><strong>⭐ प्रमुख व्यक्ती:</strong> डॉ. मुहम्मद युनूस (मायक्रोफायनान्सचे जनक) - ग्रामीण बँक (ऑक्टोबर 1983) चे संस्थापक, नोबेल शांतता पुरस्कार 2006.</p>
+        </div>`;
+
+    function showTranslation(lang) {
+        const popup = document.getElementById('translationPopup');
+        const popupBody = document.getElementById('popupBody');
+        if (lang === 'hindi') popupBody.innerHTML = hindiSummary;
+        else popupBody.innerHTML = marathiSummary;
+        popup.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+    function closePopup() {
+        document.getElementById('translationPopup').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+    window.onclick = function(event) {
+        const popup = document.getElementById('translationPopup');
+        if (event.target === popup) closePopup();
+    }
+</script>
+</body>
+</html>

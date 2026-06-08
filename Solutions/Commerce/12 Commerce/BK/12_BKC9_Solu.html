@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Chapter 9 | Analysis of Financial Statements - 12th Commerce</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #eef2f9 0%, #e0e8f2 100%);
+            font-family: 'Inter', sans-serif;
+            padding: 32px 24px;
+            color: #0a2b3e;
+            line-height: 1.5;
+            overflow-y: scroll;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        body::-webkit-scrollbar { display: none; }
+        .container { max-width: 1300px; margin: 0 auto; }
+        .hero { text-align: center; margin-bottom: 40px; }
+        .hero h1 {
+            font-size: 2.4rem; font-weight: 800;
+            background: linear-gradient(135deg, #0b4b6b, #1f6e93, #2c7da0);
+            background-clip: text; -webkit-background-clip: text; color: transparent;
+            padding-bottom: 10px;
+            border-bottom: 4px solid #ffb347;
+            display: inline-block;
+        }
+        /* Summary Card */
+        .summary-card {
+            background: linear-gradient(145deg, #ffffff, #f8fbfe);
+            border-radius: 2rem;
+            margin-bottom: 32px;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.12);
+            overflow: hidden;
+            border: 1px solid rgba(44,125,160,0.15);
+        }
+        .summary-header {
+            background: linear-gradient(105deg, #135b78 0%, #1f7a9e 100%);
+            padding: 20px 28px;
+            border-bottom: 4px solid #ffb74d;
+        }
+        .summary-header h2 {
+            color: white;
+            font-size: 1.6rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .summary-header h2 i { font-size: 1.8rem; color: #ffd966; }
+        .summary-body {
+            padding: 28px 32px;
+            max-height: 500px;
+            overflow-y: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .summary-body::-webkit-scrollbar { display: none; }
+        .summary-text { font-size: 1rem; line-height: 1.65; color: #1f3b4c; }
+        .summary-text p { margin-bottom: 14px; }
+        .summary-text strong { color: #135b78; }
+        .highlight-badge {
+            background: #eef3fc;
+            border-left: 4px solid #ffb74d;
+            padding: 10px 16px;
+            margin: 16px 0;
+            border-radius: 12px;
+        }
+        .lang-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px dashed #cbdde9;
+        }
+        .lang-btn {
+            background: #135b78; color: white; border: none;
+            padding: 10px 28px; border-radius: 50px; font-weight: 600;
+            cursor: pointer; transition: all 0.25s ease;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .lang-btn:hover { background: #ff8c42; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        
+        .card {
+            background: rgba(255,255,255,0.97); border-radius: 1.8rem;
+            margin-bottom: 32px; padding: 28px 32px;
+            box-shadow: 0 15px 30px -10px rgba(0,0,0,0.08);
+            border: 1px solid rgba(255,255,255,0.6);
+        }
+        .card h2 {
+            font-size: 1.6rem; font-weight: 700; color: #135b78;
+            margin-bottom: 24px; padding-bottom: 8px;
+            border-bottom: 3px solid #ffb74d;
+            display: inline-block;
+        }
+        .card h2 i { margin-right: 12px; color: #ff8c42; }
+        .qa-item { margin-bottom: 22px; border-left: 3px solid #cbdde9; padding-left: 20px; }
+        .question { font-weight: 700; color: #1f4a5e; margin-bottom: 8px; display: flex; gap: 12px; flex-wrap: wrap; }
+        .answer {
+            background: #f8fafd; padding: 10px 18px; border-radius: 24px;
+            font-weight: 500; color: #216477; display: inline-block;
+            font-size: 0.92rem;
+        }
+        .true-badge { background: #e0f2e9; color: #1e6f3f; padding: 3px 14px; border-radius: 40px; font-weight: 700; font-size: 0.75rem; display: inline-block; margin-right: 12px; }
+        .false-badge { background: #ffe8e6; color: #bc4742; padding: 3px 14px; border-radius: 40px; font-weight: 700; font-size: 0.75rem; display: inline-block; margin-right: 12px; }
+        .resp-table { width: 100%; overflow-x: auto; margin: 16px 0; background: #f4f9fe; padding: 4px; border-radius: 20px; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; background: white; border-radius: 16px; overflow: hidden; }
+        th, td { border: 1px solid #cde1ef; padding: 10px 12px; text-align: left; vertical-align: top; }
+        th { background: #e0eaf5; font-weight: 700; color: #135b78; }
+        .popup-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+            justify-content: center; align-items: center; z-index: 1000;
+        }
+        .popup-content {
+            background: white; width: 90%; max-width: 650px; border-radius: 2rem;
+            position: relative; max-height: 85vh; overflow: hidden;
+            display: flex; flex-direction: column;
+        }
+        .popup-header {
+            background: linear-gradient(105deg, #135b78, #1f7a9e);
+            padding: 18px 24px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .close-popup {
+            font-size: 32px; cursor: pointer; color: #ffd966;
+            transition: 0.2s; line-height: 1;
+        }
+        .close-popup:hover { color: #fff; transform: rotate(90deg); }
+        .popup-body { padding: 24px; overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none; }
+        .popup-body::-webkit-scrollbar { display: none; }
+        @media (max-width: 768px) {
+            body { padding: 20px 16px; }
+            .card, .summary-body { padding: 20px 18px; }
+            .hero h1 { font-size: 1.8rem; }
+            th, td { padding: 6px 8px; font-size: 0.75rem; }
+        }
+        .footer-note { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #bdd4e4; font-size: 0.8rem; color: #2c6f8c; }
+        .formula-box { font-family: monospace; background: #eef3fc; padding: 8px 12px; border-radius: 12px; margin: 10px 0; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="hero">
+        <h1><i class="fas fa-chart-line"></i> Chapter 9 · Analysis of Financial Statements</h1>
+    </div>
+
+    <!-- ================= ATTRACTIVE SUMMARY CARD ================= -->
+    <div class="summary-card">
+        <div class="summary-header">
+            <h2><i class="fas fa-file-alt"></i> 📘 Chapter Summary: Analysis of Financial Statements</h2>
+        </div>
+        <div class="summary-body">
+            <div class="summary-text" id="summaryText">
+                <p><strong>🔹 Meaning & Objectives:</strong> Financial Statement Analysis is the process of evaluating a company's financial performance & position. Objectives: help in planning, investment decisions, assessing efficiency, and providing financial information to stakeholders.</p>
+                <div class="highlight-badge"><strong>📌 Limitations:</strong> Qualitative info ignored, historical cost, accounting conventions, personal judgment, window dressing, static nature.</div>
+                <p><strong>🔹 Tools for Analysis:</strong> <strong>1. Comparative Statement</strong> (absolute & % change), <strong>2. Common Size Statement</strong> (percentage to common base), <strong>3. Cash Flow Statement</strong> (operating, investing, financing activities).</p>
+                <p><strong>🔹 Ratio Analysis Classification:</strong><br>
+                <strong>A) Balance Sheet Ratios:</strong> Current Ratio (2:1 ideal), Liquid/Quick Ratio (1:1 ideal).<br>
+                <strong>B) Income Statement Ratios:</strong> Gross Profit Ratio, Operating Profit Ratio, Net Profit Ratio, Operating Ratio.<br>
+                <strong>C) Combined/Mixed Ratios:</strong> Return on Investment (ROI), Return on Capital Employed (ROCE).</p>
+                <p><strong>⭐ Important Formulas:</strong> Current Ratio = CA/CL, Liquid Ratio = Quick Assets/CL, Gross Profit Ratio = GP/Net Sales ×100, Operating Ratio = (COGS+Op Exp)/Net Sales ×100, Net Profit Ratio = NP/Net Sales ×100, ROCE = NP before Interest & Tax / Capital Employed ×100.</p>
+            </div>
+            <div class="lang-buttons">
+                <button class="lang-btn" onclick="showTranslation('hindi')"><i class="fas fa-language"></i> हिंदी अनुवाद</button>
+                <button class="lang-btn" onclick="showTranslation('marathi')"><i class="fas fa-language"></i> मराठी अनुवाद</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= Section A: Objective Questions ================= -->
+    <div class="card"><h2><i class="fas fa-check-square"></i> A. Select the most appropriate alternative</h2>
+        <div class="qa-item"><div class="question">1) Gross Profit Ratio indicates relationship of gross profit to _______.</div><div class="answer">b) Net Sales</div></div>
+        <div class="qa-item"><div class="question">2) Current Ratio = Current Liabilities / _______.</div><div class="answer">c) Current Assets</div></div>
+        <div class="qa-item"><div class="question">3) Liquid Assets = _______.</div><div class="answer">b) Current Assets - Stock</div></div>
+        <div class="qa-item"><div class="question">4) Cost of goods sold = _______.</div><div class="answer">a) Sales - Gross profit</div></div>
+        <div class="qa-item"><div class="question">5) Net Profit Ratio is equal to _______.</div><div class="answer">b) Operating net-profit ratio</div></div>
+        <div class="qa-item"><div class="question">6) The Common Size Statement requires _______.</div><div class="answer">a) Common base</div></div>
+        <div class="qa-item"><div class="question">7) Bill Payable is a _______.</div><div class="answer">b) Current Liabilities</div></div>
+        <div class="qa-item"><div class="question">8) Generally Current Ratio should be _______.</div><div class="answer">a) 2:1</div></div>
+        <div class="qa-item"><div class="question">9) Creditors are specially interested to know _______.</div><div class="answer">a) Liquidity</div></div>
+    </div>
+
+    <!-- ================= Section B: One word/term ================= -->
+    <div class="card"><h2><i class="fas fa-tag"></i> B. Give one word/term/phrase</h2>
+        <div class="qa-item"><div class="question">1) Statement showing profitability of two different periods.</div><div class="answer">Comparative Income Statement</div></div>
+        <div class="qa-item"><div class="question">2) Ratio measuring relationship between Gross Profit and Net Sales.</div><div class="answer">Gross Profit Ratio</div></div>
+        <div class="qa-item"><div class="question">3) Critical evaluation of financial statement to measure profitability.</div><div class="answer">Ratio Analysis</div></div>
+        <div class="qa-item"><div class="question">4) Mathematical number showing relationship between two accounting figures.</div><div class="answer">Ratio</div></div>
+        <div class="qa-item"><div class="question">5) Asset which can be converted into cash immediately.</div><div class="answer">Liquid Asset / Quick Asset</div></div>
+        <div class="qa-item"><div class="question">6) Ratio measuring relationship between net profit and ownership Capital Employed.</div><div class="answer">Return on Investment (ROI)</div></div>
+        <div class="qa-item"><div class="question">7) Statement showing financial position for different periods.</div><div class="answer">Comparative Balance Sheet</div></div>
+        <div class="qa-item"><div class="question">8) Activity related to acquisition of long term assets.</div><div class="answer">Investing Activity</div></div>
+        <div class="qa-item"><div class="question">9) Ratio that establishes relationship between Quick Assets and Current Liabilities.</div><div class="answer">Liquid Ratio / Quick Ratio</div></div>
+    </div>
+
+    <!-- ================= Section C: True/False ================= -->
+    <div class="card"><h2><i class="fas fa-gavel"></i> C. State True or False with reasons</h2>
+        <div class="qa-item"><div class="question">1) Financial Statement includes only Balance Sheet.</div><div class="answer"><span class="false-badge">False</span> Includes Balance Sheet & Profit & Loss A/c.</div></div>
+        <div class="qa-item"><div class="question">2) Analysis of financial statement is a tool but not a remedy.</div><div class="answer"><span class="true-badge">True</span> It helps diagnose but doesn't solve problems.</div></div>
+        <div class="qa-item"><div class="question">3) Purchase of Fixed Assets is operating cash flow.</div><div class="answer"><span class="false-badge">False</span> It is investing cash flow.</div></div>
+        <div class="qa-item"><div class="question">4) Dividend paid is not a source of fund.</div><div class="answer"><span class="true-badge">True</span> It is an application/outflow of funds.</div></div>
+        <div class="qa-item"><div class="question">5) Gross Profit depends upon Net Sales.</div><div class="answer"><span class="true-badge">True</span> GP = Net Sales - COGS.</div></div>
+        <div class="qa-item"><div class="question">6) Ratio Analysis is useful for inter firm comparison.</div><div class="answer"><span class="true-badge">True</span> Helps compare different firms.</div></div>
+        <div class="qa-item"><div class="question">7) Current Ratio measures the liquidity of the business.</div><div class="answer"><span class="true-badge">True</span> Measures short-term solvency.</div></div>
+        <div class="qa-item"><div class="question">8) Usually current ratio should be 3:1.</div><div class="answer"><span class="false-badge">False</span> Ideal current ratio is 2:1.</div></div>
+    </div>
+
+    <!-- ================= Important Formulas Table ================= -->
+    <div class="card"><h2><i class="fas fa-square-root-alt"></i> Important Formulas for Ratios</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Ratio</th><th>Formula</th></tr></thead>
+                <tbody>
+                    <tr><td>Current Ratio</td><td>Current Assets / Current Liabilities</td></tr>
+                    <tr><td>Liquid / Quick Ratio</td><td>Quick Assets / Current Liabilities</td></tr>
+                    <tr><td>Gross Profit Ratio</td><td>(Gross Profit / Net Sales) × 100</td></tr>
+                    <tr><td>Operating Profit Ratio</td><td>(Operating Profit / Net Sales) × 100</td></tr>
+                    <tr><td>Net Profit Ratio</td><td>(Net Profit / Net Sales) × 100</td></tr>
+                    <tr><td>Operating Ratio</td><td>((COGS + Operating Expenses) / Net Sales) × 100</td></tr>
+                    <tr><td>ROCE / ROI</td><td>(Net Profit / Capital Employed) × 100</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================= Comparative Balance Sheet Example ================= -->
+    <div class="card"><h2><i class="fas fa-chart-simple"></i> Comparative Balance Sheet (Varun Company Ltd.)</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Particulars</th><th>31.3.19 (₹)</th><th>31.3.20 (₹)</th><th>Absolute Change (₹)</th><th>% Change</th></tr></thead>
+                <tbody>
+                    <tr><td>Share Capital</td><td>2,50,000</td><td>3,70,000</td><td>1,20,000</td><td>48%</td></tr>
+                    <tr><td>Reserves & Surplus</td><td>60,000</td><td>1,00,000</td><td>40,000</td><td>66.67%</td></tr>
+                    <tr><td>Net Worth</td><td>3,10,000</td><td>4,70,000</td><td>1,60,000</td><td>51.61%</td></tr>
+                    <tr><td>Borrowed Funds</td><td>1,90,000</td><td>3,00,000</td><td>1,10,000</td><td>57.89%</td></tr>
+                    <tr><td>Fixed Assets</td><td>3,50,000</td><td>5,70,000</td><td>2,20,000</td><td>62.86%</td></tr>
+                    <tr><td>Working Capital</td><td>30,000</td><td>30,000</td><td>0</td><td>0%</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="highlight-badge">Formula: Absolute Change = Current Year - Previous Year | % Change = (Absolute Change / Previous Year) × 100</div>
+    </div>
+
+    <!-- ================= Common Size Statement Example ================= -->
+    <div class="card"><h2><i class="fas fa-chart-pie"></i> Common Size Balance Sheet (XYZ Ltd.)</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Particulars</th><th>Amount (₹)</th><th>%</th></tr></thead>
+                <tbody>
+                    <tr><td>Equity Share Capital</td><td>9,00,000</td><td>55.22%</td></tr>
+                    <tr><td>Preference Share Capital</td><td>80,000</td><td>4.91%</td></tr>
+                    <tr><td>Reserves & Surplus</td><td>1,50,000</td><td>9.20%</td></tr>
+                    <tr><td>Secured Loans</td><td>3,00,000</td><td>18.40%</td></tr>
+                    <tr><td>Unsecured Loans</td><td>2,00,000</td><td>12.27%</td></tr>
+                    <tr><td>Fixed Assets</td><td>9,00,000</td><td>55.21%</td></tr>
+                    <tr><td>Investment</td><td>1,50,000</td><td>9.20%</td></tr>
+                    <tr><td>Working Capital</td><td>5,80,000</td><td>35.59%</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="highlight-badge">Formula: Common Size % = (Individual Item Amount / Total Fund Available) × 100</div>
+    </div>
+
+    <!-- ================= Cash Flow Statement Illustration ================= -->
+    <div class="card"><h2><i class="fas fa-money-bill-wave"></i> Cash Flow Statement (Mr. Anand)</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Particulars</th><th>Amount (₹)</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>A) Cash Flow from Operating Activities</strong></td><td></td></tr>
+                    <tr><td>Profit for the year (1,49,000 - 1,48,000)</td><td>1,000</td></tr>
+                    <tr><td>Add: Decrease in Stock</td><td>3,000</td></tr>
+                    <tr><td>Add: Increase in Sundry Creditors</td><td>5,000</td></tr>
+                    <tr><td>Less: Increase in Debtors</td><td>(3,400)</td></tr>
+                    <tr><td><strong>Net Cash from Operating Activities</strong></td><td><strong>5,600</strong></td></tr>
+                    <tr><td><strong>B) Cash Flow from Investing Activities</strong></td><td></td></tr>
+                    <tr><td>Purchase of Land, Machinery, Building</td><td>(21,000)</td></tr>
+                    <tr><td><strong>Net Cash used in Investing Activities</strong></td><td><strong>(21,000)</strong></td></tr>
+                    <tr><td><strong>C) Cash Flow from Financing Activities</strong></td><td></td></tr>
+                    <tr><td>Borrowing of Long Term Loan</td><td>15,000</td></tr>
+                    <tr><td><strong>Net Cash from Financing Activities</strong></td><td><strong>15,000</strong></td></tr>
+                    <tr><td><strong>Net Decrease in Cash</strong></td><td><strong>(400)</strong></td></tr>
+                    <tr><td>Cash at beginning</td><td>4,000</td></tr>
+                    <tr><td><strong>Cash at end</strong></td><td><strong>3,600</strong></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================= Ratio Calculation Examples ================= -->
+    <div class="card"><h2><i class="fas fa-percent"></i> Ratio Calculation Examples (Numericals)</h2>
+        <div class="qa-item"><div class="question">1) Current Assets = 1,00,000, Current Liabilities = 60,000. Find Current Ratio.</div><div class="answer">Current Ratio = 1,00,000 / 60,000 = 5:3</div></div>
+        <div class="qa-item"><div class="question">2) Working Capital = 50,000, Current Assets = 60,000, Stock = 10,000, Prepaid = 4,000. Find Quick Ratio.</div><div class="answer">Quick Assets = 60,000 - 10,000 - 4,000 = 46,000; Quick Liabilities = 60,000-50,000=10,000; Quick Ratio = 46,000/10,000 = 4.6:1</div></div>
+        <div class="qa-item"><div class="question">3) Sales = 5,40,000, Sales Return = 40,000, Purchases = 3,00,000, Opening Stock = 90,000, Closing Stock = 50,000. Find Gross Profit Ratio.</div><div class="answer">Net Sales = 5,00,000; COGS = 90,000+3,00,000-50,000=3,40,000; GP = 1,60,000; GP Ratio = 1,60,000/5,00,000×100 = 32%</div></div>
+        <div class="qa-item"><div class="question">4) Sales = 7,60,000, COGS = 5,20,000, Indirect Expenses = 1,20,000. Find Net Profit Ratio.</div><div class="answer">Gross Profit = 2,40,000; Net Profit = 2,40,000-1,20,000=1,20,000; NP Ratio = 1,20,000/7,60,000×100 = 15.79%</div></div>
+        <div class="qa-item"><div class="question">5) COGS = 7,00,000, Operating Expenses = 60,000, Sales = 10,00,000, Sales Return = 60,000. Find Operating Ratio.</div><div class="answer">Net Sales = 9,40,000; Operating Ratio = (7,00,000+60,000)/9,40,000×100 = 80.85%</div></div>
+    </div>
+
+    <!-- ================= Section D: Answer in one sentence ================= -->
+    <div class="card"><h2><i class="fas fa-question-circle"></i> D. Answer in one sentence only</h2>
+        <div class="qa-item"><div class="question">1) Mention two objectives of comparative statement.</div><div class="answer">To compare financial position and performance over different periods.</div></div>
+        <div class="qa-item"><div class="question">2) State three examples of cash inflows.</div><div class="answer">Cash sales, collection from debtors, issue of shares.</div></div>
+        <div class="qa-item"><div class="question">3) State three examples of cash outflows.</div><div class="answer">Cash purchases, payment to creditors, purchase of fixed assets.</div></div>
+        <div class="qa-item"><div class="question">4) Give the formula of Gross Profit Ratio.</div><div class="answer">Gross Profit Ratio = (Gross Profit / Net Sales) × 100</div></div>
+        <div class="qa-item"><div class="question">5) Give the formula of current ratio.</div><div class="answer">Current Ratio = Current Assets / Current Liabilities</div></div>
+        <div class="qa-item"><div class="question">6) State the formula of cost of goods sold.</div><div class="answer">COGS = Opening Stock + Purchases + Direct Expenses - Closing Stock</div></div>
+    </div>
+
+    <div class="footer-note"><i class="fas fa-chart-line"></i> Analysis of Financial Statements: Comparative, Common Size, Cash Flow, Ratio Analysis | Tools for decision making</div>
+</div>
+
+<!-- Popup for Translation -->
+<div id="translationPopup" class="popup-overlay">
+    <div class="popup-content">
+        <div class="popup-header">
+            <h3><i class="fas fa-language"></i> अनुवाद / Translation</h3>
+            <span class="close-popup" onclick="closePopup()">×</span>
+        </div>
+        <div class="popup-body" id="popupBody"></div>
+    </div>
+</div>
+
+<script>
+    const hindiSummary = `
+        <div style="font-family: 'Inter', sans-serif;">
+            <p><strong>🔹 अर्थ और उद्देश्य:</strong> वित्तीय विवरण विश्लेषण कंपनी के वित्तीय प्रदर्शन और स्थिति का मूल्यांकन करने की प्रक्रिया है। उद्देश्य: योजना, निवेश निर्णय, दक्षता मूल्यांकन और हितधारकों को वित्तीय जानकारी प्रदान करना।</p>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0; border-radius:12px;"><strong>📌 सीमाएं:</strong> गुणात्मक जानकारी अनदेखा, ऐतिहासिक लागत, लेखा परंपराएं, व्यक्तिगत निर्णय, विंडो ड्रेसिंग, स्थिर प्रकृति।</div>
+            <p><strong>🔹 विश्लेषण के उपकरण:</strong> <strong>1. तुलनात्मक विवरण</strong> (निरपेक्ष और % परिवर्तन), <strong>2. सामान्य आकार विवरण</strong> (सामान्य आधार पर प्रतिशत), <strong>3. रोकड़ प्रवाह विवरण</strong> (परिचालन, निवेश, वित्तीय गतिविधियाँ)।</p>
+            <p><strong>🔹 अनुपात विश्लेषण वर्गीकरण:</strong><br>
+            <strong>ए) चिट्ठा अनुपात:</strong> चालू अनुपात (2:1 आदर्श), तरल/त्वरित अनुपात (1:1 आदर्श)।<br>
+            <strong>बी) आय विवरण अनुपात:</strong> सकल लाभ अनुपात, परिचालन लाभ अनुपात, शुद्ध लाभ अनुपात, परिचालन अनुपात।<br>
+            <strong>सी) मिश्रित अनुपात:</strong> निवेश पर प्रतिफल (आरओआई), नियोजित पूंजी पर प्रतिफल (आरओसीई)।</p>
+            <p><strong>⭐ महत्वपूर्ण सूत्र:</strong> चालू अनुपात = चालू परिसंपत्तियाँ / चालू देनदारियाँ, तरल अनुपात = त्वरित परिसंपत्तियाँ / चालू देनदारियाँ, सकल लाभ अनुपात = (सकल लाभ / शुद्ध बिक्री) × 100, परिचालन अनुपात = (बेची गई वस्तुओं की लागत + परिचालन व्यय) / शुद्ध बिक्री × 100, शुद्ध लाभ अनुपात = (शुद्ध लाभ / शुद्ध बिक्री) × 100, आरओसीई = (ब्याज और कर से पहले शुद्ध लाभ / नियोजित पूंजी) × 100.</p>
+        </div>`;
+
+    const marathiSummary = `
+        <div style="font-family: 'Inter', sans-serif;">
+            <p><strong>🔹 अर्थ आणि उद्दिष्टे:</strong> आर्थिक विवरण विश्लेषण म्हणजे कंपनीच्या आर्थिक कामगिरी आणि स्थितीचे मूल्यांकन करण्याची प्रक्रिया. उद्दिष्टे: नियोजन, गुंतवणूक निर्णय, कार्यक्षमता मूल्यांकन आणि भागधारकांना आर्थिक माहिती प्रदान करणे.</p>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0; border-radius:12px;"><strong>📌 मर्यादा:</strong> गुणात्मक माहितीकडे दुर्लक्ष, ऐतिहासिक किंमत, लेखा परंपरा, वैयक्तिक निर्णय, विंडो ड्रेसिंग, स्थिर स्वरूप.</div>
+            <p><strong>🔹 विश्लेषण साधने:</strong> <strong>1. तुलनात्मक विवरण</strong> (पूर्ण आणि % बदल), <strong>2. सामान्य आकार विवरण</strong> (सामान्य आधारावर टक्केवारी), <strong>3. रोख प्रवाह विवरण</strong> (कार्य, गुंतवणूक, वित्तीय क्रिया).</p>
+            <p><strong>🔹 गुणोत्तर विश्लेषण वर्गीकरण:</strong><br>
+            <strong>अ) ताळेबंद गुणोत्तर:</strong> चालू गुणोत्तर (2:1 आदर्श), तरल/त्वरित गुणोत्तर (1:1 आदर्श).<br>
+            <strong>ब) उत्पन्न विवरण गुणोत्तर:</strong> सकल नफा गुणोत्तर, कार्य नफा गुणोत्तर, निव्वळ नफा गुणोत्तर, कार्य गुणोत्तर.<br>
+            <strong>क) संमिश्र गुणोत्तर:</strong> गुंतवणुकीवर प्रतिफल (आरओआय), नियोजित भांडवलावर प्रतिफल (आरओसीई).</p>
+            <p><strong>⭐ महत्त्वाची सूत्रे:</strong> चालू गुणोत्तर = चालू मालमत्ता / चालू देयता, तरल गुणोत्तर = द्रुत मालमत्ता / चालू देयता, सकल नफा गुणोत्तर = (सकल नफा / निव्वळ विक्री) × 100, कार्य गुणोत्तर = (विक्री केलेल्या वस्तूंची किंमत + कार्य खर्च) / निव्वळ विक्री × 100, निव्वळ नफा गुणोत्तर = (निव्वळ नफा / निव्वळ विक्री) × 100, आरओसीई = (व्याज आणि करापूर्वी निव्वळ नफा / नियोजित भांडवल) × 100.</p>
+        </div>`;
+
+    function showTranslation(lang) {
+        const popup = document.getElementById('translationPopup');
+        const popupBody = document.getElementById('popupBody');
+        if (lang === 'hindi') popupBody.innerHTML = hindiSummary;
+        else popupBody.innerHTML = marathiSummary;
+        popup.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+    function closePopup() {
+        document.getElementById('translationPopup').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+    window.onclick = function(event) {
+        const popup = document.getElementById('translationPopup');
+        if (event.target === popup) closePopup();
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Chapter 3 | Small Scale Industry & Business - 11th Commerce</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #eef2f9 0%, #e0e8f2 100%);
+            font-family: 'Inter', sans-serif;
+            padding: 32px 24px;
+            color: #0a2b3e;
+            line-height: 1.5;
+            overflow-y: scroll;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        body::-webkit-scrollbar { display: none; }
+        .container { max-width: 1400px; margin: 0 auto; }
+        .hero { text-align: center; margin-bottom: 40px; }
+        .hero h1 {
+            font-size: 2.4rem; font-weight: 800;
+            background: linear-gradient(135deg, #0b4b6b, #1f6e93, #2c7da0);
+            background-clip: text; -webkit-background-clip: text; color: transparent;
+            padding-bottom: 10px;
+            border-bottom: 4px solid #ffb347;
+            display: inline-block;
+        }
+        .summary-card {
+            background: linear-gradient(145deg, #ffffff, #f8fbfe);
+            border-radius: 2rem;
+            margin-bottom: 32px;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.12);
+            overflow: hidden;
+            border: 1px solid rgba(44,125,160,0.15);
+        }
+        .summary-header {
+            background: linear-gradient(105deg, #135b78 0%, #1f7a9e 100%);
+            padding: 20px 28px;
+            border-bottom: 4px solid #ffb74d;
+        }
+        .summary-header h2 {
+            color: white;
+            font-size: 1.6rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .summary-header h2 i { font-size: 1.8rem; color: #ffd966; }
+        .summary-body {
+            padding: 28px 32px;
+            max-height: 550px;
+            overflow-y: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .summary-body::-webkit-scrollbar { display: none; }
+        .summary-text { font-size: 1rem; line-height: 1.65; color: #1f3b4c; }
+        .summary-text p { margin-bottom: 14px; }
+        .summary-text strong { color: #135b78; }
+        .highlight-badge {
+            background: #eef3fc;
+            border-left: 4px solid #ffb74d;
+            padding: 10px 16px;
+            margin: 16px 0;
+            border-radius: 12px;
+        }
+        .lang-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px dashed #cbdde9;
+        }
+        .lang-btn {
+            background: #135b78; color: white; border: none;
+            padding: 10px 28px; border-radius: 50px; font-weight: 600;
+            cursor: pointer; transition: all 0.25s ease;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .lang-btn:hover { background: #ff8c42; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        .card {
+            background: rgba(255,255,255,0.97); border-radius: 1.8rem;
+            margin-bottom: 32px; padding: 28px 32px;
+            box-shadow: 0 15px 30px -10px rgba(0,0,0,0.08);
+            border: 1px solid rgba(255,255,255,0.6);
+        }
+        .card h2 {
+            font-size: 1.6rem; font-weight: 700; color: #135b78;
+            margin-bottom: 24px; padding-bottom: 8px;
+            border-bottom: 3px solid #ffb74d;
+            display: inline-block;
+        }
+        .card h2 i { margin-right: 12px; color: #ff8c42; }
+        .qa-item { margin-bottom: 22px; border-left: 3px solid #cbdde9; padding-left: 20px; }
+        .question { font-weight: 700; color: #1f4a5e; margin-bottom: 8px; display: flex; gap: 12px; flex-wrap: wrap; }
+        .answer {
+            background: #f8fafd; padding: 10px 18px; border-radius: 24px;
+            font-weight: 500; color: #216477; display: inline-block;
+            font-size: 0.92rem;
+        }
+        .true-badge { background: #e0f2e9; color: #1e6f3f; padding: 3px 14px; border-radius: 40px; font-weight: 700; font-size: 0.75rem; display: inline-block; margin-right: 12px; }
+        .false-badge { background: #ffe8e6; color: #bc4742; padding: 3px 14px; border-radius: 40px; font-weight: 700; font-size: 0.75rem; display: inline-block; margin-right: 12px; }
+        .resp-table { width: 100%; overflow-x: auto; margin: 16px 0; background: #f4f9fe; padding: 4px; border-radius: 20px; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; background: white; border-radius: 16px; overflow: hidden; }
+        th, td { border: 1px solid #cde1ef; padding: 10px 12px; text-align: left; vertical-align: top; }
+        th { background: #e0eaf5; font-weight: 700; color: #135b78; }
+        .popup-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+            justify-content: center; align-items: center; z-index: 1000;
+        }
+        .popup-content {
+            background: white; width: 90%; max-width: 700px; border-radius: 2rem;
+            position: relative; max-height: 85vh; overflow: hidden;
+            display: flex; flex-direction: column;
+        }
+        .popup-header {
+            background: linear-gradient(105deg, #135b78, #1f7a9e);
+            padding: 18px 24px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .close-popup {
+            font-size: 32px; cursor: pointer; color: #ffd966;
+            transition: 0.2s; line-height: 1;
+        }
+        .close-popup:hover { color: #fff; transform: rotate(90deg); }
+        .popup-body { padding: 24px; overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none; }
+        .popup-body::-webkit-scrollbar { display: none; }
+        @media (max-width: 768px) {
+            body { padding: 20px 16px; }
+            .card, .summary-body { padding: 20px 18px; }
+            .hero h1 { font-size: 1.8rem; }
+            th, td { padding: 6px 8px; font-size: 0.7rem; }
+        }
+        .footer-note { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #bdd4e4; font-size: 0.8rem; color: #2c6f8c; }
+        .key-icon { color: #ff8c42; margin-right: 6px; }
+        .stat-grid { display: flex; flex-wrap: wrap; gap: 15px; margin: 20px 0; }
+        .stat-card { flex: 1; min-width: 150px; background: linear-gradient(145deg, #135b78, #1f7a9e); border-radius: 1.2rem; padding: 16px; text-align: center; color: white; }
+        .stat-card i { font-size: 2rem; margin-bottom: 10px; }
+        .stat-card h3 { font-size: 1rem; margin-bottom: 5px; }
+        .stat-card .number { font-size: 1.6rem; font-weight: 800; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="hero">
+        <h1><i class="fas fa-industry"></i> Chapter 3 · Small Scale Industry & Business</h1>
+        <p style="margin-top: 12px;">MSMED Act · Importance · Advantages · Challenges · Steps to Setup</p>
+    </div>
+
+    <!-- ================= ATTRACTIVE SUMMARY CARD ================= -->
+    <div class="summary-card">
+        <div class="summary-header">
+            <h2><i class="fas fa-file-alt"></i> 📘 Chapter Summary: Small Scale Industry & Business</h2>
+        </div>
+        <div class="summary-body">
+            <div class="summary-text" id="summaryText">
+                <p><strong>🔹 Introduction:</strong> Small Scale Industries (SSI) play a vital role in developing countries like India where less capital and more manpower is available. They are labor-intensive and generate huge employment in rural areas.</p>
+                
+                <div class="stat-grid">
+                    <div class="stat-card"><i class="fas fa-chart-line"></i><div class="number">40%</div><h3>of Industrial Exports</h3><small>from SSI</small></div>
+                    <div class="stat-card"><i class="fas fa-users"></i><div class="number">2nd Largest</div><h3>Employment Generator</h3><small>after agriculture</small></div>
+                    <div class="stat-card"><i class="fas fa-rupee-sign"></i><div class="number">₹5 Cr</div><h3>Small Manufacturing</h3><small>investment limit</small></div>
+                </div>
+
+                <div class="highlight-badge"><strong>📌 MSMED Act 2006 Classification:</strong> Manufacturing Sector: Micro (≤₹25L), Small (₹25L-₹5Cr), Medium (₹5Cr-₹10Cr) | Service Sector: Micro (≤₹10L), Small (₹10L-₹2Cr), Medium (₹2Cr-₹5Cr)</div>
+                
+                <p><strong>🔹 Importance of SSI:</strong> Job opportunities, Regional balance, Competitive strength, Maximum use of natural resources, Reduces migration, Support to large industries, Develops new entrepreneurs.</p>
+                
+                <p><strong>🔹 Advantages (11 points):</strong> Large employment, Less capital requirement, Utilization of domestic resources, Increases industrial output, Contribution to exports (40%), Equitable distribution, Earns foreign exchange, Entrepreneurship opportunities, Cost efficiency, Reduces migration, Flexibility in operation.</p>
+                
+                <p><strong>🔹 Challenges (9 points):</strong> Old methods of production, Inadequate finance, Raw material problem, Labour problems, Marketing problems, Transport problems, Sickness, Power shortage & irregular supply, Global competition (LPG).</p>
+                
+                <p><strong>⭐ Steps to Setup SSI (11 steps):</strong> 1) Decision of business area 2) Study business environment 3) Selection of product 4) Selection of place 5) Selection of technology 6) Business proposal 7) Finance 8) Registration (DIC) 9) Arrangement of resources (physical, power, staffing) 10) Production & marketing 11) Review & feedback.</p>
+                
+                <p><strong>📢 Latest Update (Just to Know):</strong> Cabinet approved change in classification from 'investment in plant & machinery' to 'annual turnover' - Micro (≤₹5Cr), Small (₹5Cr-₹75Cr), Medium (₹75Cr-₹250Cr).</p>
+            </div>
+            <div class="lang-buttons">
+                <button class="lang-btn" onclick="showTranslation('hindi')"><i class="fas fa-language"></i> हिंदी अनुवाद</button>
+                <button class="lang-btn" onclick="showTranslation('marathi')"><i class="fas fa-language"></i> मराठी अनुवाद</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= Section A: Multiple Choice ================= -->
+    <div class="card"><h2><i class="fas fa-check-square"></i> A. Select the correct option</h2>
+        <div class="qa-item"><div class="question">1) The problem of ________ has been becoming more serious in India.</div><div class="answer">b) unemployment</div></div>
+        <div class="qa-item"><div class="question">2) India is ________ abundant country.</div><div class="answer">a) labour</div></div>
+        <div class="qa-item"><div class="question">3) ________ cost of power acquisition, frequent power cuts affect productivity of SSI.</div><div class="answer">a) High</div></div>
+        <div class="qa-item"><div class="question">4) Before setting up business, it is essential to study prevailing ________ environment.</div><div class="answer">a) business</div></div>
+        <div class="qa-item"><div class="question">5) Small Scale Business are ________ intensive.</div><div class="answer">c) labour</div></div>
+        <div class="qa-item"><div class="question">6) Small Scale industries contribute nearly ________ to the industrial exports of the country.</div><div class="answer">a) 40%</div></div>
+    </div>
+
+    <!-- ================= Section B: Match Pairs ================= -->
+    <div class="card"><h2><i class="fas fa-link"></i> B. Match the pairs</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Group A</th><th>Answer</th><th>Group B</th></tr></thead>
+                <tbody>
+                    <tr><td>Micro-Manufacturing sector</div></td><td>→</td><td>3) Does not exceed ₹25 lakhs</td></tr>
+                    <tr><td>B) Traditional Small Scale business</td><td>→</td><td>1) Handloom</td></tr>
+                    <tr><td>C) Registration</td><td>→</td><td>6) DIC</td></tr>
+                    <tr><td>D) Labour</td><td>→</td><td>2) Unskilled</td></tr>
+                    <tr><td>E) Bicycle</td><td>→</td><td>8) Modern Small Scale business</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================= Section C: One word ================= -->
+    <div class="card"><h2><i class="fas fa-tag"></i> C. Give one word/phrase/term</h2>
+        <div class="qa-item"><div class="question">1) A sector which is backbone of rural India.</div><div class="answer">Small Scale Industry</div></div>
+        <div class="qa-item"><div class="question">2) An industry using power with less than 50 employees.</div><div class="answer">Small Scale Industry</div></div>
+    </div>
+
+    <!-- ================= Section D: True/False ================= -->
+    <div class="card"><h2><i class="fas fa-gavel"></i> D. State True or False</h2>
+        <div class="qa-item"><div class="question">1) Small Scale industries should be developed to maintain economic balance in a country.</div><div class="answer"><span class="true-badge">True</span> Regional balance is a key importance.</div></div>
+        <div class="qa-item"><div class="question">2) Majority Small Scale industry uses advanced technology.</div><div class="answer"><span class="false-badge">False</span> They use old/outdated technology generally.</div></div>
+        <div class="qa-item"><div class="question">3) Small Business easily get access to low interest rates.</div><div class="answer"><span class="false-badge">False</span> Inadequate finance is a major challenge.</div></div>
+        <div class="qa-item"><div class="question">4) Small Business cannot survive in the competition.</div><div class="answer"><span class="false-badge">False</span> They have cost efficiency and flexibility.</div></div>
+    </div>
+
+    <!-- ================= Section E: Find odd one ================= -->
+    <div class="card"><h2><i class="fas fa-puzzle-piece"></i> E. Find the odd one</h2>
+        <div class="qa-item"><div class="question">1) Coir, Handicraft, Spare Parts, Hand-loom.</div><div class="answer">Spare Parts (Modern SSI, others are Traditional SSI)</div></div>
+        <div class="qa-item"><div class="question">2) Bicycle Parts, Sericulture, Electronic Appliances, Sewing machine.</div><div class="answer">Sericulture (Traditional, others are Modern)</div></div>
+    </div>
+
+    <!-- ================= Section F: Complete sentences ================= -->
+    <div class="card"><h2><i class="fas fa-pen-fill"></i> F. Complete the sentences</h2>
+        <div class="qa-item"><div class="question">1) ________ Industries plays an important role in developing countries.</div><div class="answer">Small Scale</div></div>
+        <div class="qa-item"><div class="question">2) SSI is ________ largest industry which creates huge employment opportunities.</div><div class="answer">second</div></div>
+        <div class="qa-item"><div class="question">3) SSI enjoys the advantage of ________ cost of the produce.</div><div class="answer">low</div></div>
+        <div class="qa-item"><div class="question">4) SSI are ________ intensive.</div><div class="answer">labour</div></div>
+        <div class="qa-item"><div class="question">5) SSI requires ________ capital as compared to large scale industries.</div><div class="answer">less</div></div>
+        <div class="qa-item"><div class="question">6) SSI produce consumer goods as well as ________ components.</div><div class="answer">industrial</div></div>
+    </div>
+
+    <!-- ================= MSMED Classification Table ================= -->
+    <div class="card"><h2><i class="fas fa-chart-pie"></i> MSMED Act 2006: Classification of Business</h2>
+        <div class="resp-table">
+            <table>
+                <thead>
+                    <tr><th>Category</th><th>Manufacturing Sector (Investment)</th><th>Service Sector (Investment)</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>Micro</strong></td><td>Does not exceed ₹25 lakhs</td><td>Does not exceed ₹10 lakhs</td></tr>
+                    <tr><td><strong>Small</strong></td><td>More than ₹25 lakhs but ≤ ₹5 crores</td><td>More than ₹10 lakhs but ≤ ₹2 crores</td></tr>
+                    <tr><td><strong>Medium</strong></td><td>More than ₹5 crores but ≤ ₹10 crores</td><td>More than ₹2 crores but ≤ ₹5 crores</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="highlight-badge" style="margin-top: 15px;"><strong>🆕 New Classification (2022 Amendment - based on Annual Turnover):</strong> Micro (≤₹5Cr), Small (₹5Cr-₹75Cr), Medium (₹75Cr-₹250Cr)</div>
+    </div>
+
+    <!-- ================= Importance & Advantages Lists ================= -->
+    <div class="card"><h2><i class="fas fa-star"></i> Importance & Advantages of SSI</h2>
+        <div class="qa-item"><div class="question">📌 Importance (7 points)</div><div class="answer">Job opportunities, Regional balance, Increase competitive strength, Maximum use of natural resources, Reduces migration, Support to large industries, Developing new entrepreneurs</div></div>
+        <div class="qa-item"><div class="question">✅ Advantages (11 points)</div><div class="answer">Large employment, Less capital requirement, Utilization of domestic resources, Increases industrial output, 40% contribution to exports, Equitable distribution, Earns foreign exchange, Entrepreneurship opportunities, Cost efficiency, Reduces migration, Flexibility in operation</div></div>
+    </div>
+
+    <!-- ================= Challenges ================= -->
+    <div class="card"><h2><i class="fas fa-exclamation-triangle"></i> Challenges before Small Scale Industries</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>#</th><th>Challenge</th><th>Description</th></tr></thead>
+                <tbody>
+                    <tr><td>1</td><td>Old Methods of Production</td><td>Outdated technology, low grade technical know-how, low productivity</td></tr>
+                    <tr><td>2</td><td>Inadequate Finance</td><td>Small capital base, lack of working capital, difficulty raising funds</td></tr>
+                    <tr><td>3</td><td>Problem of Raw Material</td><td>Inadequate supply, compromise on quality, high prices</td></tr>
+                    <tr><td>4</td><td>Labour Problem</td><td>Unskilled workers, low productivity, absenteeism, low wages, job insecurity</td></tr>
+                    <tr><td>5</td><td>Marketing Problem</td><td>Dependence on middlemen, delayed payments, lack of infrastructure</td></tr>
+                    <tr><td>6</td><td>Problem of Transport</td><td>Difficulty in moving raw material and finished goods</td></tr>
+                    <tr><td>7</td><td>Sickness</td><td>Internal (lack of skills) & external (delayed payment, shortage of capital)</td></tr>
+                    <tr><td>8</td><td>Power Shortage</td><td>Load shedding, irregular supply, voltage fluctuation, rising charges</td></tr>
+                    <tr><td>9</td><td>Global Competition</td><td>LPG policies (Liberalization, Privatization, Globalization)</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================= Steps to Setup SSI ================= -->
+    <div class="card"><h2><i class="fas fa-list-ol"></i> 11 Steps in Setting up Small Scale Business</h2>
+        <div class="grid" style="display: flex; flex-wrap: wrap; gap: 12px;">
+            <div style="flex: 1; min-width: 200px;">
+                <div class="qa-item"><div class="question">1) Decision of Business Area</div><div class="answer">Analyze strengths, decide proprietorship/partnership</div></div>
+                <div class="qa-item"><div class="question">2) Study of Business Environment</div><div class="answer">Industrial policy, economic policy, legal environment</div></div>
+                <div class="qa-item"><div class="question">3) Selection of Product</div><div class="answer">Market research, competition analysis</div></div>
+                <div class="qa-item"><div class="question">4) Selection of Place</div><div class="answer">Nearness to market, raw material, labour, transport</div></div>
+                <div class="qa-item"><div class="question">5) Selection of Technology</div><div class="answer">Choose suitable technology, determine needs</div></div>
+                <div class="qa-item"><div class="question">6) Business Proposal</div><div class="answer">Economic, financial, technical, market appraisal</div></div>
+            </div>
+            <div style="flex: 1; min-width: 200px;">
+                <div class="qa-item"><div class="question">7) Finance</div><div class="answer">Arrange capital (own or borrowed) - lifeblood of enterprise</div></div>
+                <div class="qa-item"><div class="question">8) Registration</div><div class="answer">Apply to District Industries Centre (DIC)</div></div>
+                <div class="qa-item"><div class="question">9) Arrangement of Resources</div><div class="answer">Physical resources, power/water, staffing</div></div>
+                <div class="qa-item"><div class="question">10) Production & Marketing</div><div class="answer">Manufacture & advertise products</div></div>
+                <div class="qa-item"><div class="question">11) Review/Feedback</div><div class="answer">Monitor performance, plan future growth</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= Section H: One sentence answers ================= -->
+    <div class="card"><h2><i class="fas fa-question-circle"></i> H. Answer in one sentence</h2>
+        <div class="qa-item"><div class="question">1) What is SSI?</div><div class="answer">Small Scale Industry is an industrial unit where investment in fixed assets like plant and equipment does not exceed the limit prescribed by Government under MSMED Act.</div></div>
+        <div class="qa-item"><div class="question">2) State examples of Traditional Small Scale Industry.</div><div class="answer">Handloom, Handicraft, Coir products, Sericulture, Khadi.</div></div>
+        <div class="qa-item"><div class="question">3) Give examples of Modern Small Scale Industry.</div><div class="answer">Bicycle parts, Electronic appliances, Sewing machines, Engineering goods.</div></div>
+    </div>
+
+    <!-- ================= Correct the underlined words ================= -->
+    <div class="card"><h2><i class="fas fa-edit"></i> I. Correct the underlined word</h2>
+        <div class="qa-item"><div class="question">1) The problem of employment has been becoming more serious in India.</div><div class="answer">unemployment</div></div>
+        <div class="qa-item"><div class="question">2) India is material abundant country.</div><div class="answer">labour</div></div>
+        <div class="qa-item"><div class="question">3) Small scale Industry uses advanced technology.</div><div class="answer">outdated / old</div></div>
+        <div class="qa-item"><div class="question">4) SSI begin with large amount of capital.</div><div class="answer">small</div></div>
+        <div class="qa-item"><div class="question">5) Business proposal is the first step in setting up of a small scale business.</div><div class="answer">Decision of business area</div></div>
+    </div>
+
+    <!-- ================= Case Study ================= -->
+    <div class="card"><h2><i class="fas fa-briefcase"></i> Case Study / Situation Analysis</h2>
+        <div class="qa-item"><div class="question">Case 1: Mr. Ram wants to start SSI of bicycle parts/machinery.</div><div class="answer">i) First step: Decision of business area / Selection of product. ii) Ways to raise capital: Own savings, bank loans, government schemes (REGP), KHADI & Village Industries Commission. iii) Marketing is necessary as it generates revenue; without marketing products cannot reach customers.</div></div>
+        <div class="qa-item"><div class="question">Case 2: Mr. Rahim worried about challenges - guide him solutions.</div><div class="answer">Solutions: Use modern technology, avail government subsidies, form cooperatives for raw material, train workers, use e-marketing, register with DIC, use renewable energy sources, focus on quality & innovation to compete globally.</div></div>
+    </div>
+
+    <!-- ================= Career Opportunities ================= -->
+    <div class="card"><h2><i class="fas fa-briefcase"></i> Career Opportunities in SSI</h2>
+        <div class="answer" style="display: block;">Small Entrepreneur · Small Industrialist · Agro-based Industrialist · Dairy Plant Owner · Small Engineering Unit Owner · Leather Industrialist · Textile Industries · Pharma Product Industries</div>
+    </div>
+
+    <!-- ================= Just to Know - Latest Amendment ================= -->
+    <div class="card"><h2><i class="fas fa-newspaper"></i> Just to Know: Cabinet approves amendment to MSMED Act</h2>
+        <div class="highlight-badge">
+            <strong>📢 New Classification based on Annual Turnover (2022):</strong><br>
+            • Micro Enterprise: Turnover does not exceed ₹5 crores<br>
+            • Small Enterprise: Turnover more than ₹5 crores but ≤ ₹75 crores<br>
+            • Medium Enterprise: Turnover more than ₹75 crores but ≤ ₹250 crores<br>
+            <em>This change enhances ease of doing business and increases employment in MSME sector.</em>
+        </div>
+    </div>
+
+    <div class="footer-note"><i class="fas fa-industry"></i> Small Scale Industry & Business | MSMED Act 2006 | Labour Intensive | 40% Exports | 11 Steps to Setup | 11th Commerce OCM</div>
+</div>
+
+<!-- Popup for Translation -->
+<div id="translationPopup" class="popup-overlay">
+    <div class="popup-content">
+        <div class="popup-header">
+            <h3><i class="fas fa-language"></i> अनुवाद / Translation</h3>
+            <span class="close-popup" onclick="closePopup()">×</span>
+        </div>
+        <div class="popup-body" id="popupBody"></div>
+    </div>
+</div>
+
+<script>
+    const hindiSummary = `
+        <div style="font-family: 'Inter', sans-serif;">
+            <p><strong>🔹 लघु उद्योग का अर्थ:</strong> लघु उद्योग वे उद्योग हैं जिनमें विनिर्माण, सेवाएँ, उत्पादन छोटे पैमाने पर किए जाते हैं। MSMED अधिनियम 2006 के अनुसार वर्गीकरण किया जाता है।</p>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 MSMED वर्गीकरण:</strong> विनिर्माण: सूक्ष्म (≤25L), लघु (25L-5Cr), मध्यम (5Cr-10Cr) | सेवा: सूक्ष्म (≤10L), लघु (10L-2Cr), मध्यम (2Cr-5Cr)</div>
+            <p><strong>🔹 महत्व:</strong> रोजगार के अवसर, क्षेत्रीय संतुलन, प्रतिस्पर्धात्मक शक्ति, प्राकृतिक संसाधनों का अधिकतम उपयोग, प्रवासन में कमी, बड़े उद्योगों को सहायता, नए उद्यमियों का विकास।</p>
+            <p><strong>🔹 लाभ:</strong> बड़े पैमाने पर रोजगार, कम पूंजी, घरेलू संसाधनों का उपयोग, औद्योगिक उत्पादन में वृद्धि, 40% निर्यात योगदान, समान वितरण, विदेशी मुद्रा अर्जन, उद्यमिता के अवसर, लागत दक्षता, लचीलापन।</p>
+            <p><strong>🔹 चुनौतियाँ:</strong> पुरानी उत्पादन विधियाँ, अपर्याप्त वित्त, कच्चे माल की समस्या, श्रम समस्या, विपणन समस्या, परिवहन, सिकनेस, बिजली की कमी, वैश्विक प्रतिस्पर्धा।</p>
+            <p><strong>⭐ स्थापना के 11 कदम:</strong> व्यवसाय क्षेत्र का निर्णय, पर्यावरण अध्ययन, उत्पाद चयन, स्थान चयन, प्रौद्योगिकी चयन, व्यवसाय प्रस्ताव, वित्त, पंजीकरण (DIC), संसाधनों की व्यवस्था, उत्पादन एवं विपणन, समीक्षा।</p>
+        </div>`;
+
+    const marathiSummary = `
+        <div style="font-family: 'Inter', sans-serif;">
+            <p><strong>🔹 लघु उद्योगाचा अर्थ:</strong> लघु उद्योग हे असे उद्योग आहेत ज्यात उत्पादन, सेवा, लहान प्रमाणात केले जातात. MSMED कायदा 2006 नुसार वर्गीकरण.</p>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 MSMED वर्गीकरण:</strong> उत्पादन: सूक्ष्म (≤25L), लघु (25L-5Cr), मध्यम (5Cr-10Cr) | सेवा: सूक्ष्म (≤10L), लघु (10L-2Cr), मध्यम (2Cr-5Cr)</div>
+            <p><strong>🔹 महत्त्व:</strong> रोजगार संधी, प्रादेशिक संतुलन, स्पर्धात्मक शक्ती, नैसर्गिक साधनांचा वापर, स्थलांतर कमी, मोठ्या उद्योगांना पाठबळ, नवीन उद्योजकांचा विकास.</p>
+            <p><strong>🔹 फायदे:</strong> मोठ्या प्रमाणात रोजगार, कमी भांडवल, देशी संसाधनांचा वापर, औद्योगिक उत्पादनात वाढ, 40% निर्यात योगदान, समान वितरण, परकीय चलन मिळवणे, उद्योजकतेच्या संधी, कमी खर्च, लवचिकता.</p>
+            <p><strong>🔹 आव्हाने:</strong> जुन्या उत्पादन पद्धती, अपुरे वित्त, कच्चा माल समस्या, कामगार समस्या, विपणन समस्या, वाहतूक, सिकनेस, वीज कमतरता, जागतिक स्पर्धा.</p>
+            <p><strong>⭐ स्थापनेची 11 पायरी:</strong> व्यवसाय क्षेत्र निर्णय, पर्यावरण अभ्यास, उत्पादन निवड, स्थान निवड, तंत्रज्ञान निवड, व्यवसाय प्रस्ताव, वित्त, नोंदणी (DIC), संसाधनांची व्यवस्था, उत्पादन व विपणन, पुनरावलोकन.</p>
+        </div>`;
+
+    function showTranslation(lang) {
+        const popup = document.getElementById('translationPopup');
+        const popupBody = document.getElementById('popupBody');
+        if (lang === 'hindi') popupBody.innerHTML = hindiSummary;
+        else popupBody.innerHTML = marathiSummary;
+        popup.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+    function closePopup() {
+        document.getElementById('translationPopup').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+    window.onclick = function(event) {
+        const popup = document.getElementById('translationPopup');
+        if (event.target === popup) closePopup();
+    }
+</script>
+</body>
+</html>

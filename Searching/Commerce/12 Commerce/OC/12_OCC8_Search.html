@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>📊 Marketing | 12th OC Chapter 8 | Concepts · Types of Market · Importance · Functions · Marketing Mix (7Ps)</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    body {
+      background: linear-gradient(145deg, #fefce8, #fef9c3);
+      min-height: 100vh;
+      padding: 24px 18px;
+      color: #713f12;
+      overflow-y: scroll;
+      scrollbar-width: thin;
+    }
+    .container { max-width: 1350px; margin: 0 auto; }
+    .heading { text-align: center; margin-bottom: 35px; animation: slideDown 0.5s ease; }
+    .heading h1 {
+      font-size: 2rem;
+      background: linear-gradient(135deg, #854d0e, #ca8a04, #eab308);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+    }
+    .heading p { color: #854d0e; margin-top: 10px; font-weight: 700; background: #ffffffcc; display: inline-block; padding: 5px 20px; border-radius: 40px; backdrop-filter: blur(4px);}
+    .rating-star { background: #fef08a; border-radius: 60px; padding: 4px 16px; display: inline-block; font-weight: bold; margin-top: 8px; color: #713f12; }
+    .search-wrapper { position: relative; margin-bottom: 32px; }
+    .search-box {
+      background: white;
+      border-radius: 60px;
+      padding: 6px 6px 6px 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.12);
+      border: 1px solid #fde047;
+    }
+    .search-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      padding: 15px 0;
+      background: transparent;
+      color: #1f2937;
+      font-weight: 500;
+    }
+    .icon-btn {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(145deg, #ca8a04, #854d0e);
+      color: white;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: 0.25s;
+      box-shadow: 0 4px 12px rgba(202,138,4,0.4);
+    }
+    .icon-btn:hover { transform: scale(1.05); background: #eab308; }
+    .suggestions-dropdown {
+      position: absolute;
+      top: calc(100% + 12px);
+      left: 0;
+      right: 0;
+      background: white;
+      border-radius: 32px;
+      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.2);
+      z-index: 120;
+      max-height: 280px;
+      overflow-y: auto;
+      display: none;
+      border: 1px solid #fde047;
+    }
+    .suggestion-item {
+      padding: 14px 24px;
+      color: #1f2937;
+      cursor: pointer;
+      border-bottom: 1px solid #fef9c3;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      transition: 0.2s;
+    }
+    .suggestion-item:hover { background: #fef9c3; padding-left: 32px; }
+    .result-container { display: flex; flex-direction: column; gap: 24px; margin-top: 20px; }
+    .result-card {
+      background: white;
+      border-radius: 32px;
+      padding: 1.8rem;
+      color: #1f2937;
+      box-shadow: 0 12px 30px -10px rgba(0,0,0,0.08);
+      transition: 0.25s ease;
+      border: 1px solid #fde047;
+    }
+    .result-card:hover { transform: translateY(-4px); box-shadow: 0 20px 30px -12px rgba(0,0,0,0.12); }
+    .badge {
+      background: #fef9c3;
+      color: #854d0e;
+      display: inline-block;
+      padding: 5px 16px;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+    .result-card h3 {
+      color: #713f12;
+      font-size: 1.35rem;
+      border-left: 6px solid #eab308;
+      padding-left: 18px;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+    .answer-text {
+      background: #fefce8;
+      padding: 18px 24px;
+      border-radius: 28px;
+      line-height: 1.7;
+      margin: 12px 0;
+      border: 1px solid #fde047;
+    }
+    .answer-text table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 0.9rem;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .answer-text th, .answer-text td {
+      border: 1px solid #fef08a;
+      padding: 10px 12px;
+      text-align: left;
+      background: white;
+    }
+    .answer-text th { background: #ca8a04; color: white; font-weight: 700; }
+    .formula-box {
+      background: #fef9c3;
+      padding: 12px 18px;
+      border-radius: 28px;
+      font-size: 0.95rem;
+      margin: 14px 0;
+      text-align: center;
+      border-left: 6px solid #eab308;
+      font-weight: 600;
+    }
+    .action-buttons { margin-top: 22px; display: flex; gap: 15px; flex-wrap: wrap; }
+    .action-buttons button {
+      border: none;
+      padding: 10px 26px;
+      border-radius: 50px;
+      font-weight: 700;
+      background: #fefce8;
+      color: #713f12;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .action-buttons button:last-child { background: #eab308; color: white; box-shadow: 0 2px 8px rgba(234,179,8,0.3);}
+    .action-buttons button:hover { transform: scale(0.97); opacity: 0.9; }
+    .not-found {
+      background: #fefce8;
+      border-radius: 48px;
+      padding: 2.5rem;
+      text-align: center;
+      font-size: 1.1rem;
+      color: #854d0e;
+      border: 1px solid #fde047;
+    }
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(10px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    .popup-box {
+      background: white;
+      max-width: 1100px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      border-radius: 48px;
+      padding: 30px 34px;
+      position: relative;
+      color: #1e293b;
+    }
+    .close-popup {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      background: #fee2e2;
+      border: none;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+    .lang-section { background: #fefce8; padding: 20px; border-radius: 28px; margin-bottom: 20px; border-left: 5px solid #eab308; }
+    .lang-section h4 { color: #713f12; margin-bottom: 12px; font-size: 1.2rem; }
+    .detail-table { width: 100%; border-collapse: collapse; margin: 16px 0; background: white; border-radius: 20px; overflow: hidden; }
+    .detail-table th { background: #ca8a04; color: white; padding: 12px; text-align: left; }
+    .detail-table td { border: 1px solid #fef08a; padding: 10px 12px; vertical-align: top; }
+    .ascii-art {
+      background: #0f172a;
+      color: #fde047;
+      font-family: monospace;
+      font-size: 11px;
+      padding: 16px;
+      border-radius: 20px;
+      overflow-x: auto;
+      white-space: pre;
+      margin: 16px 0;
+      text-align: center;
+    }
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 650px) {
+      body { padding: 16px 12px; }
+      .heading h1 { font-size: 1.4rem; }
+      .result-card h3 { font-size: 1.1rem; }
+      .result-card { padding: 1.3rem; }
+      .ascii-art { font-size: 8px; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="heading">
+    <h1>📊 Marketing | 12th OC Chapter 8</h1>
+    <p>📈 Market Concepts · Types of Market · Importance to Society/Firm/Consumer · Functions of Marketing · Marketing Mix (4Ps + 3Ps = 7Ps)</p>
+    <div class="rating-star">⭐ Rating: 10/10 — Detailed Tables & Graphical Explanations</div>
+  </div>
+  <div class="search-wrapper">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="🔎 Search: Marketing definition, Concepts of market, Types of market (Local/National/International), Importance of marketing, Functions of marketing, Marketing Mix 7Ps...">
+      <button class="icon-btn" id="voiceBtn">🎤</button>
+    </div>
+    <div id="suggestionsList" class="suggestions-dropdown"></div>
+  </div>
+  <div class="result-container" id="resultsContainer">
+    <div class="not-found">📊 Marketing Explorer — Search: Marketing definitions, Market concepts, Types of market (area/time/volume/competition), Importance, Functions, 7Ps of Marketing Mix ✨</div>
+  </div>
+</div>
+<div class="popup-overlay" id="popupModal">
+  <div class="popup-box">
+    <button class="close-popup" id="closeModalBtn">✖</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+  const qaDatabase = [];
+  function addQA(question, answer, category, keywords = [], detailedHTML = null) {
+    qaDatabase.push({ id: qaDatabase.length+1, question, answer, category, keywords: keywords.map(k=>k.toLowerCase()), detailedHTML });
+  }
+
+  // ========== CHAPTER 8: MARKETING ==========
+  
+  addQA("What is Marketing? Give definitions by AMA, Philip Kotler, WMA.",
+    `<strong>Marketing</strong> is a key management function involving creating, communicating, delivering, and exchanging offerings of value.<br><br>
+     <table class="detail-table">
+        <tr><th>Authority</th><th>Definition</th></tr>
+        <tr><td>American Marketing Association (AMA)</th><td>"Marketing is the activity, set of institutions, and processes for creating, communicating, delivering, and exchanging offerings that have value for customers, clients, partners, and society at large."</td></tr>
+        <tr><td>Philip Kotler</th><td>"Marketing is a societal process by which individuals and groups obtain what they need and want through creating, offering and freely exchanging products and services of value with others."</td></tr>
+        <tr><td>World Marketing Association (WMA)</th><td>"Marketing is the core business philosophy which directs the processes of identifying and fulfilling the needs of individuals and organizations through exchanges which create superior value for all parties."</td></tr>
+      </table>
+     <div class="ascii-art">
+   ╔═══════════════════════════════════════════════════════════════╗
+   ║                    MARKETING - CORE CONCEPT                    ║
+   ╠═══════════════════════════════════════════════════════════════╣
+   ║   NEEDS → WANTS → DEMAND → PRODUCT → EXCHANGE → TRANSACTION   ║
+   ║                                                               ║
+   ║   "Marketing is not the art of selling, but creating value"   ║
+   ╚═══════════════════════════════════════════════════════════════╝
+     </div>`,
+    "Marketing Definition", ["marketing meaning", "definition", "ama", "kotler"]);
+
+  addQA("What are the 6 Concepts of Market?",
+    `<strong>6 Concepts of Market</strong> (Derived from Latin 'mercatus' - to trade)<br><br>
+     <table class="detail-table">
+        <tr><th>Concept</th><th>Description</th></tr>
+        <tr><td>1. Place Concept</td><td>Market as a physical place where buyers and sellers meet (traditional view)</td></tr>
+        <tr><td >2. Commodity Concept </td><td> Emphasis on 'buying and selling of goods/services' not place</td></tr>
+        <tr><td >3. Exchange Concept </td><td> Voluntary exchange with free consent, no fraud/coercion</td></tr>
+        <tr><td >4. Area Concept </td><td> Free association between buyers and sellers to fix price</td></tr>
+        <tr><td >5. Demand/Customer Concept </td><td> Aggregate demand by potential buyers; "Customer is King"</td></tr>
+        <tr><td >6. Space/Digital Concept </td><td> Use of IT, e-commerce portals, mobile apps for buying/selling</td></tr>
+      </table>
+     <div class="ascii-art">
+   ┌─────────────────────────────────────────────────────────────┐
+   │            EVOLUTION OF MARKET CONCEPT                      │
+   │  PLACE → COMMODITY → EXCHANGE → AREA → CUSTOMER → DIGITAL   │
+   │    (Old)                                        (Modern)    │
+   └─────────────────────────────────────────────────────────────┘
+     </div>`,
+    "Market Concepts", ["market concepts", "place concept", "digital concept", "customer concept"]);
+
+  addQA("What are the Types of Market? (Classification)",
+    `<table class="detail-table">
+        <tr><th>Basis</th><th>Types</th><th>Description</th></tr>
+        <tr><td rowspan="3"><strong>Area Covered</strong></td><td>Local Market</td><td>Sold within local geographical limits</td></tr>
+        <tr><td>National Market</td><td>Sold within the country</td></tr>
+        <tr><td>International Market</td><td>Sold across countries (export/import)</td></tr>
+        <tr><td rowspan="3"><strong>Time</strong></td><td>Very Short Period</td><td>Few hours/day - perishable goods (veg, fruits, milk)</td></tr>
+        <tr><td>Short Period</td><td>Weekly markets, festival markets - perishable/semi-durable</td></tr>
+        <tr><td>Long Period</td><td>Long existence - durable, non-perishable goods</td></tr>
+        <tr><td rowspan="2"><strong>Volume of Transaction</strong></td><td>Wholesale Market</td><td>Bulk quantities, cheaper prices, wholesaler to retailer</td></tr>
+        <tr><td>Retail Market</td><td>Small quantities, retailer to ultimate consumer</td></tr>
+        <tr><td rowspan="3"><strong>Importance</strong></td><td>Primary Market</td><td>Agricultural/forest products (fruits, vegetables, grains)</td></tr>
+        <tr><td>Secondary Market</td><td>Semi-processed goods (yarn, iron ore)</td></tr>
+        <tr><td>Terminal Market</td><td>Goods sold to ultimate consumers/users</td></tr>
+        <tr><td rowspan="2"><strong>Regulation</strong></td><td>Regulated Market</td><td>Controlled by statutory provisions (Stock Exchange, Commodity Exchanges)</td></tr>
+        <tr><td>Unregulated/Free Market</td><td>Operates by demand & supply forces</td></tr>
+        <tr><td rowspan="5"><strong>Competition</strong></td><td>Perfect Market</td><td>Large buyers & sellers, homogeneous product, single price</td></tr>
+        <tr><td>Monopoly</td><td>Single seller, no close substitute</td></tr>
+        <tr><td>Duopoly</td><td>Two sellers</td></tr>
+        <tr><td>Oligopoly</td><td>Few sellers</td></tr>
+        <tr><td>Monopsony</td><td>Single buyer</td></tr>
+      <table>`,
+    "Types of Market", ["types of market", "market classification", "perfect market", "monopoly", "oligopoly"]);
+
+  addQA("What is the Importance of Marketing to Society?",
+    `<table class="detail-table">
+        <tr><th>#</th><th>Importance</th><th>Explanation</th></tr>
+        <tr><td colspan="2">1. Increase in Standard of Living</td><td>Paul Mazur: "Marketing is delivery of standard of living" - quality goods at cheaper prices</td></tr>
+        <tr><td colspan="2">2. Provides Employment</td><td>Marketing system covers buying, selling, finance, transport, warehousing - creates jobs</td></tr>
+        <tr><td colspan="2">3. Decreases Distribution Costs</td><td>Effective channel of distribution reduces cost prices</td></tr>
+        <tr><td colspan="2">4. Consumer Awareness</td><td>Informs and educates consumers about new products and services</td></tr>
+        <tr><td colspan="2">5. Increase in National Income</td><td>Scientifically organized marketing leads to industrialization and economic development</td></tr>
+        <tr><td colspan="2">6. Managing Consumer Expectations</td><td>Marketing research helps understand and fulfill customer needs</td></tr>
+      <tr>`,
+    "Importance of Marketing", ["importance to society", "marketing benefits society"]);
+
+  addQA("What is the Importance of Marketing to the Firm?",
+    `<table class="detail-table">
+        <tr><th>#</th><th>Importance</th><th>Explanation</th></tr>
+        <tr><td colspan="2">1. Increases Awareness</td><td>Creates brand image and awareness about products among consumers</td></tr>
+        <tr><td colspan="2">2. Increases Sales</td><td>Successful marketing campaign attracts customers, increases sales and profit</td></tr>
+        <tr><td colspan="2">3. Creates Trust</td><td>Builds trustworthy reputation, customer loyalty, brand equity</td></tr>
+        <tr><td colspan="2">4. Basis for Making Decisions</td><td>Helps answer: what, how, when, how much, for whom to produce</td></tr>
+        <tr><td colspan="2">5. Source of New Ideas</td><td>Consumer feedback helps improve products and develop new products</td></td>
+        <tr><td colspan="2">6. Tackling Competition</td><td>Creates brand image to compete in competitive environment</td></tr>
+      </table>`,
+    "Importance to Firm", ["importance to firm", "marketing benefits business"]);
+
+  addQA("What is Marketing Mix? Explain 7Ps of Marketing.",
+    `<strong>Marketing Mix</strong> is the combination of marketing variables blended to achieve desired results. E. Jerome McCarthy introduced 4Ps (1960). Booms & Bitner extended to 7Ps (1981).<br><br>
+     <table class="detail-table">
+        <tr><th>P</th><th>Element</th><th>Description</th></tr>
+        <tr><td colspan="2"><strong>1. Product</strong></td><td>Goods/services offered to satisfy customer needs (core, tangible, intangible features)</td></tr>
+        <tr><td colspan="2"><strong>2. Price</strong></td><td>Amount customer pays; affects demand and profitability</td></tr>
+        <tr><td colspan="2"><strong>3. Place</strong></td><td>Distribution channels; making product available at right place</td></tr>
+        <tr><td colspan="2"><strong>4. Promotion</strong></td><td>Advertising, personal selling, sales promotion, publicity to communicate product</td></tr>
+        <tr><td colspan="2"><strong>5. People</strong></td><td>All human actors (employees, customers) who play role in service delivery</td></tr>
+        <tr><td colspan="2"><strong>6. Process</strong></td><td>Steps involved in delivering products/services to customers</td></tr>
+        <tr><td colspan="2"><strong>7. Physical Evidence</strong></td><td>Environment where interaction occurs (location, layout, packaging, staff dress)</td></tr>
+      </table>
+     <div class="ascii-art">
+   ╔═══════════════════════════════════════════════════════════════╗
+   ║                    MARKETING MIX (7Ps)                        ║
+   ╠═══════════════════════════════════════════════════════════════╣
+   ║   ┌──────┐  ┌──────┐  ┌──────┐  ┌──────┐  ┌──────┐  ┌──────┐  ┌──────┐ ║
+   ║   │PRODUCT│  │ PRICE│  │ PLACE│  │PROMO.│  │PEOPLE│  │PROCESS│  │PHYS. │ ║
+   ║   │      │  │      │  │      │  │      │  │      │  │      │  │EVID. │ ║
+   ║   └──────┘  └──────┘  └──────┘  └──────┘  └──────┘  └──────┘  └──────┘ ║
+   ║        4Ps (McCarthy)  +  3Ps (Booms & Bitner) = 7Ps               ║
+   ╚═══════════════════════════════════════════════════════════════╝
+     </div>`,
+    "Marketing Mix", ["marketing mix", "4ps", "7ps", "product", "price", "place", "promotion", "people", "process", "physical evidence"]);
+
+  addQA("What are the Functions of Marketing? (13 Functions)",
+    `<table class="detail-table">
+        <tr><th>#</th><th>Function</th><th>Description</th></tr>
+        <tr><td colspan="2">1. Marketing Research</td><td>Collecting & analyzing consumer needs, demand patterns</td></tr>
+        <tr><td colspan="2">2. Buying and Assembling</td><td>Collecting raw materials from different sources</td></tr>
+        <tr><td colspan="2">3. Market Planning</td><td>Organizing marketing objectives and strategies</td></tr>
+        <tr><td colspan="2">4. Product Development</td><td>Designing product to suit consumer needs (quality, shape, color, packing)</td></tr>
+        <tr><td colspan="2">5. Standardisation & Grading</td><td>Setting standards (ISI, AGMARK); grading by quality/size</td></tr>
+        <tr><td colspan="2">6. Packaging & Labelling</td><td>Protecting product; label provides info (price, expiry, manufacturer)</td></tr>
+        <tr><td colspan="2">7. Branding</td><td>Giving distinct name; registered brands = Trademarks</td></tr>
+        <tr><td colspan="2">8. Customer Support Service</td><td>Pre-sales, after-sales, helpline, technical assistance</td></tr>
+        <tr><td colspan="2">9. Pricing of Product</td><td>Determining price considering cost, competition, demand</td></tr>
+        <tr><td colspan="2">10. Promotional Channels</td><td>Advertising, personal selling, publicity, sales promotion</td></tr>
+        <tr><td colspan="2">11. Distribution</td><td>Movement of finished goods from production to consumer</td></tr>
+        <tr><td colspan="2">12. Transportation</td><td>Physical movement creates place utility</td></tr>
+        <tr><td colspan="2">13. Warehousing</td><td>Storage creates time utility; stabilizes prices</td></tr>
+      </table>`,
+    "Marketing Functions", ["functions of marketing", "marketing functions"]);
+
+  addQA("Distinguish between Marketing and Selling.",
+    `<table class="detail-table">
+        <tr><th>Basis</th><th>Marketing</th><th>Selling</th></tr>
+        <tr><td>Concept</td><td>Social process of creating, offering, exchanging value</td><td>Transferring ownership for price</td></tr>
+        <tr><td>Scope</td><td>Wider concept (includes selling & other functions)</td><td>Narrower concept (part of marketing)</td></tr>
+        <tr><td>Orientation</td><td>Consumer oriented - customer satisfaction</td><td>Production oriented - efficiency</td></tr>
+        <tr><td>View of Customer</td><td>Customer is the purpose of business</td><td>Customer is last link</td></tr>
+        <tr><td>Planning</td><td>Long-term oriented (future markets & growth)</td><td>Short-term oriented (today's products & markets)</td></tr>
+        <tr><td>Activity</td><td>Indirect activity</td><td>Direct activity</td></td>
+        <tr><td>Essence</td><td>Satisfaction of consumers</td><td>Transfer of title and possession</td></tr>
+      </table>
+     <div class="formula-box">💡 "Marketing views customer as king; Selling views customer as last link"</div>`,
+    "Marketing vs Selling", ["marketing vs selling", "difference"]);
+
+  // Search Logic
+  const searchInput = document.getElementById("searchInput");
+  const resultsContainer = document.getElementById("resultsContainer");
+  const suggestionsDiv = document.getElementById("suggestionsList");
+
+  function getMatches(q) {
+    const lower = q.toLowerCase();
+    return qaDatabase.filter(item => 
+      item.question.toLowerCase().includes(lower) || 
+      item.answer.toLowerCase().includes(lower) ||
+      item.category.toLowerCase().includes(lower) ||
+      item.keywords.some(k => k.includes(lower))
+    ).slice(0, 18);
+  }
+
+  function updateSuggestions() {
+    const val = searchInput.value.trim();
+    if(!val) { suggestionsDiv.style.display = "none"; return; }
+    const matches = getMatches(val);
+    if(!matches.length) { suggestionsDiv.style.display = "none"; return; }
+    suggestionsDiv.innerHTML = "";
+    matches.forEach(item => {
+      const div = document.createElement("div");
+      div.className = "suggestion-item";
+      div.innerHTML = `<span>📊</span> <strong>${item.question.substring(0,70)}</strong> <span style="margin-left:auto; background:#fef9c3; padding:2px 12px; border-radius:30px;">${item.category}</span>`;
+      div.addEventListener("click", () => {
+        searchInput.value = item.question;
+        suggestionsDiv.style.display = "none";
+        performSearch(item.question);
+      });
+      suggestionsDiv.appendChild(div);
+    });
+    suggestionsDiv.style.display = "block";
+  }
+
+  function performSearch(q = null) {
+    let query = (q !== null) ? q : searchInput.value.trim();
+    if(!query) { resultsContainer.innerHTML = `<div class="not-found">📊 Search: Marketing definitions, Market concepts, Types of market (area/time/volume/competition), Importance, Functions, 7Ps of Marketing Mix...</div>`; return; }
+    const matches = getMatches(query);
+    if(!matches.length) { resultsContainer.innerHTML = `<div class="not-found">❌ No results. Try: Marketing definition, Types of market, Importance of marketing, Functions of marketing, Marketing Mix 7Ps, Marketing vs Selling.</div>`; return; }
+    resultsContainer.innerHTML = "";
+    matches.forEach(item => {
+      const card = document.createElement("div");
+      card.className = "result-card";
+      card.innerHTML = `
+        <div class="badge">📌 ${escapeHtml(item.category)}</div>
+        <h3>📘 ${escapeHtml(item.question)}</h3>
+        <div class="answer-text"><strong>✅ Detailed Answer:</strong><br>${item.answer}</div>
+        <div class="action-buttons">
+          <button class="detailBtn" data-id="${item.id}">🔍 In-Depth Explanation + Visuals</button>
+          <button class="extraTableBtn" data-cat="${item.category}">📊 Quick Reference Tables</button>
+        </div>
+      `;
+      resultsContainer.appendChild(card);
+    });
+    attachEvents(matches);
+  }
+
+  function attachEvents(matchesArray) {
+    document.querySelectorAll(".detailBtn").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const id = parseInt(btn.getAttribute("data-id"));
+        const item = qaDatabase.find(i => i.id === id);
+        if(item) showDetailedModal(item);
+      });
+    });
+    document.querySelectorAll(".extraTableBtn").forEach(btn => {
+      btn.addEventListener("click", () => showQuickTables());
+    });
+  }
+
+  function showDetailedModal(item) {
+    let detailedContent = `
+      <div class="lang-section">
+        <h4>❓ Question</h4>
+        <p style="font-size:1.1rem; font-weight:500;">${escapeHtml(item.question)}</p>
+      </div>
+      <div class="lang-section">
+        <h4>✅ Comprehensive Answer</h4>
+        <div>${item.answer}</div>
+      </div>
+    `;
+    
+    if(item.category === "Marketing Definition") {
+      detailedContent += `<div class="lang-section"><h4>📜 Evolution of Marketing Concept</h4><div class="ascii-art">
+   Production Concept → Product Concept → Selling Concept → Marketing Concept → Societal Marketing Concept
+   (Focus: Product)     (Quality)        (Selling)        (Customer Needs)    (Society Welfare)
+      </div></div>`;
+    }
+    if(item.category === "Types of Market") {
+      detailedContent += `<div class="lang-section"><h4>🏛️ Market Structure Spectrum</h4><div class="ascii-art">
+   PERFECT COMPETITION ─────────────────────► IMPERFECT COMPETITION
+         │                    │                    │              │
+    Many sellers          Few sellers         Two sellers    Single seller
+    (Perfect)            (Oligopoly)          (Duopoly)      (Monopoly)
+      </div></div>`;
+    }
+    if(item.category === "Marketing Mix") {
+      detailedContent += `<div class="lang-section"><h4>🎯 4Ps vs 7Ps - When to Use?</h4><div class="ascii-art">
+   ┌─────────────────────────────────────────────────────────────┐
+   │  4Ps (Product Marketing)    │   7Ps (Service Marketing)      │
+   │  - Physical goods           │   - Intangible services        │
+   │  - FMCG, Electronics        │   - Banking, Insurance, Hotel  │
+   │  - McCarthy (1960)          │   - Booms & Bitner (1981)      │
+   └─────────────────────────────────────────────────────────────┘
+      </div>`;
+    }
+    
+    document.getElementById("popupModal").style.display = "flex";
+    document.getElementById("modalContent").innerHTML = `
+      <h2 style="color:#713f12; margin-bottom:20px;">📖 In-Depth Explanation + Visuals</h2>
+      ${detailedContent}
+      <button id="closeDetailModal" style="background:#eab308; padding:10px 26px; border-radius:40px; margin-top:12px; border:none; color:white; cursor:pointer;">Close</button>
+    `;
+    document.getElementById("closeDetailModal").addEventListener("click", () => document.getElementById("popupModal").style.display = "none");
+  }
+
+  function showQuickTables() {
+    let content = `<div class="lang-section"><strong>📚 Chapter 8: Marketing - Quick Reference</strong><br>`;
+    content += `<h4>📈 Types of Market at a Glance</h4>
+      <table class="detail-table">
+        <tr><th>Basis</th><th>Types</th></tr>
+        <tr><td>Area</th><td>Local, National, International</td></tr>
+        <tr><td>Time</th><td>Very Short, Short, Long Period</td></tr>
+        <tr><td>Volume</th><td>Wholesale, Retail</td></tr>
+        <tr><td>Importance</th><td>Primary, Secondary, Terminal</td></tr>
+        <tr><td>Regulation</th><td>Regulated, Unregulated</td></tr>
+        <tr><td>Competition</th><td>Perfect, Monopoly, Duopoly, Oligopoly, Monopsony</td></tr>
+      </table>`;
+    content += `<h4>🎯 7Ps of Marketing Mix</h4>
+      <table class="detail-table"><tr><th>P</th><th>Element</th><th>Key Question</th></tr>
+      <tr><td>1</td><td>Product</td><td>What to sell?</td></tr>
+      <tr><td>2</td><td>Price</td><td>At what price?</td></tr>
+      <tr><td>3</td><td>Place</td><td>Where to sell?</td></tr>
+      <tr><td>4</td><td>Promotion</td><td>How to communicate?</td></tr>
+      <tr><td>5</td><td>People</td><td>Who delivers?</td></tr>
+      <tr><td>6</td><td>Process</td><td>How to deliver?</td></tr>
+      <tr><td>7</td><td>Physical Evidence</td><td>What environment?</td></tr>
+      </table>`;
+    content += `<div class="formula-box">💡 Key Takeaways: Market derived from Latin 'mercatus' (to trade). 6 Concepts of Market. 13 Functions of Marketing. Marketing is wider than selling. 4Ps for products, 7Ps for services.</div>`;
+    document.getElementById("popupModal").style.display = "flex";
+    document.getElementById("modalContent").innerHTML = `<h2 style="color:#713f12;">📊 Marketing - Reference Tables</h2>${content}<button id="closeModalInside" style="background:#eab308; margin-top:20px; padding:10px 26px; border-radius:40px; color:white; border:none;">Close</button>`;
+    document.getElementById("closeModalInside").addEventListener("click", () => document.getElementById("popupModal").style.display = "none");
+  }
+
+  function escapeHtml(str) { return str.replace(/[&<>]/g, m => m==='&'?'&amp;': m==='<'?'&lt;':'&gt;'); }
+  function startVoice() { if (!('webkitSpeechRecognition' in window)) { alert("Voice search supported in Chrome/Edge."); return; } const rec = new webkitSpeechRecognition(); rec.lang="en-IN"; rec.start(); rec.onresult = (e)=> { searchInput.value = e.results[0][0].transcript; performSearch(); }; }
+  document.getElementById("voiceBtn").addEventListener("click", startVoice);
+  searchInput.addEventListener("keyup", () => { performSearch(); updateSuggestions(); });
+  searchInput.addEventListener("focus", updateSuggestions);
+  document.addEventListener("click", (e) => { if(!document.querySelector(".search-wrapper").contains(e.target)) suggestionsDiv.style.display = "none"; });
+  document.getElementById("closeModalBtn").addEventListener("click", () => document.getElementById("popupModal").style.display = "none");
+  window.onload = () => { resultsContainer.innerHTML = `<div class="not-found">📊 12th OC Chapter 8: Marketing | Search: Marketing definitions, Market concepts, Types of market (local/national/international), Importance of marketing, Functions of marketing (13), Marketing Mix 7Ps ✨</div>`; };
+</script>
+</body>
+</html>

@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Chapter 5 | E-Business & Outsourcing - Complete Q.1 to Q.8 with Detailed Answers | 12th Commerce OCM</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #f0f4fa 0%, #e8eef5 100%);
+            font-family: 'Inter', sans-serif;
+            padding: 32px 24px;
+            color: #1a2a3a;
+            line-height: 1.5;
+        }
+        .container { max-width: 1400px; margin: 0 auto; }
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 40px;
+            background: linear-gradient(145deg, #ffffff, #f8fbfe);
+            padding: 35px 20px;
+            border-radius: 2rem;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+        }
+        .hero h1 {
+            font-size: 2.5rem; font-weight: 800;
+            background: linear-gradient(135deg, #1a4d8c, #2c7da0, #3b9ac6);
+            background-clip: text; -webkit-background-clip: text; color: transparent;
+        }
+        .hero p { color: #2c7da0; font-weight: 500; margin-top: 12px; }
+        
+        .section-card {
+            background: white;
+            border-radius: 1.8rem;
+            margin-bottom: 32px;
+            padding: 28px 32px;
+            box-shadow: 0 15px 30px -12px rgba(0,0,0,0.08);
+            border: 1px solid rgba(44,125,160,0.15);
+            transition: transform 0.2s;
+        }
+        .section-card:hover { transform: translateY(-2px); }
+        
+        .section-title {
+            font-size: 1.7rem; font-weight: 800; color: #1a4d8c;
+            border-left: 6px solid #ffaa33;
+            padding-left: 20px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .section-title i { color: #ff8c42; font-size: 1.7rem; }
+        
+        .sub-title {
+            font-size: 1.3rem; font-weight: 700; color: #2c7da0;
+            margin: 25px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #ffaa33;
+            display: inline-block;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .data-table th {
+            background: linear-gradient(105deg, #1a4d8c, #2c7da0);
+            color: white;
+            padding: 14px 12px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        .data-table td {
+            border: 1px solid #e0eef5;
+            padding: 12px;
+            vertical-align: top;
+            background-color: #fff;
+        }
+        .data-table tr:hover td { background-color: #f8fcff; }
+        
+        .answer-box {
+            background: #eef3fc;
+            padding: 16px 20px;
+            border-radius: 1rem;
+            margin: 15px 0;
+            border-left: 4px solid #ffaa33;
+        }
+        .answer-box p { margin-bottom: 8px; }
+        .answer-box strong { color: #1a4d8c; }
+        
+        .qa-item {
+            margin-bottom: 24px;
+            border-left: 3px solid #cbdde9;
+            padding-left: 20px;
+        }
+        .question {
+            font-weight: 700;
+            color: #1a4d8c;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+        .answer-inline {
+            background: #eef3fc;
+            padding: 8px 16px;
+            border-radius: 28px;
+            display: inline-block;
+            font-weight: 500;
+            color: #1a4d8c;
+        }
+        .true-badge {
+            background: #e0f2e9;
+            color: #1e6f3f;
+            padding: 4px 16px;
+            border-radius: 40px;
+            font-weight: 700;
+            display: inline-block;
+        }
+        .false-badge {
+            background: #ffe8e6;
+            color: #bc4742;
+            padding: 4px 16px;
+            border-radius: 40px;
+            font-weight: 700;
+            display: inline-block;
+        }
+        .grid-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .info-card {
+            background: linear-gradient(145deg, #1a4d8c, #2c7da0);
+            border-radius: 1.2rem;
+            padding: 18px;
+            flex: 1;
+            min-width: 200px;
+            color: white;
+            text-align: center;
+        }
+        .info-card i { font-size: 2rem; margin-bottom: 10px; color: #ffdd88; }
+        .footer-note {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #cde1ef;
+            color: #2c6f8c;
+            font-size: 0.85rem;
+        }
+        @media (max-width: 768px) {
+            body { padding: 20px 16px; }
+            .section-card { padding: 20px 18px; }
+            .section-title { font-size: 1.3rem; }
+            .data-table th, .data-table td { font-size: 0.75rem; padding: 8px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="hero">
+        <h1><i class="fas fa-globe"></i> Chapter 5 · E-Business & Outsourcing</h1>
+        <p>Complete Question Bank Q.1 to Q.8 | E-Business | Online Transaction | Outsourcing | BPO | KPO | LPO</p>
+    </div>
+
+    <!-- ================= Q.1 (A) ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-check-circle"></i> Q.1 (A) Select the correct option and rewrite the sentence</div>
+        <div class="qa-item"><div class="question">1) For online transactions _______ is required.</div><div class="answer-inline">a) registration</div></div>
+        <div class="qa-item"><div class="question">2) The term 'e-business' is derived from the term _______ and e-commerce.</div><div class="answer-inline">c) e-mail</div></div>
+        <div class="qa-item"><div class="question">3) The transactions under _______ are between consumers and consumers.</div><div class="answer-inline">b) C2C</div></div>
+        <div class="qa-item"><div class="question">4) The process of contracting a business function to someone else is called as _______.</div><div class="answer-inline">a) outsourcing</div></div>
+        <div class="qa-item"><div class="question">5) In online shopping customers put the product in the _______.</div><div class="answer-inline">b) shopping cart</div></div>
+    </div>
+
+    <!-- ================= Q.1 (B) Match Pairs ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-link"></i> Q.1 (B) Match the pairs</div>
+        <table class="data-table">
+            <thead><tr><th>Group A</th><th>Answer</th><th>Group B</th></tr></thead>
+            <tbody>
+                <tr><td>A) B2B</div></div></td><td>→</div></div><td>5) Business to Business</div></div></tr>
+                <tr><td>B) B2C</div></div></td><td>→</div></div><td>4) Business to Consumer</div></div></tr>
+                <tr><td>C) C2C</div></div></td><td>→</div></div><td>6) Consumer to Consumer</div></div></tr>
+                <tr><td>D) C2B</div></div></td><td>→</div></div><td>9) Consumer to Business</div></div></tr>
+                <tr><td>E) B2A</div></div></td><td>→</div></div><td>3) Business to Administration</div></div></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ================= Q.1 (C) One Word ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-tag"></i> Q.1 (C) Give one word/phrase/term</div>
+        <div class="qa-item"><div class="question">1) The stage where the goods bought are delivered to the customer.</div><div class="answer-inline">Delivery stage</div></div>
+        <div class="qa-item"><div class="question">2) The term derived from the terms e-mail and e-commerce.</div><div class="answer-inline">E-business</div></div>
+        <div class="qa-item"><div class="question">3) The transaction which is done with the help of the internet.</div><div class="answer-inline">Online transaction</div></div>
+        <div class="qa-item"><div class="question">4) The first step in online transaction.</div><div class="answer-inline">Registration</div></div>
+        <div class="qa-item"><div class="question">5) The process of contracting a business function to specialized agencies.</div><div class="answer-inline">Outsourcing</div></div>
+        <div class="qa-item"><div class="question">6) Subset of outsourcing.</div><div class="answer-inline">BPO</div></div>
+        <div class="qa-item"><div class="question">7) Sub segment of BPO.</div><div class="answer-inline">KPO</div></div>
+        <div class="qa-item"><div class="question">8) One of the value added BPO service which involves legal work.</div><div class="answer-inline">LPO</div></div>
+    </div>
+
+    <!-- ================= Q.1 (D) True/False ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-gavel"></i> Q.1 (D) State True or False</div>
+        <div class="qa-item"><div class="question">1) It is easy to set up e-business as compared to traditional business.</div><div class="answer-inline"><span class="true-badge">True</span></div></div>
+        <div class="qa-item"><div class="question">2) The term e-business is derived from the term e-mail and e-commerce.</div><div class="answer-inline"><span class="true-badge">True</span></div></div>
+        <div class="qa-item"><div class="question">3) E-business allows you to work across the globe in any field.</div><div class="answer-inline"><span class="true-badge">True</span></div></div>
+        <div class="qa-item"><div class="question">4) LPO stands for legal product outsourcing.</div><div class="answer-inline"><span class="false-badge">False</span> (Legal Process Outsourcing)</div></div>
+        <div class="qa-item"><div class="question">5) KPO requires advanced analytical and technical skills.</div><div class="answer-inline"><span class="true-badge">True</span></div></div>
+        <div class="qa-item"><div class="question">6) With the help of outsourcing, company cannot focus on the core areas.</div><div class="answer-inline"><span class="false-badge">False</span> (Can focus on core areas)</div></div>
+    </div>
+
+    <!-- ================= Q.1 (E) Odd One ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-puzzle-piece"></i> Q.1 (E) Find the odd one</div>
+        <div class="qa-item"><div class="question">1) BPO, RTO, LPO, KPO</div><div class="answer-inline">RTO (Others are outsourcing types)</div></div>
+        <div class="qa-item"><div class="question">2) B2B, B2C, A2Z, C2C</div><div class="answer-inline">A2Z (Others are e-business models)</div></div>
+        <div class="qa-item"><div class="question">3) Debit card, Credit card, Aadhar card, ATM card</div><div class="answer-inline">Aadhar card (Others are payment cards)</div></div>
+    </div>
+
+    <!-- ================= Q.1 (F) Complete Sentences ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-language"></i> Q.1 (F) Complete the sentences</div>
+        <div class="grid-cards">
+            <div class="info-card"><i class="fas fa-laptop"></i>1) E-business is abbreviation for<br><strong>Electronic Business</strong></div>
+            <div class="info-card"><i class="fas fa-calendar-alt"></i>2) Term e-business came into existence in<br><strong>1997</strong></div>
+            <div class="info-card"><i class="fas fa-wifi"></i>3) E-business means using the<br><strong>Internet</strong></div>
+            <div class="info-card"><i class="fas fa-layer-group"></i>4) E-business is ______ of e-commerce<br><strong>Superset</strong></div>
+            <div class="info-card"><i class="fas fa-code-branch"></i>5) E-commerce is ______ of e-business<br><strong>Subset</strong></div>
+            <div class="info-card"><i class="fas fa-handshake"></i>6) Contracting business function is<br><strong>Outsourcing</strong></div>
+        </div>
+    </div>
+
+    <!-- ================= Q.1 (G) Table Completion ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-table"></i> Q.1 (G) Select correct option and complete the table</div>
+        <table class="data-table">
+            <thead><tr><th>Group A</th><th>Answer</th><th>Group B</th></tr></thead>
+            <tbody>
+                <tr><td>A) Registration</div></div></td><td>→</div></div><td>First step</div></div></tr>
+                <tr><td>B) Superset of e-commerce</div></div></td><td>→</div></div><td>E-business</div></div></tr>
+                <tr><td>C) _______</div></div></td><td>→</div></div><td>Last step (Payment mechanism)</div></div></tr>
+                <tr><td>D) Subset of E-business</div></div></td><td>→</div></div><td>E-commerce</div></div></tr>
+                <tr><td>E) _______</div></div></td><td>→</div></div><td>B2B (Business to Business)</div></div></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ================= Q.1 (H) One Sentence ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-question-circle"></i> Q.1 (H) Answer in one sentence</div>
+        <div class="qa-item"><div class="question">1) What is E-business?</div><div class="answer-box">E-business (Electronic Business) is the administration of conducting business via the internet, including buying/selling, customer support, and technical services.</div></div>
+        <div class="qa-item"><div class="question">2) What is outsourcing?</div><div class="answer-box">Outsourcing is the process of contracting a business function or specific activity to specialized agencies to reduce cost and focus on core areas.</div></div>
+        <div class="qa-item"><div class="question">3) What is Online Transaction?</div><div class="answer-box">Online transaction is the process of buying and selling goods/services through the internet where payment is made electronically.</div></div>
+        <div class="qa-item"><div class="question">4) What is shopping cart?</div><div class="answer-box">Shopping cart is an online record of items selected by the buyer while browsing an online store, showing quantity and price.</div></div>
+        <div class="qa-item"><div class="question">5) What is digital cash?</div><div class="answer-box">Digital cash is an electronic currency that exists only in cyberspace, allowing real currency to be used in electronic format.</div></div>
+        <div class="qa-item"><div class="question">6) What is BPO?</div><div class="answer-box">Business Process Outsourcing (BPO) involves contracting non-primary business activities to third-party service providers to minimize cost and increase efficiency.</div></div>
+        <div class="qa-item"><div class="question">7) What is KPO?</div><div class="answer-box">Knowledge Process Outsourcing (KPO) is a subset of BPO involving outsourcing of high-level, knowledge-based, specialized tasks to external experts.</div></div>
+        <div class="qa-item"><div class="question">8) What is LPO?</div><div class="answer-box">Legal Process Outsourcing (LPO) involves outsourcing legal work such as document review, contract drafting, and legal research to specialized firms.</div></div>
+    </div>
+
+    <!-- ================= Q.1 (I) Correct Underlined ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-edit"></i> Q.1 (I) Correct the underlined word</div>
+        <div class="qa-item"><div class="question">1) E-business is <u>hard</u> to start.</div><div class="answer-inline">easy</div></div>
+        <div class="qa-item"><div class="question">2) There are <u>five</u> stages of online transactions.</div><div class="answer-inline">three</div></div>
+        <div class="qa-item"><div class="question">3) Registration is the <u>Last</u> step in online transaction.</div><div class="answer-inline">First</div></div>
+        <div class="qa-item"><div class="question">4) Digital cash is form of <u>plastic currency</u>.</div><div class="answer-inline">electronic currency</div></div>
+        <div class="qa-item"><div class="question">5) KPO includes <u>less</u> knowledge based and specialized work.</div><div class="answer-inline">more</div></div>
+    </div>
+
+    <!-- ================= Q.1 (J) Arrange Order ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-sort-amount-down"></i> Q.1 (J) Arrange in proper order</div>
+        <div class="qa-item"><div class="question">1) Purchase or sale / Delivery stage / Pre purchase or sale</div><div class="answer-inline">Pre purchase/sale → Purchase/sale → Delivery stage</div></div>
+        <div class="qa-item"><div class="question">2) Placing an order, Cash on delivery, Registration</div><div class="answer-inline">Registration → Placing an order → Cash on delivery</div></div>
+    </div>
+
+    <!-- ================= Q.2 Explain Terms ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-chalkboard-teacher"></i> Q.2 Explain the following terms/concepts</div>
+        <div class="qa-item"><div class="question">1) E-business</div><div class="answer-box"><strong>Meaning:</strong> E-business (Electronic Business) is conducting business processes using internet, intranets, extranets. Coined by IBM in 1997. It includes buying/selling, customer service, supply chain, and technical support. <strong>Scope:</strong> B2B, B2C, C2C, C2B, B2A, C2A. <strong>Benefits:</strong> 24×7 access, global reach, lower cost, ease of formation.</div></div>
+        <div class="qa-item"><div class="question">2) B2B (Business to Business)</div><div class="answer-box">Both buyer and seller are business entities. Examples: Manufacturer supplying to wholesaler, company buying raw materials from another company. B2B transactions form the bulk of e-business value.</div></div>
+        <div class="qa-item"><div class="question">3) B2C (Business to Consumer)</div><div class="answer-box">Transactions between business firms and end consumers. Examples: Flipkart, Amazon where customers buy products directly. Features: online catalogs, shopping cart, home delivery.</div></div>
+        <div class="qa-item"><div class="question">4) C2C (Consumer to Consumer)</div><div class="answer-box">Transactions between consumers through a third-party platform. Example: eBay, OLX where one consumer sells to another. Platform acts as an intermediary.</div></div>
+        <div class="qa-item"><div class="question">5) Outsourcing</div><div class="answer-box">Contracting non-core business functions (sanitation, security, canteen, IT) to specialized agencies. Benefits: cost reduction, access to expertise, focus on core activities. Examples: Call centers, payroll processing.</div></div>
+        <div class="qa-item"><div class="question">6) BPO (Business Process Outsourcing)</div><div class="answer-box">Outsourcing of peripheral activities to minimize cost and increase efficiency. Types: Offshore (outside country), Onshore (same country), Nearshore (neighboring country). Examples: Customer support, data entry, telemarketing.</div></div>
+        <div class="qa-item"><div class="question">7) KPO (Knowledge Process Outsourcing)</div><div class="answer-box">Subset of BPO involving high-level knowledge-based tasks. Requires specialized skills: research, analytics, financial consulting, market research. Higher value addition than BPO.</div></div>
+        <div class="qa-item"><div class="question">8) LPO (Legal Process Outsourcing)</div><div class="answer-box">Outsourcing legal work to external firms: document review, contract drafting, patent filing, legal research, litigation support. Benefits: cost reduction, access to expertise, flexible staffing.</div></div>
+    </div>
+
+    <!-- ================= Q.3 Case Study ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-briefcase"></i> Q.3 Study the case/situation and express your opinion</div>
+        <div class="qa-item"><div class="question">1) Abhay purchases from Flipkart, Sheetal from eBay.</div><div class="answer-box">i) C2C website: <strong>eBay</strong><br>ii) B2C website: <strong>Flipkart</strong><br>iii) First step Abhay needs: <strong>Registration</strong> on Flipkart website</div></div>
+        <div class="qa-item"><div class="question">2) Satvik purchases from Titan shop, Shambhavi from online site.</div><div class="answer-box">i) Traditional business: <strong>Satvik (Titan shop)</strong><br>ii) E-business: <strong>Shambhavi (online shopping)</strong><br>iii) High risk involved: <strong>E-business</strong> (no direct contact, fraud risk)</div></div>
+        <div class="qa-item"><div class="question">3) Mr. Ved paid by cheque, Mr. Shlok by fund transfer.</div><div class="answer-box">i) Faster payment: <strong>Mr. Shlok (fund transfer)</strong><br>ii) Traditional business payment: <strong>Cheque (Mr. Ved)</strong><br>iii) E-business payment: <strong>Fund transfer (Mr. Shlok)</strong></div></div>
+    </div>
+
+    <!-- ================= Q.4 DISTINGUISH BETWEEN (Tabular) ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-balance-scale"></i> Q.4 Distinguish Between (Detailed Tabular Analysis)</div>
+        
+        <div class="sub-title">1) Traditional Business vs E-business</div>
+        <table class="data-table">
+            <thead><tr><th>Basis</th><th>Traditional Business</th><th>E-business</th></tr></thead>
+            <tbody>
+                <tr><td>Formation</div></div></td><td>Lengthy, complicated procedure</div></div></td><td>Easy to form, minimal paperwork</div></div></tr>
+                <tr><td>Setting up Cost</div></div></td><td>Huge capital required (shop, godown, staff)</div></div></td>方面的Nominal cost (website, hosting)</div></div></td>
+                <tr><td>Risk Involved</div></div></td><td>Less risk (personal interaction, physical verification)</div></div>                     <td>High risk (no direct contact, fraud, hacking)</div></div></tr>
+                <tr><td>Scope of Business</div></div>                     <td>Limited to local/regional area</div></div>                     <td>Global reach (worldwide customers)</div></div></tr>
+                <tr><td>Customer Interaction</div></div>                  <td>Face-to-face interaction possible</div></div>                     <td>No face-to-face interaction</div></div></tr>
+                <tr><td>Physical Inspection</div></div>                     <td>Goods can be inspected before purchase</div></div>                  <td>Cannot touch/feel products before buying</div></div></tr>
+                <tr><td>Delivery of Goods</div></div>                     <td>Instant (take goods immediately)</div></div>                     <td>Takes time (shipping/delivery period)</div></div></tr>
+                <tr><td>Accessibility</div></div>                        <td>Limited to business hours</div></div>                        <td>24×7×365 days available</div></div></tr>
+                <tr><td>Resource Focus</div></div>                        <td>Focus on supply side</div></div>                          <td>Focus on demand side</div></div></tr>
+            </tbody>
+        </table>
+
+        <div class="sub-title">2) E-business vs E-commerce</div>
+        <table class="data-table">
+            <thead><tr><th>Basis</th><th>E-commerce</th><th>E-business</th></tr></thead>
+            <tbody>
+                <tr><td>Meaning</div></div>                     <td>Commercial transactions over internet</div></div>                     <td>All business processes conducted online</div></div></tr>
+                <tr><td>What is it?</div></div>                      <td>Subset of e-business</div></div>                         <td>Superset of e-commerce</div></div></tr>
+                <tr><td>Scope</div></div>                        <td>Narrow — only buying & selling</div></div>                     <td>Broad — includes marketing, supply chain, CRM, datamining</div></div></tr>
+                <tr><td>Network Used</div></div>                    <td>Mandatory use of internet</div></div>                        <td>Uses internet, intranet, extranet</div></div></tr>
+                <tr><td>Transactions</div></div>                     <td>Mostly B2C context</div></div>                           <td>Used in B2B context as well</div></div></tr>
+                <tr><td>Post-sale Efforts</div></div>                   <td>Limited to sale completion</div></div>                        <td>Includes re-sale and post-sale services</div></div></tr>
+            </tbody>
+        </table>
+
+        <div class="sub-title">3) BPO vs KPO</div>
+        <table class="data-table">
+            <thead><tr><th>Basis</th><th>BPO (Business Process Outsourcing)</th><th>KPO (Knowledge Process Outsourcing)</th></tr></thead>
+            <tbody>
+                <tr><td>Meaning</div></div>                     <td>Outsourcing of non-primary business processes</div></div>                     <td>Outsourcing of knowledge-based, high-level tasks</div></div></tr>
+                <tr><td>Degree of Complexity</div></div>                <td>Less complex, routine processes</div></div>                     <td>Highly complex, analytical tasks</div></div></tr>
+                <tr><td>Talent Required</div></div>                  <td>Good communication skills, basic training</div></div>                     <td>Professional qualified workers (MBA, CA, PhD)</div></div></tr>
+                <tr><td>Focus on</div></div>                      <td>Low-level, standardized processes</div></div>                     <td>High-level, judgment-based processes</div></div></tr>
+                <tr><td>Value Addition</div></div>                    <td>Moderate value addition</div></div>                        <td>High value addition</div></div></tr>
+                <tr><td>Examples</div></div>                       <td>Call center, data entry, telemarketing, payroll</div></div>                     <td>Market research, financial analysis, R&D, legal research</div></div></tr>
+                <tr><td>Subset Relationship</div></div>                 <td>BPO is broader category</div></div>                        <td>KPO is a subset of BPO</div></div></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ================= Q.5 Answer in Brief ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-pen-alt"></i> Q.5 Answer in brief (Detailed Explanations)</div>
+        
+        <div class="qa-item"><div class="question">1) What is outsourcing? Illustrate with suitable example.</div>
+        <div class="answer-box"><strong>Outsourcing:</strong> Contracting business functions to specialized agencies. Companies outsource non-core activities to reduce cost and focus on core competencies.<br>
+        <strong>Example:</strong> A software company outsources its canteen services, security, and housekeeping to specialized agencies. Similarly, a bank outsources its customer support call center to a BPO firm.</div></div>
+        
+        <div class="qa-item"><div class="question">2) What is BPO? Explain in detail.</div>
+        <div class="answer-box"><strong>BPO (Business Process Outsourcing):</strong> Contracting of non-primary business operations to third-party providers. <strong>Types:</strong> Offshore (outside country), Onshore (same country), Nearshore (neighboring country). <strong>Examples:</strong> Customer support, telemarketing, data entry, payroll processing. <strong>Advantages:</strong> Cost reduction, productivity improvement, skilled manpower access. <strong>Disadvantages:</strong> Communication problems, time zone differences, loss of control.</div></div>
+        
+        <div class="qa-item"><div class="question">3) What is KPO? Explain in detail.</div>
+        <div class="answer-box"><strong>KPO (Knowledge Process Outsourcing):</strong> Subset of BPO involving high-level, knowledge-based tasks. Requires specialized skills and advanced qualifications. <strong>Examples:</strong> Market research, financial analysis, data mining, pharmaceutical research, legal research, engineering design. <strong>Features:</strong> Higher value addition, requires analytical skills, professional expertise (MBA, CA, PhD).</div></div>
+        
+        <div class="qa-item"><div class="question">4) What is LPO? Explain in detail.</div>
+        <div class="answer-box"><strong>LPO (Legal Process Outsourcing):</strong> Outsourcing legal work to external specialized firms. <strong>Services include:</strong> Document review, contract drafting, patent filing, legal research, litigation support, intellectual property management. <strong>Advantages:</strong> Cost reduction (up to 50-60%), access to expertise, flexible staffing, 24×7 operations. <strong>Challenges:</strong> Confidentiality concerns, cultural barriers, geographical distance.</div></div>
+    </div>
+
+    <!-- ================= Q.6 Justify ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-check-double"></i> Q.6 Justify the following statements</div>
+        <div class="qa-item"><div class="question">1) It is easy to set up e-business as compared to traditional business.</div><div class="answer-box"><strong>Justification:</strong> Traditional business requires physical shop, godown, licenses, staff, and huge capital. E-business can be started with a website, minimal investment, no physical store, and less paperwork. Registration is simple and can be done online. Hence, e-business is easier to set up.</div></div>
+        <div class="qa-item"><div class="question">2) E-business allows user to work across the globe in any field.</div><div class="answer-box"><strong>Justification:</strong> E-business uses the internet which has no geographical boundaries. A seller can reach customers worldwide, and a buyer can purchase from any country. It operates 24×7, allowing global access to markets, suppliers, and customers. Examples: Amazon, Alibaba enable cross-border trade.</div></div>
+        <div class="qa-item"><div class="question">3) Online transaction is done with the help of the internet.</div><div class="answer-box"><strong>Justification:</strong> Online transaction requires internet connection to access websites, place orders, and make payments. Without internet, steps like registration, adding to cart, payment via net banking/credit card cannot be completed. Hence, internet is the backbone of online transactions.</div></div>
+    </div>
+
+    <!-- ================= Q.7 Attempt the Following ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-tasks"></i> Q.7 Attempt the following (Detailed Explanations)</div>
+        
+        <div class="qa-item"><div class="question">1) What are the advantages and disadvantages of e-business?</div>
+        <div class="answer-box"><strong>Advantages (8 points):</strong><br>
+        • <strong>Ease of formation:</strong> Simple to start, less paperwork<br>
+        • <strong>Lower investment:</strong> No physical store, less manpower<br>
+        • <strong>Convenience:</strong> 24×7×365 access<br>
+        • <strong>Speed:</strong> Instant information exchange<br>
+        • <strong>Global access:</strong> Reach worldwide customers<br>
+        • <strong>Paperless society:</strong> Reduced paperwork<br>
+        • <strong>Government support:</strong> Favorable policies for digital India<br>
+        • <strong>Easy payment:</strong> Multiple online payment options<br>
+        <strong>Disadvantages (5 points):</strong><br>
+        • <strong>Lack of personal touch:</strong> Cannot touch/feel products<br>
+        • <strong>Delivery time:</strong> Takes time for shipping<br>
+        • <strong>Security issues:</strong> Hacking, fraud, data theft<br>
+        • <strong>Government interference:</strong> Monitoring and regulations<br>
+        • <strong>High risk:</strong> No direct contact, legal challenges in fraud</div></div>
+        
+        <div class="qa-item"><div class="question">2) What are the types of e-business? Explain.</div>
+        <div class="answer-box"><strong>Six types of E-business models:</strong><br>
+        • <strong>B2B (Business to Business):</strong> Both parties are businesses (manufacturer to wholesaler)<br>
+        • <strong>B2C (Business to Consumer):</strong> Business to end consumer (Flipkart, Amazon)<br>
+        • <strong>C2B (Consumer to Business):</strong> Consumer requests service from business (pest control, taxi)<br>
+        • <strong>C2C (Consumer to Consumer):</strong> Consumers selling to consumers (eBay, OLX)<br>
+        • <strong>B2A (Business to Administration):</strong> Business to government (tax payment, permits)<br>
+        • <strong>C2A (Consumer to Administration):</strong> Individual to government (passport, Aadhaar)</div></div>
+        
+        <div class="qa-item"><div class="question">3) What are the advantages of outsourcing?</div>
+        <div class="answer-box"><strong>8 Advantages of Outsourcing:</strong><br>
+        1. <strong>Overall cost advantage:</strong> Reduces operational and training costs<br>
+        2. <strong>Stimulates entrepreneurship:</strong> Creates new business opportunities<br>
+        3. <strong>Low manpower cost:</strong> Cheaper labor in outsourcing destinations<br>
+        4. <strong>Access to expert services:</strong> Professional, high-quality service<br>
+        5. <strong>Focus on core processes:</strong> Company focuses on main activities<br>
+        6. <strong>Reduced investment:</strong> No need to invest in technology/infrastructure<br>
+        7. <strong>Increased efficiency:</strong> Specialized vendors work faster and better<br>
+        8. <strong>Knowledge sharing:</strong> Best practices and expertise exchange</div></div>
+        
+        <div class="qa-item"><div class="question">4) What are the disadvantages of outsourcing?</div>
+        <div class="answer-box"><strong>5 Disadvantages of Outsourcing:</strong><br>
+        1. <strong>Lack of customer focus:</strong> Vendor may serve multiple clients, dividing attention<br>
+        2. <strong>Security & confidentiality threat:</strong> Sensitive data may be leaked<br>
+        3. <strong>Dissatisfactory services:</strong> Delayed delivery, substandard quality<br>
+        4. <strong>Ethical issues:</strong> Jobs moved to other countries (domestic unemployment)<br>
+        5. <strong>Other issues:</strong> Contract misunderstandings, communication gaps, poor quality</div></div>
+    </div>
+
+    <!-- ================= Q.8 Long Answer Type ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-file-alt"></i> Q.8 Answer the following (Long Answer - Detailed Explanations)</div>
+        
+        <div class="qa-item"><div class="question">1) Explain the steps involved in online transaction.</div>
+        <div class="answer-box"><strong>Online Transaction Procedure (3 main steps):</strong><br><br>
+        <strong>Step 1: Registration</strong> — First step. Customer registers on website by filling form (name, email, address, password). Account created with shopping cart to track selected items.<br><br>
+        <strong>Step 2: Placing an Order</strong> — Customer browses products, selects items, adds to shopping cart. Cart shows items, quantity, price. Customer proceeds to checkout.<br><br>
+        <strong>Step 3: Payment Mechanism</strong> — Last step. Customer chooses payment option:<br>
+        a) <strong>Cash on Delivery:</strong> Pay at doorstep on delivery<br>
+        b) <strong>Cheque:</strong> Send cheque to seller; goods after realization<br>
+        c) <strong>Net Banking Transfer:</strong> Electronic transfer from buyer to seller account<br>
+        d) <strong>Credit/Debit Card:</strong> Payment via plastic money; amount deducted instantly<br>
+        e) <strong>Digital Cash:</strong> Electronic currency for online transactions<br><br>
+        After payment, seller dispatches goods. Information plays vital role in all stages.</div></div>
+        
+        <div class="qa-item"><div class="question">2) What is outsourcing? Explain advantages and disadvantages of outsourcing.</div>
+        <div class="answer-box"><strong>Outsourcing:</strong> Contracting business functions to specialized agencies. Companies outsource non-core activities (security, canteen, IT, customer support) to reduce cost and focus on core competencies.<br><br>
+        <strong>Advantages (8):</strong><br>
+        1. Cost advantages — reduces training and operational costs<br>
+        2. Stimulates entrepreneurship, employment, exports<br>
+        3. Low manpower cost compared to host country<br>
+        4. Access to professional, expert, high-quality services<br>
+        5. Emphasis on core processes rather than supporting ones<br>
+        6. Investment requirements reduced<br>
+        7. Increased efficiency and productivity<br>
+        8. Knowledge sharing between organizations<br><br>
+        <strong>Disadvantages (5):</strong><br>
+        1. Lack of customer focus — vendor caters to multiple clients<br>
+        2. Security and confidentiality threat — data may be leaked<br>
+        3. Dissatisfactory services — delayed delivery, poor quality<br>
+        4. Ethical issues — job loss in home country<br>
+        5. Other issues: contract misunderstanding, poor communication, delayed services<br><br>
+        <strong>Forms of Outsourcing:</strong> BPO, KPO, LPO</div></div>
+    </div>
+
+    <!-- Answer Key Summary -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-key"></i> Answer Key (Quick Reference)</div>
+        <table class="data-table">
+            <tr><th>Q.1(A)</th><td>1) registration &nbsp; 2) e-mail &nbsp; 3) C2C &nbsp; 4) outsourcing &nbsp; 5) shopping cart</td></tr>
+            <tr><th>Q.1(D)</th><td>True: 1,2,3,5 &nbsp; False: 4,6</td></tr>
+            <tr><th>Q.1(E)</th><td>1) RTO &nbsp; 2) A2Z &nbsp; 3) Aadhar card</td></tr>
+            <tr><th>Q.1(F)</th><td>1) Electronic business &nbsp; 2) 1997 &nbsp; 3) Internet &nbsp; 4) Superset &nbsp; 5) Subset &nbsp; 6) Outsourcing</td></tr>
+            <tr><th>Q.1(I)</th><td>1) easy &nbsp; 2) three &nbsp; 3) First &nbsp; 4) electronic currency &nbsp; 5) more</td></tr>
+            <tr><th>Q.1(J)</th><td>1) Pre purchase/sale → Purchase/sale → Delivery stage &nbsp; 2) Registration → Placing order → Cash on delivery</td></tr>
+        </table>
+    </div>
+
+    <div class="footer-note">
+        <i class="fas fa-graduation-cap"></i> Chapter 5: E-Business & Outsourcing — Complete Q.1 to Q.8 with Detailed Answers | E-Business Models (B2B, B2C, C2C, C2B, B2A, C2A) | Online Transaction (Registration → Order → Payment) | Outsourcing Types (BPO, KPO, LPO) | 12th Commerce OCM
+    </div>
+</div>
+</body>
+</html>

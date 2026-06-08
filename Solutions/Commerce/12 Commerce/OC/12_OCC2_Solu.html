@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Chapter 2 | Functions of Management - 12th Commerce</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #eef2f9 0%, #e0e8f2 100%);
+            font-family: 'Inter', sans-serif;
+            padding: 32px 24px;
+            color: #0a2b3e;
+            line-height: 1.5;
+            overflow-y: scroll;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        body::-webkit-scrollbar { display: none; }
+        .container { max-width: 1400px; margin: 0 auto; }
+        .hero { text-align: center; margin-bottom: 40px; }
+        .hero h1 {
+            font-size: 2.4rem; font-weight: 800;
+            background: linear-gradient(135deg, #0b4b6b, #1f6e93, #2c7da0);
+            background-clip: text; -webkit-background-clip: text; color: transparent;
+            padding-bottom: 10px;
+            border-bottom: 4px solid #ffb347;
+            display: inline-block;
+        }
+        /* Summary Card */
+        .summary-card {
+            background: linear-gradient(145deg, #ffffff, #f8fbfe);
+            border-radius: 2rem;
+            margin-bottom: 32px;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.12);
+            overflow: hidden;
+            border: 1px solid rgba(44,125,160,0.15);
+        }
+        .summary-header {
+            background: linear-gradient(105deg, #135b78 0%, #1f7a9e 100%);
+            padding: 20px 28px;
+            border-bottom: 4px solid #ffb74d;
+        }
+        .summary-header h2 {
+            color: white;
+            font-size: 1.6rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .summary-header h2 i { font-size: 1.8rem; color: #ffd966; }
+        .summary-body {
+            padding: 28px 32px;
+            max-height: 550px;
+            overflow-y: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .summary-body::-webkit-scrollbar { display: none; }
+        .summary-text { font-size: 1rem; line-height: 1.65; color: #1f3b4c; }
+        .summary-text p { margin-bottom: 14px; }
+        .summary-text strong { color: #135b78; }
+        .highlight-badge {
+            background: #eef3fc;
+            border-left: 4px solid #ffb74d;
+            padding: 10px 16px;
+            margin: 16px 0;
+            border-radius: 12px;
+        }
+        .lang-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px dashed #cbdde9;
+        }
+        .lang-btn {
+            background: #135b78; color: white; border: none;
+            padding: 10px 28px; border-radius: 50px; font-weight: 600;
+            cursor: pointer; transition: all 0.25s ease;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .lang-btn:hover { background: #ff8c42; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        
+        .card {
+            background: rgba(255,255,255,0.97); border-radius: 1.8rem;
+            margin-bottom: 32px; padding: 28px 32px;
+            box-shadow: 0 15px 30px -10px rgba(0,0,0,0.08);
+            border: 1px solid rgba(255,255,255,0.6);
+        }
+        .card h2 {
+            font-size: 1.6rem; font-weight: 700; color: #135b78;
+            margin-bottom: 24px; padding-bottom: 8px;
+            border-bottom: 3px solid #ffb74d;
+            display: inline-block;
+        }
+        .card h2 i { margin-right: 12px; color: #ff8c42; }
+        .qa-item { margin-bottom: 22px; border-left: 3px solid #cbdde9; padding-left: 20px; }
+        .question { font-weight: 700; color: #1f4a5e; margin-bottom: 8px; display: flex; gap: 12px; flex-wrap: wrap; }
+        .answer {
+            background: #f8fafd; padding: 10px 18px; border-radius: 24px;
+            font-weight: 500; color: #216477; display: inline-block;
+            font-size: 0.92rem;
+        }
+        .true-badge { background: #e0f2e9; color: #1e6f3f; padding: 3px 14px; border-radius: 40px; font-weight: 700; font-size: 0.75rem; display: inline-block; margin-right: 12px; }
+        .false-badge { background: #ffe8e6; color: #bc4742; padding: 3px 14px; border-radius: 40px; font-weight: 700; font-size: 0.75rem; display: inline-block; margin-right: 12px; }
+        .resp-table { width: 100%; overflow-x: auto; margin: 16px 0; background: #f4f9fe; padding: 4px; border-radius: 20px; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; background: white; border-radius: 16px; overflow: hidden; }
+        th, td { border: 1px solid #cde1ef; padding: 10px 12px; text-align: left; vertical-align: top; }
+        th { background: #e0eaf5; font-weight: 700; color: #135b78; }
+        .popup-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+            justify-content: center; align-items: center; z-index: 1000;
+        }
+        .popup-content {
+            background: white; width: 90%; max-width: 700px; border-radius: 2rem;
+            position: relative; max-height: 85vh; overflow: hidden;
+            display: flex; flex-direction: column;
+        }
+        .popup-header {
+            background: linear-gradient(105deg, #135b78, #1f7a9e);
+            padding: 18px 24px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .close-popup {
+            font-size: 32px; cursor: pointer; color: #ffd966;
+            transition: 0.2s; line-height: 1;
+        }
+        .close-popup:hover { color: #fff; transform: rotate(90deg); }
+        .popup-body { padding: 24px; overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none; }
+        .popup-body::-webkit-scrollbar { display: none; }
+        @media (max-width: 768px) {
+            body { padding: 20px 16px; }
+            .card, .summary-body { padding: 20px 18px; }
+            .hero h1 { font-size: 1.8rem; }
+            th, td { padding: 6px 8px; font-size: 0.7rem; }
+        }
+        .footer-note { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #bdd4e4; font-size: 0.8rem; color: #2c6f8c; }
+        .key-icon { color: #ff8c42; margin-right: 6px; }
+        .functions-grid { display: flex; flex-wrap: wrap; gap: 15px; margin: 20px 0; }
+        .func-card { flex: 1; min-width: 180px; background: linear-gradient(145deg, #fef9e8, #fff5e0); border-radius: 1.2rem; padding: 16px; text-align: center; border-bottom: 4px solid #ffb347; }
+        .func-card i { font-size: 2rem; color: #135b78; margin-bottom: 10px; display: block; }
+        .func-card h3 { font-size: 1.2rem; color: #135b78; margin-bottom: 6px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="hero">
+        <h1><i class="fas fa-chart-line"></i> Chapter 2 · Functions of Management</h1>
+        <p style="margin-top: 12px;">Planning · Organising · Staffing · Directing · Coordinating · Controlling</p>
+    </div>
+
+    <!-- ================= ATTRACTIVE SUMMARY CARD ================= -->
+    <div class="summary-card">
+        <div class="summary-header">
+            <h2><i class="fas fa-file-alt"></i> 📘 Chapter Summary: Functions of Management</h2>
+        </div>
+        <div class="summary-body">
+            <div class="summary-text" id="summaryText">
+                <p><strong>🔹 Introduction:</strong> Management is a set of principles relating to various functions like planning, organizing, staffing, directing, coordinating & controlling. According to Henry Fayol: "To manage is to forecast and to plan, to organize, to command and to control."</p>
+                
+                <div class="functions-grid">
+                    <div class="func-card"><i class="fas fa-calendar-check"></i><h3>Planning</h3><small>Deciding in advance what, how, when & who</small></div>
+                    <div class="func-card"><i class="fas fa-sitemap"></i><h3>Organising</h3><small>Grouping & assigning activities</small></div>
+                    <div class="func-card"><i class="fas fa-users"></i><h3>Staffing</h3><small>Recruit, select, train & develop</small></div>
+                    <div class="func-card"><i class="fas fa-bullhorn"></i><h3>Directing</h3><small>Guide, inspire & supervise</small></div>
+                    <div class="func-card"><i class="fas fa-handshake"></i><h3>Coordinating</h3><small>Harmonize group efforts</small></div>
+                    <div class="func-card"><i class="fas fa-chart-line"></i><h3>Controlling</h3><small>Compare actual vs standard</small></div>
+                </div>
+
+                <div class="highlight-badge"><strong>📌 Planning Importance:</strong> Sets objectives, Provides path, Improves performance, Minimizes risk, Optimum utilization, Decision making, Sets standards for control, Facilitates coordination.</div>
+                
+                <p><strong>🔹 Organising:</strong> Process of identifying & bringing together resources (men, money, material, machine, method). Brings specialization, defines jobs, clarifies authority-responsibility, establishes coordination.</p>
+                
+                <p><strong>🔹 Staffing:</strong> Attracting, recruiting, selecting, placing, appraising, remunerating, developing & retaining best workforce. <em>"Right person at right job with right pay"</em></p>
+                
+                <p><strong>🔹 Directing (Soul of Management):</strong> Instructing, guiding, communicating, inspiring, motivating & supervising. Initiates action, integrates efforts, means of motivation, creates team spirit.</p>
+                
+                <p><strong>🔹 Coordinating (Plus-value of the group - Mary Parker Follett):</strong> Integration & synchronization of group efforts. Encourages team spirit, gives proper direction, facilitates motivation, optimum utilization.</p>
+                
+                <p><strong>🔹 Controlling:</strong> Comparing actual performance with predetermined standards, measuring deviation, identifying causes & suggesting corrective measures. Koontz & O'Donnell: "Managerial control implies measurement of accomplishment against standard."</p>
+                
+                <p><strong>⭐ Management Cycle:</strong> Planning → Organising → Staffing → Directing → Coordinating → Controlling → (leads to next plan)</p>
+            </div>
+            <div class="lang-buttons">
+                <button class="lang-btn" onclick="showTranslation('hindi')"><i class="fas fa-language"></i> हिंदी अनुवाद</button>
+                <button class="lang-btn" onclick="showTranslation('marathi')"><i class="fas fa-language"></i> मराठी अनुवाद</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= Section A: Multiple Choice ================= -->
+    <div class="card"><h2><i class="fas fa-check-square"></i> A. Select the correct option</h2>
+        <div class="qa-item"><div class="question">1) The functions of management start with ________ function.</div><div class="answer">b) planning</div></div>
+        <div class="qa-item"><div class="question">2) The functions of management end with ________.</div><div class="answer">c) controlling</div></div>
+        <div class="qa-item"><div class="question">3) ________ sets out standards for controlling.</div><div class="answer">b) Planning</div></div>
+        <div class="qa-item"><div class="question">4) Organising function is important for execution of plans prepared by ________ management.</div><div class="answer">a) top level</div></div>
+        <div class="qa-item"><div class="question">5) ________ is the function which supports to activate the plans with the help of employees.</div><div class="answer">b) Directing</div></div>
+        <div class="qa-item"><div class="question">6) ________ is the function of execution according to plan and organizational structure.</div><div class="answer">c) Staffing</div></div>
+        <div class="qa-item"><div class="question">7) ________ arranges the work in such a way that minimum conflicts are raised.</div><div class="answer">a) Coordinating</div></div>
+    </div>
+
+    <!-- ================= Section B: Match the Pairs ================= -->
+    <div class="card"><h2><i class="fas fa-link"></i> B. Match the pairs</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Group A</th><th>Answer</th><th>Group B</th></tr></thead>
+                <tbody>
+                    <tr><td>Planning</td><td>→</td><td>3) Deciding in advance what to do</td></tr>
+                    <tr><td>Organising</td><td>→</td><td>6) Grouping of activities</td></tr>
+                    <tr><td>Staffing</td><td>→</td><td>9) Recruitment, selection, training</td></tr>
+                    <tr><td>Directing</td><td>→</td><td>1) Guidance, inspiration, leadership</td></tr>
+                    <tr><td>Controlling</td><td>→</td><td>2) Comparing actual with standard</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================= Section C: One word/phrase ================= -->
+    <div class="card"><h2><i class="fas fa-tag"></i> C. Give one word/phrase/term</h2>
+        <div class="qa-item"><div class="question">1) The right person at the ________ job with right pay.</div><div class="answer">Right</div></div>
+        <div class="qa-item"><div class="question">2) A person who shows the correct path as well as guides employees in solving problems.</div><div class="answer">Director</div></div>
+        <div class="qa-item"><div class="question">3) First function of management.</div><div class="answer">Planning</div></div>
+        <div class="qa-item"><div class="question">4) Last function of management.</div><div class="answer">Controlling</div></div>
+        <div class="qa-item"><div class="question">5) It is an intellectual process of logical thinking and rational decision making.</div><div class="answer">Planning</div></div>
+        <div class="qa-item"><div class="question">6) The term that is used to denote the structure.</div><div class="answer">Organization</div></div>
+        <div class="qa-item"><div class="question">7) Process of attracting, recruiting, selecting, placing, appraising and remunerating people.</div><div class="answer">Staffing</div></div>
+        <div class="qa-item"><div class="question">8) Process that leads employees towards accomplishment of organizational goals.</div><div class="answer">Directing</div></div>
+        <div class="qa-item"><div class="question">9) It increases the team spirit at work place.</div><div class="answer">Coordinating</div></div>
+        <div class="qa-item"><div class="question">10) Process of comparing actual performance with predetermined standard performance.</div><div class="answer">Controlling</div></div>
+    </div>
+
+    <!-- ================= Section D: True/False ================= -->
+    <div class="card"><h2><i class="fas fa-gavel"></i> D. State True or False</h2>
+        <div class="qa-item"><div class="question">1) Every function of management is not based on planning.</div><div class="answer"><span class="false-badge">False</span> Every function is based on planning.</div></div>
+        <div class="qa-item"><div class="question">2) Specialization in activities leads to increase in organizational efficiency.</div><div class="answer"><span class="true-badge">True</span> Division of work brings specialization.</div></div>
+        <div class="qa-item"><div class="question">3) Qualified, efficient and skilled workforce is always an asset of the organization.</div><div class="answer"><span class="true-badge">True</span> Human asset is most valuable.</div></div>
+        <div class="qa-item"><div class="question">4) Cooperation is not necessary for smooth flow of organizational activities.</div><div class="answer"><span class="false-badge">False</span> Cooperation is essential for smooth flow.</div></div>
+        <div class="qa-item"><div class="question">5) Coordination motivates employees to take initiative while completing assigned task.</div><div class="answer"><span class="true-badge">True</span> Coordination encourages initiative.</div></div>
+        <div class="qa-item"><div class="question">6) Standards are not set for every performance in controlling function.</div><div class="answer"><span class="false-badge">False</span> Standards are set for every performance.</div></div>
+    </div>
+
+    <!-- ================= Section E: Find odd one ================= -->
+    <div class="card"><h2><i class="fas fa-puzzle-piece"></i> E. Find the odd one</h2>
+        <div class="qa-item"><div class="question">1) Planning, Organizing, Staffing, Writing.</div><div class="answer">Writing (others are management functions)</div></div>
+        <div class="qa-item"><div class="question">2) Selecting, Training, Coordinating, Placing.</div><div class="answer">Coordinating (others are staffing activities)</div></div>
+    </div>
+
+    <!-- ================= Section F & G Combined ================= -->
+    <div class="card"><h2><i class="fas fa-pen-fill"></i> F. Complete the sentences & G. Select correct option</h2>
+        <div class="qa-item"><div class="question">1) The tasks of getting the things done by others is known as ________.</div><div class="answer">Management</div></div>
+        <div class="qa-item"><div class="question">2) The functions of manager start with ________.</div><div class="answer">Planning</div></div>
+        <div class="qa-item"><div class="question">3) The function of management that initiates action is ________.</div><div class="answer">Directing</div></div>
+        <div class="qa-item"><div class="question">4) Recruitments are done under ________ function.</div><div class="answer">Staffing</div></div>
+        <div class="qa-item"><div class="question">5) ________ is the fundamental function of management.</div><div class="answer">Planning</div></div>
+        <div class="qa-item"><div class="question">6) ________ integrates departmental activities for achieving common goal.</div><div class="answer">Coordinating</div></div>
+        <div class="qa-item"><div class="question">7) Planning is a detailed programme of ________ course of action.</div><div class="answer">future</div></div>
+        <div class="qa-item"><div class="question">8) Directing is a responsibility of ________ at all levels.</div><div class="answer">manager</div></div>
+        <div class="qa-item"><div class="question">9) Qualified, efficient and skilled workforce is always an ________ of the organization.</div><div class="answer">asset</div></div>
+    </div>
+
+    <!-- ================= Section H: One sentence answers ================= -->
+    <div class="card"><h2><i class="fas fa-question-circle"></i> H. Answer in one sentence</h2>
+        <div class="qa-item"><div class="question">1) What is management?</div><div class="answer">Management is a set of principles relating to functions like planning, organizing, staffing, directing, coordinating and controlling to achieve organizational goals.</div></div>
+        <div class="qa-item"><div class="question">2) What is planning?</div><div class="answer">Planning is deciding in advance what to do, how to do it, when to do it and who is to do it.</div></div>
+        <div class="qa-item"><div class="question">3) What is staffing?</div><div class="answer">Staffing is the process of attracting, recruiting, selecting, placing, appraising, remunerating, developing and retaining the best workforce.</div></div>
+        <div class="qa-item"><div class="question">4) What is directing?</div><div class="answer">Directing is the process of instructing, guiding, inspiring, motivating and supervising employees to achieve organizational goals.</div></div>
+        <div class="qa-item"><div class="question">5) What is controlling?</div><div class="answer">Controlling is comparing actual performance with predetermined standards and taking corrective action for deviations.</div></div>
+    </div>
+
+    <!-- ================= Functions Comparison Table ================= -->
+    <div class="card"><h2><i class="fas fa-table-list"></i> Comparative Study: Functions of Management</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Function</th><th>Meaning</th><th>Key Objective</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Planning</strong></td><td>Deciding in advance what, how, when & who</td><td>Set goals & choose means to achieve</td></tr>
+                    <tr><td><strong>Organising</strong></td><td>Grouping activities & establishing authority relationships</td><td>Identify & bring together all required resources</td></tr>
+                    <tr><td><strong>Staffing</strong></td><td>Recruitment, selection, training & compensation</td><td>Right person at right job at right time</td></tr>
+                    <tr><td><strong>Directing</strong></td><td>Guidance, inspiration, leadership of people</td><td>Get things done in right manner</td></tr>
+                    <tr><td><strong>Coordinating</strong></td><td>Orderly arrangement of group efforts for unity of action</td><td>Harmonize efforts for smooth functioning</td></tr>
+                    <tr><td><strong>Controlling</strong></td><td>Bringing actual results & desired results closer</td><td>Ensure objectives achieved according to plan</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================= Importance Highlights ================= -->
+    <div class="card"><h2><i class="fas fa-star"></i> Importance of Management Functions (Key Points)</h2>
+        <div class="qa-item"><div class="question">📌 Planning Importance</div><div class="answer">Sets objectives, Provides path, Improves performance, Minimizes risk, Optimum utilization, Helps decision making, Sets standards, Facilitates coordination</div></div>
+        <div class="qa-item"><div class="question">📌 Organising Importance</div><div class="answer">Facilitates administration, Brings specialization, Defines jobs, Clarifies authority-responsibility, Establishes coordination, Helps growth, Creates security, Scope for innovation</div></div>
+        <div class="qa-item"><div class="question">📌 Staffing Importance</div><div class="answer">Effective managerial function, Utilizes human resources, Builds cordial relationship, Human resource development, Effective use of technology, Improves efficiency, Long term effect, Job satisfaction</div></div>
+        <div class="qa-item"><div class="question">📌 Directing Importance</div><div class="answer">Initiates action, Integrates efforts, Means of motivation, Provides stability, Coping with changes, Effective resource utilization, Creates team spirit</div></div>
+        <div class="qa-item"><div class="question">📌 Coordinating Importance</div><div class="answer">Encourages team spirit, Gives proper direction, Facilitates motivation, Optimum utilization, Achieves objectives, Improves relations, Higher efficiency, Builds goodwill</div></div>
+        <div class="qa-item"><div class="question">📌 Controlling Importance</div><div class="answer">Fulfills goals, Efficient resource utilization, Accuracy of standards, Motivates employees, Ensures order & discipline, Facilitates coordination, Builds corporate image</div></div>
+    </div>
+
+    <!-- ================= Case Study ================= -->
+    <div class="card"><h2><i class="fas fa-briefcase"></i> Case Study / Situation Analysis</h2>
+        <div class="qa-item"><div class="question">Case 1: Mr. Ram (entrepreneur) designed structure. Appointed Mr. Shyam for recruitment, selection, training & remuneration. Appointed Mr. Shubham to supervise work & suggest remedies.</div><div class="answer">i) Mr. Ram: Organising function; ii) Mr. Shyam: Staffing function; iii) Mr. Shubham: Directing & Controlling function</div></div>
+        <div class="qa-item"><div class="question">Case 2: XYZ Company - Mr. Lele gives instructions & motivates; Mr. Sayyad harmonizes work across departments; Mr. Desai arranges required resources.</div><div class="answer">i) Organization: Mr. Desai; ii) Direction: Mr. Lele; iii) Coordination: Mr. Sayyad</div></div>
+    </div>
+
+    <!-- ================= Correct the underlined words ================= -->
+    <div class="card"><h2><i class="fas fa-edit"></i> I. Correct the underlined word</h2>
+        <div class="qa-item"><div class="question">1) Factors of business environment are always fixed.</div><div class="answer">changing</div></div>
+        <div class="qa-item"><div class="question">2) Staffing is concerned with machines.</div><div class="answer">humans</div></div>
+        <div class="qa-item"><div class="question">3) Directing is a function of comparing actual performance with predetermined performance.</div><div class="answer">controlling</div></div>
+        <div class="qa-item"><div class="question">4) Coordination helps to maximize the wastage of resources.</div><div class="answer">minimizes</div></div>
+        <div class="qa-item"><div class="question">5) Controlling measures are rigid to some extent.</div><div class="answer">flexible</div></div>
+    </div>
+
+    <!-- ================= Order Arrangement ================= -->
+    <div class="card"><h2><i class="fas fa-sort-amount-down"></i> J. Arrange in proper order</h2>
+        <div class="qa-item"><div class="question">1) Controlling, Organizing, Planning.</div><div class="answer">Planning → Organizing → Controlling</div></div>
+        <div class="qa-item"><div class="question">2) Directing, Coordinating, Staffing.</div><div class="answer">Staffing → Directing → Coordinating</div></div>
+    </div>
+
+    <!-- ================= Quote / Just to know ================= -->
+    <div class="card"><h2><i class="fas fa-quote-right"></i> Just to Know: Functions of Managers in Modern Organization</h2>
+        <div class="highlight-badge">💡 "Active listening helps managers gather relevant information." Modern managers need positive attitude, communication skills, cultural adaptability, and ability to lead diverse teams across the globe.</div>
+        <div class="highlight-badge" style="margin-top: 10px;">📖 Mary Parker Follett: "Co-ordination is the 'Plus-value of the group'."</div>
+    </div>
+
+    <div class="footer-note"><i class="fas fa-chart-line"></i> Functions of Management | Planning · Organising · Staffing · Directing · Coordinating · Controlling | 12th Commerce SP</div>
+</div>
+
+<!-- Popup for Translation -->
+<div id="translationPopup" class="popup-overlay">
+    <div class="popup-content">
+        <div class="popup-header">
+            <h3><i class="fas fa-language"></i> अनुवाद / Translation</h3>
+            <span class="close-popup" onclick="closePopup()">×</span>
+        </div>
+        <div class="popup-body" id="popupBody"></div>
+    </div>
+</div>
+
+<script>
+    const hindiSummary = `
+        <div style="font-family: 'Inter', sans-serif;">
+            <p><strong>🔹 प्रबंध के कार्य:</strong> प्रबंध योजना, संगठन, कर्मचारी भर्ती, निर्देशन, समन्वय और नियंत्रण से संबंधित सिद्धांतों का समूह है। हेनरी फेयोल के अनुसार: "प्रबंध का अर्थ है पूर्वानुमान लगाना, योजना बनाना, संगठित करना, आदेश देना और नियंत्रित करना।"</p>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 छह प्रमुख कार्य:</strong> योजना, संगठन, कर्मचारी भर्ती, निर्देशन, समन्वय, नियंत्रण</div>
+            <p><strong>🔹 योजना:</strong> पहला और मौलिक कार्य। यह तय करता है कि क्या करना है, कैसे करना है, कब करना है। जोखिम कम करता है और संसाधनों का इष्टतम उपयोग सुनिश्चित करता है।</p>
+            <p><strong>🔹 संगठन:</strong> संसाधनों (मनुष्य, धन, सामग्री, मशीन) की पहचान और समूहीकरण। विशेषज्ञता लाता है, अधिकार एवं उत्तरदायित्व स्पष्ट करता है।</p>
+            <p><strong>🔹 कर्मचारी भर्ती:</strong> सही व्यक्ति को सही नौकरी पर सही वेतन के साथ रखना। भर्ती, चयन, प्रशिक्षण, विकास एवं मुआवजा।</p>
+            <p><strong>🔹 निर्देशन (प्रबंध की आत्मा):</strong> निर्देश, मार्गदर्शन, संचार, प्रेरणा, पर्यवेक्षण। कार्यों को सक्रिय करता है और टीम भावना विकसित करता है।</p>
+            <p><strong>🔹 समन्वय:</strong> समूह प्रयासों का एकीकरण और तालमेल। मैरी पार्कर फोललेट: "समन्वय समूह का प्लस-वैल्यू है।"</p>
+            <p><strong>🔹 नियंत्रण:</strong> वास्तविक प्रदर्शन की तुलना पूर्व निर्धारित मानकों से करना, विचलन मापना और सुधारात्मक कदम उठाना।</p>
+        </div>`;
+
+    const marathiSummary = `
+        <div style="font-family: 'Inter', sans-serif;">
+            <p><strong>🔹 व्यवस्थापनाची कार्ये:</strong> व्यवस्थापन म्हणजे नियोजन, संघटन, कर्मचारी नियुक्ती, दिग्दर्शन, समन्वय व नियंत्रण या कार्यांचा समुच्चय. हेन्री फायोल: "व्यवस्थापन म्हणजे पूर्वानुमान, नियोजन, संघटन, आदेश व नियंत्रण."</p>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 सहा प्रमुख कार्ये:</strong> नियोजन, संघटन, कर्मचारी नियुक्ती, दिग्दर्शन, समन्वय, नियंत्रण</div>
+            <p><strong>🔹 नियोजन:</strong> प्रथम कार्य. काय, कसे, केव्हा व कोणी हे ठरवते. जोखीम कमी करते व संसाधनांचा इष्टतम वापर.</p>
+            <p><strong>🔹 संघटन:</strong> संसाधनांची ओळख व गटबद्धता. विशेषीकरण, अधिकार व जबाबदारी स्पष्टता.</p>
+            <p><strong>🔹 कर्मचारी नियुक्ती:</strong> योग्य व्यक्ती योग्य कामावर योग्य वेतनाने. भर्ती, निवड, प्रशिक्षण, विकास.</p>
+            <p><strong>🔹 दिग्दर्शन (व्यवस्थापनाचा आत्मा):</strong> निर्देश, मार्गदर्शन, प्रेरणा, पर्यवेक्षण. कृती सुरू करते आणि टीम भावना निर्माण करते.</p>
+            <p><strong>🔹 समन्वय:</strong> गट प्रयत्नांचे एकीकरण. मेरी पार्कर फोलेट: "समन्वय म्हणजे गटाचे अतिरिक्त मूल्य."</p>
+            <p><strong>🔹 नियंत्रण:</strong> वास्तव कामगिरीची पूर्वनिर्धारित मानकांशी तुलना, विचलन मोजणे व सुधारात्मक पावले.</p>
+        </div>`;
+
+    function showTranslation(lang) {
+        const popup = document.getElementById('translationPopup');
+        const popupBody = document.getElementById('popupBody');
+        if (lang === 'hindi') popupBody.innerHTML = hindiSummary;
+        else popupBody.innerHTML = marathiSummary;
+        popup.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+    function closePopup() {
+        document.getElementById('translationPopup').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+    window.onclick = function(event) {
+        const popup = document.getElementById('translationPopup');
+        if (event.target === popup) closePopup();
+    }
+</script>
+</body>
+</html>

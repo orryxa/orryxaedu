@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>🏦 Institutes Supporting Business | 11th OC Chapter 6 | SIDBI, NABARD, KVIC, SHG, World Bank</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    body {
+      background: linear-gradient(145deg, #e0f2fe, #bae6fd);
+      min-height: 100vh;
+      padding: 24px 18px;
+      color: #1e293b;
+      overflow-y: scroll;
+      scrollbar-width: thin;
+    }
+    .container { max-width: 1300px; margin: 0 auto; }
+    .heading { text-align: center; margin-bottom: 35px; animation: slideDown 0.5s ease; }
+    .heading h1 {
+      font-size: 2rem;
+      background: linear-gradient(135deg, #0369a1, #0284c7, #38bdf8);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+    }
+    .heading p { color: #0369a1; margin-top: 10px; font-weight: 600; background: #ffffffcc; display: inline-block; padding: 5px 18px; border-radius: 40px; backdrop-filter: blur(4px);}
+    .search-wrapper { position: relative; margin-bottom: 32px; }
+    .search-box {
+      background: white;
+      border-radius: 60px;
+      padding: 6px 6px 6px 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.12);
+      border: 1px solid #7dd3fc;
+    }
+    .search-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      padding: 15px 0;
+      background: transparent;
+      color: #0f172a;
+      font-weight: 500;
+    }
+    .icon-btn {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(145deg, #0284c7, #0369a1);
+      color: white;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: 0.25s;
+      box-shadow: 0 4px 12px rgba(2,132,199,0.4);
+    }
+    .icon-btn:hover { transform: scale(1.05); background: #0284c7; }
+    .suggestions-dropdown {
+      position: absolute;
+      top: calc(100% + 12px);
+      left: 0;
+      right: 0;
+      background: white;
+      border-radius: 32px;
+      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.2);
+      z-index: 120;
+      max-height: 280px;
+      overflow-y: auto;
+      display: none;
+      border: 1px solid #7dd3fc;
+    }
+    .suggestion-item {
+      padding: 14px 24px;
+      color: #0f172a;
+      cursor: pointer;
+      border-bottom: 1px solid #e0f2fe;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      transition: 0.2s;
+    }
+    .suggestion-item:hover { background: #e0f2fe; padding-left: 32px; }
+    .result-container { display: flex; flex-direction: column; gap: 24px; margin-top: 20px; }
+    .result-card {
+      background: white;
+      border-radius: 32px;
+      padding: 1.8rem;
+      color: #0f172a;
+      box-shadow: 0 12px 30px -10px rgba(0,0,0,0.08);
+      transition: 0.25s ease;
+      border: 1px solid #bae6fd;
+    }
+    .result-card:hover { transform: translateY(-4px); box-shadow: 0 20px 30px -12px rgba(0,0,0,0.12); }
+    .badge {
+      background: #e0f2fe;
+      color: #0369a1;
+      display: inline-block;
+      padding: 5px 16px;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+    .result-card h3 {
+      color: #0369a1;
+      font-size: 1.35rem;
+      border-left: 6px solid #38bdf8;
+      padding-left: 18px;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+    .answer-text {
+      background: #f0f9ff;
+      padding: 18px 24px;
+      border-radius: 28px;
+      line-height: 1.7;
+      margin: 12px 0;
+      border: 1px solid #bae6fd;
+    }
+    .formula-box {
+      background: #dbeafe;
+      padding: 12px 18px;
+      border-radius: 28px;
+      font-family: monospace;
+      font-size: 0.95rem;
+      margin: 14px 0;
+      text-align: center;
+      border-left: 6px solid #0284c7;
+      font-weight: 600;
+    }
+    .responsive-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 0.85rem;
+      overflow-x: auto;
+      display: block;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .responsive-table th, .responsive-table td {
+      border: 1px solid #e2e8f0;
+      padding: 12px 10px;
+      text-align: left;
+      background: white;
+    }
+    .responsive-table th { background: #0284c7; color: white; font-weight: 700; }
+    .action-buttons { margin-top: 22px; display: flex; gap: 15px; flex-wrap: wrap; }
+    .action-buttons button {
+      border: none;
+      padding: 10px 26px;
+      border-radius: 50px;
+      font-weight: 700;
+      background: #f1f5f9;
+      color: #1e293b;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .action-buttons button:last-child { background: #38bdf8; color: #0c4a6e; box-shadow: 0 2px 8px rgba(56,189,248,0.3);}
+    .action-buttons button:hover { transform: scale(0.97); opacity: 0.9; }
+    .not-found {
+      background: #f0f9ff;
+      border-radius: 48px;
+      padding: 2.5rem;
+      text-align: center;
+      font-size: 1.1rem;
+      color: #0369a1;
+      border: 1px solid #bae6fd;
+    }
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(10px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    .popup-box {
+      background: white;
+      max-width: 900px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      border-radius: 48px;
+      padding: 30px 34px;
+      position: relative;
+      color: #1e293b;
+    }
+    .close-popup {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      background: #fee2e2;
+      border: none;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+    .lang-section { background: #f8fafc; padding: 18px; border-radius: 28px; margin-bottom: 20px; border-left: 5px solid #38bdf8; }
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 650px) {
+      body { padding: 16px 12px; }
+      .heading h1 { font-size: 1.4rem; }
+      .result-card h3 { font-size: 1.1rem; }
+      .result-card { padding: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="heading">
+    <h1>🏦 Institutes Supporting Business | OC Chapter 6</h1>
+    <p>📌 SIDBI · NABARD · KVIC · Self Help Groups · World Bank · MSME Finance</p>
+  </div>
+  <div class="search-wrapper">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="🔎 Search: SIDBI, NABARD, KVIC, SHG, World Bank, Udyami Mitra, Startup Mitra, MSME, Grameen Bank, Collateral Free Loan...">
+      <button class="icon-btn" id="voiceBtn">🎤</button>
+    </div>
+    <div id="suggestionsList" class="suggestions-dropdown"></div>
+  </div>
+  <div class="result-container" id="resultsContainer">
+    <div class="not-found">🏦 Type above — Explore SIDBI, NABARD, KVIC, Self Help Groups, World Bank and their features ✨</div>
+  </div>
+</div>
+<div class="popup-overlay" id="popupModal">
+  <div class="popup-box">
+    <button class="close-popup" id="closeModalBtn">✖</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+  const qaDatabase = [];
+
+  function addQA(question, answer, category, keywords = []) {
+    qaDatabase.push({ id: qaDatabase.length+1, question, answer, category, keywords: keywords.map(k=>k.toLowerCase()) });
+  }
+
+  // ============ SIDBI ============
+  addQA("What is SIDBI? When was it established?", "SIDBI (Small Industrial Development Bank of India) was established on 2nd April, 1990 under the Small Industrial Development Bank of India Act, 1988. It was initially a wholly owned subsidiary of IDBI. Head office at Lucknow. It is the principal financial institution for promotion, financing and development of MSMEs in India.", "SIDBI", ["sidbi meaning", "sidbi establishment"]);
+  addQA("What are the features of SIDBI?", "1) Financial Institute for Promotion of MSMEs 2) Sustainable Development 3) Advisory Function 4) Services to MSMEs through associates (SVCL, CGTMSE, SMERA, ISTSL, ISARC, MUDRA) 5) Achievements of National Goals 6) Different forms of Finance (Direct, Indirect, Micro Finance) 7) Digital Initiatives (Startup Mitra, Udyami Mitra) 8) Nodal/Implementing Agency for subsidy schemes.", "SIDBI", ["sidbi features"]);
+  addQA("What are the digital initiatives of SIDBI?", "1) SIDBI Startup Mitra - launched March 17, 2016 - brings together startups, incubators, investors, mentors on one platform. 2) Udyami Mitra Portal - improves credit accessibility for MSMEs, allows online loan application without visiting bank branches, track application status.", "SIDBI", ["startup mitra", "udyami mitra"]);
+  addQA("What are the different forms of finance provided by SIDBI?", "1) Direct Finance - Working Capital, Term Loan, Foreign Currency Loan, Equity Support, Energy Saving Scheme 2) Indirect Finance - Refinance to Banks, State Level Financial Institutions 3) Micro Finance - to small businessmen and entrepreneurs.", "SIDBI", ["sidbi finance forms"]);
+  addQA("What are the subsidiaries/associates of SIDBI?", "1) SIDBI Venture Capital Ltd (SVCL) - venture capital 2) Credit Guarantee Fund Trust for MSMEs (CGTMSE) - collateral free credit guarantee 3) SME Rating Agency of India (SMERA) - third party rating 4) India SME Technology Services Ltd (ISTSL) - technology acquisition 5) India SME Asset Reconstruction Company (ISARC) - resolves NPAs 6) MUDRA - funding unfunded micro enterprises.", "SIDBI", ["sidbi subsidiaries"]);
+
+  // ============ NABARD ============
+  addQA("What is NABARD? When was it established?", "NABARD (National Bank for Agriculture and Rural Development) came into existence on July 12, 1982 under the National Bank for Agriculture and Rural Development Act, 1981. It was established on recommendations of CRAFICARD committee under Chairmanship of Shri B. Sivaraman. It is the apex institution for agricultural finance in India.", "NABARD", ["nabard meaning", "nabard establishment"]);
+  addQA("What are the features of NABARD?", "1) Apex Bank for agricultural credit 2) Refinancing Facilities to SCBs, LDBs, RRBs 3) Assistance to Financial Institutes for MIS, computerization 4) Provides Credit for Rural Development 5) Supervision of RRBs and Cooperative Banks 6) Provides Recommendations to RBI on licenses 7) Financing Rural Industries and skill development 8) Role in National Development (Green, Blue, White Revolution).", "NABARD", ["nabard features"]);
+  addQA("What is the role of NABARD in rural development?", "NABARD provides refinance for upliftment of weaker sections, promotes small & minor irrigation, finances non-farm activities to reduce rural unemployment, organizes skill and entrepreneurship development programmes for rural youth, and promotes warehousing facilities for agricultural commodities.", "NABARD", ["nabard rural development"]);
+  addQA("What is CRAFICARD?", "CRAFICARD stands for 'Committee to Review the Arrangements for Institutional Credit for Agriculture and Rural Development'. It was constituted by RBI under the Chairmanship of Shri B. Sivaraman. Its recommendations led to the establishment of NABARD on July 12, 1982.", "NABARD", ["craficard"]);
+
+  // ============ KVIC ============
+  addQA("What is KVIC? When was it established?", "KVIC (Khadi and Village Industries Commission) is a statutory body created in 1956 under the Khadi and Village Industries Commission Act, 1956. It started functioning in April 1957. Head office at Mumbai. It is the apex organization under Ministry of MSME for khadi and village industries.", "KVIC", ["kvic meaning", "kvic establishment"]);
+  addQA("What are the features of KVIC?", "1) Rural Development 2) Employment Generation 3) Entrepreneurship Development 4) Financial Assistance 5) Research and Development 6) Marketing and Promotion 7) Other functions (planning, promotion, organization of programs).", "KVIC", ["kvic features"]);
+  addQA("What is the role of KVIC in employment generation?", "KVIC generates non-farm employment opportunities in rural areas by utilizing locally available raw materials and human skills. It organizes training programmes for artisans, promotes khadi and village industries, and helps strengthen the rural economy.", "KVIC", ["kvic employment"]);
+  addQA("When was All India Khadi and Village Industries Board set up?", "All India Khadi and Village Industries Board was set up in 1953. Later in 1956, KVIC was created as a statutory body which took over the work from the Board in April 1957.", "KVIC", []);
+
+  // ============ SELF HELP GROUPS (SHG) ============
+  addQA("What is a Self Help Group (SHG)?", "A Self Help Group (SHG) is a small group of homogeneous individuals who come together with the objective of creating a common fund through savings and meeting members' emergency needs by providing collateral-free loans. It is based on principles of 'helping each other' and 'unity is strength'.", "SHG", ["shg meaning", "self help group"]);
+  addQA("Who is the Father of Microfinance? Which bank did he found?", "Dr. Muhammad Yunus, an economist from Bangladesh, is known as the Father of Microfinance. He founded the Grameen Bank in Bangladesh in October 1983. Grameen Bank and Dr. Yunus jointly won the Nobel Peace Prize in 2006.", "SHG", ["muhammad yunus", "grameen bank"]);
+  addQA("What are the features of Self Help Groups?", "1) Formation - informal group, registration not mandatory 2) Membership - homogeneous, 5-20 members, one per family 3) Democratic Setup - collective leadership, mutual discussions 4) Habit of Saving - regular small savings create common fund 5) Mutual Trust - overcome individual shortcomings 6) Promotes Entrepreneurship - micro enterprises 7) Women Empowerment 8) Collateral Free Loan - based on mutual trust.", "SHG", ["shg features"]);
+  addQA("How do SHGs promote women empowerment?", "SHGs empower women by providing knowledge, finance and opportunity. They develop saving habits, enhance status of women as they participate, lead, take decisions and get benefited through collective efforts. Government provides financial and non-financial assistance to promote SHGs for women empowerment.", "SHG", ["women empowerment shg"]);
+  addQA("What is Collateral Free Loan in SHG?", "SHGs provide small loans to poor individuals without any collateral or security. Loans are given on the principle of mutual trust with minimal documentation. This saves poor individuals from exploitation by local moneylenders who charge exorbitant interest rates.", "SHG", ["collateral free loan"]);
+  addQA("When was SHG-Bank Linkage Programme initiated in India?", "The Self Help Group - Bank Linkage Programme was initiated by NABARD in 1992. RBI accepted the SHG strategy as an alternative credit model.", "SHG", ["shg bank linkage"]);
+
+  // ============ WORLD BANK ============
+  addQA("What is the World Bank? When was it created?", "The World Bank is an international organization dedicated to providing finance, advice and research to developing nations. It was created at the 1944 Bretton Woods Conference along with the IMF. Headquarters in Washington, D.C. It comprises two main institutions: IBRD and IDA.", "World Bank", ["world bank meaning", "world bank establishment"]);
+  addQA("What are the two main institutions of World Bank?", "1) International Bank for Reconstruction and Development (IBRD) - provides debt financing to middle-income countries 2) International Development Association (IDA) - gives interest-free loans to poor countries.", "World Bank", ["ibrd", "ida"]);
+  addQA("What are the features of World Bank?", "1) Organization and Structure - Board of Governors (supreme policy body), Board of Executive Directors 2) Goals - End extreme poverty (below $1.90/day to ≤3% by 2030); Promote shared prosperity (income growth of bottom 40%) 3) Financial Products - low-interest loans, credits, grants 4) Innovative Knowledge Sharing - policy advice, research, technical assistance 5) Innovation and Entrepreneurship 6) Social Development - 'put people first'.", "World Bank", ["world bank features"]);
+  addQA("What are the goals of World Bank by 2030?", "1) End extreme poverty - decrease percentage of people living on less than $1.90 a day to no more than 3% 2) Promote shared prosperity - foster income growth of the bottom 40% for every country.", "World Bank", ["world bank goals"]);
+  addQA("What are the five organizations of World Bank Group?", "1) IBRD (International Bank for Reconstruction and Development) 2) IDA (International Development Association) 3) IFC (International Finance Corporation) - focuses on private sector 4) MIGA (Multilateral Investment Guarantee Agency) - promotes foreign direct investment 5) ICSID (International Centre for Settlement of Investment Disputes) - arbitration on investment disputes.", "World Bank", ["world bank group"]);
+
+  // ============ GENERAL / MSME ============
+  addQA("What is MSME?", "MSME stands for Micro, Small and Medium Enterprises. They play an important role in the Indian economy as they provide major employment. SIDBI focuses on MSMEs as its core domain.", "General", ["msme meaning"]);
+  addQA("Why is finance called the lifeblood of business?", "Finance is the basic foundation of all economic activities. Firms need finance to start business, to run business effectively, and to expand the business. Success of an organization largely depends on efficient management of its finance.", "General", ["finance lifeblood"]);
+
+  // ============ TABLES ============
+  function getInstitutesTable() {
+    return `<table class="responsive-table"><thead><tr><th>Institute</th><th>Established</th><th>Head Office</th><th>Primary Focus</th></tr></thead><tbody>
+      <tr><td>SIDBI</td><td>2nd April 1990</td><td>Lucknow</td><td>MSME financing & promotion</td></tr>
+      <tr><td>NABARD</td><td>12th July 1982</td><td>Mumbai</td><td>Agricultural & rural credit (Apex bank)</td></td>
+      <tr><td>KVIC</td><td>April 1957 (Act 1956)</td><td>Mumbai</td><td>Khadi & village industries</td></tr>
+      <tr><td>SHG</td><td>1985 (India - MYRADA)</td><td>—</td><td>Microfinance, women empowerment, collateral free loans</td></tr>
+      <tr><td>World Bank</td><td>1944 (Bretton Woods)</td><td>Washington D.C.</td><td>Poverty reduction, development finance</td></tr>
+    </tbody></table>`;
+  }
+
+  function getSIDBISubsidiariesTable() {
+    return `<table class="responsive-table"><thead><tr><th>Subsidiary/Associate</th><th>Full Form</th><th>Purpose</th></tr></thead><tbody>
+      <tr><td>SVCL</td><td>SIDBI Venture Capital Ltd</td><td>Venture capital for emerging sectors</td></tr>
+      <tr><td>CGTMSE</td><td>Credit Guarantee Fund Trust for MSMEs</td><td>Collateral free credit guarantee</td></tr>
+      <tr><td>SMERA</td><td>SME Rating Agency of India</td><td>Third party rating & risk profiling</td></tr>
+      <tr><td>ISTSL</td><td>India SME Technology Services Ltd</td><td>Global technology acquisition</td></td>
+      <tr><td>ISARC</td><td>India SME Asset Reconstruction Co</td><td>Resolves NPAs of MSME sector</td></tr>
+      <tr><td>MUDRA</td><td>Micro Units Development & Refinance Agency</td><td>Funding unfunded micro enterprises</td></tr>
+    </tbody></table>`;
+  }
+
+  // Search and display
+  const searchInput = document.getElementById("searchInput");
+  const resultsContainer = document.getElementById("resultsContainer");
+  const suggestionsDiv = document.getElementById("suggestionsList");
+
+  function getMatches(q) {
+    const lower = q.toLowerCase();
+    return qaDatabase.filter(item => 
+      item.question.toLowerCase().includes(lower) || 
+      item.answer.toLowerCase().includes(lower) ||
+      item.category.toLowerCase().includes(lower) ||
+      item.keywords.some(k => k.includes(lower))
+    ).slice(0, 16);
+  }
+
+  function updateSuggestions() {
+    const val = searchInput.value.trim();
+    if(!val) { suggestionsDiv.style.display = "none"; return; }
+    const matches = getMatches(val);
+    if(!matches.length) { suggestionsDiv.style.display = "none"; return; }
+    suggestionsDiv.innerHTML = "";
+    matches.forEach(item => {
+      const div = document.createElement("div");
+      div.className = "suggestion-item";
+      div.innerHTML = `<span>🏦</span> <strong>${item.question.substring(0,70)}</strong> <span style="margin-left:auto; background:#e0f2fe; padding:2px 12px; border-radius:30px;">${item.category}</span>`;
+      div.addEventListener("click", () => {
+        searchInput.value = item.question;
+        suggestionsDiv.style.display = "none";
+        performSearch(item.question);
+      });
+      suggestionsDiv.appendChild(div);
+    });
+    suggestionsDiv.style.display = "block";
+  }
+
+  function performSearch(q = null) {
+    let query = (q !== null) ? q : searchInput.value.trim();
+    if(!query) { resultsContainer.innerHTML = `<div class="not-found">🏦 Type keywords: SIDBI, NABARD, KVIC, Self Help Groups, World Bank, Udyami Mitra, Collateral Free Loan, MSME ✨</div>`; return; }
+    const matches = getMatches(query);
+    if(!matches.length) { resultsContainer.innerHTML = `<div class="not-found">❌ No results. Try: SIDBI features, NABARD establishment, KVIC role, SHG features, World Bank goals.</div>`; return; }
+    resultsContainer.innerHTML = "";
+    matches.forEach(item => {
+      let extra = "";
+      const qtext = item.question.toLowerCase();
+      if (qtext.includes("features of sidbi") && item.category === "SIDBI") extra = getSIDBISubsidiariesTable();
+      if (qtext.includes("subsidiaries") || qtext.includes("associates")) extra = getSIDBISubsidiariesTable();
+      if (qtext.includes("what is sidbi") && qtext.includes("establish")) extra = `<div class="formula-box">📅 SIDBI: Established 2 April 1990 | HQ: Lucknow | Principal financier for MSMEs</div>`;
+      if (qtext.includes("features of world bank")) extra = `<div class="formula-box">🌍 World Bank Goals (2030): End extreme poverty (≤3% living below $1.90/day) + Promote shared prosperity (bottom 40% income growth)</div>`;
+      
+      const card = document.createElement("div");
+      card.className = "result-card";
+      card.innerHTML = `
+        <div class="badge">📌 ${escapeHtml(item.category)}</div>
+        <h3>📘 ${escapeHtml(item.question)}</h3>
+        <div class="answer-text"><strong>✅ Answer / Explanation:</strong><br>${escapeHtml(item.answer)}${extra}</div>
+        <div class="action-buttons">
+          <button class="detailBtn" data-q="${escapeAttr(item.question)}" data-a="${escapeAttr(item.answer)}" data-cat="${item.category}">📖 Detailed Explanation</button>
+          <button class="extraTableBtn" data-type="${item.category}">📋 Reference Tables</button>
+        </div>
+      `;
+      resultsContainer.appendChild(card);
+    });
+    attachEvents();
+  }
+
+  function attachEvents() {
+    document.querySelectorAll(".detailBtn").forEach(btn => btn.addEventListener("click", (e) => {
+      const q = btn.getAttribute("data-q"), a = btn.getAttribute("data-a"), cat = btn.getAttribute("data-cat");
+      showDetailPopup(q, a, cat);
+    }));
+    document.querySelectorAll(".extraTableBtn").forEach(btn => btn.addEventListener("click", () => {
+      let content = `<div class="lang-section"><strong>📚 Financial Institutes - Quick Reference</strong><br>`;
+      content += `<h4>🏦 Comparison of All Institutes</h4>${getInstitutesTable()}`;
+      content += `<hr><h4>🏭 SIDBI Subsidiaries/Associates</h4>${getSIDBISubsidiariesTable()}`;
+      content += `<hr><div class="formula-box">💡 Key Facts: SIDBI HQ Lucknow | NABARD established 12 July 1982 (CRAFICARD) | KVIC HQ Mumbai | SHG: Grameen Bank by Dr. Muhammad Yunus (Nobel Prize 2006) | World Bank: Bretton Woods 1944, HQ Washington D.C.</div>`;
+      content += `</div>`;
+      document.getElementById("popupModal").style.display = "flex";
+      document.getElementById("modalContent").innerHTML = `<h2 style="color:#0369a1;">📊 Institutes Supporting Business - Complete Reference</h2>${content}<button id="closeModalInside" style="background:#0284c7; margin-top:20px; padding:10px 26px; border-radius:40px; color:white;">Close</button>`;
+      document.getElementById("closeModalInside").addEventListener("click", ()=> document.getElementById("popupModal").style.display = "none");
+    }));
+  }
+
+  function showDetailPopup(question, answer, category) {
+    let extraInfo = `<div class="lang-section"><strong>📖 11th OC Chapter 6 - Institutes Supporting Business</strong><br>✔ SIDBI (1990) - MSME financing, digital initiatives: Startup Mitra, Udyami Mitra<br>✔ NABARD (1982) - Apex agricultural bank, refinance, rural development<br>✔ KVIC (1957) - Khadi & village industries, employment generation<br>✔ SHG - Self Help Groups, collateral free loans, women empowerment, Grameen Bank model<br>✔ World Bank (1944) - IBRD + IDA, poverty reduction, 2030 goals</div>`;
+    if(category === "SIDBI") extraInfo += `<div class="lang-section"><h4>SIDBI Subsidiaries</h4>${getSIDBISubsidiariesTable()}</div>`;
+    if(category === "World Bank") extraInfo += `<div class="lang-section">🌍 <strong>World Bank Group:</strong> IBRD, IDA, IFC, MIGA, ICSID. Headquarters: Washington D.C. Created at Bretton Woods Conference 1944 with IMF.</div>`;
+    if(category === "SHG") extraInfo += `<div class="lang-section">👩 <strong>SHG Key Principles:</strong> 'Helping each other', 'Unity is strength'. SHG-Bank Linkage Programme started by NABARD in 1992. Dr. Muhammad Yunus won Nobel Peace Prize 2006.</div>`;
+    document.getElementById("popupModal").style.display = "flex";
+    document.getElementById("modalContent").innerHTML = `
+      <h2 style="color:#0369a1;">📘 Detailed Explanation</h2>
+      <div class="lang-section"><strong>❓ Question:</strong> ${escapeHtml(question)}</div>
+      <div class="lang-section"><strong>✅ Answer:</strong><br>${escapeHtml(answer)}</div>
+      ${extraInfo}
+      <button id="closeDetailModal" style="background:#38bdf8; padding:10px 26px; border-radius:40px; margin-top:12px;">Close</button>
+    `;
+    document.getElementById("closeDetailModal").addEventListener("click", ()=> document.getElementById("popupModal").style.display = "none");
+  }
+
+  function escapeHtml(str) { return str.replace(/[&<>]/g, m => m==='&'?'&amp;': m==='<'?'&lt;':'&gt;'); }
+  function escapeAttr(str) { return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function startVoice() { if (!('webkitSpeechRecognition' in window)) { alert("Voice search supported in Chrome/Edge."); return; } const rec = new webkitSpeechRecognition(); rec.lang="en-IN"; rec.start(); rec.onresult = (e)=> { searchInput.value = e.results[0][0].transcript; performSearch(); }; }
+  document.getElementById("voiceBtn").addEventListener("click", startVoice);
+  searchInput.addEventListener("keyup", () => { performSearch(); updateSuggestions(); });
+  searchInput.addEventListener("focus", updateSuggestions);
+  document.addEventListener("click", (e) => { if(!document.querySelector(".search-wrapper").contains(e.target)) suggestionsDiv.style.display = "none"; });
+  document.getElementById("closeModalBtn").addEventListener("click", () => document.getElementById("popupModal").style.display = "none");
+  window.onload = () => { resultsContainer.innerHTML = `<div class="not-found">🏦 11th OC | Institutes Supporting Business | Search SIDBI, NABARD, KVIC, Self Help Groups, World Bank ✨</div>`; };
+</script>
+</body>
+</html>

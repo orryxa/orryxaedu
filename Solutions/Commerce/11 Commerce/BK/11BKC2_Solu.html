@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Chapter 2 | Double Entry System - Exercise Answers</title>
+  <!-- Google Fonts + Font Awesome Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(125deg, #eef2fa 0%, #e0e9f2 100%);
+      font-family: 'Inter', sans-serif;
+      padding: 32px 24px;
+      color: #0a2b3e;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    /* header styling */
+    .hero {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #0b3b4f, #1b6b8f, #2c7da0);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.3px;
+      display: inline-block;
+      padding-bottom: 10px;
+      border-bottom: 4px solid #ffb347;
+      margin-bottom: 16px;
+    }
+    .chapter-badge {
+      background: #0f4c5f20;
+      backdrop-filter: blur(8px);
+      display: inline-block;
+      padding: 6px 24px;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #1b6b8f;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    .chapter-badge i {
+      margin-right: 8px;
+      color: #ff9f4a;
+    }
+
+    /* card design */
+    .card {
+      background: rgba(255, 255, 255, 0.97);
+      border-radius: 2rem;
+      margin-bottom: 32px;
+      padding: 28px 32px;
+      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0,0,0,0.02);
+      transition: transform 0.2s ease, box-shadow 0.2s;
+      border: 1px solid rgba(255,255,255,0.7);
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 28px 40px -16px rgba(0, 0, 0, 0.18);
+    }
+
+    .card h2 {
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: #135b78;
+      margin-bottom: 28px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid #ffb74d;
+      display: inline-block;
+      letter-spacing: -0.2px;
+    }
+    .card h2 i {
+      margin-right: 12px;
+      color: #ff8c42;
+    }
+
+    /* Q&A blocks */
+    .qa-item {
+      margin-bottom: 22px;
+      border-left: 3px solid #cbdde9;
+      padding-left: 20px;
+      transition: all 0.1s;
+    }
+    .question {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #1f4a5e;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .question i {
+      color: #ff8c42;
+      width: 26px;
+      font-size: 0.95rem;
+      text-align: center;
+    }
+    .answer {
+      background: #f8fafd;
+      padding: 10px 18px;
+      border-radius: 24px;
+      font-weight: 500;
+      color: #216477;
+      line-height: 1.5;
+      font-size: 0.94rem;
+      display: inline-block;
+      width: auto;
+      max-width: 100%;
+      box-shadow: inset 0 1px 0 #fff, 0 1px 3px rgba(0,0,0,0.02);
+    }
+
+    /* true/false labels */
+    .true-badge {
+      background: #e0f2e9;
+      color: #1e6f3f;
+      padding: 3px 14px;
+      border-radius: 40px;
+      font-weight: 700;
+      font-size: 0.75rem;
+      display: inline-block;
+      margin-right: 12px;
+    }
+    .false-badge {
+      background: #ffe8e6;
+      color: #bc4742;
+      padding: 3px 14px;
+      border-radius: 40px;
+      font-weight: 700;
+      font-size: 0.75rem;
+      display: inline-block;
+      margin-right: 12px;
+    }
+    .reason-text {
+      font-weight: 500;
+      color: #2c6979;
+    }
+
+    /* table-like classification styles (clean) */
+    .inline-classify {
+      background: #eef3fc;
+      border-radius: 18px;
+      padding: 12px 18px;
+      margin: 12px 0 8px 0;
+      font-size: 0.9rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      align-items: baseline;
+    }
+    .classify-label {
+      font-weight: 700;
+      color: #0f4c5e;
+      min-width: 90px;
+    }
+
+    /* classification grid for large answers (Q6 etc) */
+    .classify-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .classify-row {
+      background: #f9fbfe;
+      padding: 8px 15px;
+      border-radius: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      border: 1px solid #e2edf5;
+    }
+    .account-name {
+      font-weight: 600;
+      color: #1a4b62;
+    }
+    .account-type {
+      background: #e6f0fa;
+      padding: 4px 14px;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #1b6b8f;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 20px 16px;
+      }
+      .card {
+        padding: 20px 18px;
+        border-radius: 1.5rem;
+      }
+      .card h2 {
+        font-size: 1.4rem;
+      }
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .qa-item {
+        padding-left: 12px;
+      }
+      .classify-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .answer {
+        font-size: 0.85rem;
+        padding: 8px 12px;
+      }
+      .question {
+        font-size: 0.9rem;
+      }
+    }
+
+    /* animation */
+    .card {
+      animation: fadeUp 0.45s ease backwards;
+    }
+    @keyframes fadeUp {
+      0% { opacity: 0; transform: translateY(18px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .card:nth-child(1) { animation-delay: 0.02s; }
+    .card:nth-child(2) { animation-delay: 0.05s; }
+    .card:nth-child(3) { animation-delay: 0.09s; }
+    .card:nth-child(4) { animation-delay: 0.13s; }
+    .card:nth-child(5) { animation-delay: 0.17s; }
+    .card:nth-child(6) { animation-delay: 0.21s; }
+    .card:nth-child(7) { animation-delay: 0.25s; }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #bdd4e4;
+      font-size: 0.8rem;
+      color: #2c6f8c;
+      font-weight: 500;
+    }
+    hr {
+      margin: 20px 0;
+      border: none;
+      border-top: 1px solid rgba(0,0,0,0.05);
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+    <h1><i class="fas fa-book" style="color:#ffa353;"></i> Chapter 2 · Double Entry System</h1>
+    <div class="chapter-badge"><i class="fas fa-exchange-alt"></i> Scientific Accounting | Traditional & Modern Approach</div>
+  </div>
+
+  <!-- ========================= Q.1 Answer in one sentence ========================= -->
+  <div class="card">
+    <h2><i class="fas fa-pen-nib"></i> Q.1 Answer in One Sentence</h2>
+    <div class="qa-item"><div class="question"><i class="fas fa-question-circle"></i> 1) What is Double Entry System?</div><div class="answer">Double Entry System is a scientific method of recording both aspects (debit and credit) of every business transaction.</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-question-circle"></i> 2) What is an Account?</div><div class="answer">An account is a summarized record of all transactions relating to a particular person, asset, liability, expense or income.</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-question-circle"></i> 3) State the meaning of Single Entry System.</div><div class="answer">Single Entry System is an incomplete method of accounting that records only cash and personal accounts, not following double entry principles.</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-question-circle"></i> 4) What is Personal Account?</div><div class="answer">Personal accounts represent persons, firms, or organizations with whom the business deals (e.g., Debtors, Creditors).</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-question-circle"></i> 5) State the rule of Nominal Account.</div><div class="answer">The rule of Nominal Account is: Debit all expenses and losses, Credit all incomes and gains.</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-question-circle"></i> 6) Give two examples of intangible assets.</div><div class="answer">Goodwill, Patents, Copyright, Trademark (any two).</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-question-circle"></i> 7) State the meaning of Real Account.</div><div class="answer">Real accounts represent assets and properties owned by the business (tangible or intangible).</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-question-circle"></i> 8) Give two examples of income and gains.</div><div class="answer">Commission Received, Interest Received, Rent Received, Discount Received (any two).</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-question-circle"></i> 9) State the rule of Personal Account.</div><div class="answer">The rule of Personal Account is: Debit the receiver, Credit the giver.</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-question-circle"></i> 10) How many methods of recording accounting information are there?</div><div class="answer">There are two main methods: Indian System (Conventional) and English System (Single Entry & Double Entry).</div></div>
+  </div>
+
+  <!-- ========================= Q.2 Give word/term ========================= -->
+  <div class="card">
+    <h2><i class="fas fa-tags"></i> Q.2 Give the Word / Term / Phrase</h2>
+    <div class="qa-item"><div class="question"><i class="fas fa-arrow-right"></i> 1) Method of Accounting which records both aspect of transaction.</div><div class="answer">Double Entry System</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-arrow-right"></i> 2) Right hand side of an account.</div><div class="answer">Credit (Cr.)</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-arrow-right"></i> 3) Name of the account which is debited when proprietor uses business money for personal use.</div><div class="answer">Drawings Account</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-arrow-right"></i> 4) Accounts of Assets and Properties.</div><div class="answer">Real Accounts</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-arrow-right"></i> 5) Accounts of Expenses and Losses and Incomes and Gains.</div><div class="answer">Nominal Accounts</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-arrow-right"></i> 6) Left hand side of an account.</div><div class="answer">Debit (Dr.)</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-arrow-right"></i> 7) The Assets which cannot be seen, touched or felt.</div><div class="answer">Intangible Assets</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-arrow-right"></i> 8) Person who invented the Double Entry System.</div><div class="answer">Luca D. Bargo Pacioli</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-arrow-right"></i> 9) Incomplete system of recording business transactions.</div><div class="answer">Single Entry System</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-arrow-right"></i> 10) Scientific system of recording business transactions.</div><div class="answer">Double Entry System</div></div>
+  </div>
+
+  <!-- ========================= Q.3 Select Appropriate Alternative ========================= -->
+  <div class="card">
+    <h2><i class="fas fa-check-circle"></i> Q.3 Select the Most Appropriate Alternative</h2>
+    <div class="qa-item"><div class="question"><i class="fas fa-calendar"></i> 1) International Accounting day is observed on</div><div class="answer">a) 10th November</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-chart-line"></i> 2) Conventional system of accounting is</div><div class="answer">c) Indian system</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-balance-scale"></i> 3) Every debit has corresponding</div><div class="answer">b) Credit</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-user"></i> 4) Radha's Account is a type of account.</div><div class="answer">b) Personal</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-cogs"></i> 5) Machinery Account is account.</div><div class="answer">d) Real</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-handshake"></i> 6) Goodwill is asset.</div><div class="answer">c) an intangible</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-clock"></i> 7) Prepaid expenses is account.</div><div class="answer">b) Personal</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-user-plus"></i> 8) Debit the receiver, Credit the . . . . .</div><div class="answer">b) Giver</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-door-open"></i> 9) Debit what comes in, Credit what . . . .</div><div class="answer">c) Goes out</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-chart-simple"></i> 10) Debit all . . . . . . . and Credit all income and gains.</div><div class="answer">b) Expenses and losses</div></div>
+  </div>
+
+  <!-- ========================= Q.4 True or False with reasons ========================= -->
+  <div class="card">
+    <h2><i class="fas fa-gavel"></i> Q.4 State True or False with Reasons</h2>
+    <div class="qa-item"><div class="question"><i class="fas fa-check"></i> 1) Outstanding expense is nominal account.</div><div class="answer"><span class="false-badge">False</span> <span class="reason-text">Outstanding expense is a Representative Personal Account, not nominal.</span></div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-check"></i> 2) Capital account is a real account.</div><div class="answer"><span class="false-badge">False</span> <span class="reason-text">Capital account is a Personal account (owner's account).</span></div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-check"></i> 3) Every debit has equal and corresponding credit.</div><div class="answer"><span class="true-badge">True</span> <span class="reason-text">This is the fundamental principle of Double Entry System.</span></div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-check"></i> 4) Discount received is a nominal account.</div><div class="answer"><span class="true-badge">True</span> <span class="reason-text">Discount received is an income/gain, hence nominal account.</span></div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-check"></i> 5) Drawings account is a nominal account.</div><div class="answer"><span class="false-badge">False</span> <span class="reason-text">Drawings account is a personal account (or reduction in capital).</span></div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-check"></i> 6) Outstanding salary is a nominal account.</div><div class="answer"><span class="false-badge">False</span> <span class="reason-text">Outstanding salary is a representative personal account.</span></div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-check"></i> 7) Loan account is personal account.</div><div class="answer"><span class="true-badge">True</span> <span class="reason-text">Loan account represents the lender, hence personal account.</span></div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-check"></i> 8) Goodwill account is a real account.</div><div class="answer"><span class="true-badge">True</span> <span class="reason-text">Goodwill is an intangible asset, classified under Real Account.</span></div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-check"></i> 9) Trade discount account is a nominal account.</div><div class="answer"><span class="false-badge">False</span> <span class="reason-text">Trade discount is not recorded separately in books; no separate account exists.</span></div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-check"></i> 10) Personal transactions of proprietor are recorded in the books of account of business.</div><div class="answer"><span class="false-badge">False</span> <span class="reason-text">Only business transactions are recorded; personal transactions are recorded under Drawings if related to business.</span></div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-check"></i> 11) Motor car account is a Real Account.</div><div class="answer"><span class="true-badge">True</span> <span class="reason-text">Motor Car is a tangible asset, hence Real account.</span></div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-check"></i> 12) The rule of Nominal Account is Debit the receiver and Credit the giver.</div><div class="answer"><span class="false-badge">False</span> <span class="reason-text">The rule for Nominal Account is Debit all expenses/losses, Credit all incomes/gains.</span></div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-check"></i> 13) Bank loan account is a Nominal account.</div><div class="answer"><span class="false-badge">False</span> <span class="reason-text">Bank loan account is a Personal account (liability towards bank).</span></div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-check"></i> 14) Assets = Capital + Liabilities</div><div class="answer"><span class="true-badge">True</span> <span class="reason-text">This is the fundamental accounting equation.</span></div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-check"></i> 15) Trademark account is a personal account.</div><div class="answer"><span class="false-badge">False</span> <span class="reason-text">Trademark is an intangible asset, hence Real account.</span></div></div>
+  </div>
+
+  <!-- ========================= Q.5 Fill in the blanks ========================= -->
+  <div class="card">
+    <h2><i class="fas fa-edit"></i> Q.5 Fill in the Blanks</h2>
+    <div class="qa-item"><div class="question">1) Increase in asset is debited and decrease in asset is __________.</div><div class="answer">credited</div></div>
+    <div class="qa-item"><div class="question">2) Assets = Liabilities + __________.</div><div class="answer">Capital</div></div>
+    <div class="qa-item"><div class="question">3) Increase in capital is credited and decrease in capital is __________.</div><div class="answer">debited</div></div>
+    <div class="qa-item"><div class="question">4) Scientific and complete system of recording is known as __________.</div><div class="answer">Double Entry System</div></div>
+    <div class="qa-item"><div class="question">5) Debit all expenses and losses, Credit all __________.</div><div class="answer">incomes and gains</div></div>
+    <div class="qa-item"><div class="question">6) Land and Building account is __________ account.</div><div class="answer">Real</div></div>
+    <div class="qa-item"><div class="question">7) Cash Book and Personal Accounts are only maintained under __________ system.</div><div class="answer">Single Entry</div></div>
+    <div class="qa-item"><div class="question">8) Debit what comes in and credit what goes out is the rule of __________ account.</div><div class="answer">Real</div></div>
+    <div class="qa-item"><div class="question">9) Travelling expenses account is __________ type of Account.</div><div class="answer">Nominal</div></div>
+    <div class="qa-item"><div class="question">10) Every transaction has __________ effect.</div><div class="answer">two-fold / dual</div></div>
+    <div class="qa-item"><div class="question">11) __________ accounts are accounts of properties and assets.</div><div class="answer">Real</div></div>
+    <div class="qa-item"><div class="question">12) Laptop account is a __________ account.</div><div class="answer">Real</div></div>
+  </div>
+
+  <!-- ========================= Q.6 Classification (Personal, Real, Nominal) ========================= -->
+  <div class="card">
+    <h2><i class="fas fa-layer-group"></i> Q.6 Classify the following accounts into Personal, Real and Nominal</h2>
+    <div class="classify-grid">
+      <div class="classify-row"><span class="account-name">1) Mr. Rohit’s capital A/c</span><span class="account-type">Personal A/c</span></div>
+      <div class="classify-row"><span class="account-name">2) Loose Tools A/c</span><span class="account-type">Real A/c</span></div>
+      <div class="classify-row"><span class="account-name">3) Drawing A/c</span><span class="account-type">Personal A/c</span></div>
+      <div class="classify-row"><span class="account-name">4) Cartage A/c</span><span class="account-type">Nominal A/c</span></div>
+      <div class="classify-row"><span class="account-name">5) Prepaid Rent A/c</span><span class="account-type">Personal A/c (Rep.)</span></div>
+      <div class="classify-row"><span class="account-name">6) Copyright A/c</span><span class="account-type">Real A/c</span></div>
+      <div class="classify-row"><span class="account-name">7) Patent A/c</span><span class="account-type">Real A/c</span></div>
+      <div class="classify-row"><span class="account-name">8) Outstanding Income A/c</span><span class="account-type">Personal A/c</span></div>
+      <div class="classify-row"><span class="account-name">9) Prepaid Expenses A/c</span><span class="account-type">Personal A/c</span></div>
+      <div class="classify-row"><span class="account-name">10) Commission Received A/c</span><span class="account-type">Nominal A/c</span></div>
+      <div class="classify-row"><span class="account-name">11) Freight A/c</span><span class="account-type">Nominal A/c</span></div>
+      <div class="classify-row"><span class="account-name">12) Plant and Machinery A/c</span><span class="account-type">Real A/c</span></div>
+      <div class="classify-row"><span class="account-name">13) Sundry Income A/c</span><span class="account-type">Nominal A/c</span></div>
+      <div class="classify-row"><span class="account-name">14) Live Stock A/c</span><span class="account-type">Real A/c</span></div>
+      <div class="classify-row"><span class="account-name">15) Goods distributed as free sample A/c</span><span class="account-type">Nominal A/c</span></div>
+      <div class="classify-row"><span class="account-name">16) Radhika`s A/c</span><span class="account-type">Personal A/c</span></div>
+      <div class="classify-row"><span class="account-name">17) Outstanding Wages A/c</span><span class="account-type">Personal A/c</span></div>
+      <div class="classify-row"><span class="account-name">18) Loss on Sale of Furniture A/c</span><span class="account-type">Nominal A/c</span></div>
+      <div class="classify-row"><span class="account-name">19) Bank of Maharashtra A/c</span><span class="account-type">Personal A/c</span></div>
+      <div class="classify-row"><span class="account-name">20) Loan A/c</span><span class="account-type">Personal A/c</span></div>
+      <div class="classify-row"><span class="account-name">21) Computer A/c</span><span class="account-type">Real A/c</span></div>
+      <div class="classify-row"><span class="account-name">22) Legal Expenses A/c</span><span class="account-type">Nominal A/c</span></div>
+      <div class="classify-row"><span class="account-name">23) Fixed Deposit A/c</span><span class="account-type">Real A/c</span></div>
+      <div class="classify-row"><span class="account-name">24) Income Receivable A/c</span><span class="account-type">Personal A/c</span></div>
+      <div class="classify-row"><span class="account-name">25) Audit Fees A/c</span><span class="account-type">Nominal A/c</span></div>
+      <div class="classify-row"><span class="account-name">26) Trademark A/c</span><span class="account-type">Real A/c</span></div>
+      <div class="classify-row"><span class="account-name">27) Loss by fire A/c</span><span class="account-type">Nominal A/c</span></div>
+      <div class="classify-row"><span class="account-name">28) Motor Car A/c</span><span class="account-type">Real A/c</span></div>
+      <div class="classify-row"><span class="account-name">29) Income tax A/c</span><span class="account-type">Personal A/c (proprietor)</span></div>
+      <div class="classify-row"><span class="account-name">30) GST A/c</span><span class="account-type">Personal A/c</span></div>
+    </div>
+  </div>
+
+  <!-- ========================= Q.7 Accounting Equation Table ========================= -->
+  <div class="card">
+    <h2><i class="fas fa-chalkboard"></i> Q.7 Complete the Accounting Equation Table</h2>
+    <div class="qa-item"><div class="question">1) Started business with Cash ₹ 50,000</div><div class="answer">Assets = ₹50,000 ; Liabilities = 0 ; Capital = ₹50,000</div></div>
+    <div class="qa-item"><div class="question">2) Purchased goods of ₹ 10,000 (on credit)</div><div class="answer">Assets +10,000 (Stock) ; Liabilities +10,000 ; Capital unchanged</div></div>
+    <div class="qa-item"><div class="question">3) Goods stolen ₹ 1,000</div><div class="answer">Assets -1,000 ; Capital -1,000 (Loss)</div></div>
+    <div class="qa-item"><div class="question">4) Sold goods for cash ₹ 5,000</div><div class="answer">Assets (Cash +5,000, Stock - cost) Net effect depends on profit; equation balances</div></div>
+    <div class="qa-item"><div class="question">5) Loan taken from Bank ₹ 7,000</div><div class="answer">Assets +7,000 (Cash) ; Liabilities +7,000 (Bank Loan)</div></div>
+    <div class="inline-classify"><span class="classify-label"><i class="fas fa-lightbulb"></i> Note:</span> Accounting equation always maintains: Assets = Liabilities + Capital.</div>
+  </div>
+
+  <!-- Footer insight -->
+  <div class="footer-note">
+    <i class="fas fa-calculator"></i> Double Entry: The backbone of financial accounting | Luca Pacioli (1494)
+  </div>
+</div>
+</body>
+</html>

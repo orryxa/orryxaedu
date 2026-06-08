@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+    <title>Digital Textbook Reader | Orryxa Education</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
+        }
+
+        :root {
+            --bg-primary: #f5f7fb;
+            --bg-secondary: #ffffff;
+            --text-primary: #0a0a2a;
+            --text-secondary: #4a5568;
+            --text-muted: #718096;
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --border-color: rgba(0, 0, 0, 0.08);
+            --header-bg: linear-gradient(135deg, #0b2b26 0%, #1a4d46 100%);
+            --menu-bg: #ffffff;
+            --tool-bg: #f1f5f9;
+            --footer-bg: #e2e8f0;
+            --accent: #f5b042;
+            --accent-dark: #e09d2a;
+            --accent-light: rgba(245, 176, 66, 0.1);
+            --success: #10b981;
+            --error: #ef4444;
+            --info: #3b82f6;
+            --warning: #f59e0b;
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.06);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.08);
+            --shadow-xl: 0 20px 40px rgba(0,0,0,0.12);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-xl: 28px;
+        }
+
+        body.dark-mode {
+            --bg-primary: #0a0a1a;
+            --bg-secondary: #1a1a2e;
+            --text-primary: #f0f0f0;
+            --text-secondary: #a0a0b0;
+            --text-muted: #7a7a8a;
+            --card-bg: rgba(26, 26, 46, 0.9);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --header-bg: linear-gradient(135deg, #061a16 0%, #0f3b34 100%);
+            --menu-bg: #1a1a2e;
+            --tool-bg: #151525;
+            --footer-bg: #0f0f1a;
+            --glass-bg: rgba(26, 26, 46, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.05);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.3);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: var(--border-color); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
+
+        /* Toast Container */
+        .toast-container {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .toast {
+            min-width: 280px;
+            max-width: 380px;
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border-radius: var(--radius-md);
+            padding: 1rem 1.2rem;
+            box-shadow: var(--shadow-xl);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            animation: toastSlideIn 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+        }
+        
+        @keyframes toastSlideIn {
+            from { transform: translateX(100%) scale(0.9); opacity: 0; }
+            to { transform: translateX(0) scale(1); opacity: 1; }
+        }
+        
+        .toast.success { border-left: 4px solid var(--success); }
+        .toast.error { border-left: 4px solid var(--error); }
+        .toast.info { border-left: 4px solid var(--info); }
+        .toast.warning { border-left: 4px solid var(--warning); }
+        
+        .toast i:first-child { font-size: 1.2rem; }
+        .toast-content { flex: 1; }
+        .toast-title { font-weight: 700; font-size: 0.85rem; margin-bottom: 3px; }
+        .toast-message { font-size: 0.75rem; color: var(--text-secondary); }
+
+        /* Header */
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--header-bg);
+            backdrop-filter: blur(12px);
+            padding: 0.75rem 2rem;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+        }
+        
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+        
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #f5b042, #ffd966);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: #0b2b26;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo-icon:hover { transform: scale(1.05); }
+        
+        .logo-text h1 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #f9e7b3, #ffd966);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            cursor: pointer;
+            letter-spacing: -0.3px;
+        }
+        
+        .logo-text p {
+            font-size: 0.7rem;
+            color: rgba(255,255,245,0.7);
+            letter-spacing: 0.5px;
+        }
+        
+        .menu-toggle-btn {
+            display: none;
+            background: rgba(255,255,245,0.15);
+            border: none;
+            color: white;
+            font-size: 1.3rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: var(--radius-sm);
+            width: 40px;
+            height: 40px;
+            transition: all 0.2s;
+        }
+        
+        .menu-toggle-btn:hover { background: rgba(255,255,245,0.25); transform: scale(1.02); }
+        
+        .desktop-auth-buttons { display: flex; gap: 0.8rem; align-items: center; }
+        
+        .desktop-profile-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255,255,245,0.1);
+            padding: 0.3rem 0.8rem 0.3rem 0.3rem;
+            border-radius: 50px;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s;
+        }
+        
+        .desktop-profile-container:hover { background: rgba(255,255,245,0.2); transform: scale(1.02); }
+        
+        .profile-circle {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f5b042, #ffd966);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: #0b2b26;
+            overflow: hidden;
+        }
+        
+        .profile-info { display: flex; flex-direction: column; }
+        .profile-name { color: white; font-weight: 600; font-size: 0.8rem; }
+        .profile-email { color: rgba(255,255,255,0.7); font-size: 0.65rem; }
+        
+        .profile-dropdown {
+            position: absolute;
+            top: 48px;
+            right: 0;
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border-radius: var(--radius-md);
+            min-width: 200px;
+            box-shadow: var(--shadow-xl);
+            overflow: hidden;
+            visibility: hidden;
+            opacity: 0;
+            transition: all 0.2s;
+            z-index: 1001;
+            border: 1px solid var(--glass-border);
+        }
+        
+        .desktop-profile-container.active .profile-dropdown { visibility: visible; opacity: 1; top: 52px; }
+        
+        .dropdown-item {
+            padding: 0.75rem 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.85rem;
+        }
+        
+        .dropdown-item:hover { background: var(--accent-light); padding-left: 1.5rem; }
+        .logout-item { color: var(--error); }
+        
+        .btn-login, .btn-signup {
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+        
+        .btn-login {
+            background: rgba(255,255,245,0.15);
+            color: white;
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn-login:hover { background: rgba(255,255,245,0.25); transform: translateY(-1px); }
+        
+        .btn-signup {
+            background: var(--accent);
+            color: #0b2b26;
+        }
+        
+        .btn-signup:hover { background: var(--accent-dark); transform: translateY(-1px); }
+        
+        .dark-mode-toggle {
+            background: rgba(255,255,245,0.15);
+            border: none;
+            border-radius: 40px;
+            padding: 0.4rem 0.9rem;
+            cursor: pointer;
+            color: white;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+        
+        .dark-mode-toggle:hover { background: rgba(255,255,245,0.25); transform: scale(1.02); }
+
+        /* Desktop Navigation */
+        .desktop-menu-nav {
+            background: var(--menu-bg);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 65px;
+            z-index: 999;
+            backdrop-filter: blur(10px);
+        }
+        
+        .desktop-menu-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.5rem 2rem;
+        }
+        
+        .desktop-menu-item {
+            padding: 0.5rem 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 40px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            color: var(--text-primary);
+            font-size: 0.85rem;
+        }
+        
+        .desktop-menu-item i { font-size: 0.85rem; }
+        .desktop-menu-item:hover { background: var(--accent-light); transform: translateY(-2px); }
+
+        /* Mobile Sidebar */
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px);
+            z-index: 2000;
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.3s;
+        }
+        
+        .sidebar-overlay.active { visibility: visible; opacity: 1; }
+        
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 280px;
+            height: 100%;
+            background: var(--bg-secondary);
+            backdrop-filter: blur(20px);
+            box-shadow: var(--shadow-xl);
+            z-index: 2001;
+            transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+        
+        .sidebar.active { left: 0; }
+        
+        .sidebar-header {
+            background: var(--header-bg);
+            padding: 2rem 1.5rem;
+            text-align: center;
+        }
+        
+        .sidebar-profile-circle {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, #f5b042, #ffd966);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #0b2b26;
+            overflow: hidden;
+        }
+        
+        .sidebar-user-name { color: white; font-weight: 700; margin-bottom: 0.3rem; font-size: 0.9rem; }
+        .sidebar-user-email { color: rgba(255,255,255,0.8); font-size: 0.7rem; }
+        
+        .sidebar-auth-buttons {
+            display: flex;
+            gap: 0.8rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        
+        .sidebar-auth-buttons button {
+            padding: 0.45rem 1rem;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.75rem;
+            transition: all 0.2s;
+        }
+        
+        .sidebar-auth-buttons button:first-child {
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+        
+        .sidebar-auth-buttons button:last-child {
+            background: var(--accent);
+            color: #0b2b26;
+        }
+        
+        .sidebar-menu { flex: 1; padding: 1rem 0; }
+        
+        .sidebar-menu-item {
+            padding: 0.7rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.85rem;
+        }
+        
+        .sidebar-menu-item:hover { background: var(--accent-light); padding-left: 2rem; }
+        .sidebar-menu-item i { width: 24px; color: var(--accent); }
+        
+        .sidebar-footer {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .sidebar-dark-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .toggle-switch {
+            position: relative;
+            width: 46px;
+            height: 22px;
+            background: #cbd5e1;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .toggle-switch.active { background: var(--accent); }
+        .toggle-slider {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 18px;
+            height: 18px;
+            background: white;
+            border-radius: 50%;
+            transition: 0.2s;
+        }
+        
+        .toggle-switch.active .toggle-slider { left: 26px; }
+        
+        .close-sidebar {
+            position: absolute;
+            top: 0.8rem;
+            right: 0.8rem;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            transition: all 0.2s;
+        }
+        
+        .close-sidebar:hover { background: rgba(255,255,255,0.3); transform: scale(1.05); }
+
+        /* Login Required Popup */
+        .login-required-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 10001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            visibility: visible;
+            opacity: 1;
+            transition: all 0.3s ease;
+        }
+        
+        .login-required-popup {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border-radius: var(--radius-xl);
+            max-width: 450px;
+            width: 90%;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: var(--shadow-xl);
+            border: 1px solid var(--glass-border);
+            animation: popupSlideIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        @keyframes popupSlideIn {
+            from {
+                transform: scale(0.8) translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1) translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .login-required-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+        
+        .login-required-icon i {
+            font-size: 2.5rem;
+            color: #0b2b26;
+        }
+        
+        .login-required-popup h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+        
+        .login-required-popup p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
+        
+        .login-required-btn {
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #0b2b26;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .login-required-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(245, 176, 66, 0.3);
+        }
+        
+        .login-required-btn i {
+            font-size: 1.1rem;
+        }
+
+        /* Main Content */
+        .content-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            min-height: calc(100vh - 130px);
+        }
+        
+        /* PDF Info Bar */
+        .pdf-info-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .back-btn {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            padding: 0.6rem 1.2rem;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-primary);
+            transition: all 0.3s;
+        }
+        
+        .back-btn:hover { background: var(--accent-light); border-color: var(--accent); transform: translateX(-4px); }
+        
+        .chapter-badge {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        
+        .badge-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        
+        .badge-item i { color: var(--accent); font-size: 0.8rem; }
+        .badge-item strong { color: var(--text-primary); font-weight: 600; }
+
+        /* PDF Viewer Container */
+        .pdf-viewer-container {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+        }
+        
+        .pdf-viewer-container:hover {
+            box-shadow: var(--shadow-xl);
+            transform: translateY(-2px);
+        }
+        
+        .pdf-iframe-wrapper {
+            position: relative;
+            width: 100%;
+            background: #2a2a3a;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+        
+        .pdf-iframe {
+            width: 100%;
+            height: 80vh;
+            border: none;
+            border-radius: var(--radius-lg);
+            background: #f0f0f0;
+        }
+        
+        body.dark-mode .pdf-iframe {
+            background: #1a1a2e;
+        }
+        
+        /* Loading Skeleton */
+        .pdf-loading {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            border-radius: var(--radius-lg);
+            transition: opacity 0.5s ease;
+        }
+        
+        .pdf-loading.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 3px solid var(--border-color);
+            border-radius: 50%;
+            border-top-color: var(--accent);
+            animation: spin 0.8s linear infinite;
+            margin-bottom: 1.5rem;
+        }
+        
+        @keyframes spin { to { transform: rotate(360deg); } }
+        
+        .loading-text {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.5px;
+        }
+        
+        .loading-dots {
+            display: inline-flex;
+            gap: 4px;
+        }
+        
+        .loading-dots span {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+        
+        .loading-dots span:nth-child(1) { animation-delay: -0.32s; }
+        .loading-dots span:nth-child(2) { animation-delay: -0.16s; }
+        
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); opacity: 0.5; }
+            40% { transform: scale(1); opacity: 1; }
+        }
+        
+        /* Error State */
+        .error-card {
+            text-align: center;
+            padding: 3rem;
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+        }
+        
+        .error-card i {
+            font-size: 4rem;
+            color: var(--error);
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .error-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .error-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .retry-btn {
+            background: var(--accent);
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #0b2b26;
+            transition: all 0.2s;
+            margin-right: 1rem;
+        }
+        
+        .retry-btn:hover { background: var(--accent-dark); transform: scale(1.02); }
+
+        .footer-note {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--footer-bg);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sticky-header { padding: 0.5rem 1rem; }
+            .desktop-menu-nav { display: none; }
+            .menu-toggle-btn { display: block; }
+            .desktop-auth-buttons, .desktop-profile-container { display: none !important; }
+            .content-wrapper { padding: 1rem; }
+            .pdf-info-bar { flex-direction: column; align-items: flex-start; }
+            .chapter-badge { flex-wrap: wrap; }
+            .badge-item { font-size: 0.7rem; }
+            .pdf-iframe { height: 65vh; }
+            .toast-container { bottom: 16px; right: 16px; left: 16px; }
+            .toast { max-width: calc(100% - 32px); min-width: auto; }
+            .logo-text h1 { font-size: 1.1rem; }
+            .logo-text p { display: none; }
+            .login-required-popup { padding: 1.5rem; margin: 1rem; }
+            .login-required-popup h2 { font-size: 1.5rem; }
+        }
+        
+        @media (min-width: 769px) {
+            .sidebar, .sidebar-overlay { display: none; }
+        }
+        
+        @media (min-width: 1024px) {
+            .pdf-iframe { height: 75vh; }
+        }
+        
+        @media (min-width: 1440px) {
+            .pdf-iframe { height: 80vh; }
+        }
+        
+        @media (orientation: landscape) and (max-width: 900px) {
+            .pdf-iframe { height: 55vh; }
+            .content-wrapper { padding: 0.8rem; }
+        }
+        
+        .pdf-iframe {
+            user-select: none;
+            -webkit-user-select: none;
+            pointer-events: auto;
+        }
+        
+        .pdf-iframe::-webkit-scrollbar {
+            width: 6px;
+        }
+    </style>
+</head>
+<body>
+
+<header class="sticky-header">
+    <div class="header-container">
+        <div class="logo-area">
+            <button class="menu-toggle-btn" id="menuToggleBtn"><i class="fas fa-bars"></i></button>
+            <div class="logo-icon">📘</div>
+            <div class="logo-text">
+                <h1>Orryxa Education</h1>
+                <p>Digital Learning Platform</p>
+            </div>
+        </div>
+        <div class="desktop-auth-buttons" id="desktopAuthButtons">
+            <button class="btn-login" id="openLoginBtn"><i class="fas fa-key"></i> Log in</button>
+            <button class="btn-signup" id="openSignupBtn"><i class="fas fa-user-plus"></i> Sign up</button>
+            <button class="dark-mode-toggle" id="darkModeToggleBtn"><i class="fas fa-moon"></i></button>
+        </div>
+        <div class="desktop-profile-container" id="desktopProfileContainer" style="display: none;">
+            <div class="profile-circle" id="desktopProfileCircle"><span id="desktopInitial">U</span></div>
+            <div class="profile-info">
+                <span class="profile-name" id="desktopName"></span>
+                <span class="profile-email" id="desktopEmail"></span>
+            </div>
+            <i class="fas fa-chevron-down" style="color: white; font-size: 0.7rem;"></i>
+            <div class="profile-dropdown" id="desktopDropdown">
+                <div class="dropdown-item" id="desktopMyAccount"><i class="fas fa-user-circle"></i> My Account</div>
+                <div class="dropdown-item logout-item" id="desktopLogout"><i class="fas fa-sign-out-alt"></i> Logout</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<nav class="desktop-menu-nav">
+    <div class="desktop-menu-container">
+        <div class="desktop-menu-item" data-page="textbook"><i class="fas fa-book-open"></i> Text Books</div>
+        <div class="desktop-menu-item" data-page="notes"><i class="fas fa-pen-fancy"></i> Notes</div>
+        <div class="desktop-menu-item" data-page="solutions"><i class="fas fa-lightbulb"></i> Solutions</div>
+        <div class="desktop-menu-item" data-page="questionpapers"><i class="fas fa-file-alt"></i> Question Papers</div>
+        <div class="desktop-menu-item" data-page="project"><i class="fas fa-laptop-code"></i> Projects</div>
+    </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<div class="sidebar" id="sidebar">
+    <button class="close-sidebar" id="closeSidebarBtn"><i class="fas fa-times"></i></button>
+    <div class="sidebar-header">
+        <div class="sidebar-profile-circle" id="sidebarProfileCircle"><span id="sidebarInitial">U</span></div>
+        <div class="sidebar-user-name" id="sidebarUserName">Guest User</div>
+        <div class="sidebar-user-email" id="sidebarUserEmail">Please login</div>
+        <div class="sidebar-auth-buttons" id="sidebarAuthButtons">
+            <button id="sidebarLoginBtn"><i class="fas fa-key"></i> Login</button>
+            <button id="sidebarSignupBtn"><i class="fas fa-user-plus"></i> Signup</button>
+        </div>
+    </div>
+    <div class="sidebar-menu">
+        <div class="sidebar-menu-item" data-page="textbook"><i class="fas fa-book-open"></i> Text Books</div>
+        <div class="sidebar-menu-item" data-page="notes"><i class="fas fa-pen-fancy"></i> Notes</div>
+        <div class="sidebar-menu-item" data-page="solutions"><i class="fas fa-lightbulb"></i> Solutions</div>
+        <div class="sidebar-menu-item" data-page="questionpapers"><i class="fas fa-file-alt"></i> Question Papers</div>
+        <div class="sidebar-menu-item" data-page="project"><i class="fas fa-laptop-code"></i> Projects</div>
+        <div class="sidebar-menu-item" id="sidebarMyAccount" style="display: none;"><i class="fas fa-user-circle"></i> My Account</div>
+        <div class="sidebar-menu-item" id="sidebarLogout" style="display: none;"><i class="fas fa-sign-out-alt"></i> Logout</div>
+    </div>
+    <div class="sidebar-footer">
+        <div class="sidebar-dark-toggle">
+            <span><i class="fas fa-moon"></i> Dark Mode</span>
+            <div class="toggle-switch" id="sidebarDarkToggle">
+                <div class="toggle-slider"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Login Required Popup -->
+<div id="loginRequiredOverlay" class="login-required-overlay">
+    <div class="login-required-popup">
+        <div class="login-required-icon">
+            <i class="fas fa-lock"></i>
+        </div>
+        <h2>Login Required</h2>
+        <p>Please login to continue reading this textbook. Access to educational resources is available for registered users only.</p>
+        <button class="login-required-btn" id="loginRequiredBtn">
+            <i class="fas fa-sign-in-alt"></i>
+            Login Now
+        </button>
+    </div>
+</div>
+
+<div class="content-wrapper" id="mainContent">
+    <div id="pdfView"></div>
+</div>
+
+<div class="footer-note">
+    <i class="fas fa-graduation-cap"></i> Orryxa Education — 2026 | Digital Textbook Reader
+</div>
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+    // =====================================================
+    // VIEWPDF.HTML - PREMIUM DIGITAL TEXTBOOK READER
+    // Version: 5.0 (with Science and Commerce back navigation)
+    // =====================================================
+
+    const CONFIG = {
+        SCRIPT_URL: "https://script.google.com/macros/s/AKfycbzoDds81u8M5N8micA_hoIBgCS7aCFm0NUmwW6XLH4m_fRJ8R9pGqjgFGMeBxBd2dSL/exec",
+        LOGIN_SPREADSHEET_ID: "13UD1vMsopDesYMuYF4ZgXwRGE25vaR-PWl9hIGml0OE",
+        SHEET_NAME: "Login_Portal"
+    };
+
+    let currentUser = null;
+
+    // =====================================================
+    // UTILITY FUNCTIONS
+    // =====================================================
+
+    function showToast(message, type = 'info', title = '') {
+        let container = document.getElementById('toastContainer');
+        if (!container) {
+            container = document.createElement('div');
+            container.id = 'toastContainer';
+            container.className = 'toast-container';
+            document.body.appendChild(container);
+        }
+        
+        const toast = document.createElement('div');
+        toast.className = `toast ${type}`;
+        
+        let icon = '';
+        let defaultTitle = '';
+        switch(type) {
+            case 'success': icon = '<i class="fas fa-check-circle"></i>'; defaultTitle = 'Success'; break;
+            case 'error': icon = '<i class="fas fa-exclamation-circle"></i>'; defaultTitle = 'Error'; break;
+            case 'warning': icon = '<i class="fas fa-exclamation-triangle"></i>'; defaultTitle = 'Warning'; break;
+            default: icon = '<i class="fas fa-info-circle"></i>'; defaultTitle = 'Info';
+        }
+        
+        toast.innerHTML = `
+            ${icon}
+            <div class="toast-content">
+                <div class="toast-title">${title || defaultTitle}</div>
+                <div class="toast-message">${message}</div>
+            </div>
+        `;
+        
+        container.appendChild(toast);
+        
+        setTimeout(() => {
+            toast.style.animation = 'slideOut 0.3s ease';
+            setTimeout(() => { if (toast.parentNode) toast.remove(); }, 300);
+        }, 3000);
+        
+        toast.addEventListener('click', () => {
+            toast.style.animation = 'slideOut 0.3s ease';
+            setTimeout(() => { if (toast.parentNode) toast.remove(); }, 300);
+        });
+    }
+
+    function extractFileId(link) {
+        if (!link) return null;
+        const patterns = [
+            /\/d\/([a-zA-Z0-9_-]{25,})/,
+            /id=([a-zA-Z0-9_-]{25,})/,
+            /\/file\/d\/([a-zA-Z0-9_-]{25,})/,
+            /drive\.google\.com\/open\?id=([a-zA-Z0-9_-]{25,})/,
+            /uc\?id=([a-zA-Z0-9_-]{25,})/,
+            /([a-zA-Z0-9_-]{25,})/
+        ];
+        for (let pattern of patterns) {
+            const match = link.match(pattern);
+            if (match && match[1] && match[1].length >= 25) return match[1];
+        }
+        return null;
+    }
+
+    function getSecurePdfUrl(link) {
+        if (!link) return null;
+        if (link.includes('.pdf') && !link.includes('drive.google.com')) return link;
+        const fileId = extractFileId(link);
+        if (fileId) return `https://drive.google.com/file/d/${fileId}/preview`;
+        return link;
+    }
+
+    async function fetchWithTimeout(url, timeout = 10000) {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), timeout);
+        try {
+            const response = await fetch(url, { signal: controller.signal });
+            clearTimeout(timeoutId);
+            return response;
+        } catch (error) {
+            clearTimeout(timeoutId);
+            throw error;
+        }
+    }
+
+    async function fetchAllUsers() {
+        try {
+            const url = `${CONFIG.SCRIPT_URL}?spreadsheetId=${CONFIG.LOGIN_SPREADSHEET_ID}&sheetName=${CONFIG.SHEET_NAME}`;
+            const response = await fetchWithTimeout(url);
+            const data = await response.json();
+            if (data.status === 'success' && Array.isArray(data.data)) return data.data;
+            return null;
+        } catch (error) {
+            console.error('Fetch error:', error);
+            return null;
+        }
+    }
+
+    // =====================================================
+    // INTELLIGENT BACK NAVIGATION
+    // =====================================================
+
+    function getUrlParams() {
+        const urlParams = new URLSearchParams(window.location.search);
+        let pdfUrl = decodeURIComponent(urlParams.get('pdf') || '');
+        try {
+            while (pdfUrl.includes('%')) pdfUrl = decodeURIComponent(pdfUrl);
+        } catch(e) {}
+        return {
+            pdfUrl: pdfUrl,
+            chapter: decodeURIComponent(urlParams.get('chapter') || 'Unknown Chapter'),
+            standard: decodeURIComponent(urlParams.get('standard') || ''),
+            subject: decodeURIComponent(urlParams.get('subject') || '')
+        };
+    }
+
+    // Determine which page to go back to based on standard
+    function getBackPageUrl() {
+        const { standard, subject } = getUrlParams();
+        
+        // Check if it's a Science standard
+        if (standard && (standard.includes('Science'))) {
+            if (standard && subject) {
+                return `science.html?standard=${encodeURIComponent(standard)}&subject=${encodeURIComponent(subject)}`;
+            } else if (standard) {
+                return `science.html?standard=${encodeURIComponent(standard)}`;
+            } else {
+                return 'science.html';
+            }
+        }
+        
+        // Check if it's a Commerce standard
+        if (standard && (standard.includes('Commerce'))) {
+            if (standard && subject) {
+                return `commerce.html?standard=${encodeURIComponent(standard)}&subject=${encodeURIComponent(subject)}`;
+            } else if (standard) {
+                return `commerce.html?standard=${encodeURIComponent(standard)}`;
+            } else {
+                return 'commerce.html';
+            }
+        }
+        
+        // Default to textbooks page
+        return 'textbooks.html';
+    }
+
+    // Unified back navigation function
+    function goBack() {
+        const backUrl = getBackPageUrl();
+        window.location.href = backUrl;
+    }
+
+    // For backward compatibility - keep both functions
+    function goBackToScience() {
+        const { standard, subject } = getUrlParams();
+        if (standard && subject) {
+            window.location.href = `science.html?standard=${encodeURIComponent(standard)}&subject=${encodeURIComponent(subject)}`;
+        } else if (standard) {
+            window.location.href = `science.html?standard=${encodeURIComponent(standard)}`;
+        } else {
+            window.location.href = 'science.html';
+        }
+    }
+
+    function goBackToCommerce() {
+        const { standard, subject } = getUrlParams();
+        if (standard && subject) {
+            window.location.href = `commerce.html?standard=${encodeURIComponent(standard)}&subject=${encodeURIComponent(subject)}`;
+        } else if (standard) {
+            window.location.href = `commerce.html?standard=${encodeURIComponent(standard)}`;
+        } else {
+            window.location.href = 'commerce.html';
+        }
+    }
+	
+	function goBackToArts() {
+        const { standard, subject } = getUrlParams();
+        if (standard && subject) {
+            window.location.href = `arts.html?standard=${encodeURIComponent(standard)}&subject=${encodeURIComponent(subject)}`;
+        } else if (standard) {
+            window.location.href = `arts.html?standard=${encodeURIComponent(standard)}`;
+        } else {
+            window.location.href = 'arts.html';
+        }
+    }
+
+    // Get back button text based on standard
+    function getBackButtonText() {
+        const { standard, subject } = getUrlParams();
+        if (standard && standard.includes('Science')) {
+            return `Back to ${subject || 'Science'}`;
+        }
+        if (standard && standard.includes('Commerce')) {
+            return `Back to ${subject || 'Commerce'}`;
+        }
+        return 'Back to Textbook';
+    }
+
+    // =====================================================
+    // LOGIN REQUIRED POPUP FUNCTIONS
+    // =====================================================
+
+    function showLoginRequiredPopup() {
+        const overlay = document.getElementById('loginRequiredOverlay');
+        if (overlay) {
+            overlay.style.display = 'flex';
+            overlay.style.visibility = 'visible';
+            overlay.style.opacity = '1';
+        }
+    }
+
+    function hideLoginRequiredPopup() {
+        const overlay = document.getElementById('loginRequiredOverlay');
+        if (overlay) {
+            overlay.style.display = 'none';
+            overlay.style.visibility = 'hidden';
+            overlay.style.opacity = '0';
+        }
+    }
+
+    function redirectToLogin() {
+        const returnUrl = encodeURIComponent(window.location.href);
+        window.location.href = `myaccount.html?return=${returnUrl}`;
+    }
+
+    // =====================================================
+    // AUTHENTICATION FUNCTIONS
+    // =====================================================
+
+    async function updateUserInterface(user) {
+        if (!user) return;
+        const firstName = user['First Name'] || '';
+        const lastName = user['Last Name'] || '';
+        const fullName = `${firstName} ${lastName}`.trim() || 'User';
+        const email = user['Email Id'] || '';
+        const initial = firstName.charAt(0).toUpperCase() || 'U';
+        
+        const desktopName = document.getElementById('desktopName');
+        const desktopEmail = document.getElementById('desktopEmail');
+        const desktopInitial = document.getElementById('desktopInitial');
+        if (desktopName) desktopName.innerText = fullName;
+        if (desktopEmail) desktopEmail.innerText = email;
+        if (desktopInitial) desktopInitial.innerText = initial;
+        
+        const sidebarUserName = document.getElementById('sidebarUserName');
+        const sidebarUserEmail = document.getElementById('sidebarUserEmail');
+        const sidebarInitial = document.getElementById('sidebarInitial');
+        if (sidebarUserName) sidebarUserName.innerText = fullName;
+        if (sidebarUserEmail) sidebarUserEmail.innerText = email;
+        if (sidebarInitial) sidebarInitial.innerText = initial;
+    }
+
+    async function updateAllUI() {
+        const isLoggedIn = currentUser !== null;
+        const firstName = currentUser?.['First Name'] || '';
+        const lastName = currentUser?.['Last Name'] || '';
+        const fullName = `${firstName} ${lastName}`.trim();
+        const email = currentUser?.['Email Id'] || '';
+        const initial = firstName.charAt(0).toUpperCase() || 'U';
+        
+        const desktopAuth = document.getElementById('desktopAuthButtons');
+        const desktopProfile = document.getElementById('desktopProfileContainer');
+        
+        if (desktopAuth && desktopProfile) {
+            if (isLoggedIn) {
+                desktopAuth.style.display = 'none';
+                desktopProfile.style.display = 'flex';
+                const desktopName = document.getElementById('desktopName');
+                const desktopEmail = document.getElementById('desktopEmail');
+                const desktopCircle = document.getElementById('desktopProfileCircle');
+                if (desktopName) desktopName.innerText = fullName || 'User';
+                if (desktopEmail) desktopEmail.innerText = email || '';
+                if (desktopCircle && desktopCircle.querySelector('span')) {
+                    desktopCircle.querySelector('span').innerText = initial;
+                }
+            } else {
+                desktopAuth.style.display = 'flex';
+                desktopProfile.style.display = 'none';
+            }
+        }
+        
+        const sidebarAuth = document.getElementById('sidebarAuthButtons');
+        const sidebarMyAccount = document.getElementById('sidebarMyAccount');
+        const sidebarLogout = document.getElementById('sidebarLogout');
+        const sidebarUserName = document.getElementById('sidebarUserName');
+        const sidebarUserEmail = document.getElementById('sidebarUserEmail');
+        const sidebarCircle = document.getElementById('sidebarProfileCircle');
+        
+        if (isLoggedIn) {
+            if (sidebarAuth) sidebarAuth.style.display = 'none';
+            if (sidebarUserName) sidebarUserName.innerText = fullName || 'User';
+            if (sidebarUserEmail) sidebarUserEmail.innerText = email || '';
+            if (sidebarCircle && sidebarCircle.querySelector('span')) {
+                sidebarCircle.querySelector('span').innerText = initial;
+            }
+            if (sidebarMyAccount) sidebarMyAccount.style.display = 'flex';
+            if (sidebarLogout) sidebarLogout.style.display = 'flex';
+        } else {
+            if (sidebarAuth) sidebarAuth.style.display = 'flex';
+            if (sidebarUserName) sidebarUserName.innerText = 'Guest User';
+            if (sidebarUserEmail) sidebarUserEmail.innerText = 'Please login';
+            if (sidebarCircle) sidebarCircle.innerHTML = '<span>U</span>';
+            if (sidebarMyAccount) sidebarMyAccount.style.display = 'none';
+            if (sidebarLogout) sidebarLogout.style.display = 'none';
+        }
+    }
+
+    async function logout() {
+        currentUser = null;
+        localStorage.removeItem('orryxa_current_user');
+        await updateAllUI();
+        showToast('Logged out successfully', 'success', 'Logged Out');
+        showLoginRequiredPopup();
+    }
+
+    // =====================================================
+    // PDF VIEWER RENDER
+    // =====================================================
+
+    function handlePDFLoad() {
+        const loadingOverlay = document.getElementById('pdfLoadingOverlay');
+        if (loadingOverlay) {
+            loadingOverlay.classList.add('fade-out');
+            setTimeout(() => { loadingOverlay.style.display = 'none'; }, 500);
+        }
+        showToast('PDF loaded successfully', 'success', 'Document Ready');
+    }
+
+    function handlePDFError() {
+        const loadingOverlay = document.getElementById('pdfLoadingOverlay');
+        if (loadingOverlay) {
+            loadingOverlay.classList.add('fade-out');
+            setTimeout(() => { loadingOverlay.style.display = 'none'; }, 500);
+        }
+        
+        const iframeWrapper = document.getElementById('pdfIframeWrapper');
+        if (iframeWrapper) {
+            iframeWrapper.innerHTML = `
+                <div class="error-card">
+                    <i class="fas fa-file-pdf"></i>
+                    <h3>Unable to Load PDF</h3>
+                    <p>The document could not be loaded. This could be due to a broken link or network issue.</p>
+                    <button class="retry-btn" onclick="location.reload()">
+                        <i class="fas fa-sync-alt"></i> Try Again
+                    </button>
+                    <button class="back-btn" onclick="goBack()">
+                        <i class="fas fa-arrow-left"></i> Back to Textbook
+                    </button>
+                </div>
+            `;
+        }
+        showToast('Failed to load PDF. Please try again.', 'error', 'Loading Error');
+    }
+
+    function renderPDFViewer() {
+        const { pdfUrl, chapter, standard, subject } = getUrlParams();
+        const secureUrl = getSecurePdfUrl(pdfUrl);
+        const displayChapter = chapter.length > 60 ? chapter.substring(0, 57) + '...' : chapter;
+        const backButtonText = getBackButtonText();
+        
+        let infoHtml = `
+            <div class="pdf-info-bar">
+                <button class="back-btn" onclick="goBack()">
+                    <i class="fas fa-arrow-left"></i> ${backButtonText}
+                </button>
+                <div class="chapter-badge">
+                    <div class="badge-item">
+                        <i class="fas fa-book-open"></i>
+                        <span>Chapter:</span>
+                        <strong>${escapeHtml(displayChapter)}</strong>
+                    </div>
+                    ${standard ? `<div class="badge-item"><i class="fas fa-graduation-cap"></i><span>Standard:</span><strong>${escapeHtml(standard)}</strong></div>` : ''}
+                    ${subject ? `<div class="badge-item"><i class="fas ${standard && standard.includes('Science') ? 'fa-flask' : 'fa-chart-line'}"></i><span>Subject:</span><strong>${escapeHtml(subject)}</strong></div>` : ''}
+                </div>
+            </div>
+            <div class="pdf-viewer-container">
+                <div class="pdf-iframe-wrapper" id="pdfIframeWrapper" style="position: relative;">
+                    <div class="pdf-loading" id="pdfLoadingOverlay">
+                        <div class="loading-spinner"></div>
+                        <div class="loading-text">
+                            Loading Chapter...
+                            <div class="loading-dots">
+                                <span>.</span><span>.</span><span>.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <iframe class="pdf-iframe" 
+                            src="${escapeAttr(secureUrl)}" 
+                            frameborder="0"
+                            allow="autoplay"
+                            onload="handlePDFLoad()"
+                            onerror="handlePDFError()"
+                            title="Digital Textbook Reader">
+                    </iframe>
+                </div>
+            </div>
+        `;
+        
+        document.getElementById('pdfView').innerHTML = infoHtml;
+        
+        setTimeout(() => {
+            const loadingOverlay = document.getElementById('pdfLoadingOverlay');
+            if (loadingOverlay && loadingOverlay.style.display !== 'none') handlePDFError();
+        }, 10000);
+    }
+
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+
+    function escapeAttr(str) {
+        if (!str) return '';
+        return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    // =====================================================
+    // UI FUNCTIONS
+    // =====================================================
+
+    function openSidebar() {
+        document.getElementById('sidebar').classList.add('active');
+        document.getElementById('sidebarOverlay').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeSidebar() {
+        document.getElementById('sidebar').classList.remove('active');
+        document.getElementById('sidebarOverlay').classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    function navigateTo(page) {
+        const pageUrls = {
+            'textbook': 'textbooks.html',
+            'notes': 'notes.html',
+            'solutions': 'solutions.html',
+            'questionpapers': 'questionpapers.html',
+            'project': 'project.html'
+        };
+        const url = pageUrls[page];
+        if (url) window.location.href = url;
+    }
+
+    function initDarkMode() {
+        const darkMode = localStorage.getItem('darkMode') === 'enabled';
+        if (darkMode) document.body.classList.add('dark-mode');
+        updateDarkModeToggle();
+    }
+
+    function toggleDarkMode() {
+        document.body.classList.toggle('dark-mode');
+        localStorage.setItem('darkMode', document.body.classList.contains('dark-mode') ? 'enabled' : 'disabled');
+        updateDarkModeToggle();
+        showToast(`Dark mode ${document.body.classList.contains('dark-mode') ? 'enabled' : 'disabled'}`, 'info', 'Theme');
+    }
+
+    function updateDarkModeToggle() {
+        const isDark = document.body.classList.contains('dark-mode');
+        const darkToggle = document.getElementById('sidebarDarkToggle');
+        if (darkToggle) {
+            if (isDark) darkToggle.classList.add('active');
+            else darkToggle.classList.remove('active');
+        }
+    }
+
+    // =====================================================
+    // CHECK LOGIN STATUS
+    // =====================================================
+
+    function showLoginMessage() {
+        const pdfView = document.getElementById('pdfView');
+        if (pdfView) {
+            pdfView.innerHTML = `
+                <div class="error-card" style="text-align: center; padding: 4rem 2rem;">
+                    <i class="fas fa-lock" style="font-size: 4rem; color: var(--accent); margin-bottom: 1rem;"></i>
+                    <h3>Access Restricted</h3>
+                    <p>Please login to access textbook content and learning resources.</p>
+                    <button class="login-required-btn" onclick="redirectToLogin()" style="margin-top: 1rem;">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Login to Continue
+                    </button>
+                </div>
+            `;
+        }
+    }
+
+    async function checkLoginAndInit() {
+        const savedUser = localStorage.getItem('orryxa_current_user');
+        
+        if (savedUser) {
+            try {
+                currentUser = JSON.parse(savedUser);
+                await updateAllUI();
+                await updateUserInterface(currentUser);
+                showToast(`Welcome back, ${currentUser['First Name'] || 'User'}!`, 'success', 'Welcome');
+                hideLoginRequiredPopup();
+                renderPDFViewer();
+            } catch(e) {
+                console.error('Error parsing saved user:', e);
+                await updateAllUI();
+                showLoginRequiredPopup();
+                showLoginMessage();
+            }
+        } else {
+            await updateAllUI();
+            showLoginRequiredPopup();
+            showLoginMessage();
+        }
+    }
+
+    // =====================================================
+    // EVENT LISTENERS SETUP
+    // =====================================================
+
+    function setupEventListeners() {
+        const logoBtn = document.getElementById('logoHomeBtn');
+        if (logoBtn) logoBtn.onclick = () => { window.location.href = 'index.html'; };
+        
+        const menuToggle = document.getElementById('menuToggleBtn');
+        if (menuToggle) menuToggle.onclick = openSidebar;
+        
+        const closeSidebarBtn = document.getElementById('closeSidebarBtn');
+        if (closeSidebarBtn) closeSidebarBtn.onclick = closeSidebar;
+        
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        if (sidebarOverlay) sidebarOverlay.onclick = closeSidebar;
+        
+        const sidebarDarkToggle = document.getElementById('sidebarDarkToggle');
+        if (sidebarDarkToggle) sidebarDarkToggle.onclick = toggleDarkMode;
+        
+        const darkModeBtn = document.getElementById('darkModeToggleBtn');
+        if (darkModeBtn) darkModeBtn.onclick = toggleDarkMode;
+        
+        const profileContainer = document.getElementById('desktopProfileContainer');
+        if (profileContainer) {
+            profileContainer.addEventListener('click', (e) => {
+                e.stopPropagation();
+                profileContainer.classList.toggle('active');
+            });
+            document.addEventListener('click', () => {
+                profileContainer.classList.remove('active');
+            });
+        }
+        
+        const desktopMyAccount = document.getElementById('desktopMyAccount');
+        if (desktopMyAccount) {
+            desktopMyAccount.onclick = () => {
+                if (currentUser) {
+                    showToast(`Name: ${currentUser['First Name']} ${currentUser['Last Name']}\nEmail: ${currentUser['Email Id']}`, 'info', 'My Account');
+                } else {
+                    redirectToLogin();
+                }
+            };
+        }
+        
+        const desktopLogout = document.getElementById('desktopLogout');
+        if (desktopLogout) desktopLogout.onclick = () => logout();
+        
+        const sidebarLoginBtn = document.getElementById('sidebarLoginBtn');
+        if (sidebarLoginBtn) sidebarLoginBtn.onclick = () => { closeSidebar(); redirectToLogin(); };
+        
+        const sidebarSignupBtn = document.getElementById('sidebarSignupBtn');
+        if (sidebarSignupBtn) sidebarSignupBtn.onclick = () => { closeSidebar(); redirectToLogin(); };
+        
+        const sidebarMyAccount = document.getElementById('sidebarMyAccount');
+        if (sidebarMyAccount) {
+            sidebarMyAccount.onclick = () => {
+                if (currentUser) {
+                    showToast(`Name: ${currentUser['First Name']} ${currentUser['Last Name']}\nEmail: ${currentUser['Email Id']}`, 'info', 'My Account');
+                } else {
+                    redirectToLogin();
+                }
+                closeSidebar();
+            };
+        }
+        
+        const sidebarLogout = document.getElementById('sidebarLogout');
+        if (sidebarLogout) sidebarLogout.onclick = () => { logout(); closeSidebar(); };
+        
+        const openLoginBtn = document.getElementById('openLoginBtn');
+        if (openLoginBtn) openLoginBtn.onclick = () => { redirectToLogin(); };
+        
+        const openSignupBtn = document.getElementById('openSignupBtn');
+        if (openSignupBtn) openSignupBtn.onclick = () => { redirectToLogin(); };
+        
+        const loginRequiredBtn = document.getElementById('loginRequiredBtn');
+        if (loginRequiredBtn) loginRequiredBtn.onclick = redirectToLogin;
+        
+        document.querySelectorAll('.desktop-menu-item, .sidebar-menu-item').forEach(el => {
+            if (!el.hasAttribute('data-page')) return;
+            el.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const page = el.getAttribute('data-page');
+                if (page) navigateTo(page);
+                closeSidebar();
+            });
+        });
+        
+        let touchStartX = 0;
+        document.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; });
+        document.addEventListener('touchend', (e) => {
+            let touchEndX = e.changedTouches[0].clientX;
+            if (touchStartX < 30 && touchEndX > touchStartX + 50) openSidebar();
+        });
+        
+        document.addEventListener('contextmenu', (e) => {
+            if (e.target.tagName === 'IFRAME') {
+                e.preventDefault();
+                return false;
+            }
+        });
+    }
+
+    // =====================================================
+    // INITIALIZATION
+    // =====================================================
+
+    async function init() {
+        console.log('[PDF Reader] Initializing with intelligent back navigation...');
+        initDarkMode();
+        setupEventListeners();
+        await checkLoginAndInit();
+    }
+
+    // Make functions available globally
+    window.goBack = goBack;
+    window.goBackToScience = goBackToScience;
+    window.goBackToCommerce = goBackToCommerce;
+	window.goBackToArts = goBackToArts;
+    window.handlePDFLoad = handlePDFLoad;
+    window.handlePDFError = handlePDFError;
+    window.showToast = showToast;
+    window.redirectToLogin = redirectToLogin;
+    
+    init();
+</script>
+</body>
+</html>

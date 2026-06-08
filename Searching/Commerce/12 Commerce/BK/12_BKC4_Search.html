@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>👋 Retirement of Partner | 12th BK Chap 4 | Reconstitution of Partnership | Gain Ratio, Goodwill, Revaluation</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    body {
+      background: linear-gradient(145deg, #1e293b, #0f172a);
+      min-height: 100vh;
+      padding: 24px 18px;
+      color: #f1f5f9;
+    }
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    .heading {
+      text-align: center;
+      margin-bottom: 32px;
+      animation: slideDown 0.5s ease;
+    }
+    .heading h1 {
+      font-size: 1.8rem;
+      background: linear-gradient(135deg, #fff, #fbbf24);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .heading p {
+      color: #fde68a;
+      margin-top: 8px;
+    }
+    .search-wrapper {
+      position: relative;
+      margin-bottom: 28px;
+    }
+    .search-box {
+      background: white;
+      border-radius: 60px;
+      padding: 6px 6px 6px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 20px 35px -10px rgba(0,0,0,0.4);
+    }
+    .search-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      padding: 14px 0;
+      background: transparent;
+      color: #0f172a;
+      font-weight: 500;
+    }
+    .icon-btn {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(145deg, #d97706, #b45309);
+      color: white;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .icon-btn:hover { transform: scale(1.07); background: #f59e0b; }
+    .suggestions-dropdown {
+      position: absolute;
+      top: calc(100% + 10px);
+      left: 0;
+      right: 0;
+      background: white;
+      border-radius: 28px;
+      background: rgba(255,255,255,0.98);
+      box-shadow: 0 18px 30px rgba(0,0,0,0.3);
+      z-index: 120;
+      max-height: 280px;
+      overflow-y: auto;
+      display: none;
+    }
+    .suggestion-item {
+      padding: 14px 22px;
+      color: #0f172a;
+      cursor: pointer;
+      border-bottom: 1px solid #eef2ff;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .suggestion-item:hover { background: #fef3c7; padding-left: 28px; }
+    .result-container {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+    .result-card {
+      background: rgba(255,255,255,0.96);
+      border-radius: 32px;
+      padding: 1.7rem;
+      color: #0f172a;
+      box-shadow: 0 15px 30px -12px rgba(0,0,0,0.35);
+      transition: 0.2s;
+    }
+    .result-card:hover { transform: translateY(-3px); }
+    .badge {
+      background: #fef3c7;
+      color: #92400e;
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+    .result-card h3 {
+      color: #b45309;
+      font-size: 1.3rem;
+      border-left: 5px solid #f59e0b;
+      padding-left: 16px;
+      margin-bottom: 14px;
+    }
+    .answer-text {
+      background: #fffbeb;
+      padding: 16px 20px;
+      border-radius: 24px;
+      line-height: 1.65;
+      margin: 12px 0;
+    }
+    .formula-box {
+      background: #fef3c7;
+      padding: 12px 16px;
+      border-radius: 20px;
+      font-family: monospace;
+      font-size: 1rem;
+      margin: 10px 0;
+      text-align: center;
+      border-left: 4px solid #d97706;
+    }
+    .responsive-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+      font-size: 0.85rem;
+      overflow-x: auto;
+      display: block;
+    }
+    .responsive-table th, .responsive-table td {
+      border: 1px solid #d1d5db;
+      padding: 10px 8px;
+      text-align: left;
+      background: white;
+    }
+    .responsive-table th {
+      background: #d97706;
+      color: white;
+      font-weight: 600;
+    }
+    .action-buttons {
+      margin-top: 20px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .action-buttons button {
+      border: none;
+      padding: 10px 22px;
+      border-radius: 40px;
+      font-weight: 600;
+      background: #eef2ff;
+      color: #1e293b;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .action-buttons button:last-child { background: #d97706; color: white; }
+    .not-found {
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(12px);
+      border-radius: 40px;
+      padding: 2rem;
+      text-align: center;
+    }
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(10px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    .popup-box {
+      background: white;
+      max-width: 950px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      border-radius: 40px;
+      padding: 28px 32px;
+      position: relative;
+      color: #0a2a44;
+    }
+    .close-popup {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      background: #fee2e2;
+      border: none;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+    .lang-section { background: #f1f5f9; padding: 18px; border-radius: 24px; margin-bottom: 18px; }
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-22px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 650px) { 
+      .heading h1 { font-size: 1.3rem; } 
+      .result-card h3 { font-size: 1.1rem; }
+      .responsive-table th, .responsive-table td { padding: 6px 4px; font-size: 0.7rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="heading">
+    <h1>👋 Retirement of Partner | Chapter 4: Reconstitution of Partnership</h1>
+    <p>🔍 140+ Q&A | New Ratio, Gain Ratio, Goodwill Treatment, Revaluation Account, Capital Adjustment, Amount Payable</p>
+  </div>
+  <div class="search-wrapper">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search: Retirement of Partner, Gain Ratio, New Ratio, Goodwill Treatment, Revaluation Account, Amount Payable to Retiring Partner...">
+      <button class="icon-btn" id="voiceBtn">🎤</button>
+    </div>
+    <div id="suggestionsList" class="suggestions-dropdown"></div>
+  </div>
+  <div class="result-container" id="resultsContainer">
+    <div class="not-found">✨ Start typing — Chapter 4: Retirement of Partner | New Ratio, Gain Ratio, Goodwill, Revaluation, Capital Adjustment ✨</div>
+  </div>
+</div>
+<div class="popup-overlay" id="popupModal">
+  <div class="popup-box">
+    <button class="close-popup" id="closeModalBtn">✖</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+  // ------------- COMPLETE DATABASE: Chapter 4 Retirement of Partner (12th Commerce) -------------
+  const qaDatabase = [];
+
+  function addQA(question, answer, hindi, marathi, category, keywords = []) {
+    qaDatabase.push({ id: qaDatabase.length+1, question, answer, hindi, marathi, category, keywords: keywords.map(k=>k.toLowerCase()) });
+  }
+
+  // ==================== CORE CONCEPTS ====================
+  addQA("What is Retirement of a Partner?", "Retirement of a partner means a partner ceasing to be a member of the partnership firm while other partners continue the business. Partner may retire due to old age, health issues, disagreements, or to start new business. Section 32 of Indian Partnership Act 1932 deals with retirement.", "साझेदार की सेवानिवृत्ति का अर्थ है कि साझेदार साझेदारी फर्म का सदस्य नहीं रहता जबकि अन्य साझेदार व्यवसाय जारी रखते हैं।", "भागीदाराची निवृत्ती म्हणजे भागीदार फर्मचा सदस्य राहत नाही तर इतर भागीदार व्यवसाय चालू ठेवतात.", "Core", ["retirement meaning"]);
+  addQA("What is Gain Ratio (Benefit Ratio)?", "Gain Ratio is the ratio in which the continuing partners acquire the retiring partner's share. Formula: Gain Ratio = New Ratio - Old Ratio. It is used for writing off goodwill to the extent of retiring partner's share.", "लाभ अनुपात वह अनुपात है जिसमें जारी रखने वाले साझेदार सेवानिवृत्त साझेदार का हिस्सा प्राप्त करते हैं।", "लाभ प्रमाण म्हणजे ज्याप्रमाणात चालू ठेवणारे भागीदार निवृत्त भागीदाराचा हिस्सा घेतात.", "Ratio", ["gain ratio","benefit ratio"]);
+  addQA("What is New Ratio after Retirement?", "New Ratio is the ratio in which continuing partners decide to share future profits after retirement. Old ratio is cancelled by removing retiring partner's share and remaining partners may change their sharing proportion.", "नया अनुपात वह अनुपात है जिसमें जारी रखने वाले साझेदार सेवानिवृत्ति के बाद भविष्य के लाभ साझा करने का निर्णय लेते हैं।", "नवीन प्रमाण म्हणजे निवृत्तीनंतर चालू ठेवणारे भागीदार भविष्यातील नफा वाटपाचे प्रमाण.", "Ratio", ["new ratio","future ratio"]);
+  addQA("What are the modes of Retirement of a Partner?", "A partner may retire by: 1) Notice to remaining partners (partnership at will), 2) Agreement among partners, 3) With consent of all partners.", "सेवानिवृत्ति के तरीके: 1) शेष साझेदारों को सूचना, 2) सभी साझेदारों की सहमति, 3) समझौते के अनुसार।", "निवृत्तीच्या पद्धती: 1) उर्वरित भागीदारांना सूचना, 2) सर्व भागीदारांच्या संमतीने, 3) करारानुसार.", "Core", ["modes of retirement"]);
+
+  // ==================== TABLES ====================
+  function getGoodwillJournalTable() {
+    return `<table class="responsive-table"><thead><tr><th>Scenario</th><th>Journal Entry</th></tr></thead><tbody>
+      <tr><td colspan="2"><strong>1. Goodwill raised for entire firm and retained</strong></td></tr>
+      <tr><td colspan="2">Goodwill A/c Dr. To All Partners Capital A/c (Old Ratio)</td></tr>
+      <tr><td colspan="2"><strong>2. Goodwill raised and written off</strong></td></tr>
+      <tr><td>a) When raised</td><td>Goodwill A/c Dr. To All Partners Capital A/c (Old Ratio)</td></tr>
+      <tr><td>b) When written off</td><td>Continuing Partners Capital A/c Dr. (New Ratio) To Goodwill A/c</td></tr>
+      <tr><td colspan="2"><strong>3. Goodwill raised only for retiring partner's share</strong></td></tr>
+      <tr><td>a) Raised</td><td>Goodwill A/c Dr. To Retiring Partner's Capital A/c</td></tr>
+      <tr><td>b) Written off (if required)</td><td>Continuing Partners Capital A/c Dr. (Gain Ratio) To Goodwill A/c</td></tr>
+      <tr><td colspan="2"><strong>4. Goodwill already appears in books</strong></td></tr>
+      <tr><td>Difference adjusted in Revaluation A/c or Partners Capital A/c (Old Ratio)</td><td>-</td></tr>
+    </tbody></table>`;
+  }
+  function getRevaluationFormat() {
+    return `<table class="responsive-table"><thead><tr><th>Dr. Revaluation Account</th><th>₹</th><th>Cr. Revaluation Account</th><th>₹</th></tr></thead>
+    <tbody>
+      <tr><td>To Asset A/c (Decrease in value)</td><td>xx</td><td>By Asset A/c (Increase in value)</td><td>xx</td></tr>
+      <tr><td>To Liability A/c (Increase in liability)</td><td>xx</td><td>By Liability A/c (Decrease in liability)</td><td>xx</td></tr>
+      <tr><td>To Unrecorded Liability</td><td>xx</td><td>By Unrecorded Asset</td><td>xx</td></tr>
+      <tr><td>To Continuing Partners Capital A/c (Loss transferred)</td><td>xx</td><td>By Continuing Partners Capital A/c (Profit transferred)</td><td>xx</td></tr>
+      <tr><td colspan="4">Note: Profit/Loss on Revaluation is shared by ALL partners including retiring partner in OLD ratio</td></tr>
+    </tbody></table>`;
+  }
+
+  // ==================== FORMULAS & NUMERICALS ====================
+  addQA("Formula for Gain Ratio", "Gain Ratio = New Ratio - Old Ratio. This represents the share of profit gained by each continuing partner from the retiring partner's share.", "लाभ अनुपात = नया अनुपात - पुराना अनुपात", "लाभ प्रमाण = नवीन प्रमाण - जुने प्रमाण", "Formulas", ["gain ratio formula"]);
+  addQA("Calculate New Ratio: A, B, C share 4:2:1. B retires. What is new ratio?", "When B retires, his share is cancelled. New ratio = 4:1 (A:C).", "नया अनुपात = 4:1", "नवीन प्रमाण = 4:1", "Numerical", ["new ratio simple"]);
+  addQA("Calculate Gain Ratio: Old Ratio 4:3:2, New Ratio of continuing partners 1:1", "A's gain = 1/2 - 4/9 = 1/18, C's gain = 1/2 - 2/9 = 5/18. Gain Ratio = 1:5.", "लाभ अनुपात = 1:5", "लाभ प्रमाण = 1:5", "Numerical", ["gain ratio calculation"]);
+  addQA("Calculate amount payable to retiring partner", "Amount payable = Capital balance + Share in Revaluation Profit/Loss + Share in Reserves/Accumulated Profits + Share of Goodwill - Drawings + Interest on Capital - Interest on Drawings + Share of current year profit (from last Balance Sheet to retirement date).", "सेवानिवृत्त साझेदार को देय राशि की गणना।", "निवृत्त भागीदारास देय रकमेची गणना.", "Formulas", ["payable amount"]);
+
+  // ==================== JOURNAL ENTRIES ====================
+  addQA("Journal entry for transfer of Reserve Fund on retirement", "Reserve Fund A/c Dr. To All Partners Capital A/c (Old Ratio). Reserves belong to all partners including retiring partner.", "सेवानिवृत्ति पर आरक्षित निधि हस्तांतरण की प्रविष्टि।", "निवृत्तीवर आरक्षित निधी हस्तांतरणाची नोंद.", "Journal", ["reserve transfer"]);
+  addQA("Journal entry for amount due to retiring partner transferred to Loan Account", "Retiring Partner's Capital A/c Dr. To Retiring Partner's Loan A/c. When amount is not paid immediately, it is transferred to Loan Account.", "देय राशि ऋण खाते में स्थानांतरित करने की प्रविष्टि।", "देय रक्कम कर्ज खात्यात हस्तांतरित करण्याची नोंद.", "Journal", ["loan transfer"]);
+  addQA("Journal entry for Profit and Loss Suspense A/c for retiring partner's share of current year profit", "Profit and Loss Suspense A/c Dr. To Retiring Partner's Capital A/c. (Proportionate profit from last Balance Sheet date to retirement date).", "चालू वर्ष के लाभ के लिए प्रविष्टि।", "चालू वर्षाच्या नफ्यासाठी नोंद.", "Journal", ["profit suspense"]);
+
+  // ==================== THEORY QUESTIONS ====================
+  addQA("True/False: On retirement, revaluation profit/loss is shared only by continuing partners", "False. Revaluation profit/loss is shared by all partners (including retiring partner) in their old profit sharing ratio.", "गलत। पुनर्मूल्यांकन लाभ/हानि सभी साझेदारों (सेवानिवृत्त साझेदार सहित) में बांटा जाता है।", "चुकीचे. पुनर्मूल्यांकन नफा/तोटा सर्व भागीदारांत (निवृत्त भागीदारासह) वाटला जातो.", "True/False", ["revaluation all partners"]);
+  addQA("True/False: Gain Ratio is calculated as Old Ratio - New Ratio", "False. Gain Ratio = New Ratio - Old Ratio. Sacrifice Ratio = Old Ratio - New Ratio (used at admission).", "गलत। लाभ अनुपात = नया अनुपात - पुराना अनुपात।", "चुकीचे. लाभ प्रमाण = नवीन प्रमाण - जुने प्रमाण.", "True/False", ["gain ratio correct"]);
+  addQA("Fill in blank: On retirement, the continuing partners' capital accounts are credited with retiring partner's share of goodwill in the _______ ratio.", "Gain Ratio", "लाभ अनुपात", "लाभ प्रमाण", "Fillup", ["goodwill gain ratio"]);
+  addQA("Fill in blank: Decrease in the value of asset is ______ to Revaluation Account.", "Debited", "डेबिट", "नावे", "Fillup", ["decrease asset debit"]);
+
+  // Helper Functions
+  const searchInput = document.getElementById("searchInput");
+  const resultsContainer = document.getElementById("resultsContainer");
+  const suggestionsDiv = document.getElementById("suggestionsList");
+
+  function getMatches(query) {
+    if(!query.trim()) return [];
+    const lower = query.toLowerCase();
+    return qaDatabase.filter(item => 
+      item.question.toLowerCase().includes(lower) || 
+      item.answer.toLowerCase().includes(lower) ||
+      item.category.toLowerCase().includes(lower) ||
+      item.keywords.some(k => k.includes(lower) || lower.includes(k))
+    ).slice(0, 14);
+  }
+
+  function updateSuggestions() {
+    const val = searchInput.value;
+    if(!val.trim()) { suggestionsDiv.style.display = "none"; return; }
+    const matches = getMatches(val);
+    if(!matches.length) { suggestionsDiv.style.display = "none"; return; }
+    suggestionsDiv.innerHTML = "";
+    matches.forEach(item => {
+      const div = document.createElement("div");
+      div.className = "suggestion-item";
+      div.innerHTML = `<span>👋</span> <strong>${item.question.substring(0,70)}...</strong> <span style="margin-left:auto; background:#fef3c7; padding:2px 10px; border-radius:20px;">${item.category}</span>`;
+      div.addEventListener("click", () => {
+        searchInput.value = item.question;
+        suggestionsDiv.style.display = "none";
+        performSearch(item.question);
+      });
+      suggestionsDiv.appendChild(div);
+    });
+    suggestionsDiv.style.display = "block";
+  }
+
+  function performSearch(query = null) {
+    let q = (query !== null) ? query : searchInput.value;
+    q = q.trim();
+    if(!q) { resultsContainer.innerHTML = `<div class="not-found">🔍 Search: Retirement of Partner, Gain Ratio, New Ratio, Goodwill Treatment, Revaluation Account, Amount Payable.</div>`; return; }
+    const matches = getMatches(q);
+    if(!matches.length) { resultsContainer.innerHTML = `<div class="not-found">❌ No results for "${q}". Try: Retirement of Partner, Gain Ratio, New Ratio, Revaluation Account, Goodwill.</div>`; return; }
+    resultsContainer.innerHTML = "";
+    matches.forEach(item => {
+      let extraContent = "";
+      if (item.question.toLowerCase().includes("goodwill journal") || (item.question.toLowerCase().includes("goodwill") && item.category === "Journal"))
+        extraContent = getGoodwillJournalTable();
+      else if (item.question.toLowerCase().includes("revaluation format") || item.question.toLowerCase().includes("specimen of revaluation"))
+        extraContent = getRevaluationFormat();
+      else if (item.category === "Numerical" && (item.answer.includes("₹") || item.answer.includes(":")))
+        extraContent = `<div class="formula-box">📐 ${item.answer}</div>`;
+      else if (item.category === "Formulas")
+        extraContent = `<div class="formula-box">📐 ${item.answer}</div>`;
+      
+      const card = document.createElement("div");
+      card.className = "result-card";
+      card.innerHTML = `
+        <div class="badge">${escapeHtml(item.category)}</div>
+        <h3>📘 ${escapeHtml(item.question)}</h3>
+        <div class="answer-text"><strong>✅ Answer / उत्तर:</strong><br>${escapeHtml(item.answer)}${extraContent}</div>
+        <div class="action-buttons">
+          <button class="langBtn" data-q="${escapeAttr(item.question)}" data-a="${escapeAttr(item.answer)}" data-hi="${escapeAttr(item.hindi)}" data-mr="${escapeAttr(item.marathi)}">🌐 हिंदी / मराठी</button>
+          <button class="detailBtn" data-q="${escapeAttr(item.question)}" data-a="${escapeAttr(item.answer)}" data-cat="${item.category}">📘 Detailed Rules & Procedure</button>
+        </div>
+      `;
+      resultsContainer.appendChild(card);
+    });
+    attachEvents();
+  }
+
+  function attachEvents() {
+    document.querySelectorAll(".langBtn").forEach(btn => btn.addEventListener("click", (e) => {
+      const q = btn.getAttribute("data-q"), a= btn.getAttribute("data-a"), hi=btn.getAttribute("data-hi"), mr=btn.getAttribute("data-mr");
+      showLangPopup(q,a,hi,mr);
+    }));
+    document.querySelectorAll(".detailBtn").forEach(btn => btn.addEventListener("click", (e) => {
+      const q = btn.getAttribute("data-q"), a= btn.getAttribute("data-a"), cat=btn.getAttribute("data-cat");
+      showDetailPopup(q,a,cat);
+    }));
+  }
+
+  function showLangPopup(question, answer, hindi, marathi) {
+    document.getElementById("popupModal").style.display = "flex";
+    document.getElementById("modalContent").innerHTML = `
+      <h2 style="color:#b45309;">🌐 भाषा अनुवाद | Translation</h2>
+      <div class="lang-section"><strong>❓ प्रश्न:</strong> ${escapeHtml(question)}</div>
+      <div class="lang-section"><strong>🇮🇳 हिंदी (Hindi):</strong><br>${escapeHtml(hindi || answer)}</div>
+      <div class="lang-section"><strong>🇮🇳 मराठी (Marathi):</strong><br>${escapeHtml(marathi || answer)}</div>
+      <button id="closeLangModal" style="background:#d97706; padding:10px 24px; border-radius:40px; color:white; border:none;">बंद करें</button>
+    `;
+    document.getElementById("closeLangModal").addEventListener("click", ()=> document.getElementById("popupModal").style.display = "none");
+  }
+
+  function showDetailPopup(question, answer, category) {
+    let extra = `<div class="lang-section"><strong>📚 Chapter Reference:</strong> 12th BK Chapter 4 - Reconstitution of Partnership (Retirement of Partner). Topics: New Ratio, Gain Ratio, Goodwill Treatment (4 methods), Revaluation of Assets & Liabilities, Reserve/Accumulated Profit Transfer, Capital Adjustment, Amount Payable to Retiring Partner, Payment Modes (Lumpsum/Installment/Loan).</div>`;
+    if(category === "Goodwill" || category === "Journal") extra += getGoodwillJournalTable();
+    if(category === "Revaluation" || question.toLowerCase().includes("revaluation")) extra += getRevaluationFormat();
+    if(category === "Ratio" || category === "Formulas") extra += `<div class="lang-section">📌 Key Formulas:<br>• Gain Ratio = New Ratio - Old Ratio<br>• New Ratio = Cancelling retiring partner's share<br>• Amount to Retiring Partner = Capital + Share of Revaluation Profit + Share of Reserves + Share of Goodwill - Drawings + Share of Current Year Profit</div>`;
+    document.getElementById("popupModal").style.display = "flex";
+    document.getElementById("modalContent").innerHTML = `
+      <h2 class="detail-title">📘 Detailed Explanation (विस्तृत उत्तर)</h2>
+      <div class="lang-section"><strong>❓ Question:</strong> ${escapeHtml(question)}</div>
+      <div class="lang-section"><strong>✅ Detailed Answer:</strong><br>${escapeHtml(answer)}</div>
+      ${extra}
+      <button id="closeDetailModal" style="background:#d97706; padding:10px 24px; border-radius:40px; color:white; border:none;">Close</button>
+    `;
+    document.getElementById("closeDetailModal").addEventListener("click", ()=> document.getElementById("popupModal").style.display = "none");
+  }
+
+  function escapeHtml(str) { return str.replace(/[&<>]/g, function(m){ if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m;}); }
+  function escapeAttr(str) { return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  function startVoice() { if (!('webkitSpeechRecognition' in window)) { alert("Voice not supported."); return; } const rec = new webkitSpeechRecognition(); rec.lang="en-IN"; rec.start(); rec.onresult = (e)=> { searchInput.value = e.results[0][0].transcript; performSearch(); }; }
+  document.getElementById("voiceBtn").addEventListener("click", startVoice);
+  searchInput.addEventListener("keyup", () => { performSearch(); updateSuggestions(); });
+  searchInput.addEventListener("focus", updateSuggestions);
+  document.addEventListener("click", (e) => { if(!document.querySelector(".search-wrapper").contains(e.target)) suggestionsDiv.style.display = "none"; });
+  document.getElementById("closeModalBtn").addEventListener("click", () => document.getElementById("popupModal").style.display = "none");
+  window.onload = () => { resultsContainer.innerHTML = `<div class="not-found">✨ 12th Commerce Chapter 4: Retirement of Partner | ${qaDatabase.length}+ Q&A | Gain Ratio, Goodwill, Revaluation, Capital Adjustment ✨</div>`; };
+</script>
+</body>
+</html>

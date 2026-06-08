@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>📚 OCM Chapter 1 | Principles of Management | Fayol & Taylor</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    body {
+      background: linear-gradient(145deg, #0c1a2a, #0a1020);
+      min-height: 100vh;
+      padding: 24px 18px;
+      color: #1e293b;
+      overflow-y: scroll;
+      scrollbar-width: thin;
+    }
+    .container { max-width: 1300px; margin: 0 auto; }
+    .heading { text-align: center; margin-bottom: 35px; animation: slideDown 0.5s ease; }
+    .heading h1 {
+      font-size: 2rem;
+      background: linear-gradient(135deg, #0f3b2c, #2c7a4d, #f59e0b);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+    }
+    .heading p { color: #2d6a4f; margin-top: 10px; font-weight: 600; background: #ffffffaa; display: inline-block; padding: 5px 18px; border-radius: 40px; backdrop-filter: blur(4px);}
+    .search-wrapper { position: relative; margin-bottom: 32px; }
+    .search-box {
+      background: white;
+      border-radius: 60px;
+      padding: 6px 6px 6px 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.15);
+      border: 1px solid #cbd5e1;
+    }
+    .search-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      padding: 15px 0;
+      background: transparent;
+      color: #0f172a;
+      font-weight: 500;
+    }
+    .icon-btn {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(145deg, #2c7a4d, #1f5e3a);
+      color: white;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: 0.25s;
+      box-shadow: 0 4px 12px rgba(44,122,77,0.4);
+    }
+    .icon-btn:hover { transform: scale(1.05); background: #2c7a4d; }
+    .suggestions-dropdown {
+      position: absolute;
+      top: calc(100% + 12px);
+      left: 0;
+      right: 0;
+      background: white;
+      border-radius: 32px;
+      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.2);
+      z-index: 120;
+      max-height: 280px;
+      overflow-y: auto;
+      display: none;
+      border: 1px solid #e2e8f0;
+    }
+    .suggestion-item {
+      padding: 14px 24px;
+      color: #0f172a;
+      cursor: pointer;
+      border-bottom: 1px solid #f1f5f9;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      transition: 0.2s;
+    }
+    .suggestion-item:hover { background: #dcfce7; padding-left: 32px; }
+    .result-container { display: flex; flex-direction: column; gap: 24px; margin-top: 20px; }
+    .result-card {
+      background: white;
+      border-radius: 32px;
+      padding: 1.8rem;
+      color: #0f172a;
+      box-shadow: 0 12px 30px -10px rgba(0,0,0,0.08);
+      transition: 0.25s ease;
+      border: 1px solid #e2e8f0;
+    }
+    .result-card:hover { transform: translateY(-4px); box-shadow: 0 20px 30px -12px rgba(0,0,0,0.12); }
+    .badge {
+      background: #e0f2e9;
+      color: #1f5e3a;
+      display: inline-block;
+      padding: 5px 16px;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+    .result-card h3 {
+      color: #0f3b2c;
+      font-size: 1.35rem;
+      border-left: 6px solid #f59e0b;
+      padding-left: 18px;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+    .answer-text {
+      background: #fefce8;
+      padding: 18px 24px;
+      border-radius: 28px;
+      line-height: 1.7;
+      margin: 12px 0;
+      border: 1px solid #fde68a;
+    }
+    .formula-box {
+      background: #e0f2fe;
+      padding: 12px 18px;
+      border-radius: 28px;
+      font-family: monospace;
+      font-size: 0.95rem;
+      margin: 14px 0;
+      text-align: center;
+      border-left: 6px solid #2c7a4d;
+      font-weight: 600;
+    }
+    .responsive-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 0.85rem;
+      overflow-x: auto;
+      display: block;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .responsive-table th, .responsive-table td {
+      border: 1px solid #e2e8f0;
+      padding: 12px 10px;
+      text-align: left;
+      background: white;
+    }
+    .responsive-table th { background: #2c7a4d; color: white; font-weight: 700; }
+    .action-buttons { margin-top: 22px; display: flex; gap: 15px; flex-wrap: wrap; }
+    .action-buttons button {
+      border: none;
+      padding: 10px 26px;
+      border-radius: 50px;
+      font-weight: 700;
+      background: #f1f5f9;
+      color: #1e293b;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .action-buttons button:last-child { background: #f59e0b; color: #2d2a1e; box-shadow: 0 2px 8px rgba(245,158,11,0.3);}
+    .action-buttons button:hover { transform: scale(0.97); opacity: 0.9; }
+    .not-found {
+      background: #fef9e3;
+      border-radius: 48px;
+      padding: 2.5rem;
+      text-align: center;
+      font-size: 1.1rem;
+      color: #b45309;
+      border: 1px solid #ffedd5;
+    }
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(10px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    .popup-box {
+      background: white;
+      max-width: 850px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      border-radius: 48px;
+      padding: 30px 34px;
+      position: relative;
+      color: #1e293b;
+    }
+    .close-popup {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      background: #fee2e2;
+      border: none;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+    .lang-section { background: #f8fafc; padding: 18px; border-radius: 28px; margin-bottom: 20px; border-left: 5px solid #f59e0b; }
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 650px) {
+      body { padding: 16px 12px; }
+      .heading h1 { font-size: 1.4rem; }
+      .result-card h3 { font-size: 1.1rem; }
+      .result-card { padding: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="heading">
+    <h1>📌 Principles of Management | OCM Chapter 1</h1>
+    <p>✨ Fayol’s 14 Principles · Taylor’s Scientific Management · Techniques · Nature & Significance ✨</p>
+  </div>
+  <div class="search-wrapper">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="🔎 Search: Fayol, Unity of Command, Science not Rule of Thumb, Time Study, Differential Wage, Scalar Chain...">
+      <button class="icon-btn" id="voiceBtn">🎤</button>
+    </div>
+    <div id="suggestionsList" class="suggestions-dropdown"></div>
+  </div>
+  <div class="result-container" id="resultsContainer">
+    <div class="not-found">📖 Type above — Explore Henry Fayol, F.W. Taylor, Techniques, and all important concepts of Management Principles ✨</div>
+  </div>
+</div>
+<div class="popup-overlay" id="popupModal">
+  <div class="popup-box">
+    <button class="close-popup" id="closeModalBtn">✖</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+  // ------------------- COMPLETE DATABASE (OCM Chapter 1: Principles of Management) -------------------
+  const qaDatabase = [];
+
+  function addQA(question, answer, category, keywords = []) {
+    qaDatabase.push({ id: qaDatabase.length+1, question, answer, category, keywords: keywords.map(k=>k.toLowerCase()) });
+  }
+
+  // ========= 1. NATURE & SIGNIFICANCE =========
+  addQA("What is the meaning of 'Principle' in management?", "A principle is defined as a fundamental truth or proposition that serves as the foundation for a system of belief or behaviour or for a chain of reasoning. Management principles are guidelines for decision making.", "Nature", ["principle definition"]);
+  addQA("What are the main features of Principles of Management?", "1) Universal application 2) General guidelines 3) Formed by practice & experiments 4) Flexibility 5) Behavioral in nature 6) Cause and effect relationship 7) All principles are of equal importance.", "Nature", ["features of principles", "nature"]);
+  addQA("Why are management principles considered flexible?", "Management principles are flexible; they can be changed or modified according to the situation. Managers can adapt them to suit the requirement, because business situations keep changing.", "Significance", ["flexibility"]);
+  addQA("What is the significance of Management Principles?", "1) Provides useful insight to managers 2) Helpful in efficient utilization of resources 3) Scientific decisions 4) Understanding social responsibility 5) Encourages R&D 6) Helps coordinate & control 7) Develops objective approach.", "Significance", ["importance of principles"]);
+
+  // ========= 2. HENRY FAYOL 14 PRINCIPLES =========
+  addQA("Who is called 'Father of Modern Management' and why?", "Henry Fayol (1841-1925) is called the Father of Modern Management because he proposed 14 general principles of management based on his experience. His book 'General and Industrial Administration' laid foundation for administrative management.", "Fayol", ["father of modern management", "henry fayol"]);
+  addQA("Explain Fayol's Principle of Division of Work.", "Work is divided into technical, financial, commercial, etc. and assigned as per employee capabilities. It improves efficiency, expertise and productivity.", "Fayol", ["division of work"]);
+  addQA("What is the Principle of Authority and Responsibility?", "Authority is the right to give orders, responsibility is accountability. Authority and responsibility go hand in hand. A manager given authority must be responsible for results.", "Fayol", ["authority responsibility"]);
+  addQA("Explain Principle of Discipline according to Fayol.", "Discipline means obedience to organizational rules. Employees must respect rules. Good discipline requires effective leadership and clear agreements between management and workers.", "Fayol", ["discipline"]);
+  addQA("What is Unity of Command?", "Each employee should receive orders from only one superior. This avoids confusion and conflict. Dual command leads to inefficiency.", "Fayol", ["unity of command"]);
+  addQA("State the Principle of Unity of Direction.", "One head, one plan for each group of activities having the same objective. All units should move towards same goal under a single manager.", "Fayol", ["unity of direction"]);
+  addQA("What does Subordination of Individual Interest to Organisational Interest mean?", "Organizational interest should prevail over individual interest. Employees must prioritize company goals over personal gains.", "Fayol", ["subordination", "individual interest"]);
+  addQA("Explain Centralization and Decentralization principle.", "Centralization means concentration of authority at top. Decentralization is dispersal. Proper balance depends on organization size and nature.", "Fayol", ["centralization"]);
+  addQA("What is the Principle of Remuneration?", "Employees should receive fair wages/salary based on skill, cost of living, profitability. Fair remuneration increases efficiency and retention.", "Fayol", ["remuneration"]);
+  addQA("What is Scalar Chain and Gang Plank?", "Scalar chain is hierarchy of authority from top to bottom. Gang plank is direct communication (cross communication) between two employees at same level to avoid delay, with permission.", "Fayol", ["scalar chain", "gang plank"]);
+  addQA("Explain the Principle of Order.", "A place for everything and everything in its place. Right people at right job and right materials at right place ensures efficiency.", "Fayol", ["order"]);
+  addQA("What is Equity as a principle of management?", "Management should be fair and friendly. No discrimination while dividing work, delegating authority or deciding remuneration.", "Fayol", ["equity"]);
+  addQA("Explain Stability of Tenure.", "Employees need job security. Stability reduces employee turnover and creates sense of belongingness, improving efficiency.", "Fayol", ["stability of tenure"]);
+  addQA("What is Initiative principle?", "Initiative means taking innovative actions. Managers should encourage employees to think and experiment, creating healthy culture.", "Fayol", ["initiative"]);
+  addQA("Explain Esprit de Corps.", "Esprit de corps means 'Team work' or 'Union is strength'. Harmony and mutual trust among employees helps achieve goals easily.", "Fayol", ["esprit de corps", "teamwork"]);
+
+  // ========= 3. F.W. TAYLOR - SCIENTIFIC MANAGEMENT =========
+  addQA("Who is Father of Scientific Management?", "Fredrick Winslow Taylor (1856-1915) is known as Father of Scientific Management. He introduced scientific methods to replace rule of thumb.", "Taylor", ["father of scientific management", "fw taylor"]);
+  addQA("What is the principle 'Science, Not Rule of Thumb'?", "Taylor insisted that every job should be performed using scientifically analyzed methods, not personal judgment. Standard time and output should be set.", "Taylor", ["science not rule of thumb"]);
+  addQA("Explain 'Harmony, Not Discord'.", "There should be complete harmony between workers and management, minimizing conflicts. Perfect understanding creates healthy environment.", "Taylor", ["harmony not discord"]);
+  addQA("What is 'Mental Revolution' according to Taylor?", "Mental revolution means change in attitude of both employees and management. Both should realize their equal importance and cooperate fully for organizational goals.", "Taylor", ["mental revolution"]);
+  addQA("Explain 'Cooperation, Not Individualism'.", "Mutual cooperation, trust and team spirit between management and workers. Management should consider employee suggestions and workers avoid unnecessary strikes.", "Taylor", ["cooperation"]);
+  addQA("What is Division of Responsibility in scientific management?", "Planning is done by top/middle management, execution by workers. Managers guide and help employees for best performance.", "Taylor", ["division of responsibility"]);
+
+  // ========= 4. TECHNIQUES OF SCIENTIFIC MANAGEMENT =========
+  addQA("What is Work Study? List its components.", "Work study is organized assessment of activities. Components: Time Study, Method Study, Motion Study, Fatigue Study.", "Techniques", ["work study"]);
+  addQA("What is Time Study?", "Technique of recording time taken by a worker to complete a task. Helps fix standard time, measure efficiency and control costs.", "Techniques", ["time study"]);
+  addQA("What is Method Study?", "Identifying the best method to perform a job to reduce wastage, improve quality and utilize resources effectively.", "Techniques", ["method study"]);
+  addQA("Define Motion Study.", "Study of movements of worker and machine to eliminate unnecessary motions and find the best sequence for smooth workflow.", "Techniques", ["motion study"]);
+  addQA("What is Fatigue Study?", "Analysis of physical/mental stress due to long hours, heavy tools, poor conditions. Steps to reduce fatigue improve employee efficiency.", "Techniques", ["fatigue study"]);
+  addQA("Explain Standardization of Tools and Equipments.", "Taylor advocated standardized tools, working environment and methods to reduce spoilage, cost and fatigue while improving quality.", "Techniques", ["standardization"]);
+  addQA("What is Differential Piece Rate Wage Plan?", "Higher wage rate for workers who produce above standard output, lower rate for below standard. This motivates workers to achieve higher performance.", "Techniques", ["differential piece rate"]);
+  addQA("What is Functional Organization according to Taylor?", "Separation of planning from execution. Eight foremen (4 at planning: route, instruction, time & cost, discipline; 4 at implementation: gang boss, speed boss, repair boss, inspector) supervise production.", "Techniques", ["functional organization", "eight foremen"]);
+
+  // ========= 5. COMPARISON & EXTRA =========
+  addQA("Difference between Fayol and Taylor?", "Fayol focused on general administrative principles (top management). Taylor focused on shop floor / scientific methods (operational level). Fayol is Father of Modern Management; Taylor is Father of Scientific Management.", "Comparison", ["fayol vs taylor"]);
+  addQA("List all 14 Principles of Fayol.", "1) Division of Work 2) Authority & Responsibility 3) Discipline 4) Unity of Command 5) Unity of Direction 6) Subordination of Individual Interest 7) Centralization 8) Remuneration 9) Scalar Chain 10) Order 11) Equity 12) Stability of Tenure 13) Initiative 14) Esprit de corps.", "Fayol", ["list of 14 principles"]);
+  addQA("What are the 6 principles of Scientific Management by Taylor?", "1) Science, Not Rule of Thumb 2) Harmony, Not Discord 3) Mental Revolution 4) Cooperation, Not Individualism 5) Division of Responsibility 6) Development of employer & employees for greater efficiency.", "Taylor", ["taylor 6 principles"]);
+
+  // Additional Fillups & True/False (converted)
+  addQA("True/False: The principles of management are universal in nature.", "True. They can be applied to all types of organizations irrespective of size and nature with modifications.", "True/False", ["universal"]);
+  addQA("True/False: F.W. Taylor proposed 14 principles of management.", "False. Henry Fayol proposed 14 principles; F.W. Taylor proposed scientific management principles (6) and techniques.", "True/False", []);
+  addQA("Fill in blank: Scalar chain means the hierarchy of ______ from top level to lower level.", "Authority", "Fillup", ["scalar chain"]);
+  addQA("Fill in blank: The technique of observing and recording time to complete a task is called ______.", "Time Study", "Fillup", ["time study"]);
+  addQA("Who is known as Father of Modern Management?", "Henry Fayol", "Fayol", ["modern management father"]);
+  
+  // Helper tables: Fayol Table & Taylor Techniques summary table
+  function getFayolTable() {
+    return `<table class="responsive-table"><thead><tr><th>#</th><th>Principle</th><th>Meaning</th></tr></thead><tbody>
+      <tr><td>1</td><td>Division of Work</td><td>Specialization increases efficiency</td></tr>
+      <tr><td>2</td><td>Authority & Responsibility</td><td>Right to order + accountability</td></tr>
+      <tr><td>3</td><td>Discipline</td><td>Respect rules and agreements</td></tr>
+      <tr><td>4</td><td>Unity of Command</td><td>One superior per employee</td></tr>
+      <tr><td>5</td><td>Unity of Direction</td><td>One head, one plan</td></tr>
+      <tr><td>6</td><td>Subordination of Individual Interest</td><td>Organization first</td></tr>
+      <tr><td>7</td><td>Centralization</td><td>Balanced authority</td></tr>
+      <tr><td>8</td><td>Remuneration</td><td>Fair wages</td></tr>
+      <tr><td>9</td><td>Scalar Chain</td><td>Hierarchy + Gang Plank</td></tr>
+      <tr><td>10</td><td>Order</td><td>Right place for everything</td></tr>
+      <tr><td>11</td><td>Equity</td><td>Kindness & justice</td></tr>
+      <tr><td>12</td><td>Stability of Tenure</td><td>Job security</td></tr>
+      <tr><td>13</td><td>Initiative</td><td>Encourage new ideas</td></tr>
+      <tr><td>14</td><td>Esprit de Corps</td><td>Teamwork / Union is strength</td></tr>
+    </tbody></table>`;
+  }
+  function getTaylorTable() {
+    return `<table class="responsive-table"><thead><tr><th>Technique</th><th>Description</th></tr></thead><tbody>
+      <tr><td>Time Study</td><td>Determines standard time per task</td></tr>
+      <tr><td>Method Study</td><td>Finds best method to reduce waste</td></tr>
+      <tr><td>Motion Study</td><td>Eliminates unnecessary movements</td></tr>
+      <tr><td>Fatigue Study</td><td>Reduces physical/mental stress</td></tr>
+      <tr><td>Standardization</td><td>Uniform tools & environment</td></tr>
+      <tr><td>Differential Piece Rate</td><td>Higher wages for above-standard output</td></tr>
+      <tr><td>Functional Organization</td><td>8 foremen, planning vs execution</td></tr>
+    </tbody></table>`;
+  }
+
+  // Search & display logic
+  const searchInput = document.getElementById("searchInput");
+  const resultsContainer = document.getElementById("resultsContainer");
+  const suggestionsDiv = document.getElementById("suggestionsList");
+
+  function getMatches(q) {
+    const lower = q.toLowerCase();
+    return qaDatabase.filter(item => 
+      item.question.toLowerCase().includes(lower) || 
+      item.answer.toLowerCase().includes(lower) ||
+      item.category.toLowerCase().includes(lower) ||
+      item.keywords.some(k => k.includes(lower))
+    ).slice(0, 16);
+  }
+
+  function updateSuggestions() {
+    const val = searchInput.value.trim();
+    if(!val) { suggestionsDiv.style.display = "none"; return; }
+    const matches = getMatches(val);
+    if(!matches.length) { suggestionsDiv.style.display = "none"; return; }
+    suggestionsDiv.innerHTML = "";
+    matches.forEach(item => {
+      const div = document.createElement("div");
+      div.className = "suggestion-item";
+      div.innerHTML = `<span>📌</span> <strong>${item.question.substring(0,70)}</strong> <span style="margin-left:auto; background:#dcfce7; padding:2px 12px; border-radius:30px;">${item.category}</span>`;
+      div.addEventListener("click", () => {
+        searchInput.value = item.question;
+        suggestionsDiv.style.display = "none";
+        performSearch(item.question);
+      });
+      suggestionsDiv.appendChild(div);
+    });
+    suggestionsDiv.style.display = "block";
+  }
+
+  function performSearch(q = null) {
+    let query = (q !== null) ? q : searchInput.value.trim();
+    if(!query) { resultsContainer.innerHTML = `<div class="not-found">✨ Type keywords: Fayol, Unity of Command, Time Study, Differential Wage, Scalar Chain, Taylor Principles ✨</div>`; return; }
+    const matches = getMatches(query);
+    if(!matches.length) { resultsContainer.innerHTML = `<div class="not-found">❌ No results. Try: Henry Fayol, 14 principles, Scientific Management, Motion Study, Gang Plank.</div>`; return; }
+    resultsContainer.innerHTML = "";
+    matches.forEach(item => {
+      let extra = "";
+      const qtext = item.question.toLowerCase();
+      if (qtext.includes("fayol") && (qtext.includes("14") || qtext.includes("list"))) extra = getFayolTable();
+      if (qtext.includes("techniques") || (item.category === "Techniques" && qtext.includes("list"))) extra = getTaylorTable();
+      if (qtext.includes("difference between fayol") || qtext.includes("fayol vs taylor")) extra = `<div class="formula-box">📊 Fayol: Top management, 14 principles. Taylor: Shop floor, Scientific methods & techniques.</div>`;
+      if (item.question === "Explain Scalar Chain and Gang Plank.") extra = `<div class="formula-box">🔗 Scalar chain = hierarchy. Gang plank = direct communication (emergency) bypassing hierarchy.</div>`;
+      
+      const card = document.createElement("div");
+      card.className = "result-card";
+      card.innerHTML = `
+        <div class="badge">⭐ ${escapeHtml(item.category)}</div>
+        <h3>📘 ${escapeHtml(item.question)}</h3>
+        <div class="answer-text"><strong>✅ Answer / Explanation:</strong><br>${escapeHtml(item.answer)}${extra}</div>
+        <div class="action-buttons">
+          <button class="detailBtn" data-q="${escapeAttr(item.question)}" data-a="${escapeAttr(item.answer)}" data-cat="${item.category}">📖 Detailed Explanation</button>
+          <button class="extraTableBtn" data-q="${escapeAttr(item.question)}" data-type="${item.category}">📋 Tables & Summary</button>
+        </div>
+      `;
+      resultsContainer.appendChild(card);
+    });
+    attachEvents();
+  }
+
+  function attachEvents() {
+    document.querySelectorAll(".detailBtn").forEach(btn => btn.addEventListener("click", (e) => {
+      const q = btn.getAttribute("data-q"), a = btn.getAttribute("data-a"), cat = btn.getAttribute("data-cat");
+      showDetailPopup(q, a, cat);
+    }));
+    document.querySelectorAll(".extraTableBtn").forEach(btn => btn.addEventListener("click", () => {
+      const type = btn.getAttribute("data-type");
+      let content = `<div class="lang-section"><strong>📘 Reference Summary</strong><br>`;
+      if(type === "Fayol") content += getFayolTable();
+      else if(type === "Taylor" || type === "Techniques") content += getTaylorTable();
+      else content += `<p>All principles: Fayol 14 principles, Taylor techniques, Nature of management.</p>${getFayolTable()}<hr>${getTaylorTable()}`;
+      content += `</div>`;
+      document.getElementById("popupModal").style.display = "flex";
+      document.getElementById("modalContent").innerHTML = `<h2 style="color:#0f3b2c;">📚 Quick Reference</h2>${content}<button id="closeModalInside" style="background:#2c7a4d; margin-top:20px; padding:10px 26px; border-radius:40px; color:white;">Close</button>`;
+      document.getElementById("closeModalInside").addEventListener("click", ()=> document.getElementById("popupModal").style.display = "none");
+    }));
+  }
+
+  function showDetailPopup(question, answer, category) {
+    let extraInfo = `<div class="lang-section"><strong>📖 OCM Chapter 1 - Principles of Management</strong><br>✔ Nature: Universal, Flexible, General Guidelines<br>✔ Fayol's 14 Principles with examples<br>✔ Taylor's Scientific Management: 6 principles & 7 techniques<br>✔ Significance & real-life applications</div>`;
+    if(category === "Fayol") extraInfo += getFayolTable();
+    if(category === "Techniques" || category === "Taylor") extraInfo += getTaylorTable();
+    document.getElementById("popupModal").style.display = "flex";
+    document.getElementById("modalContent").innerHTML = `
+      <h2 style="color:#0f3b2c;">📘 Detailed Explanation</h2>
+      <div class="lang-section"><strong>❓ Question:</strong> ${escapeHtml(question)}</div>
+      <div class="lang-section"><strong>✅ Answer:</strong><br>${escapeHtml(answer)}</div>
+      ${extraInfo}
+      <button id="closeDetailModal" style="background:#f59e0b; padding:10px 26px; border-radius:40px; margin-top:12px;">Close</button>
+    `;
+    document.getElementById("closeDetailModal").addEventListener("click", ()=> document.getElementById("popupModal").style.display = "none");
+  }
+
+  function escapeHtml(str) { return str.replace(/[&<>]/g, m => m==='&'?'&amp;': m==='<'?'&lt;':'&gt;'); }
+  function escapeAttr(str) { return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function startVoice() { if (!('webkitSpeechRecognition' in window)) { alert("Voice search supported in Chrome/Edge."); return; } const rec = new webkitSpeechRecognition(); rec.lang="en-IN"; rec.start(); rec.onresult = (e)=> { searchInput.value = e.results[0][0].transcript; performSearch(); }; }
+  document.getElementById("voiceBtn").addEventListener("click", startVoice);
+  searchInput.addEventListener("keyup", () => { performSearch(); updateSuggestions(); });
+  searchInput.addEventListener("focus", updateSuggestions);
+  document.addEventListener("click", (e) => { if(!document.querySelector(".search-wrapper").contains(e.target)) suggestionsDiv.style.display = "none"; });
+  document.getElementById("closeModalBtn").addEventListener("click", () => document.getElementById("popupModal").style.display = "none");
+  window.onload = () => { resultsContainer.innerHTML = `<div class="not-found">✨ 12th OCM | Principles of Management | Search Fayol's 14 Principles, Taylor Techniques, Nature, Significance ✨</div>`; };
+</script>
+</body>
+</html>

@@ -1,0 +1,2178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Orryxa Education | Smart Learning Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            scroll-behavior: smooth;
+            transition: background 0.3s ease, color 0.3s ease;
+            overflow-y: scroll;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        body::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .sidebar::-webkit-scrollbar,
+        .popup-container::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .sidebar, .popup-container {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        :root {
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+            --header-bg: linear-gradient(135deg, #0b2b26 0%, #1a4d46 100%);
+            --menu-bg: #ffffff;
+            --tool-bg: #f1f5f9;
+            --footer-bg: #e2e8f0;
+            --toast-success: #10b981;
+            --toast-error: #ef4444;
+            --toast-info: #3b82f6;
+            --toast-warning: #f59e0b;
+            --accent: #f5b042;
+            --accent-dark: #e09d2a;
+            --accent-light: rgba(245, 176, 66, 0.1);
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.06);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.08);
+            --shadow-xl: 0 20px 40px rgba(0,0,0,0.12);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-xl: 28px;
+        }
+
+        body.dark-mode {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --card-bg: #1e293b;
+            --border-color: #334155;
+            --header-bg: linear-gradient(135deg, #061a16 0%, #0f3b34 100%);
+            --menu-bg: #1e293b;
+            --tool-bg: #0f172a;
+            --footer-bg: #0f172a;
+        }
+
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .toast {
+            min-width: 280px;
+            max-width: 400px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1rem 1.2rem;
+            box-shadow: var(--shadow-xl);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            animation: slideIn 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            border: 1px solid var(--border-color);
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes slideOut {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(100%); opacity: 0; }
+        }
+        
+        .toast.success { border-left: 4px solid var(--toast-success); }
+        .toast.error { border-left: 4px solid var(--toast-error); }
+        .toast.info { border-left: 4px solid var(--toast-info); }
+        .toast.warning { border-left: 4px solid var(--toast-warning); }
+        
+        .toast i { font-size: 1.3rem; }
+        .toast.success i { color: var(--toast-success); }
+        .toast.error i { color: var(--toast-error); }
+        .toast.info i { color: var(--toast-info); }
+        .toast.warning i { color: var(--toast-warning); }
+        
+        .toast-content { flex: 1; }
+        .toast-title { font-weight: 600; margin-bottom: 4px; }
+        .toast-message { font-size: 0.85rem; color: var(--text-secondary); }
+        .toast-progress { position: absolute; bottom: 0; left: 0; height: 3px; background: rgba(0,0,0,0.1); width: 100%; }
+        .toast-progress-bar { height: 100%; width: 100%; background: currentColor; animation: progress 3s linear forwards; }
+        
+        @keyframes progress { from { width: 100%; } to { width: 0%; } }
+
+        .dark-mode-toggle {
+            background: rgba(255,255,245,0.2);
+            border: none;
+            border-radius: 50px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            color: white;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+        
+        .dark-mode-toggle:hover { background: rgba(255,255,245,0.3); }
+
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--header-bg);
+            box-shadow: var(--shadow-md);
+            padding: 0.75rem 2rem;
+        }
+        
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+        
+        .logo-area h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #f9e7b3, #ffd966);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            cursor: pointer;
+        }
+        
+        .desktop-auth-buttons { display: flex; gap: 1rem; align-items: center; }
+        
+        .desktop-profile-container {
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 5px 12px;
+            border-radius: 50px;
+            transition: all 0.2s;
+            background: rgba(255,255,245,0.1);
+        }
+        
+        .desktop-profile-container:hover { background: rgba(255,255,245,0.2); }
+        
+        .profile-circle {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f5b042, #ffd966);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #0b2b26;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .profile-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .profile-info { display: flex; flex-direction: column; }
+        .profile-name { color: white; font-weight: 600; font-size: 0.9rem; }
+        .profile-email { color: rgba(255,255,255,0.7); font-size: 0.7rem; }
+        
+        .profile-dropdown {
+            position: absolute;
+            top: 60px;
+            right: 0;
+            background: var(--card-bg);
+            border-radius: 1rem;
+            min-width: 240px;
+            box-shadow: var(--shadow-xl);
+            overflow: hidden;
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.2s;
+            z-index: 1001;
+        }
+        
+        .desktop-profile-container.active .profile-dropdown { visibility: visible; opacity: 1; }
+        
+        .dropdown-item {
+            padding: 0.8rem 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: 0.2s;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .dropdown-item:hover { background: var(--accent-light); }
+        .logout-item { color: var(--toast-error); }
+        
+        .btn-login, .btn-signup {
+            padding: 0.5rem 1.3rem;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-login {
+            background: rgba(255,255,245,0.2);
+            color: white;
+            border: 1px solid rgba(255,220,150,0.5);
+        }
+        
+        .btn-signup {
+            background: #f5b042;
+            color: #0b2b26;
+        }
+        
+        .btn-login:disabled, .btn-signup:disabled, button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .menu-toggle-btn {
+            display: none;
+            background: rgba(255,255,245,0.2);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 10px;
+        }
+
+        .menu-nav {
+            background: var(--menu-bg);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .menu-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            padding: 0.8rem 1rem;
+        }
+        
+        .menu-item {
+            padding: 0.6rem 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 40px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.2s;
+            color: var(--text-primary);
+        }
+        
+        .menu-item:hover { background: var(--accent-light); transform: translateY(-2px); }
+
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.3s;
+        }
+        
+        .sidebar-overlay.active { visibility: visible; opacity: 1; }
+        
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 280px;
+            height: 100%;
+            background: var(--bg-secondary);
+            box-shadow: var(--shadow-xl);
+            z-index: 2001;
+            transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+        
+        .sidebar.active { left: 0; }
+        
+        .sidebar-header {
+            background: linear-gradient(135deg, #0b2b26, #1a4d46);
+            padding: 2rem 1.5rem;
+            text-align: center;
+        }
+        
+        .sidebar-profile-circle {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, #f5b042, #ffd966);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #0b2b26;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .sidebar-profile-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .sidebar-user-name { color: white; font-weight: 700; margin-bottom: 0.3rem; }
+        .sidebar-user-email { color: rgba(255,255,255,0.8); font-size: 0.8rem; }
+        
+        .sidebar-auth-buttons {
+            display: flex;
+            gap: 0.8rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        
+        .sidebar-auth-buttons button {
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .sidebar-menu { flex: 1; padding: 1rem 0; }
+        
+        .sidebar-menu-item {
+            padding: 0.8rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        
+        .sidebar-menu-item:hover { background: var(--tool-bg); }
+        .sidebar-menu-item i { width: 24px; color: #2c7a6e; }
+        
+        .sidebar-footer {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .sidebar-dark-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .toggle-switch {
+            position: relative;
+            width: 50px;
+            height: 24px;
+            background: #cbd5e1;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+        
+        .toggle-switch.active { background: #2c7a6e; }
+        .toggle-slider {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            transition: 0.2s;
+        }
+        
+        .toggle-switch.active .toggle-slider { left: 28px; }
+        
+        .close-sidebar {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+        }
+
+        .password-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        
+        .password-wrapper input {
+            flex: 1;
+            padding-right: 45px;
+        }
+        
+        .toggle-password {
+            position: absolute;
+            right: 12px;
+            cursor: pointer;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            transition: 0.2s;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+        
+        .toggle-password:hover { color: #2c7a6e; }
+
+        .banner {
+            background: linear-gradient(120deg, #eef9f7 0%, #dfece9 100%);
+            margin: 1.5rem 1rem;
+            border-radius: 2rem;
+            padding: 2rem 3rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        body.dark-mode .banner { background: linear-gradient(120deg, #1e293b 0%, #0f172a 100%); }
+        
+        .banner-text { flex: 1.2; }
+        .banner-text h2 { font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 800; color: #0b2b26; }
+        body.dark-mode .banner-text h2 { color: #f5b042; }
+        
+        .banner-btn {
+            background: #0f3b34;
+            border: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 60px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        .section-title { text-align: center; font-size: 2rem; margin: 2rem 1rem 1.5rem; color: var(--text-primary); }
+        
+        .resources-grid {
+            max-width: 1400px;
+            margin: 0 auto 3rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.8rem;
+            padding: 0 1.5rem;
+        }
+        
+        .resource-card {
+            background: var(--card-bg);
+            border-radius: 1.5rem;
+            padding: 1.6rem 1.2rem;
+            flex: 1 1 180px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+            border: 1px solid var(--border-color);
+        }
+        
+        .resource-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+        .resource-card i { font-size: 2.5rem; color: #2c7a6e; }
+        
+        .marking-tools {
+            background: var(--tool-bg);
+            border-radius: 2.5rem;
+            max-width: 1400px;
+            margin: 3rem auto;
+            padding: 2.5rem;
+        }
+        
+        .tools-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+        
+        .mark-card {
+            background: var(--card-bg);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            width: 260px;
+            text-align: center;
+        }
+        
+        .mark-card button {
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            border: none;
+            background: #0f3b34;
+            color: white;
+            cursor: pointer;
+        }
+        
+        .highlight-demo {
+            background: #fef9e6;
+            padding: 0.5rem;
+            border-radius: 1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+        
+        .marked-text { background-color: #fee2b5 !important; }
+        
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            z-index: 2002;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.2s;
+        }
+        
+        .popup-overlay.active { visibility: visible; opacity: 1; }
+        
+        .popup-container {
+            background: var(--card-bg);
+            border-radius: 2rem;
+            max-width: 550px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .close-popup {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+        
+        .form-group { margin-bottom: 1rem; }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 0.3rem; }
+        .form-group input {
+            width: 100%;
+            padding: 0.7rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
+        
+        .form-row { display: flex; gap: 1rem; }
+        .error-msg { color: #dc2626; font-size: 0.75rem; margin-top: 0.2rem; }
+        .success-msg { color: #16a34a; text-align: center; margin-top: 1rem; }
+        
+        button[type="submit"] {
+            width: 100%;
+            background: linear-gradient(135deg, #0f3b34, #1a5c52);
+            color: white;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 2rem;
+            font-weight: 700;
+            margin-top: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        
+        button[type="submit"]:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .spinner {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 0.6s ease-in-out infinite;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+        
+        @keyframes spin { to { transform: rotate(360deg); } }
+        
+        .footer-note { text-align: center; padding: 2rem; background: var(--footer-bg); margin-top: 2rem; }
+
+        @media (max-width: 768px) {
+            .sticky-header { padding: 0.5rem 1rem; }
+            .menu-nav { display: none; }
+            .menu-toggle-btn { display: block; }
+            .desktop-auth-buttons, .desktop-profile-container { display: none !important; }
+            .toast-container { top: 10px; right: 10px; left: 10px; }
+            .toast { max-width: calc(100% - 20px); min-width: auto; }
+            .banner { padding: 1.5rem; }
+        }
+        
+        @media (min-width: 769px) {
+            .sidebar, .sidebar-overlay { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="sticky-header">
+    <div class="header-container">
+        <button class="menu-toggle-btn" id="menuToggleBtn"><i class="fas fa-bars"></i></button>
+        <div class="logo-area" id="logoHomeBtn"><h1>📘 Orryxa Education</h1></div>
+        <div class="desktop-auth-buttons" id="desktopAuthButtons">
+            <button class="btn-login" id="openLoginBtn"><i class="fas fa-key"></i> Log in</button>
+            <button class="btn-signup" id="openSignupBtn"><i class="fas fa-user-plus"></i> Sign up</button>
+            <button class="dark-mode-toggle" id="darkModeToggleBtn"><i class="fas fa-moon"></i></button>
+        </div>
+        <div class="desktop-profile-container" id="desktopProfileContainer" style="display: none;">
+            <div class="profile-circle" id="desktopProfileCircle">
+                <span id="desktopInitial">U</span>
+            </div>
+            <div class="profile-info">
+                <span class="profile-name" id="desktopName"></span>
+                <span class="profile-email" id="desktopEmail"></span>
+            </div>
+            <i class="fas fa-chevron-down" style="color: white;"></i>
+            <div class="profile-dropdown" id="desktopDropdown">
+                <div class="dropdown-item" id="desktopMyAccount"><i class="fas fa-user-circle"></i> My Account</div>
+                <div class="dropdown-item logout-item" id="desktopLogout"><i class="fas fa-sign-out-alt"></i> Logout</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<nav class="menu-nav">
+    <div class="menu-container">
+        <div class="menu-item" data-page="textbook"><i class="fas fa-book-open"></i> Text Books</div>
+        <div class="menu-item" data-page="notes"><i class="fas fa-pen-fancy"></i> Notes</div>
+        <div class="menu-item" data-page="solutions"><i class="fas fa-lightbulb"></i> Solutions</div>
+        <div class="menu-item" data-page="questionpapers"><i class="fas fa-file-alt"></i> Questions Papers</div>
+        <div class="menu-item" data-page="project"><i class="fas fa-laptop-code"></i> Projects</div>
+    </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<div class="sidebar" id="sidebar">
+    <button class="close-sidebar" id="closeSidebarBtn"><i class="fas fa-times"></i></button>
+    <div class="sidebar-header">
+        <div class="sidebar-profile-circle" id="sidebarProfileCircle">
+            <span id="sidebarInitial">U</span>
+        </div>
+        <div class="sidebar-user-name" id="sidebarUserName">Guest User</div>
+        <div class="sidebar-user-email" id="sidebarUserEmail">Please login</div>
+        <div class="sidebar-auth-buttons" id="sidebarAuthButtons">
+            <button id="sidebarLoginBtn"><i class="fas fa-key"></i> Login</button>
+            <button id="sidebarSignupBtn"><i class="fas fa-user-plus"></i> Signup</button>
+        </div>
+    </div>
+    <div class="sidebar-menu">
+        <div class="sidebar-menu-item" data-page="textbook"><i class="fas fa-book-open"></i> Text Books</div>
+        <div class="sidebar-menu-item" data-page="notes"><i class="fas fa-pen-fancy"></i> Notes</div>
+        <div class="sidebar-menu-item" data-page="solutions"><i class="fas fa-lightbulb"></i> Solutions</div>
+        <div class="sidebar-menu-item" data-page="questionpapers"><i class="fas fa-file-alt"></i> Question Papers</div>
+        <div class="sidebar-menu-item" data-page="project"><i class="fas fa-laptop-code"></i> Projects</div>
+        <div class="sidebar-menu-item" id="sidebarMyAccount" style="display: none;"><i class="fas fa-user-circle"></i> My Account</div>
+        <div class="sidebar-menu-item" id="sidebarLogout" style="display: none;"><i class="fas fa-sign-out-alt"></i> Logout</div>
+    </div>
+    <div class="sidebar-footer">
+        <div class="sidebar-dark-toggle">
+            <span><i class="fas fa-moon"></i> Dark Mode</span>
+            <div class="toggle-switch" id="sidebarDarkToggle">
+                <div class="toggle-slider"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="banner">
+    <div class="banner-text">
+        <h2>Learn Smarter, <br>Not Harder 🚀</h2>
+        <p>Access thousands of study resources, marking tools, and interactive content.</p>
+        <button class="banner-btn" id="exploreBtn">Explore Now <i class="fas fa-arrow-right"></i></button>
+    </div>
+    <div class="banner-illustration"><img src="https://cdn-icons-png.flaticon.com/512/3767/3767084.png" alt="study" style="width:200px"></div>
+</div>
+
+<div class="section-title"><span>📚 Available for Study</span></div>
+<div class="resources-grid">
+    <div class="resource-card" data-page="textbook"><i class="fas fa-book"></i><h3>Text Books</h3><p>NCERT & Reference</p></div>
+    <div class="resource-card" data-page="notes"><i class="fas fa-sticky-note"></i><h3>Notes</h3><p>Chapterwise Revision</p></div>
+    <div class="resource-card" data-page="solutions"><i class="fas fa-check-circle"></i><h3>Solutions</h3><p>Step-by-step Answers</p></div>
+    <div class="resource-card" data-page="questionpapers"><i class="fas fa-file-alt"></i><h3>Question Papers</h3><p>Previous Year & Sample</p></div>
+    <div class="resource-card" data-page="project"><i class="fas fa-laptop-code"></i><h3>Projects</h3><p>Practical Assignments</p></div>
+    <div class="resource-card" data-page="more"><i class="fas fa-infinity"></i><h3>Many more</h3><p>Videos, Flashcards, Quizzes</p></div>
+</div>
+
+<div class="marking-tools">
+    <div class="tools-header"><h2><i class="fas fa-magic"></i> Smart Marking Tools</h2></div>
+    <div class="tools-container">
+        <div class="mark-card"><i class="fas fa-highlighter"></i><h4>Highlighter</h4><button id="activateHighlightBtn">Activate</button><div class="highlight-demo" id="demoText">✨ Click me!</div></div>
+        <div class="mark-card"><i class="fas fa-bookmark"></i><h4>Bookmark</h4><button id="bookmarkDemoBtn">Save</button><div id="bookmarkMsg"></div></div>
+        <div class="mark-card"><i class="fas fa-chart-line"></i><h4>Progress</h4><button id="progressTrackerBtn">Mark Done</button><div id="progressCount">📊 0 topics</div></div>
+    </div>
+</div>
+<div class="footer-note"><i class="fas fa-graduation-cap"></i> Orryxa Education — 2026</div>
+
+<div id="signupPopup" class="popup-overlay"><div class="popup-container"><span class="close-popup" onclick="closePopup('signupPopup')">&times;</span><h2>Create Account</h2><form id="signupForm"><div class="form-row"><div class="form-group"><label>First Name *</label><input type="text" id="firstName" required></div><div class="form-group"><label>Last Name *</label><input type="text" id="lastName" required></div></div><div class="form-group"><label>Mobile * (+91)</label><div style="display:flex; gap:8px;"><span style="background:#eef2ff; padding:0.7rem; border-radius:1rem;">+91</span><input type="tel" id="mobile" placeholder="10 digits" required></div><div id="mobileError" class="error-msg"></div></div><div class="form-group"><label>Email *</label><input type="email" id="email" required><div id="emailError" class="error-msg"></div></div><div class="form-group"><label>Education (Optional)</label><input type="text" id="education"></div><div class="form-group"><label>College (Optional)</label><input type="text" id="college"></div><div class="form-group"><label>Password *</label><div class="password-wrapper"><input type="password" id="password" required><button type="button" class="toggle-password" onclick="togglePassword('password')"><i class="far fa-eye"></i></button></div><div id="pwdError" class="error-msg"></div></div><div class="form-group"><label>Confirm Password *</label><div class="password-wrapper"><input type="password" id="confirmPwd" required><button type="button" class="toggle-password" onclick="togglePassword('confirmPwd')"><i class="far fa-eye"></i></button></div><div id="confirmError" class="error-msg"></div></div><button type="submit" id="signupSubmitBtn">Sign Up</button><div id="signupMessage"></div></form></div></div>
+
+<div id="loginPopup" class="popup-overlay"><div class="popup-container"><span class="close-popup" onclick="closePopup('loginPopup')">&times;</span><h2>Welcome Back</h2><form id="loginForm"><div class="form-group"><label>Email</label><input type="email" id="loginEmail" required></div><div class="form-group"><label>Password</label><div class="password-wrapper"><input type="password" id="loginPassword" required><button type="button" class="toggle-password" onclick="togglePassword('loginPassword')"><i class="far fa-eye"></i></button></div></div><div class="forgot-link"><a id="forgotPasswordLink">Forgot Password?</a></div><button type="submit" id="loginSubmitBtn">Login</button><div id="loginMessage"></div></form></div></div>
+
+<div id="forgotPopup" class="popup-overlay"><div class="popup-container"><span class="close-popup" onclick="closePopup('forgotPopup')">&times;</span><h2>Recover Password</h2><form id="forgotForm"><div class="form-group"><label>Email</label><input type="email" id="forgotEmail" required></div><div class="form-group"><label>Mobile (+91)</label><input type="tel" id="forgotMobile" required></div><button type="submit" id="forgotSubmitBtn">Verify</button><div id="forgotResult"></div></form></div></div>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+    // =====================================================
+// ORRYXA EDUCATION - COMPLETE SYSTEM WITH VISITOR COUNT
+// Version: 6.0 (Optimized for Existing Apps Script)
+// =====================================================
+
+// ==========================
+// CONFIGURATION
+// ==========================
+const CONFIG = {
+    SCRIPT_URL: "https://script.google.com/macros/s/AKfycbwvvq4Vvqb-1vYx4rnGA_yrGuSTexEGDRt-SVgFVIkin7DHsvFYly2jUZSbMvg-lSfw/exec",
+    SPREADSHEET_ID: "13UD1vMsopDesYMuYF4ZgXwRGE25vaR-PWl9hIGml0OE",
+    SHEET_NAME: "Login_Portal",
+    VISITOR_SHEET_NAME: "Visitor",
+    SYNC_INTERVAL_MS: 7000,
+    FETCH_TIMEOUT_MS: 15000,
+    MAX_RETRY_ATTEMPTS: 3,
+    RETRY_DELAY_MS: 3000
+};
+
+// ==========================
+// VISITOR COUNTER CONFIGURATION
+// ==========================
+const VISITOR_CONFIG = {
+    STORAGE_KEY: "orryxa_visitor_tracked",
+    TRACKING_INTERVAL_MS: 1000,
+    SESSION_KEY: "orryxa_session_id",
+    DATE_HEADER: "Date",        // Must match your sheet header
+    COUNT_HEADER: "Index Page"  // Must match your sheet header
+};
+
+// ==========================
+// GLOBAL VARIABLES
+// ==========================
+let currentUser = null;
+let cachedUserData = null;
+let syncInterval = null;
+let isSyncing = false;
+let retryCount = 0;
+let isOnline = navigator.onLine;
+
+// ==========================
+// TOAST NOTIFICATION SYSTEM
+// ==========================
+function showToast(message, type = 'info', title = '') {
+    const container = document.getElementById('toastContainer');
+    if (!container) return;
+    
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    
+    let icon = '';
+    let defaultTitle = '';
+    switch(type) {
+        case 'success': icon = '<i class="fas fa-check-circle"></i>'; defaultTitle = 'Success'; break;
+        case 'error': icon = '<i class="fas fa-exclamation-circle"></i>'; defaultTitle = 'Error'; break;
+        case 'warning': icon = '<i class="fas fa-exclamation-triangle"></i>'; defaultTitle = 'Warning'; break;
+        default: icon = '<i class="fas fa-info-circle"></i>'; defaultTitle = 'Info';
+    }
+    
+    toast.innerHTML = `
+        ${icon}
+        <div class="toast-content">
+            <div class="toast-title">${title || defaultTitle}</div>
+            <div class="toast-message">${message}</div>
+        </div>
+        <div class="toast-progress"><div class="toast-progress-bar"></div></div>
+    `;
+    
+    container.appendChild(toast);
+    
+    setTimeout(() => {
+        toast.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => { if (toast.parentNode) toast.remove(); }, 300);
+    }, 3000);
+    
+    toast.addEventListener('click', () => {
+        toast.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => { if (toast.parentNode) toast.remove(); }, 300);
+    });
+}
+
+// ==========================
+// VISITOR COUNTER FUNCTIONS
+// ==========================
+
+/**
+ * Get today's date in DD/MM/YYYY format
+ */
+function getTodayDate() {
+    const today = new Date();
+    const day = String(today.getDate()).padStart(2, '0');
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const year = today.getFullYear();
+    return `${day}/${month}/${year}`;
+}
+
+/**
+ * Generate session ID for this visit
+ */
+function getSessionId() {
+    let sessionId = sessionStorage.getItem(VISITOR_CONFIG.SESSION_KEY);
+    if (!sessionId) {
+        sessionId = 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+        sessionStorage.setItem(VISITOR_CONFIG.SESSION_KEY, sessionId);
+    }
+    return sessionId;
+}
+
+/**
+ * Check if already tracked today for this session
+ */
+function isAlreadyTrackedToday() {
+    const today = getTodayDate();
+    const trackedData = localStorage.getItem(VISITOR_CONFIG.STORAGE_KEY);
+    
+    if (trackedData) {
+        try {
+            const data = JSON.parse(trackedData);
+            if (data.date === today && data.sessionId === getSessionId()) {
+                return true;
+            }
+        } catch(e) {
+            console.error('[Visitor Counter] Error parsing storage:', e);
+        }
+    }
+    return false;
+}
+
+/**
+ * Mark as tracked for today
+ */
+function markAsTracked() {
+    const trackData = {
+        date: getTodayDate(),
+        sessionId: getSessionId(),
+        timestamp: Date.now()
+    };
+    localStorage.setItem(VISITOR_CONFIG.STORAGE_KEY, JSON.stringify(trackData));
+}
+
+/**
+ * Fetch all visitor data from Google Sheet
+ */
+async function fetchVisitorData() {
+    try {
+        const url = `${CONFIG.SCRIPT_URL}?spreadsheetId=${CONFIG.SPREADSHEET_ID}&sheetName=${CONFIG.VISITOR_SHEET_NAME}`;
+        
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+        }
+        
+        const data = await response.json();
+        
+        if (data.status === 'success' && Array.isArray(data.data)) {
+            console.log(`[Visitor Counter] Fetched ${data.data.length} records`);
+            return data.data;
+        }
+        
+        return [];
+    } catch (error) {
+        console.error('[Visitor Counter] Error fetching data:', error);
+        return [];
+    }
+}
+
+/**
+ * Get today's visitor count from fetched data
+ */
+function getTodayVisitorCount(visitorData) {
+    const today = getTodayDate();
+    const todayRecord = visitorData.find(row => {
+        const rowDate = row['Date'] || '';
+        return rowDate.toString().trim() === today;
+    });
+    
+    return todayRecord ? parseInt(todayRecord['Index Page']) || 0 : 0;
+}
+
+/**
+ * Update visitor count using your existing Apps Script
+ */
+async function updateVisitorCount() {
+
+    if (isAlreadyTrackedToday()) {
+        console.log('[Visitor Counter] Already tracked');
+        await refreshVisitorDisplay();
+        return false;
+    }
+
+    try {
+
+        const today = getTodayDate();
+
+        const formData = new URLSearchParams();
+
+        formData.append("action", "visitor");
+        formData.append("spreadsheetId", CONFIG.SPREADSHEET_ID);
+        formData.append("sheetName", CONFIG.VISITOR_SHEET_NAME);
+
+        formData.append(
+            "dateHeader",
+            VISITOR_CONFIG.DATE_HEADER
+        );
+
+        formData.append(
+            "countHeader",
+            VISITOR_CONFIG.COUNT_HEADER
+        );
+
+        formData.append(
+            VISITOR_CONFIG.DATE_HEADER,
+            today
+        );
+
+        console.log(
+            "[Visitor Counter] Sending:",
+            formData.toString()
+        );
+
+        const response = await fetch(
+            CONFIG.SCRIPT_URL,
+            {
+                method: "POST",
+                body: formData.toString(),
+                headers: {
+                    "Content-Type":
+                        "application/x-www-form-urlencoded"
+                }
+            }
+        );
+
+        const text = await response.text();
+
+        console.log(
+            "[Visitor Counter] Raw Response:",
+            text
+        );
+
+        let result;
+
+        try {
+            result = JSON.parse(text);
+        } catch (e) {
+
+            console.error(
+                "[Visitor Counter] Invalid JSON:",
+                text
+            );
+
+            return false;
+        }
+
+        console.log(result);
+
+        if (result.status === "success") {
+
+            markAsTracked();
+
+            await refreshVisitorDisplay();
+
+            console.log(
+                "[Visitor Counter] Success"
+            );
+
+            return true;
+
+        } else {
+
+            console.error(
+                "[Visitor Counter] Failed:",
+                result.message
+            );
+
+            return false;
+        }
+
+    } catch (error) {
+
+        console.error(
+            "[Visitor Counter] Error:",
+            error
+        );
+
+        return false;
+    }
+}
+
+/**
+ * Refresh visitor display without incrementing count
+ */
+async function refreshVisitorDisplay() {
+    try {
+        const visitorData = await fetchVisitorData();
+        const todayCount = getTodayVisitorCount(visitorData);
+        displayVisitorCount(todayCount);
+        return todayCount;
+    } catch (error) {
+        console.error('[Visitor Counter] Error refreshing display:', error);
+        displayVisitorCount(0);
+        return 0;
+    }
+}
+
+/**
+ * Display visitor count on the webpage
+ */
+function displayVisitorCount(count) {
+    let counterElement = document.getElementById('visitorCounter');
+    
+    if (!counterElement) {
+        const footer = document.querySelector('.footer-note');
+        if (footer) {
+            counterElement = document.createElement('div');
+            counterElement.id = 'visitorCounter';
+            counterElement.style.marginTop = '10px';
+            counterElement.style.fontSize = '0.85rem';
+            counterElement.style.opacity = '0.7';
+            footer.appendChild(counterElement);
+        }
+    }
+    
+    if (counterElement) {
+        const today = getTodayDate();
+        counterElement.innerHTML = `<i class="fas fa-chart-line"></i> Today's Visitors (${today}): ${count}`;
+    }
+}
+
+/**
+ * Initialize visitor tracking
+ */
+let trackingTimeout = null;
+
+async function initVisitorTracking() {
+
+    try {
+
+        if (isAlreadyTrackedToday()) {
+
+            console.log(
+                '[Visitor Counter] Already tracked today'
+            );
+
+            await refreshVisitorDisplay();
+
+            return;
+        }
+
+        const success =
+            await updateVisitorCount();
+
+        if (success) {
+
+            console.log(
+                '[Visitor Counter] Count updated'
+            );
+
+        }
+
+    }
+
+    catch (err) {
+
+        console.error(
+            '[Visitor Counter] Init Error:',
+            err
+        );
+
+    }
+}
+
+// ==========================
+// UTILITY FUNCTIONS
+// ==========================
+
+/**
+ * Extracts file ID from Google Drive link
+ */
+function extractFileId(link) {
+    if (!link) return null;
+    const patterns = [
+        /\/d\/([a-zA-Z0-9_-]+)/,
+        /id=([a-zA-Z0-9_-]+)/,
+        /\/file\/d\/([a-zA-Z0-9_-]+)/,
+        /drive\.google\.com\/open\?id=([a-zA-Z0-9_-]+)/,
+        /([a-zA-Z0-9_-]{25,})/
+    ];
+    for (let pattern of patterns) {
+        const match = link.match(pattern);
+        if (match && match[1]) return match[1];
+    }
+    return null;
+}
+
+/**
+ * Converts Google Drive link to direct image URL
+ */
+function convertDriveLinkToImageUrl(link) {
+    if (!link || link === '') return null;
+    const fileId = extractFileId(link);
+    return fileId ? `https://lh3.googleusercontent.com/d/${fileId}=s200-c` : null;
+}
+
+/**
+ * Fetch with timeout and retry mechanism
+ */
+async function fetchWithTimeout(url, timeout = CONFIG.FETCH_TIMEOUT_MS, retries = CONFIG.MAX_RETRY_ATTEMPTS) {
+    for (let attempt = 1; attempt <= retries; attempt++) {
+        try {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), timeout);
+            const response = await fetch(url, { signal: controller.signal });
+            clearTimeout(timeoutId);
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            return response;
+        } catch (error) {
+            console.warn(`[Auto-Sync] Fetch attempt ${attempt} failed:`, error.message);
+            if (attempt === retries) throw error;
+            await new Promise(resolve => setTimeout(resolve, CONFIG.RETRY_DELAY_MS));
+        }
+    }
+}
+
+/**
+ * Fetches all users from Google Sheet
+ */
+async function fetchAllUsers() {
+    try {
+        const url = `${CONFIG.SCRIPT_URL}?spreadsheetId=${CONFIG.SPREADSHEET_ID}&sheetName=${CONFIG.SHEET_NAME}`;
+        console.log('[Auto-Sync] Fetching users from Google Sheet...');
+        const response = await fetchWithTimeout(url, CONFIG.FETCH_TIMEOUT_MS, 2);
+        const data = await response.json();
+        if (data.status === 'success' && Array.isArray(data.data)) {
+            console.log(`[Auto-Sync] Successfully fetched ${data.data.length} users`);
+            retryCount = 0;
+            return data.data;
+        }
+        throw new Error('Invalid response format');
+    } catch (error) {
+        console.error('[Auto-Sync] Fetch error:', error.message);
+        retryCount++;
+        return null;
+    }
+}
+
+/**
+ * Gets latest user data by email
+ */
+async function getLatestUserData(email) {
+    if (!email) return null;
+    const users = await fetchAllUsers();
+    if (!users || users.length === 0) return null;
+    const normalizedEmail = email.toString().trim().toLowerCase();
+    return users.find(u => (u['Email Id'] || '').toString().trim().toLowerCase() === normalizedEmail) || null;
+}
+
+// ==========================
+// DATA COMPARISON SYSTEM
+// ==========================
+
+/**
+ * Compares two user objects and returns detailed changes
+ */
+function compareUserData(oldUser, newUser) {
+    if (!oldUser || !newUser) {
+        return { hasChanges: true, changes: [], summary: 'Initial data load' };
+    }
+    
+    const changes = [];
+    const fieldsToCompare = [
+        { key: 'First Name', label: 'First Name' },
+        { key: 'Last Name', label: 'Last Name' },
+        { key: 'Email Id', label: 'Email' },
+        { key: 'Mobile Number', label: 'Mobile Number' },
+        { key: 'Education Details', label: 'Education' },
+        { key: 'College Name', label: 'College' },
+        { key: 'Image', label: 'Profile Image' }
+    ];
+    
+    for (let field of fieldsToCompare) {
+        const oldValue = (oldUser[field.key] || '').toString().trim();
+        const newValue = (newUser[field.key] || '').toString().trim();
+        
+        if (oldValue !== newValue) {
+            changes.push({
+                field: field.key,
+                label: field.label,
+                oldValue: oldValue,
+                newValue: newValue
+            });
+            console.log(`[Auto-Sync] Change detected in ${field.label}: "${oldValue}" → "${newValue}"`);
+        }
+    }
+    
+    return {
+        hasChanges: changes.length > 0,
+        changes: changes,
+        summary: changes.length > 0 ? `${changes.length} field(s) updated` : 'No changes'
+    };
+}
+
+/**
+ * Checks if images are different
+ */
+function isImageDifferent(oldImageUrl, newImageUrl) {
+    const oldUrl = oldImageUrl || '';
+    const newUrl = newImageUrl || '';
+    return oldUrl !== newUrl;
+}
+
+// ==========================
+// UI UPDATE FUNCTIONS
+// ==========================
+
+/**
+ * Loads profile image into circle element
+ */
+async function loadProfileImage(circleElement, imageUrl, initialLetter) {
+    if (!circleElement) return;
+    
+    if (imageUrl) {
+        const img = new Image();
+        img.onload = () => {
+            circleElement.innerHTML = '';
+            img.style.width = '100%';
+            img.style.height = '100%';
+            img.style.objectFit = 'cover';
+            circleElement.appendChild(img);
+        };
+        img.onerror = () => {
+            circleElement.innerHTML = `<span>${initialLetter}</span>`;
+        };
+        img.src = imageUrl;
+    } else {
+        circleElement.innerHTML = `<span>${initialLetter}</span>`;
+    }
+}
+
+/**
+ * Updates only changed UI elements (optimized)
+ */
+async function updateUserInterface(newUser, changes) {
+    if (!newUser) return false;
+    
+    const firstName = newUser['First Name'] || '';
+    const lastName = newUser['Last Name'] || '';
+    const fullName = `${firstName} ${lastName}`.trim() || 'User';
+    const email = newUser['Email Id'] || '';
+    const initial = firstName.charAt(0).toUpperCase() || 'U';
+    const imageLink = newUser['Image'] || '';
+    const imageUrl = convertDriveLinkToImageUrl(imageLink);
+    
+    const oldImageUrl = cachedUserData ? convertDriveLinkToImageUrl(cachedUserData['Image'] || '') : null;
+    const imageChanged = isImageDifferent(oldImageUrl, imageUrl);
+    
+    const desktopName = document.getElementById('desktopName');
+    const desktopEmail = document.getElementById('desktopEmail');
+    const desktopInitial = document.getElementById('desktopInitial');
+    const desktopCircle = document.getElementById('desktopProfileCircle');
+    
+    if (desktopName && desktopName.innerText !== fullName) desktopName.innerText = fullName;
+    if (desktopEmail && desktopEmail.innerText !== email) desktopEmail.innerText = email;
+    if (desktopInitial && desktopInitial.innerText !== initial) desktopInitial.innerText = initial;
+    if (desktopCircle && imageChanged) await loadProfileImage(desktopCircle, imageUrl, initial);
+    
+    const sidebarUserName = document.getElementById('sidebarUserName');
+    const sidebarUserEmail = document.getElementById('sidebarUserEmail');
+    const sidebarInitial = document.getElementById('sidebarInitial');
+    const sidebarCircle = document.getElementById('sidebarProfileCircle');
+    
+    if (sidebarUserName && sidebarUserName.innerText !== fullName) sidebarUserName.innerText = fullName;
+    if (sidebarUserEmail && sidebarUserEmail.innerText !== email) sidebarUserEmail.innerText = email;
+    if (sidebarInitial && sidebarInitial.innerText !== initial) sidebarInitial.innerText = initial;
+    if (sidebarCircle && imageChanged) await loadProfileImage(sidebarCircle, imageUrl, initial);
+    
+    return true;
+}
+
+/**
+ * Shows toast notification for changes
+ */
+function notifyChanges(changes) {
+    if (!changes || changes.length === 0) return;
+    
+    const importantChanges = changes.filter(c => c.label !== 'Password');
+    
+    if (importantChanges.length === 1) {
+        showToast(`${importantChanges[0].label} updated to "${importantChanges[0].newValue}"`, 'success', 'Profile Updated');
+    } else if (importantChanges.length > 1) {
+        showToast(`${importantChanges.length} field(s) updated successfully`, 'success', 'Profile Synced');
+    }
+}
+
+// ==========================
+// CORE SYNC FUNCTION
+// ==========================
+
+/**
+ * Checks for profile updates and applies changes
+ */
+async function checkForProfileUpdates() {
+    if (!currentUser || !currentUser['Email Id']) {
+        console.log('[Auto-Sync] No user logged in, skipping sync');
+        return false;
+    }
+    
+    if (isSyncing) {
+        console.log('[Auto-Sync] Sync already in progress, skipping');
+        return false;
+    }
+    
+    if (!navigator.onLine) {
+        console.log('[Auto-Sync] No internet connection');
+        if (!isOnline) return false;
+        isOnline = false;
+        showToast('Waiting for network connection...', 'warning', 'Offline Mode');
+        return false;
+    }
+    
+    isOnline = true;
+    isSyncing = true;
+    
+    try {
+        console.log('[Auto-Sync] Checking for profile updates...');
+        
+        const latestData = await getLatestUserData(currentUser['Email Id']);
+        
+        if (!latestData) {
+            console.log('[Auto-Sync] Failed to fetch latest data');
+            if (retryCount > CONFIG.MAX_RETRY_ATTEMPTS) {
+                showToast('Sync failed. Will retry shortly.', 'warning', 'Connection Issue');
+            }
+            return false;
+        }
+        
+        const comparison = compareUserData(cachedUserData, latestData);
+        
+        if (comparison.hasChanges) {
+            console.log('[Auto-Sync] Changes detected:', comparison.summary);
+            
+            await updateUserInterface(latestData, comparison.changes);
+            
+            cachedUserData = JSON.parse(JSON.stringify(latestData));
+            currentUser = JSON.parse(JSON.stringify(latestData));
+            localStorage.setItem('orryxa_current_user', JSON.stringify(currentUser));
+            notifyChanges(comparison.changes);
+            
+            console.log('[Auto-Sync] UI updated successfully');
+            return true;
+        } else {
+            console.log('[Auto-Sync] No changes detected');
+            return false;
+        }
+    } catch (error) {
+        console.error('[Auto-Sync] Error during sync:', error);
+        
+        if (error.name === 'AbortError') {
+            console.log('[Auto-Sync] Request timeout');
+            showToast('Sync timeout. Retrying...', 'warning', 'Connection Slow');
+        } else if (error.message.includes('Failed to fetch')) {
+            console.log('[Auto-Sync] Network error');
+            showToast('Network issue detected. Retrying...', 'warning', 'Connection Error');
+        }
+        
+        return false;
+    } finally {
+        isSyncing = false;
+    }
+}
+
+// ==========================
+// AUTO-SYNC MANAGEMENT
+// ==========================
+
+/**
+ * Starts the auto-sync system
+ */
+function startAutoSync() {
+    if (syncInterval) {
+        console.log('[Auto-Sync] Stopping existing sync before restart');
+        clearInterval(syncInterval);
+        syncInterval = null;
+    }
+    
+    if (currentUser && currentUser['Email Id']) {
+        console.log(`[Auto-Sync] Starting auto-sync every ${CONFIG.SYNC_INTERVAL_MS / 1000} seconds`);
+        
+        setTimeout(() => {
+            checkForProfileUpdates();
+        }, 2000);
+        
+        syncInterval = setInterval(() => {
+            checkForProfileUpdates();
+        }, CONFIG.SYNC_INTERVAL_MS);
+        
+        window.addEventListener('online', handleOnlineStatus);
+        window.addEventListener('offline', handleOfflineStatus);
+        
+        showToast('Auto-sync enabled. Your profile will stay updated.', 'success', 'Auto-Sync Active');
+        console.log('[Auto-Sync] Auto-sync started successfully');
+    } else {
+        console.log('[Auto-Sync] Cannot start auto-sync: No user logged in');
+    }
+}
+
+/**
+ * Stops the auto-sync system
+ */
+function stopAutoSync() {
+    if (syncInterval) {
+        clearInterval(syncInterval);
+        syncInterval = null;
+        console.log('[Auto-Sync] Auto-sync stopped');
+    }
+    
+    window.removeEventListener('online', handleOnlineStatus);
+    window.removeEventListener('offline', handleOfflineStatus);
+}
+
+/**
+ * Handles online status change
+ */
+function handleOnlineStatus() {
+    console.log('[Auto-Sync] Network connection restored');
+    showToast('Connection restored. Syncing data...', 'success', 'Back Online');
+    setTimeout(() => checkForProfileUpdates(), 1000);
+}
+
+/**
+ * Handles offline status change
+ */
+function handleOfflineStatus() {
+    console.log('[Auto-Sync] Network connection lost');
+    showToast('Network connection lost. Waiting to reconnect...', 'warning', 'Offline Mode');
+}
+
+/**
+ * Restarts sync after login
+ */
+function restartSyncAfterLogin() {
+    stopAutoSync();
+    startAutoSync();
+}
+
+// ==========================
+// AUTHENTICATION FUNCTIONS
+// ==========================
+
+/**
+ * Logs in user and starts auto-sync
+ */
+async function loginUser(email, password) {
+    const users = await fetchAllUsers();
+    if (!users) {
+        showToast('Unable to connect to server', 'error', 'Connection Error');
+        return false;
+    }
+    
+    const user = users.find(u => {
+        const userEmail = (u['Email Id'] || '').toString().trim().toLowerCase();
+        const userPassword = (u['Password'] || '').toString().trim();
+        return userEmail === email.toLowerCase() && userPassword === password;
+    });
+    
+    if (user) {
+        currentUser = JSON.parse(JSON.stringify(user));
+        cachedUserData = JSON.parse(JSON.stringify(user));
+        localStorage.setItem('orryxa_current_user', JSON.stringify(user));
+        await updateAllUI();
+        
+        startAutoSync();
+        
+        console.log('[Auto-Sync] User logged in, auto-sync started');
+        return true;
+    }
+    return false;
+}
+
+/**
+ * Logs out user and stops auto-sync
+ */
+async function logout() {
+    console.log('[Auto-Sync] User logging out, stopping auto-sync');
+    stopAutoSync();
+    
+    currentUser = null;
+    cachedUserData = null;
+    localStorage.removeItem('orryxa_current_user');
+    await updateAllUI();
+    
+    showToast('You have been logged out successfully', 'success', 'Logged Out');
+}
+
+/**
+ * Updates all UI elements based on current user
+ */
+async function updateAllUI() {
+    const isLoggedIn = currentUser !== null;
+    const firstName = currentUser?.['First Name'] || '';
+    const lastName = currentUser?.['Last Name'] || '';
+    const fullName = `${firstName} ${lastName}`.trim();
+    const email = currentUser?.['Email Id'] || '';
+    const initial = firstName.charAt(0).toUpperCase() || 'U';
+    const imageLink = currentUser?.['Image'] || '';
+    const imageUrl = convertDriveLinkToImageUrl(imageLink);
+    
+    const desktopAuth = document.getElementById('desktopAuthButtons');
+    const desktopProfile = document.getElementById('desktopProfileContainer');
+    
+    if (desktopAuth && desktopProfile) {
+        if (isLoggedIn) {
+            desktopAuth.style.display = 'none';
+            desktopProfile.style.display = 'flex';
+            
+            const desktopName = document.getElementById('desktopName');
+            const desktopEmail = document.getElementById('desktopEmail');
+            const desktopCircle = document.getElementById('desktopProfileCircle');
+            
+            if (desktopName) desktopName.innerText = fullName || 'User';
+            if (desktopEmail) desktopEmail.innerText = email || '';
+            if (desktopCircle) await loadProfileImage(desktopCircle, imageUrl, initial);
+        } else {
+            desktopAuth.style.display = 'flex';
+            desktopProfile.style.display = 'none';
+        }
+    }
+    
+    const sidebarAuth = document.getElementById('sidebarAuthButtons');
+    const sidebarMyAccount = document.getElementById('sidebarMyAccount');
+    const sidebarLogout = document.getElementById('sidebarLogout');
+    const sidebarUserName = document.getElementById('sidebarUserName');
+    const sidebarUserEmail = document.getElementById('sidebarUserEmail');
+    const sidebarCircle = document.getElementById('sidebarProfileCircle');
+    const sidebarInitial = document.getElementById('sidebarInitial');
+    
+    if (isLoggedIn) {
+        if (sidebarAuth) sidebarAuth.style.display = 'none';
+        if (sidebarUserName) sidebarUserName.innerText = fullName || 'User';
+        if (sidebarUserEmail) sidebarUserEmail.innerText = email || '';
+        if (sidebarInitial) sidebarInitial.innerText = initial;
+        if (sidebarCircle) await loadProfileImage(sidebarCircle, imageUrl, initial);
+        if (sidebarMyAccount) sidebarMyAccount.style.display = 'flex';
+        if (sidebarLogout) sidebarLogout.style.display = 'flex';
+    } else {
+        if (sidebarAuth) sidebarAuth.style.display = 'flex';
+        if (sidebarUserName) sidebarUserName.innerText = 'Guest User';
+        if (sidebarUserEmail) sidebarUserEmail.innerText = 'Please login';
+        if (sidebarInitial) sidebarInitial.innerText = 'U';
+        if (sidebarCircle) sidebarCircle.innerHTML = '<span>U</span>';
+        if (sidebarMyAccount) sidebarMyAccount.style.display = 'none';
+        if (sidebarLogout) sidebarLogout.style.display = 'none';
+    }
+}
+
+// ==========================
+// POPUP FUNCTIONS
+// ==========================
+function openPopup(id) {
+    const popup = document.getElementById(id);
+    if (popup) popup.classList.add('active');
+}
+
+function closePopup(id) {
+    const popup = document.getElementById(id);
+    if (popup) popup.classList.remove('active');
+}
+
+function setButtonLoading(btnId, isLoading, originalText) {
+    const btn = document.getElementById(btnId);
+    if (!btn) return;
+    
+    if (isLoading) {
+        btn.disabled = true;
+        btn.innerHTML = originalText + '<span class="spinner"></span>';
+    } else {
+        btn.disabled = false;
+        btn.innerHTML = originalText;
+    }
+}
+
+function togglePassword(fieldId) {
+    const field = document.getElementById(fieldId);
+    if (!field) return;
+    
+    const toggleBtn = field.nextElementSibling;
+    if (field.type === 'password') {
+        field.type = 'text';
+        if (toggleBtn) toggleBtn.innerHTML = '<i class="far fa-eye-slash"></i>';
+    } else {
+        field.type = 'password';
+        if (toggleBtn) toggleBtn.innerHTML = '<i class="far fa-eye"></i>';
+    }
+}
+
+// ==========================
+// NAVIGATION FUNCTIONS
+// ==========================
+function navigateTo(page) {
+    const pageUrls = {
+        'textbook': 'TextBooks/textbook.html',
+        'notes': 'notes.html',
+        'solutions': 'solutions.html',
+        'questionpapers': 'questionpapers.html',
+        'project': 'project.html',
+        'more': 'index.html'
+    };
+    
+    const url = pageUrls[page];
+    if (url && page !== 'more') {
+        window.location.href = url;
+    } else if (page === 'more') {
+        showToast('More resources including videos, flashcards, and quizzes coming soon!', 'info', 'Coming Soon');
+    }
+}
+
+// ==========================
+// SIDEBAR FUNCTIONS
+// ==========================
+function openSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+    if (sidebar) sidebar.classList.add('active');
+    if (overlay) overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+    if (sidebar) sidebar.classList.remove('active');
+    if (overlay) overlay.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// ==========================
+// DARK MODE FUNCTIONS
+// ==========================
+function initDarkMode() {
+    const darkMode = localStorage.getItem('darkMode') === 'enabled';
+    if (darkMode) document.body.classList.add('dark-mode');
+    updateDarkModeToggle();
+}
+
+function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+    localStorage.setItem('darkMode', document.body.classList.contains('dark-mode') ? 'enabled' : 'disabled');
+    updateDarkModeToggle();
+    showToast(`Dark mode ${document.body.classList.contains('dark-mode') ? 'enabled' : 'disabled'}`, 'info', 'Theme');
+}
+
+function updateDarkModeToggle() {
+    const isDark = document.body.classList.contains('dark-mode');
+    const darkToggle = document.getElementById('sidebarDarkToggle');
+    if (darkToggle) {
+        if (isDark) darkToggle.classList.add('active');
+        else darkToggle.classList.remove('active');
+    }
+}
+
+// ==========================
+// FORM HANDLERS
+// ==========================
+
+/**
+ * Signup form handler
+ */
+async function handleSignup(e) {
+    e.preventDefault();
+    
+    const firstName = document.getElementById('firstName')?.value.trim() || '';
+    const lastName = document.getElementById('lastName')?.value.trim() || '';
+    const mobile = document.getElementById('mobile')?.value.trim() || '';
+    const email = document.getElementById('email')?.value.trim() || '';
+    const education = document.getElementById('education')?.value.trim() || '';
+    const college = document.getElementById('college')?.value.trim() || '';
+    const password = document.getElementById('password')?.value || '';
+    const confirm = document.getElementById('confirmPwd')?.value || '';
+    
+    if (!/^[6-9][0-9]{9}$/.test(mobile)) {
+        const mobileError = document.getElementById('mobileError');
+        if (mobileError) mobileError.innerText = 'Mobile must be 10 digits starting with 6-9';
+        showToast('Invalid mobile number', 'error', 'Validation Error');
+        return;
+    }
+    
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        const emailError = document.getElementById('emailError');
+        if (emailError) emailError.innerText = 'Enter valid email';
+        showToast('Please enter a valid email address', 'error', 'Validation Error');
+        return;
+    }
+    
+    if (password !== confirm) {
+        const confirmError = document.getElementById('confirmError');
+        if (confirmError) confirmError.innerText = 'Passwords do not match';
+        showToast('Password and confirm password do not match', 'error', 'Validation Error');
+        return;
+    }
+    
+    if (password.length < 6) {
+        const pwdError = document.getElementById('pwdError');
+        if (pwdError) pwdError.innerText = 'Password minimum 6 characters';
+        showToast('Password must be at least 6 characters long', 'error', 'Validation Error');
+        return;
+    }
+    
+    setButtonLoading('signupSubmitBtn', true, 'Sign Up');
+    
+    const formData = new URLSearchParams();
+    formData.append('action', 'insert');
+    formData.append('spreadsheetId', CONFIG.SPREADSHEET_ID);
+    formData.append('sheetName', CONFIG.SHEET_NAME);
+    formData.append('First Name', firstName);
+    formData.append('Last Name', lastName);
+    formData.append('Mobile Number', mobile);
+    formData.append('Email Id', email);
+    formData.append('Education Details', education);
+    formData.append('College Name', college);
+    formData.append('Image', '');
+    formData.append('Password', password);
+    
+    try {
+        const response = await fetch(CONFIG.SCRIPT_URL, { method: 'POST', body: formData });
+        const result = await response.json();
+        
+        if (result.status === 'success') {
+            const loginSuccess = await loginUser(email, password);
+            if (loginSuccess) {
+                const signupMessage = document.getElementById('signupMessage');
+                if (signupMessage) signupMessage.innerHTML = '<div class="success-msg">✅ Account created and logged in successfully!</div>';
+                showToast(`Welcome, ${firstName}!`, 'success', 'Account Created');
+                setTimeout(() => {
+                    closePopup('signupPopup');
+                    const signupForm = document.getElementById('signupForm');
+                    if (signupForm) signupForm.reset();
+                    if (signupMessage) signupMessage.innerHTML = '';
+                }, 2000);
+            } else {
+                const signupMessage = document.getElementById('signupMessage');
+                if (signupMessage) signupMessage.innerHTML = '<div class="success-msg">✅ Account created! Please login manually.</div>';
+                showToast('Account created successfully!', 'success', 'Account Created');
+                setTimeout(() => {
+                    closePopup('signupPopup');
+                    openPopup('loginPopup');
+                    const signupForm = document.getElementById('signupForm');
+                    if (signupForm) signupForm.reset();
+                    if (signupMessage) signupMessage.innerHTML = '';
+                }, 2000);
+            }
+        } else {
+            showToast(result.message || 'Signup failed', 'error', 'Signup Failed');
+        }
+    } catch(err) {
+        showToast('Network error. Please check your connection.', 'error', 'Network Error');
+    } finally {
+        setButtonLoading('signupSubmitBtn', false, 'Sign Up');
+    }
+}
+
+/**
+ * Login form handler
+ */
+async function handleLogin(e) {
+    e.preventDefault();
+    
+    const email = document.getElementById('loginEmail')?.value.trim() || '';
+    const password = document.getElementById('loginPassword')?.value || '';
+    const msgDiv = document.getElementById('loginMessage');
+    
+    if (!email || !password) {
+        showToast('Please enter both email and password', 'error', 'Login Error');
+        return;
+    }
+    
+    setButtonLoading('loginSubmitBtn', true, 'Login');
+    if (msgDiv) msgDiv.innerHTML = '';
+    
+    try {
+        const success = await loginUser(email, password);
+        if (success) {
+            if (msgDiv) msgDiv.innerHTML = '<div class="success-msg">✅ Login successful!</div>';
+            showToast(`Welcome back, ${currentUser?.['First Name'] || 'User'}!`, 'success', 'Login Success');
+            setTimeout(() => {
+                closePopup('loginPopup');
+                const loginForm = document.getElementById('loginForm');
+                if (loginForm) loginForm.reset();
+                if (msgDiv) msgDiv.innerHTML = '';
+            }, 1500);
+        } else {
+            if (msgDiv) msgDiv.innerHTML = '<div class="error-msg">❌ Invalid email or password</div>';
+            showToast('Invalid email or password', 'error', 'Login Failed');
+        }
+    } catch(err) {
+        if (msgDiv) msgDiv.innerHTML = '<div class="error-msg">❌ Error connecting to server</div>';
+        showToast('Error connecting to server', 'error', 'Connection Error');
+    } finally {
+        setButtonLoading('loginSubmitBtn', false, 'Login');
+    }
+}
+
+/**
+ * Forgot password handler
+ */
+async function handleForgotPassword(e) {
+    e.preventDefault();
+    
+    const email = document.getElementById('forgotEmail')?.value.trim() || '';
+    const mobile = document.getElementById('forgotMobile')?.value.trim() || '';
+    const resultDiv = document.getElementById('forgotResult');
+    
+    setButtonLoading('forgotSubmitBtn', true, 'Verifying');
+    if (resultDiv) resultDiv.innerHTML = '';
+    
+    try {
+        const users = await fetchAllUsers();
+        if (!users) {
+            if (resultDiv) resultDiv.innerHTML = '<div class="error-msg">❌ Cannot connect to server</div>';
+            showToast('Cannot connect to server', 'error', 'Connection Error');
+            return;
+        }
+        
+        const user = users.find(u => {
+            const userEmail = (u['Email Id'] || '').toString().trim().toLowerCase();
+            const userMobile = (u['Mobile Number'] || '').toString().trim();
+            return userEmail === email.toLowerCase() && userMobile === mobile;
+        });
+        
+        if (user) {
+            if (resultDiv) resultDiv.innerHTML = `<div class="success-msg">🔐 Your password: <strong>${user['Password']}</strong></div>`;
+            showToast('Password recovered successfully', 'success', 'Password Recovered');
+            setTimeout(() => {
+                closePopup('forgotPopup');
+                openPopup('loginPopup');
+            }, 2000);
+        } else {
+            if (resultDiv) resultDiv.innerHTML = '<div class="error-msg">❌ No matching account found</div>';
+            showToast('No account found with provided details', 'error', 'Account Not Found');
+        }
+    } catch(err) {
+        if (resultDiv) resultDiv.innerHTML = '<div class="error-msg">❌ Error</div>';
+        showToast('Error recovering password', 'error', 'Error');
+    } finally {
+        setButtonLoading('forgotSubmitBtn', false, 'Verify');
+    }
+}
+
+// ==========================
+// MARKING TOOLS
+// ==========================
+let hlActive = false;
+let topicsCompleted = 0;
+
+function initMarkingTools() {
+    const activateBtn = document.getElementById('activateHighlightBtn');
+    const demoText = document.getElementById('demoText');
+    const bookmarkBtn = document.getElementById('bookmarkDemoBtn');
+    const progressBtn = document.getElementById('progressTrackerBtn');
+    const exploreBtn = document.getElementById('exploreBtn');
+    
+    if (activateBtn) {
+        activateBtn.onclick = () => {
+            hlActive = !hlActive;
+            showToast(hlActive ? 'Highlighter activated! Click on any text to highlight.' : 'Highlighter deactivated.', 'info', 'Highlighter');
+        };
+    }
+    
+    if (demoText) {
+        demoText.onclick = function() {
+            if (hlActive) {
+                this.classList.toggle('marked-text');
+                showToast('Text highlighted!', 'success', 'Highlighted');
+            } else {
+                showToast('Please activate the highlighter first', 'warning', 'Highlighter Inactive');
+            }
+        };
+    }
+    
+    if (bookmarkBtn) {
+        bookmarkBtn.onclick = () => {
+            const bookmarkMsg = document.getElementById('bookmarkMsg');
+            if (bookmarkMsg) bookmarkMsg.innerHTML = '📌 Page bookmarked!';
+            showToast('Page has been bookmarked successfully!', 'success', 'Bookmark Saved');
+            setTimeout(() => {
+                if (bookmarkMsg) bookmarkMsg.innerHTML = '';
+            }, 1500);
+        };
+    }
+    
+    if (progressBtn) {
+        progressBtn.onclick = () => {
+            topicsCompleted++;
+            const progressCount = document.getElementById('progressCount');
+            if (progressCount) {
+                progressCount.innerHTML = `📊 ${topicsCompleted} topic${topicsCompleted !== 1 ? 's' : ''} done`;
+            }
+            showToast(`Progress updated! ${topicsCompleted} topic${topicsCompleted !== 1 ? 's' : ''} completed.`, 'success', 'Progress Tracker');
+        };
+    }
+    
+    if (exploreBtn) {
+        exploreBtn.onclick = () => {
+            showToast('Explore all educational resources, marking tools, and interactive content!', 'info', 'Explore');
+            const resourcesGrid = document.querySelector('.resources-grid');
+            if (resourcesGrid) resourcesGrid.scrollIntoView({ behavior: 'smooth' });
+        };
+    }
+}
+
+// ==========================
+// EVENT LISTENERS SETUP
+// ==========================
+function setupEventListeners() {
+    const logoBtn = document.getElementById('logoHomeBtn');
+    if (logoBtn) logoBtn.onclick = () => { window.location.href = 'index.html'; };
+    
+    const menuToggle = document.getElementById('menuToggleBtn');
+    if (menuToggle) menuToggle.onclick = openSidebar;
+    
+    const closeSidebarBtn = document.getElementById('closeSidebarBtn');
+    if (closeSidebarBtn) closeSidebarBtn.onclick = closeSidebar;
+    
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+    if (sidebarOverlay) sidebarOverlay.onclick = closeSidebar;
+    
+    const sidebarDarkToggle = document.getElementById('sidebarDarkToggle');
+    if (sidebarDarkToggle) sidebarDarkToggle.onclick = toggleDarkMode;
+    
+    const darkModeBtn = document.getElementById('darkModeToggleBtn');
+    if (darkModeBtn) darkModeBtn.onclick = toggleDarkMode;
+    
+    const profileContainer = document.getElementById('desktopProfileContainer');
+    if (profileContainer) {
+        profileContainer.addEventListener('click', (e) => {
+            e.stopPropagation();
+            profileContainer.classList.toggle('active');
+        });
+        document.addEventListener('click', () => {
+            profileContainer.classList.remove('active');
+        });
+    }
+    
+    const desktopMyAccount = document.getElementById('desktopMyAccount');
+    if (desktopMyAccount) {
+        desktopMyAccount.onclick = () => {
+            if (currentUser) {
+                showToast(`Name: ${currentUser['First Name']} ${currentUser['Last Name']}\nEmail: ${currentUser['Email Id']}\nMobile: +91 ${currentUser['Mobile Number']}`, 'info', 'My Account');
+            }
+        };
+    }
+    
+    const desktopLogout = document.getElementById('desktopLogout');
+    if (desktopLogout) desktopLogout.onclick = () => logout();
+    
+    const sidebarLoginBtn = document.getElementById('sidebarLoginBtn');
+    if (sidebarLoginBtn) sidebarLoginBtn.onclick = () => { closeSidebar(); openPopup('loginPopup'); };
+    
+    const sidebarSignupBtn = document.getElementById('sidebarSignupBtn');
+    if (sidebarSignupBtn) sidebarSignupBtn.onclick = () => { closeSidebar(); openPopup('signupPopup'); };
+    
+    const sidebarMyAccount = document.getElementById('sidebarMyAccount');
+    if (sidebarMyAccount) {
+        sidebarMyAccount.onclick = () => {
+            if (currentUser) {
+                showToast(`Name: ${currentUser['First Name']} ${currentUser['Last Name']}\nEmail: ${currentUser['Email Id']}\nMobile: +91 ${currentUser['Mobile Number']}`, 'info', 'My Account');
+            }
+            closeSidebar();
+        };
+    }
+    
+    const sidebarLogout = document.getElementById('sidebarLogout');
+    if (sidebarLogout) sidebarLogout.onclick = () => { logout(); closeSidebar(); };
+    
+    const openLoginBtn = document.getElementById('openLoginBtn');
+    if (openLoginBtn) openLoginBtn.onclick = () => openPopup('loginPopup');
+    
+    const openSignupBtn = document.getElementById('openSignupBtn');
+    if (openSignupBtn) openSignupBtn.onclick = () => openPopup('signupPopup');
+    
+    const forgotPasswordLink = document.getElementById('forgotPasswordLink');
+    if (forgotPasswordLink) {
+        forgotPasswordLink.onclick = (e) => {
+            e.preventDefault();
+            closePopup('loginPopup');
+            openPopup('forgotPopup');
+        };
+    }
+    
+    const signupForm = document.getElementById('signupForm');
+    if (signupForm) signupForm.addEventListener('submit', handleSignup);
+    
+    const loginForm = document.getElementById('loginForm');
+    if (loginForm) loginForm.addEventListener('submit', handleLogin);
+    
+    const forgotForm = document.getElementById('forgotForm');
+    if (forgotForm) forgotForm.addEventListener('submit', handleForgotPassword);
+    
+    document.querySelectorAll('.menu-item[data-page], .sidebar-menu-item[data-page], .resource-card[data-page]').forEach(el => {
+        el.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const page = el.getAttribute('data-page');
+            if (page) navigateTo(page);
+            closeSidebar();
+        });
+    });
+    
+    let touchStartX = 0;
+    document.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; });
+    document.addEventListener('touchend', (e) => {
+        let touchEndX = e.changedTouches[0].clientX;
+        if (touchStartX < 30 && touchEndX > touchStartX + 50) openSidebar();
+    });
+}
+
+// ==========================
+// INITIALIZATION
+// ==========================
+async function init() {
+    console.log('[Auto-Sync] Initializing application...');
+    
+    initDarkMode();
+    initMarkingTools();
+    setupEventListeners();
+    initVisitorTracking();
+    
+    const savedUser = localStorage.getItem('orryxa_current_user');
+    if (savedUser) {
+        try {
+            currentUser = JSON.parse(savedUser);
+            cachedUserData = JSON.parse(savedUser);
+            await updateAllUI();
+            showToast(`Welcome back, ${currentUser['First Name'] || 'User'}!`, 'success', 'Welcome');
+            
+            setTimeout(() => {
+                console.log('[Auto-Sync] Starting auto-sync for logged-in user');
+                startAutoSync();
+            }, 3000);
+        } catch(e) {
+            console.error('[Auto-Sync] Error parsing saved user:', e);
+            await updateAllUI();
+        }
+    } else {
+        console.log('[Auto-Sync] No saved user found');
+        await updateAllUI();
+    }
+    
+    console.log('[Auto-Sync] Application initialized');
+}
+
+// Handle page visibility changes for visitor tracking
+document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+        const lastTracked = localStorage.getItem(VISITOR_CONFIG.STORAGE_KEY);
+        if (lastTracked) {
+            try {
+                const data = JSON.parse(lastTracked);
+                const today = getTodayDate();
+                if (data.date !== today) {
+                    localStorage.removeItem(VISITOR_CONFIG.STORAGE_KEY);
+                    sessionStorage.removeItem('orryxa_page_loaded_' + data.date);
+                    initVisitorTracking();
+                }
+            } catch(e) {}
+        }
+    }
+});
+
+// Expose functions globally for debugging
+window.visitorCounter = {
+    refresh: () => refreshVisitorDisplay(),
+    getTodayCount: fetchVisitorData,
+    config: VISITOR_CONFIG
+};
+
+// Start the application
+init();
+</script>
+</body>
+</html>

@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>📝 Rectification of Errors | 11th BK Chap 8 | Types, Suspense A/c, Journal Entries</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    body {
+      background: linear-gradient(145deg, #1e1b2f, #2a1f3a);
+      min-height: 100vh;
+      padding: 24px 18px;
+      color: #f1f5f9;
+    }
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    .heading {
+      text-align: center;
+      margin-bottom: 32px;
+      animation: slideDown 0.5s ease;
+    }
+    .heading h1 {
+      font-size: 2.1rem;
+      background: linear-gradient(135deg, #fff, #fbbf24);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .heading p {
+      color: #fde68a;
+      margin-top: 8px;
+    }
+    .search-wrapper {
+      position: relative;
+      margin-bottom: 28px;
+    }
+    .search-box {
+      background: white;
+      border-radius: 60px;
+      padding: 6px 6px 6px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 20px 35px -10px rgba(0,0,0,0.4);
+    }
+    .search-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      padding: 14px 0;
+      background: transparent;
+      color: #0f172a;
+      font-weight: 500;
+    }
+    .icon-btn {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(145deg, #d97706, #b45309);
+      color: white;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .icon-btn:hover { transform: scale(1.07); background: #f59e0b; }
+    .suggestions-dropdown {
+      position: absolute;
+      top: calc(100% + 10px);
+      left: 0;
+      right: 0;
+      background: white;
+      border-radius: 28px;
+      background: rgba(255,255,255,0.98);
+      box-shadow: 0 18px 30px rgba(0,0,0,0.3);
+      z-index: 120;
+      max-height: 280px;
+      overflow-y: auto;
+      display: none;
+    }
+    .suggestion-item {
+      padding: 14px 22px;
+      color: #0f172a;
+      cursor: pointer;
+      border-bottom: 1px solid #eef2ff;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .suggestion-item:hover { background: #fef3c7; padding-left: 28px; }
+    .result-container {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+    .result-card {
+      background: rgba(255,255,255,0.96);
+      border-radius: 32px;
+      padding: 1.7rem;
+      color: #0f172a;
+      box-shadow: 0 15px 30px -12px rgba(0,0,0,0.35);
+      transition: 0.2s;
+    }
+    .result-card:hover { transform: translateY(-3px); }
+    .badge {
+      background: #fef3c7;
+      color: #92400e;
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+    .result-card h3 {
+      color: #b45309;
+      font-size: 1.35rem;
+      border-left: 5px solid #f59e0b;
+      padding-left: 16px;
+      margin-bottom: 14px;
+    }
+    .answer-text {
+      background: #fffbeb;
+      padding: 16px 20px;
+      border-radius: 24px;
+      line-height: 1.65;
+      margin: 12px 0;
+    }
+    .formula-box {
+      background: #fef3c7;
+      padding: 12px 16px;
+      border-radius: 20px;
+      font-family: monospace;
+      font-size: 1rem;
+      margin: 10px 0;
+      text-align: center;
+    }
+    .responsive-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+      font-size: 0.85rem;
+      overflow-x: auto;
+      display: block;
+    }
+    .responsive-table th, .responsive-table td {
+      border: 1px solid #d1d5db;
+      padding: 10px 8px;
+      text-align: left;
+      background: white;
+    }
+    .responsive-table th {
+      background: #d97706;
+      color: white;
+      font-weight: 600;
+    }
+    .action-buttons {
+      margin-top: 20px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .action-buttons button {
+      border: none;
+      padding: 10px 22px;
+      border-radius: 40px;
+      font-weight: 600;
+      background: #eef2ff;
+      color: #1e293b;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .action-buttons button:last-child { background: #d97706; color: white; }
+    .not-found {
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(12px);
+      border-radius: 40px;
+      padding: 2rem;
+      text-align: center;
+    }
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(10px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    .popup-box {
+      background: white;
+      max-width: 800px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      border-radius: 40px;
+      padding: 28px 32px;
+      position: relative;
+      color: #0a2a44;
+    }
+    .close-popup {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      background: #fee2e2;
+      border: none;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+    .lang-section { background: #f1f5f9; padding: 18px; border-radius: 24px; margin-bottom: 18px; }
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-22px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 650px) { 
+      .heading h1 { font-size: 1.4rem; } 
+      .result-card h3 { font-size: 1.1rem; }
+      .responsive-table th, .responsive-table td { padding: 6px 4px; font-size: 0.7rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="heading">
+    <h1>📝 Rectification of Errors | Chapter 8: Types, Suspense A/c & Journal Entries</h1>
+    <p>🔍 100+ Q&A | Errors of Omission, Commission, Principle, Compensating | Suspense Account | Rectification Entries</p>
+  </div>
+  <div class="search-wrapper">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search: Rectification, Suspense A/c, Error of Principle, One-sided error, Compensating error...">
+      <button class="icon-btn" id="voiceBtn">🎤</button>
+    </div>
+    <div id="suggestionsList" class="suggestions-dropdown"></div>
+  </div>
+  <div class="result-container" id="resultsContainer">
+    <div class="not-found">✨ Start typing — Chapter 8: Rectification of Errors | Types, Suspense Account, Journal Entries ✨</div>
+  </div>
+</div>
+<div class="popup-overlay" id="popupModal">
+  <div class="popup-box">
+    <button class="close-popup" id="closeModalBtn">✖</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+  // ------------- COMPLETE DATABASE: Chapter 8 Rectification of Errors (Errors & Suspense A/c) -------------
+  const qaDatabase = [];
+
+  function addQA(question, answer, hindi, marathi, category, keywords = []) {
+    qaDatabase.push({ id: qaDatabase.length+1, question, answer, hindi, marathi, category, keywords: keywords.map(k=>k.toLowerCase()) });
+  }
+
+  // Core Concepts - Meaning & Types
+  addQA("What is meant by Rectification of Errors?", "Rectification of errors means correcting the mistakes committed in the books of accounts. Errors may be detected before or after Trial Balance or after Final Accounts. Rectification entries are recorded in Journal Proper.", "त्रुटियों का सुधार अर्थात लेखा पुस्तकों में हुई गलतियों को सुधारना।", "चुकांचे सुधारणे म्हणजे लेखा पुस्तकांमधील चुका दुरुस्त करणे.", "Core", ["rectification meaning"]);
+  addQA("What is Error of Omission?", "Error of Omission arises when a transaction is completely or partially omitted from the books. Complete omission does not affect Trial Balance; Partial omission affects Trial Balance. Example: Credit purchase not recorded at all.", "चूक की त्रुटि जब लेन-देन पूर्ण या आंशिक रूप से पुस्तकों में दर्ज नहीं किया जाता।", "वगळल्याची त्रुटी म्हणजे व्यवहार पूर्णपणे किंवा अर्धवट वगळला जातो.", "Errors", ["omission","complete omission","partial omission"]);
+  addQA("What is Error of Commission?", "Errors committed due to wrong recording, wrong posting, wrong totalling, wrong balancing, wrong casting of subsidiary books. These affect Trial Balance agreement. Examples: Purchase book undercast, wrong posting to wrong account.", "गलत प्रविष्टि, पोस्टिंग, कुल योग आदि के कारण होने वाली त्रुटियाँ।", "चुकीची नोंद, पोस्टिंग, बेरीज यामुळे होणाऱ्या त्रुटी.", "Errors", ["commission","wrong posting","undercast"]);
+  addQA("What is Error of Principle?", "Violation of accounting principles. Capital expenditure treated as revenue or vice versa. Does not affect Trial Balance because correct amount is placed on correct side but in wrong account. Example: Wages for machinery installation debited to Wages A/c instead of Machinery A/c.", "लेखांकन सिद्धांतों का उल्लंघन। पूंजीगत व्यय को आयगत व्यय मानना।", "लेखांकन तत्त्वांचे उल्लंघन. भांडवली खर्च हा उत्पन्न खर्च म्हणून दर्शविला जातो.", "Errors", ["principle","capital vs revenue"]);
+  addQA("What are Compensating Errors?", "Two or more errors committed such that their net effect on debit and credit is nil (cancel each other). They do not affect Trial Balance agreement. Example: One debit error of ₹500 and one credit error of ₹500.", "दो या अधिक त्रुटियाँ जिनका शुद्ध प्रभाव शून्य होता है।", "दोन किंवा अधिक त्रुटी ज्यांचा निव्वळ परिणाम शून्य असतो.", "Errors", ["compensating","mutual cancellation"]);
+  addQA("What is Suspense Account?", "Temporary account opened when Trial Balance does not agree. The difference amount is temporarily placed in Suspense A/c. After rectifying all one-sided errors, Suspense A/c automatically closes. Suspense A/c is opened only when difference is due to one-sided errors.", "जब ट्रायल बैलेंस मेल नहीं खाता तब खोला जाने वाला अस्थायी खाता।", "जेव्हा ताळेबंद जुळत नाही तेव्हा उघडलेले तात्पुरते खाते.", "Suspense", ["suspense account","temporary account"]);
+  addQA("Where are rectification entries recorded?", "Rectification entries are recorded in Journal Proper (also called General Journal).", "सुधार प्रविष्टियाँ जर्नल प्रॉपर में दर्ज की जाती हैं।", "सुधार नोंदी जर्नल प्रॉपर मध्ये नोंदवल्या जातात.", "Journal", ["journal proper","rectification book"]);
+
+  // Error tables as per PDF - Types with Examples
+  addQA("What are the four main types of errors in accounting?", "1) Errors of Omission (complete/partial) 2) Errors of Commission (wrong recording, casting, posting) 3) Errors of Principle (violation of accounting principles) 4) Compensating Errors (mutually canceling errors)", "चार मुख्य प्रकार: चूक, कमीशन, सिद्धांत, और क्षतिपूर्ति त्रुटियाँ।", "चार प्रमुख त्रुटी: वगळल्याची, कमिशनची, तत्त्वांची व भरपाईची.", "Classification", ["types of errors"]);
+
+  // Table for Omission
+  function getOmissionTable() {
+    return `<table class="responsive-table"><thead><tr><th>Type</th><th>Meaning</th><th>Example</th></tr></thead><tbody>
+      <tr><td>Complete Omission</td><td>Transaction completely not recorded</td><td>Goods sold on credit but not entered in Sales Book</td></tr>
+      <tr><td>Partial Omission</td><td>Transaction recorded but posting missed</td><td>Sale recorded in Sales Book but not posted to debtor's account</td></tr>
+    </tbody></table>`;
+  }
+  function getCommissionTable() {
+    return `<table class="responsive-table"><thead><tr><th>Sub-Type</th><th>Meaning</th><th>Effect on Trial Balance</th></tr></thead><tbody>
+      <tr><td>Error of Recording</td><td>Wrong amount in original book</td><td>Does not affect (both sides wrong equally)</td></tr>
+      <tr><td>Error of Casting</td><td>Wrong totalling of subsidiary book</td><td>Affects (one side only)</td></tr>
+      <tr><td>Error of Posting</td><td>Wrong posting to ledger</td><td>May affect or not</td></tr>
+      <tr><td>Error of Carrying Forward</td><td>Wrong c/f of balance</td><td>Affects</td></tr>
+    </tbody></table>`;
+  }
+  function getPrincipleTable() {
+    return `<table class="responsive-table"><thead><tr><th>Sub-Type</th><th>Example</th><th>Correct Treatment</th></tr></thead><tbody>
+      <tr><td>Capital treated as Revenue</td><td>Wages for machinery installation debited to Wages A/c</td><td>Debit Machinery A/c</td></tr>
+      <tr><td>Revenue treated as Capital</td><td>Repairs of machinery debited to Machinery A/c</td><td>Debit Repairs A/c</td></tr>
+    </tbody></table>`;
+  }
+
+  // One-sided vs Two-sided errors
+  addQA("What are One-Sided Errors and Two-Sided Errors?", "One-sided errors affect only one account and affect Trial Balance. They are rectified via Suspense Account after Trial Balance. Two-sided errors affect two or more accounts and do not affect Trial Balance; rectified by Journal Entry.", "एकपक्षीय त्रुटियाँ केवल एक खाते को प्रभावित करती हैं। द्विपक्षीय दो या अधिक खातों को प्रभावित करती हैं।", "एकबाजू चुका फक्त एका खात्यावर परिणाम करतात. दोनबाजू चुका दोन किंवा अधिक खात्यांवर.", "Suspense", ["one sided","two sided"]);
+
+  // Practical rectification entries from illustrations
+  addQA("Rectify: Salary paid to Shrikant ₹2,500 wrongly debited to his personal account.", "Journal Entry: Salary A/c Dr. 2,500 To Shrikant's A/c 2,500 (Being salary wrongly debited to personal account now rectified)", "प्रविष्टि: वेतन खाता डेबिट, श्रीकांत खाता क्रेडिट।", "नोंद: पगार खाते नावे, श्रीकांत खाते जमा.", "Rectification", ["salary wrong debit"]);
+  addQA("Rectify: Goods sold to Aryan ₹2,000 on credit not entered in Sales Book.", "Journal Entry: Aryan's A/c Dr. 2,000 To Sales A/c 2,000 (Being omission of credit sale now rectified)", "अर्यान खाता डेबिट, बिक्री खाता क्रेडिट।", "अर्यान खाते नावे, विक्री खाते जमा.", "Rectification", ["omission sale"]);
+  addQA("Rectify: Purchase of goods from Sujit ₹3,000 recorded in Sales Book.", "Journal Entry: Purchases A/c Dr. 3,000, Sales A/c Dr. 3,000 To Sujit's A/c 6,000 (Being wrong entry rectified)", "क्रय खाता व बिक्री खाता डेबिट, सुजीत खाता क्रेडिट।", "खरेदी खाते व विक्री खाते नावे, सुजीत खाते जमा.", "Rectification", ["wrong book entry"]);
+  addQA("Rectify: Repairs to Machinery ₹300 debited to Machinery A/c.", "Journal Entry: Repairs A/c Dr. 300 To Machinery A/c 300 (Being repairs wrongly capitalized now rectified)", "मरम्मत खाता डेबिट, मशीनरी खाता क्रेडिट।", "दुरुस्ती खाते नावे, मशिनरी खाते जमा.", "Rectification", ["repairs capitalised"]);
+  addQA("Rectify: Cash received from Anilkumar ₹4,500 omitted to be posted to his account.", "Journal Entry: Suspense A/c Dr. 4,500 To Anilkumar's A/c 4,500 (Being one-sided error rectified through Suspense A/c)", "सस्पेंस खाता डेबिट, अनिलकुमार खाता क्रेडिट।", "संशय खाते नावे, अनिलकुमार खाते जमा.", "Suspense", ["posting omitted"]);
+  addQA("Rectify: Sales Book overcast by ₹2,000.", "Journal Entry: Sales A/c Dr. 2,000 To Suspense A/c 2,000 (Being overcast of Sales Book rectified)", "बिक्री खाता डेबिट, सस्पेंस खाता क्रेडिट।", "विक्री खाते नावे, संशय खाते जमा.", "Suspense", ["overcast","sales book"]);
+  addQA("Rectify: Purchase Returns Book total ₹3,150 carried forward as ₹1,530 (undercast).", "Journal Entry: Suspense A/c Dr. 1,620 To Purchase Return A/c 1,620 (Being undercast of Purchase Returns Book rectified)", "सस्पेंस खाता डेबिट, क्रय वापसी खाता क्रेडिट।", "संशय खाते नावे, खरेदी परत खाते जमा.", "Suspense", ["purchase return undercast"]);
+  addQA("Rectify: Wages paid for extension of Building ₹9,900 charged to Wages Account.", "Journal Entry: Building A/c Dr. 9,900 To Wages A/c 9,900 (Being capital expenditure wrongly treated as revenue rectified)", "भवन खाता डेबिट, मजदूरी खाता क्रेडिट।", "इमारत खाते नावे, मजुरी खाते जमा.", "Rectification", ["capital wages"]);
+  addQA("Rectify: Life Insurance Premium of proprietor ₹1,500 debited to Insurance A/c.", "Journal Entry: Drawings A/c Dr. 1,500 To Insurance A/c 1,500 (Being personal expense wrongly debited to Insurance A/c)", "आहरण खाता डेबिट, बीमा खाता क्रेडिट।", "आहरण खाते नावे, विमा खाते जमा.", "Rectification", ["drawings","insurance"]);
+  addQA("Rectify: Sale of old Furniture ₹2,000 treated as sale of goods.", "Journal Entry: Sales A/c Dr. 2,000 To Furniture A/c 2,000 (Being sale of asset wrongly recorded as goods sale rectified)", "बिक्री खाता डेबिट, फर्नीचर खाता क्रेडिट।", "विक्री खाते नावे, फर्निचर खाते जमा.", "Rectification", ["asset sale"]);
+
+  // Theory / Objective Qs
+  addQA("True or False: Trial Balance can agree even if there are errors.", "True. Certain errors like complete omission, errors of principle, compensating errors do not affect Trial Balance agreement.", "सही। कुछ त्रुटियाँ ट्रायल बैलेंस को प्रभावित नहीं करतीं।", "बरोबर. काही चुकांचा ताळेबंदीवर परिणाम होत नाही.", "True/False", ["trial balance errors"]);
+  addQA("True or False: Rectification entries are passed in Cash Book.", "False. Rectification entries are recorded in Journal Proper, not in Cash Book.", "गलत। सुधार प्रविष्टियाँ जर्नल प्रॉपर में दर्ज की जाती हैं।", "चुकीचे. सुधार नोंदी जर्नल प्रॉपर मध्ये होतात.", "True/False", ["rectification book"]);
+  addQA("Fill in the blank: Suspense Account is opened when ______ does not tally.", "Trial Balance", "ट्रायल बैलेंस", "ताळेबंद", "Fillup", ["suspense","trial balance"]);
+
+  // Additional rectification examples from PDF
+  addQA("Rectify: Goods for ₹7,500 purchased from Vaishali Traders on credit, no entry passed.", "Purchases A/c Dr. 7,500 To Vaishali Traders A/c 7,500 (Being omission of credit purchase rectified)", "क्रय खाता डेबिट, वैशाली ट्रेडर्स क्रेडिट।", "खरेदी खाते नावे, वैशाली ट्रेडर्स जमा.", "Rectification", ["credit purchase omitted"]);
+  addQA("Rectify: Goods sold to Anjali Traders ₹3,000 entered in Sales Book as ₹300 only.", "Anjali Traders A/c Dr. 2,700 To Sales A/c 2,700 (Being short recording rectified)", "अंजलि ट्रेडर्स डेबिट, बिक्री क्रेडिट।", "अंजली ट्रेडर्स नावे, विक्री जमा.", "Rectification", ["short recording"]);
+  addQA("Rectify: Total of Return Inward Book overcast by ₹200.", "No journal entry for one-sided error affecting only one account. Credit Returns Inward A/c with ₹200 to cancel excess debit.", "एकपक्षीय त्रुटि के लिए कोई जर्नल प्रविष्टि नहीं।", "एकबाजू चुकेसाठी जर्नल नोंद नाही.", "Suspense", ["overcast return inward"]);
+  addQA("What is the treatment when error is detected after preparation of Final Accounts?", "If error is detected after Final Accounts, then rectification is done by adjusting the opening balance of the next year's Profit & Loss Adjustment Account or Capital Account for material errors.", "अंतिम खाते बनाने के बाद त्रुटि मिलने पर लाभ-हानि समायोजन खाते से सुधार।", "अंतिम खाती केल्यानंतर चूक आढळल्यास पुढील वर्षाच्या नफा-तोटा समायोजन खात्यातून सुधार.", "Advanced", ["after final accounts"]);
+
+  // Suspense Account illustration summary
+  function getSuspenseFormat() {
+    return `<table class="responsive-table"><thead><tr><th>Dr. Suspense Account</th><th>₹</th><th>Cr. Suspense Account</th><th>₹</th></tr></thead>
+      <tbody><tr><td>To Difference in Trial Balance (Opening)</td><td>XXX</td><td>By Rectification entries (credits)</td><td>XXX</td></tr>
+      <tr><td>To Rectification entries (debits)</td><td>XXX</td><td>By Balance c/d (if any)</td><td>XXX</td></tr></tbody></table>`;
+  }
+
+  // Helper functions
+  const searchInput = document.getElementById("searchInput");
+  const resultsContainer = document.getElementById("resultsContainer");
+  const suggestionsDiv = document.getElementById("suggestionsList");
+
+  function getMatches(query) {
+    if(!query.trim()) return [];
+    const lower = query.toLowerCase();
+    return qaDatabase.filter(item => 
+      item.question.toLowerCase().includes(lower) || 
+      item.answer.toLowerCase().includes(lower) ||
+      item.category.toLowerCase().includes(lower) ||
+      item.keywords.some(k => k.includes(lower) || lower.includes(k))
+    ).slice(0, 14);
+  }
+
+  function updateSuggestions() {
+    const val = searchInput.value;
+    if(!val.trim()) { suggestionsDiv.style.display = "none"; return; }
+    const matches = getMatches(val);
+    if(!matches.length) { suggestionsDiv.style.display = "none"; return; }
+    suggestionsDiv.innerHTML = "";
+    matches.forEach(item => {
+      const div = document.createElement("div");
+      div.className = "suggestion-item";
+      div.innerHTML = `<span>📝</span> <strong>${item.question.substring(0,70)}...</strong> <span style="margin-left:auto; background:#fef3c7; padding:2px 10px; border-radius:20px;">${item.category}</span>`;
+      div.addEventListener("click", () => {
+        searchInput.value = item.question;
+        suggestionsDiv.style.display = "none";
+        performSearch(item.question);
+      });
+      suggestionsDiv.appendChild(div);
+    });
+    suggestionsDiv.style.display = "block";
+  }
+
+  function performSearch(query = null) {
+    let q = (query !== null) ? query : searchInput.value;
+    q = q.trim();
+    if(!q) { resultsContainer.innerHTML = `<div class="not-found">🔍 Search: Rectification, Suspense Account, Error of Omission, Principle, Commission, Compensating.</div>`; return; }
+    const matches = getMatches(q);
+    if(!matches.length) { resultsContainer.innerHTML = `<div class="not-found">❌ No results for "${q}". Try: Suspense A/c, Error of Principle, Rectification entry.</div>`; return; }
+    resultsContainer.innerHTML = "";
+    matches.forEach(item => {
+      let extraContent = "";
+      if (item.question.toLowerCase().includes("error of omission") && item.question.toLowerCase().includes("types")) extraContent = getOmissionTable();
+      else if (item.question.toLowerCase().includes("error of commission") && item.question.toLowerCase().includes("types")) extraContent = getCommissionTable();
+      else if (item.question.toLowerCase().includes("error of principle") && item.question.toLowerCase().includes("types")) extraContent = getPrincipleTable();
+      else if (item.question.toLowerCase().includes("suspense account format")) extraContent = getSuspenseFormat();
+      else if (item.category === "Rectification" && item.answer.includes("Journal Entry")) {
+        extraContent = `<div class="formula-box">📘 Rectification Entry: ${item.answer.substring(0,150)}</div>`;
+      }
+      const card = document.createElement("div");
+      card.className = "result-card";
+      card.innerHTML = `
+        <div class="badge">${escapeHtml(item.category)}</div>
+        <h3>📖 ${escapeHtml(item.question)}</h3>
+        <div class="answer-text"><strong>✅ Answer / उत्तर:</strong><br>${escapeHtml(item.answer)}${extraContent}</div>
+        <div class="action-buttons">
+          <button class="langBtn" data-q="${escapeAttr(item.question)}" data-a="${escapeAttr(item.answer)}" data-hi="${escapeAttr(item.hindi)}" data-mr="${escapeAttr(item.marathi)}">🌐 हिंदी / मराठी</button>
+          <button class="detailBtn" data-q="${escapeAttr(item.question)}" data-a="${escapeAttr(item.answer)}" data-cat="${item.category}">📘 Rules & Procedure</button>
+        </div>
+      `;
+      resultsContainer.appendChild(card);
+    });
+    attachEvents();
+  }
+
+  function attachEvents() {
+    document.querySelectorAll(".langBtn").forEach(btn => btn.addEventListener("click", (e) => {
+      const q = btn.getAttribute("data-q"), a= btn.getAttribute("data-a"), hi=btn.getAttribute("data-hi"), mr=btn.getAttribute("data-mr");
+      showLangPopup(q,a,hi,mr);
+    }));
+    document.querySelectorAll(".detailBtn").forEach(btn => btn.addEventListener("click", (e) => {
+      const q = btn.getAttribute("data-q"), a= btn.getAttribute("data-a"), cat=btn.getAttribute("data-cat");
+      showDetailPopup(q,a,cat);
+    }));
+  }
+
+  function showLangPopup(question, answer, hindi, marathi) {
+    document.getElementById("popupModal").style.display = "flex";
+    document.getElementById("modalContent").innerHTML = `
+      <h2 style="color:#b45309;">🌐 भाषा अनुवाद | Translation</h2>
+      <div class="lang-section"><strong>❓ प्रश्न:</strong> ${escapeHtml(question)}</div>
+      <div class="lang-section"><strong>🇮🇳 हिंदी (Hindi):</strong><br>${escapeHtml(hindi || answer)}</div>
+      <div class="lang-section"><strong>🇮🇳 मराठी (Marathi):</strong><br>${escapeHtml(marathi || answer)}</div>
+      <button id="closeLangModal" style="background:#d97706; padding:10px 24px; border-radius:40px; color:white; border:none;">बंद करें</button>
+    `;
+    document.getElementById("closeLangModal").addEventListener("click", ()=> document.getElementById("popupModal").style.display = "none");
+  }
+
+  function showDetailPopup(question, answer, category) {
+    let extra = `<div class="lang-section"><strong>📚 Chapter Reference:</strong> 11th BK Chapter 8 - Rectification of Errors. Errors: Omission, Commission, Principle, Compensating. Suspense Account used for one-sided errors.</div>`;
+    if(category === "Suspense") extra += `<div class="lang-section">⚖️ Suspense Account is temporary. After rectifying all one-sided errors, Suspense Account automatically closes.</div>`;
+    if(category === "Rectification") extra += `<div class="lang-section">📝 Rectification Entry = Reverse Wrong Entry + Pass Correct Entry. Recorded in Journal Proper.</div>`;
+    document.getElementById("popupModal").style.display = "flex";
+    document.getElementById("modalContent").innerHTML = `
+      <h2 class="detail-title">📘 Detailed Explanation (विस्तृत उत्तर)</h2>
+      <div class="lang-section"><strong>❓ Question:</strong> ${escapeHtml(question)}</div>
+      <div class="lang-section"><strong>✅ Detailed Answer:</strong><br>${escapeHtml(answer)}</div>
+      ${extra}
+      <button id="closeDetailModal" style="background:#d97706; padding:10px 24px; border-radius:40px; color:white; border:none;">Close</button>
+    `;
+    document.getElementById("closeDetailModal").addEventListener("click", ()=> document.getElementById("popupModal").style.display = "none");
+  }
+
+  function escapeHtml(str) { return str.replace(/[&<>]/g, function(m){ if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m;}); }
+  function escapeAttr(str) { return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  function startVoice() { if (!('webkitSpeechRecognition' in window)) { alert("Voice not supported."); return; } const rec = new webkitSpeechRecognition(); rec.lang="en-IN"; rec.start(); rec.onresult = (e)=> { searchInput.value = e.results[0][0].transcript; performSearch(); }; }
+  document.getElementById("voiceBtn").addEventListener("click", startVoice);
+  searchInput.addEventListener("keyup", () => { performSearch(); updateSuggestions(); });
+  searchInput.addEventListener("focus", updateSuggestions);
+  document.addEventListener("click", (e) => { if(!document.querySelector(".search-wrapper").contains(e.target)) suggestionsDiv.style.display = "none"; });
+  document.getElementById("closeModalBtn").addEventListener("click", () => document.getElementById("popupModal").style.display = "none");
+  window.onload = () => { resultsContainer.innerHTML = `<div class="not-found">✨ Chapter 8: Rectification of Errors | ${qaDatabase.length}+ Q&A | Types, Suspense A/c, Rectification Entries ✨</div>`; };
+</script>
+</body>
+</html>

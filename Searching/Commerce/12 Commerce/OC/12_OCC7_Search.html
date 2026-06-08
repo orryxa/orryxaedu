@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>🛡️ Consumer Protection | 12th OC Chapter 7 | Rights · Responsibilities · Redressal Machinery · Consumer Act 2019</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    body {
+      background: linear-gradient(145deg, #fff7ed, #ffedd5);
+      min-height: 100vh;
+      padding: 24px 18px;
+      color: #7c2d12;
+      overflow-y: scroll;
+      scrollbar-width: thin;
+    }
+    .container { max-width: 1350px; margin: 0 auto; }
+    .heading { text-align: center; margin-bottom: 35px; animation: slideDown 0.5s ease; }
+    .heading h1 {
+      font-size: 2rem;
+      background: linear-gradient(135deg, #9a3412, #ea580c, #f97316);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+    }
+    .heading p { color: #9a3412; margin-top: 10px; font-weight: 700; background: #ffffffcc; display: inline-block; padding: 5px 20px; border-radius: 40px; backdrop-filter: blur(4px);}
+    .rating-star { background: #fed7aa; border-radius: 60px; padding: 4px 16px; display: inline-block; font-weight: bold; margin-top: 8px; color: #7c2d12; }
+    .search-wrapper { position: relative; margin-bottom: 32px; }
+    .search-box {
+      background: white;
+      border-radius: 60px;
+      padding: 6px 6px 6px 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.12);
+      border: 1px solid #fdba74;
+    }
+    .search-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      padding: 15px 0;
+      background: transparent;
+      color: #1f2937;
+      font-weight: 500;
+    }
+    .icon-btn {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(145deg, #ea580c, #9a3412);
+      color: white;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: 0.25s;
+      box-shadow: 0 4px 12px rgba(234,88,12,0.4);
+    }
+    .icon-btn:hover { transform: scale(1.05); background: #f97316; }
+    .suggestions-dropdown {
+      position: absolute;
+      top: calc(100% + 12px);
+      left: 0;
+      right: 0;
+      background: white;
+      border-radius: 32px;
+      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.2);
+      z-index: 120;
+      max-height: 280px;
+      overflow-y: auto;
+      display: none;
+      border: 1px solid #fdba74;
+    }
+    .suggestion-item {
+      padding: 14px 24px;
+      color: #1f2937;
+      cursor: pointer;
+      border-bottom: 1px solid #ffedd5;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      transition: 0.2s;
+    }
+    .suggestion-item:hover { background: #ffedd5; padding-left: 32px; }
+    .result-container { display: flex; flex-direction: column; gap: 24px; margin-top: 20px; }
+    .result-card {
+      background: white;
+      border-radius: 32px;
+      padding: 1.8rem;
+      color: #1f2937;
+      box-shadow: 0 12px 30px -10px rgba(0,0,0,0.08);
+      transition: 0.25s ease;
+      border: 1px solid #fdba74;
+    }
+    .result-card:hover { transform: translateY(-4px); box-shadow: 0 20px 30px -12px rgba(0,0,0,0.12); }
+    .badge {
+      background: #ffedd5;
+      color: #9a3412;
+      display: inline-block;
+      padding: 5px 16px;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+    .result-card h3 {
+      color: #7c2d12;
+      font-size: 1.35rem;
+      border-left: 6px solid #f97316;
+      padding-left: 18px;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+    .answer-text {
+      background: #fff7ed;
+      padding: 18px 24px;
+      border-radius: 28px;
+      line-height: 1.7;
+      margin: 12px 0;
+      border: 1px solid #fdba74;
+    }
+    .answer-text table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 0.9rem;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .answer-text th, .answer-text td {
+      border: 1px solid #fed7aa;
+      padding: 10px 12px;
+      text-align: left;
+      background: white;
+    }
+    .answer-text th { background: #ea580c; color: white; font-weight: 700; }
+    .formula-box {
+      background: #ffedd5;
+      padding: 12px 18px;
+      border-radius: 28px;
+      font-size: 0.95rem;
+      margin: 14px 0;
+      text-align: center;
+      border-left: 6px solid #f97316;
+      font-weight: 600;
+    }
+    .action-buttons { margin-top: 22px; display: flex; gap: 15px; flex-wrap: wrap; }
+    .action-buttons button {
+      border: none;
+      padding: 10px 26px;
+      border-radius: 50px;
+      font-weight: 700;
+      background: #fff7ed;
+      color: #7c2d12;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .action-buttons button:last-child { background: #f97316; color: white; box-shadow: 0 2px 8px rgba(249,115,22,0.3);}
+    .action-buttons button:hover { transform: scale(0.97); opacity: 0.9; }
+    .not-found {
+      background: #fff7ed;
+      border-radius: 48px;
+      padding: 2.5rem;
+      text-align: center;
+      font-size: 1.1rem;
+      color: #9a3412;
+      border: 1px solid #fdba74;
+    }
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(10px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    .popup-box {
+      background: white;
+      max-width: 1100px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      border-radius: 48px;
+      padding: 30px 34px;
+      position: relative;
+      color: #1e293b;
+    }
+    .close-popup {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      background: #fee2e2;
+      border: none;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+    .lang-section { background: #fff7ed; padding: 20px; border-radius: 28px; margin-bottom: 20px; border-left: 5px solid #f97316; }
+    .lang-section h4 { color: #7c2d12; margin-bottom: 12px; font-size: 1.2rem; }
+    .detail-table { width: 100%; border-collapse: collapse; margin: 16px 0; background: white; border-radius: 20px; overflow: hidden; }
+    .detail-table th { background: #ea580c; color: white; padding: 12px; text-align: left; }
+    .detail-table td { border: 1px solid #fed7aa; padding: 10px 12px; vertical-align: top; }
+    .ascii-art {
+      background: #0f172a;
+      color: #fdba74;
+      font-family: monospace;
+      font-size: 12px;
+      padding: 16px;
+      border-radius: 20px;
+      overflow-x: auto;
+      white-space: pre;
+      margin: 16px 0;
+      text-align: center;
+    }
+    .hierarchy-tree {
+      background: #f8fafc;
+      border-radius: 20px;
+      padding: 16px;
+      text-align: center;
+      font-weight: bold;
+    }
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 650px) {
+      body { padding: 16px 12px; }
+      .heading h1 { font-size: 1.4rem; }
+      .result-card h3 { font-size: 1.1rem; }
+      .result-card { padding: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="heading">
+    <h1>🛡️ Consumer Protection | 12th OC Chapter 7</h1>
+    <p>🛒 Consumer Rights · Responsibilities · Need for Protection · Consumer Protection Act 2019 · District/State/National Commission · NGOs</p>
+    <div class="rating-star">⭐ Rating: 10/10 — Detailed Tables & Graphical Explanations</div>
+  </div>
+  <div class="search-wrapper">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="🔎 Search: Consumer rights, Consumer responsibilities, Need for consumer protection, District Commission, State Commission, National Commission, Lok Adalat, PIL, NGOs...">
+      <button class="icon-btn" id="voiceBtn">🎤</button>
+    </div>
+    <div id="suggestionsList" class="suggestions-dropdown"></div>
+  </div>
+  <div class="result-container" id="resultsContainer">
+    <div class="not-found">🛡️ Consumer Protection Explorer — Search: Consumer Rights (10 Rights), Responsibilities, Need, Consumer Protection Act 2019, 3-Tier Redressal Machinery ✨</div>
+  </div>
+</div>
+<div class="popup-overlay" id="popupModal">
+  <div class="popup-box">
+    <button class="close-popup" id="closeModalBtn">✖</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+  const qaDatabase = [];
+  function addQA(question, answer, category, keywords = [], detailedHTML = null) {
+    qaDatabase.push({ id: qaDatabase.length+1, question, answer, category, keywords: keywords.map(k=>k.toLowerCase()), detailedHTML });
+  }
+
+  // ========== CHAPTER 7: CONSUMER PROTECTION ==========
+  
+  addQA("What are the Rights of Consumers? (10 Rights)",
+    `<strong>10 Consumer Rights</strong> (originally declared by J.F. Kennedy on 15th March 1962 - World Consumer Rights Day)<br><br>
+     <table class="detail-table">
+        <tr><th>#</th><th>Right</th><th>Explanation</th></tr>
+        <tr><td>1</td><td>Right to Safety</td><td>Protection against hazardous products (ISI, AGMARK, BIS, Hallmark)</td></tr>
+        <tr><td>2</td><td>Right to Information</td><td>Full details: price, manufacturer, expiry date, user manual</td></tr>
+        <tr><td>3</td><td>Right to Choose</td><td>Freedom to select any product; no forced buying</td></tr>
+        <tr><td>4</td><td>Right to be Heard</td><td>Voice complaints; online complaint filing available</td></tr>
+        <tr><td>5</td><td>Right to Consumer Education</td><td>Knowledge of rights; 'Jago Grahak Jago' campaign</td></tr>
+        <tr><td>6</td><td>Right to Represent</td><td>Can be represented by non-advocate in consumer forums</td></tr>
+        <tr><td>7</td><td>Right to Redress</td><td>Claim repair/replacement/compensation via 3-tier machinery</td></tr>
+        <tr><td>8</td><td>Right to Healthy Environment</td><td>Demand action against pollution-causing businesses</td></tr>
+        <tr><td>9</td><td>Right against Unfair Business Practices</td><td>Protected against black marketing, profiteering, adulteration</td></tr>
+        <tr><td>10</td><td>Right against Spurious Goods</td><td>Against hazardous, spurious, dangerous products</td></tr>
+      </table>
+     <div class="ascii-art">
+   ╔═══════════════════════════════════════════════════════════╗
+   ║              CONSUMER RIGHTS - QUICK REFERENCE            ║
+   ╠═══════════════════════════════════════════════════════════╣
+   ║  🛡️ Safety  │ 📋 Info  │ 🎯 Choice  │ 🎤 Heard  │ 🎓 Education  ║
+   ║  ⚖️ Represent│ 💰 Redress│ 🌿 Environment│ 🚫 Unfair│ ⚠️ Spurious  ║
+   ╚═══════════════════════════════════════════════════════════╝
+     </div>`,
+    "Consumer Rights", ["consumer rights", "10 rights", "right to safety", "right to information"]);
+
+  addQA("What are the Responsibilities of Consumers?",
+    `<table class="detail-table">
+        <tr><th>#</th><th>Responsibility</th><th>Description</th></tr>
+        <tr><td>1</td><td>Use your rights</td><td>Be aware and exercise consumer rights while buying</td></tr>
+        <tr><td>2</td><td>Be Cautious</td><td>Enquire about quality, quantity, price, utility</td></tr>
+        <tr><td>3</td><td>File Complaint</td><td>Approach officer concerned without delay</td></tr>
+        <tr><td>4</td><td>Quality Conscious</td><td>Look for ISI, AGMARK, Hallmark, FPO, FSSAI</td></tr>
+        <tr><td>5</td><td>Beware of Advertisements</td><td>Identify truth behind exaggerated ads</td></tr>
+        <tr><td>6</td><td>Demand Invoice</td><td>Always take bill, guarantee/warranty card</td></tr>
+        <tr><td>7</td><td>Pre-planned Buying</td><td>Don't buy in hurry; estimate quantity and place</td></tr>
+        <tr><td>8</td><td>Organised Efforts</td><td>Support consumer protection associations</td></tr>
+      </table>
+     <div class="formula-box">💡 Mahatma Gandhi: "A consumer is the most important visitor... He is not dependent on us. We are dependent on him."</div>`,
+    "Consumer Responsibilities", ["consumer responsibilities", "duties of consumer"]);
+
+  addQA("What is the Need for Consumer Protection?",
+    `<table class="detail-table">
+        <tr><th>#</th><th>Need</th><th>Explanation</th></tr>
+        <tr><td>1</td><td>Participation of consumers</td><td>Consumers should be involved in decision making</td></tr>
+        <tr><td>2</td><td>Lack of information</td><td>Consumers scattered; difficult to get reliable info</td></tr>
+        <tr><td>3</td><td>Ignorance</td><td>Most Indian consumers ignorant about rights</td></tr>
+        <tr><td>4</td><td>Unorganized Consumers</td><td>Sellers are powerful; individual can't fight</td></tr>
+        <tr><td>5</td><td>Spurious Goods</td><td>Increasing duplicate products; hard to distinguish</td></tr>
+        <tr><td>6</td><td>Misleading Advertising</td><td>False claims about quality, safety, utility</td></tr>
+        <tr><td>7</td><td>Malpractices of Businessmen</td><td>Fraudulent, unethical, monopolistic practices</td></tr>
+        <tr><td>8</td><td>Trusteeship</td><td>Gandhian philosophy - businessmen are trustees of society's wealth</td></tr>
+      </table>`,
+    "Consumer Protection Need", ["need for consumer protection", "importance"]);
+
+  addQA("What are the 3-Tier Redressal Machinery under Consumer Protection Act 2019?",
+    `<strong>Three-Tier Quasi-Judicial Machinery</strong><br><br>
+     <table class="detail-table">
+        <tr><th>Level</th><th>Commission</th><th>President</th><th>Members</th><th>Monetary Jurisdiction</th></tr>
+        <tr><td>District</td><td>District Commission</td><td>Sitting/retired/qualified District Judge</td><td>2+ members</td><td>Up to ₹1 crore</td></tr>
+        <tr><td>State</td><td>State Commission</td><td>Sitting/retired High Court Judge</td><td>4+ members</td><td>₹1 crore to ₹10 crore</td></tr>
+        <tr><td>National</td><td>National Commission</td><td>Sitting/retired Supreme Court Judge</td><td>4+ members</td><td>Above ₹10 crore</td></tr>
+      </table>
+     <div class="ascii-art">
+              THREE-TIER CONSUMER REDRESSAL MACHINERY
+                    
+                    ┌─────────────────┐
+                    │  SUPREME COURT  │ ← Appeal
+                    └────────┬────────┘
+                             │
+                    ┌────────▼────────┐
+                    │ NATIONAL COMM.  │ (Above ₹10 Cr)
+                    │ (President: SC Judge)│
+                    └────────┬────────┘
+                             │ Appeal
+                    ┌────────▼────────┐
+                    │ STATE COMMISSION│ (₹1 Cr - ₹10 Cr)
+                    │ (President: HC Judge)│
+                    └────────┬────────┘
+                             │ Appeal
+                    ┌────────▼────────┐
+                    │DISTRICT COMMISSION│ (Up to ₹1 Cr)
+                    │(President: District Judge)│
+                    └─────────────────┘
+     </div>`,
+    "Redressal Machinery", ["district commission", "state commission", "national commission", "3 tier", "consumer courts"]);
+
+  addQA("What are the Ways and Means of Consumer Protection?",
+    `<table class="detail-table">
+        <tr><th>#</th><th>Way/Mean</th><th>Description</th></tr>
+        <tr><td>1</td><td>Lok Adalat</td><td>'People's Court' - effective, economical, dispute resolution by compromise</td></tr>
+        <tr><td>2</td><td>Public Interest Litigation (PIL)</td><td>Legal action for matter of general public interest; filed in High Court/Supreme Court</td></tr>
+        <tr><td>3</td><td>Redressal Forums</td><td>District/State/National Commissions under Consumer Protection Act 2019</td></tr>
+        <tr><td>4</td><td>Awareness Programme</td><td>Journals, brochures, TV/radio programs; National Consumer Day (24th Dec), World Consumer Rights Day (15th March)</td></tr>
+        <tr><td>5</td><td>Consumer Organizations</td><td>NGOs like CGSI, VOICE, CERC, Mumbai Grahak Panchayat</td></tr>
+        <tr><td>6</td><td>Consumer Welfare Fund (CWF)</td><td>Financial assistance for consumer movement, training, product testing</td></tr>
+        <tr><td>7</td><td>Legislative Measures</td><td>Sale of Goods Act 1930, BIS Act 1969, Food Safety Act 2006, Consumer Protection Act 2019</td></tr>
+      </table>`,
+    "Consumer Protection Ways", ["ways of consumer protection", "lok adalat", "pil", "consumer welfare fund"]);
+
+  addQA("What is the composition of District Commission under Consumer Protection Act 2019?",
+    `<strong>District Consumer Disputes Redressal Commission</strong><br><br>
+     <table class="detail-table">
+        <tr><th>Particular</th><th>Details</th></tr>
+        <tr><td>President</td><td>Sitting or retired or qualified to be a District Judge</td></tr>
+        <tr><td>Members</td><td>Not less than 2, not more than prescribed (consultation with Central Govt)</td></tr>
+        <tr><td>Member Tenure</td><td>5 years or up to age 65 years (whichever earlier)</td></tr>
+        <tr><td>Member Qualification</td><td>Age 35+ years, Bachelor's degree, 10+ years experience in economics/law/commerce/accountancy</td></tr>
+        <tr><td>Territorial Jurisdiction</td><td>Entire district where established</td></tr>
+        <tr><td>Monetary Jurisdiction</td><td>Value of goods/services does NOT exceed ₹1 crore</td></tr>
+        <tr><td>Appeal</td><td>To State Commission within 45 days</td></td>
+      </table>`,
+    "District Commission", ["district commission composition", "district forum"]);
+
+  addQA("What is the composition of State Commission under Consumer Protection Act 2019?",
+    `<strong>State Consumer Disputes Redressal Commission</strong><br><br>
+     <table class="detail-table">
+        <tr><th>Particular</th><th>Details</th></tr>
+        <tr><td>President</td><td>Sitting or retired Judge of High Court (appointed by State Govt in consultation with Chief Justice of HC)</td></tr>
+        <tr><td>Members</td><td>Not less than 4, not more than prescribed</td></tr>
+        <tr><td>Member Tenure</td><td>5 years or up to age 67 years (whichever earlier)</td></tr>
+        <tr><td>Member Qualification</td><td>Age 35+ years, Bachelor's degree, 10+ years experience</td></tr>
+        <tr><td>Territorial Jurisdiction</td><td>Within geographical limits of the state</td></tr>
+        <tr><td>Monetary Jurisdiction</td><td>Exceeds ₹1 crore but does NOT exceed ₹10 crore</td></tr>
+        <tr><td>Appeal</td><td>To National Commission within 30 days</td></tr>
+      </table>`,
+    "State Commission", ["state commission composition"]);
+
+  addQA("What is the composition of National Commission under Consumer Protection Act 2019?",
+    `<strong>National Consumer Disputes Redressal Commission (NCDRC)</strong><br><br>
+     <table class="detail-table">
+        <tr><th>Particular</th><th>Details</th></tr>
+        <tr><td>President</td><td>Sitting or retired Judge of Supreme Court (appointed by Central Govt in consultation with Chief Justice of India)</td></tr>
+        <tr><td>Members</td><td>Not less than 4, not more than prescribed</td></tr>
+        <tr><td>Member Tenure</td><td>5 years; President up to age 70 years, Members up to age 67 years</td></tr>
+        <tr><td>Member Qualification</td><td>Age 35+ years, Bachelor's degree, 10+ years experience</td></tr>
+        <tr><td>Territorial Jurisdiction</td><td>Entire country</td></tr>
+        <tr><td>Monetary Jurisdiction</td><td>Exceeds ₹10 crore</td></tr>
+        <tr><td>Appeal</td><td>To Supreme Court within 30 days</td></tr>
+      </table>
+     <div class="formula-box">⚠️ Penalty for non-compliance: Imprisonment 1 month to 3 years OR fine ₹25,000 to ₹1,00,000 OR both.</div>`,
+    "National Commission", ["national commission composition", "ncdrc"]);
+
+  addQA("What is the role of Consumer Organizations and NGOs in Consumer Protection?",
+    `<strong>Role of Consumer Organizations & NGOs</strong><br><br>
+     <table class="detail-table">
+        <tr><th>Role</th><th>Description</th></tr>
+        <tr><td>1. Campaigns</td><td>Organize campaigns and programmes on consumer issues to create awareness</td></tr>
+        <tr><td>2. Training</td><td>Train consumers about rights and redressal modes</td></tr>
+        <tr><td>3. Publications</td><td>Publish periodicals to enlighten consumers</td></tr>
+        <tr><td>4. Legal Advice</td><td>Free legal advice and help for grievances</td></tr>
+        <tr><td>5. Interaction</td><td>Interact with businessmen and Chambers of Commerce</td></tr>
+        <tr><td>6. PIL</td><td>File Public Interest Litigation on important consumer issues</td></tr>
+      </table>
+     <strong>Examples of NGOs in India:</strong><br>
+     • Consumer Guidance Society of India (CGSI)<br>
+     • VOICE (Voluntary Organisation in Interest of Consumer Education)<br>
+     • CERC (Consumer Education and Research Centre)<br>
+     • Mumbai Grahak Panchayat<br>
+     • Grahak Shakti`,
+    "NGOs", ["consumer organizations", "ngos", "role of ngos"]);
+
+  addQA("What is Lok Adalat and Public Interest Litigation (PIL) in consumer protection?",
+    `<table class="detail-table">
+        <tr><th>Mechanism</th><th>Meaning</th><th>Key Features</th></tr>
+        <tr><td><strong>Lok Adalat</strong></td><td>'People's Court' - dispute resolution by compromise</td><td>• Effective & economical<br>• Aggrieved party directly approaches<br>• Decisions get statutory recognition<br>• Used by MSEDCL, MSRTC, Railways, Insurance companies</td></tr>
+        <tr><td><strong>Public Interest Litigation (Janahit Yachika)</strong></td><td>Legal action for matter of general public interest</td><td>• Any person can approach court for society's interest<br>• Filed in High Court or Supreme Court directly<br>• Provides remedy to unrepresented groups</td></tr>
+      </table>`,
+    "Legal Mechanisms", ["lok adalat", "public interest litigation", "pil"]);
+
+  // Search Logic
+  const searchInput = document.getElementById("searchInput");
+  const resultsContainer = document.getElementById("resultsContainer");
+  const suggestionsDiv = document.getElementById("suggestionsList");
+
+  function getMatches(q) {
+    const lower = q.toLowerCase();
+    return qaDatabase.filter(item => 
+      item.question.toLowerCase().includes(lower) || 
+      item.answer.toLowerCase().includes(lower) ||
+      item.category.toLowerCase().includes(lower) ||
+      item.keywords.some(k => k.includes(lower))
+    ).slice(0, 18);
+  }
+
+  function updateSuggestions() {
+    const val = searchInput.value.trim();
+    if(!val) { suggestionsDiv.style.display = "none"; return; }
+    const matches = getMatches(val);
+    if(!matches.length) { suggestionsDiv.style.display = "none"; return; }
+    suggestionsDiv.innerHTML = "";
+    matches.forEach(item => {
+      const div = document.createElement("div");
+      div.className = "suggestion-item";
+      div.innerHTML = `<span>🛡️</span> <strong>${item.question.substring(0,70)}</strong> <span style="margin-left:auto; background:#ffedd5; padding:2px 12px; border-radius:30px;">${item.category}</span>`;
+      div.addEventListener("click", () => {
+        searchInput.value = item.question;
+        suggestionsDiv.style.display = "none";
+        performSearch(item.question);
+      });
+      suggestionsDiv.appendChild(div);
+    });
+    suggestionsDiv.style.display = "block";
+  }
+
+  function performSearch(q = null) {
+    let query = (q !== null) ? q : searchInput.value.trim();
+    if(!query) { resultsContainer.innerHTML = `<div class="not-found">🛡️ Search: Consumer rights (10 rights), Consumer responsibilities, Need for protection, District/State/National Commission, Lok Adalat, PIL, NGOs...</div>`; return; }
+    const matches = getMatches(query);
+    if(!matches.length) { resultsContainer.innerHTML = `<div class="not-found">❌ No results. Try: Consumer rights, Consumer responsibilities, District Commission, State Commission, National Commission, Lok Adalat, PIL.</div>`; return; }
+    resultsContainer.innerHTML = "";
+    matches.forEach(item => {
+      const card = document.createElement("div");
+      card.className = "result-card";
+      card.innerHTML = `
+        <div class="badge">📌 ${escapeHtml(item.category)}</div>
+        <h3>📘 ${escapeHtml(item.question)}</h3>
+        <div class="answer-text"><strong>✅ Detailed Answer:</strong><br>${item.answer}</div>
+        <div class="action-buttons">
+          <button class="detailBtn" data-id="${item.id}">🔍 In-Depth Explanation + Visuals</button>
+          <button class="extraTableBtn" data-cat="${item.category}">📊 Quick Reference Tables</button>
+        </div>
+      `;
+      resultsContainer.appendChild(card);
+    });
+    attachEvents(matches);
+  }
+
+  function attachEvents(matchesArray) {
+    document.querySelectorAll(".detailBtn").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const id = parseInt(btn.getAttribute("data-id"));
+        const item = qaDatabase.find(i => i.id === id);
+        if(item) showDetailedModal(item);
+      });
+    });
+    document.querySelectorAll(".extraTableBtn").forEach(btn => {
+      btn.addEventListener("click", () => showQuickTables());
+    });
+  }
+
+  function showDetailedModal(item) {
+    let detailedContent = `
+      <div class="lang-section">
+        <h4>❓ Question</h4>
+        <p style="font-size:1.1rem; font-weight:500;">${escapeHtml(item.question)}</p>
+      </div>
+      <div class="lang-section">
+        <h4>✅ Comprehensive Answer</h4>
+        <div>${item.answer}</div>
+      </div>
+    `;
+    
+    if(item.category === "Consumer Rights") {
+      detailedContent += `<div class="lang-section"><h4>📅 Historical Background</h4><div class="ascii-art">
+   15th March 1962 - President J.F. Kennedy (USA) declared Consumer Rights
+   → Observed as WORLD CONSUMER RIGHTS DAY
+   
+   India: National Consumer Day - 24th December (Consumer Protection Act 1986 enacted)
+      </div></div>`;
+    }
+    if(item.category === "Redressal Machinery") {
+      detailedContent += `<div class="lang-section"><h4>⚖️ Appeal Process Timeline</h4><div class="ascii-art">
+   District Commission Order → Appeal within 45 days → State Commission
+   State Commission Order → Appeal within 30 days → National Commission
+   National Commission Order → Appeal within 30 days → Supreme Court
+      </div></div>`;
+    }
+    if(item.category === "Consumer Protection Ways") {
+      detailedContent += `<div class="lang-section"><h4>🏛️ Important Quality Marks in India</h4><div class="ascii-art">
+   ┌─────────────────────────────────────────────────┐
+   │ ISI      → Industrial products (Bureau of Indian Standards)
+   │ AGMARK   → Agricultural products
+   │ FPO       → Fruit products
+   │ FSSAI     → Food safety
+   │ Hallmark  → Gold jewellery
+   │ BIS       → Bureau of Indian Standards
+   └─────────────────────────────────────────────────┘
+      </div></div>`;
+    }
+    
+    document.getElementById("popupModal").style.display = "flex";
+    document.getElementById("modalContent").innerHTML = `
+      <h2 style="color:#7c2d12; margin-bottom:20px;">📖 In-Depth Explanation + Visuals</h2>
+      ${detailedContent}
+      <button id="closeDetailModal" style="background:#f97316; padding:10px 26px; border-radius:40px; margin-top:12px; border:none; color:white; cursor:pointer;">Close</button>
+    `;
+    document.getElementById("closeDetailModal").addEventListener("click", () => document.getElementById("popupModal").style.display = "none");
+  }
+
+  function showQuickTables() {
+    let content = `<div class="lang-section"><strong>📚 Chapter 7: Consumer Protection - Quick Reference</strong><br>`;
+    content += `<h4>🛡️ 10 Consumer Rights at a Glance</h4>
+      <table class="detail-table"><tr><th>Right</th><th>Key Point</th></tr>
+      <tr><td>Right to Safety</td><td>ISI, AGMARK, BIS, Hallmark</td></tr>
+      <tr><td>Right to Information</td><td>Price, manufacturer, expiry date</td></tr>
+      <tr><td>Right to Choose</td><td>No forced buying</td></tr>
+      <tr><td>Right to be Heard</td><td>File complaints online</td></tr>
+      <tr><td>Right to Consumer Education</td><td>'Jago Grahak Jago'</td></tr>
+      <tr><td>Right to Redress</td><td>Repair/Replacement/Compensation</td></tr>
+      <tr><td>Right against Spurious Goods</td><td>Protection from duplicates</td></tr>
+    </table>`;
+    content += `<h4>🏛️ 3-Tier Redressal Machinery</h4>
+      <table class="detail-table"><tr><th>Commission</th><th>Monetary Limit</th><th>President</th><th>Appeal To</th></tr>
+      <tr><td>District</td><td>Up to ₹1 Cr</td><td>District Judge</td><td>State Comm (45 days)</td></tr>
+      <tr><td>State</td><td>₹1 Cr - ₹10 Cr</td><td>HC Judge</td><td>National Comm (30 days)</td></tr>
+      <tr><td>National</td><td>Above ₹10 Cr</td><td>SC Judge</td><td>Supreme Court (30 days)</td></tr></table>`;
+    content += `<div class="formula-box">💡 Important Dates: World Consumer Rights Day - 15th March | National Consumer Day - 24th December | Consumer Protection Act 1986 replaced by 2019 Act (assent: 9th August 2019).</div>`;
+    document.getElementById("popupModal").style.display = "flex";
+    document.getElementById("modalContent").innerHTML = `<h2 style="color:#7c2d12;">📊 Consumer Protection - Reference Tables</h2>${content}<button id="closeModalInside" style="background:#f97316; margin-top:20px; padding:10px 26px; border-radius:40px; color:white; border:none;">Close</button>`;
+    document.getElementById("closeModalInside").addEventListener("click", () => document.getElementById("popupModal").style.display = "none");
+  }
+
+  function escapeHtml(str) { return str.replace(/[&<>]/g, m => m==='&'?'&amp;': m==='<'?'&lt;':'&gt;'); }
+  function startVoice() { if (!('webkitSpeechRecognition' in window)) { alert("Voice search supported in Chrome/Edge."); return; } const rec = new webkitSpeechRecognition(); rec.lang="en-IN"; rec.start(); rec.onresult = (e)=> { searchInput.value = e.results[0][0].transcript; performSearch(); }; }
+  document.getElementById("voiceBtn").addEventListener("click", startVoice);
+  searchInput.addEventListener("keyup", () => { performSearch(); updateSuggestions(); });
+  searchInput.addEventListener("focus", updateSuggestions);
+  document.addEventListener("click", (e) => { if(!document.querySelector(".search-wrapper").contains(e.target)) suggestionsDiv.style.display = "none"; });
+  document.getElementById("closeModalBtn").addEventListener("click", () => document.getElementById("popupModal").style.display = "none");
+  window.onload = () => { resultsContainer.innerHTML = `<div class="not-found">🛡️ 12th OC Chapter 7: Consumer Protection | Search: Consumer Rights (10 Rights), Consumer Responsibilities, Need for Protection, District/State/National Commission, Lok Adalat, PIL, NGOs ✨</div>`; };
+</script>
+</body>
+</html>

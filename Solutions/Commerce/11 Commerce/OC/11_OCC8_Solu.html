@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Chapter 8 | Introduction to Management - 11th Commerce</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #eef2f9 0%, #e0e8f2 100%);
+            font-family: 'Inter', sans-serif;
+            padding: 32px 24px;
+            color: #0a2b3e;
+            line-height: 1.5;
+            overflow-y: scroll;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        body::-webkit-scrollbar { display: none; }
+        .container { max-width: 1400px; margin: 0 auto; }
+        .hero { text-align: center; margin-bottom: 40px; }
+        .hero h1 {
+            font-size: 2.4rem; font-weight: 800;
+            background: linear-gradient(135deg, #0b4b6b, #1f6e93, #2c7da0);
+            background-clip: text; -webkit-background-clip: text; color: transparent;
+            padding-bottom: 10px;
+            border-bottom: 4px solid #ffb347;
+            display: inline-block;
+        }
+        .summary-card {
+            background: linear-gradient(145deg, #ffffff, #f8fbfe);
+            border-radius: 2rem;
+            margin-bottom: 32px;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.12);
+            overflow: hidden;
+            border: 1px solid rgba(44,125,160,0.15);
+        }
+        .summary-header {
+            background: linear-gradient(105deg, #135b78 0%, #1f7a9e 100%);
+            padding: 20px 28px;
+            border-bottom: 4px solid #ffb74d;
+        }
+        .summary-header h2 {
+            color: white;
+            font-size: 1.6rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .summary-header h2 i { font-size: 1.8rem; color: #ffd966; }
+        .summary-body {
+            padding: 28px 32px;
+            max-height: 550px;
+            overflow-y: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .summary-body::-webkit-scrollbar { display: none; }
+        .summary-text { font-size: 1rem; line-height: 1.65; color: #1f3b4c; }
+        .summary-text p { margin-bottom: 14px; }
+        .summary-text strong { color: #135b78; }
+        .highlight-badge {
+            background: #eef3fc;
+            border-left: 4px solid #ffb74d;
+            padding: 10px 16px;
+            margin: 16px 0;
+            border-radius: 12px;
+        }
+        .lang-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px dashed #cbdde9;
+        }
+        .lang-btn {
+            background: #135b78; color: white; border: none;
+            padding: 10px 28px; border-radius: 50px; font-weight: 600;
+            cursor: pointer; transition: all 0.25s ease;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .lang-btn:hover { background: #ff8c42; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        .card {
+            background: rgba(255,255,255,0.97); border-radius: 1.8rem;
+            margin-bottom: 32px; padding: 28px 32px;
+            box-shadow: 0 15px 30px -10px rgba(0,0,0,0.08);
+            border: 1px solid rgba(255,255,255,0.6);
+        }
+        .card h2 {
+            font-size: 1.6rem; font-weight: 700; color: #135b78;
+            margin-bottom: 24px; padding-bottom: 8px;
+            border-bottom: 3px solid #ffb74d;
+            display: inline-block;
+        }
+        .card h2 i { margin-right: 12px; color: #ff8c42; }
+        .qa-item { margin-bottom: 22px; border-left: 3px solid #cbdde9; padding-left: 20px; }
+        .question { font-weight: 700; color: #1f4a5e; margin-bottom: 8px; display: flex; gap: 12px; flex-wrap: wrap; }
+        .answer {
+            background: #f8fafd; padding: 10px 18px; border-radius: 24px;
+            font-weight: 500; color: #216477; display: inline-block;
+            font-size: 0.92rem;
+        }
+        .true-badge { background: #e0f2e9; color: #1e6f3f; padding: 3px 14px; border-radius: 40px; font-weight: 700; font-size: 0.75rem; display: inline-block; margin-right: 12px; }
+        .false-badge { background: #ffe8e6; color: #bc4742; padding: 3px 14px; border-radius: 40px; font-weight: 700; font-size: 0.75rem; display: inline-block; margin-right: 12px; }
+        .resp-table { width: 100%; overflow-x: auto; margin: 16px 0; background: #f4f9fe; padding: 4px; border-radius: 20px; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; background: white; border-radius: 16px; overflow: hidden; }
+        th, td { border: 1px solid #cde1ef; padding: 10px 12px; text-align: left; vertical-align: top; }
+        th { background: #e0eaf5; font-weight: 700; color: #135b78; }
+        .popup-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+            justify-content: center; align-items: center; z-index: 1000;
+        }
+        .popup-content {
+            background: white; width: 90%; max-width: 1000px; border-radius: 2rem;
+            position: relative; max-height: 85vh; overflow: hidden;
+            display: flex; flex-direction: column;
+        }
+        .popup-header {
+            background: linear-gradient(105deg, #135b78, #1f7a9e);
+            padding: 18px 24px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .close-popup {
+            font-size: 32px; cursor: pointer; color: #ffd966;
+            transition: 0.2s; line-height: 1;
+        }
+        .close-popup:hover { color: #fff; transform: rotate(90deg); }
+        .popup-body { padding: 24px; overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none; }
+        .popup-body::-webkit-scrollbar { display: none; }
+        @media (max-width: 768px) {
+            body { padding: 20px 16px; }
+            .card, .summary-body { padding: 20px 18px; }
+            .hero h1 { font-size: 1.8rem; }
+            th, td { padding: 6px 8px; font-size: 0.7rem; }
+        }
+        .footer-note { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #bdd4e4; font-size: 0.8rem; color: #2c6f8c; }
+        .char-grid { display: flex; flex-wrap: wrap; gap: 12px; margin: 20px 0; }
+        .char-card { flex: 1; min-width: 150px; background: linear-gradient(145deg, #135b78, #1f7a9e); border-radius: 1rem; padding: 14px; text-align: center; color: white; }
+        .char-card i { font-size: 1.8rem; margin-bottom: 6px; }
+        .char-card h3 { font-size: 1rem; margin-bottom: 4px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="hero">
+        <h1><i class="fas fa-chalkboard-user"></i> Chapter 8 · Introduction to Management</h1>
+        <p style="margin-top: 12px;">Characteristics · Levels of Management · Art, Science & Profession</p>
+    </div>
+
+    <!-- ================= ATTRACTIVE SUMMARY CARD ================= -->
+    <div class="summary-card">
+        <div class="summary-header">
+            <h2><i class="fas fa-file-alt"></i> 📘 Chapter Summary: Introduction to Management</h2>
+        </div>
+        <div class="summary-body">
+            <div class="summary-text" id="summaryText">
+                <p><strong>🔹 Origin:</strong> English verb 'manage' comes from Italian 'maneggiare' (to handle) and Latin 'manus' (hand) + 'agere' (to act). Management is an ancient activity essential wherever there is group activity.</p>
+                
+                <div class="char-grid">
+                    <div class="char-card"><i class="fas fa-bullseye"></i><h3>Goal Oriented</h3></div>
+                    <div class="char-card"><i class="fas fa-users"></i><h3>Group Activity</h3></div>
+                    <div class="char-card"><i class="fas fa-eye-slash"></i><h3>Intangible</h3></div>
+                    <div class="char-card"><i class="fas fa-sync"></i><h3>Continuous</h3></div>
+                    <div class="char-card"><i class="fas fa-globe"></i><h3>Universal</h3></div>
+                    <div class="char-card"><i class="fas fa-chart-line"></i><h3>Dynamic</h3></div>
+                    <div class="char-card"><i class="fas fa-random"></i><h3>Situational</h3></div>
+                </div>
+
+                <div class="highlight-badge"><strong>📌 Definitions:</strong><br>
+                • Mary Parker Follett: "Management is an art of getting things done through others."<br>
+                • Henry Fayol: "To manage is to forecast and plan, to organize, to command, to coordinate, and to control."<br>
+                • F.W. Taylor: "Management is knowing exactly what is to be done and seeing that it is done in the best possible manner."<br>
+                • George Terry: "Management is the process consisting of planning, organizing, actuating and controlling."</div>
+                
+                <div class="highlight-badge"><strong>📌 Levels of Management:</strong><br>
+                • <strong>Top Level:</strong> Board of Directors, CEO, President - Framing plans & policies, long term objectives (5-20 years).<br>
+                • <strong>Middle Level:</strong> Departmental Heads (Finance, Production, HR, Marketing) - Implementation of policies, link between top & lower (1-5 years).<br>
+                • <strong>Lower Level:</strong> Supervisors, Foremen, Superintendents - Actual execution, directing subordinates (up to 1 year).</div>
+                
+                <div class="highlight-badge"><strong>📌 Management as Art, Science & Profession:</strong><br>
+                • <strong>As an Art:</strong> Personal skills, creativity, regular practice, personal abilities (subjective, skill-based).<br>
+                • <strong>As a Science:</strong> Systematic body of knowledge, scientific methods, cause-effect relationship, universal applicability (social science).<br>
+                • <strong>As a Profession:</strong> Formal education, code of conduct, expertise, registration (emerging profession - no statutory body yet).</div>
+                
+                <p><strong>⭐ Conclusion:</strong> Management is a combination of Art, Science and Profession. It is not pure science like Mathematics but a social science. It is an emerging profession with growing formal education (MBA, PGDM, IIMs).</p>
+            </div>
+            <div class="lang-buttons">
+                <button class="lang-btn" onclick="showTranslation('hindi')"><i class="fas fa-language"></i> हिंदी अनुवाद</button>
+                <button class="lang-btn" onclick="showTranslation('marathi')"><i class="fas fa-language"></i> मराठी अनुवाद</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= Section A: Multiple Choice ================= -->
+    <div class="card"><h2><i class="fas fa-check-square"></i> A. Select the correct option</h2>
+        <div class="qa-item"><div class="question">1) Management is ________.</div><div class="answer">a) dynamic</div></div>
+        <div class="qa-item"><div class="question">2) Management uses ________ method of observation.</div><div class="answer">c) scientific</div></div>
+        <div class="qa-item"><div class="question">3) To help top level management in co-ordinating the activities is function of ________ level management.</div><div class="answer">a) middle</div></div>
+        <div class="qa-item"><div class="question">4) To look after maintenance of machinery is function of ________ level management.</div><div class="answer">c) lower</div></div>
+        <div class="qa-item"><div class="question">5) Management is ________ oriented action.</div><div class="answer">c) goal</div></div>
+    </div>
+
+    <!-- ================= Section B: Match Pairs ================= -->
+    <div class="card"><h2><i class="fas fa-link"></i> B. Match the pairs</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Group A</th><th>Answer</th><th>Group B</th></tr></thead>
+                <tbody>
+                    <tr><td>Management</div></div></td><td>→</div></div><td>4) Intangible</div></div></tr>
+                    <tr><td>Management as a profession</div></div></td><td>→</div></div><td>5) Formal education</div></div></td>
+                    <tr><td>Top level management</div></div></td><td>→</div></div><td>6) Policy framing</div></div></tr>
+                    <tr><td>Management as an art</div></div></td><td>→</div></div><td>1) Need of creativity</div></div></tr>
+                    <tr><td>Lower level management</div></div></td><td>→</div></div><td>9) Directing subordinates</div></div></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================= Section C: One word ================= -->
+    <div class="card"><h2><i class="fas fa-tag"></i> C. Give one word/phrase/term</h2>
+        <div class="qa-item"><div class="question">1) The art of getting things done through others.</div><div class="answer">Management</div></div>
+        <div class="qa-item"><div class="question">2) The second level of Management.</div><div class="answer">Middle Level Management</div></div>
+        <div class="qa-item"><div class="question">3) Systematic body of knowledge.</div><div class="answer">Science</div></div>
+        <div class="qa-item"><div class="question">4) The level of management related to Managing Director.</div><div class="answer">Top Level Management</div></div>
+        <div class="qa-item"><div class="question">5) Level of management that links top level and lower level management.</div><div class="answer">Middle Level Management</div></div>
+    </div>
+
+    <!-- ================= Section D: True/False ================= -->
+    <div class="card"><h2><i class="fas fa-gavel"></i> D. State True or False</h2>
+        <div class="qa-item"><div class="question">1) Management is an ancient activity.</div><div class="answer"><span class="true-badge">True</span></div></div>
+        <div class="qa-item"><div class="question">2) Management is not objective oriented.</div><div class="answer"><span class="false-badge">False</span> Management is goal oriented.</div></div>
+        <div class="qa-item"><div class="question">3) In small organization also management is required.</div><div class="answer"><span class="true-badge">True</span></div></div>
+        <div class="qa-item"><div class="question">4) Middle level management forms policy of an organization.</div><div class="answer"><span class="false-badge">False</span> Top level management forms policies.</div></div>
+        <div class="qa-item"><div class="question">5) Various principles and techniques are used in management.</div><div class="answer"><span class="true-badge">True</span></div></div>
+    </div>
+
+    <!-- ================= Levels of Management Table ================= -->
+    <div class="card"><h2><i class="fas fa-chart-simple"></i> Three Levels of Management - Comparative Analysis</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Basis</th><th>Top Level Management</th><th>Middle Level Management</th><th>Lower Level Management</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Meaning</strong></div></div></td><td>Board of Directors, CEO, President</div></div></td><td>Departmental Heads (Finance, Production, HR, Marketing)</div></div></td><td>Supervisors, Foremen, Superintendents</div></div></tr>
+                    <tr><td><strong>Nature of Work</strong></div></div></td><td>Framing plans & policies</div></div></td><td>Implementation of policies</div></div></td><td>Actual execution of planning</div></div></tr>
+                    <tr><td><strong>Skills Required</strong></div></div></td><td>Conceptual / Decision making skills</div></div></td><td>Combination of conceptual & technical</div></div></td><td>Technical skills more important</div></div></tr>
+                    <tr><td><strong>Time Frame</strong></div></div></td><td>Long term (5 to 20 years)</div></div></td><td>Medium term (1 to 5 years)</div></div></td><td>Short term (up to 1 year)</div></div></tr>
+                    <tr><td><strong>Promotion Basis</strong></div></div></td><td>Merit</div></div></td><td>Merit & Seniority</div></div></td><td>Seniority preferred</div></div></tr>
+                    <tr><td><strong>Responsible to</strong></div></div></td><td>Shareholders, Government, Society</div></div></td><td>Top Level Management</div></div></td><td>Middle & Top Level Management</div></div></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================= Characteristics of Management ================= -->
+    <div class="card"><h2><i class="fas fa-star"></i> 7 Characteristics of Management</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>#</th><th>Characteristic</th><th>Explanation</th></tr></thead>
+                <tbody>
+                    <tr><td>1</div></div></td><td>Goal Oriented</div></div></td><td>Purposeful activity to achieve specific goal; success depends on proper management</div></div></tr>
+                    <tr><td>2</div></div></td><td>Group Activity</div></div></td><td>Activities done by team under manager's guidance; decisions by group for group</div></div></tr>
+                    <tr><td>3</div></div></td><td>Intangible</div></div></td><td>Cannot be seen physically; results experienced as increased profit, smooth functioning</div></div></tr>
+                    <tr><td>4</div></div></td><td>Continuous Process</div></div></td><td>Essential throughout organization's life; never ending like breath for survival</div></div></tr>
+                    <tr><td>5</div></div></td><td>Situational</div></div></td><td>Decisions based on situational priorities; technique useful in one situation may not work in another</div></div></tr>
+                    <tr><td>6</div></div></td><td>Universal</div></div></td><td>Principles applicable everywhere - defence, government, business, education, hospital, family</div></div></tr>
+                    <tr><td>7</div></div></td><td>Dynamic</div></div></td><td>Adapts to technological, socio-economic, political, environmental changes</div></div></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================= Management as Art, Science & Profession ================= -->
+    <div class="card"><h2><i class="fas fa-palette"></i> Management as Art, Science & Profession</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Basis</th><th>Art</th><th>Science</th><th>Profession</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Key Nature</strong></div></div></td><td>Creative ability, innovativeness, inborn quality</div></div></td><td>Systematic body of knowledge, universal principles</div></div></td><td>Occupation with specialized knowledge & training</div></div></tr>
+                    <tr><td><strong>Relation to Management</strong></div></div></td><td>Personal skills, creativity, regular practice, personal abilities</div></div></td><td>Systematic experiments, cause-effect relationship, universal applicability</div></div></td><td>Formal education (MBA), code of conduct, expertise, registration (emerging)</div></div></tr>
+                    <tr><td><strong>Examples</strong></div></div></td><td>Singing, dancing, acting, sports, directing</div></div></td><td>Physics, Chemistry, Mathematics (pure) / Social Science (management)</div></div></td><td>Doctor, Lawyer, CA, Teacher (full) / Management (emerging)</div></div></tr>
+                    <tr><td><strong>Conclusion</strong></div></div></td><td colspan="3">Management is a combination of Art, Science and Profession. It is not pure science but social science. It is an emerging profession.</div></div></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================= Functions of Different Levels ================= -->
+    <div class="card"><h2><i class="fas fa-tasks"></i> Functions of Different Levels of Management</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Level</th><th>Key Functions</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Top Level</strong></div></div></td><td>Decide long term objectives, frame plans & policies, create departments, appoint middle level managers, evaluate performance</div></div></tr>
+                    <tr><td><strong>Middle Level</strong></div></div></td><td>Link between top & lower, understand policies, prepare action plans, assign duties, train staff, give timely reports</div></div></tr>
+                    <tr><td><strong>Lower Level</strong></div></div></td><td>Work as per instructions, assign work to subordinates, direct & guide, solve disputes, maintain machinery, quality check</div></div></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================= Case Study ================= -->
+    <div class="card"><h2><i class="fas fa-briefcase"></i> Case Study Analysis</h2>
+        <div class="qa-item"><div class="question">Case 1: Pranav gives orders to subordinates, Pravin assigns work to Pratap, Pratap executes work and reports to Pravin.</div><div class="answer">i) Top: Pranav, Middle: Pravin, Lower: Pratap. ii) Pranav is Top Level Management. iii) Pratap is Lower Level - works as per instructions, directs subordinates, solves problems.</div></div>
+        <div class="qa-item"><div class="question">Case 2: Shankar Patil (advocate), Prashant Patil (decoration artist), Vishwas Patil (science graduate farmer exporting produce).</div><div class="answer">i) Shankar's income: Profession (advocacy). ii) Prashant's qualification: No formal degree - art/hobby based. iii) Features of profession: Formal education, code of conduct, expertise, registration.</div></div>
+    </div>
+
+    <!-- ================= One Sentence Answers ================= -->
+    <div class="card"><h2><i class="fas fa-question-circle"></i> H. Answer in one sentence</h2>
+        <div class="qa-item"><div class="question">1) What is called as management?</div><div class="answer">Management is the art of getting things done through others and coordination of resources through planning, organizing, directing and controlling.</div></div>
+        <div class="qa-item"><div class="question">2) Name the levels of management.</div><div class="answer">Top Level, Middle Level and Lower Level Management.</div></div>
+        <div class="qa-item"><div class="question">3) What is Top level management?</div><div class="answer">It consists of Board of Directors, CEO, President who frame plans, policies and long term objectives.</div></div>
+        <div class="qa-item"><div class="question">4) What is Middle level management?</div><div class="answer">It consists of Departmental Heads who implement policies framed by top level and link top with lower level.</div></div>
+        <div class="qa-item"><div class="question">5) What is lower level management?</div><div class="answer">It consists of supervisors, foremen who execute actual work and direct subordinates.</div></div>
+    </div>
+
+    <!-- ================= Odd One Out ================= -->
+    <div class="card"><h2><i class="fas fa-puzzle-piece"></i> E. Find the odd one</h2>
+        <div class="qa-item"><div class="question">1) Management is an art, a science, commerce, a profession.</div><div class="answer">commerce (others are nature of management)</div></div>
+        <div class="qa-item"><div class="question">2) Singer, Actor, Dancer, Doctor.</div><div class="answer">Doctor (profession; others are arts)</div></div>
+        <div class="qa-item"><div class="question">3) Board of Directors, President, Purchase Manager, CEO.</div><div class="answer">Purchase Manager (middle level; others are top level)</div></div>
+        <div class="qa-item"><div class="question">4) Supervisor, Foreman, Finance Manager, Office Superintendent.</div><div class="answer">Finance Manager (middle level; others are lower level)</div></div>
+    </div>
+
+    <!-- ================= Career Opportunities ================= -->
+    <div class="card"><h2><i class="fas fa-briefcase"></i> Career Opportunities in Management</h2>
+        <div class="answer" style="display: block;"><strong>Further Courses:</strong> M.Com, MBA, DBM, PGDM<br>
+        <strong>Managerial Jobs in:</strong> Finance, Human Resource Development, Marketing, Information Technology, Production, Logistics, International Business, Banking Sector<br>
+        <strong>Self Employment opportunities also available.</strong></div>
+    </div>
+
+    <!-- ================= Justify Statements ================= -->
+    <div class="card"><h2><i class="fas fa-check-double"></i> Key Justifications</h2>
+        <div class="qa-item"><div class="question">Why is management called a group oriented action?</div><div class="answer">Management involves coordination of team efforts, decisions are taken by group (shareholders/BOD) for the group (employees), and activities are done by team under manager's guidance.</div></div>
+        <div class="qa-item"><div class="question">Why is management considered an art?</div><div class="answer">Because it involves personal skills, creativity, regular practice, and personal abilities - just like singing or dancing, results vary from manager to manager.</div></div>
+        <div class="qa-item"><div class="question">Why is there no need of registration for managers?</div><div class="answer">Unlike doctors or CA's, there is no statutory regulatory body for managers; anyone can become a manager irrespective of formal education.</div></div>
+    </div>
+
+    <div class="footer-note"><i class="fas fa-chalkboard-user"></i> Introduction to Management | Characteristics · Levels · Art · Science · Profession | 11th Commerce OCM</div>
+</div>
+
+<!-- Popup for Translation -->
+<div id="translationPopup" class="popup-overlay">
+    <div class="popup-content">
+        <div class="popup-header">
+            <h3><i class="fas fa-language"></i> अनुवाद / Translation</h3>
+            <span class="close-popup" onclick="closePopup()">×</span>
+        </div>
+        <div class="popup-body" id="popupBody"></div>
+    </div>
+</div>
+
+<script>
+    const hindiSummary = `
+        <div style="font-family: 'Inter', sans-serif;">
+            <p><strong>🔹 प्रबंध का अर्थ:</strong> प्रबंध दूसरों के माध्यम से कार्य करवाने की कला है। यह एक प्राचीन गतिविधि है जो समूह गतिविधि के लिए आवश्यक है। (मैरी पार्कर फोलेट)</p>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 प्रबंध की परिभाषाएँ:</strong><br>
+            • हेनरी फेयोल: "प्रबंध का अर्थ है पूर्वानुमान लगाना, योजना बनाना, संगठित करना, आदेश देना, समन्वय करना और नियंत्रित करना।"<br>
+            • एफ.डब्ल्यू. टेलर: "प्रबंध का अर्थ है ठीक से जानना कि क्या करना है और यह सुनिश्चित करना कि यह सर्वोत्तम तरीके से किया जाए।"</div>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 प्रबंध के स्तर:</strong><br>
+            • <strong>उच्च स्तर:</strong> बोर्ड ऑफ डायरेक्टर्स, CEO - नीति निर्धारण, दीर्घकालिक उद्देश्य (5-20 वर्ष)<br>
+            • <strong>मध्य स्तर:</strong> विभागाध्यक्ष - नीतियों का क्रियान्वयन, जोड़ने वाली कड़ी (1-5 वर्ष)<br>
+            • <strong>निम्न स्तर:</strong> पर्यवेक्षक, फोरमैन - वास्तविक क्रियान्वयन (1 वर्ष तक)</div>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 प्रबंध - कला, विज्ञान और व्यवसाय:</strong><br>
+            • <strong>कला के रूप में:</strong> व्यक्तिगत कौशल, रचनात्मकता, नियमित अभ्यास<br>
+            • <strong>विज्ञान के रूप में:</strong> व्यवस्थित ज्ञान, वैज्ञानिक विधियाँ, कार्य-कारण संबंध<br>
+            • <strong>व्यवसाय के रूप में:</strong> औपचारिक शिक्षा (MBA), आचार संहिता, विशेषज्ञता</div>
+            <p><strong>⭐ निष्कर्ष:</strong> प्रबंध कला, विज्ञान और व्यवसाय का संयोजन है। यह शुद्ध विज्ञान नहीं बल्कि सामाजिक विज्ञान है। यह एक उभरता हुआ व्यवसाय है।</p>
+        </div>`;
+
+    const marathiSummary = `
+        <div style="font-family: 'Inter', sans-serif;">
+            <p><strong>🔹 व्यवस्थापनाचा अर्थ:</strong> व्यवस्थापन म्हणजे इतरांकडून कामे करवून घेण्याची कला. ही एक प्राचीन क्रिया आहे जी समूह क्रियाकलापासाठी आवश्यक आहे. (मेरी पार्कर फोलेट)</p>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 व्यवस्थापनाच्या व्याख्या:</strong><br>
+            • हेन्री फायोल: "व्यवस्थापन म्हणजे पूर्वानुमान, नियोजन, संघटन, आदेश, समन्वय व नियंत्रण."<br>
+            • एफ.डब्ल्यू. टेलर: "व्यवस्थापन म्हणजे काय करायचे हे ठाऊक असणे व ते सर्वोत्तम पद्धतीने केले जाते याची खात्री करणे."</div>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 व्यवस्थापनाचे स्तर:</strong><br>
+            • <strong>उच्च स्तर:</strong> संचालक मंडळ, CEO - धोरण निर्धारण, दीर्घकालीन उद्दिष्टे (5-20 वर्षे)<br>
+            • <strong>मध्यम स्तर:</strong> विभागप्रमुख - धोरणांची अंमलबजावणी, दुवा (1-5 वर्षे)<br>
+            • <strong>कनिष्ठ स्तर:</strong> पर्यवेक्षक, फोरमन - प्रत्यक्ष अंमलबजावणी (1 वर्षापर्यंत)</div>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 व्यवस्थापन - कला, विज्ञान व व्यवसाय:</strong><br>
+            • <strong>कला म्हणून:</strong> वैयक्तिक कौशल्ये, सर्जनशीलता, नियमित सराव<br>
+            • <strong>विज्ञान म्हणून:</strong> पद्धतशीर ज्ञान, वैज्ञानिक पद्धती, कार्य-कारण संबंध<br>
+            • <strong>व्यवसाय म्हणून:</strong> औपचारिक शिक्षण (MBA), आचारसंहिता, कौशल्य</div>
+            <p><strong>⭐ निष्कर्ष:</strong> व्यवस्थापन हे कला, विज्ञान व व्यवसाय यांचे संयोजन आहे. हे शुद्ध विज्ञान नसून सामाजिक विज्ञान आहे. हा एक उदयोन्मुख व्यवसाय आहे.</p>
+        </div>`;
+
+    function showTranslation(lang) {
+        const popup = document.getElementById('translationPopup');
+        const popupBody = document.getElementById('popupBody');
+        if (lang === 'hindi') popupBody.innerHTML = hindiSummary;
+        else popupBody.innerHTML = marathiSummary;
+        popup.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+    function closePopup() {
+        document.getElementById('translationPopup').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+    window.onclick = function(event) {
+        const popup = document.getElementById('translationPopup');
+        if (event.target === popup) closePopup();
+    }
+</script>
+</body>
+</html>

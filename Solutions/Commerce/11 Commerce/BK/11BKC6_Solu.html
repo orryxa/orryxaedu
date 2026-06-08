@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Chapter 6 | Bank Reconciliation Statement - Exercise Answers</title>
+  <!-- Google Fonts + Font Awesome 6 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: linear-gradient(135deg, #eef2f9 0%, #e0e8f2 100%);
+      font-family: 'Inter', sans-serif;
+      padding: 32px 24px;
+      color: #0a2b3e;
+      line-height: 1.5;
+    }
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    .hero {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #0b4b6b, #1f6e93, #2c7da0);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      display: inline-block;
+      padding-bottom: 10px;
+      border-bottom: 4px solid #ffb347;
+      margin-bottom: 16px;
+    }
+    .chapter-badge {
+      background: #0f4c5f20;
+      backdrop-filter: blur(6px);
+      display: inline-block;
+      padding: 6px 24px;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #1b6b8f;
+    }
+    .card {
+      background: rgba(255,255,255,0.97);
+      border-radius: 2rem;
+      margin-bottom: 32px;
+      padding: 28px 32px;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid rgba(255,255,255,0.6);
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 25px 40px -14px rgba(0,0,0,0.15);
+    }
+    .card h2 {
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: #135b78;
+      margin-bottom: 28px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid #ffb74d;
+      display: inline-block;
+    }
+    .card h2 i {
+      margin-right: 12px;
+      color: #ff8c42;
+    }
+    .qa-item {
+      margin-bottom: 22px;
+      border-left: 3px solid #cbdde9;
+      padding-left: 20px;
+    }
+    .question {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #1f4a5e;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .question i {
+      color: #ff8c42;
+      width: 26px;
+    }
+    .answer {
+      background: #f8fafd;
+      padding: 10px 18px;
+      border-radius: 24px;
+      font-weight: 500;
+      color: #216477;
+      font-size: 0.94rem;
+      display: inline-block;
+      max-width: 100%;
+      box-shadow: inset 0 1px 0 #fff, 0 1px 2px rgba(0,0,0,0.02);
+    }
+    .true-badge {
+      background: #e0f2e9;
+      color: #1e6f3f;
+      padding: 3px 14px;
+      border-radius: 40px;
+      font-weight: 700;
+      font-size: 0.75rem;
+      display: inline-block;
+      margin-right: 12px;
+    }
+    .false-badge {
+      background: #ffe8e6;
+      color: #bc4742;
+      padding: 3px 14px;
+      border-radius: 40px;
+      font-weight: 700;
+      font-size: 0.75rem;
+      display: inline-block;
+      margin-right: 12px;
+    }
+    /* table responsive styling */
+    .resp-table {
+      width: 100%;
+      overflow-x: auto;
+      margin: 16px 0;
+      border-radius: 20px;
+      background: #f4f9fe;
+      padding: 4px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      font-family: monospace;
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    th, td {
+      border: 1px solid #cde1ef;
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #e0eaf5;
+      font-weight: 700;
+      color: #135b78;
+    }
+    .highlight {
+      background: #eef3fc;
+      border-radius: 16px;
+      padding: 12px 18px;
+      margin: 12px 0;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+    @media (max-width: 768px) {
+      body { padding: 20px 16px; }
+      .card { padding: 20px 18px; }
+      .card h2 { font-size: 1.4rem; }
+      .hero h1 { font-size: 1.8rem; }
+      .qa-item { padding-left: 12px; }
+      th, td { padding: 6px 8px; font-size: 0.75rem; }
+    }
+    .footer-note {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #bdd4e4;
+      font-size: 0.8rem;
+      color: #2c6f8c;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+    <h1><i class="fas fa-university"></i> Chapter 6 · Bank Reconciliation Statement</h1>
+    <div class="chapter-badge"><i class="fas fa-balance-scale"></i> Pass Book vs Cash Book | Causes of Difference | BRS Format</div>
+  </div>
+
+  <!-- ================= Q.1 Short Answer ================= -->
+  <div class="card">
+    <h2><i class="fas fa-question-circle"></i> Q.1 Answer in One Sentence</h2>
+    <div class="qa-item"><div class="question"><i class="fas fa-building"></i> 1) Who prepares a bank Pass Book?</div><div class="answer">Bank prepares the Pass Book (or Bank Statement) for its customer.</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-file-alt"></i> 2) What is pay-in-slip?</div><div class="answer">Pay-in-slip is a form filled by account holder to deposit cash or cheque into bank account.</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-chart-line"></i> 3) What is bank overdraft?</div><div class="answer">Bank overdraft is a facility where account holder can withdraw more than the available balance (credit balance as per Cash Book).</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-money-bill-wave"></i> 4) What is withdrawal slip?</div><div class="answer">Withdrawal slip is a form used to withdraw cash from bank account over the counter.</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-file-invoice"></i> 5) Who sends the bank statement?</div><div class="answer">Bank sends the bank statement to account holder periodically.</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-book"></i> 6) What does a debit balance in Cash Book represent?</div><div class="answer">Debit balance in Cash Book represents favourable bank balance (cash at bank).</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-chart-simple"></i> 7) Who prepares the Bank Reconciliation Statement?</div><div class="answer">Businessman (account holder) prepares the Bank Reconciliation Statement.</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-exclamation-triangle"></i> 8) What does debit balance in Pass Book represent?</div><div class="answer">Debit balance in Pass Book represents bank overdraft (unfavourable balance).</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-percent"></i> 9) On which side is interest on bank deposit recorded in Pass Book?</div><div class="answer">Interest on bank deposit is recorded on credit side (deposit column) of Pass Book.</div></div>
+    <div class="qa-item"><div class="question"><i class="fas fa-sync-alt"></i> 10) Why is Bank Reconciliation Statement prepared?</div><div class="answer">To reconcile the difference between Cash Book balance and Pass Book balance and detect errors.</div></div>
+  </div>
+
+  <!-- ================= Q.2 One word / term ================= -->
+  <div class="card">
+    <h2><i class="fas fa-tag"></i> Q.2 Give one word/term/phrase</h2>
+    <div class="qa-item"><div class="question">1) The account on which overdraft facility is allowed by bank.</div><div class="answer">Current Account</div></div>
+    <div class="qa-item"><div class="question">2) Extract of ledger account of account holder in the books of bank.</div><div class="answer">Pass Book / Bank Statement</div></div>
+    <div class="qa-item"><div class="question">3) Alphanumeric code that facilitates electronic funds transfer in India.</div><div class="answer">IFSC Code</div></div>
+    <div class="qa-item"><div class="question">4) Statement showing the causes of disagreement between balance of Cash Book and Pass Book.</div><div class="answer">Bank Reconciliation Statement (BRS)</div></div>
+    <div class="qa-item"><div class="question">5) Debit balance in Pass Book.</div><div class="answer">Overdraft</div></div>
+    <div class="qa-item"><div class="question">6) A form which is filled for depositing cash or cheque into bank.</div><div class="answer">Pay-in-slip</div></div>
+    <div class="qa-item"><div class="question">7) Left hand side of Pay-in-slip.</div><div class="answer">Counterfoil</div></div>
+    <div class="qa-item"><div class="question">8) Credit balance in Cash Book.</div><div class="answer">Overdraft</div></div>
+    <div class="qa-item"><div class="question">9) A book maintained by trader to record banking transactions.</div><div class="answer">Cash Book (Bank column)</div></div>
+    <div class="qa-item"><div class="question">10) Excess of bank deposits over withdrawals by businessman.</div><div class="answer">Favourable balance</div></div>
+  </div>
+
+  <!-- ================= Q.3 Agree or Disagree ================= -->
+  <div class="card">
+    <h2><i class="fas fa-thumbs-up"></i> Q.3 Do you agree or disagree?</h2>
+    <div class="qa-item"><div class="question">1) The bank column of Cash Book represents bank account.</div><div class="answer"><span class="true-badge">Agree</span> Bank column in Cash Book is a ledger account of bank.</div></div>
+    <div class="qa-item"><div class="question">2) Bank statement enables account holder to prepare Bank Reconciliation Statement.</div><div class="answer"><span class="true-badge">Agree</span> BRS is prepared by comparing Cash Book with Bank Statement.</div></div>
+    <div class="qa-item"><div class="question">3) Cheques issued for payment but not presented to bank appears in Cash Book only.</div><div class="answer"><span class="true-badge">Agree</span> Such cheques are recorded in Cash Book but not yet in Pass Book.</div></div>
+    <div class="qa-item"><div class="question">4) Bank Reconciliation Statement is prepared only during the year end.</div><div class="answer"><span class="false-badge">Disagree</span> It can be prepared periodically (monthly/quarterly) as per requirement.</div></div>
+    <div class="qa-item"><div class="question">5) Bank Reconciliation Statement is similar to bank statement.</div><div class="answer"><span class="false-badge">Disagree</span> Bank statement is prepared by bank; BRS is prepared by businessman.</div></div>
+    <div class="qa-item"><div class="question">6) Bank balance as per Cash Book is always equal to bank balance as per Pass Book.</div><div class="answer"><span class="false-badge">Disagree</span> They often differ due to timing and errors.</div></div>
+    <div class="qa-item"><div class="question">7) Bank advice is sent by the businessman to bank.</div><div class="answer"><span class="false-badge">Disagree</span> Bank advice is sent by bank to businessman.</div></div>
+    <div class="qa-item"><div class="question">8) Pay-in-slip is used for depositing cheque into bank.</div><div class="answer"><span class="true-badge">Agree</span> It is used for depositing both cash and cheques.</div></div>
+    <div class="qa-item"><div class="question">9) Difference in Cash Book balance and Pass Book balance may arise due to errors committed while recording.</div><div class="answer"><span class="true-badge">Agree</span> Errors like wrong amount, omission cause difference.</div></div>
+    <div class="qa-item"><div class="question">10) Payment and receipt of cash through internet banking generates automatic proof.</div><div class="answer"><span class="true-badge">Agree</span> Online transactions provide instant digital evidence.</div></div>
+  </div>
+
+  <!-- ================= Q.4 MCQs ================= -->
+  <div class="card">
+    <h2><i class="fas fa-check-square"></i> Q.4 Select the most appropriate alternative</h2>
+    <div class="qa-item"><div class="question">1) Overdraft means _______ balance of Cash Book.</div><div class="answer">d) credit</div></div>
+    <div class="qa-item"><div class="question">2) When a cheque is deposited and collected by bank Pass Book is _______.</div><div class="answer">c) credited</div></div>
+    <div class="qa-item"><div class="question">3) A _______ is a summary of financial transactions that take place over a period of time on a bank account.</div><div class="answer">c) bank statement</div></div>
+    <div class="qa-item"><div class="question">4) Debiting an entry in Cash Book _______ cash balance.</div><div class="answer">a) increases</div></div>
+    <div class="qa-item"><div class="question">5) Bank Reconciliation Statement is prepared by _______.</div><div class="answer">b) businessman</div></div>
+    <div class="qa-item"><div class="question">6) Bank balance as per Pass Book means _______ balance of Pass Book.</div><div class="answer">d) closing</div></div>
+    <div class="qa-item"><div class="question">7) Bank gives overdraft facility to _______ account holder.</div><div class="answer">c) current</div></div>
+    <div class="qa-item"><div class="question">8) Debit balance as per Cash Book is also known as _______ balance.</div><div class="answer">a) favourable</div></div>
+    <div class="qa-item"><div class="question">9) When extracts of Cash Book and Pass Book are given for uncommon periods, only _______ items are considered.</div><div class="answer">d) common</div></div>
+    <div class="qa-item"><div class="question">10) When extract of Cash Book and Pass Book are given for common period, only _______ items are considered.</div><div class="answer">a) uncommon</div></div>
+  </div>
+
+  <!-- ================= Q.5 Fill in the blanks ================= -->
+  <div class="card">
+    <h2><i class="fas fa-edit"></i> Q.5 Fill in the blanks</h2>
+    <div class="qa-item"><div class="question">1) Payments credited in Cash Book are _______ in Pass Book.</div><div class="answer">debited</div></div>
+    <div class="qa-item"><div class="question">2) While preparing Bank Reconciliation Statement only _______ column of Cash Book is considered.</div><div class="answer">Bank</div></div>
+    <div class="qa-item"><div class="question">3) Cheques issued to creditors appear first in _______ book.</div><div class="answer">Cash</div></div>
+    <div class="qa-item"><div class="question">4) A statement showing the reasons for difference in Cash Book balance and Pass Book balance is known as _______.</div><div class="answer">Bank Reconciliation Statement</div></div>
+    <div class="qa-item"><div class="question">5) Overcast on receipt side of Pass Book means _______ in Pass Book balance.</div><div class="answer">increase</div></div>
+    <div class="qa-item"><div class="question">6) Online transfer made to our creditors appear on the _______ side of Cash Book.</div><div class="answer">Payment/Credit</div></div>
+    <div class="qa-item"><div class="question">7) Interest on overdraft charged by bank is _______ in Pass Book.</div><div class="answer">debited</div></div>
+    <div class="qa-item"><div class="question">8) Normally the Cash Book shows debit balance and Pass Book shows _______ balance.</div><div class="answer">credit</div></div>
+    <div class="qa-item"><div class="question">9) The form filled for withdrawing cash from bank is known as _______.</div><div class="answer">Withdrawal slip</div></div>
+    <div class="qa-item"><div class="question">10) A businessman can update his records on receiving _______.</div><div class="answer">Bank Advice / Bank Statement</div></div>
+  </div>
+
+  <!-- ================= Q.6 True False with reasons ================= -->
+  <div class="card">
+    <h2><i class="fas fa-gavel"></i> Q.6 State True or False with reasons</h2>
+    <div class="qa-item"><div class="question">1) Cheques deposited into bank but not yet cleared appears in the Pass Book only.</div><div class="answer"><span class="false-badge">False</span> Such cheques appear in Cash Book (deposited) but not yet credited in Pass Book.</div></div>
+    <div class="qa-item"><div class="question">2) Direct deposit made by debtors into businessman's bank account is recorded on the credit side of Pass Book.</div><div class="answer"><span class="true-badge">True</span> It increases bank balance, hence credited in Pass Book.</div></div>
+    <div class="qa-item"><div class="question">3) Businessman can prepare Bank Reconciliation statement only with Cash Book Balance.</div><div class="answer"><span class="false-badge">False</span> BRS can be prepared starting with either Cash Book balance or Pass Book balance.</div></div>
+    <div class="qa-item"><div class="question">4) When overdraft as per Cash Book is given, bank charges debited in Pass Book only, is to be added.</div><div class="answer"><span class="true-badge">True</span> Bank charges reduce overdraft, so added to overdraft as per Cash Book.</div></div>
+    <div class="qa-item"><div class="question">5) Bank Statement is sent by Bank to businessman.</div><div class="answer"><span class="true-badge">True</span> Bank issues periodic statement to account holder.</div></div>
+  </div>
+
+  <!-- ================= Q.7 Specimen documents (representative) ================= -->
+  <div class="card">
+    <h2><i class="fas fa-receipt"></i> Q.7 Specimen of Bank Documents (imaginary)</h2>
+    <div class="grid-2">
+      <div class="highlight"><i class="fas fa-file-invoice"></i> <strong>Pay-in-slip</strong><br>Bank: SBI, Pune | Date: 15/03/2025 | A/c No: 123456789 | Cash ₹10,000 | Cheque ₹5,000 | Counterfoil returned.</div>
+      <div class="highlight"><i class="fas fa-money-bill-wave"></i> <strong>Withdrawal Slip</strong><br>Bank: HDFC, Mumbai | A/c: Current 98765 | Amount: ₹25,000 (in words) | Signature: Mr. Sharma</div>
+      <div class="highlight"><i class="fas fa-book"></i> <strong>Pass Book</strong><br>Date | Particulars | Withdrawal | Deposit | Balance<br>01/03/25 | To Balance b/d | - | - | ₹50,000</div>
+      <div class="highlight"><i class="fas fa-envelope"></i> <strong>Bank Advice</strong><br>Credited: Dividend ₹4,500 | Debited: Bank Charges ₹250 | Dated: 28/03/25</div>
+      <div class="highlight"><i class="fas fa-chart-line"></i> <strong>Bank Statement</strong><br>Period: March 2025 | Opening ₹50,000 | Closing ₹62,750 | 12 transactions</div>
+    </div>
+  </div>
+
+  <!-- ================= Q.8 Correct the statements ================= -->
+  <div class="card">
+    <h2><i class="fas fa-sync-alt"></i> Q.8 Correct the following statements</h2>
+    <div class="qa-item"><div class="question">1) The form filled for depositing cash or cheque into bank is known as Pass Book.</div><div class="answer">Corrected: Pay-in-slip</div></div>
+    <div class="qa-item"><div class="question">2) Bank Reconciliation Statement is prepared by Bank.</div><div class="answer">Corrected: Businessman / Account holder</div></div>
+    <div class="qa-item"><div class="question">3) Debit balance as per Pass Book is known as favourable balance.</div><div class="answer">Corrected: Overdraft / Unfavourable balance</div></div>
+    <div class="qa-item"><div class="question">4) When a cheque is deposited into Bank it is credited in Cash Book.</div><div class="answer">Corrected: Debited in Cash Book (receipt side)</div></div>
+    <div class="qa-item"><div class="question">5) When extracts are given for common period only common items are to be considered.</div><div class="answer">Corrected: Only uncommon items are considered.</div></div>
+  </div>
+
+  <!-- ================= Q.9 Complete the table (Reasons & Effects) ================= -->
+  <div class="card">
+    <h2><i class="fas fa-table"></i> Q.9 Complete the following table (Effects on BRS)</h2>
+    <div class="resp-table">
+       <table>
+        <thead><tr><th>Reason for discrepancy</th><th>When Dr. Bal as per Cash Book</th><th>When Cr. Bal as per Pass Book</th><th>When Overdraft as per Cash Book</th><th>When Overdraft as per Pass Book</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Cheque deposited but not credited</td><td>(-) Less</td><td>(+) Add</td><td>(+) Add</td><td>(-) Less</td></tr>
+          <tr><td>Cheque issued but not presented</td><td>(+) Add</td><td>(-) Less</td><td>(-) Less</td><td>(+) Add</td></tr>
+          <tr><td>Bank charges debited in Pass Book only</td><td>(-) Less</td><td>(+) Add</td><td>(+) Add</td><td>(-) Less</td></tr>
+          <tr><td>Interest credited in Pass Book only</td><td>(+) Add</td><td>(-) Less</td><td>(-) Less</td><td>(+) Add</td></tr>
+          <tr><td>Direct payment by customer into bank</td><td>(+) Add</td><td>(-) Less</td><td>(-) Less</td><td>(+) Add</td></tr>
+        </tbody>
+       </table>
+    </div>
+  </div>
+
+  <!-- ================= PRACTICAL PROBLEM - Illustration 1 (BRS format) ================= -->
+  <div class="card">
+    <h2><i class="fas fa-calculator"></i> Practical Problem (Illustration 1 Style) - BRS as on 30th April 2019</h2>
+    <div class="resp-table">
+      <table>
+        <thead><tr><th>Particulars</th><th>Amount (₹)</th><th>Amount (₹)</th></tr></thead>
+        <tbody>
+          <tr><td colspan="3"><strong>Balance as per Cash Book (Dr.)</strong></td></tr>
+          <tr><td>Add: 1. Dividend collected by bank (Pass Book only)</td><td>2,000</td><td rowspan="2">4,600</td></tr>
+          <tr><td>2. Cheque issued but not presented (Atul & Sons)</td><td>2,600</td></tr>
+          <tr><td></td><td></td><td>26,980</td></tr>
+          <tr><td>Less: 1. Cheques deposited but not collected (Mohan + Deepak)</td><td>13,900</td><td rowspan="3">16,700</td></tr>
+          <tr><td>2. Insurance premium paid by bank (not in Cash Book)</td><td>6,500</td></tr>
+          <tr><td>3. Bank charges (Pass Book only)</td><td>800</td></tr>
+          <tr><td colspan="2"><strong>Bank balance as per Pass Book (Cr.)</strong></td><td><strong>5,780</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="highlight"><i class="fas fa-lightbulb"></i> Alternate method: Starting with Pass Book balance gives Cash Book balance after reverse adjustments.</div>
+  </div>
+
+  <!-- ================= Practical Problem - Overdraft illustration ================= -->
+  <div class="card">
+    <h2><i class="fas fa-chart-line"></i> Illustration: Overdraft as per Cash Book (Illustration 5 style)</h2>
+    <div class="resp-table">
+      <table>
+        <thead><tr><th>Particulars</th><th>Amount (₹)</th><th>Amount (₹)</th></tr></thead>
+        <tbody>
+          <tr><td colspan="3"><strong>Bank Overdraft as per Cash Book</strong></td><td>36,280</td></tr>
+          <tr><td>Add: 1. Cheque deposited but wrongly entered with excess amount</td><td>900</td><td rowspan="4">40,500</td></tr>
+          <tr><td>2. Cash withdrawn from ATM not recorded</td><td>20,000</td></tr>
+          <tr><td>3. Debit side overcast in Cash Book</td><td>100</td></tr>
+          <tr><td>4. Office rent paid by bank (Pass Book only)</td><td>19,500</td></tr>
+          <tr><td></td><td></td><td>76,780</td></tr>
+          <tr><td>Less: 1. Direct deposit by customer not recorded</td><td>18,700</td><td rowspan="3">47,450</td></tr>
+          <tr><td>2. Cheques issued but not presented</td><td>25,000</td></tr>
+          <tr><td>3. Commission collected by bank (Pass Book only)</td><td>3,750</td></tr>
+          <tr><td colspan="2"><strong>Bank Overdraft as per Pass Book</strong></td><td><strong>29,330</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ================= Summary: Causes of Difference ================= -->
+  <div class="card">
+    <h2><i class="fas fa-list-ul"></i> Causes of difference between Cash Book and Pass Book</h2>
+    <div class="grid-2">
+      <div class="highlight"><strong>Due to time difference:</strong><br>✓ Cheque issued but not presented<br>✓ Cheque deposited but not cleared<br>✓ Interest credited by bank<br>✓ Direct collection by bank<br>✓ Direct payment by bank<br>✓ Bank charges, commission<br>✓ Dishonour of cheques<br>✓ Amount directly deposited</div>
+      <div class="highlight"><strong>Due to errors:</strong><br>✓ Recording on wrong side<br>✓ Wrong amount recorded<br>✓ Wrong balancing / totalling<br>✓ Double recording<br>✓ Omission of transaction</div>
+    </div>
+  </div>
+
+  <!-- ================= Q.10 Activity: Identify cause ================= -->
+  <div class="card">
+    <h2><i class="fas fa-brain"></i> Activity: Identify cause of difference (Time difference or Error)</h2>
+    <div class="qa-item"><div class="question">a) Cheques issued but not yet presented to bank.</div><div class="answer">Time difference</div></div>
+    <div class="qa-item"><div class="question">b) Interest on overdraft debited by bank but not yet recorded in Cash Book.</div><div class="answer">Time difference</div></div>
+    <div class="qa-item"><div class="question">c) Cheque deposited but not yet collected by bank.</div><div class="answer">Time difference</div></div>
+    <div class="qa-item"><div class="question">d) Bank paid insurance premium recorded twice in Cash Book.</div><div class="answer">Error made by businessman</div></div>
+    <div class="qa-item"><div class="question">e) Cash deposited recorded as different amount in Cash Book.</div><div class="answer">Error made by businessman</div></div>
+    <div class="qa-item"><div class="question">f) Interest allowed by bank credited in Pass Book only.</div><div class="answer">Time difference</div></div>
+  </div>
+
+  <div class="footer-note">
+    <i class="fas fa-university"></i> Bank Reconciliation Statement: A vital tool for internal check and accuracy | "Reconcile to Reveal"
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Chapter 1 | Business, Trade & Commerce - 11th Commerce</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #eef2f9 0%, #e0e8f2 100%);
+            font-family: 'Inter', sans-serif;
+            padding: 32px 24px;
+            color: #0a2b3e;
+            line-height: 1.5;
+            overflow-y: scroll;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        body::-webkit-scrollbar { display: none; }
+        .container { max-width: 1400px; margin: 0 auto; }
+        .hero { text-align: center; margin-bottom: 40px; }
+        .hero h1 {
+            font-size: 2.4rem; font-weight: 800;
+            background: linear-gradient(135deg, #0b4b6b, #1f6e93, #2c7da0);
+            background-clip: text; -webkit-background-clip: text; color: transparent;
+            padding-bottom: 10px;
+            border-bottom: 4px solid #ffb347;
+            display: inline-block;
+        }
+        .summary-card {
+            background: linear-gradient(145deg, #ffffff, #f8fbfe);
+            border-radius: 2rem;
+            margin-bottom: 32px;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.12);
+            overflow: hidden;
+            border: 1px solid rgba(44,125,160,0.15);
+        }
+        .summary-header {
+            background: linear-gradient(105deg, #135b78 0%, #1f7a9e 100%);
+            padding: 20px 28px;
+            border-bottom: 4px solid #ffb74d;
+        }
+        .summary-header h2 {
+            color: white;
+            font-size: 1.6rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .summary-header h2 i { font-size: 1.8rem; color: #ffd966; }
+        .summary-body {
+            padding: 28px 32px;
+            max-height: 550px;
+            overflow-y: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .summary-body::-webkit-scrollbar { display: none; }
+        .summary-text { font-size: 1rem; line-height: 1.65; color: #1f3b4c; }
+        .summary-text p { margin-bottom: 14px; }
+        .summary-text strong { color: #135b78; }
+        .highlight-badge {
+            background: #eef3fc;
+            border-left: 4px solid #ffb74d;
+            padding: 10px 16px;
+            margin: 16px 0;
+            border-radius: 12px;
+        }
+        .lang-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px dashed #cbdde9;
+        }
+        .lang-btn {
+            background: #135b78; color: white; border: none;
+            padding: 10px 28px; border-radius: 50px; font-weight: 600;
+            cursor: pointer; transition: all 0.25s ease;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .lang-btn:hover { background: #ff8c42; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        .card {
+            background: rgba(255,255,255,0.97); border-radius: 1.8rem;
+            margin-bottom: 32px; padding: 28px 32px;
+            box-shadow: 0 15px 30px -10px rgba(0,0,0,0.08);
+            border: 1px solid rgba(255,255,255,0.6);
+        }
+        .card h2 {
+            font-size: 1.6rem; font-weight: 700; color: #135b78;
+            margin-bottom: 24px; padding-bottom: 8px;
+            border-bottom: 3px solid #ffb74d;
+            display: inline-block;
+        }
+        .card h2 i { margin-right: 12px; color: #ff8c42; }
+        .qa-item { margin-bottom: 22px; border-left: 3px solid #cbdde9; padding-left: 20px; }
+        .question { font-weight: 700; color: #1f4a5e; margin-bottom: 8px; display: flex; gap: 12px; flex-wrap: wrap; }
+        .answer {
+            background: #f8fafd; padding: 10px 18px; border-radius: 24px;
+            font-weight: 500; color: #216477; display: inline-block;
+            font-size: 0.92rem;
+        }
+        .true-badge { background: #e0f2e9; color: #1e6f3f; padding: 3px 14px; border-radius: 40px; font-weight: 700; font-size: 0.75rem; display: inline-block; margin-right: 12px; }
+        .false-badge { background: #ffe8e6; color: #bc4742; padding: 3px 14px; border-radius: 40px; font-weight: 700; font-size: 0.75rem; display: inline-block; margin-right: 12px; }
+        .resp-table { width: 100%; overflow-x: auto; margin: 16px 0; background: #f4f9fe; padding: 4px; border-radius: 20px; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; background: white; border-radius: 16px; overflow: hidden; }
+        th, td { border: 1px solid #cde1ef; padding: 10px 12px; text-align: left; vertical-align: top; }
+        th { background: #e0eaf5; font-weight: 700; color: #135b78; }
+        .popup-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+            justify-content: center; align-items: center; z-index: 1000;
+        }
+        .popup-content {
+            background: white; width: 90%; max-width: 1000px; border-radius: 2rem;
+            position: relative; max-height: 85vh; overflow: hidden;
+            display: flex; flex-direction: column;
+        }
+        .popup-header {
+            background: linear-gradient(105deg, #135b78, #1f7a9e);
+            padding: 18px 24px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .close-popup {
+            font-size: 32px; cursor: pointer; color: #ffd966;
+            transition: 0.2s; line-height: 1;
+        }
+        .close-popup:hover { color: #fff; transform: rotate(90deg); }
+        .popup-body { padding: 24px; overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none; }
+        .popup-body::-webkit-scrollbar { display: none; }
+        @media (max-width: 768px) {
+            body { padding: 20px 16px; }
+            .card, .summary-body { padding: 20px 18px; }
+            .hero h1 { font-size: 1.8rem; }
+            th, td { padding: 6px 8px; font-size: 0.7rem; }
+        }
+        .footer-note { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #bdd4e4; font-size: 0.8rem; color: #2c6f8c; }
+        .three-grid { display: flex; flex-wrap: wrap; gap: 15px; margin: 20px 0; }
+        .grid-card { flex: 1; min-width: 200px; background: linear-gradient(145deg, #135b78, #1f7a9e); border-radius: 1rem; padding: 16px; text-align: center; color: white; }
+        .grid-card i { font-size: 2rem; margin-bottom: 8px; }
+        .grid-card h3 { font-size: 1.1rem; margin-bottom: 4px; }
+        .grid-card small { font-size: 0.7rem; opacity: 0.9; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="hero">
+        <h1><i class="fas fa-store"></i> Chapter 1 · Business, Trade & Commerce</h1>
+        <p style="margin-top: 12px;">Economic vs Non-Economic Activities · Business · Profession · Employment · Industry · Commerce</p>
+    </div>
+
+    <!-- ================= ATTRACTIVE SUMMARY CARD ================= -->
+    <div class="summary-card">
+        <div class="summary-header">
+            <h2><i class="fas fa-file-alt"></i> 📘 Chapter Summary: Business, Trade & Commerce</h2>
+        </div>
+        <div class="summary-body">
+            <div class="summary-text" id="summaryText">
+                <p><strong>🔹 Human Activities:</strong> All human activities are classified into Economic Activities (for earning money) and Non-Economic Activities (for personal satisfaction without monetary gain).</p>
+                
+                <div class="three-grid">
+                    <div class="grid-card"><i class="fas fa-chart-line"></i><h3>Business</h3><small>Production & Distribution of goods/services for profit</small></div>
+                    <div class="grid-card"><i class="fas fa-stethoscope"></i><h3>Profession</h3><small>Expert services with specialized knowledge (fees)</small></div>
+                    <div class="grid-card"><i class="fas fa-user-tie"></i><h3>Employment</h3><small>Working for others (wage/salary)</small></div>
+                </div>
+
+                <div class="highlight-badge"><strong>📌 Business - 10 Features:</strong> Economic activity, Two parties, Profit motive, Production of goods/services, Exchange of goods/services, Dealings in goods/services, Continuity, Uncertain returns, Element of risk, Customer satisfaction.</div>
+                <div class="highlight-badge"><strong>📌 Profession - 7 Features:</strong> Aim (money), Qualification (formal education), Financial returns (fees), Capital (limited), Registration required (ICAI, Bar Council, etc.), Non-transferability, Nature of work (expert services).</div>
+                <div class="highlight-badge"><strong>📌 Employment - 7 Features:</strong> Aim (livelihood), Qualification (as per job), Monetary returns (wage/salary), No capital required, No registration, Non-transferability, Work as per contract.</div>
+                
+                <div class="highlight-badge"><strong>📌 Business Objectives:</strong> Economic → Profit, Customers, Innovations, Optimum resource use. Social → Quality products, Avoid unfair practices, Employment, Employee welfare, Solve social problems.</div>
+                
+                <div class="highlight-badge"><strong>📌 Classification of Business Activities:</strong><br>
+                <strong>Industry</strong> (Production - creates form utility): Primary (Agriculture, Extractive, Genetic), Secondary (Manufacturing, Construction), Tertiary (Services).<br>
+                <strong>Commerce</strong> (Distribution): Trade (Internal/Home, External/Foreign - Import, Export, Entrepot) + Auxiliaries to Trade (Transport, Warehousing, Insurance, Banking, Advertising, Mercantile Agents, Communication).</div>
+                
+                <p><strong>⭐ Role of Profit:</strong> Returns to investors, R&D, Growth & expansion, Increases efficiency, Means of livelihood, Reward for risk, Survival.</p>
+            </div>
+            <div class="lang-buttons">
+                <button class="lang-btn" onclick="showTranslation('hindi')"><i class="fas fa-language"></i> हिंदी अनुवाद</button>
+                <button class="lang-btn" onclick="showTranslation('marathi')"><i class="fas fa-language"></i> मराठी अनुवाद</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= Section A: Multiple Choice ================= -->
+    <div class="card"><h2><i class="fas fa-check-square"></i> A. Select the correct option</h2>
+        <div class="qa-item"><div class="question">1) A Lawyer is ________.</div><div class="answer">a) a Professional person</div></div>
+        <div class="qa-item"><div class="question">2) Raw material is converted into finished product by ________ industry.</div><div class="answer">c) manufacturing</div></div>
+        <div class="qa-item"><div class="question">3) Actual buying and selling of goods is known as ________.</div><div class="answer">b) trade</div></div>
+        <div class="qa-item"><div class="question">4) National level code of conduct is prepared for ________.</div><div class="answer">a) professionals</div></div>
+        <div class="qa-item"><div class="question">5) Construction of dams is an activity done under ________ industry.</div><div class="answer">b) secondary</div></div>
+        <div class="qa-item"><div class="question">6) The problem of distance is solved by ________.</div><div class="answer">b) transport</div></div>
+        <div class="qa-item"><div class="question">7) Commerce is a branch of ________.</div><div class="answer">a) business</div></div>
+        <div class="qa-item"><div class="question">8) Return in business is called ________.</div><div class="answer">c) profit</div></div>
+    </div>
+
+    <!-- ================= Section B: Match Pairs ================= -->
+    <div class="card"><h2><i class="fas fa-link"></i> B. Match the pairs</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Group A</th><th>Answer</th><th>Group B</th></tr></thead>
+                <tbody>
+                    <tr><td>Helping disabled person</div></div></td><td>→</div></div><td>4) Non-economic activity</div></div></tr>
+                    <tr><td>Genetic Industry</div></div></td><td>→</div></div><td>3) Sericulture</div></div></tr>
+                    <tr><td>Local currency</div></div></td><td>→</div></div><td>5) Internal Trade</div></div></tr>
+                    <tr><td>Solve social problems</div></div></td><td>→</div></div><td>1) Social objective</div></div></td>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================= Section C: One word ================= -->
+    <div class="card"><h2><i class="fas fa-tag"></i> C. Give one word/phrase/term</h2>
+        <div class="qa-item"><div class="question">1) A regular activity concerned with production and distribution of goods and services for profits.</div><div class="answer">Business</div></div>
+        <div class="qa-item"><div class="question">2) Human activities that are conducted for earning money.</div><div class="answer">Economic Activities</div></div>
+        <div class="qa-item"><div class="question">3) Buying and selling of goods against money or money's worth.</div><div class="answer">Trade</div></div>
+        <div class="qa-item"><div class="question">4) Activities that remove all the difficulties in trade.</div><div class="answer">Auxiliaries to Trade</div></div>
+        <div class="qa-item"><div class="question">5) The type of industries that creates immovable wealth.</div><div class="answer">Construction Industry</div></div>
+    </div>
+
+    <!-- ================= Section D: True/False ================= -->
+    <div class="card"><h2><i class="fas fa-gavel"></i> D. State True or False</h2>
+        <div class="qa-item"><div class="question">1) Business is an economic activity.</div><div class="answer"><span class="true-badge">True</span></div></div>
+        <div class="qa-item"><div class="question">2) Every profession is practiced for earning money.</div><div class="answer"><span class="true-badge">True</span></div></div>
+        <div class="qa-item"><div class="question">3) Primary industries are concerned with nature.</div><div class="answer"><span class="true-badge">True</span></div></div>
+        <div class="qa-item"><div class="question">4) Trade includes commerce.</div><div class="answer"><span class="false-badge">False</span> Commerce includes trade.</div></div>
+        <div class="qa-item"><div class="question">5) Warehousing removes difficulty of time.</div><div class="answer"><span class="true-badge">True</span></div></div>
+        <div class="qa-item"><div class="question">6) Plant nursery is an example of extractive industry.</div><div class="answer"><span class="false-badge">False</span> It is Genetic industry.</div></div>
+    </div>
+
+    <!-- ================= Classification of Industries Table ================= -->
+    <div class="card"><h2><i class="fas fa-industry"></i> Classification of Industries</h2>
+        <div class="resp-table">
+            <tr>
+			<table>
+                <thead><tr><th>Category</th><th>Sub-category</th><th>Description & Examples</th></tr></thead>
+                <tbody>
+                    <tr><td rowspan="3"><strong>Primary Industry</strong><br>(Nature-oriented)</td><td>Agriculture Industry</td><td>Farming, cultivation of land (depends on fertility, climate)</td></tr>
+                    <tr><td>Extractive Industry</td><td>Extracting products from natural resources - mining, fishing, forestry</td></tr>
+                    <tr><td>Genetic Industry</td><td>Reproduction & multiplication of plants/animals - animal husbandry, sericulture, horticulture</td></tr>
+                    <tr><td rowspan="2"><strong>Secondary Industry</strong><br>(Uses primary products)</td><td>Manufacturing Industry</td><td>Transforming raw material into finished goods - textiles, sugar, paper</td></tr>
+                    <tr><td>Construction Industry</td><td>Constructing buildings, dams, bridges, roads (creates immovable wealth)</td></tr>
+                    <tr><td><strong>Tertiary Industry</strong></td><td>Service Industry</td><td>Support services to primary & secondary - transport, banking, tourism, hotels</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================= Trade Classification Table ================= -->
+    <div class="card"><h2><i class="fas fa-exchange-alt"></i> Classification of Trade</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Trade Type</th><th>Sub-type</th><th>Description</th></tr></thead>
+                <tbody>
+                    <tr><td rowspan="2"><strong>Home Trade / Internal Trade</strong><br>(Within country, local currency)</td><td>Wholesale Trade</td><td>Purchasing in bulk from producers, selling to retailers (link between producer & retailer)</td></tr>
+                    <tr><td>Retail Trade</td><td>Selling to final consumers (link between wholesaler/ manufacturer & consumer)</td></tr>
+                    <tr><td rowspan="3"><strong>Foreign Trade / External Trade</strong><br>(Between countries, different currencies)</td><td>Import Trade</td><td>Purchasing goods and services from another country</td></tr>
+                    <tr><td>Export Trade</td><td>Selling goods and services to foreign buyers</td></tr>
+                    <tr><td>Entrepot Trade</td><td>Importing from one country and re-exporting to another (combination of import & export)</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================= Auxiliaries to Trade ================= -->
+    <div class="card"><h2><i class="fas fa-truck"></i> 7 Auxiliaries to Trade (Aids to Trade)</h2>
+        <div class="resp-table">
+            <tr>
+			<table>
+                <thead><tr><th>#</th><th>Auxiliary</th><th>Function (Hindrance Removed)</th></tr></thead>
+                <tbody>
+                    <tr><td>1</div></div></td><td>Transport</div></div></td><td>Removes hindrance of place / distance - mobility to men & material</div></div></tr>
+                    <tr><td>2</div></div></td><td>Warehousing</div></div></td><td>Removes hindrance of time - creates time utility, storage from production to sale</div></div></tr>
+                    <tr><td>3</div></div></td><td>Insurance</div></div></td><td>Removes hindrance of risk - compensates for loss due to fire, theft, accident</div></div></tr>
+                    <tr><td>4</div></div></td><td>Banking / Finance</div></div></td><td>Removes hindrance of finance - provides loans, credit, overdraft, transaction facilities</div></div></tr>
+                    <tr><td>5</div></div></td><td>Advertising</div></div></td><td>Removes hindrance of information - informs customers about products (indoor/outdoor)</div></div></tr>
+                    <tr><td>6</div></div></td><td>Mercantile Agents</div></div></td><td>Removes hindrance of contact - bridges gap between buyer & seller (brokers, estate agents)</div></div></tr>
+                    <tr><td>7</div></div></td><td>Communication</div></div></td><td>Removes hindrance of communication - exchange of information (phone, email, postal)</div></div></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================= Business, Profession, Employment Comparison ================= -->
+    <div class="card"><h2><i class="fas fa-chart-simple"></i> Business, Profession & Employment - Comparative Analysis</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Basis</th><th>Business</th><th>Profession</th><th>Employment</th></tr></thead>
+                <tbody>
+                    <tr><td>Meaning</div></div></td><td>Production & distribution of goods/services</div></div></td><td>Rendering expert services with specialized knowledge</div></div></td><td>Working under another person as per contract</div></div></tr>
+                    <tr><td>Reward</div></div></td><td>Profit</div></div></td><td>Fees</div></div></td><td>Wage / Salary</div></div></tr>
+                    <tr><td>Capital</div></div></td><td>Required (depends on size)</div></div></td><td>Limited (except self-employed)</div></div></td><td>Not required</div></div></tr>
+                    <tr><td>Qualification</div></div></td><td>No minimum prescribed</div></div></td><td>Expert knowledge & formal training</div></div></td><td>As prescribed by employer</div></div></tr>
+                    <tr><td>Risk</div></div></td><td>High (uncertain profit)</div></div></td><td>Moderate (fees not certain)</div></div></td><td>No risk (fixed salary)</div></div></tr>
+                    <tr><td>Registration</div></div></td><td>Not compulsory</div></div></td><td>Compulsory with council (ICAI, Bar Council, etc.)</div></div></td><td>Not required</div></div></tr>
+                    <tr><td>Transferability</div></div></td><td>Transferable</div></div></td><td>Non-transferable</div></div></td><td>Non-transferable</div></div></tr>
+                    <tr><td>Examples</div></div></td><td>Builders, Grocers, Supermarket</div></div></td><td>Doctor, Lawyer, Chartered Accountant</div></div></td><td>Clerk, Teacher, Officer</div></div></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================= Industry vs Commerce ================= -->
+    <div class="card"><h2><i class="fas fa-chart-line"></i> Industry vs Commerce</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Basis</th><th>Industry</th><th>Commerce</th></tr></thead>
+                <tbody>
+                    <tr><td>Meaning</div></div></td><td>Production of goods and services</div></div></td><td>Distribution of goods and services</div></div></td>
+                    <tr><td>Utility Created</div></div></td><td>Form Utility</div></div></td><td>Place, Time & Possession Utility</div></div></td>
+                    <tr><td>Location</div></div></td><td>Factories & Workshops</div></div></td><td>Markets & Offices</div></div></td>
+                    <tr><td>Capital</div></div></td><td>Huge capital required</div></div></td><td>Comparatively less capital</div></div></td>
+                    <tr><td>Classification</div></div></td><td>Primary, Secondary, Tertiary</div></div></td><td>Trade & Auxiliaries to Trade</div></div></td>
+                    <tr><td>Market Force</div></div></td><td>Represents Supply Side</div></div></td><td>Represents Demand & Supply Side</div></div></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================= Role of Profit & Business Objectives ================= -->
+    <div class="card"><h2><i class="fas fa-chart-line"></i> Role of Profit & Business Objectives</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Role of Profit (8 Points)</th><th>Business Objectives</th></tr></thead>
+                <tbody>
+                    <tr><td>1. Returns to Investors<br>2. Research & Development (R&D)<br>3. Growth & Expansion<br>4. Increases Efficiency<br>5. Means of Livelihood<br>6. Builds Goodwill<br>7. Reward for Risk<br>8. Survival of Business</td>
+                    <td><strong>Economic Objectives:</strong><br>• Earning Profit<br>• Searching New Customers<br>• Innovations<br>• Best Use of Resources<br><br><strong>Social Objectives:</strong><br>• Quality Products<br>• Avoid Unfair Trade Practices<br>• Employment Generation<br>• Employee Welfare<br>• Solve Social Problems<br>• Welfare of Society</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+
+    <!-- ================= Case Study ================= -->
+    <div class="card"><h2><i class="fas fa-briefcase"></i> Case Study Analysis</h2>
+        <div class="qa-item"><div class="question">Case 1: Jaysukh Oil Mills → Rupesh Oil Depot → Balaji Groceries → Mrs. Prachi (2kg oil).</div><div class="answer">i) Wholesaler: Rupesh Oil Depot; ii) Retailer: Balaji Groceries; iii) Consumer: Mrs. Prachi</div></div>
+        <div class="qa-item"><div class="question">Case 2: Mr. Pranav (tin manufacturer in India), Mr. Jack (England sells to Frank Corp in North America), Mr. Williams (USA buys from Brazil).</div><div class="answer">i) Importer: Mr. Jack (England) & Mr. Williams (USA); ii) Manufacturer: Mr. Pranav; iii) Exporter: Mr. Pranav (India) & Mr. Williams' seller (Brazil)</div></div>
+    </div>
+
+    <!-- ================= One Sentence Answers ================= -->
+    <div class="card"><h2><i class="fas fa-question-circle"></i> H. Answer in one sentence</h2>
+        <div class="qa-item"><div class="question">1) What is an Economic Activity?</div><div class="answer">Any activity conducted for earning money or livelihood is called economic activity.</div></div>
+        <div class="qa-item"><div class="question">2) What is Non-economic Activity?</div><div class="answer">Human activities performed for personal satisfaction without monetary expectations are non-economic activities.</div></div>
+        <div class="qa-item"><div class="question">3) What is Wholesale Trade?</div><div class="answer">Wholesale trade involves purchasing goods in bulk from producers and selling in smaller quantities to retailers.</div></div>
+        <div class="qa-item"><div class="question">4) What is Entrepot Trade?</div><div class="answer">Entrepot trade involves importing goods from one country and re-exporting them to another country.</div></div>
+        <div class="qa-item"><div class="question">5) What is Primary Industry?</div><div class="answer">Primary industry is concerned with nature and includes agriculture, extractive and genetic industries.</div></div>
+    </div>
+
+    <!-- ================= Find the odd one ================= -->
+    <div class="card"><h2><i class="fas fa-puzzle-piece"></i> E. Find the odd one</h2>
+        <div class="qa-item"><div class="question">1) Agricultural Industry, Extractive Industry, Genetic Industry, Manufacturing Industry.</div><div class="answer">Manufacturing Industry (others are Primary industries)</div></div>
+        <div class="qa-item"><div class="question">2) Import Trade, Export Trade, Wholesale Trade, Entrepot Trade.</div><div class="answer">Wholesale Trade (others are Foreign Trade)</div></div>
+        <div class="qa-item"><div class="question">3) Banking, Insurance, Transport, Manufacturing.</div><div class="answer">Manufacturing (others are Auxiliaries to Trade)</div></div>
+    </div>
+
+    <!-- ================= Correct the underlined words ================= -->
+    <div class="card"><h2><i class="fas fa-edit"></i> I. Correct the underlined word</h2>
+        <div class="qa-item"><div class="question">1) Business is non-economic activity.</div><div class="answer">economic</div></div>
+        <div class="qa-item"><div class="question">2) Profession can be transferred to other person.</div><div class="answer">cannot be transferred</div></div>
+        <div class="qa-item"><div class="question">3) Industry creates place utility.</div><div class="answer">form</div></div>
+        <div class="qa-item"><div class="question">4) Commerce represents supply side of market.</div><div class="answer">Industry (or Business) represents supply side</div></div>
+    </div>
+
+    <div class="footer-note"><i class="fas fa-store"></i> Business, Trade & Commerce | Economic vs Non-Economic | Business · Profession · Employment | Industry · Commerce | 11th Commerce OCM</div>
+</div>
+
+<!-- Popup for Translation -->
+<div id="translationPopup" class="popup-overlay">
+    <div class="popup-content">
+        <div class="popup-header">
+            <h3><i class="fas fa-language"></i> अनुवाद / Translation</h3>
+            <span class="close-popup" onclick="closePopup()">×</span>
+        </div>
+        <div class="popup-body" id="popupBody"></div>
+    </div>
+</div>
+
+<script>
+    const hindiSummary = `
+        <div style="font-family: 'Inter', sans-serif;">
+            <p><strong>🔹 मानवीय क्रियाएँ:</strong> सभी मानवीय क्रियाएँ दो प्रकार की होती हैं - आर्थिक क्रियाएँ (धन कमाने के लिए) और अनार्थिक क्रियाएँ (व्यक्तिगत संतुष्टि के लिए बिना मौद्रिक लाभ)।</p>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 व्यवसाय की 10 विशेषताएँ:</strong> आर्थिक क्रिया, दो पक्ष, लाभ उद्देश्य, वस्तुओं का उत्पादन, विनिमय, नियमितता, अनिश्चित आय, जोखिम, ग्राहक संतुष्टि।</div>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 व्यवसाय, पेशा और रोजगार:</strong><br>
+            • <strong>व्यवसाय:</strong> लाभ कमाने हेतु उत्पादन एवं वितरण<br>
+            • <strong>पेशा:</strong> विशेषज्ञ ज्ञान एवं शुल्क पर सेवाएँ (डॉक्टर, वकील, CA)<br>
+            • <strong>रोजगार:</strong> दूसरों के लिए कार्य करना (वेतन/मजदूरी)</div>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 उद्योगों का वर्गीकरण:</strong><br>
+            • <strong>प्राथमिक उद्योग:</strong> कृषि, निष्कर्षण, आनुवंशिक<br>
+            • <strong>द्वितीयक उद्योग:</strong> विनिर्माण, निर्माण<br>
+            • <strong>तृतीयक उद्योग:</strong> सेवा उद्योग</div>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 व्यापार के सहायक (7):</strong> परिवहन, गोदाम, बीमा, बैंकिंग, विज्ञापन, व्यापारिक एजेंट, संचार</div>
+            <p><strong>⭐ लाभ की भूमिका:</strong> निवेशकों को प्रतिफल, अनुसंधान एवं विकास, वृद्धि एवं विस्तार, दक्षता में वृद्धि, आजीविका का साधन, जोखिम का पुरस्कार, व्यवसाय की सुरक्षा।</p>
+        </div>`;
+
+    const marathiSummary = `
+        <div style="font-family: 'Inter', sans-serif;">
+            <p><strong>🔹 मानवी क्रिया:</strong> सर्व मानवी क्रिया दो प्रकारच्या असतात - आर्थिक क्रिया (पैसे कमविण्यासाठी) आणि अनाथिक क्रिया (वैयक्तिक समाधानासाठी).</p>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 व्यवसायाची 10 वैशिष्ट्ये:</strong> आर्थिक क्रिया, दोन पक्ष, नफा उद्दिष्ट, वस्तूंचे उत्पादन, देवाणघेवाण, नियमितता, अनिश्चित उत्पन्न, जोखीम, ग्राहक समाधान.</div>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 व्यवसाय, व्यवसाय (प्रोफेशन) आणि रोजगार:</strong><br>
+            • <strong>व्यवसाय:</strong> नफ्यासाठी उत्पादन व वितरण<br>
+            • <strong>प्रोफेशन:</strong> विशेषज्ञ ज्ञान व शुल्कावर सेवा (डॉक्टर, वकील)<br>
+            • <strong>रोजगार:</strong> इतरांसाठी काम (पगार/मजुरी)</div>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 उद्योगांचे वर्गीकरण:</strong><br>
+            • <strong>प्राथमिक उद्योग:</strong> कृषी, उत्खनन, आनुवंशिक<br>
+            • <strong>दुय्यम उद्योग:</strong> उत्पादन, बांधकाम<br>
+            • <strong>तृतीयक उद्योग:</strong> सेवा उद्योग</div>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 व्यापाराचे सहायक (7):</strong> वाहतूक, गोदामे, विमा, बँकिंग, जाहिरात, व्यापारी एजंट, संचार</div>
+            <p><strong>⭐ नफ्याची भूमिका:</strong> गुंतवणूकदारांना परतावा, संशोधन व विकास, वाढ व विस्तार, कार्यक्षमता वाढ, उपजीविकेचे साधन, जोखमीचे बक्षीस, व्यवसायाची सुरक्षितता.</p>
+        </div>`;
+
+    function showTranslation(lang) {
+        const popup = document.getElementById('translationPopup');
+        const popupBody = document.getElementById('popupBody');
+        if (lang === 'hindi') popupBody.innerHTML = hindiSummary;
+        else popupBody.innerHTML = marathiSummary;
+        popup.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+    function closePopup() {
+        document.getElementById('translationPopup').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+    window.onclick = function(event) {
+        const popup = document.getElementById('translationPopup');
+        if (event.target === popup) closePopup();
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>🚀 Entrepreneurship | 12th OC Chapter 3 | Entrepreneur · Qualities · Functions · StartUp India · StandUp India · Agro Tourism · Intrapreneur</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    body {
+      background: linear-gradient(145deg, #e8f0f5, #d9e9f2);
+      min-height: 100vh;
+      padding: 24px 18px;
+      color: #0c4a6e;
+      overflow-y: scroll;
+      scrollbar-width: thin;
+    }
+    .container { max-width: 1350px; margin: 0 auto; }
+    .heading { text-align: center; margin-bottom: 35px; animation: slideDown 0.5s ease; }
+    .heading h1 {
+      font-size: 2rem;
+      background: linear-gradient(135deg, #0f3b5c, #1e6f5c, #289672);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+    }
+    .heading p { color: #0f3b5c; margin-top: 10px; font-weight: 700; background: #ffffffcc; display: inline-block; padding: 5px 20px; border-radius: 40px; backdrop-filter: blur(4px);}
+    .rating-star { background: #cbdff2; border-radius: 60px; padding: 4px 16px; display: inline-block; font-weight: bold; margin-top: 8px; color: #0c4a6e; }
+    .search-wrapper { position: relative; margin-bottom: 32px; }
+    .search-box {
+      background: white;
+      border-radius: 60px;
+      padding: 6px 6px 6px 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.12);
+      border: 1px solid #8bc6d4;
+    }
+    .search-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      padding: 15px 0;
+      background: transparent;
+      color: #1f2937;
+      font-weight: 500;
+    }
+    .icon-btn {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(145deg, #1e6f5c, #0f3b5c);
+      color: white;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: 0.25s;
+      box-shadow: 0 4px 12px rgba(30,111,92,0.4);
+    }
+    .icon-btn:hover { transform: scale(1.05); background: #289672; }
+    .suggestions-dropdown {
+      position: absolute;
+      top: calc(100% + 12px);
+      left: 0;
+      right: 0;
+      background: white;
+      border-radius: 32px;
+      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.2);
+      z-index: 120;
+      max-height: 280px;
+      overflow-y: auto;
+      display: none;
+      border: 1px solid #8bc6d4;
+    }
+    .suggestion-item {
+      padding: 14px 24px;
+      color: #1f2937;
+      cursor: pointer;
+      border-bottom: 1px solid #e0f2fe;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      transition: 0.2s;
+    }
+    .suggestion-item:hover { background: #d4eefc; padding-left: 32px; }
+    .result-container { display: flex; flex-direction: column; gap: 24px; margin-top: 20px; }
+    .result-card {
+      background: white;
+      border-radius: 32px;
+      padding: 1.8rem;
+      color: #1f2937;
+      box-shadow: 0 12px 30px -10px rgba(0,0,0,0.08);
+      transition: 0.25s ease;
+      border: 1px solid #b9dfe8;
+    }
+    .result-card:hover { transform: translateY(-4px); box-shadow: 0 20px 30px -12px rgba(0,0,0,0.12); }
+    .badge {
+      background: #d9f0f5;
+      color: #1e6f5c;
+      display: inline-block;
+      padding: 5px 16px;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+    .result-card h3 {
+      color: #0f3b5c;
+      font-size: 1.35rem;
+      border-left: 6px solid #289672;
+      padding-left: 18px;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+    .answer-text {
+      background: #f1fafe;
+      padding: 18px 24px;
+      border-radius: 28px;
+      line-height: 1.7;
+      margin: 12px 0;
+      border: 1px solid #b9dfe8;
+    }
+    .formula-box {
+      background: #dff2f5;
+      padding: 12px 18px;
+      border-radius: 28px;
+      font-family: monospace;
+      font-size: 0.95rem;
+      margin: 14px 0;
+      text-align: center;
+      border-left: 6px solid #1e6f5c;
+      font-weight: 600;
+    }
+    .responsive-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 0.85rem;
+      overflow-x: auto;
+      display: block;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .responsive-table th, .responsive-table td {
+      border: 1px solid #cbd5e1;
+      padding: 12px 10px;
+      text-align: left;
+      background: white;
+    }
+    .responsive-table th { background: #1e6f5c; color: white; font-weight: 700; }
+    .action-buttons { margin-top: 22px; display: flex; gap: 15px; flex-wrap: wrap; }
+    .action-buttons button {
+      border: none;
+      padding: 10px 26px;
+      border-radius: 50px;
+      font-weight: 700;
+      background: #eef4ff;
+      color: #0f3b5c;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .action-buttons button:last-child { background: #289672; color: white; box-shadow: 0 2px 8px rgba(40,150,114,0.3);}
+    .action-buttons button:hover { transform: scale(0.97); opacity: 0.9; }
+    .not-found {
+      background: #f1fafe;
+      border-radius: 48px;
+      padding: 2.5rem;
+      text-align: center;
+      font-size: 1.1rem;
+      color: #1e6f5c;
+      border: 1px solid #b9dfe8;
+    }
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(10px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    .popup-box {
+      background: white;
+      max-width: 1000px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      border-radius: 48px;
+      padding: 30px 34px;
+      position: relative;
+      color: #1e293b;
+    }
+    .close-popup {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      background: #fee2e2;
+      border: none;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+    .lang-section { background: #f1fef7; padding: 18px; border-radius: 28px; margin-bottom: 20px; border-left: 5px solid #289672; }
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 650px) {
+      body { padding: 16px 12px; }
+      .heading h1 { font-size: 1.4rem; }
+      .result-card h3 { font-size: 1.1rem; }
+      .result-card { padding: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="heading">
+    <h1>🚀 Entrepreneurship | 12th OC Chapter 3</h1>
+    <p>💡 Entrepreneur · Characteristics · Qualities · Functions · EDP · StartUp India · StandUp India · Agro Tourism · Intrapreneur</p>
+    <div class="rating-star">⭐ Rating: 10/10 — Complete Entrepreneurship Mastery</div>
+  </div>
+  <div class="search-wrapper">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="🔎 Search: Entrepreneur definition, Qualities of entrepreneur, Functions, Startup India, StandUp India, Agro tourism, Intrapreneur, EDP...">
+      <button class="icon-btn" id="voiceBtn">🎤</button>
+    </div>
+    <div id="suggestionsList" class="suggestions-dropdown"></div>
+  </div>
+  <div class="result-container" id="resultsContainer">
+    <div class="not-found">🚀 Entrepreneurship explorer — Search Entrepreneur, qualities, functions, StartUp India, StandUp India, Agro Tourism, Intrapreneur ✨</div>
+  </div>
+</div>
+<div class="popup-overlay" id="popupModal">
+  <div class="popup-box">
+    <button class="close-popup" id="closeModalBtn">✖</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+  const qaDatabase = [];
+  function addQA(question, answer, category, keywords = []) {
+    qaDatabase.push({ id: qaDatabase.length+1, question, answer, category, keywords: keywords.map(k=>k.toLowerCase()) });
+  }
+
+  // ========== CHAPTER 3: ENTREPRENEURSHIP (Based on PDF) ==========
+  addQA("What is the meaning of Entrepreneur? Origin?", "The word 'entrepreneur' comes from French verb 'entreprendre' meaning 'to undertake'. An entrepreneur is a person who starts a business and is willing to risk loss in order to make money. They are innovators, owners, decision-makers and risk-takers. Entrepreneurs are considered the fourth factor of production (after land, labor, capital).", "Entrepreneur", ["entrepreneur meaning", "origin of entrepreneur"]);
+  addQA("What are the characteristics of an Entrepreneur?", "1) Intellectual Capabilities (creative thinker, analytical ability); 2) Future Vision (foresight about market); 3) Hard Work (long hours); 4) Technical Knowledge (updates on product/process); 5) Communication Skills; 6) Highly Optimistic (positive thinking); 7) Risk bearing capacity (calculated risks); 8) Self Confidence (self-motivation).", "Entrepreneur", ["characteristics of entrepreneur", "features of entrepreneur"]);
+  addQA("What are the qualities of a successful Entrepreneur?", "1) Disciplined; 2) Confidence; 3) Open Minded (sees opportunities); 4) Self Starter (proactive); 5) Competitive; 6) Creativity; 7) Determination (not thwarted by defeat); 8) Strong communication skills; 9) Strong work ethic; 10) Passion (most important trait).", "Successful Entrepreneur", ["qualities of entrepreneur", "traits of entrepreneur"]);
+  addQA("What are the functions of an Entrepreneur?", "1) Innovation (introduce new products/processes); 2) Determination of Objectives (set aims); 3) Development of Market (conduct surveys, research); 4) New Technology (adopt advanced methods); 5) Good Relations (healthy work atmosphere); 6) Organizing Funds (arrange finance); 7) Taking Decisions (wise, timely decisions).", "Entrepreneur Functions", ["functions of entrepreneur"]);
+  addQA("What is Entrepreneurship Development? Meaning?", "Entrepreneurship is a purposeful activity to initiate, maintain and grow profit by production and distribution. It is the willingness to start a new venture by taking risk and managing in competitive environment. Entrepreneurship development involves training and EDP to enhance entrepreneurial skills.", "Entrepreneurship", ["entrepreneurship meaning", "entrepreneurship development"]);
+  addQA("What are the characteristics of Entrepreneurship?", "1) Innovation (new combinations); 2) Economic activity (satisfy wants, earn livelihood); 3) Organization building (organize factors of production); 4) Creative activity; 5) Managerial skill and leadership; 6) Skillful management; 7) Risk bearing (uncertainty); 8) Gap filling function (fill deficiencies in knowledge about production).", "Entrepreneurship", ["characteristics of entrepreneurship"]);
+  addQA("What is the process of Entrepreneurship Development?", "Two main components: 1) Training (planned instruction, broadens vision, builds skills, minimizes wastage). Methods: lecture, demonstration, group instructions, seminars. 2) Entrepreneurship Development Programmes (EDP) - Steps: Arrangement of infrastructure → Selection of potential entrepreneur → Identification of enterprise → Actual training program → Selection of training personnel → Selection of method → Actual training → Monitoring and follow-up.", "Entrepreneurship Development", ["EDP", "entrepreneurship development programme", "process of entrepreneurship development"]);
+  addQA("What is StartUp India? Explain objectives.", "StartUp India is an initiative of Government of India launched in 2016 to build ecosystem that nurtures startups. Objectives: Rs.10,000 crore funding pool; Reduction in patent fees; 90 days exit window; Freedom from inspections for 3 years; Tax & capital gain tax exemption for 3 years; Target 5 lakh schools with innovation programs; Promote India as startup hub. A startup has HQ in India, <10 years old, turnover <Rs.100 crores.", "Government Initiatives", ["startup india", "startup india initiative"]);
+  addQA("What is StandUp India Scheme? Eligibility & features.", "StandUp India scheme facilitates bank loans between Rs.10 lakh to Rs.1 crore to SC/ST and/or Women entrepreneurs per bank branch for greenfield enterprise (manufacturing/services/trading). Eligibility: SC/ST or woman above 18; 51% shareholding for non-individuals. Features: Composite loan, 7 years repayment with 18 months moratorium, interest rate = MCLR+3%+tenor premium, margin money 25%.", "Government Initiatives", ["standup india", "stand up india scheme", "women entrepreneurship"]);
+  addQA("What is Agro Tourism (Agritourism)?", "Agro tourism brings urban residents to rural areas for leisure travel, providing hands-on farm experiences (fruit picking, milking cows, bee keeping). It supports agricultural economy and supplements farm income. Activities: Trekking, fishing, harvest festivals (Hurda Party in Maharashtra), farm stays, u-pick operations. Maharashtra is pioneer state in India for agro tourism.", "Agro Tourism", ["agro tourism", "agritourism", "rural tourism"]);
+  addQA("What is an Intrapreneur? Give examples.", "An intrapreneur is an employee who has authority and support from employer to implement innovative ideas within existing organization. He receives salary regardless of immediate revenue. Examples: 'Like' button on Facebook created by employee; Sony Playstation by junior staff; Mobile charger in bike by Kinetic India employee; Tata Sumo named after Sumant Moolgaokar.", "Intrapreneur", ["intrapreneur definition", "intrapreneurship"]);
+  addQA("What is EDP? Objectives of EDP?", "Entrepreneurship Development Programme (EDP) is a programme to strengthen entrepreneurial motive and acquire skills for entrepreneurial role. First introduced in Gujarat (1970) based on McClelland's Kakinada experiments. Objectives: 1) Foster entrepreneurial growth; 2) Optimum use of resources; 3) Develop backward regions & disadvantaged groups; 4) Generate employment; 5) Widen base for small & medium industries.", "EDP", ["edp objectives", "entrepreneurship development programme"]);
+  addQA("What is the role of training in entrepreneurship development?", "Training broadens vision, builds necessary skills, imparts knowledge of marketing & production, exposes latest developments, minimizes wastage, improves efficiency, helps accept new technology, reduces fatigue & industrial accidents. Methods: lecture, demonstration, individual/group instructions, meetings, conferences, seminars.", "Training", ["entrepreneurship training", "training methods"]);
+  addQA("Explain Women Entrepreneurship Platform (WEP).", "WEP is unified access portal by NITI Aayog (announced at 8th Global Entrepreneurship Summit 2017, Hyderabad) to bring women together to realize entrepreneurial aspirations. It provides info about government schemes & private initiatives. Partners: NASSCOM, SIDBI, FICCI as mentors. Aims to substantially increase women entrepreneurs.", "Women Entrepreneurship", ["women entrepreneurship platform", "wep"]);
+  
+  // Comparison & helper tables
+  function getEntrepreneurVsIntrapreneurTable() {
+    return `<table class="responsive-table"><thead><tr><th>Basis</th><th>Entrepreneur</th><th>Intrapreneur</th></tr></thead><tbody>
+      <tr><td>Meaning</td><td>Starts own business venture</td><td>Employee innovating within organization</td></tr>
+      <tr><td>Risk</td><td>Takes personal financial risk</td><td>No personal risk, gets salary</td></tr>
+      <tr><td>Reward</td><td>Profit</td><td>Salary + recognition/promotion</td></tr>
+      <tr><td>Resources</td><td>Own resources/arranged</td><td>Provided by company</td></tr>
+      <tr><td>Independence</td><td>Full autonomy</td><td>Works within corporate structure</td></tr>
+    </tbody></table>`;
+  }
+  function getStartupVsStandupTable() {
+    return `<table class="responsive-table"><thead><tr><th>Feature</th><th>StartUp India</th><th>StandUp India</th></tr></thead><tbody>
+      <tr><td>Launched</td><td>2016</td><td>2016</td></tr>
+      <tr><td>Target</td><td>All entrepreneurs with innovative startups</td><td>SC/ST & Women entrepreneurs</td></tr>
+      <tr><td>Loan Range</td><td>Funding pool of ₹10,000 crore</td><td>₹10 lakh to ₹1 crore per branch</td></tr>
+      <tr><td>Focus</td><td>Ecosystem building, tax exemptions, patent fee reduction</td><td>Greenfield enterprises in manufacturing/services/trading</td></tr>
+      <tr><td>Key Benefit</td><td>3 year tax holiday, self-certification</td><td>7 year repayment, moratorium 18 months</td></tr>
+    </tbody></table>`;
+  }
+
+  // Search logic
+  const searchInput = document.getElementById("searchInput");
+  const resultsContainer = document.getElementById("resultsContainer");
+  const suggestionsDiv = document.getElementById("suggestionsList");
+
+  function getMatches(q) {
+    const lower = q.toLowerCase();
+    return qaDatabase.filter(item => 
+      item.question.toLowerCase().includes(lower) || 
+      item.answer.toLowerCase().includes(lower) ||
+      item.category.toLowerCase().includes(lower) ||
+      item.keywords.some(k => k.includes(lower))
+    ).slice(0, 18);
+  }
+
+  function updateSuggestions() {
+    const val = searchInput.value.trim();
+    if(!val) { suggestionsDiv.style.display = "none"; return; }
+    const matches = getMatches(val);
+    if(!matches.length) { suggestionsDiv.style.display = "none"; return; }
+    suggestionsDiv.innerHTML = "";
+    matches.forEach(item => {
+      const div = document.createElement("div");
+      div.className = "suggestion-item";
+      div.innerHTML = `<span>🚀</span> <strong>${item.question.substring(0,70)}</strong> <span style="margin-left:auto; background:#d9f0f5; padding:2px 12px; border-radius:30px;">${item.category}</span>`;
+      div.addEventListener("click", () => {
+        searchInput.value = item.question;
+        suggestionsDiv.style.display = "none";
+        performSearch(item.question);
+      });
+      suggestionsDiv.appendChild(div);
+    });
+    suggestionsDiv.style.display = "block";
+  }
+
+  function performSearch(q = null) {
+    let query = (q !== null) ? q : searchInput.value.trim();
+    if(!query) { resultsContainer.innerHTML = `<div class="not-found">🚀 Search: Entrepreneur, qualities, functions, StartUp India, StandUp India, Agro tourism, Intrapreneur, EDP...</div>`; return; }
+    const matches = getMatches(query);
+    if(!matches.length) { resultsContainer.innerHTML = `<div class="not-found">❌ No results. Try: Entrepreneur definition, characteristics, functions, Startup India, Standup India, Agro tourism, Intrapreneur.</div>`; return; }
+    resultsContainer.innerHTML = "";
+    matches.forEach(item => {
+      let extra = "";
+      const qtext = item.question.toLowerCase();
+      if (qtext.includes("intrapreneur") && qtext.includes("entrepreneur")) extra = getEntrepreneurVsIntrapreneurTable();
+      if (qtext.includes("startup india") && qtext.includes("standup india")) extra = getStartupVsStandupTable();
+      if (item.category === "Government Initiatives") extra = `<div class="formula-box">🇮🇳 Key Initiatives: StartUp India (2016, startup ecosystem), StandUp India (SC/ST & Women, ₹10L-1Cr loan), MUDRA, I:MADE program.</div>`;
+      if (item.category === "Agro Tourism") extra = `<div class="formula-box">🌾 Agro Tourism activities: Fruit picking, bee keeping, Hurda Party, farm stays, trekking, harvest festivals. Maharashtra is pioneer state.</div>`;
+      if (item.category === "Entrepreneur Functions") extra = `<div class="formula-box">⚙️ 7 Functions: Innovation → Objectives → Market Development → New Technology → Good Relations → Organizing Funds → Decision Making.</div>`;
+      
+      const card = document.createElement("div");
+      card.className = "result-card";
+      card.innerHTML = `
+        <div class="badge">📌 ${escapeHtml(item.category)}</div>
+        <h3>📘 ${escapeHtml(item.question)}</h3>
+        <div class="answer-text"><strong>✅ Answer / Explanation:</strong><br>${escapeHtml(item.answer)}${extra}</div>
+        <div class="action-buttons">
+          <button class="detailBtn" data-q="${escapeAttr(item.question)}" data-a="${escapeAttr(item.answer)}" data-cat="${item.category}">📖 Detailed Explanation</button>
+          <button class="extraTableBtn" data-type="${item.category}">📊 Reference Tables</button>
+        </div>
+      `;
+      resultsContainer.appendChild(card);
+    });
+    attachEvents();
+  }
+
+  function attachEvents() {
+    document.querySelectorAll(".detailBtn").forEach(btn => btn.addEventListener("click", (e) => {
+      const q = btn.getAttribute("data-q"), a = btn.getAttribute("data-a"), cat = btn.getAttribute("data-cat");
+      showDetailPopup(q, a, cat);
+    }));
+    document.querySelectorAll(".extraTableBtn").forEach(btn => btn.addEventListener("click", () => {
+      let content = `<div class="lang-section"><strong>📚 Chapter 3: Entrepreneurship - Complete Reference</strong><br>`;
+      content += `<h4>🧑‍💼 Entrepreneur vs Intrapreneur</h4>${getEntrepreneurVsIntrapreneurTable()}`;
+      content += `<hr><h4>🇮🇳 StartUp India vs StandUp India</h4>${getStartupVsStandupTable()}`;
+      content += `<hr><div class="formula-box">💡 Key Facts: Entrepreneur = 4th factor of production; Qualities: 10 traits (Disciplined, Passion, Creativity, etc.); Functions: Innovation, market development, fund organizing; Characteristics of Entrepreneurship: Innovation, risk bearing, gap filling; EDP started in Gujarat 1970; Agro Tourism Maharashtra pioneer; Intrapreneur examples: Facebook Like button, Sony Playstation.</div>`;
+      content += `</div>`;
+      document.getElementById("popupModal").style.display = "flex";
+      document.getElementById("modalContent").innerHTML = `<h2 style="color:#0f3b5c;">📊 Entrepreneurship - Complete Reference Tables</h2>${content}<button id="closeModalInside" style="background:#289672; margin-top:20px; padding:10px 26px; border-radius:40px; color:white;">Close</button>`;
+      document.getElementById("closeModalInside").addEventListener("click", ()=> document.getElementById("popupModal").style.display = "none");
+    }));
+  }
+
+  function showDetailPopup(question, answer, category) {
+    let extraInfo = `<div class="lang-section"><strong>📖 12th OC Chapter 3 - Entrepreneurship (Enhanced)</strong><br>✔ Origin: French 'entreprendre' = to undertake. Richard Cantillon first applied to business. John Stuart Mill described as founding private enterprise.<br>✔ Characteristics: Intellectual, future vision, hard work, technical knowledge, communication, optimistic, risk bearing, self-confidence.<br>✔ 10 Qualities: Disciplined, Confidence, Open Minded, Self Starter, Competitive, Creativity, Determination, Communication, Work ethic, Passion (most important).<br>✔ 7 Functions: Innovation, Objectives, Market Dev, New Tech, Good Relations, Organizing Funds, Decisions.<br>✔ EDP: Training + Programmes; First in Gujarat 1970.<br>✔ Startup India (2016), StandUp India (SC/ST & Women loans ₹10L-1Cr).<br>✔ Agro Tourism: Maharashtra pioneer; Intrapreneur: employee innovator.</div>`;
+    if(category === "Entrepreneur") extraInfo += `<div class="lang-section"><strong>💡 Additional:</strong> Entrepreneurs are fourth factor of production. They generate employment, backbone of economic progress.</div>`;
+    if(category === "Government Initiatives") extraInfo += `<div class="lang-section"><strong>🏛️ StandUp India Details:</strong> Composite loan 75% of project cost, 7 years repayment, 18 months moratorium, MCLR+3% interest.</div>`;
+    if(category === "Intrapreneur") extraInfo += `<div class="lang-section"><strong>🔧 Famous Intrapreneurs:</strong> 'Like' button (Facebook), PlayStation (Sony), Kinetic mobile charger, Tata Sumo naming.</div>`;
+    document.getElementById("popupModal").style.display = "flex";
+    document.getElementById("modalContent").innerHTML = `
+      <h2 style="color:#0f3b5c;">📘 Detailed Explanation</h2>
+      <div class="lang-section"><strong>❓ Question:</strong> ${escapeHtml(question)}</div>
+      <div class="lang-section"><strong>✅ Answer:</strong><br>${escapeHtml(answer)}</div>
+      ${extraInfo}
+      <button id="closeDetailModal" style="background:#289672; padding:10px 26px; border-radius:40px; margin-top:12px;">Close</button>
+    `;
+    document.getElementById("closeDetailModal").addEventListener("click", ()=> document.getElementById("popupModal").style.display = "none");
+  }
+
+  function escapeHtml(str) { return str.replace(/[&<>]/g, m => m==='&'?'&amp;': m==='<'?'&lt;':'&gt;'); }
+  function escapeAttr(str) { return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function startVoice() { if (!('webkitSpeechRecognition' in window)) { alert("Voice search supported in Chrome/Edge."); return; } const rec = new webkitSpeechRecognition(); rec.lang="en-IN"; rec.start(); rec.onresult = (e)=> { searchInput.value = e.results[0][0].transcript; performSearch(); }; }
+  document.getElementById("voiceBtn").addEventListener("click", startVoice);
+  searchInput.addEventListener("keyup", () => { performSearch(); updateSuggestions(); });
+  searchInput.addEventListener("focus", updateSuggestions);
+  document.addEventListener("click", (e) => { if(!document.querySelector(".search-wrapper").contains(e.target)) suggestionsDiv.style.display = "none"; });
+  document.getElementById("closeModalBtn").addEventListener("click", () => document.getElementById("popupModal").style.display = "none");
+  window.onload = () => { resultsContainer.innerHTML = `<div class="not-found">🚀 12th OC Chapter 3: Entrepreneurship | Search Entrepreneur characteristics, Functions, StartUp India, StandUp India, Agro Tourism, Intrapreneur ✨</div>`; };
+</script>
+</body>
+</html>

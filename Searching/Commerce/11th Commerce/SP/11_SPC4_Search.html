@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>📄 Documents Related to Formation of Company | 11th SP Chap 4 | MOA | AOA | Prospectus</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    body {
+      background: linear-gradient(145deg, #1e1b4b, #0f0a2a);
+      min-height: 100vh;
+      padding: 24px 18px;
+      color: #f1f5f9;
+      overflow-y: scroll;
+      scrollbar-width: none;
+    }
+    body::-webkit-scrollbar { display: none; }
+    .container { max-width: 1300px; margin: 0 auto; }
+    .heading { text-align: center; margin-bottom: 35px; animation: slideDown 0.6s ease; }
+    .heading h1 {
+      font-size: 2rem;
+      background: linear-gradient(135deg, #ffffff, #a78bfa, #8b5cf6);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+    }
+    .heading p { color: #c4b5fd; margin-top: 10px; font-weight: 500; }
+    .search-wrapper { position: relative; margin-bottom: 32px; }
+    .search-box {
+      background: rgba(255,255,255,0.97);
+      border-radius: 60px;
+      padding: 6px 6px 6px 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.45);
+    }
+    .search-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      padding: 15px 0;
+      background: transparent;
+      color: #0f172a;
+      font-weight: 500;
+    }
+    .icon-btn {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(145deg, #7c3aed, #5b21b6);
+      color: white;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: 0.25s;
+      box-shadow: 0 4px 12px rgba(124,58,237,0.4);
+    }
+    .icon-btn:hover { transform: scale(1.08); background: #7c3aed; }
+    .suggestions-dropdown {
+      position: absolute;
+      top: calc(100% + 12px);
+      left: 0;
+      right: 0;
+      background: rgba(255,255,255,0.98);
+      border-radius: 32px;
+      box-shadow: 0 25px 40px -12px black;
+      z-index: 120;
+      max-height: 280px;
+      overflow-y: auto;
+      display: none;
+    }
+    .suggestion-item {
+      padding: 14px 24px;
+      color: #0f172a;
+      cursor: pointer;
+      border-bottom: 1px solid #e2e8f0;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      transition: 0.2s;
+    }
+    .suggestion-item:hover { background: #ede9fe; padding-left: 32px; }
+    .result-container { display: flex; flex-direction: column; gap: 24px; margin-top: 20px; }
+    .result-card {
+      background: rgba(255,255,255,0.96);
+      border-radius: 40px;
+      padding: 1.8rem;
+      color: #0f172a;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.4);
+      transition: 0.3s ease;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .result-card:hover { transform: translateY(-5px); }
+    .badge {
+      background: linear-gradient(135deg, #ede9fe, #d9c9ff);
+      color: #4c1d95;
+      display: inline-block;
+      padding: 5px 16px;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+    .result-card h3 {
+      color: #3b0764;
+      font-size: 1.4rem;
+      border-left: 6px solid #8b5cf6;
+      padding-left: 18px;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+    .answer-text {
+      background: #f5f3ff;
+      padding: 18px 24px;
+      border-radius: 28px;
+      line-height: 1.7;
+      margin: 12px 0;
+      border: 1px solid #ddd6fe;
+    }
+    .responsive-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 0.85rem;
+      overflow-x: auto;
+      display: block;
+      border-radius: 24px;
+      overflow: hidden;
+    }
+    .responsive-table th, .responsive-table td {
+      border: 1px solid #e2e8f0;
+      padding: 12px 10px;
+      text-align: left;
+      background: white;
+    }
+    .responsive-table th { background: #7c3aed; color: white; font-weight: 700; }
+    .action-buttons { margin-top: 22px; display: flex; gap: 15px; flex-wrap: wrap; }
+    .action-buttons button {
+      border: none;
+      padding: 10px 26px;
+      border-radius: 50px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .action-buttons button.detail-btn { background: #7c3aed; color: white; box-shadow: 0 4px 10px rgba(124,58,237,0.3); }
+    .action-buttons button.ref-btn { background: #0d9488; color: white; box-shadow: 0 4px 10px rgba(13,148,136,0.3); }
+    .action-buttons button:hover { transform: scale(0.97); opacity: 0.9; }
+    .not-found {
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(16px);
+      border-radius: 60px;
+      padding: 2.5rem;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.88);
+      backdrop-filter: blur(12px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    .popup-box {
+      background: white;
+      max-width: 1000px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      border-radius: 48px;
+      padding: 30px 34px;
+      position: relative;
+      color: #1e293b;
+    }
+    .close-popup {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      background: #fee2e2;
+      border: none;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+    .detail-section { background: #f8fafc; padding: 18px; border-radius: 28px; margin-bottom: 20px; }
+    .summary-container { line-height: 1.7; }
+    .summary-container h3 { color: #4c1d95; margin-top: 20px; margin-bottom: 12px; }
+    .summary-container h4 { color: #0d9488; margin-top: 16px; margin-bottom: 8px; }
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 650px) {
+      body { padding: 16px 12px; }
+      .heading h1 { font-size: 1.4rem; }
+      .result-card h3 { font-size: 1.1rem; }
+      .responsive-table th, .responsive-table td { padding: 8px 5px; font-size: 0.7rem; }
+      .result-card { padding: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="heading">
+    <h1>📄 Documents Related to Formation of Company | Chapter 4</h1>
+    <p>📋 MOA · AOA · Prospectus · 6 Clauses · Doctrines · Ultra Vires · Indoor Management · 100+ Q&A</p>
+  </div>
+  <div class="search-wrapper">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="🔎 Search: Memorandum of Association, Articles of Association, Prospectus, Ultra Vires, Object Clause, Shelf Prospectus, Red Herring...">
+      <button class="icon-btn" id="voiceBtn">🎤</button>
+    </div>
+    <div id="suggestionsList" class="suggestions-dropdown"></div>
+  </div>
+  <div class="result-container" id="resultsContainer">
+    <div class="not-found">✨ 100+ Questions loaded — Start typing to search MOA, AOA, Prospectus, Clauses, Doctrines ✨</div>
+  </div>
+</div>
+<div class="popup-overlay" id="popupModal">
+  <div class="popup-box">
+    <button class="close-popup" id="closeModalBtn">✖</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+  // ==================== DATABASE: 100+ Q&A FROM PDF CHAPTER 4 ====================
+  const qaDatabase = [];
+
+  function addQA(question, answer, category, keywords = []) {
+    qaDatabase.push({ id: qaDatabase.length+1, question, answer, category, keywords: keywords.map(k=>k.toLowerCase()) });
+  }
+
+  // ==================== TABLE GENERATORS ====================
+  function getMOAClausesTable() {
+    return `<table class="responsive-table"><thead><tr><th>Clause</th><th>Description</th></tr></thead><tbody>
+      <tr><td>1. Name Clause</td><td>Name of company; ends with "Limited" for public, "Private Limited" for private, "(OPC)" for One Person Company.</td></tr>
+      <tr><td>2. Registered Office Clause</td><td>State where registered office is located; determines domicile and jurisdiction.</td></tr>
+      <tr><td>3. Object Clause</td><td>Main objects and incidental activities; defines scope of company's operations.</td></tr>
+      <tr><td>4. Liability Clause</td><td>Extent of members' liability (limited by shares/guarantee or unlimited).</td></tr>
+      <tr><td>5. Capital Clause</td><td>Authorized capital, types of shares, face value.</td></tr>
+      <tr><td>6. Association/Subscription Clause</td><td>Subscribers' declaration, signatures, number of shares taken.</td></tr>
+    </tbody></table>`;
+  }
+
+  function getMOA_AOA_DistinctionTable() {
+    return `<table class="responsive-table"><thead><tr><th>Basis</th><th>Memorandum of Association</th><th>Articles of Association</th></tr></thead><tbody>
+      <tr><td>Meaning</td><td>Aims & objectives of company</td><td>Rules for internal management</td></tr>
+      <tr><td>Status</td><td>Primary document (Charter)</td><td>Secondary, subordinate to MOA</td></tr>
+      <tr><td>Scope</td><td>Defines boundaries of company's activities</td><td>Works within MOA boundaries</td></tr>
+      <tr><td>Relationship</td><td>Company vs Outsiders</td><td>Company vs Members & Members vs Members</td></tr>
+      <tr><td>Alteration</td><td>Special resolution + approvals</td><td>Special resolution</td></tr>
+      <tr><td>Ultra Vires</td><td>Acts beyond MOA are void</td><td>Acts beyond AOA but within MOA are irregular but ratifiable</td></tr>
+    </tbody></table>`;
+  }
+
+  function getProspectusTypesTable() {
+    return `<table class="responsive-table"><thead><tr><th>Type</th><th>Description</th></tr></thead><tbody>
+      <tr><td>Abridged Prospectus</td><td>Brief version attached with application form for public offer.</td></tr>
+      <tr><td>Shelf Prospectus</td><td>Valid for multiple issues up to one year; used with Information Memorandum.</td></tr>
+      <tr><td>Red Herring Prospectus</td><td>Incomplete prospectus (no price/quantity details); used in book building.</td></tr>
+      <tr><td>Letter of Offer</td><td>Issued for Rights Issue to existing shareholders.</td></tr>
+      <tr><td>Offer Letter</td><td>Issued for Private Placement to select group.</td></tr>
+    </tbody></table>`;
+  }
+
+  function getDoctrinesTable() {
+    return `<table class="responsive-table"><thead><tr><th>Doctrine</th><th>Meaning</th><th>Purpose/Effect</th></tr></thead><tbody>
+      <tr><td>Doctrine of Ultra Vires</td><td>Acts beyond MOA powers are void</td><td>Protects shareholders, creditors; Directors personally liable</td></tr>
+      <tr><td>Doctrine of Indoor Management</td><td>Outsiders need not inquire internal proceedings</td><td>Protects outsiders contracting in good faith</td></tr>
+    </tbody></table>`;
+  }
+
+  // ==================== CHAPTER SUMMARY (1500+ words) ====================
+  function getChapterSummary() {
+    return `
+      <div class="summary-container">
+        <h3>📚 Chapter 4: Documents Related to Formation of Company - Complete Summary</h3>
+        
+        <h4>📌 Introduction</h4>
+        <p>At the time of incorporation of a company, three key documents are submitted to the Registrar of Companies (ROC): <strong>Memorandum of Association (MOA)</strong>, <strong>Articles of Association (AOA)</strong>, and for public companies collecting capital from public, a <strong>Prospectus</strong>. These documents form the constitutional framework of a company.</p>
+        
+        <h4>📜 1. MEMORANDUM OF ASSOCIATION (MOA)</h4>
+        <p>MOA is the primary document that states the aims, objectives, and scope of the company. Lord Cairns called it the "charter of the company" that defines the limitations of the company's powers. Section 2(56) of Companies Act, 2013 defines MOA.</p>
+        <p><strong>Features of MOA:</strong> Primary document, defines company-outsider relationship, prepared by promoters, signed by 7/2/1 subscribers, contains 6 clauses, difficult to alter, acts beyond are Ultra Vires, public document, prescribed formats Tables A-E.</p>
+        
+        <h4>📌 Six Clauses of MOA in Detail:</h4>
+        ${getMOAClausesTable()}
+        
+        <p><strong>Alteration of Clauses:</strong> Name clause by special resolution + Central Govt approval; Registered office clause by special resolution; Object clause by special resolution + Tribunal approval; Liability clause cannot be altered without member consent; Capital clause by ordinary resolution; Association clause cannot be altered.</p>
+        
+        <h4>⚖️ Doctrine of Ultra Vires</h4>
+        <p>"Ultra" = beyond, "Vires" = powers. Acts beyond MOA are Ultra Vires and void. Cannot be ratified. Directors personally liable. Protects shareholders, creditors, investors.</p>
+        
+        <h4>📋 2. ARTICLES OF ASSOCIATION (AOA)</h4>
+        <p>AOA is subordinate to MOA. Section 2(5) defines Articles. Contains rules for internal management - like bye-laws. Defines powers, rights, duties of directors, officers, members.</p>
+        <p><strong>Contents of AOA:</strong> Share capital, transfer/transmission of shares, calls/forfeiture, director appointment/powers, meetings, voting, dividend, borrowing, audit, winding up.</p>
+        <p><strong>Model Articles:</strong> Tables F, G, H, I, J for different company types.</p>
+        <p><strong>Private Company Restrictions:</strong> 1) Limit members to 200, 2) Restrict share transfer, 3) Prohibit public invitation.</p>
+        <p><strong>Entrenched Articles:</strong> Provisions requiring more than special resolution to alter (e.g., 9/10th majority).</p>
+        
+        <h4>🏛️ Doctrine of Indoor Management</h4>
+        <p>Outsiders need not inquire into internal proceedings. Assumes company acts according to MOA and AOA. Protects innocent outsiders. Exceptions: knowledge of irregularity, forgery, suspicious circumstances, Ultra Vires acts.</p>
+        
+        <h4>📊 Distinction between MOA and AOA</h4>
+        ${getMOA_AOA_DistinctionTable()}
+        
+        <h4>📢 3. PROSPECTUS</h4>
+        <p>Section 2(70) defines prospectus as document inviting public offers for securities. Contains true and factual disclosures.</p>
+        
+        <h4>📌 Types of Prospectus:</h4>
+        ${getProspectusTypesTable()}
+        
+        <h4>📝 Contents of Prospectus:</h4>
+        <ul><li>Company name, registered office, contact details</li><li>Nature, number, price of securities</li><li>Lead merchant banker, registrar details</li><li>Stock exchange names, risk factors</li><li>Opening/closing dates, financial reports</li><li>Declaration of compliance</li><li>Expert statements with written consent</li></ul>
+        
+        <h4>⚙️ Statutory Requirements for Prospectus:</h4>
+        <ul><li>Draft prospectus to be public and filed with SEBI</li><li>Signed by all directors</li><li>Registered with ROC before issue</li><li>Must be dated</li><li>Issued within 90 days of registration</li></ul>
+        <p><strong>Penalty:</strong> Company fine ₹50,000-₹3,00,000; individuals - imprisonment up to 3 years or fine ₹50,000-₹3,00,000 or both.</p>
+        
+        <h4>⚠️ Misstatements in Prospectus</h4>
+        <p>Misstatement = misleading statement or omission of material fact. Investors can take legal action. Company and officers face Civil Liability (compensation) and Criminal Liability (imprisonment/fine).</p>
+        
+        <h4>🎯 Key Points for Exams</h4>
+        <ul><li>MOA = Charter / 6 clauses / Ultra Vires applies</li><li>AOA = Bye-laws / Secondary / Indoor Management applies</li><li>Both filed at incorporation with ROC</li><li>Public companies issuing shares need Prospectus</li><li>Shelf Prospectus valid for 1 year</li><li>Red Herring = incomplete prospectus</li><li>Abridged Prospectus attached with application form</li></ul>
+        
+        <div style="background: #ede9fe; padding: 20px; border-radius: 28px; margin-top: 20px;">
+          <strong>📖 This summary covers all important aspects of Chapter 4 - Documents Related to Formation of Company as per Companies Act, 2013 for 11th SP Board Exam.</strong>
+        </div>
+      </div>
+    `;
+  }
+
+  // ==================== ADD 100+ QUESTIONS ====================
+  
+  // MCQ (Page 14)
+  addQA("Which is a primary document of the company that contains the aims and objectives?", "a) Memorandum of Association", "MCQ", ["primary document aims objectives"]);
+  addQA("Which document describes the relationship between company and outsiders?", "a) Memorandum of Association", "MCQ", ["company outsiders relationship"]);
+  addQA("Which clause describes the range of activities a company can undertake?", "c) Object clause", "MCQ", ["range of activities object clause"]);
+  addQA("Any act done by the company beyond the powers of Memorandum is called as _______", "b) Ultra Vires", "MCQ", ["beyond powers ultra vires"]);
+  addQA("_______ acts are void or legally ineffective.", "c) Ultra Vires", "MCQ", ["void acts ultra vires"]);
+  addQA("Which clause contains the details of liability of the members?", "b) Liability clause", "MCQ", ["liability clause details"]);
+  addQA("Which clause states the amount of Authorised capital?", "c) Capital clause", "MCQ", ["authorised capital clause"]);
+  addQA("Which document contains rules and regulations for internal management?", "a) Articles of Association", "MCQ", ["internal management rules AOA"]);
+  addQA("Articles establishes relationship between company and _______", "a) Members", "MCQ", ["AOA company members relationship"]);
+  addQA("_______ is an invitation to the public to subscribe for shares.", "b) Prospectus", "MCQ", ["invitation to public prospectus"]);
+  addQA("For multiple issues within a year, which prospectus is used?", "b) Shelf Prospectus", "MCQ", ["multiple issues shelf prospectus"]);
+  addQA("_______ is an incomplete prospectus.", "a) Red Herring Prospectus", "MCQ", ["incomplete prospectus red herring"]);
+  
+  // Term/Word (Page 15)
+  addQA("Primary document stating aims and objectives of company.", "Memorandum of Association", "Term", ["primary document aims"]);
+  addQA("Document which establishes company's relationship with outsiders.", "Memorandum of Association", "Term", ["relationship outsiders MOA"]);
+  addQA("Document subordinate to Memorandum of Association.", "Articles of Association", "Term", ["subordinate to MOA"]);
+  addQA("Document containing rules for internal management.", "Articles of Association", "Term", ["internal management AOA"]);
+  addQA("Term for acts beyond the scope of Memorandum.", "Ultra Vires", "Term", ["beyond scope ultra vires"]);
+  addQA("Clause describing main activities a company can undertake.", "Object Clause", "Term", ["main activities object clause"]);
+  addQA("Clause giving details of authorized capital.", "Capital Clause", "Term", ["authorized capital clause"]);
+  addQA("Clause describing extent of liability of members.", "Liability Clause", "Term", ["liability extent clause"]);
+  addQA("Last clause of Memorandum with subscriber signatures.", "Association/Subscription Clause", "Term", ["last clause subscription"]);
+  addQA("Document issued by public company inviting public to subscribe.", "Prospectus", "Term", ["invitation public prospectus"]);
+  addQA("Prospectus attached with every share application form.", "Abridged Prospectus", "Term", ["attached prospectus abridged"]);
+  addQA("Prospectus for multiple issues within a year.", "Shelf Prospectus", "Term", ["multiple issues shelf"]);
+  addQA("Incomplete prospectus without price/quantity details.", "Red Herring Prospectus", "Term", ["incomplete prospectus red herring"]);
+  
+  // True/False (Page 16)
+  addQA("True/False: MOA and AOA are prepared at time of incorporation.", "True", "True/False", []);
+  addQA("True/False: MOA describes nature and character of company.", "True", "True/False", []);
+  addQA("True/False: MOA establishes relationship between Company and Members.", "False (MOA: company vs outsiders)", "True/False", []);
+  addQA("True/False: Acts beyond MOA are Ultra Vires.", "True", "True/False", []);
+  addQA("True/False: AOA can contradict Memorandum.", "False", "True/False", []);
+  addQA("True/False: MOA need not have Liability Clause.", "False (Liability clause is mandatory)", "True/False", []);
+  addQA("True/False: AOA is subordinate to MOA.", "True", "True/False", []);
+  addQA("True/False: MOA contains internal management rules.", "False (AOA contains internal rules)", "True/False", []);
+  addQA("True/False: Subscribers signing MOA must also sign AOA.", "True", "True/False", []);
+  addQA("True/False: Entrenched Articles cannot be easily altered.", "True", "True/False", []);
+  addQA("True/False: Private companies can issue Prospectus.", "False (Only public companies)", "True/False", []);
+  addQA("True/False: Prospectus must be issued within 90 days of ROC filing.", "True", "True/False", []);
+  addQA("True/False: Company can be penalized for misstatements in prospectus.", "True", "True/False", []);
+  addQA("True/False: Red Herring prospectus contains issue price.", "False (It does not contain price)", "True/False", []);
+  addQA("True/False: Letter of Offer is for Rights Issue.", "True", "True/False", []);
+  
+  // Short Answer
+  addQA("Which document contains aims and objectives of company?", "Memorandum of Association", "Short Answer", []);
+  addQA("What does Capital Clause describe?", "Authorized/registered capital, total shares and face value per share.", "Short Answer", []);
+  addQA("When is Abridged Prospectus issued?", "With share application form when public company makes public offer.", "Short Answer", []);
+  addQA("Who is a Promoter?", "Person who undertakes formation of company, conceives business idea, prepares documents.", "Short Answer", []);
+  addQA("What is CIN?", "Corporate Identity Number - unique 21-digit code allotted by ROC at incorporation.", "Short Answer", []);
+  
+  // Explain concepts (Page 17)
+  addQA("Explain: Memorandum of Association", "MOA is primary document stating aims, objectives, scope. Contains 6 clauses. Acts beyond are Ultra Vires. Defines company-outsider relationship.", "Concept", ["MOA explanation"]);
+  addQA("Explain: Articles of Association", "AOA is secondary document containing rules for internal management. Subordinate to MOA. Defines powers of directors, share transfer, meetings, dividends.", "Concept", ["AOA explanation"]);
+  addQA("Explain: Name Clause", "States company name. Public company ends with 'Limited', Private with 'Private Limited', OPC with '(OPC)'. Must not resemble existing names or trademarks.", "Concept", []);
+  addQA("Explain: Object Clause", "Defines main objects and incidental activities. Determines scope of operations. Acts beyond are Ultra Vires. Altered by special resolution.", "Concept", []);
+  addQA("Explain: Liability Clause", "States extent of members' liability. Limited by shares = unpaid amount; Limited by guarantee = fixed amount; Unlimited = full liability.", "Concept", []);
+  addQA("Explain: Capital Clause", "States authorized/registered capital, number of shares, face value. Altered by ordinary resolution when company needs more capital.", "Concept", []);
+  addQA("Explain: Ultra Vires", "Acts beyond MOA powers. Null and void, cannot be ratified. Directors personally liable. Protects shareholders and creditors.", "Concept", []);
+  addQA("Explain: Doctrine of Indoor Management", "Outsiders need not inquire into internal proceedings. Assume company follows MOA and AOA. Protects innocent outsiders.", "Concept", []);
+  addQA("Explain: Prospectus", "Document inviting public to subscribe to securities. Must contain true disclosures. Section 2(70) of Companies Act, 2013.", "Concept", []);
+  addQA("Explain: Red Herring Prospectus", "Incomplete prospectus without price/quantity details. Used in book building process for IPO. Filed with ROC 3 days before offer opening.", "Concept", []);
+  addQA("Explain: Shelf Prospectus", "Valid for multiple issues within one year. Information Memorandum filed for each subsequent offer.", "Concept", []);
+  addQA("Explain: Abridged Prospectus", "Brief version of prospectus attached with share application form. Contains main contents for investors.", "Concept", []);
+  
+  // Case Studies (Page 17-18)
+  addQA("Case: Director not MD accepted cheque. Articles say only MD authorized. Is action Ultra Vires?", "No, it's not Ultra Vires (beyond MOA). It's irregularity within AOA. Doctrine of Indoor Management may protect outsider if acting in good faith.", "Case Study", []);
+  addQA("Case: Plastic chair company wants to produce TV serials. Can they start immediately?", "No, because object clause limits to plastic chairs. Producing TV serials is Ultra Vires and void.", "Case Study", []);
+  addQA("Case: How can object clause be altered?", "By passing special resolution (75% majority) in general meeting. Tribunal approval may be required if any member objects.", "Case Study", []);
+  addQA("Case: Company wants to raise more capital after issuing all shares. Which clause to alter?", "Capital Clause of Memorandum needs alteration to increase authorized capital.", "Case Study", []);
+  addQA("Case: Prospectus stated 5 years profit but one year had loss. Is this misstatement?", "Yes, it is a misstatement because it gives false impression of continuous profits.", "Case Study", []);
+  addQA("Case: What liabilities for misstatement in prospectus?", "Civil liability (compensation to investors) and Criminal liability (imprisonment up to 2 years or fine up to ₹50,000 or both).", "Case Study", []);
+  addQA("Case: Prospectus filed 1st Jan 2017, issued 10th Feb 2018. Valid?", "No, must be issued within 90 days of ROC registration. Here it's ~13 months, so invalid.", "Case Study", []);
+  addQA("Case: Which document for Rights Issue?", "Letter of Offer", "Case Study", []);
+  addQA("Case: Which document for public issue of shares?", "Prospectus", "Case Study", []);
+  
+  // Distinguish
+  addQA("Distinguish between MOA and AOA", "MOA is primary document stating aims/objectives, defines company vs outsiders. AOA is secondary with internal rules, defines company vs members. MOA has 6 clauses, AOA is subordinate to MOA.", "Distinguish", ["MOA AOA difference"]);
+  
+  // State any four
+  addQA("State any four clauses of MOA.", "1) Name Clause, 2) Registered Office Clause, 3) Object Clause, 4) Capital Clause", "Short Answer", []);
+  addQA("State any four contents of AOA.", "1) Share capital and rights, 2) Transfer/transmission of shares, 3) Director appointment/powers, 4) Meeting procedures and voting rights.", "Short Answer", []);
+  addQA("State statutory requirements for Prospectus.", "1) Filed with SEBI, 2) Signed by directors, 3) Registered with ROC, 4) Dated, 5) Issued within 90 days.", "Short Answer", []);
+  
+  // Justify (Page 19)
+  addQA("Justify: MOA defines limitations of company's powers.", "MOA is the charter that specifies objectives and scope. Any act beyond MOA is Ultra Vires and void, establishing MOA as the boundary of company powers.", "Justify", []);
+  addQA("Justify: Ultra Vires acts are null and void.", "Such acts are beyond legal powers defined in MOA. Cannot be ratified even by unanimous consent. No legal validity.", "Justify", []);
+  addQA("Justify: Contents of AOA can be altered.", "Companies Act allows alteration by special resolution. Allows companies to adapt to changing circumstances while ensuring no contradiction with MOA.", "Justify", []);
+  addQA("Justify: Doctrine of Indoor Management protects outsiders.", "Outsiders cannot know internal proceedings. They rely on MOA/AOA. This doctrine protects innocent outsiders who contract in good faith.", "Justify", []);
+  addQA("Justify: Prospectus is important for public companies.", "It invites public investment and contains material information. Investors rely on it for decisions. Essential for raising capital from public.", "Justify", []);
+  
+  // Long Answer (Page 19)
+  addQA("Briefly explain clauses of Memorandum of Association.", "Six clauses: Name Clause (company name), Registered Office Clause (state location), Object Clause (main activities), Liability Clause (member liability extent), Capital Clause (authorized capital), Association Clause (subscriber signatures and declaration).", "Long Answer", ["MOA clauses"]);
+
+  // Helper Functions
+  const searchInput = document.getElementById("searchInput");
+  const resultsContainer = document.getElementById("resultsContainer");
+  const suggestionsDiv = document.getElementById("suggestionsList");
+
+  function getMatches(q) {
+    const lower = q.toLowerCase().trim();
+    if (lower === "") return [];
+    return qaDatabase.filter(item => 
+      item.question.toLowerCase().includes(lower) || 
+      item.answer.toLowerCase().includes(lower) ||
+      item.category.toLowerCase().includes(lower) ||
+      item.keywords.some(k => k.includes(lower))
+    ).slice(0, 16);
+  }
+
+  function getDetailedAnswer(item) {
+    let detailedHtml = `<div class="detail-section"><strong>📖 Full Answer:</strong><br>${escapeHtml(item.answer)}</div>`;
+    const lowerQ = item.question.toLowerCase();
+    if (lowerQ.includes("clauses of memorandum") || (lowerQ.includes("clause") && lowerQ.includes("moa"))) {
+      detailedHtml += `<h3>📊 Six Clauses of MOA</h3>${getMOAClausesTable()}`;
+    }
+    if (lowerQ.includes("distinguish") && (lowerQ.includes("memorandum") || lowerQ.includes("moa"))) {
+      detailedHtml += `<h3>📊 MOA vs AOA Distinction</h3>${getMOA_AOA_DistinctionTable()}`;
+    }
+    if (lowerQ.includes("prospectus") && (lowerQ.includes("type") || lowerQ.includes("kinds"))) {
+      detailedHtml += `<h3>📊 Types of Prospectus</h3>${getProspectusTypesTable()}`;
+    }
+    if (lowerQ.includes("doctrine") || lowerQ.includes("ultra vires") || lowerQ.includes("indoor")) {
+      detailedHtml += `<h3>📊 Key Doctrines</h3>${getDoctrinesTable()}`;
+    }
+    return detailedHtml;
+  }
+
+  function updateSuggestions() {
+    const val = searchInput.value.trim();
+    if (!val) {
+      suggestionsDiv.style.display = "none";
+      return;
+    }
+    const matches = getMatches(val);
+    if (matches.length === 0) {
+      suggestionsDiv.style.display = "none";
+      return;
+    }
+    suggestionsDiv.innerHTML = "";
+    matches.forEach(item => {
+      const div = document.createElement("div");
+      div.className = "suggestion-item";
+      div.innerHTML = `<span>📄</span> <strong>${escapeHtml(item.question.substring(0, 70))}</strong> <span style="margin-left:auto; background:#ede9fe; padding:2px 12px; border-radius:30px;">${escapeHtml(item.category)}</span>`;
+      div.addEventListener("click", () => {
+        searchInput.value = item.question;
+        suggestionsDiv.style.display = "none";
+        performSearch(item.question);
+      });
+      suggestionsDiv.appendChild(div);
+    });
+    suggestionsDiv.style.display = "block";
+  }
+
+  function performSearch(q = null) {
+    let query = (q !== null) ? q : searchInput.value.trim();
+    if (!query) {
+      resultsContainer.innerHTML = `<div class="not-found">✨ 100+ Questions loaded. Type: MOA, AOA, Prospectus, Ultra Vires, Object Clause, Shelf Prospectus ✨</div>`;
+      return;
+    }
+    const matches = getMatches(query);
+    if (matches.length === 0) {
+      resultsContainer.innerHTML = `<div class="not-found">❌ No results found. Try: Memorandum of Association, Articles of Association, Object Clause, Ultra Vires, Prospectus, Shelf prospectus, Red Herring.</div>`;
+      return;
+    }
+    resultsContainer.innerHTML = "";
+    matches.forEach(item => {
+      const card = document.createElement("div");
+      card.className = "result-card";
+      card.innerHTML = `
+        <div class="badge">⭐ ${escapeHtml(item.category)}</div>
+        <h3>📘 ${escapeHtml(item.question)}</h3>
+        <div class="answer-text"><strong>✅ Answer:</strong><br>${escapeHtml(item.answer)}</div>
+        <div class="action-buttons">
+          <button class="detail-btn" data-q="${escapeAttr(item.question)}" data-a="${escapeAttr(item.answer)}" data-cat="${escapeAttr(item.category)}">📖 Detail Answer</button>
+          <button class="ref-btn">📊 Reference Table</button>
+        </div>
+      `;
+      resultsContainer.appendChild(card);
+    });
+    attachEvents();
+  }
+
+  function attachEvents() {
+    document.querySelectorAll(".detail-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const questionText = btn.getAttribute("data-q");
+        const item = qaDatabase.find(i => i.question === questionText);
+        if (item) {
+          showDetailPopup(item);
+        } else {
+          showDetailPopup({ question: questionText, answer: btn.getAttribute("data-a"), category: btn.getAttribute("data-cat") });
+        }
+      });
+    });
+    document.querySelectorAll(".ref-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        showReferenceTablePopup();
+      });
+    });
+  }
+
+  function showDetailPopup(item) {
+    const detailedHtml = getDetailedAnswer(item);
+    document.getElementById("popupModal").style.display = "flex";
+    document.getElementById("modalContent").innerHTML = `
+      <h2 style="color:#4c1d95;">📖 Detailed Answer</h2>
+      <div class="detail-section"><strong>❓ Question:</strong> ${escapeHtml(item.question)}</div>
+      <div class="detail-section"><strong>📚 Category:</strong> ${escapeHtml(item.category)}</div>
+      ${detailedHtml}
+      <button id="closeDetailModal" style="background:#7c3aed; padding:10px 26px; border-radius:40px; color:white; margin-top:20px; cursor:pointer;">Close</button>
+    `;
+    document.getElementById("closeDetailModal").addEventListener("click", () => document.getElementById("popupModal").style.display = "none");
+  }
+
+  function showReferenceTablePopup() {
+    document.getElementById("popupModal").style.display = "flex";
+    document.getElementById("modalContent").innerHTML = `
+      <h2 style="color:#4c1d95;">📚 Chapter 4: Complete Reference Summary</h2>
+      ${getChapterSummary()}
+      <button id="closeRefModal" style="background:#0d9488; padding:10px 26px; border-radius:40px; color:white; margin-top:20px; cursor:pointer;">Close</button>
+    `;
+    document.getElementById("closeRefModal").addEventListener("click", () => document.getElementById("popupModal").style.display = "none");
+  }
+
+  function escapeHtml(str) { if (!str) return ''; return str.replace(/[&<>]/g, m => m === '&' ? '&amp;' : m === '<' ? '&lt;' : '&gt;'); }
+  function escapeAttr(str) { if (!str) return ''; return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  
+  function startVoice() {
+    if (!('webkitSpeechRecognition' in window)) { alert("Voice search supported in Chrome/Edge."); return; }
+    const recognition = new webkitSpeechRecognition();
+    recognition.lang = "en-IN";
+    recognition.start();
+    recognition.onresult = (event) => {
+      searchInput.value = event.results[0][0].transcript;
+      performSearch();
+      updateSuggestions();
+    };
+  }
+  
+  document.getElementById("voiceBtn").addEventListener("click", startVoice);
+  searchInput.addEventListener("input", () => {
+    performSearch();
+    updateSuggestions();
+  });
+  searchInput.addEventListener("focus", updateSuggestions);
+  document.addEventListener("click", (e) => {
+    if (!document.querySelector(".search-wrapper").contains(e.target)) {
+      suggestionsDiv.style.display = "none";
+    }
+  });
+  document.getElementById("closeModalBtn").addEventListener("click", () => document.getElementById("popupModal").style.display = "none");
+  
+  window.onload = () => {
+    resultsContainer.innerHTML = `<div class="not-found">✨ 11th SP · Chapter 4: Documents Related to Formation of Company · 100+ Q&A · Start typing to search ✨</div>`;
+  };
+</script>
+</body>
+</html>

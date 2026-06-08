@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Chapter 1 | Principles of Management - 12th Commerce</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #eef2f9 0%, #e0e8f2 100%);
+            font-family: 'Inter', sans-serif;
+            padding: 32px 24px;
+            color: #0a2b3e;
+            line-height: 1.5;
+            overflow-y: scroll;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        body::-webkit-scrollbar { display: none; }
+        .container { max-width: 1400px; margin: 0 auto; }
+        .hero { text-align: center; margin-bottom: 40px; }
+        .hero h1 {
+            font-size: 2.4rem; font-weight: 800;
+            background: linear-gradient(135deg, #0b4b6b, #1f6e93, #2c7da0);
+            background-clip: text; -webkit-background-clip: text; color: transparent;
+            padding-bottom: 10px;
+            border-bottom: 4px solid #ffb347;
+            display: inline-block;
+        }
+        /* Summary Card - Attractive */
+        .summary-card {
+            background: linear-gradient(145deg, #ffffff, #f8fbfe);
+            border-radius: 2rem;
+            margin-bottom: 32px;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.12);
+            overflow: hidden;
+            border: 1px solid rgba(44,125,160,0.15);
+        }
+        .summary-header {
+            background: linear-gradient(105deg, #135b78 0%, #1f7a9e 100%);
+            padding: 20px 28px;
+            border-bottom: 4px solid #ffb74d;
+        }
+        .summary-header h2 {
+            color: white;
+            font-size: 1.6rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .summary-header h2 i { font-size: 1.8rem; color: #ffd966; }
+        .summary-body {
+            padding: 28px 32px;
+            max-height: 550px;
+            overflow-y: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .summary-body::-webkit-scrollbar { display: none; }
+        .summary-text { font-size: 1rem; line-height: 1.65; color: #1f3b4c; }
+        .summary-text p { margin-bottom: 14px; }
+        .summary-text strong { color: #135b78; }
+        .highlight-badge {
+            background: #eef3fc;
+            border-left: 4px solid #ffb74d;
+            padding: 10px 16px;
+            margin: 16px 0;
+            border-radius: 12px;
+        }
+        .lang-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px dashed #cbdde9;
+        }
+        .lang-btn {
+            background: #135b78; color: white; border: none;
+            padding: 10px 28px; border-radius: 50px; font-weight: 600;
+            cursor: pointer; transition: all 0.25s ease;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .lang-btn:hover { background: #ff8c42; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        
+        .card {
+            background: rgba(255,255,255,0.97); border-radius: 1.8rem;
+            margin-bottom: 32px; padding: 28px 32px;
+            box-shadow: 0 15px 30px -10px rgba(0,0,0,0.08);
+            border: 1px solid rgba(255,255,255,0.6);
+        }
+        .card h2 {
+            font-size: 1.6rem; font-weight: 700; color: #135b78;
+            margin-bottom: 24px; padding-bottom: 8px;
+            border-bottom: 3px solid #ffb74d;
+            display: inline-block;
+        }
+        .card h2 i { margin-right: 12px; color: #ff8c42; }
+        .qa-item { margin-bottom: 22px; border-left: 3px solid #cbdde9; padding-left: 20px; }
+        .question { font-weight: 700; color: #1f4a5e; margin-bottom: 8px; display: flex; gap: 12px; flex-wrap: wrap; }
+        .answer {
+            background: #f8fafd; padding: 10px 18px; border-radius: 24px;
+            font-weight: 500; color: #216477; display: inline-block;
+            font-size: 0.92rem;
+        }
+        .true-badge { background: #e0f2e9; color: #1e6f3f; padding: 3px 14px; border-radius: 40px; font-weight: 700; font-size: 0.75rem; display: inline-block; margin-right: 12px; }
+        .false-badge { background: #ffe8e6; color: #bc4742; padding: 3px 14px; border-radius: 40px; font-weight: 700; font-size: 0.75rem; display: inline-block; margin-right: 12px; }
+        .resp-table { width: 100%; overflow-x: auto; margin: 16px 0; background: #f4f9fe; padding: 4px; border-radius: 20px; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; background: white; border-radius: 16px; overflow: hidden; }
+        th, td { border: 1px solid #cde1ef; padding: 10px 12px; text-align: left; vertical-align: top; }
+        th { background: #e0eaf5; font-weight: 700; color: #135b78; }
+        .popup-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+            justify-content: center; align-items: center; z-index: 1000;
+        }
+        .popup-content {
+            background: white; width: 90%; max-width: 700px; border-radius: 2rem;
+            position: relative; max-height: 85vh; overflow: hidden;
+            display: flex; flex-direction: column;
+        }
+        .popup-header {
+            background: linear-gradient(105deg, #135b78, #1f7a9e);
+            padding: 18px 24px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .close-popup {
+            font-size: 32px; cursor: pointer; color: #ffd966;
+            transition: 0.2s; line-height: 1;
+        }
+        .close-popup:hover { color: #fff; transform: rotate(90deg); }
+        .popup-body { padding: 24px; overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none; }
+        .popup-body::-webkit-scrollbar { display: none; }
+        @media (max-width: 768px) {
+            body { padding: 20px 16px; }
+            .card, .summary-body { padding: 20px 18px; }
+            .hero h1 { font-size: 1.8rem; }
+            th, td { padding: 6px 8px; font-size: 0.7rem; }
+        }
+        .footer-note { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #bdd4e4; font-size: 0.8rem; color: #2c6f8c; }
+        .key-icon { color: #ff8c42; margin-right: 6px; }
+        .grid-2col { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 15px; }
+        .grid-card { flex: 1; background: #fef9e8; border-radius: 20px; padding: 16px; border-left: 6px solid #ffb347; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="hero">
+        <h1><i class="fas fa-chalkboard-user"></i> Chapter 1 · Principles of Management</h1>
+        <p style="margin-top: 12px;">Henry Fayol · FW Taylor · Scientific Management · 14 Principles</p>
+    </div>
+
+    <!-- ================= ATTRACTIVE SUMMARY CARD ================= -->
+    <div class="summary-card">
+        <div class="summary-header">
+            <h2><i class="fas fa-file-alt"></i> 📘 Chapter Summary: Principles of Management</h2>
+        </div>
+        <div class="summary-body">
+            <div class="summary-text" id="summaryText">
+                <p><strong>🔹 Meaning of Principles:</strong> Fundamental truths serving as foundation for belief/behavior. Management principles are universal, flexible guidelines formed through practice & experiments.</p>
+                <div class="highlight-badge"><strong>📌 Nature of Principles:</strong> Universal application, General guidelines, Formed by practice, Flexibility, Behavioral, Cause-effect relationship, Equal importance.</div>
+                <p><strong>🔹 Significance:</strong> Provides insight to managers, Efficient resource utilization, Scientific decisions, Social responsibility understanding, Encourages R&D, Coordination & control, Develops objective approach.</p>
+                <p><strong>🔹 Henry Fayol (Father of Modern Management):</strong> 14 Principles: Division of Work, Authority & Responsibility, Discipline, Unity of Command, Unity of Direction, Subordination of Individual Interest, Centralization, Remuneration, Scalar Chain, Order, Equity, Stability of Tenure, Initiative, Esprit de corps (Teamwork).</p>
+                <p><strong>🔹 F.W. Taylor (Father of Scientific Management):</strong> Principles: Science not Rule of Thumb, Harmony not Discord, Mental Revolution, Cooperation not Individualism, Division of Responsibility, Development for greater efficiency.</p>
+                <p><strong>⭐ Techniques of Scientific Management:</strong> Work Study (Time, Method, Motion, Fatigue), Standardization, Scientific Task Setting, Scientific Selection & Training, Functional Organization (8 foremen), Differential Piece-Rate Wage Plan.</p>
+                <p><strong>💡 Famous Quote (C.K. Prahlad):</strong> "The essence of strategy lies in creating tomorrow's competitive advantages faster than competitors can mimic the ones you possess today."</p>
+            </div>
+            <div class="lang-buttons">
+                <button class="lang-btn" onclick="showTranslation('hindi')"><i class="fas fa-language"></i> हिंदी अनुवाद</button>
+                <button class="lang-btn" onclick="showTranslation('marathi')"><i class="fas fa-language"></i> मराठी अनुवाद</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= Section A: Multiple Choice (from PDF) ================= -->
+    <div class="card"><h2><i class="fas fa-check-square"></i> A. Select the most appropriate alternative</h2>
+        <div class="qa-item"><div class="question">1) ________ was regarded as Father of Scientific Management.</div><div class="answer">b) F W Taylor</div></div>
+        <div class="qa-item"><div class="question">2) Principle of ________ is based on 'A place for everything and everything in its place'.</div><div class="answer">b) order</div></div>
+        <div class="qa-item"><div class="question">3) Member of organization should receive orders from ________.</div><div class="answer">b) one superior</div></div>
+        <div class="qa-item"><div class="question">4) Scalar chain means the hierarchy of ________ from top to lower level for communication.</div><div class="answer">c) authority</div></div>
+        <div class="qa-item"><div class="question">5) Taylor recommended total ________ foremen to control various aspects of production.</div><div class="answer">a) eight</div></div>
+    </div>
+
+    <!-- ================= Section B: Match the Pairs ================= -->
+    <div class="card"><h2><i class="fas fa-link"></i> B. Match the pairs</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Group A</th><th>Answer</th><th>Group B</th></tr></thead>
+                <tbody>
+                    <tr><td>Henry Fayol</td><td>→</td><td>10) Modern Management</td></tr>
+                    <tr><td>Principle of Unity of Direction</td><td>→</td><td>6) One head - one plan</td></tr>
+                    <tr><td>Principles of Management</td><td>→</td><td>4) General guidelines</td></tr>
+                    <tr><td>Scientific Management Theory</td><td>→</td><td>2) F.W. Taylor</td></tr>
+                    <tr><td>Functional Organization</td><td>→</td><td>1) Eight Foremen</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================= Section C: One word/phrase ================= -->
+    <div class="card"><h2><i class="fas fa-tag"></i> C. Give one word/phrase/term</h2>
+        <div class="qa-item"><div class="question">1) The study of movement of an employee as well as machine while completing particular task.</div><div class="answer">Motion Study</div></div>
+        <div class="qa-item"><div class="question">2) The technique of observing and recording time required by employee to complete a given task.</div><div class="answer">Time Study</div></div>
+        <div class="qa-item"><div class="question">3) Study consists of organized, systematic and critical assessment of various activities.</div><div class="answer">Work Study</div></div>
+        <div class="qa-item"><div class="question">4) The principle which deals with 'to do work with innovative way'.</div><div class="answer">Principle of Initiative</div></div>
+        <div class="qa-item"><div class="question">5) The principle based on 'a place for everything and everything in its place'.</div><div class="answer">Principle of Order</div></div>
+    </div>
+
+    <!-- ================= Section D: True/False ================= -->
+    <div class="card"><h2><i class="fas fa-gavel"></i> D. State True or False</h2>
+        <div class="qa-item"><div class="question">1) The principles of management are universal in nature.</div><div class="answer"><span class="true-badge">True</span> Applicable to all organizations irrespective of size.</div></div>
+        <div class="qa-item"><div class="question">2) Management principles are applied differently under different situations.</div><div class="answer"><span class="true-badge">True</span> Flexible & situational modification.</div></div>
+        <div class="qa-item"><div class="question">3) Only some principles of management are important.</div><div class="answer"><span class="false-badge">False</span> All principles are of equal importance.</div></div>
+        <div class="qa-item"><div class="question">4) Henry Fayol has given different techniques of management.</div><div class="answer"><span class="false-badge">False</span> Fayol gave 14 principles; Taylor gave techniques.</div></div>
+        <div class="qa-item"><div class="question">5) F W Taylor has proposed 14 principles of management.</div><div class="answer"><span class="false-badge">False</span> Taylor proposed 6 principles of scientific management.</div></div>
+        <div class="qa-item"><div class="question">6) Each member of organization should receive orders only from one superior.</div><div class="answer"><span class="true-badge">True</span> Principle of Unity of Command.</div></div>
+    </div>
+
+    <!-- ================= Section E: Find the Odd One ================= -->
+    <div class="card"><h2><i class="fas fa-puzzle-piece"></i> E. Find the odd one</h2>
+        <div class="qa-item"><div class="question">1) Principle of Authority and Responsibility, Motion Study, Principle of Division of Work, Principle of Discipline.</div><div class="answer">Motion Study (it's a technique of Taylor, others are Fayol's principles)</div></div>
+        <div class="qa-item"><div class="question">2) Fatigue Study, Principle of Unity of Command, Work Study, Motion Study.</div><div class="answer">Principle of Unity of Command (others are scientific management techniques)</div></div>
+    </div>
+
+    <!-- ================= Section F: One Sentence Answers ================= -->
+    <div class="card"><h2><i class="fas fa-question-circle"></i> F. Answer in one sentence</h2>
+        <div class="qa-item"><div class="question">1) What is principle of unity of command?</div><div class="answer">Each member of organization should receive orders from only one superior to avoid confusion and conflict.</div></div>
+        <div class="qa-item"><div class="question">2) What is standardization of tools and equipments?</div><div class="answer">It means setting uniform tools, machines and working conditions to reduce waste, fatigue and improve quality.</div></div>
+        <div class="qa-item"><div class="question">3) What is differential wage rate?</div><div class="answer">Taylor's wage plan where efficient workers get higher rate and inefficient get lower rate to motivate productivity.</div></div>
+        <div class="qa-item"><div class="question">4) What is Subordination of individual interest into organizational interest?</div><div class="answer">Organizational interest should prevail over personal interest while making decisions.</div></div>
+        <div class="qa-item"><div class="question">5) What is the meaning of principle?</div><div class="answer">A fundamental truth or proposition serving as foundation for a system of belief or behavior.</div></div>
+    </div>
+
+    <!-- ================= G: Correct the underlined words ================= -->
+    <div class="card"><h2><i class="fas fa-edit"></i> G. Correct the underlined word & rewrite</h2>
+        <div class="qa-item"><div class="question">1) Security in job always affects adversely on the efficiency of employees.</div><div class="answer">Insecurity in job always affects adversely on the efficiency of employees.</div></div>
+        <div class="qa-item"><div class="question">2) Esprit de corps means 'division is strength'.</div><div class="answer">Esprit de corps means 'union is strength' or 'teamwork is strength'.</div></div>
+        <div class="qa-item"><div class="question">3) Each member of organization should receive orders from only one subordinate.</div><div class="answer">Each member of organization should receive orders from only one superior.</div></div>
+        <div class="qa-item"><div class="question">4) Decentralization means concentration of powers and authorities at a specific position.</div><div class="answer">Centralization means concentration of powers and authorities at a specific position.</div></div>
+        <div class="qa-item"><div class="question">5) Management techniques are applied differently under different conditions.</div><div class="answer">Management principles are applied differently under different conditions.</div></div>
+    </div>
+
+    <!-- ================= Henry Fayol 14 Principles Table ================= -->
+    <div class="card"><h2><i class="fas fa-chalkboard"></i> Henri Fayol's 14 Principles of Management</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>#</th><th>Principle</th><th>Explanation</th></tr></thead>
+                <tbody>
+                    <tr><td>1</td><td>Division of Work</td><td>Work divided into small tasks → specialization → efficiency.</td></tr>
+                    <tr><td>2</td><td>Authority & Responsibility</td><td>Right to give orders comes with accountability.</td></tr>
+                    <tr><td>3</td><td>Discipline</td><td>Respect for rules & agreements; essential for smooth functioning.</td></tr>
+                    <tr><td>4</td><td>Unity of Command</td><td>Each employee receives orders from one superior only.</td></tr>
+                    <tr><td>5</td><td>Unity of Direction</td><td>One head, one plan for each group of activities.</td></tr>
+                    <tr><td>6</td><td>Subordination of Individual Interest</td><td>Organizational interest > personal interest.</td></tr>
+                    <tr><td>7</td><td>Centralization</td><td>Appropriate concentration of authority depending on size.</td></tr>
+                    <tr><td>8</td><td>Remuneration</td><td>Fair wages based on skill, cost of living, profitability.</td></tr>
+                    <tr><td>9</td><td>Scalar Chain</td><td>Hierarchy from top to bottom; Gang Plank for direct communication.</td></tr>
+                    <tr><td>10</td><td>Order</td><td>Right place for everything and everyone.</td></tr>
+                    <tr><td>11</td><td>Equity</td><td>Kindness & justice; no discrimination.</td></tr>
+                    <tr><td>12</td><td>Stability of Tenure</td><td>Job security to build loyalty & efficiency.</td></tr>
+                    <tr><td>13</td><td>Initiative</td><td>Encourage employees to think & execute new ideas.</td></tr>
+                    <tr><td>14</td><td>Esprit de Corps</td><td>Teamwork & harmony → union is strength.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================= Taylor vs Fayol Comparison ================= -->
+    <div class="card"><h2><i class="fas fa-people-arrows"></i> Fayol vs Taylor: Two Pillars of Management</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Basis</th><th>Henry Fayol (Father of Modern Management)</th><th>F.W. Taylor (Father of Scientific Management)</th></tr></thead>
+                <tbody>
+                    <tr><td>Focus</td><td>Top-level management, overall administration</td><td>Shop-floor level, operational efficiency</td></tr>
+                    <tr><td>Approach</td><td>General theory of management (14 principles)</td><td>Scientific methods & experiments</td></tr>
+                    <tr><td>Key Concept</td><td>Unity of command, scalar chain, equity</td><td>Time & motion study, differential piece wage</td></tr>
+                    <tr><td>Principle emphasis</td><td>Universal applicability & flexibility</td><td>Science not rule of thumb, harmony, cooperation</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================= Techniques of Scientific Management ================= -->
+    <div class="card"><h2><i class="fas fa-microscope"></i> Techniques of Scientific Management (Taylor)</h2>
+        <div class="grid-2col">
+            <div class="grid-card"><i class="fas fa-stopwatch key-icon"></i> <strong>Work Study</strong><br>Time, Method, Motion & Fatigue Study</div>
+            <div class="grid-card"><i class="fas fa-tools key-icon"></i> <strong>Standardization</strong><br>Tools, equipment & working conditions</div>
+            <div class="grid-card"><i class="fas fa-tasks key-icon"></i> <strong>Scientific Task Setting</strong><br>Fair day's work & standard output</div>
+            <div class="grid-card"><i class="fas fa-user-graduate key-icon"></i> <strong>Scientific Selection & Training</strong><br>Right person on right job + training</div>
+            <div class="grid-card"><i class="fas fa-building key-icon"></i> <strong>Functional Organization</strong><br>8 foremen (4 planning + 4 implementation)</div>
+            <div class="grid-card"><i class="fas fa-chart-line key-icon"></i> <strong>Differential Piece Rate</strong><br>Higher wage for above-standard output</div>
+        </div>
+        <div class="highlight-badge" style="margin-top: 20px;"><strong>⭐ Taylor's 8 Foremen:</strong> Planning Level: Route Clerk, Instruction Clerk, Time & Cost Clerk, Discipline. Implementation: Gang Boss, Speed Boss, Repair Boss, Inspector.</div>
+    </div>
+
+    <!-- ================= Nature & Significance Summary ================= -->
+    <div class="card"><h2><i class="fas fa-leaf"></i> Nature & Significance of Management Principles</h2>
+        <div class="qa-item"><div class="question">✅ Nature (7 points)</div><div class="answer">Universal, General guidelines, Formed by practice, Flexible, Behavioral, Cause-effect, Equal importance</div></div>
+        <div class="qa-item"><div class="question">✅ Significance (7 points)</div><div class="answer">Insight to managers, Resource utilization, Scientific decisions, Social responsibility, R&D encouragement, Coordination, Objective approach</div></div>
+    </div>
+
+    <!-- ================= Case Study / Short Opinion ================= -->
+    <div class="card"><h2><i class="fas fa-briefcase"></i> Case Study (As per syllabus)</h2>
+        <div class="qa-item"><div class="question">Case 1: Mr. Harshad's eco-friendly utensils factory with male (machines) & female (packaging). Identify principle.</div><div class="answer">Principle of Division of Work. Mrs. Naina is HR Manager; Mr. Harshad (entrepreneur) responsible for overall planning.</div></div>
+        <div class="qa-item"><div class="question">Case 2: Fine Diamonds Ltd. – 200 employees, 3 shifts, no sufficient breaks, delay in work.</div><div class="answer">i) Need: Science not Rule of Thumb (scientific planning). ii) Techniques: Time Study & Fatigue Study. iii) Work not completed due to poor time management & lack of breaks → fatigue.</div></div>
+    </div>
+
+    <!-- ================= Quotes from CK Prahlad ================= -->
+    <div class="card"><h2><i class="fas fa-quote-right"></i> Thinkers' Corner: C. K. Prahlad</h2>
+        <div class="highlight-badge">💡 "Executives are constrained not by resources, but by their imagination."</div>
+        <div class="highlight-badge">💡 "If you are honest about helping others rather than showing how smart you are, things are very easy."</div>
+        <div><strong>Contribution:</strong> Core Competence Model & Co-creation (with Gary Hamel).</div>
+    </div>
+
+    <div class="footer-note"><i class="fas fa-chalkboard-user"></i> Principles of Management | Henry Fayol · 14 Principles | FW Taylor · Scientific Management | 12th Commerce SP</div>
+</div>
+
+<!-- Popup for Translation -->
+<div id="translationPopup" class="popup-overlay">
+    <div class="popup-content">
+        <div class="popup-header">
+            <h3><i class="fas fa-language"></i> अनुवाद / Translation</h3>
+            <span class="close-popup" onclick="closePopup()">×</span>
+        </div>
+        <div class="popup-body" id="popupBody"></div>
+    </div>
+</div>
+
+<script>
+    const hindiSummary = `
+        <div style="font-family: 'Inter', sans-serif;">
+            <p><strong>🔹 प्रबंध के सिद्धांतों का अर्थ:</strong> मौलिक सत्य जो विश्वास या व्यवहार की प्रणाली की नींव रखते हैं। प्रबंध सिद्धांत सार्वभौमिक, लचीले, अभ्यास और प्रयोगों द्वारा निर्मित होते हैं।</p>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0; border-radius:12px;"><strong>📌 प्रबंध सिद्धांतों की प्रकृति:</strong> सार्वभौमिक अनुप्रयोग, सामान्य दिशानिर्देश, अभ्यास से निर्मित, लचीलापन, व्यवहारिक, कारण-प्रभाव, सभी समान महत्वपूर्ण।</div>
+            <p><strong>🔹 हेनरी फेयोल (आधुनिक प्रबंध के जनक):</strong> 14 सिद्धांत: कार्य विभाजन, अधिकार एवं उत्तरदायित्व, अनुशासन, आदेश की एकता, दिशा की एकता, व्यक्तिगत स्वार्थ का त्याग, केन्द्रीकरण, पारिश्रमिक, श्रेणीबद्ध श्रृंखला, व्यवस्था, समता, पद काल की स्थिरता, पहल, टीम भावना।</p>
+            <p><strong>🔹 एफ.डब्ल्यू. टेलर (वैज्ञानिक प्रबंध के जनक):</strong> सिद्धांत: विज्ञान, अराजकता नहीं; सद्भाव, कलह नहीं; मानसिक क्रांति; सहयोग, व्यक्तिवाद नहीं; उत्तरदायित्व का विभाजन; दक्षता एवं समृद्धि हेतु विकास।</p>
+            <p><strong>⭐ वैज्ञानिक प्रबंध की तकनीकें:</strong> कार्य अध्ययन (समय, विधि, गति, थकान), मानकीकरण, वैज्ञानिक कार्य निर्धारण, चयन एवं प्रशिक्षण, क्रियात्मक संगठन (8 फोरमैन), विभेदी टुकड़ा मजदूरी दर।</p>
+        </div>`;
+
+    const marathiSummary = `
+        <div style="font-family: 'Inter', sans-serif;">
+            <p><strong>🔹 व्यवस्थापन तत्त्वांचा अर्थ:</strong> मूलभूत सत्य जे विश्वास किंवा वर्तनाच्या प्रणालीसाठी पाया म्हणून काम करतात. ही तत्त्वे सार्वत्रिक, लवचिक आणि सरावाने तयार झालेली आहेत.</p>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0; border-radius:12px;"><strong>📌 व्यवस्थापन तत्त्वांचे स्वरूप:</strong> सार्वत्रिक उपयोजन, सामान्य मार्गदर्शक तत्त्वे, सरावाने निर्मिती, लवचिकता, वर्तणूक, कार्य-कारण, सर्व तत्त्वे समान महत्त्वाची.</div>
+            <p><strong>🔹 हेन्री फायोल (आधुनिक व्यवस्थापनाचे जनक):</strong> 14 तत्त्वे: कामाची विभागणी, अधिकार व जबाबदारी, शिस्त, आदेशाची एकता, दिग्दर्शनाची एकता, वैयक्तिक स्वार्थाचा त्याग, केंद्रीकरण, मोबदला, स्केलर चेन, व्यवस्था, समानता, कार्यकाळाची स्थिरता, पुढाकार, संघभावना.</p>
+            <p><strong>🔹 एफ.डब्ल्यू. टेलर (वैज्ञानिक व्यवस्थापनाचे जनक):</strong> तत्त्वे: विज्ञान, अनुभवसिद्ध नव्हे; सामंजस्य, कलह नव्हे; मानसिक क्रांती; सहकार्य, व्यक्तिवाद नव्हे; जबाबदारीची विभागणी; कार्यक्षमता व समृद्धी.</p>
+            <p><strong>⭐ वैज्ञानिक व्यवस्थापनाच्या तंत्रे:</strong> कार्य अभ्यास, प्रमाणीकरण, वैज्ञानिक कार्य सेटिंग, निवड व प्रशिक्षण, कार्यात्मक संघटना, विभेदी तुकडा मजुरी दर.</p>
+        </div>`;
+
+    function showTranslation(lang) {
+        const popup = document.getElementById('translationPopup');
+        const popupBody = document.getElementById('popupBody');
+        if (lang === 'hindi') popupBody.innerHTML = hindiSummary;
+        else popupBody.innerHTML = marathiSummary;
+        popup.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+    function closePopup() {
+        document.getElementById('translationPopup').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+    window.onclick = function(event) {
+        const popup = document.getElementById('translationPopup');
+        if (event.target === popup) closePopup();
+    }
+</script>
+</body>
+</html>

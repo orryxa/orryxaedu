@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Chapter 8 | Marketing & Marketing Mix - Complete Q.1 to Q.8 | 12th Commerce OCM</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #f0f4fa 0%, #e8eef8 100%);
+            font-family: 'Inter', sans-serif;
+            padding: 32px 24px;
+            color: #1a2a4a;
+            line-height: 1.5;
+        }
+        .container { max-width: 1400px; margin: 0 auto; }
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 40px;
+            background: linear-gradient(145deg, #ffffff, #f0f4fc);
+            padding: 35px 20px;
+            border-radius: 2rem;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+            border-bottom: 5px solid #ff6b35;
+        }
+        .hero h1 {
+            font-size: 2.5rem; font-weight: 800;
+            background: linear-gradient(135deg, #1e4a6e, #ff6b35, #e85d2a);
+            background-clip: text; -webkit-background-clip: text; color: transparent;
+        }
+        .hero p { color: #1e4a6e; font-weight: 500; margin-top: 12px; }
+        
+        .section-card {
+            background: white;
+            border-radius: 1.8rem;
+            margin-bottom: 32px;
+            padding: 28px 32px;
+            box-shadow: 0 15px 30px -12px rgba(0,0,0,0.08);
+            border: 1px solid rgba(255,107,53,0.2);
+            transition: transform 0.2s;
+        }
+        .section-card:hover { transform: translateY(-2px); }
+        
+        .section-title {
+            font-size: 1.7rem; font-weight: 800; color: #ff6b35;
+            border-left: 6px solid #1e4a6e;
+            padding-left: 20px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .section-title i { color: #1e4a6e; font-size: 1.7rem; }
+        
+        .sub-title {
+            font-size: 1.3rem; font-weight: 700; color: #1e4a6e;
+            margin: 25px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #ff6b35;
+            display: inline-block;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .data-table th {
+            background: linear-gradient(105deg, #1e4a6e, #ff6b35);
+            color: white;
+            padding: 14px 12px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        .data-table td {
+            border: 1px solid #e0eef5;
+            padding: 12px;
+            vertical-align: top;
+            background-color: #fff;
+        }
+        .data-table tr:hover td { background-color: #fff5f0; }
+        
+        .answer-box {
+            background: #f0f4fc;
+            padding: 16px 20px;
+            border-radius: 1rem;
+            margin: 15px 0;
+            border-left: 4px solid #ff6b35;
+        }
+        .answer-box p { margin-bottom: 8px; }
+        .answer-box strong { color: #1e4a6e; }
+        
+        .qa-item {
+            margin-bottom: 24px;
+            border-left: 3px solid #cbdde9;
+            padding-left: 20px;
+        }
+        .question {
+            font-weight: 700;
+            color: #1e4a6e;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+        .answer-inline {
+            background: #f0f4fc;
+            padding: 8px 16px;
+            border-radius: 28px;
+            display: inline-block;
+            font-weight: 500;
+            color: #ff6b35;
+        }
+        .true-badge {
+            background: #e0f2e9;
+            color: #1e6f3f;
+            padding: 4px 16px;
+            border-radius: 40px;
+            font-weight: 700;
+            display: inline-block;
+        }
+        .false-badge {
+            background: #ffe8e6;
+            color: #bc4742;
+            padding: 4px 16px;
+            border-radius: 40px;
+            font-weight: 700;
+            display: inline-block;
+        }
+        .marketing-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .marketing-card {
+            background: linear-gradient(145deg, #1e4a6e, #ff6b35);
+            border-radius: 1.2rem;
+            padding: 18px;
+            flex: 1;
+            min-width: 200px;
+            color: white;
+            text-align: center;
+        }
+        .marketing-card i { font-size: 2rem; margin-bottom: 10px; color: #ffdd88; display: block; }
+        .footer-note {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #cde1ef;
+            color: #1e4a6e;
+            font-size: 0.85rem;
+        }
+        @media (max-width: 768px) {
+            body { padding: 20px 16px; }
+            .section-card { padding: 20px 18px; }
+            .section-title { font-size: 1.3rem; }
+            .data-table th, .data-table td { font-size: 0.75rem; padding: 8px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="hero">
+        <h1><i class="fas fa-chart-line"></i> Chapter 8 · Marketing & Marketing Mix</h1>
+        <p>Concept of Market | Types of Market | Importance of Marketing | Functions of Marketing | 4Ps & 7Ps Marketing Mix</p>
+    </div>
+
+    <!-- ================= Q.1 (A) ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-check-circle"></i> Q.1 (A) Select the correct option and rewrite the sentence</div>
+        <div class="qa-item"><div class="question">1) The term market is derived from the ________ word 'mercatus'.</div><div class="answer-inline">b) Latin</div></div>
+        <div class="qa-item"><div class="question">2) In the ________ concept of market, emphasis is given on 'buying and selling of goods or services'.</div><div class="answer-inline">b) Exchange</div></div>
+        <div class="qa-item"><div class="question">3) Perishable goods such as vegetables, fruits, milk products etc. are sold in ________ Market.</div><div class="answer-inline">a) Very Short Period</div></div>
+        <div class="qa-item"><div class="question">4) Retail market is the market where retailer sells goods directly to the ________ in small quantities.</div><div class="answer-inline">c) Consumer</div></div>
+    </div>
+
+    <!-- ================= Q.1 (B) Match Pairs ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-link"></i> Q.1 (B) Match the pairs</div>
+        <table class="data-table">
+            <thead><tr><th>Group A</th><th>Answer</th><th>Group B</th></tr></thead>
+            <tbody>
+                <tr><td>A) Market</div></div></td><td>→</div></div><td>4) Mercatus</div></div></tr>
+                <tr><td>B) Registered brands</div></div></td><td>→</div></div><td>7) Trademark</div></div></tr>
+                <tr><td>C) Monopoly</div></div></td><td>→</div></div><td>1) Single Seller</div></div></tr>
+                </tr><td>D) Branding</div></div></td><td>→</div></div><td>3) Distinct Name</div></div></tr>
+                <tr><td>E) Digital Marketing</div></div></td><td>→</div></div><td>10) Use of digital media</div></div></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ================= Q.1 (C) One Word ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-tag"></i> Q.1 (C) Write a word/term/phrase for the following sentence</div>
+        <div class="qa-item"><div class="question">1) The market for commodities produced in one country and sold in another countries.</div><div class="answer-inline">International Market</div></div>
+        <div class="qa-item"><div class="question">2) Type of market where durable commodities which are generally non-perishable in nature are sold.</div><div class="answer-inline">Long Period Market</div></div>
+        <div class="qa-item"><div class="question">3) The market where goods are sold to the ultimate consumers or the users of the product.</div><div class="answer-inline">Terminal Market</div></div>
+        <div class="qa-item"><div class="question">4) Two sellers, selling either a homogeneous product or a differentiated product.</div><div class="answer-inline">Duopoly</div></div>
+        <div class="qa-item"><div class="question">5) Giving of distinct name to one's product.</div><div class="answer-inline">Branding</div></div>
+    </div>
+
+    <!-- ================= Q.1 (D) True/False ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-gavel"></i> Q.1 (D) State True or False</div>
+        <div class="qa-item"><div class="question">1) The term market is derived from the Latin word 'mercatus'.</div><div class="answer-inline"><span class="true-badge">True</span></div></div>
+        <div class="qa-item"><div class="question">2) Market may be defined as aggregate demand by potential buyers for a product or service.</div><div class="answer-inline"><span class="true-badge">True</span></div></div>
+        <div class="qa-item"><div class="question">3) The market for commodities produced in one country and sold in another countries is known as national market.</div><div class="answer-inline"><span class="false-badge">False</span> (International Market)</div></div>
+        <div class="qa-item"><div class="question">4) In wholesale market sellers are known as retailers and buyers are known as wholesaler.</div><div class="answer-inline"><span class="false-badge">False</span> (Sellers: Wholesalers, Buyers: Retailers)</div></div>
+        <div class="qa-item"><div class="question">5) Regulated Market operates according to forces of demand and supply.</div><div class="answer-inline"><span class="false-badge">False</span> (Unregulated Market)</div></div>
+    </div>
+
+    <!-- ================= Q.1 (E) Odd One ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-puzzle-piece"></i> Q.1 (E) Find the odd one</div>
+        <div class="qa-item"><div class="question">1) Primary Market, Secondary Market, Retail Market, Terminal Market</div><div class="answer-inline">Retail Market (Others are classification by importance)</div></div>
+        <div class="qa-item"><div class="question">2) Stock Exchange, Foreign Exchange, Bullion Market, Manufactured Goods Market</div><div class="answer-inline">Manufactured Goods Market (Others are financial markets)</div></div>
+        <div class="qa-item"><div class="question">3) Price, People, Promotion, Product</div><div class="answer-inline">People (Others are 4Ps; People is from 7Ps)</div></div>
+        <div class="qa-item"><div class="question">4) People, Promotion, Physical Evidence, Process</div><div class="answer-inline">Promotion (Others are 3 additional Ps of service marketing)</div></div>
+    </div>
+
+    <!-- ================= Q.1 (F) Complete Sentences ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-language"></i> Q.1 (F) Complete the sentence</div>
+        <div class="qa-item"><div class="question">1) ________ is the place where transaction of buying and selling of goods and services take place.</div><div class="answer-inline">Market</div></div>
+        <div class="qa-item"><div class="question">2) ________ refers to a market situation when there is a single buyer of a commodity or service.</div><div class="answer-inline">Monopsony</div></div>
+        <div class="qa-item"><div class="question">3) ________ is a slip which provides all information regarding the product and its producer.</div><div class="answer-inline">Label</div></div>
+    </div>
+
+    <!-- ================= Q.1 (G) Table Completion ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-table"></i> Q.1 (G) Select correct option and complete the table</div>
+        <table class="data-table">
+            <thead><tr><th>Group A</th><th>Answer</th><th>Group B</th></tr></thead>
+            <tbody>
+                <tr><td>A) Commodity Market</div></div></td><td>→</div></div><td>Industrial goods</div></div></tr>
+                <tr><td>B) Oligopoly</div></div></td><td>→</div></div><td>A few sellers</div></div></tr>
+                <tr><td>C) Mercatus</div></div></td><td>→</div></div><td>To trade merchandise</div></div></tr>
+                <tr><td>D) 4 Ps</div></div></td><td>→</div></div><td>E. Jerome McCarthy</div></div></tr>
+                <tr><td>E) 3 Ps</div></div></td><td>→</div></div><td>Booms &amp; Bitner</div></div></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ================= Q.1 (H) One Sentence ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-question-circle"></i> Q.1 (H) Answer in one sentence</div>
+        <div class="qa-item"><div class="question">1) What do you mean by 'Local Market'?</div><div class="answer-box">Local market refers to the market for commodities which are sold within local geographical limits of a region.</div></div>
+        <div class="qa-item"><div class="question">2) What do you mean by 'Regulated Market'?</div><div class="answer-box">Regulated market refers to the markets regulated by statutory provisions of the country, e.g., Stock Exchanges, Commodity Exchanges.</div></div>
+        <div class="qa-item"><div class="question">3) Define Market.</div><div class="answer-box">Market is the place where two or more parties (buyers and sellers) are involved in buying and selling with exchange of money.</div></div>
+        <div class="qa-item"><div class="question">4) What do you mean by standardization?</div><div class="answer-box">Standardization means to determine standards related to process, size, quality, design, weight, colour of the product.</div></div>
+        <div class="qa-item"><div class="question">5) What do you mean by Branding?</div><div class="answer-box">Branding is a process of giving special identity to a product through unique brand name to differentiate from competitors.</div></div>
+    </div>
+
+    <!-- ================= Q.1 (I) Correct Underlined ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-edit"></i> Q.1 (I) Correct the underlined word and rewrite</div>
+        <div class="qa-item"><div class="question">1) <u>Commodity</u> Market refers to the market for borrowing and lending long term capital.</div><div class="answer-inline">Capital</div></div>
+        <div class="qa-item"><div class="question">2) In <u>duopoly</u> there is a single seller.</div><div class="answer-inline">monopoly</div></div>
+        <div class="qa-item"><div class="question">3) <u>Pricing</u> bridges the time gap between production and sale of goods.</div><div class="answer-inline">Warehousing</div></div>
+        <div class="qa-item"><div class="question">4) <u>Branding</u> is the process of classification of products according to similar characteristics.</div><div class="answer-inline">Grading</div></div>
+        <div class="qa-item"><div class="question">5) <u>Grading</u> helps in avoiding breakage, damage and destruction of the product.</div><div class="answer-inline">Packaging</div></div>
+    </div>
+
+    <!-- ================= Q.1 (J) Arrange Order ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-sort-amount-down"></i> Q.1 (J) Arrange in proper order</div>
+        <div class="qa-item"><div class="question">1) Local market, international market, national market.</div><div class="answer-inline">Local market → National market → International market</div></div>
+        <div class="qa-item"><div class="question">2) Grading, Market Planning, Distribution.</div><div class="answer-inline">Market Planning → Grading → Distribution</div></div>
+    </div>
+
+    <!-- ================= Q.2 Explain Terms ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-chalkboard-teacher"></i> Q.2 Explain the following terms/concepts</div>
+        <div class="qa-item"><div class="question">1) Market</div><div class="answer-box"><strong>Market:</strong> Derived from Latin word 'mercatus' meaning 'to trade'. Market is the place where buyers and sellers come together to exchange goods/services for money. Modern concept includes digital markets (E-commerce).</div></div>
+        <div class="qa-item"><div class="question">2) Place Concept of Market</div><div class="answer-box">Traditional concept where market is understood as a physical place where buying and selling occurs (e.g., market yard, shopping mall). In olden days, place played important role.</div></div>
+        <div class="qa-item"><div class="question">3) Commodity Concept of Market</div><div class="answer-box">Emphasis on 'buying and selling of goods/services' rather than place. Process of exchange and commodity exchanged plays important role.</div></div>
+        <div class="qa-item"><div class="question">4) Digital Concept of Market</div><div class="answer-box">Uses Information Technology for buying/selling. E-commerce portals, mobile apps make buying easy. Communication media like internet, mobile enable direct contact between customer and seller.</div></div>
+        <div class="qa-item"><div class="question">5) Product</div><div class="answer-box">Product refers to goods or services offered to customers for sale, capable of satisfying customer needs. Can be tangible (goods) or intangible (services).</div></div>
+        <div class="qa-item"><div class="question">6) Price</div><div class="answer-box">Price is the amount a customer pays for product. It creates demand. Too high price affects demand; too low affects profitability.</div></div>
+        <div class="qa-item"><div class="question">7) Promotion</div><div class="answer-box">Promotion is marketing communication tool to publicise product to customers, convey features, induce buying. Includes advertising, direct marketing, sales promotion, personal selling.</div></div>
+        <div class="qa-item"><div class="question">8) Marketing Mix</div><div class="answer-box">Combination of different marketing variables blended to achieve desired result from target market. 4Ps (Product, Price, Place, Promotion) for goods; 7Ps (+People, Process, Physical Evidence) for services.</div></div>
+        <div class="qa-item"><div class="question">9) Packaging</div><div class="answer-box">Packaging means designing package for product to avoid breakage, damage, destruction. Includes bottles, containers, plastic bags, tin, wooden boxes, bubble bags.</div></div>
+        <div class="qa-item"><div class="question">10) Labeling</div><div class="answer-box">Label is a slip on product providing information about product and producer. Includes price, manufacturer, expiry date, batch number, user manual, safety instructions.</div></div>
+    </div>
+
+    <!-- ================= Q.3 Case Study ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-briefcase"></i> Q.3 Study the case/situation and express your opinion</div>
+        
+        <div class="qa-item"><div class="question">1) Mr X purchases from nearest shop. Mr Y purchases mobiles from Tokyo. Mr Z purchases electronic goods from Delhi.</div>
+        <div class="answer-box">i) Mr X purchases from: <strong>Local Market</strong><br>ii) Mr Y deals from: <strong>International Market</strong><br>iii) Mr Z purchases from: <strong>National Market</strong></div></div>
+        
+        <div class="qa-item"><div class="question">2) Mr X deals in import-export, needs foreign currencies. He borrows from bank, invests in equity shares.</div>
+        <div class="answer-box">i) Market for borrowing money: <strong>Capital Market (Money Market)</strong><br>ii) Market for investing funds: <strong>Capital Market (Stock Market)</strong><br>iii) Currency for international market: <strong>Foreign Exchange (Forex)</strong></div></div>
+    </div>
+
+    <!-- ================= Q.4 Answer in Brief ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-pen-alt"></i> Q.4 Answer in brief</div>
+        
+        <div class="qa-item"><div class="question">1) Explain in detail the significance of marketing to the society.</div>
+        <div class="answer-box"><strong>6 Importance to Society:</strong><br>
+        1. <strong>Increase in Standard of Living:</strong> Provides quality goods at cheaper prices.<br>
+        2. <strong>Provides Employment:</strong> Covers buying, selling, finance, transport, warehousing.<br>
+        3. <strong>Decreases Distribution Costs:</strong> Effective channel of distribution reduces costs.<br>
+        4. <strong>Consumer Awareness:</strong> Informs about new products, features, usefulness.<br>
+        5. <strong>Increase in National Income:</strong> Economic development, industrialization, more jobs.<br>
+        6. <strong>Managing Consumer Expectations:</strong> Marketing research helps understand consumer needs.</div></div>
+        
+        <div class="qa-item"><div class="question">2) Explain 4Ps of product marketing mix.</div>
+        <div class="answer-box"><strong>4Ps by E. Jerome McCarthy (1960):</strong><br>
+        • <strong>Product:</strong> Goods/services offered to satisfy customer needs. Includes design, quality, features, branding, packaging.<br>
+        • <strong>Price:</strong> Amount customer pays. Determined by cost, demand, competition, desired profit.<br>
+        • <strong>Place (Distribution):</strong> Making product available at right place. Includes channels, logistics, warehousing, transport.<br>
+        • <strong>Promotion:</strong> Communicating product to customers. Includes advertising, sales promotion, personal selling, publicity.</div></div>
+        
+        <div class="qa-item"><div class="question">3) Explain 3Ps in marketing of services.</div>
+        <div class="answer-box"><strong>3 Additional Ps by Booms &amp; Bitner (1981) for Service Marketing:</strong><br>
+        • <strong>People:</strong> All human beings playing active role in delivering service. Employees, customers, recruit right people, train them.<br>
+        • <strong>Process:</strong> Steps involved in delivering products/services to customers. Ensures same standard, saves time and money.<br>
+        • <strong>Physical Evidence:</strong> Environment where customer-firm interaction occurs. Location, layout, interior design, packaging, staff dress, waiting area.</div></div>
+        
+        <div class="qa-item"><div class="question">4) Explain types of market on the basis of area covered.</div>
+        <div class="answer-box"><strong>On Basis of Area Covered:</strong><br>
+        • <strong>Local Market:</strong> Within local geographical limits (e.g., village market).<br>
+        • <strong>National Market:</strong> Within the country (e.g., domestic trade).<br>
+        • <strong>International Market:</strong> Across countries (export/import).</div></div>
+        
+        <div class="qa-item"><div class="question">5) Explain types of market on the basis of time.</div>
+        <div class="answer-box"><strong>On Basis of Time:</strong><br>
+        • <strong>Very Short Period Market:</strong> Few hours or a day; perishable goods (vegetables, fruits, milk).<br>
+        • <strong>Short Period Market:</strong> Weekly markets, festival markets; perishable/semi-durable goods.<br>
+        • <strong>Long Period Market:</strong> Long existence; durable, non-perishable goods.</div></div>
+    </div>
+
+    <!-- ================= Marketing Mix Visual (4Ps & 7Ps) ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-chart-pie"></i> Visual: Marketing Mix (4Ps & 7Ps)</div>
+        <div class="marketing-grid">
+            <div class="marketing-card"><i class="fas fa-box"></i><strong>Product</strong><br>Goods/Services</div>
+            <div class="marketing-card"><i class="fas fa-tag"></i><strong>Price</strong><br>Value/Amount</div>
+            <div class="marketing-card"><i class="fas fa-map-marker-alt"></i><strong>Place</strong><br>Distribution</div>
+            <div class="marketing-card"><i class="fas fa-bullhorn"></i><strong>Promotion</strong><br>Communication</div>
+        </div>
+        <p style="text-align: center; margin: 15px 0;"><strong>+ 3 Ps for Service Marketing (Booms & Bitner)</strong></p>
+        <div class="marketing-grid">
+            <div class="marketing-card" style="background: linear-gradient(145deg, #ff6b35, #ff8c5a);"><i class="fas fa-users"></i><strong>People</strong><br>Employees/Customers</div>
+            <div class="marketing-card" style="background: linear-gradient(145deg, #ff6b35, #ff8c5a);"><i class="fas fa-cogs"></i><strong>Process</strong><br>Steps/Delivery</div>
+            <div class="marketing-card" style="background: linear-gradient(145deg, #ff6b35, #ff8c5a);"><i class="fas fa-building"></i><strong>Physical Evidence</strong><br>Environment/Ambience</div>
+        </div>
+    </div>
+
+    <!-- ================= Q.5 Justify ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-check-double"></i> Q.5 Justify the following statements</div>
+        
+        <div class="qa-item"><div class="question">1) Marketing is significant to the consumers.</div><div class="answer-box"><strong>Justification:</strong> Marketing promotes product awareness, provides quality products, offers variety, helps in selection, ensures consumer satisfaction, and regular supply of goods. It educates consumers about new products and their usefulness, helping them make informed buying decisions.</div></div>
+        
+        <div class="qa-item"><div class="question">2) Promotion plays an important role in marketing.</div><div class="answer-box"><strong>Justification:</strong> Promotion creates brand recognition and sales. It conveys product features to potential buyers, inducing them to purchase. Tools like advertising, direct marketing, sales promotion, personal selling help increase brand awareness. Without promotion, customers may never know about product's existence.</div></div>
+        
+        <div class="qa-item"><div class="question">3) Market can be classified on the basis of competition.</div><div class="answer-box"><strong>Justification:</strong> On competition basis: Perfect Market (large number buyers/sellers, homogeneous products, single price) and Imperfect Market (market imperfections). Imperfect markets further divided into Monopoly (single seller), Duopoly (two sellers), Oligopoly (few sellers), Monopsony (single buyer).</div></div>
+        
+        <div class="qa-item"><div class="question">4) Marketing helps in increasing consumer awareness.</div><div class="answer-box"><strong>Justification:</strong> Marketing informs and educates consumers about new products/services, their features, uses, prices, availability. Through advertisements, brochures, social media, consumers get relevant information to make purchase decisions. Campaigns like 'Jago Grahak Jago' increase awareness.</div></div>
+        
+        <div class="qa-item"><div class="question">5) There is a need of branding to get recognition among the consumers.</div><div class="answer-box"><strong>Justification:</strong> Branding gives special identity to product through unique brand name, differentiating from competitors. Registered brands (trademarks) cannot be copied. Branding helps get recognition, builds customer loyalty, increases brand awareness, and helps in getting new business.</div></div>
+    </div>
+
+    <!-- ================= Q.6 Attempt the Following ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-tasks"></i> Q.6 Attempt the following</div>
+        
+        <div class="qa-item"><div class="question">1) Give classification of market in detail on the basis of 'Volume of Transaction'.</div>
+        <div class="answer-box"><strong>On Basis of Volume of Transaction:</strong><br>
+        • <strong>Wholesale Market:</strong> Buying and selling in large quantities at cheaper prices. Goods sold to retailers. Sellers are wholesalers, buyers are retailers.<br>
+        • <strong>Retail Market:</strong> Retailer sells goods directly to consumers in small quantities. Final link in distribution channel.</div></div>
+        
+        <div class="qa-item"><div class="question">2) Give classification of market on the basis of 'Time'.</div>
+        <div class="answer-box"><strong>On Basis of Time:</strong><br>
+        • <strong>Very Short Period Market:</strong> Few hours/day; perishable goods (vegetables, fruits, milk).<br>
+        • <strong>Short Period Market:</strong> Weekly/festival markets; perishable/semi-durable goods.<br>
+        • <strong>Long Period Market:</strong> Long existence; durable, non-perishable goods.</div></div>
+        
+        <div class="qa-item"><div class="question">3) Explain packaging and labelling.</div>
+        <div class="answer-box"><strong>Packaging:</strong> Designing package for product to avoid breakage, damage, destruction. Includes bottles, containers, plastic bags, tin, wooden boxes, bubble bags. Creates first impression.<br>
+        <strong>Labelling:</strong> Label is slip on product providing information about product and producer. Includes price, manufacturer, date of manufacture, expiry date, batch number, user manual, safety instructions, ISI/AGMARK marks.</div></div>
+        
+        <div class="qa-item"><div class="question">4) Explain standardisation and grading.</div>
+        <div class="answer-box"><strong>Standardisation:</strong> Determining standards for process, size, quality, design, weight, colour. Ensures uniformity, achieves customer loyalty.<br>
+        <strong>Grading:</strong> Classification of products according to similar characteristics/quality (size, shape, quality). Generally done for agricultural products like wheat, rice, potatoes.</div></div>
+        
+        <div class="qa-item"><div class="question">5) Explain importance of marketing to the firm.</div>
+        <div class="answer-box"><strong>6 Importance to Firm:</strong><br>
+        1. Increases Awareness about products and company.<br>
+        2. Increases Sales through successful campaigns.<br>
+        3. Creates Trust among customers, builds loyalty.<br>
+        4. Basis for Making Decisions (what, how, when to produce).<br>
+        5. Source of New Ideas through feedback and research.<br>
+        6. Tackling the Competition by creating brand image.</div></div>
+    </div>
+
+    <!-- ================= Q.7 & Q.8 Detailed ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-file-alt"></i> Q.7 & Q.8 Detailed Answers</div>
+        
+        <div class="qa-item"><div class="question">Q.7 (1) Define Marketing and explain in detail the concepts of marketing.</div>
+        <div class="answer-box"><strong>Definition (Philip Kotler):</strong> "Marketing is a societal process by which individuals and groups obtain what they need and want through creating, offering and freely exchanging products and services of value with others."<br>
+        <strong>6 Concepts of Market:</strong><br>
+        1. <strong>Place Concept:</strong> Physical place where buying/selling occurs.<br>
+        2. <strong>Commodity Concept:</strong> Emphasis on buying/selling of goods/services.<br>
+        3. <strong>Exchange Concept:</strong> Voluntary exchange with free consent, mutual trust.<br>
+        4. <strong>Area Concept:</strong> Free association between buyers/sellers to fix prices.<br>
+        5. <strong>Demand/Customer Concept:</strong> Aggregate demand by potential buyers.<br>
+        6. <strong>Space/Digital Concept:</strong> Using IT for buying/selling (E-commerce).</div></div>
+        
+        <div class="qa-item"><div class="question">Q.7 (2) Explain different types of market in detail.</div>
+        <div class="answer-box"><strong>7 Basis of Market Classification:</strong><br>
+        1. <strong>Area Covered:</strong> Local, National, International.<br>
+        2. <strong>Time:</strong> Very Short Period, Short Period, Long Period.<br>
+        3. <strong>Volume of Transaction:</strong> Wholesale, Retail.<br>
+        4. <strong>Importance:</strong> Primary (agricultural), Secondary (semi-processed), Terminal (ultimate consumers).<br>
+        5. <strong>Nature of Goods:</strong> Commodity Market, Capital Market.<br>
+        6. <strong>Regulation:</strong> Regulated (Stock Exchange), Unregulated (free market).<br>
+        7. <strong>Competition:</strong> Perfect Market, Imperfect Market (Monopoly, Duopoly, Oligopoly, Monopsony).</div></div>
+        
+        <div class="qa-item"><div class="question">Q.7 (3) Explain in detail 7Ps of Marketing.</div>
+        <div class="answer-box"><strong>7Ps of Marketing Mix:</strong><br>
+        <strong>Product:</strong> Goods/services satisfying customer needs.<br>
+        <strong>Price:</strong> Amount customer pays.<br>
+        <strong>Place:</strong> Distribution channels, availability.<br>
+        <strong>Promotion:</strong> Advertising, sales promotion, personal selling.<br>
+        <strong>People:</strong> Employees delivering service.<br>
+        <strong>Process:</strong> Steps in delivering service.<br>
+        <strong>Physical Evidence:</strong> Environment where interaction occurs.</div></div>
+        
+        <div class="qa-item"><div class="question">Q.7 (4) Explain the functions of marketing in detail.</div>
+        <div class="answer-box"><strong>13 Functions of Marketing:</strong><br>
+        1. Marketing Research, 2. Buying and Assembling, 3. Market Planning, 4. Product Development, 5. Standardisation and Grading, 6. Packaging and Labelling, 7. Branding, 8. Customer Support Service, 9. Pricing, 10. Promotional Channels, 11. Distribution, 12. Transportation, 13. Warehousing.</div></div>
+        
+        <div class="qa-item"><div class="question">Q.7 (5) Explain importance of marketing to the society and consumers.</div>
+        <div class="answer-box"><strong>To Society:</strong> Increases standard of living, provides employment, decreases distribution costs, consumer awareness, increases national income, manages consumer expectations.<br>
+        <strong>To Consumers:</strong> Promotes product awareness, provides quality products, provides variety, helps in selection, ensures consumer satisfaction, regular supply of goods.</div></div>
+        
+        <div class="qa-item"><div class="question">Q.8 (1) Define Marketing and explain in detail the concepts of marketing.</div>
+        <div class="answer-box">(Same as Q.7.1 above - detailed answer)</div></div>
+        
+        <div class="qa-item"><div class="question">Q.8 (2) Explain different types of market in detail.</div>
+        <div class="answer-box">(Same as Q.7.2 above - detailed answer)</div></div>
+        
+        <div class="qa-item"><div class="question">Q.8 (3) Explain in detail 7Ps of Marketing.</div>
+        <div class="answer-box">(Same as Q.7.3 above - detailed answer)</div></div>
+        
+        <div class="qa-item"><div class="question">Q.8 (4) Explain the functions of marketing in detail.</div>
+        <div class="answer-box">(Same as Q.7.4 above - detailed answer)</div></div>
+        
+        <div class="qa-item"><div class="question">Q.8 (5) Explain importance of marketing to the society and consumers.</div>
+        <div class="answer-box">(Same as Q.7.5 above - detailed answer)</div></div>
+    </div>
+
+    <!-- Marketing vs Selling Comparison Table -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-balance-scale"></i> Distinguish Between: Marketing vs Selling</div>
+        <table class="data-table">
+            <thead><tr><th>Basis</th><th>Marketing</th><th>Selling</th></tr></thead>
+            <tbody>
+                <tr><td>Concept</div></div><td>Wider concept (includes selling)</div></div><td>Narrower concept (part of marketing)</div></div></tr>
+                <tr><td>Orientation</div></div><td>Consumer oriented</div></div><td>Production oriented</div></div></tr>
+                <tr><td>Focus</div></div><td>Consumer satisfaction</div></div><td>Transfer of ownership</div></div></tr>
+                <tr><td>View of Customer</div></div><td>Purpose of business</div></div><td>Last link in business</div></div></tr>
+                <tr><td>Planning</div></div><td>Long-term oriented</div></div><td>Short-term oriented</div></div></tr>
+                <tr><td>Activity</div></div><td>Indirect activity</div></div><td>Direct activity</div></div></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Answer Key -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-key"></i> Answer Key (Quick Reference)</div>
+        <table class="data-table">
+            <tr><th>Q.1(A)</th><td colspan="3">1) Latin 2) Exchange 3) Very Short Period 4) consumer</td></tr>
+            <tr><th>Q.1(D)</th><td colspan="3">True: 1,2 &nbsp; False: 3,4,5</td></tr>
+            <tr><th>Q.1(E)</th><td colspan="3">1) Retail Market 2) Manufactured Goods Market 3) People 4) Promotion</td></tr>
+            <tr><th>Q.1(F)</th><td colspan="3">1) Market 2) Monopsony 3) Label</td></tr>
+            <tr><th>Q.1(I)</th><td colspan="3">1) Capital 2) monopoly 3) Warehousing 4) Grading 5) Packaging</td></tr>
+            <tr><th>Q.1(J)</th><td colspan="3">1) Local → National → International 2) Market Planning → Grading → Distribution</td></tr>
+        </table>
+    </div>
+
+    <div class="footer-note">
+        <i class="fas fa-graduation-cap"></i> Chapter 8: Marketing & Marketing Mix — Complete Q.1 to Q.8 with Detailed Answers | 6 Concepts of Market | 7 Basis of Market Classification | 13 Functions of Marketing | 4Ps (McCarthy) & 7Ps (Booms & Bitner) | Importance to Society, Firm, Consumers | 12th Commerce OCM
+    </div>
+</div>
+</body>
+</html>

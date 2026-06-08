@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Chapter 6 | Social Responsibilities of Business & Business Ethics | 12th Commerce OCM</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #f0f7f0 0%, #e8f0e8 100%);
+            font-family: 'Inter', sans-serif;
+            padding: 32px 24px;
+            color: #1a3e2c;
+            line-height: 1.5;
+        }
+        .container { max-width: 1400px; margin: 0 auto; }
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 40px;
+            background: linear-gradient(145deg, #ffffff, #f8fff8);
+            padding: 35px 20px;
+            border-radius: 2rem;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+        }
+        .hero h1 {
+            font-size: 2.5rem; font-weight: 800;
+            background: linear-gradient(135deg, #1e6b3e, #2c9b5e, #3cb371);
+            background-clip: text; -webkit-background-clip: text; color: transparent;
+        }
+        .hero p { color: #2c9b5e; font-weight: 500; margin-top: 12px; }
+        
+        .section-card {
+            background: white;
+            border-radius: 1.8rem;
+            margin-bottom: 32px;
+            padding: 28px 32px;
+            box-shadow: 0 15px 30px -12px rgba(0,0,0,0.08);
+            border: 1px solid rgba(60,179,113,0.15);
+            transition: transform 0.2s;
+        }
+        .section-card:hover { transform: translateY(-2px); }
+        
+        .section-title {
+            font-size: 1.7rem; font-weight: 800; color: #1e6b3e;
+            border-left: 6px solid #ffaa33;
+            padding-left: 20px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .section-title i { color: #ff8c42; font-size: 1.7rem; }
+        
+        .sub-title {
+            font-size: 1.3rem; font-weight: 700; color: #2c9b5e;
+            margin: 25px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #ffaa33;
+            display: inline-block;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .data-table th {
+            background: linear-gradient(105deg, #1e6b3e, #2c9b5e);
+            color: white;
+            padding: 14px 12px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        .data-table td {
+            border: 1px solid #e0eef5;
+            padding: 12px;
+            vertical-align: top;
+            background-color: #fff;
+        }
+        .data-table tr:hover td { background-color: #f8fcff; }
+        
+        .answer-box {
+            background: #eef7ea;
+            padding: 16px 20px;
+            border-radius: 1rem;
+            margin: 15px 0;
+            border-left: 4px solid #ffaa33;
+        }
+        .answer-box p { margin-bottom: 8px; }
+        .answer-box strong { color: #1e6b3e; }
+        
+        .qa-item {
+            margin-bottom: 24px;
+            border-left: 3px solid #cbdde9;
+            padding-left: 20px;
+        }
+        .question {
+            font-weight: 700;
+            color: #1e6b3e;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+        .answer-inline {
+            background: #eef7ea;
+            padding: 8px 16px;
+            border-radius: 28px;
+            display: inline-block;
+            font-weight: 500;
+            color: #1e6b3e;
+        }
+        .true-badge {
+            background: #e0f2e9;
+            color: #1e6f3f;
+            padding: 4px 16px;
+            border-radius: 40px;
+            font-weight: 700;
+            display: inline-block;
+        }
+        .false-badge {
+            background: #ffe8e6;
+            color: #bc4742;
+            padding: 4px 16px;
+            border-radius: 40px;
+            font-weight: 700;
+            display: inline-block;
+        }
+        .grid-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .info-card {
+            background: linear-gradient(145deg, #1e6b3e, #2c9b5e);
+            border-radius: 1.2rem;
+            padding: 18px;
+            flex: 1;
+            min-width: 180px;
+            color: white;
+            text-align: center;
+        }
+        .info-card i { font-size: 2rem; margin-bottom: 10px; color: #ffdd88; }
+        .stakeholder-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 25px 0;
+        }
+        .stakeholder-item {
+            background: #f0f7ea;
+            border-radius: 1rem;
+            padding: 15px;
+            flex: 1;
+            min-width: 150px;
+            text-align: center;
+            border: 1px solid #cde1cf;
+        }
+        .stakeholder-item i { font-size: 2rem; color: #2c9b5e; margin-bottom: 8px; display: block; }
+        .footer-note {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #cde1cf;
+            color: #2c6f4c;
+            font-size: 0.85rem;
+        }
+        @media (max-width: 768px) {
+            body { padding: 20px 16px; }
+            .section-card { padding: 20px 18px; }
+            .section-title { font-size: 1.3rem; }
+            .data-table th, .data-table td { font-size: 0.75rem; padding: 8px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="hero">
+        <h1><i class="fas fa-handshake"></i> Chapter 6 · Social Responsibilities of Business & Business Ethics</h1>
+        <p>Social Responsibility | Interest Groups | Business Ethics | CSR | Environmental Protection</p>
+    </div>
+
+    <!-- ================= Q.1 (A) ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-check-circle"></i> Q.1 (A) Select the correct option and rewrite the sentence</div>
+        <div class="qa-item"><div class="question">1) Business is a __________ activity.</div><div class="answer-inline">a) Socio-economic</div></div>
+        <div class="qa-item"><div class="question">2) Business organisation should try to make __________ utilisation of natural resources.</div><div class="answer-inline">c) Optimum</div></div>
+        <div class="qa-item"><div class="question">3) For economic growth and national security __________ stability is required.</div><div class="answer-inline">a) Political</div></div>
+        <div class="qa-item"><div class="question">4) Making timely payment of proper taxes is the responsibility of organisation towards __________.</div><div class="answer-inline">c) Government</div></div>
+        <div class="qa-item"><div class="question">5) Businessmen are __________ of the society.</div><div class="answer-inline">c) Trustees</div></div>
+        <div class="qa-item"><div class="question">6) Business should provide periodic information to __________.</div><div class="answer-inline">b) Owners</div></div>
+        <div class="qa-item"><div class="question">7) Business should offer adequate opportunities of promotion to their __________.</div><div class="answer-inline">a) Employees</div></div>
+        <div class="qa-item"><div class="question">8) The term 'Ethics' is derived from the Greek word 'Ethos' which means __________.</div><div class="answer-inline">c) Greek</div></div>
+        <div class="qa-item"><div class="question">9) Business ethics refers to the system of __________ principles.</div><div class="answer-inline">c) Moral</div></div>
+        <div class="qa-item"><div class="question">10) Business organisation should protect health and provide safety measures to __________.</div><div class="answer-inline">a) employees</div></div>
+        <div class="qa-item"><div class="question">11) At least __________ % of the average net profit should be spent on C.S.R.</div><div class="answer-inline">b) 2%</div></div>
+    </div>
+
+    <!-- ================= Q.1 (B) Match Pairs ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-link"></i> Q.1 (B) Match the pairs</div>
+        <table class="data-table">
+            <thead><tr><th>Group A</th><th>Answer</th><th>Group B</th></tr></thead>
+            <tbody>
+                <tr><td>A) Employees</div></div></td><td>→</div></div><td>5) Job security</div></div></tr>
+                <tr><td>B) Responsibility to investors</div></div></td><td>→</div></div><td>2) To maintain solvency and prestige</div></div></tr>
+                <tr><td>C) Responsibility towards government</div></div></td><td>→</div></div><td>7) Respecting rules and regulations</div></div></tr>
+                <tr><td>D) Economic objective</div></div></td><td>→</div></div><td>8) To earn profit</div></div></tr>
+                <tr><td>E) Business ethics</div></div></td><td>→</div></div><td>9) Branch of social Science</div></div></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ================= Q.1 (C) One Word ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-tag"></i> Q.1 (C) Give one word/phrase/term</div>
+        <div class="grid-cards">
+            <div class="info-card"><i class="fas fa-user-tie"></i>1) Philosophy propounded by Mahatma Gandhi<br><strong>Trusteeship</strong></div>
+            <div class="info-card"><i class="fas fa-heart"></i>2) Duties directed towards welfare of society<br><strong>Social Responsibility</strong></div>
+            <div class="info-card"><i class="fas fa-shopping-bag"></i>3) Basic right to get quality products<br><strong>Consumers</strong></div>
+            <div class="info-card"><i class="fas fa-chart-line"></i>4) Fair returns on investment responsibility towards<br><strong>Investors</strong></div>
+            <div class="info-card"><i class="fas fa-scale-balanced"></i>5) Rules of standard dealing with morality<br><strong>Business Ethics</strong></div>
+            <div class="info-card"><i class="fas fa-chart-simple"></i>6) Activity motivated by profit<br><strong>Business</strong></div>
+            <div class="info-card"><i class="fas fa-globe"></i>7) Earning foreign exchange responsibility towards<br><strong>Government</strong></div>
+            <div class="info-card"><i class="fas fa-users"></i>8) Employment generation responsibility towards<br><strong>Society</strong></div>
+        </div>
+    </div>
+
+    <!-- ================= Q.1 (D) True/False ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-gavel"></i> Q.1 (D) State True or False</div>
+        <div class="qa-item"><div class="question">1) Businessmen are trustees of the society.</div><div class="answer-inline"><span class="true-badge">True</span></div></div>
+        <div class="qa-item"><div class="question">2) Business ethics is a code of conduct.</div><div class="answer-inline"><span class="true-badge">True</span></div></div>
+        <div class="qa-item"><div class="question">3) Commercial organisations are expected to uplift weaker section of society.</div><div class="answer-inline"><span class="true-badge">True</span></div></div>
+        <div class="qa-item"><div class="question">4) It is the responsibility of commercial organisation to maintain industrial peace.</div><div class="answer-inline"><span class="true-badge">True</span></div></div>
+        <div class="qa-item"><div class="question">5) Owners should not get complete and accurate information about financial position.</div><div class="answer-inline"><span class="false-badge">False</span> (Should get complete information)</div></div>
+        <div class="qa-item"><div class="question">6) Media does not play important role in public life.</div><div class="answer-inline"><span class="false-badge">False</span> (Media plays very important role)</div></div>
+        <div class="qa-item"><div class="question">7) Social responsibility is broader than legal responsibility of business.</div><div class="answer-inline"><span class="true-badge">True</span></div></div>
+    </div>
+
+    <!-- ================= Q.1 (E) Odd One ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-puzzle-piece"></i> Q.1 (E) Find the odd one</div>
+        <div class="qa-item"><div class="question">1) Job security, health and safety measures, good working condition, reasonable profit.</div><div class="answer-inline">Reasonable profit (others are employee responsibilities)</div></div>
+        <div class="qa-item"><div class="question">2) Good quality products, fair prices, honest advertising, prevent congestion in cities.</div><div class="answer-inline">Prevent congestion in cities (others are consumer responsibilities)</div></div>
+        <div class="qa-item"><div class="question">3) Timely payment of taxes, earning foreign exchange, creating goodwill, political stability.</div><div class="answer-inline">Creating goodwill (others are government responsibilities)</div></div>
+        <div class="qa-item"><div class="question">4) Protection of environment, maintain transparency, employment generation, development of backward region.</div><div class="answer-inline">Maintain transparency (others are society responsibilities)</div></div>
+        <div class="qa-item"><div class="question">5) Proper conduct of meeting, careful use of capital, fair prices of products, maintain solvency.</div><div class="answer-inline">Fair prices of products (others are investor/owner responsibilities)</div></div>
+    </div>
+
+    <!-- ================= Q.1 (F) Complete Sentences ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-language"></i> Q.1 (F) Complete the sentences</div>
+        <div class="grid-cards">
+            <div class="info-card"><i class="fas fa-chart-line"></i>1) Business organisation can maximise profitability by ______ wastage.<br><strong>Minimising</strong></div>
+            <div class="info-card"><i class="fas fa-gavel"></i>2) Social responsibility is broader than ______ responsibility.<br><strong>Legal</strong></div>
+            <div class="info-card"><i class="fas fa-user-tie"></i>3) The concept of trusteeship was propounded by ______.<br><strong>Mahatma Gandhi</strong></div>
+            <div class="info-card"><i class="fas fa-coins"></i>4) Business should earn ______ profit.<br><strong>Reasonable</strong></div>
+            <div class="info-card"><i class="fas fa-wallet"></i>5) ______ should be fixed according to the nature and importance of work.<br><strong>Remuneration</strong></div>
+            <div class="info-card"><i class="fas fa-book"></i>6) The word 'Ethics' is derived from the Greek word '______'.<br><strong>Ethos</strong></div>
+        </div>
+    </div>
+
+    <!-- ================= Q.1 (G) Table Completion ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-table"></i> Q.1 (G) Select the correct option</div>
+        <table class="data-table">
+            <thead><tr><th>Group A</th><th>Answer</th><th>Group B</th></tr></thead>
+            <tbody>
+                <tr><td>1) After sales service</div></div></td><td>→</div></div><td>Responsibilities towards consumers</div></div></tr>
+                <tr><td>2) Timely payment of proper taxes</div></div></td><td>→</div></div><td>Responsibilities towards government</div></div></tr>
+                <tr><td>3) Protest Anti Social activities</div></div></td><td>→</div></div><td>Responsibilities towards society</div></div></tr>
+                <tr><td>4) Fair practices on stock Exchange</div></div></td><td>→</div></div><td>Responsibilities towards shareholders</div></div></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ================= Q.1 (H) One Sentence ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-question-circle"></i> Q.1 (H) Answer in one sentence</div>
+        <div class="qa-item"><div class="question">1) Who can raise voice against business malpractices?</div><div class="answer-box">Media can raise voice against business malpractices and exploitation of consumers.</div></div>
+        <div class="qa-item"><div class="question">2) What should be done by management to keep workers updated?</div><div class="answer-box">Management should conduct education and training programmes like 'Introduction Training' and 'Refresher Training' to keep workers updated.</div></div>
+        <div class="qa-item"><div class="question">3) What type of advertising should be avoided?</div><div class="answer-box">False, misleading, vulgar and dishonest advertising should be avoided by business organisations.</div></div>
+        <div class="qa-item"><div class="question">4) What organisation should do to improve quality of goods and reduce cost of production?</div><div class="answer-box">Organisation should conduct Research and Development (R&D) to improve quality of goods and reduce cost of production.</div></div>
+    </div>
+
+    <!-- ================= Q.1 (I) Correct Underlined ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-edit"></i> Q.1 (I) Correct the underlined word and rewrite</div>
+        <div class="qa-item"><div class="question">1) Social responsibility is <u>narrower</u> term than legal responsibility.</div><div class="answer-inline">broader</div></div>
+        <div class="qa-item"><div class="question">2) All sorts of <u>fair</u> practices related to stock exchange should be avoided.</div><div class="answer-inline">unfair</div></div>
+        <div class="qa-item"><div class="question">3) Management and union should agree <u>strikes</u> and lockouts to protect interest.</div><div class="answer-inline">ban</div></div>
+        <div class="qa-item"><div class="question">4) MRP (Maximum Retail Price) <u>should not</u> be printed on every packet.</div><div class="answer-inline">should</div></div>
+        <div class="qa-item"><div class="question">5) <u>Dishonest</u> advertising can be appreciated by customers in longrun.</div><div class="answer-inline">Honest</div></div>
+        <div class="qa-item"><div class="question">6) Financial help <u>should be</u> provided for anti social activities.</div><div class="answer-inline">should not be</div></div>
+        <div class="qa-item"><div class="question">7) Business ethics is a <u>compulsory</u> term.</div><div class="answer-inline">voluntary</div></div>
+        <div class="qa-item"><div class="question">8) Business ethics is <u>not</u> a relative term.</div><div class="answer-inline">relative</div></div>
+        <div class="qa-item"><div class="question">9) <u>Social values</u> are based on perceptions of right or wrong.</div><div class="answer-inline">Moral values</div></div>
+        <div class="qa-item"><div class="question">10) <u>Moral values</u> provide general guidelines for social conduct.</div><div class="answer-inline">Social values</div></div>
+    </div>
+
+    <!-- ================= Q.2 Explain Terms ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-chalkboard-teacher"></i> Q.2 Explain the following terms/concepts</div>
+        <div class="qa-item"><div class="question">1) Social responsibility</div><div class="answer-box"><strong>Meaning:</strong> Social responsibility of business implies the obligation of management to protect the interest of society. According to Keith Davis: "Social responsibility refers to obligations of businessman's decisions and actions beyond firm's direct economic interest." Business must take decisions that are desirable in terms of society's objectives and values.</div></div>
+        <div class="qa-item"><div class="question">2) Concept of Trusteeship</div><div class="answer-box"><strong>Meaning:</strong> Trusteeship is a socio-economic philosophy propounded by Mahatma Gandhi. It provides a means by which wealthy people would be trustees of trusts that look after welfare of people. Businessmen are considered trustees of society, managing resources for the benefit of all stakeholders, not just for personal profit.</div></div>
+        <div class="qa-item"><div class="question">3) Business ethics</div><div class="answer-box"><strong>Meaning:</strong> Business ethics is the study of business situations where issues of right and wrong are addressed. It is a code of conduct that businesses are expected to follow. Derived from Greek word 'Ethos' meaning character. It deals with concepts like right/wrong, good/bad, fair/unfair, just/unjust, legal/illegal in business actions.</div></div>
+        <div class="qa-item"><div class="question">4) Moral Values</div><div class="answer-box"><strong>Meaning:</strong> Moral values are principles that guide individuals to distinguish between right and wrong. Examples include honesty, integrity, fairness, hard work, cooperation, truthfulness, compassion. These values help in personal character development and ethical decision-making in business.</div></div>
+        <div class="qa-item"><div class="question">5) Social values</div><div class="answer-box"><strong>Meaning:</strong> Social values are general guidelines for social conduct. They form an important part of society's culture. Examples include fundamental rights, patriotism, respect for human dignity, rationality, sacrifice, equality, democracy, justice. They guide behaviour in social context.</div></div>
+    </div>
+
+    <!-- ================= Q.3 Case Study ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-briefcase"></i> Q.3 Study the case/situation and express your opinion</div>
+        
+        <div class="qa-item"><div class="question">1) Yashwant Co. Ltd. provides day care centre for female staff, work from home, takes suggestions from trade union members.</div>
+        <div class="answer-box">i) Interest groups: <strong>Employees</strong><br>ii) Values presented: <strong>Gender equality, work-life balance, employee welfare, participative management</strong><br>iii) Responsibilities: <strong>Health and safety measures, good working conditions, workers participation in management, fair treatment</strong></div></div>
+        
+        <div class="qa-item"><div class="question">2) Paint manufacturing company dumping untreated poisonous waste on river bank causing health problems.</div>
+        <div class="answer-box">i) Neglected responsibility: <strong>Social responsibility towards society and environment</strong><br>ii) Type of pollution: <strong>Water pollution (and soil pollution)</strong><br>iii) Precautionary measures: <strong>Treat waste before discharge, install effluent treatment plant, follow 4 R's (Reduce, Reuse, Recycle, Recover), obtain environmental clearance</strong></div></div>
+        
+        <div class="qa-item"><div class="question">3) Vehicle manufacturing company uses environment friendly components, treats harmful wastes, maintains pollution as per international standards.</div>
+        <div class="answer-box">i) Interest group: <strong>Society/Community/Environment</strong><br>ii) Pollution to avoid: <strong>Air pollution, water pollution, soil pollution</strong><br>iii) Message conveyed: <strong>Commitment to environmental protection, sustainable development, social responsibility, eco-friendly practices, concern for future generations</strong></div></div>
+    </div>
+
+    <!-- ================= Q.4 Answer in Brief ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-pen-alt"></i> Q.4 Answer in brief</div>
+        
+        <div class="qa-item"><div class="question">1) Give any four types of social responsibilities towards consumers.</div>
+        <div class="answer-box"><strong>Four responsibilities towards consumers:</strong><br>
+        • <strong>Good Quality Products:</strong> Produce quality goods with ISO, BIS, AGMARK standards<br>
+        • <strong>Fair Prices:</strong> Charge reasonable prices, print MRP on packets<br>
+        • <strong>Customer's Safety:</strong> Ensure products do not adversely affect life/health<br>
+        • <strong>Honest Advertising:</strong> Avoid false, misleading, vulgar advertisements<br>
+        • <strong>After Sales Service:</strong> Provide maintenance during warranty period<br>
+        • <strong>Attend Complaints:</strong> Quick redressal of consumer grievances</div></div>
+        
+        <div class="qa-item"><div class="question">2) What is business ethics? What are elements of business ethics?</div>
+        <div class="answer-box"><strong>Business Ethics:</strong> Code of conduct that businesses are expected to follow, dealing with right/wrong, good/bad in business actions.<br>
+        <strong>Elements/Features (8):</strong><br>
+        1. Code of conduct<br>2. Based on moral and social values<br>3. Protection to social groups<br>4. Provides basic framework<br>5. Voluntary (not enforced by law)<br>6. Requires education and guidance<br>7. Relative term (changes across countries)<br>8. Newer concept</div></div>
+        
+        <div class="qa-item"><div class="question">3) State responsibilities of business towards government.</div>
+        <div class="answer-box"><strong>Responsibilities towards government:</strong><br>
+        1. Timely payment of taxes (income tax, sales tax, GST)<br>
+        2. Observing rules and regulations (licenses, laws)<br>
+        3. Earning foreign exchange through exports<br>
+        4. Contributing to economic development<br>
+        5. Implementing socio-economic policies<br>
+        6. Providing suggestions to government<br>
+        7. No favours (avoid bribery)<br>
+        8. Contributing during emergencies/natural calamities</div></div>
+        
+        <div class="qa-item"><div class="question">4) State any four CSR activities.</div>
+        <div class="answer-box"><strong>Four CSR activities under Companies Act 2013 Section 135:</strong><br>
+        1. Eradicating hunger, poverty, malnutrition; promoting healthcare, sanitation, safe drinking water<br>
+        2. Promoting education, special education, vocational skills for children, women, elderly, differently abled<br>
+        3. Ensuring environmental sustainability, ecological balance, protection of flora & fauna<br>
+        4. Rural development projects and slum area development<br>
+        5. Contribution to Prime Minister's National Relief Fund<br>
+        6. Training to promote rural sports and nationally recognized sports</div></div>
+    </div>
+
+    <!-- ================= Q.5 Justify ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-check-double"></i> Q.5 Justify the following statements</div>
+        
+        <div class="qa-item"><div class="question">1) Role of media has major influence on business organisation.</div><div class="answer-box"><strong>Justification:</strong> Media plays important role in public life. Due to internet, it reaches common man easily. Media is vibrant and active; it can influence masses in society. Media can raise voice against business malpractices, exploitation of consumers, unfair trade practices. Business cannot ignore social values because media exposure can damage reputation and brand image.</div></div>
+        
+        <div class="qa-item"><div class="question">2) Business should allow workers participation in management.</div><div class="answer-box"><strong>Justification:</strong> Workers participation in management raises morale and gives them sense of belonging. It can be encouraged through workers committees, suggestion schemes, profit sharing. Participation leads to better understanding between management and workers, reduces conflicts, increases productivity, and ensures industrial peace. It makes workers feel valued and motivated.</div></div>
+        
+        <div class="qa-item"><div class="question">3) Expectations of society towards business are changing.</div><div class="answer-box"><strong>Justification:</strong> In early days, business was viewed only as provider of goods/services. Today society expects business to be a responsible citizen contributing towards social welfare. Society expects environmental protection, fair trade practices, employee welfare, consumer protection, community development. Businesses must adapt to these changing expectations for long-term survival.</div></div>
+        
+        <div class="qa-item"><div class="question">4) Business organisations should avoid environmental pollution and ecological imbalance.</div><div class="answer-box"><strong>Justification:</strong> Industrialisation causes air, water, sound pollution and electronic garbage. Environmental issues like loss of biodiversity, ozone depletion threaten human survival. Protection of environment benefits business through cost savings, better reputation, less government control. 4 R's (Reduce, Reuse, Recycle, Recover) should be followed for waste management.</div></div>
+        
+        <div class="qa-item"><div class="question">5) All sorts of unfair practices related to stock exchange should be avoided.</div><div class="answer-box"><strong>Justification:</strong> Unfair practices like insider trading, providing wrong/secret information, artificially increasing/decreasing share prices lead to loss to common investors. Such practices destroy investor confidence, harm capital market growth, and are illegal. Fair practices ensure transparency, protect small investors, and maintain market integrity.</div></div>
+        
+        <div class="qa-item"><div class="question">6) Business ethics contains moral and social values for doing business.</div><div class="answer-box"><strong>Justification:</strong> Business ethics includes self-control, consumer protection, service to society, fair treatment, not exploiting others. It contains principles for distinguishing right from wrong. Moral values (honesty, integrity) and social values (equality, justice) guide ethical business conduct. Without these values, business cannot achieve long-term success.</div></div>
+        
+        <div class="qa-item"><div class="question">7) Business ethics can be considered as a tool for social development.</div><div class="answer-box"><strong>Justification:</strong> Business ethics ensures fair treatment to consumers, employees, investors, society. It prevents exploitation, encourages honest advertising, promotes environmental protection, ensures quality products, fair wages. By following ethics, businesses contribute to social welfare, economic development, and sustainable growth. Ethics thus becomes a powerful tool for social development.</div></div>
+    </div>
+
+    <!-- ================= Q.6 Attempt the Following ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-tasks"></i> Q.6 Attempt the following</div>
+        
+        <div class="qa-item"><div class="question">1) What is social responsibility of commercial organisation towards consumers?</div>
+        <div class="answer-box"><strong>Social responsibility towards consumers (10 points):</strong><br>
+        1. Good quality products (ISO, BIS, AGMARK)<br>2. Fair prices (MRP printed)<br>3. Customer's safety (no harmful products)<br>4. Honest advertising (no misleading claims)<br>5. After sales service (warranty support)<br>6. Research and development (improve quality, reduce cost)<br>7. Regular supply (no artificial shortage)<br>8. Attend complaints (quick redressal)<br>9. Training for consumers<br>10. Avoid customer exploitation (no unfair trade practices)</div></div>
+        
+        <div class="qa-item"><div class="question">2) State different types of responsibilities towards society.</div>
+        <div class="answer-box"><strong>Responsibilities towards society (8 points):</strong><br>
+        1. Protection of environment (minimize pollution)<br>2. Better and maximum use of resources<br>3. Reservation for weaker sections<br>4. Development of backward regions<br>5. Protest against anti-social activities<br>6. Financial assistance for social causes<br>7. Prevent congestion in cities<br>8. Employment generation for all sections</div></div>
+        
+        <div class="qa-item"><div class="question">3) Describe the responsibilities of commercial organisation towards investors.</div>
+        <div class="answer-box"><strong>Responsibilities towards investors (6 points):</strong><br>
+        1. Proper conduct of meetings (notices, information during crisis)<br>2. Return on investment (fair returns, safety, steady appreciation)<br>3. Handling grievances (effective methodology)<br>4. Maintain transparency in operations<br>5. Proper disclosure of information (regular reports, financial performance)<br>6. Maintain solvency and prestige (sound financial position, innovation, expansion)</div></div>
+        
+        <div class="qa-item"><div class="question">4) Describe the features of business ethics.</div>
+        <div class="answer-box"><strong>Features of Business Ethics (8 points):</strong><br>
+        1. Code of conduct (what to do/what not to do)<br>2. Based on moral and social values (self-control, fair treatment)<br>3. Gives protection to social groups (consumers, employees, shareholders)<br>4. Provides basic framework (social, cultural, legal limits)<br>5. Voluntary (self-discipline, not enforced by law)<br>6. Requires education and guidance (motivation needed)<br>7. Relative term (changes across businesses and countries)<br>8. New concept (strictly followed in developed countries)</div></div>
+        
+        <div class="qa-item"><div class="question">5) What is corporate social responsibility?</div>
+        <div class="answer-box"><strong>CSR (Corporate Social Responsibility):</strong> Self-regulating business model aiming to contribute to societal goals. Under Companies Act 2013 Section 135 (effective 15 April 2014), companies with net worth ≥ ₹1500 Cr OR turnover ≥ ₹1000 Cr OR net profit ≥ ₹15 Cr must spend at least 2% of average net profit of last 3 years on CSR activities. CSR committee of 4 directors required. Activities include eradicating poverty, promoting education, environmental sustainability, rural development, etc.</div></div>
+    </div>
+
+    <!-- ================= Q.7 & Q.8 Detailed ================= -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-file-alt"></i> Q.7 & Q.8 Detailed Answers</div>
+        
+        <div class="qa-item"><div class="question">Q.7 (1) Explain the responsibilities of business towards employees.</div>
+        <div class="answer-box"><strong>10 Responsibilities towards employees:</strong><br>
+        1. Job security (mental peace, dedication)<br>2. Fair remuneration (attractive salaries, bonus, overtime)<br>3. Health and safety measures (canteen, medical, sanitation, safety equipment)<br>4. Good working condition (lighting, ventilation, drinking water, rest pauses)<br>5. Recognition of trade unions (industrial peace, negotiations)<br>6. Education and training (introduction training, refresher training)<br>7. Workers participation in management (suggestion schemes, profit sharing)<br>8. Promotion and career opportunities (clear criteria, motivation)<br>9. Proper grievance procedure (quick resolution, investigations)<br>10. Miscellaneous: fair treatment, recognize special skills, code of conduct, protect rights</div></div>
+        
+        <div class="qa-item"><div class="question">Q.7 (2) Define concept of social responsibility and what is the need for social responsibility.</div>
+        <div class="answer-box"><strong>Concept:</strong> Social responsibility is obligation of business to take decisions and actions desirable in terms of society's objectives and values. It is voluntary action beyond legal compliance.<br>
+        <strong>Need for social responsibility (12 points):</strong><br>
+        1. Trusteeship (Mahatma Gandhi)<br>2. Changing expectations of society<br>3. Reputation (brand building)<br>4. Protection of environment<br>5. Optimum utilisation of resources<br>6. Pressure of trade union<br>7. Growth of consumer movement<br>8. Government control<br>9. Long term self interest<br>10. Complexities of social problems<br>11. Globalisation<br>12. Role of media</div></div>
+        
+        <div class="qa-item"><div class="question">Q.7 (3) Explain responsibilities of business unit towards society at large.</div>
+        <div class="answer-box"><strong>8 Responsibilities towards society:</strong><br>
+        1. Protection of environment (minimize air, water, sound pollution, electronic garbage)<br>2. Better and maximum use of resources (optimum utilisation of fuel, water, land)<br>3. Reservation for weaker sections (economically weaker sections)<br>4. Development of backward regions (create employment in rural areas)<br>5. Protest against anti-social activities (avoid smuggling, bribery, underworld)<br>6. Financial assistance for social causes (donations for poverty eradication, literacy)<br>7. Prevent congestion in cities (spread industries to different locations)<br>8. Employment generation (expansion, diversification to solve unemployment)</div></div>
+        
+        <div class="qa-item"><div class="question">Q.7 (4) What are the responsibilities of business towards investors and government?</div>
+        <div class="answer-box"><strong>Towards Investors (6 responsibilities):</strong> Proper meetings, return on investment, grievance handling, transparency, proper disclosure, maintain solvency.<br>
+        <strong>Towards Government (8 responsibilities):</strong> Timely taxes, observing rules, earning foreign exchange, economic development, implementing socio-economic policies, suggestions to govt, no favours, contributing during emergencies.</div></div>
+    </div>
+
+    <!-- Stakeholder Visual Grid -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-chart-pie"></i> Visual: 6 Interest Groups of Business Responsibility</div>
+        <div class="stakeholder-grid">
+            <div class="stakeholder-item"><i class="fas fa-user-tie"></i><strong>Owners</strong><br>Reasonable profit<br>Optimum capital use</div>
+            <div class="stakeholder-item"><i class="fas fa-chart-line"></i><strong>Investors</strong><br>Return on investment<br>Transparency</div>
+            <div class="stakeholder-item"><i class="fas fa-users"></i><strong>Employees</strong><br>Job security<br>Fair wages</div>
+            <div class="stakeholder-item"><i class="fas fa-shopping-cart"></i><strong>Consumers</strong><br>Quality products<br>Fair prices</div>
+            <div class="stakeholder-item"><i class="fas fa-landmark"></i><strong>Government</strong><br>Taxes<br>Follow rules</div>
+            <div class="stakeholder-item"><i class="fas fa-globe-asia"></i><strong>Society</strong><br>Environment<br>Employment</div>
+        </div>
+    </div>
+
+    <!-- Answer Key -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-key"></i> Answer Key (Quick Reference)</div>
+        <table class="data-table">
+            <tr><th>Q.1(A)</th><td colspan="3">1) Socio-economic 2) Optimum 3) Political 4) Government 5) Trustees 6) Owners 7) employees 8) Greek 9) Moral 10) Employees 11) 2%</td></tr>
+            <tr><th>Q.1(D)</th><td colspan="3">True: 1,2,3,4,7 &nbsp; False: 5,6</td></tr>
+            <tr><th>Q.1(E)</th><td colspan="3">1) Reasonable profit 2) Prevent congestion 3) Creating goodwill 4) Maintain transparency 5) Fair prices</td></tr>
+            <tr><th>Q.1(F)</th><td colspan="3">1) Minimising 2) Legal 3) Mahatma Gandhi 4) Reasonable 5) Remuneration 6) Ethos</td></tr>
+            <tr><th>Q.1(I)</th><td colspan="3">1) broader 2) unfair 3) ban 4) should 5) Honest 6) should not be 7) voluntary 8) relative 9) Moral values 10) Social values</td></tr>
+        </table>
+    </div>
+
+    <div class="footer-note">
+        <i class="fas fa-graduation-cap"></i> Chapter 6: Social Responsibilities of Business & Business Ethics — Complete Q.1 to Q.8 with Detailed Answers | 6 Interest Groups (Owners, Investors, Employees, Consumers, Government, Society) | CSR under Companies Act 2013 (2% spending) | Business Ethics Features | 12th Commerce OCM
+    </div>
+</div>
+</body>
+</html>

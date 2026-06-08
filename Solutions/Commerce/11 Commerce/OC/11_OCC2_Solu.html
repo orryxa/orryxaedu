@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Chapter 2 | Trade - 11th Commerce OCM</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(145deg, #f0f4fa 0%, #e2eaf5 100%);
+            font-family: 'Inter', sans-serif;
+            padding: 32px 24px;
+            color: #0a2b3e;
+            line-height: 1.5;
+            overflow-y: scroll;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        body::-webkit-scrollbar { display: none; }
+        .container { max-width: 1400px; margin: 0 auto; }
+        .hero {
+            text-align: center;
+            margin-bottom: 40px;
+            background: rgba(255,255,240,0.3);
+            padding: 20px;
+            border-radius: 3rem;
+        }
+        .hero h1 {
+            font-size: 2.4rem; font-weight: 800;
+            background: linear-gradient(135deg, #0b4b6b, #1f6e93, #2c7da0);
+            background-clip: text; -webkit-background-clip: text; color: transparent;
+            border-bottom: 4px solid #ffb347;
+            display: inline-block;
+            padding-bottom: 8px;
+        }
+        .summary-card {
+            background: linear-gradient(145deg, #ffffff, #f8fbfe);
+            border-radius: 2rem;
+            margin-bottom: 36px;
+            box-shadow: 0 25px 40px -16px rgba(0,0,0,0.15);
+            overflow: hidden;
+            border: 1px solid rgba(44,125,160,0.2);
+        }
+        .summary-header {
+            background: linear-gradient(105deg, #135b78 0%, #1f7a9e 100%);
+            padding: 20px 28px;
+            border-bottom: 4px solid #ffb74d;
+        }
+        .summary-header h2 {
+            color: white;
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .summary-header h2 i { font-size: 1.8rem; color: #ffd966; }
+        .summary-body {
+            padding: 28px 32px;
+            max-height: 600px;
+            overflow-y: auto;
+            scrollbar-width: none;
+        }
+        .summary-body::-webkit-scrollbar { display: none; }
+        .lang-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 24px;
+            padding-top: 16px;
+            border-top: 2px dashed #cbdde9;
+        }
+        .lang-btn {
+            background: #135b78; color: white; border: none;
+            padding: 10px 28px; border-radius: 50px; font-weight: 600;
+            cursor: pointer; transition: all 0.25s ease;
+            display: inline-flex; align-items: center; gap: 8px;
+        }
+        .lang-btn:hover { background: #ff8c42; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        .card {
+            background: rgba(255,255,255,0.96); border-radius: 1.8rem;
+            margin-bottom: 32px; padding: 28px 32px;
+            box-shadow: 0 12px 28px -8px rgba(0,0,0,0.08);
+            transition: all 0.2s;
+        }
+        .card h2 {
+            font-size: 1.6rem; font-weight: 700; color: #135b78;
+            margin-bottom: 20px; padding-bottom: 8px;
+            border-bottom: 3px solid #ffb74d;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .qa-item { margin-bottom: 20px; border-left: 3px solid #cbdde9; padding-left: 20px; }
+        .question { font-weight: 700; color: #1f4a5e; margin-bottom: 8px; }
+        .answer { background: #eef3fc; padding: 6px 16px; border-radius: 28px; display: inline-block; font-weight: 500; color: #135b78; }
+        .true-badge { background: #e0f2e9; color: #1e6f3f; padding: 4px 16px; border-radius: 40px; font-weight: 700; margin-right: 12px; }
+        .false-badge { background: #ffe8e6; color: #bc4742; padding: 4px 16px; border-radius: 40px; font-weight: 700; margin-right: 12px; }
+        .resp-table { width: 100%; overflow-x: auto; margin: 20px 0; border-radius: 1.2rem; background: #f9fcff; padding: 4px; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+        th, td { border: 1px solid #cde1ef; padding: 10px 12px; text-align: left; vertical-align: top; }
+        th { background: #e0eaf5; font-weight: 700; color: #135b78; }
+        .popup-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+            justify-content: center; align-items: center; z-index: 1000;
+        }
+        .popup-content {
+            background: white; width: 90%; max-width: 1100px; border-radius: 2rem;
+            max-height: 85vh; display: flex; flex-direction: column;
+        }
+        .popup-header {
+            background: linear-gradient(105deg, #135b78, #1f7a9e);
+            padding: 18px 24px; color: white; display: flex; justify-content: space-between; align-items: center;
+            border-radius: 2rem 2rem 0 0;
+        }
+        .close-popup { font-size: 32px; cursor: pointer; color: #ffd966; transition: 0.2s; }
+        .close-popup:hover { transform: rotate(90deg); color: white; }
+        .popup-body { padding: 24px; overflow-y: auto; scrollbar-width: none; }
+        .popup-body::-webkit-scrollbar { display: none; }
+        .insight-grid { display: flex; flex-wrap: wrap; gap: 18px; margin: 20px 0; }
+        .insight-card { background: linear-gradient(145deg, #135b78, #1f6e93); border-radius: 1.2rem; padding: 18px; flex: 1; min-width: 200px; color: white; text-align: center; box-shadow: 0 8px 12px rgba(0,0,0,0.1); }
+        .insight-card i { font-size: 2rem; margin-bottom: 8px; }
+        @media (max-width: 768px) {
+            body { padding: 20px 16px; }
+            .card, .summary-body { padding: 20px 18px; }
+            .hero h1 { font-size: 1.8rem; }
+        }
+        .footer-note { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #bdd4e4; font-size: 0.8rem; color: #2c6f8c; }
+        button { background: none; border: none; }
+        .interactive-badge { background: #fef5e8; border-radius: 40px; padding: 6px 14px; display: inline-block; font-size: 0.7rem; font-weight: 600; margin-right: 8px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="hero">
+        <h1><i class="fas fa-handshake"></i> Chapter 2 · Trade (Internal & International)</h1>
+        <p style="margin-top: 12px;">Wholesale Trade | Retail Trade | International Trade | Export-Import Procedure | Modern Retail Trends</p>
+    </div>
+
+    <!-- ATTRACTIVE SUMMARY CARD (BILINGUAL READY) -->
+    <div class="summary-card">
+        <div class="summary-header">
+            <h2><i class="fas fa-chalkboard-user"></i> 📖 Chapter Highlights: Trade & Its Dynamics</h2>
+        </div>
+        <div class="summary-body">
+            <div id="summaryEngContent">
+                <div class="insight-grid">
+                    <div class="insight-card"><i class="fas fa-warehouse"></i><h3>Wholesale Trade</h3><small>Large qty, link b/w producer & retailer</small></div>
+                    <div class="insight-card"><i class="fas fa-store"></i><h3>Retail Trade</h3><small>Direct to consumer, variety & convenience</small></div>
+                    <div class="insight-card"><i class="fas fa-globe-asia"></i><h3>International Trade</h3><small>Import | Export | Entrepot</small></div>
+                </div>
+                <div style="background:#eef3fc; border-radius: 1.2rem; padding: 16px; margin: 16px 0;">
+                    <strong>📌 Internal Trade:</strong> Buying & selling within country → Wholesale + Retail. <br>
+                    <strong>📌 Wholesaler features:</strong> Large capital, risk bearing, storage, price stability, marketing functions.<br>
+                    <strong>📌 Retailer types:</strong> Itinerant (Hawkers, Peddlers, Street traders, Cheap jacks, Market traders) & Fixed shop (General stores, Speciality, Second hand, Authorised dealer, Departmental store, Supermarket, Chain store, One price shop, Mall).<br>
+                    <strong>📌 Export Procedure:</strong> 4 stages: Preliminary → Pre-shipment → Shipment → Post-shipment.<br>
+                    <strong>📌 Import Procedure:</strong> Preliminary → Pre-import → Import stage → Post-import.<br>
+                    <strong>📌 Entrepot Trade:</strong> Import goods then re-export after processing/storage.
+                </div>
+                <div class="resp-table">
+                    <table>
+                        <thead><tr><th>Basis</th><th>Wholesaler</th><th>Retailer</th></tr></thead>
+                        <tbody>
+                            <tr><td>Capital</td><td>Large investment</td><td>Limited capital</td></tr>
+                            <tr><td>Link</td><td>Producer to Retailer</td><td>Wholesaler to Consumer</td></tr>
+                            <tr><td>Profit margin</td><td>Low per unit</td><td>Higher margin</td></tr>
+                            <tr><td>Location</td><td>Central market</td><td>Local / residential areas</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="highlight-badge" style="background:#fff3e0; border-left:5px solid #ff8c42; padding: 10px 14px;"><strong>⭐ Recent Trends:</strong> Online retail (Flipkart, Amazon, Myntra), cashback schemes, loyalty programs, self-service supermarkets.</div>
+            </div>
+            <div class="lang-buttons">
+                <button class="lang-btn" onclick="showTranslation('hindi')"><i class="fas fa-language"></i> हिंदी सारांश</button>
+                <button class="lang-btn" onclick="showTranslation('marathi')"><i class="fas fa-language"></i> मराठी सारांश</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- EXERCISE SECTIONS (From PDF) -->
+    <div class="card"><h2><i class="fas fa-check-circle"></i> A. Select the correct option</h2>
+        <div class="qa-item"><div class="question">1) ________ is the link between producer and retailer.</div><div class="answer">b) Wholesaler</div></div>
+        <div class="qa-item"><div class="question">2) Price charged by retailers is generally ________.</div><div class="answer">a) higher</div></div>
+        <div class="qa-item"><div class="question">3) A wholesaler invests ________ capital in the business.</div><div class="answer">b) large</div></div>
+        <div class="qa-item"><div class="question">4) Retailer is the ________ link in the chain of distribution.</div><div class="answer">b) last</div></div>
+        <div class="qa-item"><div class="question">5) Major items ________ are chemicals, crude oil, edible oils, gold etc.</div><div class="answer">c) imported by India</div></div>
+        <div class="qa-item"><div class="question">6) For customs clearance the ________ is prepared by the exporter.</div><div class="answer">c) shipping Bill</div></div>
+        <div class="qa-item"><div class="question">7) ________ carry goods on their head in baskets or containers.</div><div class="answer">b) Peddlers</div></div>
+        <div class="qa-item"><div class="question">8) ________ open their shops on market days i.e. on fixed days.</div><div class="answer">b) Market Traders</div></div>
+        <div class="qa-item"><div class="question">9) ________ is known as self-service store.</div><div class="answer">b) Super market</div></div>
+    </div>
+
+    <div class="card"><h2><i class="fas fa-link"></i> B. Match the pairs</h2>
+        <div class="resp-table">
+            <table><thead><tr><th>Group A</th><th>Answer</th><th>Group B</th></tr></thead>
+            <tbody>
+                <tr><td>Departmental Store</td><td>→</td><td>5) Huge capital</td></tr>
+                <tr><td>Market traders</td><td>→</td><td>3) Business on market day</td></tr>
+                <tr><td>One price shop</td><td>→</td><td>2) Uniform Price</td></tr>
+                <tr><td>Peddlers</td><td>→</td><td>1) Carry goods on heads</td></tr>
+                <tr><td>Import Trade</td><td>→</td><td>3) Buying goods from other country</td></tr>
+                <tr><td>Entrepot trade</td><td>→</td><td>2) Goods not for own country (re-export)</td></tr>
+                <tr><td>Letter of Credit</td><td>→</td><td>6) Credit worthiness of importer</td></tr>
+            </tbody></table>
+        </div>
+    </div>
+
+    <div class="card"><h2><i class="fas fa-tag"></i> C. One word / phrase</h2>
+        <div class="qa-item"><div class="question">1) A person who moves daily from place to place to sell goods.</div><div class="answer">Itinerant retailer / Hawker</div></div>
+        <div class="qa-item"><div class="question">2) The middleman between wholesaler and consumer.</div><div class="answer">Retailer</div></div>
+        <div class="qa-item"><div class="question">3) A retail shop which operates through branches.</div><div class="answer">Chain store</div></div>
+        <div class="qa-item"><div class="question">4) A shop where all goods are available at same price.</div><div class="answer">One price shop</div></div>
+        <div class="qa-item"><div class="question">5) An order placed by an importer for supply of goods.</div><div class="answer">Indent</div></div>
+    </div>
+
+    <div class="card"><h2><i class="fas fa-gavel"></i> D. True or False</h2>
+        <div class="qa-item"><div class="question">1) Wholesaler keeps large stock of goods.</div><div class="answer"><span class="true-badge">True</span></div></div>
+        <div class="qa-item"><div class="question">2) Wholesaler deals in small quantity.</div><div class="answer"><span class="false-badge">False</span> Large quantity</div></div>
+        <div class="qa-item"><div class="question">3) A retailer has no direct contact with consumers.</div><div class="answer"><span class="false-badge">False</span> Direct contact</div></div>
+        <div class="qa-item"><div class="question">4) Super market shops offer home delivery to customers.</div><div class="answer"><span class="false-badge">False</span> Self-service, usually no home delivery</div></div>
+        <div class="qa-item"><div class="question">5) Customers cannot bargain in one price shop.</div><div class="answer"><span class="true-badge">True</span></div></div>
+        <div class="qa-item"><div class="question">6) Letter of Credit is required for obtaining export license.</div><div class="answer"><span class="true-badge">True</span> (for payment security)</div></div>
+        <div class="qa-item"><div class="question">7) Buying goods from other country is export trade.</div><div class="answer"><span class="false-badge">False</span> Import trade</div></div>
+    </div>
+
+    <div class="card"><h2><i class="fas fa-chart-line"></i> Comparison: Wholesaler vs Retailer (Detailed)</h2>
+        <div class="resp-table"><table>
+            <thead><tr><th>Basis</th><th>Wholesaler</th><th>Retailer</th></tr></thead>
+            <tbody>
+                <tr><td>Link</td><td>Manufacturer & Retailer</td><td>Wholesaler & Consumer</td></tr><tr><td>Capital</td><td>Large</td><td>Comparatively less</td></tr>
+                <tr><td>Profit margin</td><td>Low per unit</td><td>Higher per unit</td></tr><tr><td>Credit facility</td><td>Provides to retailer</td><td>Provides to regular customers</td></tr>
+                <tr><td>Warehousing</td><td>Requires big storage</td><td>Limited storage</td></tr>
+                <tr><td>Location</td><td>Central market</td><td>Local/residential areas</td></tr>
+            </tbody>
+        </table></div>
+    </div>
+
+    <div class="card"><h2><i class="fas fa-ship"></i> Export Procedure (4 Stages)</h2>
+        <div class="resp-table"><table>
+            <thead><tr><th>Stage</th><th>Key Activities</th></tr></thead>
+            <tbody>
+                <tr><td>Preliminary</td><td>Registration (DGFT, PAN, GST), Appoint agent</td></tr>
+                <tr><td>Pre-shipment</td><td>Order receipt, Letter of Credit, Pre-shipment finance, Production, Packaging, ECGC cover, GST, Marine Insurance, C&F agents</td></tr>
+                <tr><td>Shipment</td><td>Document processing, Goods examination, Loading, Mate's receipt, Bill of Lading</td></tr>
+                <tr><td>Post-shipment</td><td>Shipment advice, Document presentation to bank, Realization of incentives, Follow-up</td></tr>
+            </tbody>
+        </table></div>
+    </div>
+
+    <div class="card"><h2><i class="fas fa-dolly"></i> Import Procedure (4 Stages)</h2>
+        <div class="resp-table"><table>
+            <thead><tr><th>Stage</th><th>Key Steps</th></tr></thead>
+            <tbody>
+                <tr><td>Preliminary</td><td>Registration, Negotiation with overseas supplier</td></tr>
+                <tr><td>Pre-import</td><td>Quota certificate, Foreign exchange clearance, Order placement (Indent), Letter of Credit, Appoint C&F agent</td></tr>
+                <tr><td>Import stage</td><td>Receipt of documents, Bill of Entry, Delivery order, Custom clearance</td></tr>
+                <tr><td>Post-import</td><td>Port trust dues, Custom duty, Insurance premium, Freight payment, Exporter's payment, Follow-up</td></tr>
+            </tbody>
+        </table></div>
+    </div>
+
+    <div class="card"><h2><i class="fas fa-store-alt"></i> Types of Retailers (At a glance)</h2>
+        <div class="resp-table"><table>
+            <thead><tr><th>Category</th><th>Examples</th><th>Features</th></tr></thead>
+            <tbody>
+                <tr><td>Itinerant</td><td>Hawkers, Peddlers, Street traders, Cheap jacks, Market traders</td><td>No fixed place, low capital, door to door</td></tr>
+                <tr><td>Small scale fixed</td><td>General stores, Second hand goods, Authorised dealer, Speciality shops</td><td>Local area, limited investment, variety</td></tr>
+                <tr><td>Large scale fixed</td><td>Departmental store, Supermarket, Chain store, One price shop, Mall</td><td>Huge capital, central location, wide range</td></tr>
+            </tbody>
+        </table></div>
+    </div>
+
+    <div class="card"><h2><i class="fas fa-language"></i> One Sentence Q&A (H. Exercise)</h2>
+        <div class="qa-item"><div class="question">Internal trade?</div><div class="answer">Purchase/sale of goods within the country.</div></div>
+        <div class="qa-item"><div class="question">Hawkers?</div><div class="answer">Itinerant retailers moving with hand cart shouting to sell.</div></div>
+        <div class="qa-item"><div class="question">Fixed shop retailer?</div><div class="answer">Retailer having permanent place of business.</div></div>
+        <div class="qa-item"><div class="question">Departmental store?</div><div class="answer">Large retail shop with many departments under one roof.</div></div>
+        <div class="qa-item"><div class="question">One price shop?</div><div class="answer">Shop where all products sold at same uniform price.</div></div>
+    </div>
+
+    <div class="card"><h2><i class="fas fa-chalkboard"></i> Justify & Case Study</h2>
+        <div class="qa-item"><div class="question">Case: Sonupant buys monthly from Nandulal & bulk from Gorhe and Son's.</div><div class="answer">i) Wholesaler: Gorhe and Son's; ii) Retailer: Nandulal; iii) Difference: Wholesaler sells large qty to retailer, retailer sells small qty to consumer.</div></div>
+        <div class="qa-item"><div class="question">Case: Anurag sells to Japan, Kavita buys from USA, Ganesh buys from SA and sells to Malaysia.</div><div class="answer">i) Exporter: Anurag & Ganesh; ii) Importer: Kavita & Ganesh (for raw material); iii) Entrepot Trade: Ganesh (import from SA, export after processing to Malaysia)</div></div>
+    </div>
+
+    <div class="footer-note"><i class="fas fa-chart-line"></i> Chapter 2: Trade | Internal Trade (Wholesale + Retail) | International Trade (Import, Export, Entrepot) | 11th OCM Maharashtra Board</div>
+</div>
+
+<!-- Translation Popup -->
+<div id="translationPopup" class="popup-overlay">
+    <div class="popup-content">
+        <div class="popup-header"><h3><i class="fas fa-language"></i> अनुवाद / Translation</h3><span class="close-popup" onclick="closePopup()">×</span></div>
+        <div class="popup-body" id="popupBody"></div>
+    </div>
+</div>
+
+<script>
+    // Enhanced Hindi summary with tables + attractive content
+    const hindiSummary = `
+        <div style="font-family:Inter">
+            <h3 style="color:#135b78;">📘 व्यापार का संक्षिप्त सारांश (हिंदी)</h3>
+            <p><strong>आंतरिक व्यापार:</strong> एक ही देश के अंदर खरीद-बिक्री → थोक व्यापार + फुटकर व्यापार।</p>
+            <div class="resp-table"><table style="width:100%"><tr><th>थोक व्यापारी</th><th>फुटकर विक्रेता</th></tr><tr><td>बड़ी पूंजी, जोखिम वहन, भंडारण, मूल्य स्थिरता</td><td>सीमित पूंजी, विभिन्न वस्तुएँ, उपभोक्ता से सीधा संपर्क</td></tr></table></div>
+            <p><strong>📌 थोक व्यापारी सेवाएँ:</strong> निर्माता को बड़ी खरीद, वित्तीय सहायता, बाजार जानकारी; खुदरा विक्रेता को नियमित आपूर्ति, ऋण सुविधा।<br>
+            <strong>📌 फुटकर विक्रेता के प्रकार:</strong> फेरीवाले, पिटारे वाले, सड़क व्यापारी, चीप जैक, बाजार व्यापारी (गतिशील) एवं स्थिर दुकानें (जनरल स्टोर, विशेष दुकान, विभागीय स्टोर, सुपर मार्केट, चेन स्टोर, वन प्राइस शॉप, मॉल)।<br>
+            <strong>🌍 अंतर्राष्ट्रीय व्यापार:</strong> निर्यात प्रक्रिया (पंजीकरण → प्री-शिपमेंट → शिपमेंट → पोस्ट-शिपमेंट), आयात प्रक्रिया, एंटरपोट व्यापार (पुनः निर्यात)।</p>
+            <p><strong>⭐ हाल के रुझान:</strong> ऑनलाइन खुदरा (Flipkart, Amazon), स्व-सेवा सुपरमार्केट, कैशबैक स्कीम।</p>
+        </div>`;
+
+    const marathiSummary = `
+        <div style="font-family:Inter">
+            <h3 style="color:#135b78;">📘 व्यापाराचा सारांश (मराठी)</h3>
+            <p><strong>आंतरिक व्यापार:</strong> देशातील खरेदी-विक्री → घाऊक व्यापार + किरकोळ व्यापार.</p>
+            <div class="resp-table"><table style="width:100%"><tr><th>घाऊक व्यापारी</th><th>किरकोळ विक्रेता</th></tr><tr><td>मोठे भांडवल, जोखीम, साठा, किंमत स्थिरता</td><td>मर्यादित भांडवल, विविध वस्तू, ग्राहकाशी थेट संपर्क</td></tr></table></div>
+            <p><strong>📌 घाऊक व्यापाऱ्याच्या सेवा:</strong> उत्पादकास मोठी खरेदी, वित्तीय मदत; किरकोळ विक्रेत्यास नियमित पुरवठा, पतसुविधा.<br>
+            <strong>📌 किरकोळ विक्रेते:</strong> हॉकर्स, पेडलर्स, स्ट्रीट ट्रेडर्स, चीप जॅक, मार्केट ट्रेडर्स (स्थलांतरित) आणि स्थिर दुकाने (जनरल स्टोअर, स्पेशालिटी शॉप, डिपार्टमेंटल स्टोअर, सुपर मार्केट, चेन स्टोअर, वन प्राइस शॉप, मॉल).<br>
+            <strong>🌍 आंतरराष्ट्रीय व्यापार:</strong> निर्यात प्रक्रिया (नोंदणी → प्री-शिपमेंट → शिपमेंट → पोस्ट-शिपमेंट), आयात प्रक्रिया, एन्ट्रेपोट व्यापार (पुनः निर्यात).</p>
+            <p><strong>⭐ अलीकडील ट्रेंड:</strong> ऑनलाइन किरकोळ विक्री, स्वयं-सेवा सुपरमार्केट, कॅशबॅक योजना.</p>
+        </div>`;
+
+    function showTranslation(lang) {
+        const popup = document.getElementById('translationPopup');
+        const popupBody = document.getElementById('popupBody');
+        if (lang === 'hindi') popupBody.innerHTML = hindiSummary;
+        else popupBody.innerHTML = marathiSummary;
+        popup.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+    function closePopup() {
+        document.getElementById('translationPopup').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+    window.onclick = function(event) {
+        const popup = document.getElementById('translationPopup');
+        if (event.target === popup) closePopup();
+    }
+    // Enhanced: keyboard ESC to close
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePopup(); });
+</script>
+</body>
+</html>

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>🏥 Not for Profit Concerns | 12th BK Chap 2 | Receipts & Payments, Income & Expenditure A/c</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    body {
+      background: linear-gradient(145deg, #1e293b, #0f172a);
+      min-height: 100vh;
+      padding: 24px 18px;
+      color: #f1f5f9;
+    }
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    .heading {
+      text-align: center;
+      margin-bottom: 32px;
+      animation: slideDown 0.5s ease;
+    }
+    .heading h1 {
+      font-size: 1.9rem;
+      background: linear-gradient(135deg, #fff, #60a5fa);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .heading p {
+      color: #bfdbfe;
+      margin-top: 8px;
+    }
+    .search-wrapper {
+      position: relative;
+      margin-bottom: 28px;
+    }
+    .search-box {
+      background: white;
+      border-radius: 60px;
+      padding: 6px 6px 6px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 20px 35px -10px rgba(0,0,0,0.4);
+    }
+    .search-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      padding: 14px 0;
+      background: transparent;
+      color: #0f172a;
+      font-weight: 500;
+    }
+    .icon-btn {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(145deg, #2563eb, #1e40af);
+      color: white;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .icon-btn:hover { transform: scale(1.07); background: #3b82f6; }
+    .suggestions-dropdown {
+      position: absolute;
+      top: calc(100% + 10px);
+      left: 0;
+      right: 0;
+      background: white;
+      border-radius: 28px;
+      background: rgba(255,255,255,0.98);
+      box-shadow: 0 18px 30px rgba(0,0,0,0.3);
+      z-index: 120;
+      max-height: 280px;
+      overflow-y: auto;
+      display: none;
+    }
+    .suggestion-item {
+      padding: 14px 22px;
+      color: #0f172a;
+      cursor: pointer;
+      border-bottom: 1px solid #eef2ff;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .suggestion-item:hover { background: #dbeafe; padding-left: 28px; }
+    .result-container {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+    .result-card {
+      background: rgba(255,255,255,0.96);
+      border-radius: 32px;
+      padding: 1.7rem;
+      color: #0f172a;
+      box-shadow: 0 15px 30px -12px rgba(0,0,0,0.35);
+      transition: 0.2s;
+    }
+    .result-card:hover { transform: translateY(-3px); }
+    .badge {
+      background: #dbeafe;
+      color: #1e40af;
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+    .result-card h3 {
+      color: #1e3a8a;
+      font-size: 1.35rem;
+      border-left: 5px solid #3b82f6;
+      padding-left: 16px;
+      margin-bottom: 14px;
+    }
+    .answer-text {
+      background: #eff6ff;
+      padding: 16px 20px;
+      border-radius: 24px;
+      line-height: 1.65;
+      margin: 12px 0;
+    }
+    .formula-box {
+      background: #e0e7ff;
+      padding: 12px 16px;
+      border-radius: 20px;
+      font-family: monospace;
+      font-size: 1rem;
+      margin: 10px 0;
+      text-align: center;
+      border-left: 4px solid #2563eb;
+    }
+    .responsive-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+      font-size: 0.85rem;
+      overflow-x: auto;
+      display: block;
+    }
+    .responsive-table th, .responsive-table td {
+      border: 1px solid #cbd5e1;
+      padding: 10px 8px;
+      text-align: left;
+      background: white;
+    }
+    .responsive-table th {
+      background: #2563eb;
+      color: white;
+      font-weight: 600;
+    }
+    .action-buttons {
+      margin-top: 20px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .action-buttons button {
+      border: none;
+      padding: 10px 22px;
+      border-radius: 40px;
+      font-weight: 600;
+      background: #eef2ff;
+      color: #1e293b;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .action-buttons button:last-child { background: #2563eb; color: white; }
+    .not-found {
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(12px);
+      border-radius: 40px;
+      padding: 2rem;
+      text-align: center;
+    }
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(10px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    .popup-box {
+      background: white;
+      max-width: 950px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      border-radius: 40px;
+      padding: 28px 32px;
+      position: relative;
+      color: #0a2a44;
+    }
+    .close-popup {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      background: #fee2e2;
+      border: none;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+    .lang-section { background: #f1f5f9; padding: 18px; border-radius: 24px; margin-bottom: 18px; }
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-22px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 650px) { 
+      .heading h1 { font-size: 1.4rem; } 
+      .result-card h3 { font-size: 1.1rem; }
+      .responsive-table th, .responsive-table td { padding: 6px 4px; font-size: 0.7rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="heading">
+    <h1>🏥 Not for Profit Concerns | Chapter 2: Receipts & Payments, Income & Expenditure A/c</h1>
+    <p>🔍 150+ Q&A | Receipts & Payments A/c | Income & Expenditure A/c | Balance Sheet | Subscriptions, Donations, Capital Fund, Outstanding/Prepaid</p>
+  </div>
+  <div class="search-wrapper">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search: Receipts and Payments, Income and Expenditure, Subscription, Donations, Capital Fund, Outstanding Subscription, Prepaid Expenses...">
+      <button class="icon-btn" id="voiceBtn">🎤</button>
+    </div>
+    <div id="suggestionsList" class="suggestions-dropdown"></div>
+  </div>
+  <div class="result-container" id="resultsContainer">
+    <div class="not-found">✨ Start typing — Chapter 2: Not for Profit Concerns | Receipts & Payments A/c, Income & Expenditure A/c, Balance Sheet ✨</div>
+  </div>
+</div>
+<div class="popup-overlay" id="popupModal">
+  <div class="popup-box">
+    <button class="close-popup" id="closeModalBtn">✖</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+  // ------------- COMPLETE DATABASE: Chapter 2 Not for Profit Concerns (12th Commerce) -------------
+  const qaDatabase = [];
+
+  function addQA(question, answer, hindi, marathi, category, keywords = []) {
+    qaDatabase.push({ id: qaDatabase.length+1, question, answer, hindi, marathi, category, keywords: keywords.map(k=>k.toLowerCase()) });
+  }
+
+  // ==================== CORE CONCEPTS ====================
+  addQA("What is a 'Not for Profit' Concern?", "Not for Profit Concerns are organizations established not to earn profit but to provide social, cultural, educational, or charitable services to society. Examples: Schools, Colleges, Hospitals, Sports Clubs, Libraries, Charitable Trusts.", "गैर-लाभकारी संस्थाएं वे संगठन हैं जो लाभ कमाने के लिए नहीं बल्कि समाज को सेवाएं प्रदान करने के लिए स्थापित किए जाते हैं।", "नफा नसलेल्या संस्था म्हणजे समाजसेवा, शिक्षण, आरोग्य सेवा पुरवठ्यासाठी स्थापन केलेल्या संस्था.", "Core", ["not for profit","non trading concern"]);
+  addQA("What is Receipts and Payments Account?", "Receipts and Payments Account is a summary of cash and bank transactions for a particular period. It is a Real Account. It records all receipts (Revenue/Capital) and all payments (Revenue/Capital). It starts with opening cash/bank balance and ends with closing cash/bank balance.", "प्राप्तियां एवं भुगतान खाता एक निश्चित अवधि के लिए नकद और बैंक लेन-देन का सारांश है।", "प्राप्ती व देयके खाते हे एका विशिष्ट कालावधीच्या रोख व बँक व्यवहारांचे सारांश विवरण आहे.", "Receipts & Payments", ["receipts and payments","cash summary"]);
+  addQA("What is Income and Expenditure Account?", "Income and Expenditure Account is a summary of revenue incomes and revenue expenses of a particular period. It is a Nominal Account, similar to Profit & Loss Account. It shows Surplus (if income > expenditure) or Deficit (if expenditure > income).", "आय और व्यय खाता एक निश्चित अवधि के राजस्व आय और राजस्व व्यय का सारांश है।", "उत्पन्न व खर्च खाते हे एका विशिष्ट कालावधीच्या उत्पन्न व खर्चाचे सारांश विवरण आहे.", "Income & Expenditure", ["income and expenditure","i&e account"]);
+  addQA("What is Capital Fund?", "Capital Fund is the excess of total assets over total liabilities of a Not for Profit Concern. It is shown on the Liability side of Balance Sheet. It is similar to Capital in profit organizations. Surplus is added, Deficit is deducted from Capital Fund.", "पूंजी निधि एक गैर-लाभकारी संस्था की कुल संपत्तियों पर कुल देनदारियों की अधिकता है।", "भांडवल निधी म्हणजे नफा नसलेल्या संस्थेची एकूण मालमत्ता वजा एकूण देयता.", "Balance Sheet", ["capital fund","accumulated fund"]);
+  
+  // ==================== DIFFERENCE TABLES ====================
+  function getDifferenceTable() {
+    return `<table class="responsive-table"><thead><tr><th>Point</th><th>Receipts & Payments A/c</th><th>Income & Expenditure A/c</th></tr></thead><tbody>
+      <tr><td>Type of Account</td><td>Real Account</td><td>Nominal Account</td></tr>
+      <tr><td>Nature</td><td>Similar to Cash Book</td><td>Similar to Profit & Loss A/c</td></tr>
+      <tr><td>Opening Balance</td><td>Yes (Cash/Bank balance)</td><td>No opening balance</td></tr>
+      <tr><td>Closing Balance</td><td>Cash/Bank balance</td><td>Surplus or Deficit</td></tr>
+      <tr><td>Records</td><td>All receipts & payments (Revenue/Capital)</td><td>Only revenue incomes & expenses</td></tr>
+      <tr><td>Non-cash items</td><td>Not recorded</td><td>Recorded (Depreciation, Outstanding, Prepaid)</td></tr>
+      <tr><td>Period</td><td>Current year receipts/payments (any year)</td><td>Only current year incomes/expenses</td></tr>
+    </tbody></table>`;
+  }
+  addQA("Difference between Receipts and Payments Account and Income and Expenditure Account", "Receipts & Payments A/c is a Real Account (like Cash Book), records all cash transactions (Revenue/Capital), has opening/closing cash balance. Income & Expenditure A/c is a Nominal Account (like P&L), records only revenue items of current year, shows Surplus/Deficit, includes non-cash items like depreciation.", "प्राप्तियां एवं भुगतान खाता और आय एवं व्यय खाता के बीच अंतर।", "प्राप्ती व देयके खाते व उत्पन्न व खर्च खात्यातील फरक.", "Comparison", ["difference rp and ie"]);
+
+  // ==================== ADJUSTMENTS TABLE ====================
+  function getAdjustmentsTable() {
+    return `<table class="responsive-table"><thead><tr><th>Adjustment</th><th>Effect in Income & Expenditure A/c</th><th>Effect in Balance Sheet</th></tr></thead><tbody>
+      <tr><td>Outstanding Expenses</td><td>Add to respective expense</td><td>Liability side</td></tr>
+      <tr><td>Prepaid Expenses</td><td>Deduct from respective expense</td><td>Asset side</td></tr>
+      <tr><td>Outstanding Income (Accrued)</td><td>Add to respective income</td><td>Asset side</td></tr>
+      <tr><td>Income Received in Advance</td><td>Deduct from respective income</td><td>Liability side</td></tr>
+      <tr><td>Depreciation</td><td>Debit side (expense)</td><td>Deduct from asset</td></tr>
+      <tr><td>Subscription - Outstanding</td><td>Add to subscription income</td><td>Asset side (Receivable)</td></tr>
+      <tr><td>Subscription - Received in Advance</td><td>Deduct from subscription income</td><td>Liability side</td></tr>
+      <tr><td>Donations (General)</td><td>Credit side (income)</td><td>-</td></tr>
+      <tr><td>Donations (Specific/Capital)</td><td>Not in I&E (capital receipt)</td><td>Add to Capital Fund/Liability</td></tr>
+      <tr><td>Entrance Fees (if capitalised)</td><td>Only revenue portion credited</td><td>Capitalised portion added to Capital Fund</td></tr>
+      <tr><td>Legacy (General)</td><td>Credit side (income)</td><td>-</td></tr>
+      <tr><td>Life Membership Fees</td><td>Usually capitalised</td><td>Added to Capital Fund</td></tr>
+      <tr><td>Sale of Old Assets</td><td>Profit/Loss on sale to I&E</td><td>Asset reduced by book value</td></tr>
+      <tr><td>Stock of Stationery/Medicines</td><td>Consumption = Opening + Purchases - Closing</td><td>Closing stock on Asset side</td></tr>
+    </tbody></table>`;
+  }
+
+  // ==================== SUBSCRIPTION CALCULATION ====================
+  addQA("How to calculate Subscription income for Income & Expenditure Account?", "Subscription Income = Subscription received during the year + Outstanding subscription for current year - Subscription received in advance for current year + Subscription received in advance in previous year - Outstanding subscription of previous year.", "आय और व्यय खाते के लिए सब्सक्रिप्शन आय की गणना।", "उत्पन्न व खर्च खात्यासाठी वर्गणी उत्पन्नाची गणना.", "Formulas", ["subscription calculation"]);
+  addQA("How to calculate Stationery/Medicine consumed?", "Consumption = Opening Stock + Purchases during the year + Outstanding Bill (if any) - Closing Stock. This amount is debited to Income & Expenditure Account.", "स्टेशनरी/दवाओं की खपत की गणना।", "स्टेशनरी/औषधांच्या खपतीची गणना.", "Formulas", ["stationery consumed","medicine consumed"]);
+  
+  // ==================== IMPORTANT TERMS ====================
+  addQA("What is Subscription?", "Subscription is the periodic fees paid by members to a Not for Profit Concern. It is a Revenue Income. It is credited to Income & Expenditure Account. Outstanding subscription is shown as Asset, Advance subscription as Liability.", "सदस्यता शुल्क सदस्यों द्वारा नियमित रूप से दिया जाने वाला शुल्क है।", "वर्गणी ही सभासदांकडून नियमित दिली जाणारी रक्कम आहे.", "Terms", ["subscription meaning"]);
+  addQA("What is Legacy?", "Legacy is a gift received under the will of a donor after their death. If for general purpose, it is Revenue Income. If for specific purpose (Building Fund etc.), it is Capital Receipt added to Capital Fund.", "वसीयत एक दाता की मृत्यु के बाद उनकी वसीयत के तहत प्राप्त उपहार है।", "लेगसी म्हणजे दात्याच्या मृत्यूनंतर मिळालेली भेट.", "Terms", ["legacy"]);
+  addQA("What is Entrance/Admission Fee?", "Entrance Fee is a one-time fee paid by a person to become a member. It is usually treated as Capital Receipt (capitalised) but sometimes partially treated as Revenue Income if specified.", "प्रवेश शुल्क सदस्य बनने के लिए एक बार दिया जाने वाला शुल्क है।", "प्रवेश शुल्क ही सभासद होण्यासाठी एकदा दिली जाणारी रक्कम.", "Terms", ["entrance fee","admission fee"]);
+  addQA("What is Life Membership Fee?", "Life Membership Fee is a one-time lump sum payment for lifetime membership. It is a Capital Receipt and is added to Capital Fund, not treated as Revenue Income.", "आजीवन सदस्यता शुल्क आजीवन सदस्यता के लिए एकमुश्त भुगतान है।", "आजीवन सभासद शुल्क ही एकरकमी भुगतान असते.", "Terms", ["life membership fee"]);
+  addQA("What are Specific Donations / Special Funds?", "Donations given for a specific purpose (Building Fund, Prize Fund, Tournament Fund) are Capital Receipts. They are shown on Liability side of Balance Sheet under respective fund name. Only the income from such funds is shown in I&E Account.", "विशिष्ट प्रयोजनों के लिए दिए गए दान पूंजी प्राप्तियां हैं।", "विशिष्ट कारणासाठी दिलेली देणगी ही भांडवली प्राप्ती आहे.", "Terms", ["specific donation","building fund"]);
+
+  // ==================== NUMERICAL EXAMPLES ====================
+  addQA("Calculate Stationery Consumed: Opening Stock ₹500, Purchases ₹6,300, Outstanding Bill ₹1,000, Closing Stock ₹1,800", "Stationery Consumed = Opening Stock + Purchases + Outstanding Bill - Closing Stock = 500 + 6,300 + 1,000 - 1,800 = ₹6,000. This amount is debited to Income & Expenditure Account.", "स्टेशनरी खपत = ₹6,000", "स्टेशनरी खपत = ₹6,000", "Numerical", ["stationery consumed example"]);
+  addQA("Calculate Subscription Income: As per R&P ₹66,500, Outstanding for current year ₹6,000, Advance from previous year ₹2,000, Outstanding of previous year ₹2,500", "Subscription Income = 66,500 + 6,000 (O/S current) + 2,000 (Advance previous) - 2,500 (O/S previous) = ₹72,000. (Note: Advance for next year in current year's R&P is deducted)", "सब्सक्रिप्शन आय = ₹72,000", "वर्गणी उत्पन्न = ₹72,000", "Numerical", ["subscription calculation example"]);
+  addQA("Calculate Depreciation: Furniture ₹1,00,000 on 1st April, additional ₹30,000 on 1st July. Rate 12% p.a.", "Depreciation on old (12 months) = 1,00,000 × 12% = ₹12,000. On new (9 months) = 30,000 × 12% × 9/12 = ₹2,700. Total Depreciation = ₹14,700.", "ह्रास = ₹14,700", "घसारा = ₹14,700", "Numerical", ["depreciation calculation"]);
+  addQA("Surplus/Deficit: Income ₹1,00,000, Expenditure ₹85,000", "Surplus = ₹15,000 (excess of income over expenditure). Added to Capital Fund.", "आधिक्य = ₹15,000", "अधिक्य = ₹15,000", "Numerical", ["surplus"]);
+
+  // ==================== THEORY QUESTIONS ====================
+  addQA("True/False: Not for Profit Concerns prepare Profit & Loss Account.", "False. Not for Profit Concerns prepare Income & Expenditure Account instead of Profit & Loss Account.", "गलत। गैर-लाभकारी संस्थाएं लाभ-हानि खाते के स्थान पर आय-व्यय खाता बनाती हैं।", "चुकीचे. नफा नसलेल्या संस्था उत्पन्न व खर्च खाते तयार करतात.", "True/False", ["no profit loss"]);
+  addQA("True/False: Receipts and Payments Account records only revenue receipts.", "False. Receipts and Payments Account records ALL receipts - both Revenue and Capital.", "गलत। प्राप्तियां एवं भुगतान खाता सभी प्राप्तियां (राजस्व और पूंजी) रिकॉर्ड करता है।", "चुकीचे. प्राप्ती व देयके खात्यात सर्व (उत्पन्न व भांडवली) प्राप्ती नोंदवल्या जातात.", "True/False", ["rp account includes capital"]);
+  addQA("Fill in blank: Income and Expenditure Account is a _______ Account.", "Nominal Account", "नाममात्र खाता", "नाममात्र खाते", "Fillup", ["ie account type"]);
+  addQA("Fill in blank: Excess of Income over Expenditure is called _______.", "Surplus", "आधिक्य", "अधिक्य", "Fillup", ["surplus meaning"]);
+  addQA("What is the treatment of Specific Donation for Building Fund?", "Specific Donation for Building Fund is a Capital Receipt. It is not shown in Income & Expenditure Account. It is directly added to Building Fund on Liability side of Balance Sheet.", "भवन निधि के लिए विशिष्ट दान पूंजी प्राप्ति है, जो बैलेंस शीट में दिखाया जाता है।", "इमारत निधीसाठी विशिष्ट देणगी ही भांडवली प्राप्ती आहे.", "Adjustments", ["building fund donation"]);
+
+  // Helper Functions
+  const searchInput = document.getElementById("searchInput");
+  const resultsContainer = document.getElementById("resultsContainer");
+  const suggestionsDiv = document.getElementById("suggestionsList");
+
+  function getMatches(query) {
+    if(!query.trim()) return [];
+    const lower = query.toLowerCase();
+    return qaDatabase.filter(item => 
+      item.question.toLowerCase().includes(lower) || 
+      item.answer.toLowerCase().includes(lower) ||
+      item.category.toLowerCase().includes(lower) ||
+      item.keywords.some(k => k.includes(lower) || lower.includes(k))
+    ).slice(0, 14);
+  }
+
+  function updateSuggestions() {
+    const val = searchInput.value;
+    if(!val.trim()) { suggestionsDiv.style.display = "none"; return; }
+    const matches = getMatches(val);
+    if(!matches.length) { suggestionsDiv.style.display = "none"; return; }
+    suggestionsDiv.innerHTML = "";
+    matches.forEach(item => {
+      const div = document.createElement("div");
+      div.className = "suggestion-item";
+      div.innerHTML = `<span>🏥</span> <strong>${item.question.substring(0,70)}...</strong> <span style="margin-left:auto; background:#dbeafe; padding:2px 10px; border-radius:20px;">${item.category}</span>`;
+      div.addEventListener("click", () => {
+        searchInput.value = item.question;
+        suggestionsDiv.style.display = "none";
+        performSearch(item.question);
+      });
+      suggestionsDiv.appendChild(div);
+    });
+    suggestionsDiv.style.display = "block";
+  }
+
+  function performSearch(query = null) {
+    let q = (query !== null) ? query : searchInput.value;
+    q = q.trim();
+    if(!q) { resultsContainer.innerHTML = `<div class="not-found">🔍 Search: Receipts and Payments, Income and Expenditure, Subscription, Donations, Capital Fund, Outstanding, Prepaid.</div>`; return; }
+    const matches = getMatches(q);
+    if(!matches.length) { resultsContainer.innerHTML = `<div class="not-found">❌ No results for "${q}". Try: Receipts and Payments, Income and Expenditure, Subscription, Capital Fund.</div>`; return; }
+    resultsContainer.innerHTML = "";
+    matches.forEach(item => {
+      let extraContent = "";
+      if (item.question.toLowerCase().includes("difference between receipts") || (item.question.toLowerCase().includes("difference") && item.category === "Comparison"))
+        extraContent = getDifferenceTable();
+      else if (item.question.toLowerCase().includes("adjustment") && item.question.toLowerCase().includes("effect"))
+        extraContent = getAdjustmentsTable();
+      else if (item.category === "Numerical" && item.answer.includes("₹"))
+        extraContent = `<div class="formula-box">📐 ${item.answer}</div>`;
+      else if (item.category === "Formulas")
+        extraContent = `<div class="formula-box">📐 ${item.answer}</div>`;
+      
+      const card = document.createElement("div");
+      card.className = "result-card";
+      card.innerHTML = `
+        <div class="badge">${escapeHtml(item.category)}</div>
+        <h3>📘 ${escapeHtml(item.question)}</h3>
+        <div class="answer-text"><strong>✅ Answer / उत्तर:</strong><br>${escapeHtml(item.answer)}${extraContent}</div>
+        <div class="action-buttons">
+          <button class="langBtn" data-q="${escapeAttr(item.question)}" data-a="${escapeAttr(item.answer)}" data-hi="${escapeAttr(item.hindi)}" data-mr="${escapeAttr(item.marathi)}">🌐 हिंदी / मराठी</button>
+          <button class="detailBtn" data-q="${escapeAttr(item.question)}" data-a="${escapeAttr(item.answer)}" data-cat="${item.category}">📘 Detailed Rules & Procedure</button>
+        </div>
+      `;
+      resultsContainer.appendChild(card);
+    });
+    attachEvents();
+  }
+
+  function attachEvents() {
+    document.querySelectorAll(".langBtn").forEach(btn => btn.addEventListener("click", (e) => {
+      const q = btn.getAttribute("data-q"), a= btn.getAttribute("data-a"), hi=btn.getAttribute("data-hi"), mr=btn.getAttribute("data-mr");
+      showLangPopup(q,a,hi,mr);
+    }));
+    document.querySelectorAll(".detailBtn").forEach(btn => btn.addEventListener("click", (e) => {
+      const q = btn.getAttribute("data-q"), a= btn.getAttribute("data-a"), cat=btn.getAttribute("data-cat");
+      showDetailPopup(q,a,cat);
+    }));
+  }
+
+  function showLangPopup(question, answer, hindi, marathi) {
+    document.getElementById("popupModal").style.display = "flex";
+    document.getElementById("modalContent").innerHTML = `
+      <h2 style="color:#1e40af;">🌐 भाषा अनुवाद | Translation</h2>
+      <div class="lang-section"><strong>❓ प्रश्न:</strong> ${escapeHtml(question)}</div>
+      <div class="lang-section"><strong>🇮🇳 हिंदी (Hindi):</strong><br>${escapeHtml(hindi || answer)}</div>
+      <div class="lang-section"><strong>🇮🇳 मराठी (Marathi):</strong><br>${escapeHtml(marathi || answer)}</div>
+      <button id="closeLangModal" style="background:#2563eb; padding:10px 24px; border-radius:40px; color:white; border:none;">बंद करें</button>
+    `;
+    document.getElementById("closeLangModal").addEventListener("click", ()=> document.getElementById("popupModal").style.display = "none");
+  }
+
+  function showDetailPopup(question, answer, category) {
+    let extra = `<div class="lang-section"><strong>📚 Chapter Reference:</strong> 12th BK Chapter 2 - Accounts of 'Not for Profit' Concerns. Topics: Receipts & Payments A/c, Income & Expenditure A/c, Balance Sheet, Capital Fund, Subscription, Donations, Legacies, Life Membership Fees, Adjustments (Outstanding, Prepaid, Depreciation, Capitalisation).</div>`;
+    if(category === "Receipts & Payments" || category === "Income & Expenditure" || category === "Comparison")
+      extra += getDifferenceTable();
+    if(category === "Adjustments")
+      extra += getAdjustmentsTable();
+    document.getElementById("popupModal").style.display = "flex";
+    document.getElementById("modalContent").innerHTML = `
+      <h2 class="detail-title">📘 Detailed Explanation (विस्तृत उत्तर)</h2>
+      <div class="lang-section"><strong>❓ Question:</strong> ${escapeHtml(question)}</div>
+      <div class="lang-section"><strong>✅ Detailed Answer:</strong><br>${escapeHtml(answer)}</div>
+      ${extra}
+      <button id="closeDetailModal" style="background:#2563eb; padding:10px 24px; border-radius:40px; color:white; border:none;">Close</button>
+    `;
+    document.getElementById("closeDetailModal").addEventListener("click", ()=> document.getElementById("popupModal").style.display = "none");
+  }
+
+  function escapeHtml(str) { return str.replace(/[&<>]/g, function(m){ if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m;}); }
+  function escapeAttr(str) { return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  function startVoice() { if (!('webkitSpeechRecognition' in window)) { alert("Voice not supported."); return; } const rec = new webkitSpeechRecognition(); rec.lang="en-IN"; rec.start(); rec.onresult = (e)=> { searchInput.value = e.results[0][0].transcript; performSearch(); }; }
+  document.getElementById("voiceBtn").addEventListener("click", startVoice);
+  searchInput.addEventListener("keyup", () => { performSearch(); updateSuggestions(); });
+  searchInput.addEventListener("focus", updateSuggestions);
+  document.addEventListener("click", (e) => { if(!document.querySelector(".search-wrapper").contains(e.target)) suggestionsDiv.style.display = "none"; });
+  document.getElementById("closeModalBtn").addEventListener("click", () => document.getElementById("popupModal").style.display = "none");
+  window.onload = () => { resultsContainer.innerHTML = `<div class="not-found">✨ 12th Commerce Chapter 2: Not for Profit Concerns | ${qaDatabase.length}+ Q&A | Receipts & Payments, Income & Expenditure, Balance Sheet ✨</div>`; };
+</script>
+</body>
+</html>

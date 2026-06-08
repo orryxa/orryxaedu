@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Chapter 5 | Public Sector Organisations - 11th Commerce</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #eef2f9 0%, #e0e8f2 100%);
+            font-family: 'Inter', sans-serif;
+            padding: 32px 24px;
+            color: #0a2b3e;
+            line-height: 1.5;
+            overflow-y: scroll;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        body::-webkit-scrollbar { display: none; }
+        .container { max-width: 1400px; margin: 0 auto; }
+        .hero { text-align: center; margin-bottom: 40px; }
+        .hero h1 {
+            font-size: 2.4rem; font-weight: 800;
+            background: linear-gradient(135deg, #0b4b6b, #1f6e93, #2c7da0);
+            background-clip: text; -webkit-background-clip: text; color: transparent;
+            padding-bottom: 10px;
+            border-bottom: 4px solid #ffb347;
+            display: inline-block;
+        }
+        .summary-card {
+            background: linear-gradient(145deg, #ffffff, #f8fbfe);
+            border-radius: 2rem;
+            margin-bottom: 32px;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.12);
+            overflow: hidden;
+            border: 1px solid rgba(44,125,160,0.15);
+        }
+        .summary-header {
+            background: linear-gradient(105deg, #135b78 0%, #1f7a9e 100%);
+            padding: 20px 28px;
+            border-bottom: 4px solid #ffb74d;
+        }
+        .summary-header h2 {
+            color: white;
+            font-size: 1.6rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .summary-header h2 i { font-size: 1.8rem; color: #ffd966; }
+        .summary-body {
+            padding: 28px 32px;
+            max-height: 550px;
+            overflow-y: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .summary-body::-webkit-scrollbar { display: none; }
+        .summary-text { font-size: 1rem; line-height: 1.65; color: #1f3b4c; }
+        .summary-text p { margin-bottom: 14px; }
+        .summary-text strong { color: #135b78; }
+        .highlight-badge {
+            background: #eef3fc;
+            border-left: 4px solid #ffb74d;
+            padding: 10px 16px;
+            margin: 16px 0;
+            border-radius: 12px;
+        }
+        .lang-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px dashed #cbdde9;
+        }
+        .lang-btn {
+            background: #135b78; color: white; border: none;
+            padding: 10px 28px; border-radius: 50px; font-weight: 600;
+            cursor: pointer; transition: all 0.25s ease;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .lang-btn:hover { background: #ff8c42; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        .card {
+            background: rgba(255,255,255,0.97); border-radius: 1.8rem;
+            margin-bottom: 32px; padding: 28px 32px;
+            box-shadow: 0 15px 30px -10px rgba(0,0,0,0.08);
+            border: 1px solid rgba(255,255,255,0.6);
+        }
+        .card h2 {
+            font-size: 1.6rem; font-weight: 700; color: #135b78;
+            margin-bottom: 24px; padding-bottom: 8px;
+            border-bottom: 3px solid #ffb74d;
+            display: inline-block;
+        }
+        .card h2 i { margin-right: 12px; color: #ff8c42; }
+        .qa-item { margin-bottom: 22px; border-left: 3px solid #cbdde9; padding-left: 20px; }
+        .question { font-weight: 700; color: #1f4a5e; margin-bottom: 8px; display: flex; gap: 12px; flex-wrap: wrap; }
+        .answer {
+            background: #f8fafd; padding: 10px 18px; border-radius: 24px;
+            font-weight: 500; color: #216477; display: inline-block;
+            font-size: 0.92rem;
+        }
+        .true-badge { background: #e0f2e9; color: #1e6f3f; padding: 3px 14px; border-radius: 40px; font-weight: 700; font-size: 0.75rem; display: inline-block; margin-right: 12px; }
+        .false-badge { background: #ffe8e6; color: #bc4742; padding: 3px 14px; border-radius: 40px; font-weight: 700; font-size: 0.75rem; display: inline-block; margin-right: 12px; }
+        .resp-table { width: 100%; overflow-x: auto; margin: 16px 0; background: #f4f9fe; padding: 4px; border-radius: 20px; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; background: white; border-radius: 16px; overflow: hidden; }
+        th, td { border: 1px solid #cde1ef; padding: 10px 12px; text-align: left; vertical-align: top; }
+        th { background: #e0eaf5; font-weight: 700; color: #135b78; }
+        .popup-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+            justify-content: center; align-items: center; z-index: 1000;
+        }
+        .popup-content {
+            background: white; width: 90%; max-width: 950px; border-radius: 2rem;
+            position: relative; max-height: 85vh; overflow: hidden;
+            display: flex; flex-direction: column;
+        }
+        .popup-header {
+            background: linear-gradient(105deg, #135b78, #1f7a9e);
+            padding: 18px 24px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .close-popup {
+            font-size: 32px; cursor: pointer; color: #ffd966;
+            transition: 0.2s; line-height: 1;
+        }
+        .close-popup:hover { color: #fff; transform: rotate(90deg); }
+        .popup-body { padding: 24px; overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none; }
+        .popup-body::-webkit-scrollbar { display: none; }
+        @media (max-width: 768px) {
+            body { padding: 20px 16px; }
+            .card, .summary-body { padding: 20px 18px; }
+            .hero h1 { font-size: 1.8rem; }
+            th, td { padding: 6px 8px; font-size: 0.7rem; }
+        }
+        .footer-note { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #bdd4e4; font-size: 0.8rem; color: #2c6f8c; }
+        .org-grid { display: flex; flex-wrap: wrap; gap: 15px; margin: 20px 0; }
+        .org-card { flex: 1; min-width: 180px; background: linear-gradient(145deg, #135b78, #1f7a9e); border-radius: 1rem; padding: 16px; text-align: center; color: white; }
+        .org-card i { font-size: 2rem; margin-bottom: 8px; }
+        .org-card h3 { font-size: 1.1rem; margin-bottom: 4px; }
+        .org-card small { font-size: 0.7rem; opacity: 0.9; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="hero">
+        <h1><i class="fas fa-landmark"></i> Chapter 5 · Public Sector Organisations</h1>
+        <p style="margin-top: 12px;">Departmental Organisation · Statutory Corporation · Government Company · Multinational Corporations</p>
+    </div>
+
+    <!-- ================= ATTRACTIVE SUMMARY CARD ================= -->
+    <div class="summary-card">
+        <div class="summary-header">
+            <h2><i class="fas fa-file-alt"></i> 📘 Chapter Summary: Public Sector Organisations</h2>
+        </div>
+        <div class="summary-body">
+            <div class="summary-text" id="summaryText">
+                <p><strong>🔹 Introduction:</strong> Public Sector Organisations are owned, financed, managed and controlled by government or combination of governments. They aim at providing reliable services to customers (service motive) unlike private sector's profit motive. Industrial Policy 1956 promoted public sector.</p>
+                
+                <div class="org-grid">
+                    <div class="org-card"><i class="fas fa-building"></i><h3>Departmental</h3><small>Oldest form</small></div>
+                    <div class="org-card"><i class="fas fa-gavel"></i><h3>Statutory Corp</h3><small>Special Act</small></div>
+                    <div class="org-card"><i class="fas fa-chart-line"></i><h3>Govt Company</h3><small>51%+ govt share</small></div>
+                    <div class="org-card"><i class="fas fa-globe"></i><h3>Multinational Corp</h3><small>Global operations</small></div>
+                </div>
+
+                <div class="highlight-badge"><strong>📌 Departmental Organisation:</strong> Oldest form. Integral part of government. Financed by annual budget. Examples: Railways, Post Office, Defence, AIR. Features: Managed by govt, no separate legal entity, govt employees, delay in action, red tapism.</div>
+                <div class="highlight-badge"><strong>📌 Statutory Corporation:</strong> Created by Special Act of Parliament/State Legislature. Autonomous corporate body. Examples: RBI, LIC, ONGC. Features: Corporate body, financial autonomy, own staffing, no political interference. Merits: Quick decisions, professional management, easy to raise capital.</div>
+                <div class="highlight-badge"><strong>📌 Government Company (Companies Act 2013):</strong> Minimum 51% paid-up capital held by government. Examples: BHEL, NTPC, HMT, SAIL. Features: Separate legal entity, registered under Companies Act, own staff, public accountability (annual report to Parliament).</div>
+                <div class="highlight-badge"><strong>📌 Multinational Corporations (MNCs):</strong> Business organisation operating in multiple countries. Examples: Tata Motors, Infosys, Bata, Pepsi, Coca-Cola. Features: Huge assets, international operations, centralised control, advanced technology, professional management.</div>
+                <p><strong>⭐ Key Comparison:</strong> Private Sector (profit motive, quick decisions) vs Public Sector (service motive, bureaucratic delays). MNCs bring foreign capital & technology but may harm domestic industries & repatriate profits.</p>
+            </div>
+            <div class="lang-buttons">
+                <button class="lang-btn" onclick="showTranslation('hindi')"><i class="fas fa-language"></i> हिंदी अनुवाद</button>
+                <button class="lang-btn" onclick="showTranslation('marathi')"><i class="fas fa-language"></i> मराठी अनुवाद</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= Section A: Multiple Choice ================= -->
+    <div class="card"><h2><i class="fas fa-check-square"></i> A. Select the correct option</h2>
+        <div class="qa-item"><div class="question">1) Departmental Organisation is financed through ________ appropriations made by the legislature.</div><div class="answer">a) annual budget</div></div>
+        <div class="qa-item"><div class="question">2) A ________ is an autonomous corporate body created by the Special Act of the parliament or state legislature.</div><div class="answer">a) statutory corporation</div></div>
+        <div class="qa-item"><div class="question">3) A statutory corporation is answerable to ________ or state assembly whosoever creates it.</div><div class="answer">a) parliament</div></div>
+        <div class="qa-item"><div class="question">4) In government company minimum ________% paid up capital is held by government.</div><div class="answer">a) 51</div></div>
+        <div class="qa-item"><div class="question">5) The shares of government company are purchased in the name of ________.</div><div class="answer">a) President of India</div></div>
+        <div class="qa-item"><div class="question">6) A Government company is a ________ entity separate from the Government.</div><div class="answer">b) legal</div></div>
+        <div class="qa-item"><div class="question">7) MNCs are powerful ________ entities.</div><div class="answer">a) economical</div></div>
+    </div>
+
+    <!-- ================= Section B: Match Pairs ================= -->
+    <div class="card"><h2><i class="fas fa-link"></i> B. Match the pairs</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Group A</th><th>Answer</th><th>Group B</th></tr></thead>
+                <tbody>
+                    <tr><td>BHEL</div></div></td><td>→</div></div><td>6) 51% paid up capital by govt</div></div></tr>
+                    <tr><td>Statutory Corporation</div></div></td><td>→</div></div><td>1) Special Legislature</div></div></tr>
+                    <tr><td>Departmental Organisation</div></div></td><td>→</div></div><td>4) Railway</div></div></tr>
+                    <tr><td>Private Sector</div></div></td><td>→</div></div><td>5) Profit Motive</div></div></td>
+                    <tr><td>Public Sector</div></div></td><td>→</div></div><td>3) Service Motive</div></div></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================= Section C: One word ================= -->
+    <div class="card"><h2><i class="fas fa-tag"></i> C. Give one word/phrase/term</h2>
+        <div class="qa-item"><div class="question">1) Organisations which are owned by individual or group of individuals.</div><div class="answer">Private Sector</div></div>
+        <div class="qa-item"><div class="question">2) The oldest form of business organisation under public sector.</div><div class="answer">Departmental Organisation</div></div>
+        <div class="qa-item"><div class="question">3) An autonomous corporate body created by Special Act of parliament.</div><div class="answer">Statutory Corporation</div></div>
+        <div class="qa-item"><div class="question">4) Organisation with minimum 51% paid up capital held by government.</div><div class="answer">Government Company</div></div>
+        <div class="qa-item"><div class="question">5) Business organisation that operates in many different countries.</div><div class="answer">Multinational Corporation</div></div>
+    </div>
+
+    <!-- ================= Section D: True/False ================= -->
+    <div class="card"><h2><i class="fas fa-gavel"></i> D. State True or False</h2>
+        <div class="qa-item"><div class="question">1) Private sector organisations are owned by individual or group of individuals.</div><div class="answer"><span class="true-badge">True</span></div></div>
+        <div class="qa-item"><div class="question">2) Private sector aims at providing reliable services to customers.</div><div class="answer"><span class="false-badge">False</span> Private sector aims at profit maximization.</div></div>
+        <div class="qa-item"><div class="question">3) Departmental organisation is the oldest form under public sector.</div><div class="answer"><span class="true-badge">True</span></div></div>
+        <div class="qa-item"><div class="question">4) There is large scope for initiative and skill in departmental organisation.</div><div class="answer"><span class="false-badge">False</span> Less scope for initiative due to bureaucracy.</div></div>
+        <div class="qa-item"><div class="question">5) Statutory corporations are free from political interference.</div><div class="answer"><span class="true-badge">True</span></div></div>
+    </div>
+
+    <!-- ================= Comparison Table: 3 Public Sector Forms ================= -->
+    <div class="card"><h2><i class="fas fa-table"></i> Comparative Study: Public Sector Organisations</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Basis</th><th>Departmental Organisation</th><th>Statutory Corporation</th><th>Government Company</th></tr></thead>
+                <tbody>
+                    <tr><td>Formation</div></div></td><td>By ministry decision</div></div></td><td>Special Act of Parliament</div></div></td><td>Companies Act 2013</div></div></tr>
+                    <tr><td>Capital</div></div></td><td>Annual budget appropriation</div></div></td><td>Govt contribution + bonds</div></div></td><td>Govt (51%+) + public</div></div></td>
+                    <tr><td>Legal Status</div></div></td><td>No separate entity</div></div></td><td>Separate legal entity</div></div></td><td>Separate legal entity</div></div></tr>
+                    <tr><td>Management</div></div></td><td>Govt officials</div></div></td><td>Board of Directors (nominated)</div></div></td><td>Board of Directors</div></div></tr>
+                    <tr><td>Autonomy</div></div></td><td>No autonomy</div></div></td><td>Autonomous</div></div></td><td>Internal autonomy</div></div></tr>
+                    <tr><td>Staff Status</div></div></td><td>Government servants</div></div></td><td>Own staff (not govt servants)</div></div></td><td>Own staff</div></div></tr>
+                    <tr><td>Examples</div></div></td><td>Railways, Post Office</div></div></td><td>RBI, LIC, ONGC</div></div></td><td>BHEL, NTPC, SAIL</div></div></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================= Departmental Organisation Details ================= -->
+    <div class="card"><h2><i class="fas fa-building"></i> Departmental Organisation: Features, Merits & Demerits</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Features</th><th>Merits</th><th>Demerits</th></tr></thead>
+                <tbody>
+                    <tr><td>Managed by Government</td><td>Direct Control</td><td>Delay in Action</td></tr>
+                    <tr><td>Financed by Annual Budget</td><td>Direct Revenue to Govt</td><td>Red Tapism & Bureaucracy</td></tr>
+                    <tr><td>No Separate Legal Entity</td><td>Less Overheads</td><td>Less Scope for Initiative</td></tr>
+                    <tr><td>Government Employees</td><td>Qualified Staff</td><td>Lack of Flexibility</td></tr>
+                    <tr><td>Delegation of Authority</td><td>Maintains Secrecy</td><td>Absence of Professionalism</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================= Statutory Corporation Details ================= -->
+    <div class="card"><h2><i class="fas fa-gavel"></i> Statutory Corporation: Features, Merits & Demerits</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Features</th><th>Merits</th><th>Demerits</th></tr></thead>
+                <tbody>
+                    <tr><td>Corporate Body (Artificial Person)</td><td>Initiative & Flexibility</td><td>Autonomy on paper only</td></tr>
+                    <tr><td>Answerable to Legislature</td><td>Administrative Autonomy</td><td>Lack of Initiative</td></tr>
+                    <tr><td>Own Staffing System</td><td>Quick Decisions</td><td>Rigid Structure</td></tr>
+                    <tr><td>Financial Autonomy</td><td>Professional Management</td><td>Clashes amongst interests</td></tr>
+                    <tr><td>No Political Interference</td><td>Easy to raise capital (bonds)</td><td>Unfair practices possible</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="highlight-badge"><strong>📌 Examples:</strong> Reserve Bank of India (RBI), Life Insurance Corporation (LIC), Oil & Natural Gas Corporation (ONGC)</div>
+    </div>
+
+    <!-- ================= Government Company Details ================= -->
+    <div class="card"><h2><i class="fas fa-chart-line"></i> Government Company: Features, Merits & Demerits</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Features</th><th>Merits</th><th>Demerits</th></tr></thead>
+                <tbody>
+                    <tr><td>Registered under Companies Act 2013</td><td>Easy Formation</td><td>Autonomy only in Name</td></tr>
+                    <tr><td>Minimum 51% govt shareholding</td><td>Internal Autonomy</td><td>Fear of Exposure</td></tr>
+                    <tr><td>Separate Legal Entity</td><td>Easy to Alter (MOA)</td><td>Lack of Expertise</td></tr>
+                    <tr><td>Own Staff (not govt servants)</td><td>Professional Management</td><td>Lack of Professional View</td></tr>
+                    <tr><td>Public Accountability (Annual Report)</td><td>Discipline (Companies Act)</td><td>Political interference</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="highlight-badge"><strong>📌 Examples:</strong> BHEL (Bharat Heavy Electricals Ltd), NTPC, HMT, SAIL (Steel Authority of India Ltd)</div>
+    </div>
+
+    <!-- ================= MNC Details ================= -->
+    <div class="card"><h2><i class="fas fa-globe"></i> Multinational Corporations (MNCs): Features, Merits & Demerits</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Features</th><th>Merits</th><th>Demerits</th></tr></thead>
+                <tbody>
+                    <tr><td>Huge Assets & Turnover</td><td>Employment Generation</td><td>Danger to Domestic Industries</td></tr>
+                    <tr><td>International Operations</td><td>Inflow of Foreign Capital</td><td>Repatriation of Profits</td></tr>
+                    <tr><td>Centralised Control</td><td>Proper Use of Idle Resources</td><td>Interference in Host Country</td></tr>
+                    <tr><td>Advanced Technology</td><td>Technical & Managerial Development</td><td>Disregard National Interests</td></tr>
+                    <tr><td>Professional Management</td><td>End of Local Monopolies</td><td>Exploitation of Natural Resources</td></tr>
+                    <tr><td>Mighty Economic Power</td><td>Improvement in Standard of Living</td><td>Promotion of Alien Culture</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="highlight-badge"><strong>📌 Indian MNCs:</strong> Tata Motors, Infosys, Bata India | <strong>Foreign MNCs:</strong> Pepsi, Coca-Cola, Proctor & Gamble</div>
+    </div>
+
+    <!-- ================= Private vs Public Sector ================= -->
+    <div class="card"><h2><i class="fas fa-chart-simple"></i> Private Sector vs Public Sector</h2>
+        <div class="resp-table">
+            <table>
+                <thead><tr><th>Basis</th><th>Private Sector</th><th>Public Sector</th></tr></thead>
+                <tbody>
+                    <tr><td>Ownership</td><td>Individuals / Group of individuals</td><td>Government</td></tr>
+                    <tr><td>Main Motive</td><td>Profit Maximization</td><td>Service Motive / Social Welfare</td></tr>
+                    <tr><td>Decision Making</td><td>Quick</td><td>Delayed due to bureaucracy</td></tr>
+                    <tr><td>Capital Provider</td><td>Private investors / Owners</td><td>Government</td></tr>
+                    <tr><td>Efficiency</td><td>Greater efficiency (professional approach)</td><td>Lower efficiency (lack of competition)</td></tr>
+                    <tr><td>Examples</td><td>Reliance, Tata, ITC</td><td>Railways, BHEL, LIC, RBI</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================= One Sentence Answers ================= -->
+    <div class="card"><h2><i class="fas fa-question-circle"></i> G. Answer in one sentence</h2>
+        <div class="qa-item"><div class="question">1) What is Government Company?</div><div class="answer">A company registered under Companies Act 2013 with minimum 51% paid-up share capital held by central/state government.</div></div>
+        <div class="qa-item"><div class="question">2) What is Departmental Organisation?</div><div class="answer">An organisation owned, managed, controlled and financed by government as an integral part of government.</div></div>
+        <div class="qa-item"><div class="question">3) What is Statutory Corporation?</div><div class="answer">An autonomous corporate body created by Special Act of Parliament or State Legislature with defined powers and duties.</div></div>
+        <div class="qa-item"><div class="question">4) What is Multinational Corporation?</div><div class="answer">A business organisation that operates in many different countries with facilities and assets in at least one country other than its home country.</div></div>
+    </div>
+
+    <!-- ================= Case Study ================= -->
+    <div class="card"><h2><i class="fas fa-briefcase"></i> Case Study Analysis</h2>
+        <div class="qa-item"><div class="question">Case 1: Company with MP Govt 35%, Maharashtra Govt 35%, Govt of India 30% capital.</div><div class="answer">i) Government Company; ii) Features: Minimum 51% govt holding, separate legal entity; iii) Examples: BHEL, NTPC, SAIL</div></div>
+        <div class="qa-item"><div class="question">Case 2: Company with registered office in Singapore, branches in Varanasi & Hambantota providing cellular services.</div><div class="answer">i) Multinational Corporation (MNC); ii) Operates in multiple countries, centralized control from home country, international operations.</div></div>
+        <div class="qa-item"><div class="question">Case 3: Central government passes statute and forms autonomous organisation answerable to legislature.</div><div class="answer">i) Statutory Corporation; ii) Features: Corporate body, financial autonomy, own staffing system; iii) Example: RBI, LIC</div></div>
+    </div>
+
+    <!-- ================= Correct the underlined words ================= -->
+    <div class="card"><h2><i class="fas fa-edit"></i> I. Correct the underlined word</h2>
+        <div class="qa-item"><div class="question">1) Statutory Corporation is a natural person created by special Act.</div><div class="answer">artificial</div></div>
+        <div class="qa-item"><div class="question">2) MNC have existence only in single country.</div><div class="answer">multiple</div></div>
+        <div class="qa-item"><div class="question">3) Departmental Organisation has separate existence from government.</div><div class="answer">no separate</div></div>
+        <div class="qa-item"><div class="question">4) Private sector aims at providing essential services to customers.</div><div class="answer">profit maximization</div></div>
+    </div>
+
+    <!-- ================= Justify Statements ================= -->
+    <div class="card"><h2><i class="fas fa-check-double"></i> Key Justifications</h2>
+        <div class="qa-item"><div class="question">Why is there direct control of government on departmental organisation?</div><div class="answer">Departmental organisation is an integral part of government, managed by govt officials, financed by annual budget, and minister is directly responsible to Parliament.</div></div>
+        <div class="qa-item"><div class="question">Why is there no political interference in statutory corporation?</div><div class="answer">Statutory corporation is created by Special Act with defined powers; it has financial autonomy, own staffing, and operates independently within legal framework.</div></div>
+        <div class="qa-item"><div class="question">Why do MNCs help end local monopolies?</div><div class="answer">MNCs bring competition, better quality products, competitive prices, forcing local monopolies to improve efficiency and reduce prices.</div></div>
+    </div>
+
+    <div class="footer-note"><i class="fas fa-landmark"></i> Public Sector Organisations | Departmental · Statutory Corporation · Government Company · MNC | Service Motive | 11th Commerce OCM</div>
+</div>
+
+<!-- Popup for Translation -->
+<div id="translationPopup" class="popup-overlay">
+    <div class="popup-content">
+        <div class="popup-header">
+            <h3><i class="fas fa-language"></i> अनुवाद / Translation</h3>
+            <span class="close-popup" onclick="closePopup()">×</span>
+        </div>
+        <div class="popup-body" id="popupBody"></div>
+    </div>
+</div>
+
+<script>
+    const hindiSummary = `
+        <div style="font-family: 'Inter', sans-serif;">
+            <p><strong>🔹 सार्वजनिक क्षेत्र के संगठन:</strong> ये संगठन सरकार या सरकारों के संयोजन द्वारा स्वामित्व, वित्तपोषित, प्रबंधित और नियंत्रित होते हैं। इनका मुख्य उद्देश्य सेवा प्रदान करना है।</p>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 विभागीय संगठन:</strong> सबसे पुराना स्वरूप। सरकार का अभिन्न अंग। वार्षिक बजट से वित्तपोषित। उदा: रेलवे, डाकघर, रक्षा। विशेषताएँ: सरकार द्वारा प्रबंधित, कोई पृथक कानूनी अस्तित्व नहीं, सरकारी कर्मचारी, लालफीताशाही।</div>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 वैधानिक निगम:</strong> संसद या राज्य विधानमंडल के विशेष अधिनियम द्वारा निर्मित स्वायत्त निकाय। उदा: RBI, LIC, ONGC। विशेषताएँ: कॉर्पोरेट निकाय, वित्तीय स्वायत्तता, कोई राजनीतिक हस्तक्षेप नहीं।</div>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 सरकारी कंपनी (कंपनी अधिनियम 2013):</strong> न्यूनतम 51% चुकता पूँजी सरकार के पास। उदा: BHEL, NTPC, SAIL। विशेषताएँ: पृथक कानूनी अस्तित्व, पेशेवर प्रबंधन, सार्वजनिक जवाबदेही।</div>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 बहुराष्ट्रीय निगम (MNC):</strong> कई देशों में संचालित व्यावसायिक संगठन। उदा: टाटा मोटर्स, इंफोसिस, पेप्सी। विशेषताएँ: विशाल संपत्ति, अंतर्राष्ट्रीय परिचालन, केंद्रीकृत नियंत्रण, उन्नत प्रौद्योगिकी।</div>
+            <p><strong>⭐ तुलना:</strong> निजी क्षेत्र (लाभ उद्देश्य) vs सार्वजनिक क्षेत्र (सेवा उद्देश्य)। MNC विदेशी पूँजी लाते हैं लेकिन घरेलू उद्योगों को नुकसान पहुँचा सकते हैं।</p>
+        </div>`;
+
+    const marathiSummary = `
+        <div style="font-family: 'Inter', sans-serif;">
+            <p><strong>🔹 सार्वजनिक क्षेत्रातील संस्था:</strong> या संस्था सरकार किंवा सरकारांच्या संयोगाने मालकीच्या, वित्तपुरवठा, व्यवस्थापित व नियंत्रित केल्या जातात. मुख्य उद्दिष्ट सेवा पुरवणे.</p>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 विभागीय संघटना:</strong> सर्वात जुना प्रकार. सरकारचा अविभाज्य भाग. वार्षिक अंदाजपत्रकातून वित्तपुरवठा. उदा: रेल्वे, टपाल, संरक्षण. वैशिष्ट्ये: सरकारद्वारे व्यवस्थापित, स्वतंत्र कायदेशीर अस्तित्व नाही, सरकारी कर्मचारी, लालफितीशाही.</div>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 वैधानिक महामंडळ:</strong> संसद किंवा राज्य विधिमंडळाच्या विशेष कायद्याने निर्मित स्वायत्त संस्था. उदा: RBI, LIC, ONGC. वैशिष्ट्ये: महामंडळीय संस्था, वित्तीय स्वायत्तता, राजकीय हस्तक्षेप नाही.</div>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 सरकारी कंपनी (कंपनी कायदा 2013):</strong> किमान 51% भांडवल सरकारकडे. उदा: BHEL, NTPC, SAIL. वैशिष्ट्ये: स्वतंत्र कायदेशीर अस्तित्व, व्यावसायिक व्यवस्थापन, सार्वजनिक उत्तरदायित्व.</div>
+            <div class="highlight-badge" style="background:#eef3fc; border-left:4px solid #ffb74d; padding:10px 16px; margin:16px 0;"><strong>📌 बहुराष्ट्रीय महामंडळ (MNC):</strong> अनेक देशांमध्ये कार्यरत व्यावसायिक संस्था. उदा: टाटा मोटर्स, इन्फोसिस, पेप्सी. वैशिष्ट्ये: प्रचंड मालमत्ता, आंतरराष्ट्रीय कार्य, केंद्रीकृत नियंत्रण, प्रगत तंत्रज्ञान.</div>
+            <p><strong>⭐ तुलना:</strong> खाजगी क्षेत्र (नफा उद्दिष्ट) vs सार्वजनिक क्षेत्र (सेवा उद्दिष्ट). MNC परदेशी भांडवल आणतात पण स्थानिक उद्योगांना हानी पोहोचवू शकतात.</p>
+        </div>`;
+
+    function showTranslation(lang) {
+        const popup = document.getElementById('translationPopup');
+        const popupBody = document.getElementById('popupBody');
+        if (lang === 'hindi') popupBody.innerHTML = hindiSummary;
+        else popupBody.innerHTML = marathiSummary;
+        popup.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+    function closePopup() {
+        document.getElementById('translationPopup').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+    window.onclick = function(event) {
+        const popup = document.getElementById('translationPopup');
+        if (event.target === popup) closePopup();
+    }
+</script>
+</body>
+</html>
