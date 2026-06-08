@@ -1674,7 +1674,7 @@
 
     function setupEventListeners() {
         const logoBtn = document.getElementById('logoHomeBtn');
-        if (logoBtn) logoBtn.onclick = () => { window.location.href = 'index.html'; };
+        if (logoBtn) logoBtn.onclick = () => { window.location.href = '../index.html'; };
         
         const menuToggle = document.getElementById('menuToggleBtn');
         if (menuToggle) menuToggle.onclick = openSidebar;
@@ -1708,7 +1708,7 @@
                 if (currentUser) {
                     showToast(`Name: ${currentUser['First Name']} ${currentUser['Last Name']}\nEmail: ${currentUser['Email Id']}\nMobile: +91 ${currentUser['Mobile Number']}`, 'info', 'My Account');
                 } else {
-                    window.location.href = 'myaccount.html';
+                    window.location.href = '../Account/myaccount.html';
                 }
             };
         }
@@ -1717,10 +1717,10 @@
         if (desktopLogout) desktopLogout.onclick = () => logout();
         
         const sidebarLoginBtn = document.getElementById('sidebarLoginBtn');
-        if (sidebarLoginBtn) sidebarLoginBtn.onclick = () => { closeSidebar(); window.location.href = 'myaccount.html'; };
+        if (sidebarLoginBtn) sidebarLoginBtn.onclick = () => { closeSidebar(); window.location.href = '../Account/myaccount.html'; };
         
         const sidebarSignupBtn = document.getElementById('sidebarSignupBtn');
-        if (sidebarSignupBtn) sidebarSignupBtn.onclick = () => { closeSidebar(); window.location.href = 'myaccount.html'; };
+        if (sidebarSignupBtn) sidebarSignupBtn.onclick = () => { closeSidebar(); window.location.href = '../Account/myaccount.html'; };
         
         const sidebarMyAccount = document.getElementById('sidebarMyAccount');
         if (sidebarMyAccount) {
@@ -1736,10 +1736,10 @@
         if (sidebarLogout) sidebarLogout.onclick = () => { logout(); closeSidebar(); };
         
         const openLoginBtn = document.getElementById('openLoginBtn');
-        if (openLoginBtn) openLoginBtn.onclick = () => { window.location.href = 'myaccount.html'; };
+        if (openLoginBtn) openLoginBtn.onclick = () => { window.location.href = '../Account/myaccount.html'; };
         
         const openSignupBtn = document.getElementById('openSignupBtn');
-        if (openSignupBtn) openSignupBtn.onclick = () => { window.location.href = 'myaccount.html'; };
+        if (openSignupBtn) openSignupBtn.onclick = () => { window.location.href = '../Account/myaccount.html'; };
         
         document.querySelectorAll('.desktop-menu-item, .sidebar-menu-item').forEach(el => {
             if (!el.hasAttribute('data-page')) return;
